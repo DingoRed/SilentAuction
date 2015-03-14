@@ -73,6 +73,7 @@
             this.donorsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorsTableAdapter();
             this.auctionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.auctionsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.AuctionsTableAdapter();
+            this.ItemsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.metroTabControl1.SuspendLayout();
             this.ItemsPage.SuspendLayout();
             this.metroPanel1.SuspendLayout();
@@ -89,6 +90,7 @@
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AuctionsGrid)).BeginInit();
             this.metroPanel3.SuspendLayout();
+            this.Items2Page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -514,6 +516,7 @@
             // 
             // Items2Page
             // 
+            this.Items2Page.Controls.Add(this.ItemsTableLayoutPanel);
             this.Items2Page.HorizontalScrollbarBarColor = true;
             this.Items2Page.HorizontalScrollbarHighlightOnWheel = false;
             this.Items2Page.HorizontalScrollbarSize = 10;
@@ -542,6 +545,19 @@
             // auctionsTableAdapter
             // 
             this.auctionsTableAdapter.ClearBeforeFill = true;
+            // 
+            // ItemsTableLayoutPanel
+            // 
+            this.ItemsTableLayoutPanel.ColumnCount = 2;
+            this.ItemsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ItemsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ItemsTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.ItemsTableLayoutPanel.Name = "ItemsTableLayoutPanel";
+            this.ItemsTableLayoutPanel.RowCount = 2;
+            this.ItemsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ItemsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ItemsTableLayoutPanel.Size = new System.Drawing.Size(200, 100);
+            this.ItemsTableLayoutPanel.TabIndex = 2;
             // 
             // MainForm
             // 
@@ -573,6 +589,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.AuctionsGrid)).EndInit();
             this.metroPanel3.ResumeLayout(false);
             this.metroPanel3.PerformLayout();
+            this.Items2Page.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -615,6 +632,7 @@
         private MetroFramework.Controls.MetroButton metroButton1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private MetroFramework.Controls.MetroTabPage Items2Page;
+        private System.Windows.Forms.TableLayoutPanel ItemsTableLayoutPanel;
 
 
     }
