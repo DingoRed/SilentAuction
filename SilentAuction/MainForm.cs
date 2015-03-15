@@ -169,7 +169,7 @@ namespace SilentAuction
             //        (((DataRowView)(itemsToolStripComboBox.SelectedItem)).Row).ItemArray[0].ToString(),
             //        typeof(long)))));
 
-                itemsTableAdapter.FillItemsByAuctionId(silentAuctionDataSet.Items,
+                itemsTableAdapter.FillItems(silentAuctionDataSet.Items,
                     ((Auction)itemsToolStripComboBox.SelectedItem).Id);
 
                 //itemsTableAdapter.FillItemsByAuctionId(silentAuctionDataSet.Items,
