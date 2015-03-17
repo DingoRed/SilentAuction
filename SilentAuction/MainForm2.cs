@@ -1,22 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using SilentAuction.Core.Entities;
+using SilentAuction.Forms;
 using SilentAuction.Utilities.Extensions;
 
 namespace SilentAuction
 {
     public partial class MainForm2 : Form
     {
-        #region Constructor and Form Methods
+        #region Constructor
         public MainForm2()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region Form Event Handlers
         private void MainForm2Load(object sender, EventArgs e)
         {
+            if ((ModifierKeys & Keys.Shift) == 0)
+            {
+                string initLocation = Properties.Settings.Default.InitialLocation;
+                Point il = new Point(0, 0);
+                Size sz = Size;
+                if (!string.IsNullOrWhiteSpace(initLocation))
+                {
+                    string[] parts = initLocation.Split(',');
+                    if (parts.Length >= 2)
+                    {
+                        il = new Point(int.Parse(parts[0]), int.Parse(parts[1]));
+                    }
+                    if (parts.Length >= 4)
+                    {
+                        sz = new Size(int.Parse(parts[2]), int.Parse(parts[3]));
+                    }
+                    Size = sz;
+                    Location = il;
+                }
+            }
+
             bidIncrementTypesTableAdapter.FillBidIncremenetTypes(silentAuctionDataSet.BidIncrementTypes);
             donorTypesTableAdapter.FillDonorTypes(silentAuctionDataSet.DonorTypes);
             auctionsTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
@@ -35,13 +60,37 @@ namespace SilentAuction
                 ItemsToolStripComboBox.ComboBox.DisplayMember = "Name";
             }
         }
-        #endregion
 
-        #region Form Event Handlers
-        private void MainForm2FormClosed(object sender, FormClosedEventArgs e)
+        private void MainForm2FormClosing(object sender, FormClosingEventArgs e)
         {
-            // MessageBox.Show("Save window info here");
+            var xxx = silentAuctionDataSet.GetChanges();
+            if (xxx != null)
+            {
+                var result = MessageBox.Show("You have unsaved changes.\n\rAre you sure you want to close without saving?", "Unsaved Changes",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if(result == DialogResult.No)
+                    e.Cancel = true;
+            }
+             
+            if (!e.Cancel)
+            {
+                if ((ModifierKeys & Keys.Shift) == 0)
+                {
+                    Point location = Location;
+                    Size size = Size;
+                    if (WindowState != FormWindowState.Normal)
+                    {
+                        location = RestoreBounds.Location;
+                        size = RestoreBounds.Size;
+                    }
+                    string initLocation = string.Join(",", location.X, location.Y, size.Width, size.Height);
+                    Properties.Settings.Default.InitialLocation = initLocation;
+                    Properties.Settings.Default.Save();
+                }
+            }
         }
+
         #endregion
 
         #region ToolStrip Event Handlers
@@ -358,5 +407,52 @@ namespace SilentAuction
             MainFormDataSaveLabel.Visible = false;
         }
         #endregion
+
+        #region MenuStrip Event Handlers
+        private void NewAuctionToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            ItemsTabControl.SelectTab(AuctionsTabPage);
+        }
+
+        private void AddNewDonorToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            ItemsTabControl.SelectTab(DonorsTabPage);
+        }
+
+        private void AddNewItemToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            ItemsTabControl.SelectTab(ItemsTabPage);
+        }
+
+        private void SaveToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            ItemsSaveAllButtonClick(sender, e);
+            DonorsSaveAllButtonClick(sender, e);
+            AuctionsSaveAllChangesButtonClick(sender, e);
+        }
+
+        private void PrintToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            throw new Exception("Not Implemented");
+        }
+
+        private void PrintPreviewToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            throw new Exception("Not Implemented");
+        }
+
+        private void ExitToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void AboutToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            AboutBox ab = new AboutBox();
+            ab.ShowDialog();
+        }
+
+        #endregion
+
     }
 }
