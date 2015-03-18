@@ -36,9 +36,13 @@ namespace SilentAuction.Core.Initialize
                 using (SQLiteConnection connection = new SQLiteConnection(Constants.DatabaseConnectionString))
                 {
                     connection.Open();
+
+                    // BidIncrementTypes table
+                    SQLiteCommand command = new SQLiteCommand(Constants.BidIncrementTypesCreateSql, connection);
+                    command.ExecuteNonQuery();
                     
-                     // DonorType table
-                    SQLiteCommand command = new SQLiteCommand(Constants.DonorTypesTableCreateSql, connection);
+                    // DonorType table
+                    command = new SQLiteCommand(Constants.DonorTypesTableCreateSql, connection);
                     command.ExecuteNonQuery();
 
                    // Donors table
@@ -75,6 +79,10 @@ namespace SilentAuction.Core.Initialize
 
                     // DonorType table
                     SQLiteCommand command = new SQLiteCommand(Constants.DonorTypesPreload, connection);
+                    command.ExecuteNonQuery();
+
+                    // BidIncrementTypes table
+                    command = new SQLiteCommand(Constants.BidIncrementTypesPreload, connection);
                     command.ExecuteNonQuery();
                 }
                 return true;

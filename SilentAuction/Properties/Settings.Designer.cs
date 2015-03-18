@@ -33,5 +33,17 @@ namespace SilentAuction.Properties {
                 return ((string)(this["SilentAuctionConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string InitialLocation {
+            get {
+                return ((string)(this["InitialLocation"]));
+            }
+            set {
+                this["InitialLocation"] = value;
+            }
+        }
     }
 }

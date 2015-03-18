@@ -13,6 +13,7 @@ namespace SilentAuction.Utilities.General
         public static string DonorTypesTableName = "DonorTypes";
         public static string AuctionsTableName = "Auctions";
         public static string ItemsTableName = "Items";
+        public static string BidIncrementTypesTableName = "BidIncrementTypes";
 
         // Table Create Scripts
         public static string DonorsTableCreateSql = string.Format(@"CREATE TABLE [{0}](
@@ -48,15 +49,26 @@ namespace SilentAuction.Utilities.General
                                                                   [Name] [nvarchar](200) NOT NULL,
                                                                   [Description] [nvarchar](5000) NULL,
                                                                   [Qty] [integer] NOT NULL,
+                                                                  [RetailValue] [real] NULL,
+                                                                  [BidIncrementTypeId] [integer] NOT NULL,
+                                                                  [BidMinValue] [real] NULL,
+                                                                  [BidMaxValue] [real] NULL,
+                                                                  [BidIncrementValue] [real] NULL,
+                                                                  [BidBuyItNowValue] [real] NULL,
+                                                                  [BidNumberOfBids] [real] NULL,
                                                                   [Notes]  [nvarchar](5000) NULL,
                 	                                              [CreateDate] [text] NOT NULL,
                 	                                              [ModifiedDate] [text] NOT NULL)", ItemsTableName);
-
-
+        public static string BidIncrementTypesCreateSql = string.Format(@"CREATE TABLE [{0}](
+                                                                  [Id] [integer] PRIMARY KEY AUTOINCREMENT NOT NULL,
+                	                                              [Name] [nvarchar](200) NOT NULL,
+                                                                  [Description] [nvarchar](5000) NOT NULL)", BidIncrementTypesTableName);
 
         // Preload Data Scripts
         public static string DonorTypesPreload = @"INSERT INTO DonorTypes (Name) VALUES ('Business');
                                                    INSERT INTO DonorTypes (Name) VALUES ('Individual');
                                                    INSERT INTO DonorTypes (Name) VALUES ('Teacher');";
+        public static string BidIncrementTypesPreload = @"INSERT INTO BidIncrementTypes (Name, Description) VALUES ('Increment Value', 'Increments based on the Increment Value');
+                                                          INSERT INTO BidIncrementTypes (Name, Description) VALUES ('Increment Number', 'Increments based on the Number of Bids');";
     }
 }
