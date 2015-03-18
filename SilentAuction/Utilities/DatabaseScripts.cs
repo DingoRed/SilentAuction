@@ -1,13 +1,13 @@
 ﻿
-using System.Configuration;
+using SilentAuction.Properties;
 
-namespace SilentAuction.Utilities.General
+namespace SilentAuction.Utilities
 {
-    public class Constants
+    public class DatabaseScripts
     {
         // Database strings
-        public static string DatabaseConnectionString = ConfigurationManager.ConnectionStrings["SilentAuctionDb"].ConnectionString;  //"Data Source=SilentAuction.sqlite;Version=3;";
-        public static string DatabaseName = ConfigurationManager.AppSettings["SilentAuctionDbName"];  // "SilentAuction.sqlite";
+        public static string DatabaseConnectionString = Settings.Default.SilentAuctionConnectionString;   // ConfigurationManager.ConnectionStrings["SilentAuctionDb"].ConnectionString;  //"Data Source=SilentAuction.sqlite;Version=3;";
+        public static string DatabaseName = Settings.Default.SilentAuctionDatabaseName;  //ConfigurationManager.AppSettings["SilentAuctionDbName"];  // "SilentAuction.sqlite";
 
         // Table Names
         public static string AuctionsTableName = "Auctions";
@@ -17,7 +17,6 @@ namespace SilentAuction.Utilities.General
         public static string DonorTypesTableName = "DonorTypes";
         public static string ItemsTableName = "Items";
         public static string ItemTypesTableName = "ItemTypes";
-        
         public static string RequestFormatTypesTableName = "RequestFormatTypes";
         public static string RequestStatusTypesTableName = "RequestStatusTypes";
 

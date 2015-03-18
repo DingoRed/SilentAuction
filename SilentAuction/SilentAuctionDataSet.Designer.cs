@@ -36,11 +36,11 @@ namespace SilentAuction {
         
         private global::System.Data.DataRelation relationFK_DonorTypes_Donors;
         
-        private global::System.Data.DataRelation relationFK_BidIncrementTypes_Items;
+        private global::System.Data.DataRelation relationFK_Donors_Items;
         
         private global::System.Data.DataRelation relationFK_Auctions_Items;
         
-        private global::System.Data.DataRelation relationFK_Donors_Items;
+        private global::System.Data.DataRelation relationFK_BidIncrementTypes_Items;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -299,9 +299,9 @@ namespace SilentAuction {
                 }
             }
             this.relationFK_DonorTypes_Donors = this.Relations["FK_DonorTypes_Donors"];
-            this.relationFK_BidIncrementTypes_Items = this.Relations["FK_BidIncrementTypes_Items"];
-            this.relationFK_Auctions_Items = this.Relations["FK_Auctions_Items"];
             this.relationFK_Donors_Items = this.Relations["FK_Donors_Items"];
+            this.relationFK_Auctions_Items = this.Relations["FK_Auctions_Items"];
+            this.relationFK_BidIncrementTypes_Items = this.Relations["FK_BidIncrementTypes_Items"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -330,9 +330,9 @@ namespace SilentAuction {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_BidIncrementTypes_Items", new global::System.Data.DataColumn[] {
-                        this.tableBidIncrementTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.BidIncrementTypeIdColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Donors_Items", new global::System.Data.DataColumn[] {
+                        this.tableDonors.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableItems.DonorIdColumn});
             this.tableItems.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
@@ -344,9 +344,9 @@ namespace SilentAuction {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Donors_Items", new global::System.Data.DataColumn[] {
-                        this.tableDonors.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.DonorIdColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_BidIncrementTypes_Items", new global::System.Data.DataColumn[] {
+                        this.tableBidIncrementTypes.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableItems.BidIncrementTypeIdColumn});
             this.tableItems.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
@@ -355,18 +355,18 @@ namespace SilentAuction {
                         this.tableDonorTypes.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableDonors.DonorTypeIdColumn}, false);
             this.Relations.Add(this.relationFK_DonorTypes_Donors);
-            this.relationFK_BidIncrementTypes_Items = new global::System.Data.DataRelation("FK_BidIncrementTypes_Items", new global::System.Data.DataColumn[] {
-                        this.tableBidIncrementTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.BidIncrementTypeIdColumn}, false);
-            this.Relations.Add(this.relationFK_BidIncrementTypes_Items);
-            this.relationFK_Auctions_Items = new global::System.Data.DataRelation("FK_Auctions_Items", new global::System.Data.DataColumn[] {
-                        this.tableAuctions.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.AuctionIdColumn}, false);
-            this.Relations.Add(this.relationFK_Auctions_Items);
             this.relationFK_Donors_Items = new global::System.Data.DataRelation("FK_Donors_Items", new global::System.Data.DataColumn[] {
                         this.tableDonors.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableItems.DonorIdColumn}, false);
             this.Relations.Add(this.relationFK_Donors_Items);
+            this.relationFK_Auctions_Items = new global::System.Data.DataRelation("FK_Auctions_Items", new global::System.Data.DataColumn[] {
+                        this.tableAuctions.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableItems.AuctionIdColumn}, false);
+            this.Relations.Add(this.relationFK_Auctions_Items);
+            this.relationFK_BidIncrementTypes_Items = new global::System.Data.DataRelation("FK_BidIncrementTypes_Items", new global::System.Data.DataColumn[] {
+                        this.tableBidIncrementTypes.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableItems.BidIncrementTypeIdColumn}, false);
+            this.Relations.Add(this.relationFK_BidIncrementTypes_Items);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3125,12 +3125,12 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public BidIncrementTypesRow BidIncrementTypesRow {
+            public DonorsRow DonorsRow {
                 get {
-                    return ((BidIncrementTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_BidIncrementTypes_Items"])));
+                    return ((DonorsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Donors_Items"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_BidIncrementTypes_Items"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Donors_Items"]);
                 }
             }
             
@@ -3147,12 +3147,12 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsRow DonorsRow {
+            public BidIncrementTypesRow BidIncrementTypesRow {
                 get {
-                    return ((DonorsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Donors_Items"])));
+                    return ((BidIncrementTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_BidIncrementTypes_Items"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Donors_Items"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_BidIncrementTypes_Items"]);
                 }
             }
             

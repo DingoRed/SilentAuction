@@ -443,7 +443,7 @@ WHERE        (AuctionId = @AuctionId)</CommandText>
   <xs:element name="SilentAuctionDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="SilentAuctionDataSet" msprop:Generator_UserDSName="SilentAuctionDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Auctions" msprop:Generator_TableClassName="AuctionsDataTable" msprop:Generator_TableVarName="tableAuctions" msprop:Generator_RowChangedName="AuctionsRowChanged" msprop:Generator_TablePropName="Auctions" msprop:Generator_RowDeletingName="AuctionsRowDeleting" msprop:Generator_RowChangingName="AuctionsRowChanging" msprop:Generator_RowEvHandlerName="AuctionsRowChangeEventHandler" msprop:Generator_RowDeletedName="AuctionsRowDeleted" msprop:Generator_RowClassName="AuctionsRow" msprop:Generator_UserTableName="Auctions" msprop:Generator_RowEvArgName="AuctionsRowChangeEvent">
+        <xs:element name="Auctions" msprop:Generator_TableClassName="AuctionsDataTable" msprop:Generator_TableVarName="tableAuctions" msprop:Generator_TablePropName="Auctions" msprop:Generator_RowDeletingName="AuctionsRowDeleting" msprop:Generator_RowChangingName="AuctionsRowChanging" msprop:Generator_RowEvHandlerName="AuctionsRowChangeEventHandler" msprop:Generator_RowDeletedName="AuctionsRowDeleted" msprop:Generator_UserTableName="Auctions" msprop:Generator_RowChangedName="AuctionsRowChanged" msprop:Generator_RowEvArgName="AuctionsRowChangeEvent" msprop:Generator_RowClassName="AuctionsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:long" />
@@ -478,7 +478,7 @@ WHERE        (AuctionId = @AuctionId)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Donors" msprop:Generator_TableClassName="DonorsDataTable" msprop:Generator_TableVarName="tableDonors" msprop:Generator_RowChangedName="DonorsRowChanged" msprop:Generator_TablePropName="Donors" msprop:Generator_RowDeletingName="DonorsRowDeleting" msprop:Generator_RowChangingName="DonorsRowChanging" msprop:Generator_RowEvHandlerName="DonorsRowChangeEventHandler" msprop:Generator_RowDeletedName="DonorsRowDeleted" msprop:Generator_RowClassName="DonorsRow" msprop:Generator_UserTableName="Donors" msprop:Generator_RowEvArgName="DonorsRowChangeEvent">
+        <xs:element name="Donors" msprop:Generator_TableClassName="DonorsDataTable" msprop:Generator_TableVarName="tableDonors" msprop:Generator_TablePropName="Donors" msprop:Generator_RowDeletingName="DonorsRowDeleting" msprop:Generator_RowChangingName="DonorsRowChanging" msprop:Generator_RowEvHandlerName="DonorsRowChangeEventHandler" msprop:Generator_RowDeletedName="DonorsRowDeleted" msprop:Generator_UserTableName="Donors" msprop:Generator_RowChangedName="DonorsRowChanged" msprop:Generator_RowEvArgName="DonorsRowChangeEvent" msprop:Generator_RowClassName="DonorsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:long" />
@@ -584,7 +584,7 @@ WHERE        (AuctionId = @AuctionId)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DonorTypes" msprop:Generator_TableClassName="DonorTypesDataTable" msprop:Generator_TableVarName="tableDonorTypes" msprop:Generator_RowChangedName="DonorTypesRowChanged" msprop:Generator_TablePropName="DonorTypes" msprop:Generator_RowDeletingName="DonorTypesRowDeleting" msprop:Generator_RowChangingName="DonorTypesRowChanging" msprop:Generator_RowEvHandlerName="DonorTypesRowChangeEventHandler" msprop:Generator_RowDeletedName="DonorTypesRowDeleted" msprop:Generator_RowClassName="DonorTypesRow" msprop:Generator_UserTableName="DonorTypes" msprop:Generator_RowEvArgName="DonorTypesRowChangeEvent">
+        <xs:element name="DonorTypes" msprop:Generator_TableClassName="DonorTypesDataTable" msprop:Generator_TableVarName="tableDonorTypes" msprop:Generator_TablePropName="DonorTypes" msprop:Generator_RowDeletingName="DonorTypesRowDeleting" msprop:Generator_RowChangingName="DonorTypesRowChanging" msprop:Generator_RowEvHandlerName="DonorTypesRowChangeEventHandler" msprop:Generator_RowDeletedName="DonorTypesRowDeleted" msprop:Generator_UserTableName="DonorTypes" msprop:Generator_RowChangedName="DonorTypesRowChanged" msprop:Generator_RowEvArgName="DonorTypesRowChangeEvent" msprop:Generator_RowClassName="DonorTypesRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:long" />
@@ -598,7 +598,7 @@ WHERE        (AuctionId = @AuctionId)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Items" msprop:Generator_TableClassName="ItemsDataTable" msprop:Generator_TableVarName="tableItems" msprop:Generator_RowChangedName="ItemsRowChanged" msprop:Generator_TablePropName="Items" msprop:Generator_RowDeletingName="ItemsRowDeleting" msprop:Generator_RowChangingName="ItemsRowChanging" msprop:Generator_RowEvHandlerName="ItemsRowChangeEventHandler" msprop:Generator_RowDeletedName="ItemsRowDeleted" msprop:Generator_RowClassName="ItemsRow" msprop:Generator_UserTableName="Items" msprop:Generator_RowEvArgName="ItemsRowChangeEvent">
+        <xs:element name="Items" msprop:Generator_TableClassName="ItemsDataTable" msprop:Generator_TableVarName="tableItems" msprop:Generator_TablePropName="Items" msprop:Generator_RowDeletingName="ItemsRowDeleting" msprop:Generator_RowChangingName="ItemsRowChanging" msprop:Generator_RowEvHandlerName="ItemsRowChangeEventHandler" msprop:Generator_RowDeletedName="ItemsRowDeleted" msprop:Generator_UserTableName="Items" msprop:Generator_RowChangedName="ItemsRowChanged" msprop:Generator_RowEvArgName="ItemsRowChangeEvent" msprop:Generator_RowClassName="ItemsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:long" />
@@ -650,7 +650,7 @@ WHERE        (AuctionId = @AuctionId)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="BidIncrementTypes" msprop:Generator_TableClassName="BidIncrementTypesDataTable" msprop:Generator_TableVarName="tableBidIncrementTypes" msprop:Generator_TablePropName="BidIncrementTypes" msprop:Generator_RowDeletingName="BidIncrementTypesRowDeleting" msprop:Generator_RowChangingName="BidIncrementTypesRowChanging" msprop:Generator_RowEvHandlerName="BidIncrementTypesRowChangeEventHandler" msprop:Generator_RowDeletedName="BidIncrementTypesRowDeleted" msprop:Generator_UserTableName="BidIncrementTypes" msprop:Generator_RowChangedName="BidIncrementTypesRowChanged" msprop:Generator_RowEvArgName="BidIncrementTypesRowChangeEvent" msprop:Generator_RowClassName="BidIncrementTypesRow">
+        <xs:element name="BidIncrementTypes" msprop:Generator_TableClassName="BidIncrementTypesDataTable" msprop:Generator_TableVarName="tableBidIncrementTypes" msprop:Generator_RowChangedName="BidIncrementTypesRowChanged" msprop:Generator_TablePropName="BidIncrementTypes" msprop:Generator_RowDeletingName="BidIncrementTypesRowDeleting" msprop:Generator_RowChangingName="BidIncrementTypesRowChanging" msprop:Generator_RowEvHandlerName="BidIncrementTypesRowChangeEventHandler" msprop:Generator_RowDeletedName="BidIncrementTypesRowDeleted" msprop:Generator_RowClassName="BidIncrementTypesRow" msprop:Generator_UserTableName="BidIncrementTypes" msprop:Generator_RowEvArgName="BidIncrementTypesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:long" />
@@ -693,19 +693,19 @@ WHERE        (AuctionId = @AuctionId)</CommandText>
       <xs:selector xpath=".//mstns:BidIncrementTypes" />
       <xs:field xpath="mstns:Id" />
     </xs:unique>
-    <xs:keyref name="FK_BidIncrementTypes_Items" refer="BidIncrementTypes_Constraint1" msprop:rel_Generator_UserChildTable="Items" msprop:rel_Generator_ChildPropName="GetItemsRows" msprop:rel_Generator_UserRelationName="FK_BidIncrementTypes_Items" msprop:rel_Generator_RelationVarName="relationFK_BidIncrementTypes_Items" msprop:rel_Generator_UserParentTable="BidIncrementTypes" msprop:rel_Generator_ParentPropName="BidIncrementTypesRow">
-      <xs:selector xpath=".//mstns:Items" />
-      <xs:field xpath="mstns:BidIncrementTypeId" />
-    </xs:keyref>
-    <xs:keyref name="FK_Auctions_Items" refer="Constraint1" msprop:rel_Generator_UserChildTable="Items" msprop:rel_Generator_ChildPropName="GetItemsRows" msprop:rel_Generator_UserRelationName="FK_Auctions_Items" msprop:rel_Generator_RelationVarName="relationFK_Auctions_Items" msprop:rel_Generator_UserParentTable="Auctions" msprop:rel_Generator_ParentPropName="AuctionsRow">
-      <xs:selector xpath=".//mstns:Items" />
-      <xs:field xpath="mstns:AuctionId" />
-    </xs:keyref>
-    <xs:keyref name="FK_Donors_Items" refer="Donors_Constraint1" msprop:rel_Generator_UserChildTable="Items" msprop:rel_Generator_ChildPropName="GetItemsRows" msprop:rel_Generator_UserRelationName="FK_Donors_Items" msprop:rel_Generator_RelationVarName="relationFK_Donors_Items" msprop:rel_Generator_UserParentTable="Donors" msprop:rel_Generator_ParentPropName="DonorsRow">
+    <xs:keyref name="FK_Donors_Items" refer="Donors_Constraint1" msprop:rel_Generator_UserChildTable="Items" msprop:rel_Generator_ChildPropName="GetItemsRows" msprop:rel_Generator_UserRelationName="FK_Donors_Items" msprop:rel_Generator_ParentPropName="DonorsRow" msprop:rel_Generator_RelationVarName="relationFK_Donors_Items" msprop:rel_Generator_UserParentTable="Donors">
       <xs:selector xpath=".//mstns:Items" />
       <xs:field xpath="mstns:DonorId" />
     </xs:keyref>
-    <xs:keyref name="FK_DonorTypes_Donors" refer="DonorTypes_Constraint1" msprop:rel_Generator_UserChildTable="Donors" msprop:rel_Generator_ChildPropName="GetDonorsRows" msprop:rel_Generator_UserRelationName="FK_DonorTypes_Donors" msprop:rel_Generator_ParentPropName="DonorTypesRow" msprop:rel_Generator_RelationVarName="relationFK_DonorTypes_Donors" msprop:rel_Generator_UserParentTable="DonorTypes">
+    <xs:keyref name="FK_Auctions_Items" refer="Constraint1" msprop:rel_Generator_UserChildTable="Items" msprop:rel_Generator_ChildPropName="GetItemsRows" msprop:rel_Generator_UserRelationName="FK_Auctions_Items" msprop:rel_Generator_ParentPropName="AuctionsRow" msprop:rel_Generator_RelationVarName="relationFK_Auctions_Items" msprop:rel_Generator_UserParentTable="Auctions">
+      <xs:selector xpath=".//mstns:Items" />
+      <xs:field xpath="mstns:AuctionId" />
+    </xs:keyref>
+    <xs:keyref name="FK_BidIncrementTypes_Items" refer="BidIncrementTypes_Constraint1" msprop:rel_Generator_UserChildTable="Items" msprop:rel_Generator_ChildPropName="GetItemsRows" msprop:rel_Generator_UserRelationName="FK_BidIncrementTypes_Items" msprop:rel_Generator_ParentPropName="BidIncrementTypesRow" msprop:rel_Generator_RelationVarName="relationFK_BidIncrementTypes_Items" msprop:rel_Generator_UserParentTable="BidIncrementTypes">
+      <xs:selector xpath=".//mstns:Items" />
+      <xs:field xpath="mstns:BidIncrementTypeId" />
+    </xs:keyref>
+    <xs:keyref name="FK_DonorTypes_Donors" refer="DonorTypes_Constraint1" msprop:rel_Generator_UserChildTable="Donors" msprop:rel_Generator_ChildPropName="GetDonorsRows" msprop:rel_Generator_UserRelationName="FK_DonorTypes_Donors" msprop:rel_Generator_RelationVarName="relationFK_DonorTypes_Donors" msprop:rel_Generator_UserParentTable="DonorTypes" msprop:rel_Generator_ParentPropName="DonorTypesRow">
       <xs:selector xpath=".//mstns:Donors" />
       <xs:field xpath="mstns:DonorTypeId" />
     </xs:keyref>

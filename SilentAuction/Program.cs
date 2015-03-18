@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.IO;
-using SilentAuction.Core.Initialize;
-using SilentAuction.Utilities.General;
+using SilentAuction.Utilities;
 
 namespace SilentAuction
 {
@@ -14,11 +13,11 @@ namespace SilentAuction
         [STAThread]
         static void Main()
         {
-            if (!File.Exists(Constants.DatabaseName))
+            if (!File.Exists(DatabaseScripts.DatabaseName))
             {
-                Initializer.CreateDatabase();
-                Initializer.CreateAllTables();
-                Initializer.PreloadDataForTables();
+                DatabaseInitializer.CreateDatabase();
+                DatabaseInitializer.CreateAllTables();
+                DatabaseInitializer.PreloadDataForTables();
             }
 
 

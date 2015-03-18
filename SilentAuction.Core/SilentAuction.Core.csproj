@@ -64,12 +64,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SilentAuction.Utilities\SilentAuction.Utilities.csproj">
-      <Project>{50f7fdda-c3d6-4921-8bb7-e4d0d9e169ee}</Project>
-      <Name>SilentAuction.Utilities</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>

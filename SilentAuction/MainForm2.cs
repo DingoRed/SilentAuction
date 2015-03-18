@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using SilentAuction.Core.Entities;
 using SilentAuction.Forms;
-using SilentAuction.Utilities.Extensions;
+using SilentAuction.Properties;
+using SilentAuction.Utilities;
 
 namespace SilentAuction
 {
@@ -31,12 +30,14 @@ namespace SilentAuction
             ItemsDataGridView.Visible = false;
             
             BindItemsToolStripComboBox();
+
+            SetupGrids();
         }
 
         private void MainForm2FormClosing(object sender, FormClosingEventArgs e)
         {
-            var xxx = silentAuctionDataSet.GetChanges();
-            if (xxx != null)
+            var silentAuctionDataSetChanges = silentAuctionDataSet.GetChanges();
+            if (silentAuctionDataSetChanges != null)
             {
                 var result = MessageBox.Show("You have unsaved changes.\n\rAre you sure you want to close without saving?", "Unsaved Changes",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -48,6 +49,8 @@ namespace SilentAuction
             if (!e.Cancel)
             {
                 SaveWindowSettings();
+
+                SaveItemsGridSettings();
             }
         }
 
@@ -56,12 +59,19 @@ namespace SilentAuction
         #region ToolStrip Event Handlers
         private void ItemsToolStripComboBoxSelectedIndexChanged(object sender, EventArgs e)
         {
-            int auctionId = ((Auction) ItemsToolStripComboBox.SelectedItem).Id;
+            //int auctionId = ((Auction) ItemsToolStripComboBox.SelectedItem).Id;
 
             try
             {
-                itemsTableAdapter.FillItems(silentAuctionDataSet.Items, auctionId);
-                ItemsDataGridView.Visible = auctionId > 0;
+                if (ItemsToolStripComboBox.ComboBox != null)
+                {
+                    int auctionId = MathHelper.ParseIntZeroIfNull(ItemsToolStripComboBox.ComboBox.SelectedValue.ToString());
+                    itemsTableAdapter.FillItems(silentAuctionDataSet.Items, auctionId);
+                    ItemsDataGridView.Visible = auctionId > 0;
+                    ItemsSaveAllButton.Visible = auctionId > 0;
+                    AddItemsButton.Visible = auctionId > 0;
+                    ItemsRequirementLabel.Visible = auctionId > 0;
+                }
             }
             catch (Exception ex)
             {
@@ -73,17 +83,15 @@ namespace SilentAuction
         #region Items Event Handlers
         private void ItemsDataGridViewDataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            string headerText = ItemsDataGridView.Columns[e.ColumnIndex].HeaderText;
-            
-            ItemsDataGridView.Rows[e.RowIndex].ErrorText = e.Exception.Message;
-            MainFormStatusLabel.Text = e.Exception.Message;
-            MainFormStatusLabel.Visible = true;
-
-            e.Cancel = true;
+            CommonDataErrorHandler(sender, e);
         }
 
         private void ItemsSaveAllButtonClick(object sender, EventArgs e)
         {
+            int currentRowIndex = 0;
+            if(ItemsDataGridView.CurrentRow != null)
+                currentRowIndex = ItemsDataGridView.CurrentRow.Index;
+
             MainFormStatusLabel.Text = "Saving data...";
             MainFormStatusLabel.Visible = true;
             SilentAuctionDataSet.ItemsDataTable newItems =
@@ -130,10 +138,13 @@ namespace SilentAuction
 
                     try
                     {
-                        itemsTableAdapter.FillItems(silentAuctionDataSet.Items,
-                            ((Auction) ItemsToolStripComboBox.SelectedItem).Id);
-                        MainFormStatusLabel.Text = string.Format("Saved data for {0} records", recordCount);
-                        MainFormStatusLabel.Visible = true;
+                        if (ItemsToolStripComboBox.ComboBox != null)
+                        {
+                            int auctionId = MathHelper.ParseIntZeroIfNull(ItemsToolStripComboBox.ComboBox.SelectedValue.ToString());
+                            itemsTableAdapter.FillItems(silentAuctionDataSet.Items, auctionId);
+                            MainFormStatusLabel.Text = string.Format("Saved data for {0} records", recordCount);
+                            MainFormStatusLabel.Visible = true;
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -158,6 +169,9 @@ namespace SilentAuction
                 if(deletedItems != null)
                     deletedItems.Dispose();
             }
+
+            if(currentRowIndex > 0)
+                ItemsDataGridView.FirstDisplayedScrollingRowIndex = currentRowIndex; //ItemsDataGridView.RowCount - 1;
         }
 
         private void ItemsDataGridViewDefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
@@ -165,12 +179,14 @@ namespace SilentAuction
             DateTime currentDate = DateTime.Now;
             e.Row.Cells["ItemsCreateDateColumn"].Value = currentDate;
             e.Row.Cells["ItemsModifiedDateColumn"].Value = currentDate;
+            e.Row.Cells["ItemsDonorComboBoxColumn"].Value = 1;
+            e.Row.Cells["ItemsQtyColumn"].Value = 1;
             if (ItemsToolStripComboBox != null)
             {
                 if (ItemsToolStripComboBox.ComboBox != null)
                 {
-                    e.Row.Cells["ItemsAuctionIdColumn"].Value =
-                        ((Auction) ItemsToolStripComboBox.ComboBox.SelectedItem).Id;
+                    int auctionId = MathHelper.ParseIntZeroIfNull(ItemsToolStripComboBox.ComboBox.SelectedValue.ToString());
+                    e.Row.Cells["ItemsAuctionIdColumn"].Value = auctionId;
                 }
             }
             e.Row.Cells["BidIncrementTypeComboBoxColumn"].Value = 1;
@@ -180,12 +196,38 @@ namespace SilentAuction
         {
             MainFormStatusLabel.Visible = false;
         }
+
+        private void ItemsDataGridViewCellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            string headerText = ItemsDataGridView.Columns[e.ColumnIndex].HeaderText;
+
+            // Abort validation if cell is not in the CompanyName column. 
+            if (!headerText.Equals("* Donor")) return;
+
+            // Confirm that the cell is not empty. 
+            if (string.IsNullOrEmpty(e.FormattedValue.ToString()))
+            {
+                ItemsDataGridView.Rows[e.RowIndex].ErrorText = "* Donor must not be empty";
+                e.Cancel = true;
+            }
+        }
+
+        private void ItemsDataGridViewCellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            // Clear the row error in case the user presses ESC.   
+            ItemsDataGridView.Rows[e.RowIndex].ErrorText = String.Empty;
+        }
+
+        private void AddItemsButtonClick(object sender, EventArgs e)
+        {
+            ItemsDataGridView.FirstDisplayedScrollingRowIndex = ItemsDataGridView.RowCount - 1;
+        }
         #endregion
 
         #region Donors Event Handlers
         private void DonorsDataGridViewDataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            MessageBox.Show(e.Exception.Message);
+            CommonDataErrorHandler(sender, e);
         }
 
         private void DonorsSaveAllButtonClick(object sender, EventArgs e)
@@ -276,15 +318,20 @@ namespace SilentAuction
         {
             MainFormStatusLabel.Visible = false;
         }
+
+        private void AddDonorButtonClick(object sender, EventArgs e)
+        {
+            DonorsDataGridView.FirstDisplayedScrollingRowIndex = DonorsDataGridView.RowCount - 1;
+        }
         #endregion
 
         #region Auctions Event Handlers
         private void AuctionsDataGridViewDataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            MessageBox.Show(e.Exception.Message);
+            CommonDataErrorHandler(sender, e);
         }
 
-        private void AuctionsSaveAllChangesButtonClick(object sender, EventArgs e)
+        private void AuctionsSaveAllButtonClick(object sender, EventArgs e)
         {
             MainFormStatusLabel.Text = "Saving data...";
             MainFormStatusLabel.Visible = true;
@@ -374,6 +421,11 @@ namespace SilentAuction
         {
             MainFormStatusLabel.Visible = false;
         }
+        
+        private void AddAuctionButtonClick(object sender, EventArgs e)
+        {
+            AuctionsDataGridView.FirstDisplayedScrollingRowIndex = AuctionsDataGridView.RowCount - 1;
+        }
         #endregion
 
         #region MenuStrip Event Handlers
@@ -396,7 +448,7 @@ namespace SilentAuction
         {
             ItemsSaveAllButtonClick(sender, e);
             DonorsSaveAllButtonClick(sender, e);
-            AuctionsSaveAllChangesButtonClick(sender, e);
+            AuctionsSaveAllButtonClick(sender, e);
         }
 
         private void PrintToolStripMenuItemClick(object sender, EventArgs e)
@@ -427,7 +479,7 @@ namespace SilentAuction
         {
             if ((ModifierKeys & Keys.Shift) == 0)
             {
-                string initLocation = Properties.Settings.Default.InitialLocation;
+                string initLocation = Settings.Default.InitialLocation;
                 Point il = new Point(0, 0);
                 Size sz = Size;
                 if (!string.IsNullOrWhiteSpace(initLocation))
@@ -459,51 +511,114 @@ namespace SilentAuction
                     size = RestoreBounds.Size;
                 }
                 string initLocation = string.Join(",", location.X, location.Y, size.Width, size.Height);
-                Properties.Settings.Default.InitialLocation = initLocation;
-                Properties.Settings.Default.Save();
+                Settings.Default.InitialLocation = initLocation;
+                Settings.Default.Save();
             }
+        }
+
+        private void SetupGrids()
+        {
+            // Items grid settings...
+            ItemsDonorIdColumn.Width = Settings.Default.ItemsDonorIdColumnWidth;
+            ItemsNameColumn.Width = Settings.Default.ItemsNameColumnWidth;
+            ItemsQtyColumn.Width = Settings.Default.ItemsQtyColumnWidth;
+            ItemsItemDescriptionColumn.Width = Settings.Default.ItemsItemDescriptionColumnWidth;
+            ItemsNotesColumn.Width = Settings.Default.ItemsNotesColumnWidth;
+            ItemsRetailValueColumn.Width = Settings.Default.ItemsRetailValueColumnWidth;
+            ItemsBidBuyItNowValueColumn.Width = Settings.Default.ItemsBuyItNowValueColumnWidth;
+            ItemsBidIncrementTypeColumn.Width = Settings.Default.ItemsBidIncrementTypeColumnWidth;
+            ItemsBidMinValueColumn.Width = Settings.Default.ItemsBidMinColumnWidth;
+            ItemsBidMaxValueColumn.Width = Settings.Default.ItemsBidMaxColumnWidth;
+            ItemsBidIncrementValueColumn.Width = Settings.Default.ItemsBidIncrementValuesColumnWidth;
+            ItemsBidNumberOfBidsColumn.Width = Settings.Default.ItemsBidNumberOfBidsColumnWidth;
+
+            // Donors grid settings...
+            DonorsDonorTypeColumn.Width = Settings.Default.DonorsDonorTypeColumnWidth;
+            DonorsNameColumn.Width = Settings.Default.DonorsNameColumnWidth;
+            DonorsContactNameColumn.Width = Settings.Default.DonorsContactNameColumnWidth;
+            DonorsStreet1Column.Width = Settings.Default.DonorsStreet1ColumnWidth;
+            DonorsStreet2Column.Width = Settings.Default.DonorsStreet2ColumnWidth;
+            DonorsCityColumn.Width = Settings.Default.DonorsCityColumnWidth;
+            DonorsStateColumn.Width = Settings.Default.DonorsStateColumnWidth;
+            DonorsZipCodeColumn.Width = Settings.Default.DonorsZipCodeColumnWidth;
+            DonorsPhone1Column.Width = Settings.Default.DonorsPhone1ColumnWidth;
+            DonorsPhone2Column.Width = Settings.Default.DonorsPhone2ColumnWidth;
+            DonorsEmailColumn.Width = Settings.Default.DonorsEmailColumnWidth;
+
+            // Auctions grid settings...
+            AuctionsNameColumn.Width = Settings.Default.AuctionsNameColumnWidth;
+            AuctionsDescriptionColumn.Width = Settings.Default.AuctionsDescriptionColumnWidth;
+
+        }
+
+        private void SaveItemsGridSettings()
+        {
+            // Items grid user settings...
+            Settings.Default.ItemsDonorIdColumnWidth = ItemsDonorIdColumn.Width;
+            Settings.Default.ItemsNameColumnWidth = ItemsNameColumn.Width;
+            Settings.Default.ItemsQtyColumnWidth = ItemsQtyColumn.Width;
+            Settings.Default.ItemsItemDescriptionColumnWidth = ItemsItemDescriptionColumn.Width;
+            Settings.Default.ItemsNotesColumnWidth = ItemsNotesColumn.Width;
+            Settings.Default.ItemsRetailValueColumnWidth = ItemsRetailValueColumn.Width;
+            Settings.Default.ItemsBuyItNowValueColumnWidth = ItemsBidBuyItNowValueColumn.Width;
+            Settings.Default.ItemsBidIncrementTypeColumnWidth = ItemsBidIncrementTypeColumn.Width;
+            Settings.Default.ItemsBidMinColumnWidth = ItemsBidMinValueColumn.Width;
+            Settings.Default.ItemsBidMaxColumnWidth = ItemsBidMaxValueColumn.Width;
+            Settings.Default.ItemsBidIncrementValuesColumnWidth = ItemsBidIncrementValueColumn.Width;
+            Settings.Default.ItemsBidNumberOfBidsColumnWidth = ItemsBidNumberOfBidsColumn.Width;
+
+            // Donors grid user settings...
+            Settings.Default.DonorsDonorTypeColumnWidth = DonorsDonorTypeColumn.Width;
+            Settings.Default.DonorsNameColumnWidth = DonorsNameColumn.Width;
+            Settings.Default.DonorsContactNameColumnWidth = DonorsContactNameColumn.Width;
+            Settings.Default.DonorsStreet1ColumnWidth = DonorsStreet1Column.Width;
+            Settings.Default.DonorsStreet2ColumnWidth = DonorsStreet2Column.Width;
+            Settings.Default.DonorsCityColumnWidth = DonorsCityColumn.Width;
+            Settings.Default.DonorsStateColumnWidth = DonorsStateColumn.Width;
+            Settings.Default.DonorsZipCodeColumnWidth = DonorsZipCodeColumn.Width;
+            Settings.Default.DonorsPhone1ColumnWidth = DonorsPhone1Column.Width;
+            Settings.Default.DonorsPhone2ColumnWidth = DonorsPhone2Column.Width;
+            Settings.Default.DonorsEmailColumnWidth = DonorsEmailColumn.Width;
+
+            // Auction grid user settings...
+            Settings.Default.AuctionsNameColumnWidth = AuctionsNameColumn.Width;
+            Settings.Default.AuctionsDescriptionColumnWidth = AuctionsDescriptionColumn.Width;
+
+            Settings.Default.Save();
         }
 
         private void BindItemsToolStripComboBox()
         {
-            List<Auction> auctions = silentAuctionDataSet.Auctions.DataTableToList<Auction>();
-            auctions.Insert(0, new Auction
-            {
-                Id = 0,
-                Name = "-- Please Select --",
-                Description = "",
-                CreateDate = DateTime.Now,
-                ModifiedDate = DateTime.Now
-            });
+            DataTable dt = silentAuctionDataSet.Auctions.Copy();
+            var newRow = dt.NewRow();
+            newRow["Id"] = 0;
+            newRow["Name"] = "-- Please Select --";
+            newRow["Description"] = "";
+            newRow["CreateDate"] = DateTime.Now;
+            newRow["ModifiedDate"] = DateTime.Now;
+            
+            dt.Rows.InsertAt(newRow, 0);
 
             if (ItemsToolStripComboBox.ComboBox != null)
             {
-                ItemsToolStripComboBox.ComboBox.DataSource = auctions;
+                ItemsToolStripComboBox.ComboBox.DataSource = dt;
                 ItemsToolStripComboBox.ComboBox.ValueMember = "Id";
                 ItemsToolStripComboBox.ComboBox.DisplayMember = "Name";
             }
         }
+
+        private void CommonDataErrorHandler(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            // TODO: Make the validation work better!
+            ((DataGridView)sender).Rows[e.RowIndex].ErrorText = e.Exception.Message;
+
+            MainFormStatusLabel.Text = e.Exception.Message;
+            MainFormStatusLabel.Visible = true;
+
+            e.Cancel = true;
+        }
+        
         #endregion
 
-        private void ItemsDataGridViewCellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        {
-            string headerText = ItemsDataGridView.Columns[e.ColumnIndex].HeaderText;
-
-            // Abort validation if cell is not in the CompanyName column. 
-            if (!headerText.Equals("* Donor")) return;
-
-            // Confirm that the cell is not empty. 
-            if (string.IsNullOrEmpty(e.FormattedValue.ToString()))
-            {
-                ItemsDataGridView.Rows[e.RowIndex].ErrorText = "* Donor must not be empty";
-                e.Cancel = true;
-            }
-        }
-
-        private void ItemsDataGridViewCellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            // Clear the row error in case the user presses ESC.   
-            ItemsDataGridView.Rows[e.RowIndex].ErrorText = String.Empty;
-        }
     }
 }

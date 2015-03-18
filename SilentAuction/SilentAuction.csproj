@@ -62,35 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\DataTableExtender.cs" />
     <Compile Include="Forms\AboutBox.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\AuctionAddForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\AuctionAddForm.Designer.cs">
-      <DependentUpon>AuctionAddForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ItemAddForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ItemAddForm.Designer.cs">
-      <DependentUpon>ItemAddForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\DonorAddForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\DonorAddForm.Designer.cs">
-      <DependentUpon>DonorAddForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm2.cs">
       <SubType>Form</SubType>
@@ -100,6 +77,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="SilentAuctionDataSet.cs">
       <DependentUpon>SilentAuctionDataSet.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -109,20 +91,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SilentAuctionDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\DatabaseScripts.cs" />
+    <Compile Include="Utilities\DatabaseInitializer.cs" />
+    <Compile Include="Utilities\MathHelper.cs" />
     <EmbeddedResource Include="Forms\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DonorAddForm.resx">
-      <DependentUpon>DonorAddForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AuctionAddForm.resx">
-      <DependentUpon>AuctionAddForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ItemAddForm.resx">
-      <DependentUpon>ItemAddForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm2.resx">
       <DependentUpon>MainForm2.cs</DependentUpon>
@@ -139,20 +112,15 @@
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
     <None Include="SilentAuctionDataSet.xsc">
       <DependentUpon>SilentAuctionDataSet.xsd</DependentUpon>
     </None>
     <None Include="SilentAuctionDataSet.xsd">
+      <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>SilentAuctionDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </None>
     <None Include="SilentAuctionDataSet.xss">
       <DependentUpon>SilentAuctionDataSet.xsd</DependentUpon>
@@ -164,18 +132,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SilentAuction.Core\SilentAuction.Core.csproj">
-      <Project>{ea0493c6-8ba9-40c4-88d5-8eb5d315674a}</Project>
-      <Name>SilentAuction.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SilentAuction.Utilities\SilentAuction.Utilities.csproj">
-      <Project>{50f7fdda-c3d6-4921-8bb7-e4d0d9e169ee}</Project>
-      <Name>SilentAuction.Utilities</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Images\SilentAuctionGavel.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
