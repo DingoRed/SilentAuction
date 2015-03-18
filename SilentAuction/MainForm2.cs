@@ -21,26 +21,7 @@ namespace SilentAuction
         #region Form Event Handlers
         private void MainForm2Load(object sender, EventArgs e)
         {
-            if ((ModifierKeys & Keys.Shift) == 0)
-            {
-                string initLocation = Properties.Settings.Default.InitialLocation;
-                Point il = new Point(0, 0);
-                Size sz = Size;
-                if (!string.IsNullOrWhiteSpace(initLocation))
-                {
-                    string[] parts = initLocation.Split(',');
-                    if (parts.Length >= 2)
-                    {
-                        il = new Point(int.Parse(parts[0]), int.Parse(parts[1]));
-                    }
-                    if (parts.Length >= 4)
-                    {
-                        sz = new Size(int.Parse(parts[2]), int.Parse(parts[3]));
-                    }
-                    Size = sz;
-                    Location = il;
-                }
-            }
+            SetupInitialWindow();
 
             bidIncrementTypesTableAdapter.FillBidIncremenetTypes(silentAuctionDataSet.BidIncrementTypes);
             donorTypesTableAdapter.FillDonorTypes(silentAuctionDataSet.DonorTypes);
@@ -49,16 +30,7 @@ namespace SilentAuction
             
             ItemsDataGridView.Visible = false;
             
-            List<Auction> auctions = silentAuctionDataSet.Auctions.DataTableToList<Auction>();
-            auctions.Insert(0, new Auction{Id = 0, Name = "-- Please Select --", Description = "", 
-                CreateDate = DateTime.Now, ModifiedDate = DateTime.Now});
-
-            if (ItemsToolStripComboBox.ComboBox != null)
-            {
-                ItemsToolStripComboBox.ComboBox.DataSource = auctions;
-                ItemsToolStripComboBox.ComboBox.ValueMember = "Id";
-                ItemsToolStripComboBox.ComboBox.DisplayMember = "Name";
-            }
+            BindItemsToolStripComboBox();
         }
 
         private void MainForm2FormClosing(object sender, FormClosingEventArgs e)
@@ -75,19 +47,7 @@ namespace SilentAuction
              
             if (!e.Cancel)
             {
-                if ((ModifierKeys & Keys.Shift) == 0)
-                {
-                    Point location = Location;
-                    Size size = Size;
-                    if (WindowState != FormWindowState.Normal)
-                    {
-                        location = RestoreBounds.Location;
-                        size = RestoreBounds.Size;
-                    }
-                    string initLocation = string.Join(",", location.X, location.Y, size.Width, size.Height);
-                    Properties.Settings.Default.InitialLocation = initLocation;
-                    Properties.Settings.Default.Save();
-                }
+                SaveWindowSettings();
             }
         }
 
@@ -113,13 +73,19 @@ namespace SilentAuction
         #region Items Event Handlers
         private void ItemsDataGridViewDataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            MessageBox.Show(e.Exception.Message);
+            string headerText = ItemsDataGridView.Columns[e.ColumnIndex].HeaderText;
+            
+            ItemsDataGridView.Rows[e.RowIndex].ErrorText = e.Exception.Message;
+            MainFormStatusLabel.Text = e.Exception.Message;
+            MainFormStatusLabel.Visible = true;
+
+            e.Cancel = true;
         }
 
         private void ItemsSaveAllButtonClick(object sender, EventArgs e)
         {
-            MainFormDataSaveLabel.Text = "Saving data...";
-            MainFormDataSaveLabel.Visible = true;
+            MainFormStatusLabel.Text = "Saving data...";
+            MainFormStatusLabel.Visible = true;
             SilentAuctionDataSet.ItemsDataTable newItems =
                 (SilentAuctionDataSet.ItemsDataTable) silentAuctionDataSet.Items.GetChanges(DataRowState.Added);
 
@@ -166,8 +132,8 @@ namespace SilentAuction
                     {
                         itemsTableAdapter.FillItems(silentAuctionDataSet.Items,
                             ((Auction) ItemsToolStripComboBox.SelectedItem).Id);
-                        MainFormDataSaveLabel.Text = string.Format("Saved data for {0} records", recordCount);
-                        MainFormDataSaveLabel.Visible = true;
+                        MainFormStatusLabel.Text = string.Format("Saved data for {0} records", recordCount);
+                        MainFormStatusLabel.Visible = true;
                     }
                     catch (Exception ex)
                     {
@@ -176,7 +142,7 @@ namespace SilentAuction
                 }
                 else
                 {
-                    MainFormDataSaveLabel.Visible = false;
+                    MainFormStatusLabel.Visible = false;
                 }
             }
             catch (Exception ex)
@@ -212,7 +178,7 @@ namespace SilentAuction
         
         private void ItemsDataGridViewCellClick(object sender, DataGridViewCellEventArgs e)
         {
-            MainFormDataSaveLabel.Visible = false;
+            MainFormStatusLabel.Visible = false;
         }
         #endregion
 
@@ -224,8 +190,8 @@ namespace SilentAuction
 
         private void DonorsSaveAllButtonClick(object sender, EventArgs e)
         {
-            MainFormDataSaveLabel.Text = "Saving data...";
-            MainFormDataSaveLabel.Visible = true;
+            MainFormStatusLabel.Text = "Saving data...";
+            MainFormStatusLabel.Visible = true;
             SilentAuctionDataSet.DonorsDataTable newDonors =
                 (SilentAuctionDataSet.DonorsDataTable) silentAuctionDataSet.Donors.GetChanges(DataRowState.Added);
 
@@ -271,8 +237,8 @@ namespace SilentAuction
                     try
                     {
                         donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors);
-                        MainFormDataSaveLabel.Text = string.Format("Saved data for {0} records", recordCount);
-                        MainFormDataSaveLabel.Visible = true;
+                        MainFormStatusLabel.Text = string.Format("Saved data for {0} records", recordCount);
+                        MainFormStatusLabel.Visible = true;
                     }
                     catch (Exception ex)
                     {
@@ -281,7 +247,7 @@ namespace SilentAuction
                 }
                 else
                 {
-                    MainFormDataSaveLabel.Visible = false;
+                    MainFormStatusLabel.Visible = false;
                 }
             }
             catch (Exception ex)
@@ -308,7 +274,7 @@ namespace SilentAuction
         
         private void DonorsDataGridViewCellClick(object sender, DataGridViewCellEventArgs e)
         {
-            MainFormDataSaveLabel.Visible = false;
+            MainFormStatusLabel.Visible = false;
         }
         #endregion
 
@@ -320,8 +286,8 @@ namespace SilentAuction
 
         private void AuctionsSaveAllChangesButtonClick(object sender, EventArgs e)
         {
-            MainFormDataSaveLabel.Text = "Saving data...";
-            MainFormDataSaveLabel.Visible = true;
+            MainFormStatusLabel.Text = "Saving data...";
+            MainFormStatusLabel.Visible = true;
             SilentAuctionDataSet.AuctionsDataTable newAuctions =
                 (SilentAuctionDataSet.AuctionsDataTable)silentAuctionDataSet.Auctions.GetChanges(DataRowState.Added);
 
@@ -367,8 +333,8 @@ namespace SilentAuction
                     try
                     {
                         auctionsTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
-                        MainFormDataSaveLabel.Text = string.Format("Saved data for {0} records", recordCount);
-                        MainFormDataSaveLabel.Visible = true;
+                        MainFormStatusLabel.Text = string.Format("Saved data for {0} records", recordCount);
+                        MainFormStatusLabel.Visible = true;
                     }
                     catch (Exception ex)
                     {
@@ -377,7 +343,7 @@ namespace SilentAuction
                 }
                 else
                 {
-                    MainFormDataSaveLabel.Visible = false;
+                    MainFormStatusLabel.Visible = false;
                 }
             }
             catch (Exception ex)
@@ -393,6 +359,8 @@ namespace SilentAuction
                 if (deletedAuctions != null)
                     deletedAuctions.Dispose();
             }
+
+            BindItemsToolStripComboBox();
         }
 
         private void AuctionsDataGridViewDefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
@@ -404,7 +372,7 @@ namespace SilentAuction
         
         private void AuctionsDataGridViewCellClick(object sender, DataGridViewCellEventArgs e)
         {
-            MainFormDataSaveLabel.Visible = false;
+            MainFormStatusLabel.Visible = false;
         }
         #endregion
 
@@ -454,5 +422,88 @@ namespace SilentAuction
 
         #endregion
 
+        #region Private Methods
+        private void SetupInitialWindow()
+        {
+            if ((ModifierKeys & Keys.Shift) == 0)
+            {
+                string initLocation = Properties.Settings.Default.InitialLocation;
+                Point il = new Point(0, 0);
+                Size sz = Size;
+                if (!string.IsNullOrWhiteSpace(initLocation))
+                {
+                    string[] parts = initLocation.Split(',');
+                    if (parts.Length >= 2)
+                    {
+                        il = new Point(int.Parse(parts[0]), int.Parse(parts[1]));
+                    }
+                    if (parts.Length >= 4)
+                    {
+                        sz = new Size(int.Parse(parts[2]), int.Parse(parts[3]));
+                    }
+                    Size = sz;
+                    Location = il;
+                }
+            }
+        }
+
+        private void SaveWindowSettings()
+        {
+            if ((ModifierKeys & Keys.Shift) == 0)
+            {
+                Point location = Location;
+                Size size = Size;
+                if (WindowState != FormWindowState.Normal)
+                {
+                    location = RestoreBounds.Location;
+                    size = RestoreBounds.Size;
+                }
+                string initLocation = string.Join(",", location.X, location.Y, size.Width, size.Height);
+                Properties.Settings.Default.InitialLocation = initLocation;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void BindItemsToolStripComboBox()
+        {
+            List<Auction> auctions = silentAuctionDataSet.Auctions.DataTableToList<Auction>();
+            auctions.Insert(0, new Auction
+            {
+                Id = 0,
+                Name = "-- Please Select --",
+                Description = "",
+                CreateDate = DateTime.Now,
+                ModifiedDate = DateTime.Now
+            });
+
+            if (ItemsToolStripComboBox.ComboBox != null)
+            {
+                ItemsToolStripComboBox.ComboBox.DataSource = auctions;
+                ItemsToolStripComboBox.ComboBox.ValueMember = "Id";
+                ItemsToolStripComboBox.ComboBox.DisplayMember = "Name";
+            }
+        }
+        #endregion
+
+        private void ItemsDataGridViewCellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            string headerText = ItemsDataGridView.Columns[e.ColumnIndex].HeaderText;
+
+            // Abort validation if cell is not in the CompanyName column. 
+            if (!headerText.Equals("* Donor")) return;
+
+            // Confirm that the cell is not empty. 
+            if (string.IsNullOrEmpty(e.FormattedValue.ToString()))
+            {
+                ItemsDataGridView.Rows[e.RowIndex].ErrorText = "* Donor must not be empty";
+                e.Cancel = true;
+            }
+        }
+
+        private void ItemsDataGridViewCellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            // Clear the row error in case the user presses ESC.   
+            ItemsDataGridView.Rows[e.RowIndex].ErrorText = String.Empty;
+        }
     }
 }
