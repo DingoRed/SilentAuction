@@ -45,6 +45,7 @@
             this.newDonorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.OpenAuctionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CloseAuctionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -122,7 +123,6 @@
             this.donorTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorTypesTableAdapter();
             this.requestFormatTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.requestFormatTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter();
-            this.CloseAuctionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ItemsTableLayoutPanel.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDataGridView)).BeginInit();
@@ -230,6 +230,13 @@
             this.OpenAuctionToolStripMenuItem.Text = "&Open Auction";
             this.OpenAuctionToolStripMenuItem.Click += new System.EventHandler(this.OpenAuctionToolStripMenuItemClick);
             // 
+            // CloseAuctionToolStripMenuItem
+            // 
+            this.CloseAuctionToolStripMenuItem.Name = "CloseAuctionToolStripMenuItem";
+            this.CloseAuctionToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.CloseAuctionToolStripMenuItem.Text = "Close Auction";
+            this.CloseAuctionToolStripMenuItem.Click += new System.EventHandler(this.CloseAuctionToolStripMenuItemClick);
+            // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
@@ -300,38 +307,39 @@
             // editAuctionToolStripMenuItem
             // 
             this.editAuctionToolStripMenuItem.Name = "editAuctionToolStripMenuItem";
-            this.editAuctionToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.editAuctionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.editAuctionToolStripMenuItem.Text = "Edit Auction";
+            this.editAuctionToolStripMenuItem.Click += new System.EventHandler(this.EditAuctionToolStripMenuItemClick);
             // 
             // editDonorToolStripMenuItem
             // 
             this.editDonorToolStripMenuItem.Name = "editDonorToolStripMenuItem";
-            this.editDonorToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.editDonorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.editDonorToolStripMenuItem.Text = "Edit Donor";
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(141, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(149, 6);
             // 
             // undoToolStripMenuItem
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
             this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.undoToolStripMenuItem.Text = "&Undo";
             // 
             // redoToolStripMenuItem
             // 
             this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
             this.redoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.redoToolStripMenuItem.Text = "&Redo";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(141, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
             // 
             // cutToolStripMenuItem
             // 
@@ -339,7 +347,7 @@
             this.cutToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
             this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cutToolStripMenuItem.Text = "Cu&t";
             // 
             // copyToolStripMenuItem
@@ -348,7 +356,7 @@
             this.copyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.copyToolStripMenuItem.Text = "&Copy";
             // 
             // pasteToolStripMenuItem
@@ -357,18 +365,18 @@
             this.pasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.pasteToolStripMenuItem.Text = "&Paste";
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(141, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
             // 
             // selectAllToolStripMenuItem
             // 
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.selectAllToolStripMenuItem.Text = "Select &All";
             // 
             // viewToolStripMenuItem
@@ -856,13 +864,6 @@
             // requestFormatTypesTableAdapter
             // 
             this.requestFormatTypesTableAdapter.ClearBeforeFill = true;
-            // 
-            // CloseAuctionToolStripMenuItem
-            // 
-            this.CloseAuctionToolStripMenuItem.Name = "CloseAuctionToolStripMenuItem";
-            this.CloseAuctionToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.CloseAuctionToolStripMenuItem.Text = "Close Auction";
-            this.CloseAuctionToolStripMenuItem.Click += new System.EventHandler(this.CloseAuctionToolStripMenuItemClick);
             // 
             // MainForm
             // 

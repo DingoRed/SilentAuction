@@ -226,6 +226,17 @@ namespace SilentAuction
             }
         }
 
+        private void EditAuctionToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            using (EditAuctionForm editAuctionForm = new EditAuctionForm())
+            {
+                editAuctionForm.ShowDialog();
+                auctionsTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
+                SetAuctionNameAndGrid();
+                editAuctionForm.Close();
+            }
+        }
+
         private void CloseAuctionToolStripMenuItemClick(object sender, EventArgs e)
         {
             AuctionIdInUse = 0;
@@ -408,6 +419,7 @@ namespace SilentAuction
                                                     silentAuctionDataSet.Donors.Rows.Count > 0);
         }
         #endregion
+
 
     }
 }
