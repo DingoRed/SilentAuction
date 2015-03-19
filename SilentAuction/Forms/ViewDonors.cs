@@ -7,6 +7,7 @@ namespace SilentAuction.Forms
 {
     public partial class ViewDonorsForm : Form
     {
+        #region Form Event Handlers
         public ViewDonorsForm()
         {
             InitializeComponent();
@@ -25,10 +26,9 @@ namespace SilentAuction.Forms
         private void ViewDonorsFormFormClosing(object sender, FormClosingEventArgs e)
         {
             SaveWindowSettings();
-
-            SaveItemsGridSettings();
+            SaveGridSettings();
         }
-
+        #endregion
 
         #region Private Methods
         private void SetupInitialWindow()
@@ -90,7 +90,7 @@ namespace SilentAuction.Forms
             UrlColumn.Width = Settings.Default.DonorsUrlColumnWidth;
         }
 
-        private void SaveItemsGridSettings()
+        private void SaveGridSettings()
         {
             // Donors grid user settings...
             Settings.Default.DonorsDonorTypeColumnWidth = DonorTypeColumn.Width;

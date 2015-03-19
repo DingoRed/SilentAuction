@@ -36,15 +36,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MetroFramework">
-      <HintPath>..\packages\MetroModernUI.1.3.0.0\lib\net\MetroFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="MetroFramework.Design">
-      <HintPath>..\packages\MetroModernUI.1.3.0.0\lib\net\MetroFramework.Design.dll</HintPath>
-    </Reference>
-    <Reference Include="MetroFramework.Fonts">
-      <HintPath>..\packages\MetroModernUI.1.3.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -75,11 +66,23 @@
     <Compile Include="Forms\CreateNewAuction.Designer.cs">
       <DependentUpon>CreateNewAuction.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CreateNewDonor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreateNewDonor.Designer.cs">
+      <DependentUpon>CreateNewDonor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\OpenAuction.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\OpenAuction.Designer.cs">
       <DependentUpon>OpenAuction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ViewAuctions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ViewAuctions.Designer.cs">
+      <DependentUpon>ViewAuctions.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ViewDonors.cs">
       <SubType>Form</SubType>
@@ -87,11 +90,11 @@
     <Compile Include="Forms\ViewDonors.Designer.cs">
       <DependentUpon>ViewDonors.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm2.cs">
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm2.Designer.cs">
-      <DependentUpon>MainForm2.cs</DependentUpon>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -112,20 +115,27 @@
     <Compile Include="Utilities\DatabaseScripts.cs" />
     <Compile Include="Utilities\DatabaseInitializer.cs" />
     <Compile Include="Utilities\MathHelper.cs" />
+    <Compile Include="Utilities\WindowLocation.cs" />
     <EmbeddedResource Include="Forms\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CreateNewAuction.resx">
       <DependentUpon>CreateNewAuction.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreateNewDonor.resx">
+      <DependentUpon>CreateNewDonor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\OpenAuction.resx">
       <DependentUpon>OpenAuction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ViewAuctions.resx">
+      <DependentUpon>ViewAuctions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ViewDonors.resx">
       <DependentUpon>ViewDonors.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm2.resx">
-      <DependentUpon>MainForm2.cs</DependentUpon>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

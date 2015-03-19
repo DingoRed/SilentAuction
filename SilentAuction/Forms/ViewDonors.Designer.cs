@@ -132,6 +132,7 @@
             this.DonorTypeColumn.DataPropertyName = "DonorTypeId";
             this.DonorTypeColumn.DataSource = this.donorTypesBindingSource;
             this.DonorTypeColumn.DisplayMember = "Name";
+            this.DonorTypeColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
             this.DonorTypeColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DonorTypeColumn.HeaderText = "Donor Type";
             this.DonorTypeColumn.Name = "DonorTypeColumn";
@@ -152,6 +153,7 @@
             this.RequestFormatTypeIdColumn.DataPropertyName = "RequestFormatTypeId";
             this.RequestFormatTypeIdColumn.DataSource = this.requestFormatTypesBindingSource;
             this.RequestFormatTypeIdColumn.DisplayMember = "Name";
+            this.RequestFormatTypeIdColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
             this.RequestFormatTypeIdColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RequestFormatTypeIdColumn.HeaderText = "Request Via";
             this.RequestFormatTypeIdColumn.Name = "RequestFormatTypeIdColumn";

@@ -53,6 +53,8 @@
             // 
             this.AuctionComboBox.DataSource = this.auctionsBindingSource;
             this.AuctionComboBox.DisplayMember = "Name";
+            this.AuctionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.AuctionComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AuctionComboBox.FormattingEnabled = true;
             this.AuctionComboBox.Location = new System.Drawing.Point(12, 50);
             this.AuctionComboBox.Name = "AuctionComboBox";
