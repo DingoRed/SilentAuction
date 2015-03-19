@@ -43,7 +43,10 @@ namespace SilentAuction.Utilities
                 	                                        [Id] [integer] PRIMARY KEY AUTOINCREMENT NOT NULL,
                                                             [DonorTypeId] [integer] NOT NULL,
                 	                                        [Name] [nvarchar](200) NOT NULL,
+                                                            [RequestFormatTypeId] [integer] NULL,
                 	                                        [ContactName] [nvarchar](200) NULL,
+                	                                        [Email] [nvarchar](100) NULL,
+                	                                        [Url] [nvarchar](5000) NULL,
                 	                                        [Street1] [nvarchar](100) NULL,
                 	                                        [Street2] [nvarchar](100) NULL,
                 	                                        [City] [nvarchar](100) NULL,
@@ -53,7 +56,6 @@ namespace SilentAuction.Utilities
                 	                                        [Extension1] [nvarchar](10) NULL,
                 	                                        [Phone2] [nvarchar](12) NULL,
                 	                                        [Extension2] [nvarchar](10) NULL,
-                	                                        [Email] [nvarchar](100) NULL,
                 	                                        [CreateDate] [text] NOT NULL,
                 	                                        [ModifiedDate] [text] NOT NULL)", DonorsTableName);
         
@@ -68,6 +70,8 @@ namespace SilentAuction.Utilities
                                                                   [Name] [nvarchar](200) NOT NULL,
                                                                   [Description] [nvarchar](5000) NULL,
                                                                   [Qty] [integer] NOT NULL,
+                                                                  [ItemTypeId] [integer] NULL,
+                                                                  [DonationDeliveryTypeId] [integer] NULL,
                                                                   [RetailValue] [real] NULL,
                                                                   [BidIncrementTypeId] [integer] NOT NULL,
                                                                   [BidMinValue] [real] NULL,

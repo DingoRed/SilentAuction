@@ -97,5 +97,17 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">data source="C:\_My Projects\SilentAuction\SilentAuction\bin\Debug\SilentAuction.sqlite"</Value>
     </Setting>
+    <Setting Name="DonorsRequestFormatTypeIdColumnWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="DonorsUrlColumnWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">130</Value>
+    </Setting>
+    <Setting Name="ItemsItemTypeIdColumnWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="ItemsDonationDeliveryTypeIdColumnWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">120</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

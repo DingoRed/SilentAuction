@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm2));
             this.ItemsTabControl = new System.Windows.Forms.TabControl();
             this.ItemsTabPage = new System.Windows.Forms.TabPage();
@@ -50,6 +50,10 @@
             this.ItemsQtyColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemsItemDescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemsNotesColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemsItemTypeIdColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.itemTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ItemsDonationDeliveryTypeIdColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.donationDeliveryTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ItemsRetailValueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemsBidBuyItNowValueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemsBidIncrementTypeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -73,7 +77,26 @@
             this.DonorsTabPage = new System.Windows.Forms.TabPage();
             this.DonorsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.DonorsDataGridView = new System.Windows.Forms.DataGridView();
+            this.DonorsDonorTypeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.donorTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.DonorsNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonorsRequestFormatTypeIdColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.requestFormatTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.DonorsContactNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonorsEmailColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonorsUrlColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonorsStreet1Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonorsStreet2Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonorsCityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonorsStateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonorsZipCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonorsPhone1Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonorsExt1Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonorsPhone2Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonorsExt2Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonorsCreateDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonorsModifiedDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonorsIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.AddDonorButton = new System.Windows.Forms.Button();
             this.DonorsSaveAllButton = new System.Windows.Forms.Button();
@@ -123,28 +146,17 @@
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.AboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DonorsDonorTypeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.DonorsNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsContactNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsStreet1Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsStreet2Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsCityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsStateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsZipCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsPhone1Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsExt1Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsPhone2Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsExt2Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsEmailColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsCreateDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsModifiedDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.ItemTypesTableAdapter();
+            this.donationDeliveryTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonationDeliveryTypesTableAdapter();
+            this.requestFormatTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter();
             this.ItemsTabControl.SuspendLayout();
             this.ItemsTabPage.SuspendLayout();
             this.ItemsTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemTypesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donationDeliveryTypesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bidIncrementTypesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).BeginInit();
             this.ItemsToolStrip.SuspendLayout();
@@ -154,6 +166,7 @@
             this.DonorsTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DonorsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.donorTypesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
             this.AuctionsTabPage.SuspendLayout();
@@ -223,6 +236,8 @@
             this.ItemsQtyColumn,
             this.ItemsItemDescriptionColumn,
             this.ItemsNotesColumn,
+            this.ItemsItemTypeIdColumn,
+            this.ItemsDonationDeliveryTypeIdColumn,
             this.ItemsRetailValueColumn,
             this.ItemsBidBuyItNowValueColumn,
             this.ItemsBidIncrementTypeColumn,
@@ -287,10 +302,10 @@
             // ItemsQtyColumn
             // 
             this.ItemsQtyColumn.DataPropertyName = "Qty";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.Format = "N0";
-            dataGridViewCellStyle1.NullValue = null;
-            this.ItemsQtyColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.Format = "N0";
+            dataGridViewCellStyle9.NullValue = null;
+            this.ItemsQtyColumn.DefaultCellStyle = dataGridViewCellStyle9;
             this.ItemsQtyColumn.HeaderText = "* Qty";
             this.ItemsQtyColumn.Name = "ItemsQtyColumn";
             this.ItemsQtyColumn.Width = 55;
@@ -298,8 +313,8 @@
             // ItemsItemDescriptionColumn
             // 
             this.ItemsItemDescriptionColumn.DataPropertyName = "Description";
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ItemsItemDescriptionColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ItemsItemDescriptionColumn.DefaultCellStyle = dataGridViewCellStyle10;
             this.ItemsItemDescriptionColumn.HeaderText = "Item Description";
             this.ItemsItemDescriptionColumn.Name = "ItemsItemDescriptionColumn";
             this.ItemsItemDescriptionColumn.Width = 120;
@@ -311,12 +326,47 @@
             this.ItemsNotesColumn.Name = "ItemsNotesColumn";
             this.ItemsNotesColumn.Width = 60;
             // 
+            // ItemsItemTypeIdColumn
+            // 
+            this.ItemsItemTypeIdColumn.DataPropertyName = "ItemTypeId";
+            this.ItemsItemTypeIdColumn.DataSource = this.itemTypesBindingSource;
+            this.ItemsItemTypeIdColumn.DisplayMember = "Name";
+            this.ItemsItemTypeIdColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ItemsItemTypeIdColumn.HeaderText = "Item Type";
+            this.ItemsItemTypeIdColumn.Name = "ItemsItemTypeIdColumn";
+            this.ItemsItemTypeIdColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ItemsItemTypeIdColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ItemsItemTypeIdColumn.ValueMember = "Id";
+            // 
+            // itemTypesBindingSource
+            // 
+            this.itemTypesBindingSource.DataMember = "ItemTypes";
+            this.itemTypesBindingSource.DataSource = this.silentAuctionDataSet;
+            // 
+            // ItemsDonationDeliveryTypeIdColumn
+            // 
+            this.ItemsDonationDeliveryTypeIdColumn.DataPropertyName = "DonationDeliveryTypeId";
+            this.ItemsDonationDeliveryTypeIdColumn.DataSource = this.donationDeliveryTypesBindingSource;
+            this.ItemsDonationDeliveryTypeIdColumn.DisplayMember = "Name";
+            this.ItemsDonationDeliveryTypeIdColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ItemsDonationDeliveryTypeIdColumn.HeaderText = "Delivery Method";
+            this.ItemsDonationDeliveryTypeIdColumn.Name = "ItemsDonationDeliveryTypeIdColumn";
+            this.ItemsDonationDeliveryTypeIdColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ItemsDonationDeliveryTypeIdColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ItemsDonationDeliveryTypeIdColumn.ValueMember = "Id";
+            this.ItemsDonationDeliveryTypeIdColumn.Width = 120;
+            // 
+            // donationDeliveryTypesBindingSource
+            // 
+            this.donationDeliveryTypesBindingSource.DataMember = "DonationDeliveryTypes";
+            this.donationDeliveryTypesBindingSource.DataSource = this.silentAuctionDataSet;
+            // 
             // ItemsRetailValueColumn
             // 
             this.ItemsRetailValueColumn.DataPropertyName = "RetailValue";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "C2";
-            this.ItemsRetailValueColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "C2";
+            this.ItemsRetailValueColumn.DefaultCellStyle = dataGridViewCellStyle11;
             this.ItemsRetailValueColumn.HeaderText = "Retail Value";
             this.ItemsRetailValueColumn.Name = "ItemsRetailValueColumn";
             this.ItemsRetailValueColumn.Width = 90;
@@ -324,9 +374,9 @@
             // ItemsBidBuyItNowValueColumn
             // 
             this.ItemsBidBuyItNowValueColumn.DataPropertyName = "BidBuyItNowValue";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "C2";
-            this.ItemsBidBuyItNowValueColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "C2";
+            this.ItemsBidBuyItNowValueColumn.DefaultCellStyle = dataGridViewCellStyle12;
             this.ItemsBidBuyItNowValueColumn.HeaderText = "Buy It Now Amount";
             this.ItemsBidBuyItNowValueColumn.Name = "ItemsBidBuyItNowValueColumn";
             this.ItemsBidBuyItNowValueColumn.Width = 140;
@@ -352,10 +402,10 @@
             // ItemsBidMinValueColumn
             // 
             this.ItemsBidMinValueColumn.DataPropertyName = "BidMinValue";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "C2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.ItemsBidMinValueColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.Format = "C2";
+            dataGridViewCellStyle13.NullValue = null;
+            this.ItemsBidMinValueColumn.DefaultCellStyle = dataGridViewCellStyle13;
             this.ItemsBidMinValueColumn.HeaderText = "Minimum Bid";
             this.ItemsBidMinValueColumn.Name = "ItemsBidMinValueColumn";
             this.ItemsBidMinValueColumn.Width = 95;
@@ -363,9 +413,9 @@
             // ItemsBidMaxValueColumn
             // 
             this.ItemsBidMaxValueColumn.DataPropertyName = "BidMaxValue";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "C2";
-            this.ItemsBidMaxValueColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.Format = "C2";
+            this.ItemsBidMaxValueColumn.DefaultCellStyle = dataGridViewCellStyle14;
             this.ItemsBidMaxValueColumn.HeaderText = "Maximum Bid";
             this.ItemsBidMaxValueColumn.Name = "ItemsBidMaxValueColumn";
             this.ItemsBidMaxValueColumn.Width = 95;
@@ -373,9 +423,9 @@
             // ItemsBidIncrementValueColumn
             // 
             this.ItemsBidIncrementValueColumn.DataPropertyName = "BidIncrementValue";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "C2";
-            this.ItemsBidIncrementValueColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "C2";
+            this.ItemsBidIncrementValueColumn.DefaultCellStyle = dataGridViewCellStyle15;
             this.ItemsBidIncrementValueColumn.HeaderText = "Bid Incr";
             this.ItemsBidIncrementValueColumn.Name = "ItemsBidIncrementValueColumn";
             this.ItemsBidIncrementValueColumn.Width = 70;
@@ -383,10 +433,10 @@
             // ItemsBidNumberOfBidsColumn
             // 
             this.ItemsBidNumberOfBidsColumn.DataPropertyName = "BidNumberOfBids";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.Format = "N0";
-            dataGridViewCellStyle8.NullValue = null;
-            this.ItemsBidNumberOfBidsColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.Format = "N0";
+            dataGridViewCellStyle16.NullValue = null;
+            this.ItemsBidNumberOfBidsColumn.DefaultCellStyle = dataGridViewCellStyle16;
             this.ItemsBidNumberOfBidsColumn.HeaderText = "# of Bids";
             this.ItemsBidNumberOfBidsColumn.Name = "ItemsBidNumberOfBidsColumn";
             this.ItemsBidNumberOfBidsColumn.Width = 75;
@@ -540,7 +590,10 @@
             this.DonorsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DonorsDonorTypeColumn,
             this.DonorsNameColumn,
+            this.DonorsRequestFormatTypeIdColumn,
             this.DonorsContactNameColumn,
+            this.DonorsEmailColumn,
+            this.DonorsUrlColumn,
             this.DonorsStreet1Column,
             this.DonorsStreet2Column,
             this.DonorsCityColumn,
@@ -550,7 +603,6 @@
             this.DonorsExt1Column,
             this.DonorsPhone2Column,
             this.DonorsExt2Column,
-            this.DonorsEmailColumn,
             this.DonorsCreateDateColumn,
             this.DonorsModifiedDateColumn,
             this.DonorsIdColumn});
@@ -565,10 +617,140 @@
             this.DonorsDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.DonorsDataGridViewDataError);
             this.DonorsDataGridView.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.DonorsDataGridViewDefaultValuesNeeded);
             // 
+            // DonorsDonorTypeColumn
+            // 
+            this.DonorsDonorTypeColumn.DataPropertyName = "DonorTypeId";
+            this.DonorsDonorTypeColumn.DataSource = this.donorTypesBindingSource;
+            this.DonorsDonorTypeColumn.DisplayMember = "Name";
+            this.DonorsDonorTypeColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DonorsDonorTypeColumn.HeaderText = "* Donor Type";
+            this.DonorsDonorTypeColumn.Name = "DonorsDonorTypeColumn";
+            this.DonorsDonorTypeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DonorsDonorTypeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.DonorsDonorTypeColumn.ValueMember = "Id";
+            this.DonorsDonorTypeColumn.Width = 120;
+            // 
             // donorTypesBindingSource
             // 
             this.donorTypesBindingSource.DataMember = "DonorTypes";
             this.donorTypesBindingSource.DataSource = this.silentAuctionDataSet;
+            // 
+            // DonorsNameColumn
+            // 
+            this.DonorsNameColumn.DataPropertyName = "Name";
+            this.DonorsNameColumn.HeaderText = "* Donor Name";
+            this.DonorsNameColumn.Name = "DonorsNameColumn";
+            // 
+            // DonorsRequestFormatTypeIdColumn
+            // 
+            this.DonorsRequestFormatTypeIdColumn.DataPropertyName = "RequestFormatTypeId";
+            this.DonorsRequestFormatTypeIdColumn.DataSource = this.requestFormatTypesBindingSource;
+            this.DonorsRequestFormatTypeIdColumn.DisplayMember = "Name";
+            this.DonorsRequestFormatTypeIdColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DonorsRequestFormatTypeIdColumn.HeaderText = "Request Via";
+            this.DonorsRequestFormatTypeIdColumn.Name = "DonorsRequestFormatTypeIdColumn";
+            this.DonorsRequestFormatTypeIdColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DonorsRequestFormatTypeIdColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.DonorsRequestFormatTypeIdColumn.ValueMember = "Id";
+            // 
+            // requestFormatTypesBindingSource
+            // 
+            this.requestFormatTypesBindingSource.DataMember = "RequestFormatTypes";
+            this.requestFormatTypesBindingSource.DataSource = this.silentAuctionDataSet;
+            // 
+            // DonorsContactNameColumn
+            // 
+            this.DonorsContactNameColumn.DataPropertyName = "ContactName";
+            this.DonorsContactNameColumn.HeaderText = "Contact Name";
+            this.DonorsContactNameColumn.Name = "DonorsContactNameColumn";
+            // 
+            // DonorsEmailColumn
+            // 
+            this.DonorsEmailColumn.DataPropertyName = "Email";
+            this.DonorsEmailColumn.HeaderText = "Email";
+            this.DonorsEmailColumn.Name = "DonorsEmailColumn";
+            // 
+            // DonorsUrlColumn
+            // 
+            this.DonorsUrlColumn.DataPropertyName = "Url";
+            this.DonorsUrlColumn.HeaderText = "Website";
+            this.DonorsUrlColumn.Name = "DonorsUrlColumn";
+            this.DonorsUrlColumn.Width = 130;
+            // 
+            // DonorsStreet1Column
+            // 
+            this.DonorsStreet1Column.DataPropertyName = "Street1";
+            this.DonorsStreet1Column.HeaderText = "Street 1";
+            this.DonorsStreet1Column.Name = "DonorsStreet1Column";
+            // 
+            // DonorsStreet2Column
+            // 
+            this.DonorsStreet2Column.DataPropertyName = "Street2";
+            this.DonorsStreet2Column.HeaderText = "Street 2";
+            this.DonorsStreet2Column.Name = "DonorsStreet2Column";
+            // 
+            // DonorsCityColumn
+            // 
+            this.DonorsCityColumn.DataPropertyName = "City";
+            this.DonorsCityColumn.HeaderText = "City";
+            this.DonorsCityColumn.Name = "DonorsCityColumn";
+            // 
+            // DonorsStateColumn
+            // 
+            this.DonorsStateColumn.DataPropertyName = "State";
+            this.DonorsStateColumn.HeaderText = "State";
+            this.DonorsStateColumn.Name = "DonorsStateColumn";
+            // 
+            // DonorsZipCodeColumn
+            // 
+            this.DonorsZipCodeColumn.DataPropertyName = "ZipCode";
+            this.DonorsZipCodeColumn.HeaderText = "Zip Code";
+            this.DonorsZipCodeColumn.Name = "DonorsZipCodeColumn";
+            // 
+            // DonorsPhone1Column
+            // 
+            this.DonorsPhone1Column.DataPropertyName = "Phone1";
+            this.DonorsPhone1Column.HeaderText = "Phone 1";
+            this.DonorsPhone1Column.Name = "DonorsPhone1Column";
+            // 
+            // DonorsExt1Column
+            // 
+            this.DonorsExt1Column.DataPropertyName = "Extension1";
+            this.DonorsExt1Column.HeaderText = "Ext 1";
+            this.DonorsExt1Column.Name = "DonorsExt1Column";
+            // 
+            // DonorsPhone2Column
+            // 
+            this.DonorsPhone2Column.DataPropertyName = "Phone2";
+            this.DonorsPhone2Column.HeaderText = "Phone 2";
+            this.DonorsPhone2Column.Name = "DonorsPhone2Column";
+            // 
+            // DonorsExt2Column
+            // 
+            this.DonorsExt2Column.DataPropertyName = "Extension2";
+            this.DonorsExt2Column.HeaderText = "Ext 2";
+            this.DonorsExt2Column.Name = "DonorsExt2Column";
+            // 
+            // DonorsCreateDateColumn
+            // 
+            this.DonorsCreateDateColumn.DataPropertyName = "CreateDate";
+            this.DonorsCreateDateColumn.HeaderText = "CreateDate";
+            this.DonorsCreateDateColumn.Name = "DonorsCreateDateColumn";
+            this.DonorsCreateDateColumn.Visible = false;
+            // 
+            // DonorsModifiedDateColumn
+            // 
+            this.DonorsModifiedDateColumn.DataPropertyName = "ModifiedDate";
+            this.DonorsModifiedDateColumn.HeaderText = "ModifiedDate";
+            this.DonorsModifiedDateColumn.Name = "DonorsModifiedDateColumn";
+            this.DonorsModifiedDateColumn.Visible = false;
+            // 
+            // DonorsIdColumn
+            // 
+            this.DonorsIdColumn.DataPropertyName = "Id";
+            this.DonorsIdColumn.HeaderText = "Id";
+            this.DonorsIdColumn.Name = "DonorsIdColumn";
+            this.DonorsIdColumn.Visible = false;
             // 
             // panel2
             // 
@@ -766,7 +948,7 @@
             this.AuctionsRequirementLabel.Size = new System.Drawing.Size(218, 13);
             this.AuctionsRequirementLabel.TabIndex = 5;
             this.AuctionsRequirementLabel.Text = "Items marked with an asterisk (*) are required";
-            //  
+            // 
             // itemsTableAdapter
             // 
             this.itemsTableAdapter.ClearBeforeFill = true;
@@ -996,110 +1178,17 @@
             this.AboutToolStripMenuItem.Text = "&About...";
             this.AboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItemClick);
             // 
-            // DonorsDonorTypeColumn
+            // itemTypesTableAdapter
             // 
-            this.DonorsDonorTypeColumn.DataPropertyName = "DonorTypeId";
-            this.DonorsDonorTypeColumn.DataSource = this.donorTypesBindingSource;
-            this.DonorsDonorTypeColumn.DisplayMember = "Name";
-            this.DonorsDonorTypeColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DonorsDonorTypeColumn.HeaderText = "* Donor Type";
-            this.DonorsDonorTypeColumn.Name = "DonorsDonorTypeColumn";
-            this.DonorsDonorTypeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DonorsDonorTypeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.DonorsDonorTypeColumn.ValueMember = "Id";
+            this.itemTypesTableAdapter.ClearBeforeFill = true;
             // 
-            // DonorsNameColumn
+            // donationDeliveryTypesTableAdapter
             // 
-            this.DonorsNameColumn.DataPropertyName = "Name";
-            this.DonorsNameColumn.HeaderText = "* Donor Name";
-            this.DonorsNameColumn.Name = "DonorsNameColumn";
+            this.donationDeliveryTypesTableAdapter.ClearBeforeFill = true;
             // 
-            // DonorsContactNameColumn
+            // requestFormatTypesTableAdapter
             // 
-            this.DonorsContactNameColumn.DataPropertyName = "ContactName";
-            this.DonorsContactNameColumn.HeaderText = "Contact Name";
-            this.DonorsContactNameColumn.Name = "DonorsContactNameColumn";
-            // 
-            // DonorsStreet1Column
-            // 
-            this.DonorsStreet1Column.DataPropertyName = "Street1";
-            this.DonorsStreet1Column.HeaderText = "Street 1";
-            this.DonorsStreet1Column.Name = "DonorsStreet1Column";
-            // 
-            // DonorsStreet2Column
-            // 
-            this.DonorsStreet2Column.DataPropertyName = "Street2";
-            this.DonorsStreet2Column.HeaderText = "Street 2";
-            this.DonorsStreet2Column.Name = "DonorsStreet2Column";
-            // 
-            // DonorsCityColumn
-            // 
-            this.DonorsCityColumn.DataPropertyName = "City";
-            this.DonorsCityColumn.HeaderText = "City";
-            this.DonorsCityColumn.Name = "DonorsCityColumn";
-            // 
-            // DonorsStateColumn
-            // 
-            this.DonorsStateColumn.DataPropertyName = "State";
-            this.DonorsStateColumn.HeaderText = "State";
-            this.DonorsStateColumn.Name = "DonorsStateColumn";
-            // 
-            // DonorsZipCodeColumn
-            // 
-            this.DonorsZipCodeColumn.DataPropertyName = "ZipCode";
-            this.DonorsZipCodeColumn.HeaderText = "Zip Code";
-            this.DonorsZipCodeColumn.Name = "DonorsZipCodeColumn";
-            // 
-            // DonorsPhone1Column
-            // 
-            this.DonorsPhone1Column.DataPropertyName = "Phone1";
-            this.DonorsPhone1Column.HeaderText = "Phone 1";
-            this.DonorsPhone1Column.Name = "DonorsPhone1Column";
-            // 
-            // DonorsExt1Column
-            // 
-            this.DonorsExt1Column.DataPropertyName = "Extension1";
-            this.DonorsExt1Column.HeaderText = "Ext 1";
-            this.DonorsExt1Column.Name = "DonorsExt1Column";
-            // 
-            // DonorsPhone2Column
-            // 
-            this.DonorsPhone2Column.DataPropertyName = "Phone2";
-            this.DonorsPhone2Column.HeaderText = "Phone 2";
-            this.DonorsPhone2Column.Name = "DonorsPhone2Column";
-            // 
-            // DonorsExt2Column
-            // 
-            this.DonorsExt2Column.DataPropertyName = "Extension2";
-            this.DonorsExt2Column.HeaderText = "Ext 2";
-            this.DonorsExt2Column.Name = "DonorsExt2Column";
-            // 
-            // DonorsEmailColumn
-            // 
-            this.DonorsEmailColumn.DataPropertyName = "Email";
-            this.DonorsEmailColumn.HeaderText = "Email";
-            this.DonorsEmailColumn.Name = "DonorsEmailColumn";
-            // 
-            // DonorsCreateDateColumn
-            // 
-            this.DonorsCreateDateColumn.DataPropertyName = "CreateDate";
-            this.DonorsCreateDateColumn.HeaderText = "CreateDate";
-            this.DonorsCreateDateColumn.Name = "DonorsCreateDateColumn";
-            this.DonorsCreateDateColumn.Visible = false;
-            // 
-            // DonorsModifiedDateColumn
-            // 
-            this.DonorsModifiedDateColumn.DataPropertyName = "ModifiedDate";
-            this.DonorsModifiedDateColumn.HeaderText = "ModifiedDate";
-            this.DonorsModifiedDateColumn.Name = "DonorsModifiedDateColumn";
-            this.DonorsModifiedDateColumn.Visible = false;
-            // 
-            // DonorsIdColumn
-            // 
-            this.DonorsIdColumn.DataPropertyName = "Id";
-            this.DonorsIdColumn.HeaderText = "Id";
-            this.DonorsIdColumn.Name = "DonorsIdColumn";
-            this.DonorsIdColumn.Visible = false;
+            this.requestFormatTypesTableAdapter.ClearBeforeFill = true;
             // 
             // MainForm2
             // 
@@ -1121,6 +1210,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemTypesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donationDeliveryTypesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bidIncrementTypesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).EndInit();
             this.ItemsToolStrip.ResumeLayout(false);
@@ -1133,6 +1224,7 @@
             this.DonorsTableLayoutPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DonorsDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.donorTypesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -1227,12 +1319,20 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button AddAuctionButton;
+        private System.Windows.Forms.BindingSource itemTypesBindingSource;
+        private SilentAuctionDataSetTableAdapters.ItemTypesTableAdapter itemTypesTableAdapter;
+        private System.Windows.Forms.BindingSource donationDeliveryTypesBindingSource;
+        private SilentAuctionDataSetTableAdapters.DonationDeliveryTypesTableAdapter donationDeliveryTypesTableAdapter;
+        private System.Windows.Forms.BindingSource requestFormatTypesBindingSource;
+        private SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter requestFormatTypesTableAdapter;
         private System.Windows.Forms.DataGridViewComboBoxColumn ItemsDonorIdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemsAuctionIdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemsNameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemsQtyColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemsItemDescriptionColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemsNotesColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ItemsItemTypeIdColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ItemsDonationDeliveryTypeIdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemsRetailValueColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemsBidBuyItNowValueColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn ItemsBidIncrementTypeColumn;
@@ -1245,7 +1345,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemsIdColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn DonorsDonorTypeColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn DonorsNameColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn DonorsRequestFormatTypeIdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn DonorsContactNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DonorsEmailColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DonorsUrlColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn DonorsStreet1Column;
         private System.Windows.Forms.DataGridViewTextBoxColumn DonorsStreet2Column;
         private System.Windows.Forms.DataGridViewTextBoxColumn DonorsCityColumn;
@@ -1255,7 +1358,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DonorsExt1Column;
         private System.Windows.Forms.DataGridViewTextBoxColumn DonorsPhone2Column;
         private System.Windows.Forms.DataGridViewTextBoxColumn DonorsExt2Column;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DonorsEmailColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn DonorsCreateDateColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn DonorsModifiedDateColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn DonorsIdColumn;

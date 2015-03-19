@@ -20,6 +20,12 @@ namespace SilentAuction
         #region Form Event Handlers
         private void MainForm2Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'silentAuctionDataSet.RequestFormatTypes' table. You can move, or remove it, as needed.
+            this.requestFormatTypesTableAdapter.FillRequestFormatTypes(this.silentAuctionDataSet.RequestFormatTypes);
+            // TODO: This line of code loads data into the 'silentAuctionDataSet.DonationDeliveryTypes' table. You can move, or remove it, as needed.
+            this.donationDeliveryTypesTableAdapter.FillDonationDeliveryTypes(this.silentAuctionDataSet.DonationDeliveryTypes);
+            // TODO: This line of code loads data into the 'silentAuctionDataSet.ItemTypes' table. You can move, or remove it, as needed.
+            this.itemTypesTableAdapter.FillItemTypes(this.silentAuctionDataSet.ItemTypes);
             SetupInitialWindow();
 
             bidIncrementTypesTableAdapter.FillBidIncremenetTypes(silentAuctionDataSet.BidIncrementTypes);
@@ -179,7 +185,7 @@ namespace SilentAuction
             DateTime currentDate = DateTime.Now;
             e.Row.Cells["ItemsCreateDateColumn"].Value = currentDate;
             e.Row.Cells["ItemsModifiedDateColumn"].Value = currentDate;
-            e.Row.Cells["ItemsDonorComboBoxColumn"].Value = 1;
+            e.Row.Cells["ItemsDonorIdColumn"].Value = 1;
             e.Row.Cells["ItemsQtyColumn"].Value = 1;
             if (ItemsToolStripComboBox != null)
             {
@@ -189,7 +195,7 @@ namespace SilentAuction
                     e.Row.Cells["ItemsAuctionIdColumn"].Value = auctionId;
                 }
             }
-            e.Row.Cells["BidIncrementTypeComboBoxColumn"].Value = 1;
+            e.Row.Cells["ItemsBidIncrementTypeColumn"].Value = 1;
         }        
         
         private void ItemsDataGridViewCellClick(object sender, DataGridViewCellEventArgs e)
@@ -531,6 +537,9 @@ namespace SilentAuction
             ItemsBidMaxValueColumn.Width = Settings.Default.ItemsBidMaxColumnWidth;
             ItemsBidIncrementValueColumn.Width = Settings.Default.ItemsBidIncrementValuesColumnWidth;
             ItemsBidNumberOfBidsColumn.Width = Settings.Default.ItemsBidNumberOfBidsColumnWidth;
+            ItemsItemTypeIdColumn.Width = Settings.Default.ItemsItemTypeIdColumnWidth;
+            ItemsDonationDeliveryTypeIdColumn.Width = Settings.Default.ItemsDonationDeliveryTypeIdColumnWidth;
+
 
             // Donors grid settings...
             DonorsDonorTypeColumn.Width = Settings.Default.DonorsDonorTypeColumnWidth;
@@ -544,6 +553,8 @@ namespace SilentAuction
             DonorsPhone1Column.Width = Settings.Default.DonorsPhone1ColumnWidth;
             DonorsPhone2Column.Width = Settings.Default.DonorsPhone2ColumnWidth;
             DonorsEmailColumn.Width = Settings.Default.DonorsEmailColumnWidth;
+            DonorsRequestFormatTypeIdColumn.Width = Settings.Default.DonorsRequestFormatTypeIdColumnWidth;
+            DonorsUrlColumn.Width = Settings.Default.DonorsUrlColumnWidth;
 
             // Auctions grid settings...
             AuctionsNameColumn.Width = Settings.Default.AuctionsNameColumnWidth;
@@ -566,6 +577,8 @@ namespace SilentAuction
             Settings.Default.ItemsBidMaxColumnWidth = ItemsBidMaxValueColumn.Width;
             Settings.Default.ItemsBidIncrementValuesColumnWidth = ItemsBidIncrementValueColumn.Width;
             Settings.Default.ItemsBidNumberOfBidsColumnWidth = ItemsBidNumberOfBidsColumn.Width;
+            Settings.Default.ItemsItemTypeIdColumnWidth = ItemsItemTypeIdColumn.Width;
+            Settings.Default.ItemsDonationDeliveryTypeIdColumnWidth = ItemsDonationDeliveryTypeIdColumn.Width;
 
             // Donors grid user settings...
             Settings.Default.DonorsDonorTypeColumnWidth = DonorsDonorTypeColumn.Width;
@@ -579,6 +592,8 @@ namespace SilentAuction
             Settings.Default.DonorsPhone1ColumnWidth = DonorsPhone1Column.Width;
             Settings.Default.DonorsPhone2ColumnWidth = DonorsPhone2Column.Width;
             Settings.Default.DonorsEmailColumnWidth = DonorsEmailColumn.Width;
+            Settings.Default.DonorsRequestFormatTypeIdColumnWidth = DonorsRequestFormatTypeIdColumn.Width;
+            Settings.Default.DonorsUrlColumnWidth = DonorsUrlColumn.Width;
 
             // Auction grid user settings...
             Settings.Default.AuctionsNameColumnWidth = AuctionsNameColumn.Width;
