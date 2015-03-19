@@ -26,12 +26,12 @@ namespace SilentAuction.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string InitialLocation {
+        public string MainFormInitialLocation {
             get {
-                return ((string)(this["InitialLocation"]));
+                return ((string)(this["MainFormInitialLocation"]));
             }
             set {
-                this["InitialLocation"] = value;
+                this["MainFormInitialLocation"] = value;
             }
         }
         
@@ -427,6 +427,18 @@ namespace SilentAuction.Properties {
             }
             set {
                 this["ItemsDonationDeliveryTypeIdColumnWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ViewDonorsFormInitialLocation {
+            get {
+                return ((string)(this["ViewDonorsFormInitialLocation"]));
+            }
+            set {
+                this["ViewDonorsFormInitialLocation"] = value;
             }
         }
     }

@@ -69,6 +69,24 @@
     <Compile Include="Forms\AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CreateNewAuction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreateNewAuction.Designer.cs">
+      <DependentUpon>CreateNewAuction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\OpenAuction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OpenAuction.Designer.cs">
+      <DependentUpon>OpenAuction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ViewDonors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ViewDonors.Designer.cs">
+      <DependentUpon>ViewDonors.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +114,15 @@
     <Compile Include="Utilities\MathHelper.cs" />
     <EmbeddedResource Include="Forms\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreateNewAuction.resx">
+      <DependentUpon>CreateNewAuction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OpenAuction.resx">
+      <DependentUpon>OpenAuction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ViewDonors.resx">
+      <DependentUpon>ViewDonors.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm2.resx">
       <DependentUpon>MainForm2.cs</DependentUpon>

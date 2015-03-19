@@ -1,5 +1,5 @@
 ﻿namespace SilentAuction
-{
+{ 
     partial class MainForm2
     {
         /// <summary>
@@ -29,18 +29,48 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm2));
-            this.ItemsTabControl = new System.Windows.Forms.TabControl();
-            this.ItemsTabPage = new System.Windows.Forms.TabPage();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ItemsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.NewAuctionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpenAuctionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printPreviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DonorsListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.customizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ItemsDataGridView = new System.Windows.Forms.DataGridView();
             this.ItemsDonorIdColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.donorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -66,92 +96,29 @@
             this.ItemsModifiedDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemsIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ItemsToolStrip = new System.Windows.Forms.ToolStrip();
-            this.ItemsToolStripLabel = new System.Windows.Forms.ToolStripLabel();
-            this.ItemsToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.AddItemsButton = new System.Windows.Forms.Button();
             this.ItemsSaveAllButton = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.ItemsRequirementLabel = new System.Windows.Forms.Label();
-            this.DonorsTabPage = new System.Windows.Forms.TabPage();
-            this.DonorsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.DonorsDataGridView = new System.Windows.Forms.DataGridView();
-            this.DonorsDonorTypeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.donorTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.DonorsNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsRequestFormatTypeIdColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.requestFormatTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.DonorsContactNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsEmailColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsUrlColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsStreet1Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsStreet2Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsCityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsStateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsZipCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsPhone1Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsExt1Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsPhone2Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsExt2Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsCreateDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsModifiedDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.AddDonorButton = new System.Windows.Forms.Button();
-            this.DonorsSaveAllButton = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.DonorsRequirementLabel = new System.Windows.Forms.Label();
-            this.AuctionsTabPage = new System.Windows.Forms.TabPage();
-            this.AuctionsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.AuctionsDataGridView = new System.Windows.Forms.DataGridView();
-            this.AuctionsNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AuctionsDescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AuctionsCreateDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AuctionsModifiedDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AuctionsIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AuctionNameLabel2 = new System.Windows.Forms.Label();
+            this.AuctionNameLabel1 = new System.Windows.Forms.Label();
             this.auctionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.AddAuctionButton = new System.Windows.Forms.Button();
-            this.AuctionsSaveAllChangesButton = new System.Windows.Forms.Button();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.AuctionsRequirementLabel = new System.Windows.Forms.Label();
             this.itemsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.ItemsTableAdapter();
             this.donorsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorsTableAdapter();
             this.auctionsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.AuctionsTableAdapter();
-            this.donorTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorTypesTableAdapter();
             this.bidIncrementTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.BidIncrementTypesTableAdapter();
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
             this.MainFormStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AddNewAuctionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AddNewDonorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AddNewItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.PrintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.PrintPreviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.customizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.AboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.ItemTypesTableAdapter();
             this.donationDeliveryTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonationDeliveryTypesTableAdapter();
+            this.donorTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.donorTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorTypesTableAdapter();
+            this.requestFormatTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.requestFormatTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter();
-            this.ItemsTabControl.SuspendLayout();
-            this.ItemsTabPage.SuspendLayout();
             this.ItemsTableLayoutPanel.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).BeginInit();
@@ -159,70 +126,292 @@
             ((System.ComponentModel.ISupportInitialize)(this.donationDeliveryTypesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bidIncrementTypesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).BeginInit();
-            this.ItemsToolStrip.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.DonorsTabPage.SuspendLayout();
-            this.DonorsTableLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DonorsDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.donorTypesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.AuctionsTabPage.SuspendLayout();
-            this.AuctionsTableLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AuctionsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).BeginInit();
-            this.panel3.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.statusStrip2.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.donorTypeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ItemsTabControl
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.ItemsTabControl, 2);
-            this.ItemsTabControl.Controls.Add(this.ItemsTabPage);
-            this.ItemsTabControl.Controls.Add(this.DonorsTabPage);
-            this.ItemsTabControl.Controls.Add(this.AuctionsTabPage);
-            this.ItemsTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ItemsTabControl.Location = new System.Drawing.Point(3, 27);
-            this.ItemsTabControl.Name = "ItemsTabControl";
-            this.ItemsTabControl.SelectedIndex = 0;
-            this.ItemsTabControl.Size = new System.Drawing.Size(868, 384);
-            this.ItemsTabControl.TabIndex = 0;
-            // 
-            // ItemsTabPage
-            // 
-            this.ItemsTabPage.Controls.Add(this.ItemsTableLayoutPanel);
-            this.ItemsTabPage.Location = new System.Drawing.Point(4, 22);
-            this.ItemsTabPage.Name = "ItemsTabPage";
-            this.ItemsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ItemsTabPage.Size = new System.Drawing.Size(860, 358);
-            this.ItemsTabPage.TabIndex = 0;
-            this.ItemsTabPage.Text = "Items";
-            this.ItemsTabPage.UseVisualStyleBackColor = true;
             // 
             // ItemsTableLayoutPanel
             // 
             this.ItemsTableLayoutPanel.ColumnCount = 2;
             this.ItemsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.ItemsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ItemsTableLayoutPanel.Controls.Add(this.ItemsDataGridView, 0, 1);
-            this.ItemsTableLayoutPanel.Controls.Add(this.ItemsToolStrip, 0, 0);
-            this.ItemsTableLayoutPanel.Controls.Add(this.panel1, 0, 2);
-            this.ItemsTableLayoutPanel.Controls.Add(this.panel4, 0, 3);
+            this.ItemsTableLayoutPanel.Controls.Add(this.menuStrip1, 0, 0);
+            this.ItemsTableLayoutPanel.Controls.Add(this.ItemsDataGridView, 0, 2);
+            this.ItemsTableLayoutPanel.Controls.Add(this.panel1, 0, 3);
+            this.ItemsTableLayoutPanel.Controls.Add(this.panel4, 0, 4);
+            this.ItemsTableLayoutPanel.Controls.Add(this.panel2, 1, 0);
             this.ItemsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ItemsTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
+            this.ItemsTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.ItemsTableLayoutPanel.Name = "ItemsTableLayoutPanel";
-            this.ItemsTableLayoutPanel.RowCount = 4;
-            this.ItemsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.ItemsTableLayoutPanel.RowCount = 5;
+            this.ItemsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.ItemsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ItemsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.ItemsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.ItemsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ItemsTableLayoutPanel.Size = new System.Drawing.Size(854, 352);
+            this.ItemsTableLayoutPanel.Size = new System.Drawing.Size(874, 414);
             this.ItemsTableLayoutPanel.TabIndex = 3;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.editToolStripMenuItem,
+            this.viewToolStripMenuItem,
+            this.toolsToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(220, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.NewAuctionToolStripMenuItem,
+            this.OpenAuctionToolStripMenuItem,
+            this.toolStripSeparator,
+            this.saveToolStripMenuItem,
+            this.saveAsToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.printToolStripMenuItem,
+            this.printPreviewToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "&File";
+            // 
+            // NewAuctionToolStripMenuItem
+            // 
+            this.NewAuctionToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("NewAuctionToolStripMenuItem.Image")));
+            this.NewAuctionToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.NewAuctionToolStripMenuItem.Name = "NewAuctionToolStripMenuItem";
+            this.NewAuctionToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.NewAuctionToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.NewAuctionToolStripMenuItem.Text = "&New Auction";
+            this.NewAuctionToolStripMenuItem.Click += new System.EventHandler(this.NewAuctionToolStripMenuItemClick);
+            // 
+            // OpenAuctionToolStripMenuItem
+            // 
+            this.OpenAuctionToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OpenAuctionToolStripMenuItem.Image")));
+            this.OpenAuctionToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.OpenAuctionToolStripMenuItem.Name = "OpenAuctionToolStripMenuItem";
+            this.OpenAuctionToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.OpenAuctionToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.OpenAuctionToolStripMenuItem.Text = "&Open Auction";
+            this.OpenAuctionToolStripMenuItem.Click += new System.EventHandler(this.OpenAuctionToolStripMenuItemClick);
+            // 
+            // toolStripSeparator
+            // 
+            this.toolStripSeparator.Name = "toolStripSeparator";
+            this.toolStripSeparator.Size = new System.Drawing.Size(188, 6);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripMenuItem.Image")));
+            this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.saveToolStripMenuItem.Text = "&Save";
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.saveAsToolStripMenuItem.Text = "Save &As";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(188, 6);
+            // 
+            // printToolStripMenuItem
+            // 
+            this.printToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("printToolStripMenuItem.Image")));
+            this.printToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
+            this.printToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.printToolStripMenuItem.Text = "&Print";
+            // 
+            // printPreviewToolStripMenuItem
+            // 
+            this.printPreviewToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("printPreviewToolStripMenuItem.Image")));
+            this.printPreviewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
+            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.printPreviewToolStripMenuItem.Text = "Print Pre&view";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(188, 6);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.exitToolStripMenuItem.Text = "E&xit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.undoToolStripMenuItem,
+            this.redoToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.cutToolStripMenuItem,
+            this.copyToolStripMenuItem,
+            this.pasteToolStripMenuItem,
+            this.toolStripSeparator4,
+            this.selectAllToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "&Edit";
+            // 
+            // undoToolStripMenuItem
+            // 
+            this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
+            this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.undoToolStripMenuItem.Text = "&Undo";
+            // 
+            // redoToolStripMenuItem
+            // 
+            this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
+            this.redoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.redoToolStripMenuItem.Text = "&Redo";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(141, 6);
+            // 
+            // cutToolStripMenuItem
+            // 
+            this.cutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cutToolStripMenuItem.Image")));
+            this.cutToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
+            this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.cutToolStripMenuItem.Text = "Cu&t";
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("copyToolStripMenuItem.Image")));
+            this.copyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.copyToolStripMenuItem.Text = "&Copy";
+            // 
+            // pasteToolStripMenuItem
+            // 
+            this.pasteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pasteToolStripMenuItem.Image")));
+            this.pasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.pasteToolStripMenuItem.Text = "&Paste";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(141, 6);
+            // 
+            // selectAllToolStripMenuItem
+            // 
+            this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.selectAllToolStripMenuItem.Text = "Select &All";
+            // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DonorsListToolStripMenuItem});
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.viewToolStripMenuItem.Text = "View";
+            // 
+            // DonorsListToolStripMenuItem
+            // 
+            this.DonorsListToolStripMenuItem.Name = "DonorsListToolStripMenuItem";
+            this.DonorsListToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.DonorsListToolStripMenuItem.Text = "Donors List";
+            this.DonorsListToolStripMenuItem.Click += new System.EventHandler(this.DonorsListToolStripMenuItemClick);
+            // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.customizeToolStripMenuItem,
+            this.optionsToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.toolsToolStripMenuItem.Text = "&Tools";
+            // 
+            // customizeToolStripMenuItem
+            // 
+            this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
+            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.customizeToolStripMenuItem.Text = "&Customize";
+            // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.optionsToolStripMenuItem.Text = "&Options";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contentsToolStripMenuItem,
+            this.indexToolStripMenuItem,
+            this.searchToolStripMenuItem,
+            this.toolStripSeparator5,
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "&Help";
+            // 
+            // contentsToolStripMenuItem
+            // 
+            this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
+            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.contentsToolStripMenuItem.Text = "&Contents";
+            // 
+            // indexToolStripMenuItem
+            // 
+            this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
+            this.indexToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.indexToolStripMenuItem.Text = "&Index";
+            // 
+            // searchToolStripMenuItem
+            // 
+            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.searchToolStripMenuItem.Text = "&Search";
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(119, 6);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.aboutToolStripMenuItem.Text = "&About...";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItemClick);
             // 
             // ItemsDataGridView
             // 
@@ -251,9 +440,9 @@
             this.ItemsTableLayoutPanel.SetColumnSpan(this.ItemsDataGridView, 2);
             this.ItemsDataGridView.DataSource = this.itemsBindingSource;
             this.ItemsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ItemsDataGridView.Location = new System.Drawing.Point(3, 43);
+            this.ItemsDataGridView.Location = new System.Drawing.Point(3, 47);
             this.ItemsDataGridView.Name = "ItemsDataGridView";
-            this.ItemsDataGridView.Size = new System.Drawing.Size(848, 246);
+            this.ItemsDataGridView.Size = new System.Drawing.Size(868, 304);
             this.ItemsDataGridView.TabIndex = 0;
             this.ItemsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemsDataGridViewCellClick);
             this.ItemsDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemsDataGridViewCellEndEdit);
@@ -302,10 +491,10 @@
             // ItemsQtyColumn
             // 
             this.ItemsQtyColumn.DataPropertyName = "Qty";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.Format = "N0";
-            dataGridViewCellStyle9.NullValue = null;
-            this.ItemsQtyColumn.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = null;
+            this.ItemsQtyColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.ItemsQtyColumn.HeaderText = "* Qty";
             this.ItemsQtyColumn.Name = "ItemsQtyColumn";
             this.ItemsQtyColumn.Width = 55;
@@ -313,8 +502,8 @@
             // ItemsItemDescriptionColumn
             // 
             this.ItemsItemDescriptionColumn.DataPropertyName = "Description";
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ItemsItemDescriptionColumn.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ItemsItemDescriptionColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.ItemsItemDescriptionColumn.HeaderText = "Item Description";
             this.ItemsItemDescriptionColumn.Name = "ItemsItemDescriptionColumn";
             this.ItemsItemDescriptionColumn.Width = 120;
@@ -364,9 +553,9 @@
             // ItemsRetailValueColumn
             // 
             this.ItemsRetailValueColumn.DataPropertyName = "RetailValue";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle11.Format = "C2";
-            this.ItemsRetailValueColumn.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "C2";
+            this.ItemsRetailValueColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.ItemsRetailValueColumn.HeaderText = "Retail Value";
             this.ItemsRetailValueColumn.Name = "ItemsRetailValueColumn";
             this.ItemsRetailValueColumn.Width = 90;
@@ -374,9 +563,9 @@
             // ItemsBidBuyItNowValueColumn
             // 
             this.ItemsBidBuyItNowValueColumn.DataPropertyName = "BidBuyItNowValue";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.Format = "C2";
-            this.ItemsBidBuyItNowValueColumn.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "C2";
+            this.ItemsBidBuyItNowValueColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.ItemsBidBuyItNowValueColumn.HeaderText = "Buy It Now Amount";
             this.ItemsBidBuyItNowValueColumn.Name = "ItemsBidBuyItNowValueColumn";
             this.ItemsBidBuyItNowValueColumn.Width = 140;
@@ -402,10 +591,10 @@
             // ItemsBidMinValueColumn
             // 
             this.ItemsBidMinValueColumn.DataPropertyName = "BidMinValue";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle13.Format = "C2";
-            dataGridViewCellStyle13.NullValue = null;
-            this.ItemsBidMinValueColumn.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "C2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.ItemsBidMinValueColumn.DefaultCellStyle = dataGridViewCellStyle5;
             this.ItemsBidMinValueColumn.HeaderText = "Minimum Bid";
             this.ItemsBidMinValueColumn.Name = "ItemsBidMinValueColumn";
             this.ItemsBidMinValueColumn.Width = 95;
@@ -413,9 +602,9 @@
             // ItemsBidMaxValueColumn
             // 
             this.ItemsBidMaxValueColumn.DataPropertyName = "BidMaxValue";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle14.Format = "C2";
-            this.ItemsBidMaxValueColumn.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "C2";
+            this.ItemsBidMaxValueColumn.DefaultCellStyle = dataGridViewCellStyle6;
             this.ItemsBidMaxValueColumn.HeaderText = "Maximum Bid";
             this.ItemsBidMaxValueColumn.Name = "ItemsBidMaxValueColumn";
             this.ItemsBidMaxValueColumn.Width = 95;
@@ -423,9 +612,9 @@
             // ItemsBidIncrementValueColumn
             // 
             this.ItemsBidIncrementValueColumn.DataPropertyName = "BidIncrementValue";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle15.Format = "C2";
-            this.ItemsBidIncrementValueColumn.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "C2";
+            this.ItemsBidIncrementValueColumn.DefaultCellStyle = dataGridViewCellStyle7;
             this.ItemsBidIncrementValueColumn.HeaderText = "Bid Incr";
             this.ItemsBidIncrementValueColumn.Name = "ItemsBidIncrementValueColumn";
             this.ItemsBidIncrementValueColumn.Width = 70;
@@ -433,10 +622,10 @@
             // ItemsBidNumberOfBidsColumn
             // 
             this.ItemsBidNumberOfBidsColumn.DataPropertyName = "BidNumberOfBids";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.Format = "N0";
-            dataGridViewCellStyle16.NullValue = null;
-            this.ItemsBidNumberOfBidsColumn.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.Format = "N0";
+            dataGridViewCellStyle8.NullValue = null;
+            this.ItemsBidNumberOfBidsColumn.DefaultCellStyle = dataGridViewCellStyle8;
             this.ItemsBidNumberOfBidsColumn.HeaderText = "# of Bids";
             this.ItemsBidNumberOfBidsColumn.Name = "ItemsBidNumberOfBidsColumn";
             this.ItemsBidNumberOfBidsColumn.Width = 75;
@@ -472,40 +661,15 @@
             this.itemsBindingSource.DataMember = "Items";
             this.itemsBindingSource.DataSource = this.silentAuctionDataSet;
             // 
-            // ItemsToolStrip
-            // 
-            this.ItemsToolStrip.Dock = System.Windows.Forms.DockStyle.None;
-            this.ItemsToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ItemsToolStripLabel,
-            this.ItemsToolStripComboBox});
-            this.ItemsToolStrip.Location = new System.Drawing.Point(0, 0);
-            this.ItemsToolStrip.Name = "ItemsToolStrip";
-            this.ItemsToolStrip.Size = new System.Drawing.Size(316, 25);
-            this.ItemsToolStrip.TabIndex = 1;
-            this.ItemsToolStrip.Text = "toolStrip1";
-            // 
-            // ItemsToolStripLabel
-            // 
-            this.ItemsToolStripLabel.Name = "ItemsToolStripLabel";
-            this.ItemsToolStripLabel.Size = new System.Drawing.Size(102, 22);
-            this.ItemsToolStripLabel.Text = "Select an Auction:";
-            // 
-            // ItemsToolStripComboBox
-            // 
-            this.ItemsToolStripComboBox.DropDownWidth = 200;
-            this.ItemsToolStripComboBox.Name = "ItemsToolStripComboBox";
-            this.ItemsToolStripComboBox.Size = new System.Drawing.Size(200, 25);
-            this.ItemsToolStripComboBox.SelectedIndexChanged += new System.EventHandler(this.ItemsToolStripComboBoxSelectedIndexChanged);
-            // 
             // panel1
             // 
             this.ItemsTableLayoutPanel.SetColumnSpan(this.panel1, 2);
             this.panel1.Controls.Add(this.AddItemsButton);
             this.panel1.Controls.Add(this.ItemsSaveAllButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 295);
+            this.panel1.Location = new System.Drawing.Point(3, 357);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(848, 34);
+            this.panel1.Size = new System.Drawing.Size(868, 34);
             this.panel1.TabIndex = 3;
             // 
             // AddItemsButton
@@ -537,9 +701,9 @@
             this.ItemsTableLayoutPanel.SetColumnSpan(this.panel4, 2);
             this.panel4.Controls.Add(this.ItemsRequirementLabel);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(3, 335);
+            this.panel4.Location = new System.Drawing.Point(3, 397);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(848, 14);
+            this.panel4.Size = new System.Drawing.Size(868, 14);
             this.panel4.TabIndex = 4;
             // 
             // ItemsRequirementLabel
@@ -552,402 +716,39 @@
             this.ItemsRequirementLabel.Text = "Items marked with an asterisk (*) are required";
             this.ItemsRequirementLabel.Visible = false;
             // 
-            // DonorsTabPage
-            // 
-            this.DonorsTabPage.Controls.Add(this.DonorsTableLayoutPanel);
-            this.DonorsTabPage.Location = new System.Drawing.Point(4, 22);
-            this.DonorsTabPage.Name = "DonorsTabPage";
-            this.DonorsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.DonorsTabPage.Size = new System.Drawing.Size(860, 358);
-            this.DonorsTabPage.TabIndex = 1;
-            this.DonorsTabPage.Text = "Donors";
-            this.DonorsTabPage.UseVisualStyleBackColor = true;
-            // 
-            // DonorsTableLayoutPanel
-            // 
-            this.DonorsTableLayoutPanel.ColumnCount = 2;
-            this.DonorsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.DonorsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.DonorsTableLayoutPanel.Controls.Add(this.DonorsDataGridView, 0, 1);
-            this.DonorsTableLayoutPanel.Controls.Add(this.panel2, 0, 2);
-            this.DonorsTableLayoutPanel.Controls.Add(this.panel5, 0, 3);
-            this.DonorsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DonorsTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
-            this.DonorsTableLayoutPanel.Name = "DonorsTableLayoutPanel";
-            this.DonorsTableLayoutPanel.RowCount = 4;
-            this.DonorsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.DonorsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.DonorsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.DonorsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.DonorsTableLayoutPanel.Size = new System.Drawing.Size(854, 352);
-            this.DonorsTableLayoutPanel.TabIndex = 0;
-            // 
-            // DonorsDataGridView
-            // 
-            this.DonorsDataGridView.AllowUserToDeleteRows = false;
-            this.DonorsDataGridView.AutoGenerateColumns = false;
-            this.DonorsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DonorsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.DonorsDonorTypeColumn,
-            this.DonorsNameColumn,
-            this.DonorsRequestFormatTypeIdColumn,
-            this.DonorsContactNameColumn,
-            this.DonorsEmailColumn,
-            this.DonorsUrlColumn,
-            this.DonorsStreet1Column,
-            this.DonorsStreet2Column,
-            this.DonorsCityColumn,
-            this.DonorsStateColumn,
-            this.DonorsZipCodeColumn,
-            this.DonorsPhone1Column,
-            this.DonorsExt1Column,
-            this.DonorsPhone2Column,
-            this.DonorsExt2Column,
-            this.DonorsCreateDateColumn,
-            this.DonorsModifiedDateColumn,
-            this.DonorsIdColumn});
-            this.DonorsTableLayoutPanel.SetColumnSpan(this.DonorsDataGridView, 2);
-            this.DonorsDataGridView.DataSource = this.donorsBindingSource;
-            this.DonorsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DonorsDataGridView.Location = new System.Drawing.Point(3, 43);
-            this.DonorsDataGridView.Name = "DonorsDataGridView";
-            this.DonorsDataGridView.Size = new System.Drawing.Size(848, 246);
-            this.DonorsDataGridView.TabIndex = 0;
-            this.DonorsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DonorsDataGridViewCellClick);
-            this.DonorsDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.DonorsDataGridViewDataError);
-            this.DonorsDataGridView.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.DonorsDataGridViewDefaultValuesNeeded);
-            // 
-            // DonorsDonorTypeColumn
-            // 
-            this.DonorsDonorTypeColumn.DataPropertyName = "DonorTypeId";
-            this.DonorsDonorTypeColumn.DataSource = this.donorTypesBindingSource;
-            this.DonorsDonorTypeColumn.DisplayMember = "Name";
-            this.DonorsDonorTypeColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DonorsDonorTypeColumn.HeaderText = "* Donor Type";
-            this.DonorsDonorTypeColumn.Name = "DonorsDonorTypeColumn";
-            this.DonorsDonorTypeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DonorsDonorTypeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.DonorsDonorTypeColumn.ValueMember = "Id";
-            this.DonorsDonorTypeColumn.Width = 120;
-            // 
-            // donorTypesBindingSource
-            // 
-            this.donorTypesBindingSource.DataMember = "DonorTypes";
-            this.donorTypesBindingSource.DataSource = this.silentAuctionDataSet;
-            // 
-            // DonorsNameColumn
-            // 
-            this.DonorsNameColumn.DataPropertyName = "Name";
-            this.DonorsNameColumn.HeaderText = "* Donor Name";
-            this.DonorsNameColumn.Name = "DonorsNameColumn";
-            // 
-            // DonorsRequestFormatTypeIdColumn
-            // 
-            this.DonorsRequestFormatTypeIdColumn.DataPropertyName = "RequestFormatTypeId";
-            this.DonorsRequestFormatTypeIdColumn.DataSource = this.requestFormatTypesBindingSource;
-            this.DonorsRequestFormatTypeIdColumn.DisplayMember = "Name";
-            this.DonorsRequestFormatTypeIdColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DonorsRequestFormatTypeIdColumn.HeaderText = "Request Via";
-            this.DonorsRequestFormatTypeIdColumn.Name = "DonorsRequestFormatTypeIdColumn";
-            this.DonorsRequestFormatTypeIdColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DonorsRequestFormatTypeIdColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.DonorsRequestFormatTypeIdColumn.ValueMember = "Id";
-            // 
-            // requestFormatTypesBindingSource
-            // 
-            this.requestFormatTypesBindingSource.DataMember = "RequestFormatTypes";
-            this.requestFormatTypesBindingSource.DataSource = this.silentAuctionDataSet;
-            // 
-            // DonorsContactNameColumn
-            // 
-            this.DonorsContactNameColumn.DataPropertyName = "ContactName";
-            this.DonorsContactNameColumn.HeaderText = "Contact Name";
-            this.DonorsContactNameColumn.Name = "DonorsContactNameColumn";
-            // 
-            // DonorsEmailColumn
-            // 
-            this.DonorsEmailColumn.DataPropertyName = "Email";
-            this.DonorsEmailColumn.HeaderText = "Email";
-            this.DonorsEmailColumn.Name = "DonorsEmailColumn";
-            // 
-            // DonorsUrlColumn
-            // 
-            this.DonorsUrlColumn.DataPropertyName = "Url";
-            this.DonorsUrlColumn.HeaderText = "Website";
-            this.DonorsUrlColumn.Name = "DonorsUrlColumn";
-            this.DonorsUrlColumn.Width = 130;
-            // 
-            // DonorsStreet1Column
-            // 
-            this.DonorsStreet1Column.DataPropertyName = "Street1";
-            this.DonorsStreet1Column.HeaderText = "Street 1";
-            this.DonorsStreet1Column.Name = "DonorsStreet1Column";
-            // 
-            // DonorsStreet2Column
-            // 
-            this.DonorsStreet2Column.DataPropertyName = "Street2";
-            this.DonorsStreet2Column.HeaderText = "Street 2";
-            this.DonorsStreet2Column.Name = "DonorsStreet2Column";
-            // 
-            // DonorsCityColumn
-            // 
-            this.DonorsCityColumn.DataPropertyName = "City";
-            this.DonorsCityColumn.HeaderText = "City";
-            this.DonorsCityColumn.Name = "DonorsCityColumn";
-            // 
-            // DonorsStateColumn
-            // 
-            this.DonorsStateColumn.DataPropertyName = "State";
-            this.DonorsStateColumn.HeaderText = "State";
-            this.DonorsStateColumn.Name = "DonorsStateColumn";
-            // 
-            // DonorsZipCodeColumn
-            // 
-            this.DonorsZipCodeColumn.DataPropertyName = "ZipCode";
-            this.DonorsZipCodeColumn.HeaderText = "Zip Code";
-            this.DonorsZipCodeColumn.Name = "DonorsZipCodeColumn";
-            // 
-            // DonorsPhone1Column
-            // 
-            this.DonorsPhone1Column.DataPropertyName = "Phone1";
-            this.DonorsPhone1Column.HeaderText = "Phone 1";
-            this.DonorsPhone1Column.Name = "DonorsPhone1Column";
-            // 
-            // DonorsExt1Column
-            // 
-            this.DonorsExt1Column.DataPropertyName = "Extension1";
-            this.DonorsExt1Column.HeaderText = "Ext 1";
-            this.DonorsExt1Column.Name = "DonorsExt1Column";
-            // 
-            // DonorsPhone2Column
-            // 
-            this.DonorsPhone2Column.DataPropertyName = "Phone2";
-            this.DonorsPhone2Column.HeaderText = "Phone 2";
-            this.DonorsPhone2Column.Name = "DonorsPhone2Column";
-            // 
-            // DonorsExt2Column
-            // 
-            this.DonorsExt2Column.DataPropertyName = "Extension2";
-            this.DonorsExt2Column.HeaderText = "Ext 2";
-            this.DonorsExt2Column.Name = "DonorsExt2Column";
-            // 
-            // DonorsCreateDateColumn
-            // 
-            this.DonorsCreateDateColumn.DataPropertyName = "CreateDate";
-            this.DonorsCreateDateColumn.HeaderText = "CreateDate";
-            this.DonorsCreateDateColumn.Name = "DonorsCreateDateColumn";
-            this.DonorsCreateDateColumn.Visible = false;
-            // 
-            // DonorsModifiedDateColumn
-            // 
-            this.DonorsModifiedDateColumn.DataPropertyName = "ModifiedDate";
-            this.DonorsModifiedDateColumn.HeaderText = "ModifiedDate";
-            this.DonorsModifiedDateColumn.Name = "DonorsModifiedDateColumn";
-            this.DonorsModifiedDateColumn.Visible = false;
-            // 
-            // DonorsIdColumn
-            // 
-            this.DonorsIdColumn.DataPropertyName = "Id";
-            this.DonorsIdColumn.HeaderText = "Id";
-            this.DonorsIdColumn.Name = "DonorsIdColumn";
-            this.DonorsIdColumn.Visible = false;
-            // 
             // panel2
             // 
-            this.DonorsTableLayoutPanel.SetColumnSpan(this.panel2, 2);
-            this.panel2.Controls.Add(this.AddDonorButton);
-            this.panel2.Controls.Add(this.DonorsSaveAllButton);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 295);
+            this.panel2.Controls.Add(this.AuctionNameLabel2);
+            this.panel2.Controls.Add(this.AuctionNameLabel1);
+            this.panel2.Location = new System.Drawing.Point(440, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(848, 34);
-            this.panel2.TabIndex = 2;
+            this.panel2.Size = new System.Drawing.Size(431, 14);
+            this.panel2.TabIndex = 6;
             // 
-            // AddDonorButton
+            // AuctionNameLabel2
             // 
-            this.AddDonorButton.AutoSize = true;
-            this.AddDonorButton.Location = new System.Drawing.Point(110, 3);
-            this.AddDonorButton.Name = "AddDonorButton";
-            this.AddDonorButton.Size = new System.Drawing.Size(101, 23);
-            this.AddDonorButton.TabIndex = 2;
-            this.AddDonorButton.Text = "Add Donor";
-            this.AddDonorButton.UseVisualStyleBackColor = true;
-            this.AddDonorButton.Click += new System.EventHandler(this.AddDonorButtonClick);
+            this.AuctionNameLabel2.AutoSize = true;
+            this.AuctionNameLabel2.Location = new System.Drawing.Point(133, 1);
+            this.AuctionNameLabel2.Name = "AuctionNameLabel2";
+            this.AuctionNameLabel2.Size = new System.Drawing.Size(69, 13);
+            this.AuctionNameLabel2.TabIndex = 6;
+            this.AuctionNameLabel2.Text = "(Placeholder)";
+            this.AuctionNameLabel2.Visible = false;
             // 
-            // DonorsSaveAllButton
+            // AuctionNameLabel1
             // 
-            this.DonorsSaveAllButton.AutoSize = true;
-            this.DonorsSaveAllButton.Location = new System.Drawing.Point(3, 3);
-            this.DonorsSaveAllButton.Name = "DonorsSaveAllButton";
-            this.DonorsSaveAllButton.Size = new System.Drawing.Size(101, 23);
-            this.DonorsSaveAllButton.TabIndex = 1;
-            this.DonorsSaveAllButton.Text = "Save Changes";
-            this.DonorsSaveAllButton.UseVisualStyleBackColor = true;
-            this.DonorsSaveAllButton.Click += new System.EventHandler(this.DonorsSaveAllButtonClick);
-            // 
-            // panel5
-            // 
-            this.DonorsTableLayoutPanel.SetColumnSpan(this.panel5, 2);
-            this.panel5.Controls.Add(this.DonorsRequirementLabel);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(3, 335);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(848, 14);
-            this.panel5.TabIndex = 3;
-            // 
-            // DonorsRequirementLabel
-            // 
-            this.DonorsRequirementLabel.AutoSize = true;
-            this.DonorsRequirementLabel.Location = new System.Drawing.Point(3, 0);
-            this.DonorsRequirementLabel.Name = "DonorsRequirementLabel";
-            this.DonorsRequirementLabel.Size = new System.Drawing.Size(218, 13);
-            this.DonorsRequirementLabel.TabIndex = 4;
-            this.DonorsRequirementLabel.Text = "Items marked with an asterisk (*) are required";
-            // 
-            // AuctionsTabPage
-            // 
-            this.AuctionsTabPage.Controls.Add(this.AuctionsTableLayoutPanel);
-            this.AuctionsTabPage.Location = new System.Drawing.Point(4, 22);
-            this.AuctionsTabPage.Name = "AuctionsTabPage";
-            this.AuctionsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.AuctionsTabPage.Size = new System.Drawing.Size(860, 358);
-            this.AuctionsTabPage.TabIndex = 2;
-            this.AuctionsTabPage.Text = "Auctions";
-            this.AuctionsTabPage.UseVisualStyleBackColor = true;
-            // 
-            // AuctionsTableLayoutPanel
-            // 
-            this.AuctionsTableLayoutPanel.ColumnCount = 2;
-            this.AuctionsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.AuctionsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.AuctionsTableLayoutPanel.Controls.Add(this.AuctionsDataGridView, 0, 1);
-            this.AuctionsTableLayoutPanel.Controls.Add(this.panel3, 0, 2);
-            this.AuctionsTableLayoutPanel.Controls.Add(this.panel6, 0, 3);
-            this.AuctionsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AuctionsTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
-            this.AuctionsTableLayoutPanel.Name = "AuctionsTableLayoutPanel";
-            this.AuctionsTableLayoutPanel.RowCount = 4;
-            this.AuctionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.AuctionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.AuctionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.AuctionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.AuctionsTableLayoutPanel.Size = new System.Drawing.Size(854, 352);
-            this.AuctionsTableLayoutPanel.TabIndex = 0;
-            // 
-            // AuctionsDataGridView
-            // 
-            this.AuctionsDataGridView.AllowUserToDeleteRows = false;
-            this.AuctionsDataGridView.AutoGenerateColumns = false;
-            this.AuctionsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AuctionsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.AuctionsNameColumn,
-            this.AuctionsDescriptionColumn,
-            this.AuctionsCreateDateColumn,
-            this.AuctionsModifiedDateColumn,
-            this.AuctionsIdColumn});
-            this.AuctionsTableLayoutPanel.SetColumnSpan(this.AuctionsDataGridView, 2);
-            this.AuctionsDataGridView.DataSource = this.auctionsBindingSource;
-            this.AuctionsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AuctionsDataGridView.Location = new System.Drawing.Point(3, 43);
-            this.AuctionsDataGridView.Name = "AuctionsDataGridView";
-            this.AuctionsDataGridView.Size = new System.Drawing.Size(848, 246);
-            this.AuctionsDataGridView.TabIndex = 0;
-            this.AuctionsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AuctionsDataGridViewCellClick);
-            this.AuctionsDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.AuctionsDataGridViewDataError);
-            this.AuctionsDataGridView.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.AuctionsDataGridViewDefaultValuesNeeded);
-            // 
-            // AuctionsNameColumn
-            // 
-            this.AuctionsNameColumn.DataPropertyName = "Name";
-            this.AuctionsNameColumn.HeaderText = "* Auction Name";
-            this.AuctionsNameColumn.Name = "AuctionsNameColumn";
-            this.AuctionsNameColumn.Width = 200;
-            // 
-            // AuctionsDescriptionColumn
-            // 
-            this.AuctionsDescriptionColumn.DataPropertyName = "Description";
-            this.AuctionsDescriptionColumn.HeaderText = "Auction Description";
-            this.AuctionsDescriptionColumn.Name = "AuctionsDescriptionColumn";
-            this.AuctionsDescriptionColumn.Width = 400;
-            // 
-            // AuctionsCreateDateColumn
-            // 
-            this.AuctionsCreateDateColumn.DataPropertyName = "CreateDate";
-            this.AuctionsCreateDateColumn.HeaderText = "CreateDate";
-            this.AuctionsCreateDateColumn.Name = "AuctionsCreateDateColumn";
-            this.AuctionsCreateDateColumn.Visible = false;
-            // 
-            // AuctionsModifiedDateColumn
-            // 
-            this.AuctionsModifiedDateColumn.DataPropertyName = "ModifiedDate";
-            this.AuctionsModifiedDateColumn.HeaderText = "ModifiedDate";
-            this.AuctionsModifiedDateColumn.Name = "AuctionsModifiedDateColumn";
-            this.AuctionsModifiedDateColumn.Visible = false;
-            // 
-            // AuctionsIdColumn
-            // 
-            this.AuctionsIdColumn.DataPropertyName = "Id";
-            this.AuctionsIdColumn.HeaderText = "Id";
-            this.AuctionsIdColumn.Name = "AuctionsIdColumn";
-            this.AuctionsIdColumn.ReadOnly = true;
-            this.AuctionsIdColumn.Visible = false;
+            this.AuctionNameLabel1.AutoSize = true;
+            this.AuctionNameLabel1.Location = new System.Drawing.Point(16, 1);
+            this.AuctionNameLabel1.Name = "AuctionNameLabel1";
+            this.AuctionNameLabel1.Size = new System.Drawing.Size(111, 13);
+            this.AuctionNameLabel1.TabIndex = 5;
+            this.AuctionNameLabel1.Text = "Working with Auction:";
+            this.AuctionNameLabel1.Visible = false;
             // 
             // auctionsBindingSource
             // 
             this.auctionsBindingSource.DataMember = "Auctions";
             this.auctionsBindingSource.DataSource = this.silentAuctionDataSet;
-            // 
-            // panel3
-            // 
-            this.AuctionsTableLayoutPanel.SetColumnSpan(this.panel3, 2);
-            this.panel3.Controls.Add(this.AddAuctionButton);
-            this.panel3.Controls.Add(this.AuctionsSaveAllChangesButton);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 295);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(848, 34);
-            this.panel3.TabIndex = 2;
-            // 
-            // AddAuctionButton
-            // 
-            this.AddAuctionButton.AutoSize = true;
-            this.AddAuctionButton.Location = new System.Drawing.Point(110, 3);
-            this.AddAuctionButton.Name = "AddAuctionButton";
-            this.AddAuctionButton.Size = new System.Drawing.Size(101, 23);
-            this.AddAuctionButton.TabIndex = 2;
-            this.AddAuctionButton.Text = "Add Auction";
-            this.AddAuctionButton.UseVisualStyleBackColor = true;
-            this.AddAuctionButton.Click += new System.EventHandler(this.AddAuctionButtonClick);
-            // 
-            // AuctionsSaveAllChangesButton
-            // 
-            this.AuctionsSaveAllChangesButton.AutoSize = true;
-            this.AuctionsSaveAllChangesButton.Location = new System.Drawing.Point(3, 3);
-            this.AuctionsSaveAllChangesButton.Name = "AuctionsSaveAllChangesButton";
-            this.AuctionsSaveAllChangesButton.Size = new System.Drawing.Size(101, 23);
-            this.AuctionsSaveAllChangesButton.TabIndex = 1;
-            this.AuctionsSaveAllChangesButton.Text = "Save Changes";
-            this.AuctionsSaveAllChangesButton.UseVisualStyleBackColor = true;
-            this.AuctionsSaveAllChangesButton.Click += new System.EventHandler(this.AuctionsSaveAllButtonClick);
-            // 
-            // panel6
-            // 
-            this.AuctionsTableLayoutPanel.SetColumnSpan(this.panel6, 2);
-            this.panel6.Controls.Add(this.AuctionsRequirementLabel);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(3, 335);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(848, 14);
-            this.panel6.TabIndex = 3;
-            // 
-            // AuctionsRequirementLabel
-            // 
-            this.AuctionsRequirementLabel.AutoSize = true;
-            this.AuctionsRequirementLabel.Location = new System.Drawing.Point(3, 0);
-            this.AuctionsRequirementLabel.Name = "AuctionsRequirementLabel";
-            this.AuctionsRequirementLabel.Size = new System.Drawing.Size(218, 13);
-            this.AuctionsRequirementLabel.TabIndex = 5;
-            this.AuctionsRequirementLabel.Text = "Items marked with an asterisk (*) are required";
             // 
             // itemsTableAdapter
             // 
@@ -960,10 +761,6 @@
             // auctionsTableAdapter
             // 
             this.auctionsTableAdapter.ClearBeforeFill = true;
-            // 
-            // donorTypesTableAdapter
-            // 
-            this.donorTypesTableAdapter.ClearBeforeFill = true;
             // 
             // bidIncrementTypesTableAdapter
             // 
@@ -986,198 +783,6 @@
             this.MainFormStatusLabel.Text = "Data Saved";
             this.MainFormStatusLabel.Visible = false;
             // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.ItemsTabControl, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.menuStrip1, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(874, 414);
-            this.tableLayoutPanel1.TabIndex = 2;
-            // 
-            // menuStrip1
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.menuStrip1, 2);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.toolsToolStripMenuItem,
-            this.helpToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(874, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem,
-            this.toolStripSeparator,
-            this.SaveToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.PrintToolStripMenuItem,
-            this.PrintPreviewToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.ExitToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "&File";
-            // 
-            // newToolStripMenuItem
-            // 
-            this.newToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AddNewAuctionToolStripMenuItem,
-            this.AddNewDonorToolStripMenuItem,
-            this.AddNewItemToolStripMenuItem});
-            this.newToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripMenuItem.Image")));
-            this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
-            this.newToolStripMenuItem.Text = "&New";
-            // 
-            // AddNewAuctionToolStripMenuItem
-            // 
-            this.AddNewAuctionToolStripMenuItem.Name = "AddNewAuctionToolStripMenuItem";
-            this.AddNewAuctionToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.AddNewAuctionToolStripMenuItem.Text = "Add New Auction";
-            this.AddNewAuctionToolStripMenuItem.Click += new System.EventHandler(this.NewAuctionToolStripMenuItemClick);
-            // 
-            // AddNewDonorToolStripMenuItem
-            // 
-            this.AddNewDonorToolStripMenuItem.Name = "AddNewDonorToolStripMenuItem";
-            this.AddNewDonorToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.AddNewDonorToolStripMenuItem.Text = "Add New Donor";
-            this.AddNewDonorToolStripMenuItem.Click += new System.EventHandler(this.AddNewDonorToolStripMenuItemClick);
-            // 
-            // AddNewItemToolStripMenuItem
-            // 
-            this.AddNewItemToolStripMenuItem.Name = "AddNewItemToolStripMenuItem";
-            this.AddNewItemToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.AddNewItemToolStripMenuItem.Text = "Add New Item";
-            this.AddNewItemToolStripMenuItem.Click += new System.EventHandler(this.AddNewItemToolStripMenuItemClick);
-            // 
-            // toolStripSeparator
-            // 
-            this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(140, 6);
-            // 
-            // SaveToolStripMenuItem
-            // 
-            this.SaveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("SaveToolStripMenuItem.Image")));
-            this.SaveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
-            this.SaveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
-            this.SaveToolStripMenuItem.Text = "&Save";
-            this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItemClick);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(140, 6);
-            // 
-            // PrintToolStripMenuItem
-            // 
-            this.PrintToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("PrintToolStripMenuItem.Image")));
-            this.PrintToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.PrintToolStripMenuItem.Name = "PrintToolStripMenuItem";
-            this.PrintToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.PrintToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
-            this.PrintToolStripMenuItem.Text = "&Print";
-            this.PrintToolStripMenuItem.Click += new System.EventHandler(this.PrintToolStripMenuItemClick);
-            // 
-            // PrintPreviewToolStripMenuItem
-            // 
-            this.PrintPreviewToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("PrintPreviewToolStripMenuItem.Image")));
-            this.PrintPreviewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.PrintPreviewToolStripMenuItem.Name = "PrintPreviewToolStripMenuItem";
-            this.PrintPreviewToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
-            this.PrintPreviewToolStripMenuItem.Text = "Print Pre&view";
-            this.PrintPreviewToolStripMenuItem.Click += new System.EventHandler(this.PrintPreviewToolStripMenuItemClick);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(140, 6);
-            // 
-            // ExitToolStripMenuItem
-            // 
-            this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
-            this.ExitToolStripMenuItem.Text = "E&xit";
-            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
-            // 
-            // toolsToolStripMenuItem
-            // 
-            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.customizeToolStripMenuItem,
-            this.optionsToolStripMenuItem});
-            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.toolsToolStripMenuItem.Text = "&Tools";
-            // 
-            // customizeToolStripMenuItem
-            // 
-            this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
-            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.customizeToolStripMenuItem.Text = "&Customize";
-            // 
-            // optionsToolStripMenuItem
-            // 
-            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.optionsToolStripMenuItem.Text = "&Options";
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.contentsToolStripMenuItem,
-            this.indexToolStripMenuItem,
-            this.searchToolStripMenuItem,
-            this.toolStripSeparator5,
-            this.AboutToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "&Help";
-            // 
-            // contentsToolStripMenuItem
-            // 
-            this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
-            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.contentsToolStripMenuItem.Text = "&Contents";
-            // 
-            // indexToolStripMenuItem
-            // 
-            this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
-            this.indexToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.indexToolStripMenuItem.Text = "&Index";
-            // 
-            // searchToolStripMenuItem
-            // 
-            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.searchToolStripMenuItem.Text = "&Search";
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(119, 6);
-            // 
-            // AboutToolStripMenuItem
-            // 
-            this.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem";
-            this.AboutToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.AboutToolStripMenuItem.Text = "&About...";
-            this.AboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItemClick);
-            // 
             // itemTypesTableAdapter
             // 
             this.itemTypesTableAdapter.ClearBeforeFill = true;
@@ -1185,6 +790,20 @@
             // donationDeliveryTypesTableAdapter
             // 
             this.donationDeliveryTypesTableAdapter.ClearBeforeFill = true;
+            // 
+            // donorTypeBindingSource
+            // 
+            this.donorTypeBindingSource.DataMember = "DonorTypes";
+            this.donorTypeBindingSource.DataSource = this.silentAuctionDataSet;
+            // 
+            // donorTypesTableAdapter
+            // 
+            this.donorTypesTableAdapter.ClearBeforeFill = true;
+            // 
+            // requestFormatTypesBindingSource
+            // 
+            this.requestFormatTypesBindingSource.DataMember = "RequestFormatTypes";
+            this.requestFormatTypesBindingSource.DataSource = this.silentAuctionDataSet;
             // 
             // requestFormatTypesTableAdapter
             // 
@@ -1195,7 +814,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(874, 436);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.ItemsTableLayoutPanel);
             this.Controls.Add(this.statusStrip2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -1203,10 +822,10 @@
             this.Text = "Silent Auction";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm2FormClosing);
             this.Load += new System.EventHandler(this.MainForm2Load);
-            this.ItemsTabControl.ResumeLayout(false);
-            this.ItemsTabPage.ResumeLayout(false);
             this.ItemsTableLayoutPanel.ResumeLayout(false);
             this.ItemsTableLayoutPanel.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).EndInit();
@@ -1214,35 +833,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.donationDeliveryTypesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bidIncrementTypesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).EndInit();
-            this.ItemsToolStrip.ResumeLayout(false);
-            this.ItemsToolStrip.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.DonorsTabPage.ResumeLayout(false);
-            this.DonorsTableLayoutPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DonorsDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.donorTypesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.AuctionsTabPage.ResumeLayout(false);
-            this.AuctionsTableLayoutPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.AuctionsDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.statusStrip2.ResumeLayout(false);
             this.statusStrip2.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.donorTypeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1250,81 +851,29 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl ItemsTabControl;
-        private System.Windows.Forms.TabPage ItemsTabPage;
-        private System.Windows.Forms.TabPage DonorsTabPage;
         private System.Windows.Forms.DataGridView ItemsDataGridView;
-        private System.Windows.Forms.TabPage AuctionsTabPage;
         private System.Windows.Forms.BindingSource itemsBindingSource;
         private SilentAuctionDataSet silentAuctionDataSet;
         private SilentAuctionDataSetTableAdapters.ItemsTableAdapter itemsTableAdapter;
-        private System.Windows.Forms.ToolStrip ItemsToolStrip;
-        private System.Windows.Forms.ToolStripLabel ItemsToolStripLabel;
-        private System.Windows.Forms.ToolStripComboBox ItemsToolStripComboBox;
         private System.Windows.Forms.Button ItemsSaveAllButton;
         private System.Windows.Forms.TableLayoutPanel ItemsTableLayoutPanel;
-        private System.Windows.Forms.TableLayoutPanel DonorsTableLayoutPanel;
-        private System.Windows.Forms.DataGridView DonorsDataGridView;
         private System.Windows.Forms.BindingSource donorsBindingSource;
         private SilentAuctionDataSetTableAdapters.DonorsTableAdapter donorsTableAdapter;
-        private System.Windows.Forms.Button DonorsSaveAllButton;
-        private System.Windows.Forms.TableLayoutPanel AuctionsTableLayoutPanel;
-        private System.Windows.Forms.DataGridView AuctionsDataGridView;
         private System.Windows.Forms.BindingSource auctionsBindingSource;
         private SilentAuctionDataSetTableAdapters.AuctionsTableAdapter auctionsTableAdapter;
-        private System.Windows.Forms.Button AuctionsSaveAllChangesButton;
-        private System.Windows.Forms.BindingSource donorTypesBindingSource;
-        private SilentAuctionDataSetTableAdapters.DonorTypesTableAdapter donorTypesTableAdapter;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label ItemsRequirementLabel;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label DonorsRequirementLabel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AuctionsNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AuctionsDescriptionColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AuctionsCreateDateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AuctionsModifiedDateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AuctionsIdColumn;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label AuctionsRequirementLabel;
         private System.Windows.Forms.BindingSource bidIncrementTypesBindingSource;
         private SilentAuctionDataSetTableAdapters.BidIncrementTypesTableAdapter bidIncrementTypesTableAdapter;
         private System.Windows.Forms.StatusStrip statusStrip2;
         private System.Windows.Forms.ToolStripStatusLabel MainFormStatusLabel;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
-        private System.Windows.Forms.ToolStripMenuItem SaveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem PrintToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem PrintPreviewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem customizeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem contentsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem indexToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripMenuItem AboutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem AddNewAuctionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem AddNewDonorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem AddNewItemToolStripMenuItem;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button AddItemsButton;
-        private System.Windows.Forms.Button AddDonorButton;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Button AddAuctionButton;
         private System.Windows.Forms.BindingSource itemTypesBindingSource;
         private SilentAuctionDataSetTableAdapters.ItemTypesTableAdapter itemTypesTableAdapter;
         private System.Windows.Forms.BindingSource donationDeliveryTypesBindingSource;
         private SilentAuctionDataSetTableAdapters.DonationDeliveryTypesTableAdapter donationDeliveryTypesTableAdapter;
-        private System.Windows.Forms.BindingSource requestFormatTypesBindingSource;
-        private SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter requestFormatTypesTableAdapter;
         private System.Windows.Forms.DataGridViewComboBoxColumn ItemsDonorIdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemsAuctionIdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemsNameColumn;
@@ -1343,23 +892,43 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemsCreateDateColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemsModifiedDateColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemsIdColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn DonorsDonorTypeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DonorsNameColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn DonorsRequestFormatTypeIdColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DonorsContactNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DonorsEmailColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DonorsUrlColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DonorsStreet1Column;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DonorsStreet2Column;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DonorsCityColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DonorsStateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DonorsZipCodeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DonorsPhone1Column;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DonorsExt1Column;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DonorsPhone2Column;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DonorsExt2Column;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DonorsCreateDateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DonorsModifiedDateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DonorsIdColumn;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem NewAuctionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem OpenAuctionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem printPreviewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem redoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem customizeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem contentsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem indexToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.Label AuctionNameLabel1;
+        private System.Windows.Forms.BindingSource donorTypeBindingSource;
+        private SilentAuctionDataSetTableAdapters.DonorTypesTableAdapter donorTypesTableAdapter;
+        private System.Windows.Forms.BindingSource requestFormatTypesBindingSource;
+        private SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter requestFormatTypesTableAdapter;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label AuctionNameLabel2;
+        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem DonorsListToolStripMenuItem;
     }
 }

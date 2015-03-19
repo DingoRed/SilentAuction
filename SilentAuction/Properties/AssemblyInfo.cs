@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Silent Auction")]
 [assembly: AssemblyDescription("Software for managing a Silent Auction!")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("DingoRed Services")]
 [assembly: AssemblyProduct("Silent Auction")]
-[assembly: AssemblyCopyright("Copyright © 2015")]
+[assembly: AssemblyCopyright("Copyright © 2015-")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
