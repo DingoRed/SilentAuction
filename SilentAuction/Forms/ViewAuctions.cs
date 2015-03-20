@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using SilentAuction.Properties;
@@ -25,6 +26,39 @@ namespace SilentAuction.Forms
         {
             SaveWindowSettings();
             SaveGridSettings();
+        }
+        #endregion
+
+        #region Event Handlers
+        private void AuctionsSaveAllButtonClick(object sender, EventArgs e)
+        {
+            SilentAuctionDataSet.AuctionsDataTable modifiedItems =
+                (SilentAuctionDataSet.AuctionsDataTable)silentAuctionDataSet.Auctions.GetChanges(DataRowState.Modified);
+
+            try
+            {
+                if (modifiedItems != null)
+                {
+                    foreach (DataRow row in modifiedItems.Rows)
+                    {
+                        row["ModifiedDate"] = DateTime.Now;
+                    }
+
+                    auctionsTableAdapter.Update(modifiedItems);
+                }
+
+                silentAuctionDataSet.AcceptChanges();
+                auctionsTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Update Failed: " + ex.Message);
+            }
+            finally
+            {
+                if (modifiedItems != null)
+                    modifiedItems.Dispose();
+            }
         }
         #endregion
 
@@ -89,5 +123,6 @@ namespace SilentAuction.Forms
 
 
         #endregion
+
     }
 }

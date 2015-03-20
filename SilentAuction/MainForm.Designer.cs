@@ -29,54 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ItemsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.NewAuctionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newDonorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.OpenAuctionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.CloseAuctionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.printPreviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editAuctionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editDonorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AuctionsListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DonorsListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.customizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ItemsDataGridView = new System.Windows.Forms.DataGridView();
             this.ItemsDonorIdColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.donorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -110,6 +72,33 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.AuctionNameLabel2 = new System.Windows.Forms.Label();
             this.AuctionNameLabel1 = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.NewAuctionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newDonorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.OpenAuctionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CloseAuctionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printPreviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editAuctionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editDonorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.customizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.auctionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.itemsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.ItemsTableAdapter();
             this.donorsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorsTableAdapter();
@@ -123,8 +112,9 @@
             this.donorTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorTypesTableAdapter();
             this.requestFormatTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.requestFormatTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter();
+            this.AuctionsListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DonorsListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ItemsTableLayoutPanel.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).BeginInit();
@@ -135,6 +125,7 @@
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).BeginInit();
             this.statusStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.donorTypeBindingSource)).BeginInit();
@@ -146,324 +137,22 @@
             this.ItemsTableLayoutPanel.ColumnCount = 2;
             this.ItemsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.ItemsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ItemsTableLayoutPanel.Controls.Add(this.menuStrip1, 0, 0);
-            this.ItemsTableLayoutPanel.Controls.Add(this.ItemsDataGridView, 0, 2);
-            this.ItemsTableLayoutPanel.Controls.Add(this.panel1, 0, 3);
-            this.ItemsTableLayoutPanel.Controls.Add(this.panel4, 0, 4);
+            this.ItemsTableLayoutPanel.Controls.Add(this.ItemsDataGridView, 0, 1);
+            this.ItemsTableLayoutPanel.Controls.Add(this.panel1, 0, 2);
+            this.ItemsTableLayoutPanel.Controls.Add(this.panel4, 0, 3);
             this.ItemsTableLayoutPanel.Controls.Add(this.panel2, 1, 0);
+            this.ItemsTableLayoutPanel.Controls.Add(this.menuStrip1, 0, 0);
             this.ItemsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ItemsTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.ItemsTableLayoutPanel.Name = "ItemsTableLayoutPanel";
-            this.ItemsTableLayoutPanel.RowCount = 5;
+            this.ItemsTableLayoutPanel.RowCount = 4;
             this.ItemsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.ItemsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ItemsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.ItemsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.ItemsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.ItemsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ItemsTableLayoutPanel.Size = new System.Drawing.Size(874, 414);
             this.ItemsTableLayoutPanel.TabIndex = 3;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.editToolStripMenuItem,
-            this.viewToolStripMenuItem,
-            this.toolsToolStripMenuItem,
-            this.helpToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(312, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.NewAuctionToolStripMenuItem,
-            this.newDonorToolStripMenuItem,
-            this.toolStripSeparator7,
-            this.OpenAuctionToolStripMenuItem,
-            this.CloseAuctionToolStripMenuItem,
-            this.toolStripSeparator,
-            this.SaveToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.printToolStripMenuItem,
-            this.printPreviewToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.exitToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "&File";
-            // 
-            // NewAuctionToolStripMenuItem
-            // 
-            this.NewAuctionToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("NewAuctionToolStripMenuItem.Image")));
-            this.NewAuctionToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.NewAuctionToolStripMenuItem.Name = "NewAuctionToolStripMenuItem";
-            this.NewAuctionToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.NewAuctionToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.NewAuctionToolStripMenuItem.Text = "&New Auction";
-            this.NewAuctionToolStripMenuItem.Click += new System.EventHandler(this.NewAuctionToolStripMenuItemClick);
-            // 
-            // newDonorToolStripMenuItem
-            // 
-            this.newDonorToolStripMenuItem.Name = "newDonorToolStripMenuItem";
-            this.newDonorToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.newDonorToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.newDonorToolStripMenuItem.Text = "New &Donor";
-            this.newDonorToolStripMenuItem.Click += new System.EventHandler(this.NewDonorToolStripMenuItemClick);
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(188, 6);
-            // 
-            // OpenAuctionToolStripMenuItem
-            // 
-            this.OpenAuctionToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OpenAuctionToolStripMenuItem.Image")));
-            this.OpenAuctionToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.OpenAuctionToolStripMenuItem.Name = "OpenAuctionToolStripMenuItem";
-            this.OpenAuctionToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.OpenAuctionToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.OpenAuctionToolStripMenuItem.Text = "&Open Auction";
-            this.OpenAuctionToolStripMenuItem.Click += new System.EventHandler(this.OpenAuctionToolStripMenuItemClick);
-            // 
-            // CloseAuctionToolStripMenuItem
-            // 
-            this.CloseAuctionToolStripMenuItem.Name = "CloseAuctionToolStripMenuItem";
-            this.CloseAuctionToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.CloseAuctionToolStripMenuItem.Text = "Close Auction";
-            this.CloseAuctionToolStripMenuItem.Click += new System.EventHandler(this.CloseAuctionToolStripMenuItemClick);
-            // 
-            // toolStripSeparator
-            // 
-            this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(188, 6);
-            // 
-            // SaveToolStripMenuItem
-            // 
-            this.SaveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("SaveToolStripMenuItem.Image")));
-            this.SaveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
-            this.SaveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.SaveToolStripMenuItem.Text = "&Save";
-            this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItemClick);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(188, 6);
-            // 
-            // printToolStripMenuItem
-            // 
-            this.printToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("printToolStripMenuItem.Image")));
-            this.printToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.printToolStripMenuItem.Text = "&Print";
-            // 
-            // printPreviewToolStripMenuItem
-            // 
-            this.printPreviewToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("printPreviewToolStripMenuItem.Image")));
-            this.printPreviewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
-            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.printPreviewToolStripMenuItem.Text = "Print Pre&view";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(188, 6);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.exitToolStripMenuItem.Text = "E&xit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editAuctionToolStripMenuItem,
-            this.editDonorToolStripMenuItem,
-            this.toolStripSeparator6,
-            this.undoToolStripMenuItem,
-            this.redoToolStripMenuItem,
-            this.toolStripSeparator3,
-            this.cutToolStripMenuItem,
-            this.copyToolStripMenuItem,
-            this.pasteToolStripMenuItem,
-            this.toolStripSeparator4,
-            this.selectAllToolStripMenuItem});
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.editToolStripMenuItem.Text = "&Edit";
-            // 
-            // editAuctionToolStripMenuItem
-            // 
-            this.editAuctionToolStripMenuItem.Name = "editAuctionToolStripMenuItem";
-            this.editAuctionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.editAuctionToolStripMenuItem.Text = "Edit Auction";
-            this.editAuctionToolStripMenuItem.Click += new System.EventHandler(this.EditAuctionToolStripMenuItemClick);
-            // 
-            // editDonorToolStripMenuItem
-            // 
-            this.editDonorToolStripMenuItem.Name = "editDonorToolStripMenuItem";
-            this.editDonorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.editDonorToolStripMenuItem.Text = "Edit Donor";
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(149, 6);
-            // 
-            // undoToolStripMenuItem
-            // 
-            this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.undoToolStripMenuItem.Text = "&Undo";
-            // 
-            // redoToolStripMenuItem
-            // 
-            this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-            this.redoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.redoToolStripMenuItem.Text = "&Redo";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
-            // 
-            // cutToolStripMenuItem
-            // 
-            this.cutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cutToolStripMenuItem.Image")));
-            this.cutToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.cutToolStripMenuItem.Text = "Cu&t";
-            // 
-            // copyToolStripMenuItem
-            // 
-            this.copyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("copyToolStripMenuItem.Image")));
-            this.copyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.copyToolStripMenuItem.Text = "&Copy";
-            // 
-            // pasteToolStripMenuItem
-            // 
-            this.pasteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pasteToolStripMenuItem.Image")));
-            this.pasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.pasteToolStripMenuItem.Text = "&Paste";
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
-            // 
-            // selectAllToolStripMenuItem
-            // 
-            this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.selectAllToolStripMenuItem.Text = "Select &All";
-            // 
-            // viewToolStripMenuItem
-            // 
-            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AuctionsListToolStripMenuItem,
-            this.DonorsListToolStripMenuItem});
-            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.viewToolStripMenuItem.Text = "View";
-            // 
-            // AuctionsListToolStripMenuItem
-            // 
-            this.AuctionsListToolStripMenuItem.Name = "AuctionsListToolStripMenuItem";
-            this.AuctionsListToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-            this.AuctionsListToolStripMenuItem.Text = "Auctions List";
-            this.AuctionsListToolStripMenuItem.Click += new System.EventHandler(this.AuctionsListToolStripMenuItemClick);
-            // 
-            // DonorsListToolStripMenuItem
-            // 
-            this.DonorsListToolStripMenuItem.Name = "DonorsListToolStripMenuItem";
-            this.DonorsListToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-            this.DonorsListToolStripMenuItem.Text = "Donors List";
-            this.DonorsListToolStripMenuItem.Click += new System.EventHandler(this.DonorsListToolStripMenuItemClick);
-            // 
-            // toolsToolStripMenuItem
-            // 
-            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.customizeToolStripMenuItem,
-            this.optionsToolStripMenuItem});
-            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.toolsToolStripMenuItem.Text = "&Tools";
-            // 
-            // customizeToolStripMenuItem
-            // 
-            this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
-            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.customizeToolStripMenuItem.Text = "&Customize";
-            // 
-            // optionsToolStripMenuItem
-            // 
-            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.optionsToolStripMenuItem.Text = "&Options";
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.contentsToolStripMenuItem,
-            this.indexToolStripMenuItem,
-            this.searchToolStripMenuItem,
-            this.toolStripSeparator5,
-            this.aboutToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "&Help";
-            // 
-            // contentsToolStripMenuItem
-            // 
-            this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
-            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.contentsToolStripMenuItem.Text = "&Contents";
-            // 
-            // indexToolStripMenuItem
-            // 
-            this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
-            this.indexToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.indexToolStripMenuItem.Text = "&Index";
-            // 
-            // searchToolStripMenuItem
-            // 
-            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.searchToolStripMenuItem.Text = "&Search";
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(119, 6);
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.aboutToolStripMenuItem.Text = "&About...";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItemClick);
             // 
             // ItemsDataGridView
             // 
@@ -492,9 +181,9 @@
             this.ItemsTableLayoutPanel.SetColumnSpan(this.ItemsDataGridView, 2);
             this.ItemsDataGridView.DataSource = this.itemsBindingSource;
             this.ItemsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ItemsDataGridView.Location = new System.Drawing.Point(3, 47);
+            this.ItemsDataGridView.Location = new System.Drawing.Point(3, 27);
             this.ItemsDataGridView.Name = "ItemsDataGridView";
-            this.ItemsDataGridView.Size = new System.Drawing.Size(868, 304);
+            this.ItemsDataGridView.Size = new System.Drawing.Size(868, 324);
             this.ItemsDataGridView.TabIndex = 0;
             this.ItemsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemsDataGridViewCellClick);
             this.ItemsDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemsDataGridViewCellEndEdit);
@@ -544,10 +233,10 @@
             // ItemsQtyColumn
             // 
             this.ItemsQtyColumn.DataPropertyName = "Qty";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.Format = "N0";
-            dataGridViewCellStyle1.NullValue = null;
-            this.ItemsQtyColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.Format = "N0";
+            dataGridViewCellStyle9.NullValue = null;
+            this.ItemsQtyColumn.DefaultCellStyle = dataGridViewCellStyle9;
             this.ItemsQtyColumn.HeaderText = "* Qty";
             this.ItemsQtyColumn.Name = "ItemsQtyColumn";
             this.ItemsQtyColumn.Width = 55;
@@ -555,8 +244,8 @@
             // ItemsItemDescriptionColumn
             // 
             this.ItemsItemDescriptionColumn.DataPropertyName = "Description";
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ItemsItemDescriptionColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ItemsItemDescriptionColumn.DefaultCellStyle = dataGridViewCellStyle10;
             this.ItemsItemDescriptionColumn.HeaderText = "Item Description";
             this.ItemsItemDescriptionColumn.Name = "ItemsItemDescriptionColumn";
             this.ItemsItemDescriptionColumn.Width = 120;
@@ -608,9 +297,9 @@
             // ItemsRetailValueColumn
             // 
             this.ItemsRetailValueColumn.DataPropertyName = "RetailValue";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "C2";
-            this.ItemsRetailValueColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "C2";
+            this.ItemsRetailValueColumn.DefaultCellStyle = dataGridViewCellStyle11;
             this.ItemsRetailValueColumn.HeaderText = "Retail Value";
             this.ItemsRetailValueColumn.Name = "ItemsRetailValueColumn";
             this.ItemsRetailValueColumn.Width = 90;
@@ -618,9 +307,9 @@
             // ItemsBidBuyItNowValueColumn
             // 
             this.ItemsBidBuyItNowValueColumn.DataPropertyName = "BidBuyItNowValue";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "C2";
-            this.ItemsBidBuyItNowValueColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "C2";
+            this.ItemsBidBuyItNowValueColumn.DefaultCellStyle = dataGridViewCellStyle12;
             this.ItemsBidBuyItNowValueColumn.HeaderText = "Buy It Now Amount";
             this.ItemsBidBuyItNowValueColumn.Name = "ItemsBidBuyItNowValueColumn";
             this.ItemsBidBuyItNowValueColumn.Width = 140;
@@ -647,10 +336,10 @@
             // ItemsBidMinValueColumn
             // 
             this.ItemsBidMinValueColumn.DataPropertyName = "BidMinValue";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "C2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.ItemsBidMinValueColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.Format = "C2";
+            dataGridViewCellStyle13.NullValue = null;
+            this.ItemsBidMinValueColumn.DefaultCellStyle = dataGridViewCellStyle13;
             this.ItemsBidMinValueColumn.HeaderText = "Minimum Bid";
             this.ItemsBidMinValueColumn.Name = "ItemsBidMinValueColumn";
             this.ItemsBidMinValueColumn.Width = 95;
@@ -658,9 +347,9 @@
             // ItemsBidMaxValueColumn
             // 
             this.ItemsBidMaxValueColumn.DataPropertyName = "BidMaxValue";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "C2";
-            this.ItemsBidMaxValueColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.Format = "C2";
+            this.ItemsBidMaxValueColumn.DefaultCellStyle = dataGridViewCellStyle14;
             this.ItemsBidMaxValueColumn.HeaderText = "Maximum Bid";
             this.ItemsBidMaxValueColumn.Name = "ItemsBidMaxValueColumn";
             this.ItemsBidMaxValueColumn.Width = 95;
@@ -668,9 +357,9 @@
             // ItemsBidIncrementValueColumn
             // 
             this.ItemsBidIncrementValueColumn.DataPropertyName = "BidIncrementValue";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "C2";
-            this.ItemsBidIncrementValueColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "C2";
+            this.ItemsBidIncrementValueColumn.DefaultCellStyle = dataGridViewCellStyle15;
             this.ItemsBidIncrementValueColumn.HeaderText = "Bid Incr";
             this.ItemsBidIncrementValueColumn.Name = "ItemsBidIncrementValueColumn";
             this.ItemsBidIncrementValueColumn.Width = 70;
@@ -678,10 +367,10 @@
             // ItemsBidNumberOfBidsColumn
             // 
             this.ItemsBidNumberOfBidsColumn.DataPropertyName = "BidNumberOfBids";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.Format = "N0";
-            dataGridViewCellStyle8.NullValue = null;
-            this.ItemsBidNumberOfBidsColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.Format = "N0";
+            dataGridViewCellStyle16.NullValue = null;
+            this.ItemsBidNumberOfBidsColumn.DefaultCellStyle = dataGridViewCellStyle16;
             this.ItemsBidNumberOfBidsColumn.HeaderText = "# of Bids";
             this.ItemsBidNumberOfBidsColumn.Name = "ItemsBidNumberOfBidsColumn";
             this.ItemsBidNumberOfBidsColumn.Width = 75;
@@ -801,6 +490,226 @@
             this.AuctionNameLabel1.Text = "Working with Auction:";
             this.AuctionNameLabel1.Visible = false;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.editToolStripMenuItem,
+            this.toolsToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(206, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.NewAuctionToolStripMenuItem,
+            this.newDonorToolStripMenuItem,
+            this.toolStripSeparator7,
+            this.OpenAuctionToolStripMenuItem,
+            this.CloseAuctionToolStripMenuItem,
+            this.toolStripSeparator,
+            this.SaveToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.printToolStripMenuItem,
+            this.printPreviewToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "&File";
+            // 
+            // NewAuctionToolStripMenuItem
+            // 
+            this.NewAuctionToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("NewAuctionToolStripMenuItem.Image")));
+            this.NewAuctionToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.NewAuctionToolStripMenuItem.Name = "NewAuctionToolStripMenuItem";
+            this.NewAuctionToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.NewAuctionToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.NewAuctionToolStripMenuItem.Text = "&New Auction";
+            this.NewAuctionToolStripMenuItem.Click += new System.EventHandler(this.NewAuctionToolStripMenuItemClick);
+            // 
+            // newDonorToolStripMenuItem
+            // 
+            this.newDonorToolStripMenuItem.Name = "newDonorToolStripMenuItem";
+            this.newDonorToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.newDonorToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.newDonorToolStripMenuItem.Text = "New &Donor";
+            this.newDonorToolStripMenuItem.Click += new System.EventHandler(this.NewDonorToolStripMenuItemClick);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(188, 6);
+            // 
+            // OpenAuctionToolStripMenuItem
+            // 
+            this.OpenAuctionToolStripMenuItem.Enabled = false;
+            this.OpenAuctionToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OpenAuctionToolStripMenuItem.Image")));
+            this.OpenAuctionToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.OpenAuctionToolStripMenuItem.Name = "OpenAuctionToolStripMenuItem";
+            this.OpenAuctionToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.OpenAuctionToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.OpenAuctionToolStripMenuItem.Text = "&Open Auction";
+            this.OpenAuctionToolStripMenuItem.Click += new System.EventHandler(this.OpenAuctionToolStripMenuItemClick);
+            // 
+            // CloseAuctionToolStripMenuItem
+            // 
+            this.CloseAuctionToolStripMenuItem.Enabled = false;
+            this.CloseAuctionToolStripMenuItem.Name = "CloseAuctionToolStripMenuItem";
+            this.CloseAuctionToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.CloseAuctionToolStripMenuItem.Text = "Close Auction";
+            this.CloseAuctionToolStripMenuItem.Click += new System.EventHandler(this.CloseAuctionToolStripMenuItemClick);
+            // 
+            // toolStripSeparator
+            // 
+            this.toolStripSeparator.Name = "toolStripSeparator";
+            this.toolStripSeparator.Size = new System.Drawing.Size(188, 6);
+            // 
+            // SaveToolStripMenuItem
+            // 
+            this.SaveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("SaveToolStripMenuItem.Image")));
+            this.SaveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
+            this.SaveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.SaveToolStripMenuItem.Text = "&Save";
+            this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItemClick);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(188, 6);
+            // 
+            // printToolStripMenuItem
+            // 
+            this.printToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("printToolStripMenuItem.Image")));
+            this.printToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
+            this.printToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.printToolStripMenuItem.Text = "&Print";
+            this.printToolStripMenuItem.Click += new System.EventHandler(this.PrintToolStripMenuItemClick);
+            // 
+            // printPreviewToolStripMenuItem
+            // 
+            this.printPreviewToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("printPreviewToolStripMenuItem.Image")));
+            this.printPreviewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
+            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.printPreviewToolStripMenuItem.Text = "Print Pre&view";
+            this.printPreviewToolStripMenuItem.Click += new System.EventHandler(this.PrintPreviewToolStripMenuItemClick);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(188, 6);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.exitToolStripMenuItem.Text = "E&xit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AuctionsListToolStripMenuItem,
+            this.editAuctionToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.DonorsListToolStripMenuItem,
+            this.editDonorToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.editToolStripMenuItem.Text = "&Edit/View";
+            // 
+            // editAuctionToolStripMenuItem
+            // 
+            this.editAuctionToolStripMenuItem.Name = "editAuctionToolStripMenuItem";
+            this.editAuctionToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.editAuctionToolStripMenuItem.Text = "Edit Auction (Form)";
+            this.editAuctionToolStripMenuItem.Click += new System.EventHandler(this.EditAuctionToolStripMenuItemClick);
+            // 
+            // editDonorToolStripMenuItem
+            // 
+            this.editDonorToolStripMenuItem.Name = "editDonorToolStripMenuItem";
+            this.editDonorToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.editDonorToolStripMenuItem.Text = "Edit Donor (Form)";
+            this.editDonorToolStripMenuItem.Click += new System.EventHandler(this.EditDonorToolStripMenuItemClick);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(175, 6);
+            // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.customizeToolStripMenuItem,
+            this.optionsToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.toolsToolStripMenuItem.Text = "&Tools";
+            // 
+            // customizeToolStripMenuItem
+            // 
+            this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
+            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.customizeToolStripMenuItem.Text = "&Customize";
+            // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.optionsToolStripMenuItem.Text = "&Options";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contentsToolStripMenuItem,
+            this.indexToolStripMenuItem,
+            this.searchToolStripMenuItem,
+            this.toolStripSeparator5,
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "&Help";
+            // 
+            // contentsToolStripMenuItem
+            // 
+            this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
+            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.contentsToolStripMenuItem.Text = "&Contents";
+            // 
+            // indexToolStripMenuItem
+            // 
+            this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
+            this.indexToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.indexToolStripMenuItem.Text = "&Index";
+            // 
+            // searchToolStripMenuItem
+            // 
+            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.searchToolStripMenuItem.Text = "&Search";
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Text = "&About...";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItemClick);
+            // 
             // auctionsBindingSource
             // 
             this.auctionsBindingSource.DataMember = "Auctions";
@@ -865,6 +774,20 @@
             // 
             this.requestFormatTypesTableAdapter.ClearBeforeFill = true;
             // 
+            // AuctionsListToolStripMenuItem
+            // 
+            this.AuctionsListToolStripMenuItem.Name = "AuctionsListToolStripMenuItem";
+            this.AuctionsListToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.AuctionsListToolStripMenuItem.Text = "Edit Auction (List)";
+            this.AuctionsListToolStripMenuItem.Click += new System.EventHandler(this.AuctionsListToolStripMenuItemClick);
+            // 
+            // DonorsListToolStripMenuItem
+            // 
+            this.DonorsListToolStripMenuItem.Name = "DonorsListToolStripMenuItem";
+            this.DonorsListToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.DonorsListToolStripMenuItem.Text = "Edit Donor (List)";
+            this.DonorsListToolStripMenuItem.Click += new System.EventHandler(this.DonorsListToolStripMenuItemClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -880,8 +803,6 @@
             this.Load += new System.EventHandler(this.MainForm2Load);
             this.ItemsTableLayoutPanel.ResumeLayout(false);
             this.ItemsTableLayoutPanel.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).EndInit();
@@ -895,6 +816,8 @@
             this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).EndInit();
             this.statusStrip2.ResumeLayout(false);
             this.statusStrip2.PerformLayout();
@@ -941,14 +864,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem redoToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem customizeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
@@ -965,8 +881,6 @@
         private SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter requestFormatTypesTableAdapter;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label AuctionNameLabel2;
-        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem DonorsListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newDonorToolStripMenuItem;
         private System.Windows.Forms.DataGridViewComboBoxColumn ItemsDonorIdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemsAuctionIdColumn;
@@ -986,11 +900,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemsCreateDateColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemsModifiedDateColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemsIdColumn;
-        private System.Windows.Forms.ToolStripMenuItem AuctionsListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editAuctionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editDonorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripMenuItem CloseAuctionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AuctionsListToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem DonorsListToolStripMenuItem;
     }
 }

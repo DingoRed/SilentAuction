@@ -30,16 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DonorTypeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.donorTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.silentAuctionDataSet = new SilentAuction.SilentAuctionDataSet();
-            this.requestFormatTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.donorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.donorsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorsTableAdapter();
-            this.donorTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorTypesTableAdapter();
-            this.requestFormatTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter();
-            this.DonorTypeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RequestFormatTypeIdColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.requestFormatTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ContactNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmailColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UrlColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +51,10 @@
             this.IdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ModifiedDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.donorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.donorsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorsTableAdapter();
+            this.donorTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorTypesTableAdapter();
+            this.requestFormatTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.donorTypesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).BeginInit();
@@ -95,38 +95,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(877, 386);
             this.dataGridView1.TabIndex = 0;
             // 
-            // donorTypesBindingSource
-            // 
-            this.donorTypesBindingSource.DataMember = "DonorTypes";
-            this.donorTypesBindingSource.DataSource = this.silentAuctionDataSet;
-            // 
-            // silentAuctionDataSet
-            // 
-            this.silentAuctionDataSet.DataSetName = "SilentAuctionDataSet";
-            this.silentAuctionDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // requestFormatTypesBindingSource
-            // 
-            this.requestFormatTypesBindingSource.DataMember = "RequestFormatTypes";
-            this.requestFormatTypesBindingSource.DataSource = this.silentAuctionDataSet;
-            // 
-            // donorsBindingSource
-            // 
-            this.donorsBindingSource.DataMember = "Donors";
-            this.donorsBindingSource.DataSource = this.silentAuctionDataSet;
-            // 
-            // donorsTableAdapter
-            // 
-            this.donorsTableAdapter.ClearBeforeFill = true;
-            // 
-            // donorTypesTableAdapter
-            // 
-            this.donorTypesTableAdapter.ClearBeforeFill = true;
-            // 
-            // requestFormatTypesTableAdapter
-            // 
-            this.requestFormatTypesTableAdapter.ClearBeforeFill = true;
-            // 
             // DonorTypeColumn
             // 
             this.DonorTypeColumn.DataPropertyName = "DonorTypeId";
@@ -140,6 +108,16 @@
             this.DonorTypeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.DonorTypeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.DonorTypeColumn.ValueMember = "Id";
+            // 
+            // donorTypesBindingSource
+            // 
+            this.donorTypesBindingSource.DataMember = "DonorTypes";
+            this.donorTypesBindingSource.DataSource = this.silentAuctionDataSet;
+            // 
+            // silentAuctionDataSet
+            // 
+            this.silentAuctionDataSet.DataSetName = "SilentAuctionDataSet";
+            this.silentAuctionDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // NameColumn
             // 
@@ -161,6 +139,11 @@
             this.RequestFormatTypeIdColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.RequestFormatTypeIdColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.RequestFormatTypeIdColumn.ValueMember = "Id";
+            // 
+            // requestFormatTypesBindingSource
+            // 
+            this.requestFormatTypesBindingSource.DataMember = "RequestFormatTypes";
+            this.requestFormatTypesBindingSource.DataSource = this.silentAuctionDataSet;
             // 
             // ContactNameColumn
             // 
@@ -270,6 +253,23 @@
             this.ModifiedDateColumn.ReadOnly = true;
             this.ModifiedDateColumn.Visible = false;
             // 
+            // donorsBindingSource
+            // 
+            this.donorsBindingSource.DataMember = "Donors";
+            this.donorsBindingSource.DataSource = this.silentAuctionDataSet;
+            // 
+            // donorsTableAdapter
+            // 
+            this.donorsTableAdapter.ClearBeforeFill = true;
+            // 
+            // donorTypesTableAdapter
+            // 
+            this.donorTypesTableAdapter.ClearBeforeFill = true;
+            // 
+            // requestFormatTypesTableAdapter
+            // 
+            this.requestFormatTypesTableAdapter.ClearBeforeFill = true;
+            // 
             // ViewDonorsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,7 +277,7 @@
             this.ClientSize = new System.Drawing.Size(877, 386);
             this.Controls.Add(this.dataGridView1);
             this.Name = "ViewDonorsForm";
-            this.Text = "View Donors";
+            this.Text = "View/Edit Donors";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ViewDonorsFormFormClosing);
             this.Load += new System.EventHandler(this.ViewDonorsFormLoad);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

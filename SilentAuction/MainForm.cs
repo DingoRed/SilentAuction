@@ -41,6 +41,7 @@ namespace SilentAuction
             SetupInitialWindow();
             SetupGrids();
             SetupOpenAuctionToolStripMenuItem();
+            SetupCloseAuctionToolStripMenuItem();
             SetupSaveToolStripMenuItem();
         }
 
@@ -207,6 +208,7 @@ namespace SilentAuction
                 createNewAuctionForm.ShowDialog();
                 auctionsTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
                 SetupOpenAuctionToolStripMenuItem();
+                SetupCloseAuctionToolStripMenuItem();
             }
         }
 
@@ -223,6 +225,8 @@ namespace SilentAuction
                     itemsTableAdapter.FillItems(silentAuctionDataSet.Items, AuctionIdInUse);
                     SetAuctionNameAndGrid();
                 }
+
+                SetupCloseAuctionToolStripMenuItem();
             }
         }
 
@@ -231,18 +235,22 @@ namespace SilentAuction
             using (EditAuctionForm editAuctionForm = new EditAuctionForm())
             {
                 editAuctionForm.ShowDialog();
-                auctionsTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
-                SetAuctionNameAndGrid();
-                editAuctionForm.Close();
             }
         }
 
+        private void EditDonorToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // TODO: Create an Edit Donor form?
+            MessageBox.Show("Need to implement");
+        }
+        
         private void CloseAuctionToolStripMenuItemClick(object sender, EventArgs e)
         {
             AuctionIdInUse = 0;
             AuctionNameInUse = "";
             itemsTableAdapter.FillItems(silentAuctionDataSet.Items, AuctionIdInUse);
             ItemsDataGridView.Visible = AuctionIdInUse > 0;
+            SetupCloseAuctionToolStripMenuItem();
         }
 
         private void NewDonorToolStripMenuItemClick(object sender, EventArgs e)
@@ -252,6 +260,7 @@ namespace SilentAuction
                 createNewDonorForm.ShowDialog();
                 donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors);
                 SetupOpenAuctionToolStripMenuItem();
+                SetupCloseAuctionToolStripMenuItem();
             }
         }
 
@@ -278,12 +287,12 @@ namespace SilentAuction
 
         private void PrintToolStripMenuItemClick(object sender, EventArgs e)
         {
-            throw new Exception("Not Implemented");
+            MessageBox.Show("Not Implemented");
         }
 
         private void PrintPreviewToolStripMenuItemClick(object sender, EventArgs e)
         {
-            throw new Exception("Not Implemented");
+            MessageBox.Show("Not Implemented");
         }
 
         private void ExitToolStripMenuItemClick(object sender, EventArgs e)
@@ -417,6 +426,11 @@ namespace SilentAuction
         {
             OpenAuctionToolStripMenuItem.Enabled = (silentAuctionDataSet.Auctions.Rows.Count > 0 &&
                                                     silentAuctionDataSet.Donors.Rows.Count > 0);
+        }
+
+        private void SetupCloseAuctionToolStripMenuItem()
+        {
+            CloseAuctionToolStripMenuItem.Enabled = AuctionIdInUse > 0;
         }
         #endregion
 
