@@ -73,6 +73,8 @@
             this.requestFormatTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter();
             this.donorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.donorsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorsTableAdapter();
+            this.auctionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.auctionsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.AuctionsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.donorTypesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).BeginInit();
@@ -80,6 +82,7 @@
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -523,6 +526,15 @@
             // 
             this.donorsTableAdapter.ClearBeforeFill = true;
             // 
+            // auctionsBindingSource
+            // 
+            this.auctionsBindingSource.DataMember = "Auctions";
+            this.auctionsBindingSource.DataSource = this.silentAuctionDataSet;
+            // 
+            // auctionsTableAdapter
+            // 
+            this.auctionsTableAdapter.ClearBeforeFill = true;
+            // 
             // CreateNewDonorForm
             // 
             this.AcceptButton = this.SaveDonorButton;
@@ -548,6 +560,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -599,5 +612,7 @@
         private System.Windows.Forms.Label ErrorLabel;
         private System.Windows.Forms.BindingSource donorsBindingSource;
         private SilentAuctionDataSetTableAdapters.DonorsTableAdapter donorsTableAdapter;
+        private System.Windows.Forms.BindingSource auctionsBindingSource;
+        private SilentAuctionDataSetTableAdapters.AuctionsTableAdapter auctionsTableAdapter;
     }
 }

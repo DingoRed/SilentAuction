@@ -46,6 +46,10 @@ namespace SilentAuction {
         
         private global::System.Data.DataRelation relationFK_RequestFormatTypes_Donors;
         
+        private global::System.Data.DataRelation relationFK_RequestStatusTypes_Donors;
+        
+        private global::System.Data.DataRelation relationFK_Auctions_Donors;
+        
         private global::System.Data.DataRelation relationFK_DonationDeliveryTypes_Items;
         
         private global::System.Data.DataRelation relationFK_Donors_Items;
@@ -402,6 +406,8 @@ namespace SilentAuction {
             }
             this.relationFK_DonorTypes_Donors = this.Relations["FK_DonorTypes_Donors"];
             this.relationFK_RequestFormatTypes_Donors = this.Relations["FK_RequestFormatTypes_Donors"];
+            this.relationFK_RequestStatusTypes_Donors = this.Relations["FK_RequestStatusTypes_Donors"];
+            this.relationFK_Auctions_Donors = this.Relations["FK_Auctions_Donors"];
             this.relationFK_DonationDeliveryTypes_Items = this.Relations["FK_DonationDeliveryTypes_Items"];
             this.relationFK_Donors_Items = this.Relations["FK_Donors_Items"];
             this.relationFK_Auctions_Items = this.Relations["FK_Auctions_Items"];
@@ -450,6 +456,20 @@ namespace SilentAuction {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_RequestStatusTypes_Donors", new global::System.Data.DataColumn[] {
+                        this.tableRequestStatusTypes.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDonors.RequestStatusTypeIdColumn});
+            this.tableDonors.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Auctions_Donors", new global::System.Data.DataColumn[] {
+                        this.tableAuctions.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDonors.AuctionIdColumn});
+            this.tableDonors.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             fkc = new global::System.Data.ForeignKeyConstraint("FK_DonationDeliveryTypes_Items", new global::System.Data.DataColumn[] {
                         this.tableDonationDeliveryTypes.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableItems.DonationDeliveryTypeIdColumn});
@@ -493,6 +513,14 @@ namespace SilentAuction {
                         this.tableRequestFormatTypes.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableDonors.RequestFormatTypeIdColumn}, false);
             this.Relations.Add(this.relationFK_RequestFormatTypes_Donors);
+            this.relationFK_RequestStatusTypes_Donors = new global::System.Data.DataRelation("FK_RequestStatusTypes_Donors", new global::System.Data.DataColumn[] {
+                        this.tableRequestStatusTypes.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDonors.RequestStatusTypeIdColumn}, false);
+            this.Relations.Add(this.relationFK_RequestStatusTypes_Donors);
+            this.relationFK_Auctions_Donors = new global::System.Data.DataRelation("FK_Auctions_Donors", new global::System.Data.DataColumn[] {
+                        this.tableAuctions.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDonors.AuctionIdColumn}, false);
+            this.Relations.Add(this.relationFK_Auctions_Donors);
             this.relationFK_DonationDeliveryTypes_Items = new global::System.Data.DataRelation("FK_DonationDeliveryTypes_Items", new global::System.Data.DataColumn[] {
                         this.tableDonationDeliveryTypes.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableItems.DonationDeliveryTypeIdColumn}, false);
@@ -1018,6 +1046,10 @@ namespace SilentAuction {
             
             private global::System.Data.DataColumn columnUrl;
             
+            private global::System.Data.DataColumn columnAuctionId;
+            
+            private global::System.Data.DataColumn columnRequestStatusTypeId;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DonorsDataTable() {
@@ -1197,6 +1229,22 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AuctionIdColumn {
+                get {
+                    return this.columnAuctionId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn RequestStatusTypeIdColumn {
+                get {
+                    return this.columnRequestStatusTypeId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1249,7 +1297,9 @@ namespace SilentAuction {
                         string CreateDate, 
                         string ModifiedDate, 
                         RequestFormatTypesRow parentRequestFormatTypesRowByFK_RequestFormatTypes_Donors, 
-                        string Url) {
+                        string Url, 
+                        AuctionsRow parentAuctionsRowByFK_Auctions_Donors, 
+                        RequestStatusTypesRow parentRequestStatusTypesRowByFK_RequestStatusTypes_Donors) {
                 DonorsRow rowDonorsRow = ((DonorsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1269,12 +1319,20 @@ namespace SilentAuction {
                         CreateDate,
                         ModifiedDate,
                         null,
-                        Url};
+                        Url,
+                        null,
+                        null};
                 if ((parentDonorTypesRowByFK_DonorTypes_Donors != null)) {
                     columnValuesArray[1] = parentDonorTypesRowByFK_DonorTypes_Donors[0];
                 }
                 if ((parentRequestFormatTypesRowByFK_RequestFormatTypes_Donors != null)) {
                     columnValuesArray[16] = parentRequestFormatTypesRowByFK_RequestFormatTypes_Donors[0];
+                }
+                if ((parentAuctionsRowByFK_Auctions_Donors != null)) {
+                    columnValuesArray[18] = parentAuctionsRowByFK_Auctions_Donors[0];
+                }
+                if ((parentRequestStatusTypesRowByFK_RequestStatusTypes_Donors != null)) {
+                    columnValuesArray[19] = parentRequestStatusTypesRowByFK_RequestStatusTypes_Donors[0];
                 }
                 rowDonorsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDonorsRow);
@@ -1323,6 +1381,8 @@ namespace SilentAuction {
                 this.columnModifiedDate = base.Columns["ModifiedDate"];
                 this.columnRequestFormatTypeId = base.Columns["RequestFormatTypeId"];
                 this.columnUrl = base.Columns["Url"];
+                this.columnAuctionId = base.Columns["AuctionId"];
+                this.columnRequestStatusTypeId = base.Columns["RequestStatusTypeId"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1364,6 +1424,10 @@ namespace SilentAuction {
                 base.Columns.Add(this.columnRequestFormatTypeId);
                 this.columnUrl = new global::System.Data.DataColumn("Url", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUrl);
+                this.columnAuctionId = new global::System.Data.DataColumn("AuctionId", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAuctionId);
+                this.columnRequestStatusTypeId = new global::System.Data.DataColumn("RequestStatusTypeId", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRequestStatusTypeId);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -1390,6 +1454,7 @@ namespace SilentAuction {
                 this.columnModifiedDate.AllowDBNull = false;
                 this.columnModifiedDate.MaxLength = 2147483647;
                 this.columnUrl.MaxLength = 2147483647;
+                this.columnAuctionId.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3865,6 +3930,17 @@ namespace SilentAuction {
                     return ((ItemsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Auctions_Items"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DonorsRow[] GetDonorsRows() {
+                if ((this.Table.ChildRelations["FK_Auctions_Donors"] == null)) {
+                    return new DonorsRow[0];
+                }
+                else {
+                    return ((DonorsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Auctions_Donors"])));
+                }
+            }
         }
         
         /// <summary>
@@ -4146,6 +4222,33 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public long AuctionId {
+                get {
+                    return ((long)(this[this.tableDonors.AuctionIdColumn]));
+                }
+                set {
+                    this[this.tableDonors.AuctionIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public long RequestStatusTypeId {
+                get {
+                    try {
+                        return ((long)(this[this.tableDonors.RequestStatusTypeIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RequestStatusTypeId\' in table \'Donors\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDonors.RequestStatusTypeIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DonorTypesRow DonorTypesRow {
                 get {
                     return ((DonorTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_DonorTypes_Donors"])));
@@ -4163,6 +4266,28 @@ namespace SilentAuction {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_RequestFormatTypes_Donors"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public RequestStatusTypesRow RequestStatusTypesRow {
+                get {
+                    return ((RequestStatusTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_RequestStatusTypes_Donors"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_RequestStatusTypes_Donors"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public AuctionsRow AuctionsRow {
+                get {
+                    return ((AuctionsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Auctions_Donors"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Auctions_Donors"]);
                 }
             }
             
@@ -4320,6 +4445,18 @@ namespace SilentAuction {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetUrlNull() {
                 this[this.tableDonors.UrlColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsRequestStatusTypeIdNull() {
+                return this.IsNull(this.tableDonors.RequestStatusTypeIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetRequestStatusTypeIdNull() {
+                this[this.tableDonors.RequestStatusTypeIdColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5078,6 +5215,17 @@ namespace SilentAuction {
                 }
                 set {
                     this[this.tableRequestStatusTypes.DescriptionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DonorsRow[] GetDonorsRows() {
+                if ((this.Table.ChildRelations["FK_RequestStatusTypes_Donors"] == null)) {
+                    return new DonorsRow[0];
+                }
+                else {
+                    return ((DonorsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_RequestStatusTypes_Donors"])));
                 }
             }
         }
@@ -6029,16 +6177,44 @@ namespace SilentAuction.SilentAuctionDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("ModifiedDate", "ModifiedDate");
             tableMapping.ColumnMappings.Add("RequestFormatTypeId", "RequestFormatTypeId");
             tableMapping.ColumnMappings.Add("Url", "Url");
+            tableMapping.ColumnMappings.Add("AuctionId", "AuctionId");
+            tableMapping.ColumnMappings.Add("RequestStatusTypeId", "RequestStatusTypeId");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SQLite.SQLiteCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [main].[sqlite_default_schema].[Donors] WHERE (([Id] = @Original_Id) AND ([DonorTypeId] = @Original_DonorTypeId) AND ([Name] = @Original_Name) AND ((@IsNull_RequestFormatTypeId = 1 AND [RequestFormatTypeId] IS NULL) OR ([RequestFormatTypeId] = @Original_RequestFormatTypeId)) AND ((@IsNull_ContactName = 1 AND [ContactName] IS NULL) OR ([ContactName] = @Original_ContactName)) AND ((@IsNull_Email = 1 AND [Email] IS NULL) OR ([Email] = @Original_Email)) AND ((@IsNull_Url = 1 AND [Url] IS NULL) OR ([Url] = @Original_Url)) AND ((@IsNull_Street1 = 1 AND [Street1] IS NULL) OR ([Street1] = @Original_Street1)) AND ((@IsNull_Street2 = 1 AND [Street2] IS NULL) OR ([Street2] = @Original_Street2)) AND ((@IsNull_City = 1 AND [City] IS NULL) OR ([City] = @Original_City)) AND ((@IsNull_State = 1 AND [State] IS NULL) OR ([State] = @Original_State)) AND ((@IsNull_ZipCode = 1 AND [ZipCode] IS NULL) OR ([ZipCode] = @Original_ZipCode)) AND ((@IsNull_Phone1 = 1 AND [Phone1] IS NULL) OR ([Phone1] = @Original_Phone1)) AND ((@IsNull_Extension1 = 1 AND [Extension1] IS NULL) OR ([Extension1] = @Original_Extension1)) AND ((@IsNull_Phone2 = 1 AND [Phone2] IS NULL) OR ([Phone2] = @Original_Phone2)) AND ((@IsNull_Extension2 = 1 AND [Extension2] IS NULL) OR ([Extension2] = @Original_Extension2)) AND ([CreateDate] = @Original_CreateDate) AND ([ModifiedDate] = @Original_ModifiedDate))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [main].[sqlite_default_schema].[Donors] WHERE (([Id] = @Original_Id) " +
+                "AND ([AuctionId] = @Original_AuctionId) AND ([DonorTypeId] = @Original_DonorType" +
+                "Id) AND ([Name] = @Original_Name) AND ((@IsNull_RequestFormatTypeId = 1 AND [Req" +
+                "uestFormatTypeId] IS NULL) OR ([RequestFormatTypeId] = @Original_RequestFormatTy" +
+                "peId)) AND ((@IsNull_RequestStatusTypeId = 1 AND [RequestStatusTypeId] IS NULL) " +
+                "OR ([RequestStatusTypeId] = @Original_RequestStatusTypeId)) AND ((@IsNull_Contac" +
+                "tName = 1 AND [ContactName] IS NULL) OR ([ContactName] = @Original_ContactName))" +
+                " AND ((@IsNull_Email = 1 AND [Email] IS NULL) OR ([Email] = @Original_Email)) AN" +
+                "D ((@IsNull_Url = 1 AND [Url] IS NULL) OR ([Url] = @Original_Url)) AND ((@IsNull" +
+                "_Street1 = 1 AND [Street1] IS NULL) OR ([Street1] = @Original_Street1)) AND ((@I" +
+                "sNull_Street2 = 1 AND [Street2] IS NULL) OR ([Street2] = @Original_Street2)) AND" +
+                " ((@IsNull_City = 1 AND [City] IS NULL) OR ([City] = @Original_City)) AND ((@IsN" +
+                "ull_State = 1 AND [State] IS NULL) OR ([State] = @Original_State)) AND ((@IsNull" +
+                "_ZipCode = 1 AND [ZipCode] IS NULL) OR ([ZipCode] = @Original_ZipCode)) AND ((@I" +
+                "sNull_Phone1 = 1 AND [Phone1] IS NULL) OR ([Phone1] = @Original_Phone1)) AND ((@" +
+                "IsNull_Extension1 = 1 AND [Extension1] IS NULL) OR ([Extension1] = @Original_Ext" +
+                "ension1)) AND ((@IsNull_Phone2 = 1 AND [Phone2] IS NULL) OR ([Phone2] = @Origina" +
+                "l_Phone2)) AND ((@IsNull_Extension2 = 1 AND [Extension2] IS NULL) OR ([Extension" +
+                "2] = @Original_Extension2)) AND ([CreateDate] = @Original_CreateDate) AND ([Modi" +
+                "fiedDate] = @Original_ModifiedDate))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::System.Data.SQLite.SQLiteParameter param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Original_Id";
             param.DbType = global::System.Data.DbType.Int64;
             param.DbType = global::System.Data.DbType.Int64;
             param.SourceColumn = "Id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Original_AuctionId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SourceColumn = "AuctionId";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
@@ -6067,6 +6243,21 @@ namespace SilentAuction.SilentAuctionDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Int64;
             param.DbType = global::System.Data.DbType.Int64;
             param.SourceColumn = "RequestFormatTypeId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@IsNull_RequestStatusTypeId";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SourceColumn = "RequestStatusTypeId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Original_RequestStatusTypeId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SourceColumn = "RequestStatusTypeId";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
@@ -6251,8 +6442,14 @@ namespace SilentAuction.SilentAuctionDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::System.Data.SQLite.SQLiteCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [main].[sqlite_default_schema].[Donors] ([DonorTypeId], [Name], [RequestFormatTypeId], [ContactName], [Email], [Url], [Street1], [Street2], [City], [State], [ZipCode], [Phone1], [Extension1], [Phone2], [Extension2], [CreateDate], [ModifiedDate]) VALUES (@DonorTypeId, @Name, @RequestFormatTypeId, @ContactName, @Email, @Url, @Street1, @Street2, @City, @State, @ZipCode, @Phone1, @Extension1, @Phone2, @Extension2, @CreateDate, @ModifiedDate)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [main].[sqlite_default_schema].[Donors] ([AuctionId], [DonorTypeId], [Name], [RequestFormatTypeId], [RequestStatusTypeId], [ContactName], [Email], [Url], [Street1], [Street2], [City], [State], [ZipCode], [Phone1], [Extension1], [Phone2], [Extension2], [CreateDate], [ModifiedDate]) VALUES (@AuctionId, @DonorTypeId, @Name, @RequestFormatTypeId, @RequestStatusTypeId, @ContactName, @Email, @Url, @Street1, @Street2, @City, @State, @ZipCode, @Phone1, @Extension1, @Phone2, @Extension2, @CreateDate, @ModifiedDate)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@AuctionId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SourceColumn = "AuctionId";
+            this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@DonorTypeId";
             param.DbType = global::System.Data.DbType.Int64;
@@ -6269,6 +6466,12 @@ namespace SilentAuction.SilentAuctionDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Int64;
             param.DbType = global::System.Data.DbType.Int64;
             param.SourceColumn = "RequestFormatTypeId";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@RequestStatusTypeId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SourceColumn = "RequestStatusTypeId";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@ContactName";
@@ -6342,30 +6545,39 @@ namespace SilentAuction.SilentAuctionDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::System.Data.SQLite.SQLiteCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [main].[sqlite_default_schema].[Donors] SET [DonorTypeId] = @DonorTypeId, " +
-                "[Name] = @Name, [RequestFormatTypeId] = @RequestFormatTypeId, [ContactName] = @C" +
-                "ontactName, [Email] = @Email, [Url] = @Url, [Street1] = @Street1, [Street2] = @S" +
-                "treet2, [City] = @City, [State] = @State, [ZipCode] = @ZipCode, [Phone1] = @Phon" +
-                "e1, [Extension1] = @Extension1, [Phone2] = @Phone2, [Extension2] = @Extension2, " +
-                "[CreateDate] = @CreateDate, [ModifiedDate] = @ModifiedDate WHERE (([Id] = @Origi" +
-                "nal_Id) AND ([DonorTypeId] = @Original_DonorTypeId) AND ([Name] = @Original_Name" +
-                ") AND ((@IsNull_RequestFormatTypeId = 1 AND [RequestFormatTypeId] IS NULL) OR ([" +
-                "RequestFormatTypeId] = @Original_RequestFormatTypeId)) AND ((@IsNull_ContactName" +
-                " = 1 AND [ContactName] IS NULL) OR ([ContactName] = @Original_ContactName)) AND " +
-                "((@IsNull_Email = 1 AND [Email] IS NULL) OR ([Email] = @Original_Email)) AND ((@" +
-                "IsNull_Url = 1 AND [Url] IS NULL) OR ([Url] = @Original_Url)) AND ((@IsNull_Stre" +
-                "et1 = 1 AND [Street1] IS NULL) OR ([Street1] = @Original_Street1)) AND ((@IsNull" +
-                "_Street2 = 1 AND [Street2] IS NULL) OR ([Street2] = @Original_Street2)) AND ((@I" +
-                "sNull_City = 1 AND [City] IS NULL) OR ([City] = @Original_City)) AND ((@IsNull_S" +
-                "tate = 1 AND [State] IS NULL) OR ([State] = @Original_State)) AND ((@IsNull_ZipC" +
-                "ode = 1 AND [ZipCode] IS NULL) OR ([ZipCode] = @Original_ZipCode)) AND ((@IsNull" +
-                "_Phone1 = 1 AND [Phone1] IS NULL) OR ([Phone1] = @Original_Phone1)) AND ((@IsNul" +
-                "l_Extension1 = 1 AND [Extension1] IS NULL) OR ([Extension1] = @Original_Extensio" +
-                "n1)) AND ((@IsNull_Phone2 = 1 AND [Phone2] IS NULL) OR ([Phone2] = @Original_Pho" +
-                "ne2)) AND ((@IsNull_Extension2 = 1 AND [Extension2] IS NULL) OR ([Extension2] = " +
-                "@Original_Extension2)) AND ([CreateDate] = @Original_CreateDate) AND ([ModifiedD" +
-                "ate] = @Original_ModifiedDate))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [main].[sqlite_default_schema].[Donors] SET [AuctionId] = @AuctionId, [Don" +
+                "orTypeId] = @DonorTypeId, [Name] = @Name, [RequestFormatTypeId] = @RequestFormat" +
+                "TypeId, [RequestStatusTypeId] = @RequestStatusTypeId, [ContactName] = @ContactNa" +
+                "me, [Email] = @Email, [Url] = @Url, [Street1] = @Street1, [Street2] = @Street2, " +
+                "[City] = @City, [State] = @State, [ZipCode] = @ZipCode, [Phone1] = @Phone1, [Ext" +
+                "ension1] = @Extension1, [Phone2] = @Phone2, [Extension2] = @Extension2, [CreateD" +
+                "ate] = @CreateDate, [ModifiedDate] = @ModifiedDate WHERE (([Id] = @Original_Id) " +
+                "AND ([AuctionId] = @Original_AuctionId) AND ([DonorTypeId] = @Original_DonorType" +
+                "Id) AND ([Name] = @Original_Name) AND ((@IsNull_RequestFormatTypeId = 1 AND [Req" +
+                "uestFormatTypeId] IS NULL) OR ([RequestFormatTypeId] = @Original_RequestFormatTy" +
+                "peId)) AND ((@IsNull_RequestStatusTypeId = 1 AND [RequestStatusTypeId] IS NULL) " +
+                "OR ([RequestStatusTypeId] = @Original_RequestStatusTypeId)) AND ((@IsNull_Contac" +
+                "tName = 1 AND [ContactName] IS NULL) OR ([ContactName] = @Original_ContactName))" +
+                " AND ((@IsNull_Email = 1 AND [Email] IS NULL) OR ([Email] = @Original_Email)) AN" +
+                "D ((@IsNull_Url = 1 AND [Url] IS NULL) OR ([Url] = @Original_Url)) AND ((@IsNull" +
+                "_Street1 = 1 AND [Street1] IS NULL) OR ([Street1] = @Original_Street1)) AND ((@I" +
+                "sNull_Street2 = 1 AND [Street2] IS NULL) OR ([Street2] = @Original_Street2)) AND" +
+                " ((@IsNull_City = 1 AND [City] IS NULL) OR ([City] = @Original_City)) AND ((@IsN" +
+                "ull_State = 1 AND [State] IS NULL) OR ([State] = @Original_State)) AND ((@IsNull" +
+                "_ZipCode = 1 AND [ZipCode] IS NULL) OR ([ZipCode] = @Original_ZipCode)) AND ((@I" +
+                "sNull_Phone1 = 1 AND [Phone1] IS NULL) OR ([Phone1] = @Original_Phone1)) AND ((@" +
+                "IsNull_Extension1 = 1 AND [Extension1] IS NULL) OR ([Extension1] = @Original_Ext" +
+                "ension1)) AND ((@IsNull_Phone2 = 1 AND [Phone2] IS NULL) OR ([Phone2] = @Origina" +
+                "l_Phone2)) AND ((@IsNull_Extension2 = 1 AND [Extension2] IS NULL) OR ([Extension" +
+                "2] = @Original_Extension2)) AND ([CreateDate] = @Original_CreateDate) AND ([Modi" +
+                "fiedDate] = @Original_ModifiedDate))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@AuctionId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SourceColumn = "AuctionId";
+            this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@DonorTypeId";
             param.DbType = global::System.Data.DbType.Int64;
@@ -6382,6 +6594,12 @@ namespace SilentAuction.SilentAuctionDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Int64;
             param.DbType = global::System.Data.DbType.Int64;
             param.SourceColumn = "RequestFormatTypeId";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@RequestStatusTypeId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SourceColumn = "RequestStatusTypeId";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@ContactName";
@@ -6461,6 +6679,13 @@ namespace SilentAuction.SilentAuctionDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Original_AuctionId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SourceColumn = "AuctionId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Original_DonorTypeId";
             param.DbType = global::System.Data.DbType.Int64;
             param.DbType = global::System.Data.DbType.Int64;
@@ -6486,6 +6711,21 @@ namespace SilentAuction.SilentAuctionDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Int64;
             param.DbType = global::System.Data.DbType.Int64;
             param.SourceColumn = "RequestFormatTypeId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@IsNull_RequestStatusTypeId";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SourceColumn = "RequestStatusTypeId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Original_RequestStatusTypeId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SourceColumn = "RequestStatusTypeId";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
@@ -6683,19 +6923,28 @@ namespace SilentAuction.SilentAuctionDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SQLite.SQLiteCommand[1];
             this._commandCollection[0] = new global::System.Data.SQLite.SQLiteCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        Id, DonorTypeId, Name, RequestFormatTypeId, ContactName, Email, Url" +
-                ", Street1, Street2, City, State, ZipCode, Phone1, Extension1, Phone2, Extension2" +
-                ", CreateDate, \r\n                         ModifiedDate\r\nFROM            Donors\r\nO" +
-                "RDER BY Name";
+            this._commandCollection[0].CommandText = @"SELECT        Id, AuctionId, DonorTypeId, Name, RequestFormatTypeId, RequestStatusTypeId, ContactName, Email, Url, Street1, Street2, City, State, ZipCode, Phone1, Extension1, 
+                         Phone2, Extension2, CreateDate, ModifiedDate
+FROM            Donors
+WHERE        (AuctionId = @AuctionId)
+ORDER BY Name";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            global::System.Data.SQLite.SQLiteParameter param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@AuctionId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.Size = 8;
+            param.SourceColumn = "AuctionId";
+            this._commandCollection[0].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int FillDonors(SilentAuctionDataSet.DonorsDataTable dataTable) {
+        public virtual int FillDonors(SilentAuctionDataSet.DonorsDataTable dataTable, long AuctionId) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -6707,8 +6956,9 @@ namespace SilentAuction.SilentAuctionDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SilentAuctionDataSet.DonorsDataTable GetDonorsData() {
+        public virtual SilentAuctionDataSet.DonorsDataTable GetDonorsData(long AuctionId) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
             SilentAuctionDataSet.DonorsDataTable dataTable = new SilentAuctionDataSet.DonorsDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -6749,9 +6999,11 @@ namespace SilentAuction.SilentAuctionDataSetTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
         public virtual int Delete(
                     long Original_Id, 
+                    long Original_AuctionId, 
                     long Original_DonorTypeId, 
                     string Original_Name, 
                     global::System.Nullable<long> Original_RequestFormatTypeId, 
+                    global::System.Nullable<long> Original_RequestStatusTypeId, 
                     string Original_ContactName, 
                     string Original_Email, 
                     string Original_Url, 
@@ -6767,128 +7019,137 @@ namespace SilentAuction.SilentAuctionDataSetTableAdapters {
                     string Original_CreateDate, 
                     string Original_ModifiedDate) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_Id));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((long)(Original_DonorTypeId));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((long)(Original_AuctionId));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((long)(Original_DonorTypeId));
             if ((Original_Name == null)) {
                 throw new global::System.ArgumentNullException("Original_Name");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Name));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_Name));
             }
             if ((Original_RequestFormatTypeId.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((long)(Original_RequestFormatTypeId.Value));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((long)(Original_RequestFormatTypeId.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((Original_RequestStatusTypeId.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((long)(Original_RequestStatusTypeId.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             if ((Original_ContactName == null)) {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_ContactName));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((string)(Original_ContactName));
             }
             if ((Original_Email == null)) {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_Email));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((string)(Original_Email));
             }
             if ((Original_Url == null)) {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_Url));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((string)(Original_Url));
             }
             if ((Original_Street1 == null)) {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_Street1));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((string)(Original_Street1));
             }
             if ((Original_Street2 == null)) {
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Original_Street2));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((string)(Original_Street2));
             }
             if ((Original_City == null)) {
-                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[16].Value = ((string)(Original_City));
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((string)(Original_City));
             }
             if ((Original_State == null)) {
-                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[18].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[18].Value = ((string)(Original_State));
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[21].Value = ((string)(Original_State));
             }
             if ((Original_ZipCode == null)) {
-                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[20].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[20].Value = ((string)(Original_ZipCode));
+                this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[23].Value = ((string)(Original_ZipCode));
             }
             if ((Original_Phone1 == null)) {
-                this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[22].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[24].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[25].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[22].Value = ((string)(Original_Phone1));
+                this.Adapter.DeleteCommand.Parameters[24].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[25].Value = ((string)(Original_Phone1));
             }
             if ((Original_Extension1 == null)) {
-                this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[24].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[26].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[24].Value = ((string)(Original_Extension1));
+                this.Adapter.DeleteCommand.Parameters[26].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[27].Value = ((string)(Original_Extension1));
             }
             if ((Original_Phone2 == null)) {
-                this.Adapter.DeleteCommand.Parameters[25].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[26].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[28].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[29].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[25].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[26].Value = ((string)(Original_Phone2));
+                this.Adapter.DeleteCommand.Parameters[28].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[29].Value = ((string)(Original_Phone2));
             }
             if ((Original_Extension2 == null)) {
-                this.Adapter.DeleteCommand.Parameters[27].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[28].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[30].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[31].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[27].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[28].Value = ((string)(Original_Extension2));
+                this.Adapter.DeleteCommand.Parameters[30].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[31].Value = ((string)(Original_Extension2));
             }
             if ((Original_CreateDate == null)) {
                 throw new global::System.ArgumentNullException("Original_CreateDate");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[29].Value = ((string)(Original_CreateDate));
+                this.Adapter.DeleteCommand.Parameters[32].Value = ((string)(Original_CreateDate));
             }
             if ((Original_ModifiedDate == null)) {
                 throw new global::System.ArgumentNullException("Original_ModifiedDate");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[30].Value = ((string)(Original_ModifiedDate));
+                this.Adapter.DeleteCommand.Parameters[33].Value = ((string)(Original_ModifiedDate));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -6911,9 +7172,11 @@ namespace SilentAuction.SilentAuctionDataSetTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(
+                    long AuctionId, 
                     long DonorTypeId, 
                     string Name, 
                     global::System.Nullable<long> RequestFormatTypeId, 
+                    global::System.Nullable<long> RequestStatusTypeId, 
                     string ContactName, 
                     string Email, 
                     string Url, 
@@ -6928,102 +7191,109 @@ namespace SilentAuction.SilentAuctionDataSetTableAdapters {
                     string Extension2, 
                     string CreateDate, 
                     string ModifiedDate) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((long)(DonorTypeId));
+            this.Adapter.InsertCommand.Parameters[0].Value = ((long)(AuctionId));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((long)(DonorTypeId));
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Name));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Name));
             }
             if ((RequestFormatTypeId.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((long)(RequestFormatTypeId.Value));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((long)(RequestFormatTypeId.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            if ((ContactName == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(ContactName));
+            if ((RequestStatusTypeId.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((long)(RequestStatusTypeId.Value));
             }
-            if ((Email == null)) {
+            else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Email));
-            }
-            if ((Url == null)) {
+            if ((ContactName == null)) {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Url));
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(ContactName));
             }
-            if ((Street1 == null)) {
+            if ((Email == null)) {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Street1));
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Email));
             }
-            if ((Street2 == null)) {
+            if ((Url == null)) {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(Street2));
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(Url));
             }
-            if ((City == null)) {
+            if ((Street1 == null)) {
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(City));
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(Street1));
             }
-            if ((State == null)) {
+            if ((Street2 == null)) {
                 this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(State));
+                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(Street2));
             }
-            if ((ZipCode == null)) {
+            if ((City == null)) {
                 this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(ZipCode));
+                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(City));
             }
-            if ((Phone1 == null)) {
+            if ((State == null)) {
                 this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((string)(Phone1));
+                this.Adapter.InsertCommand.Parameters[11].Value = ((string)(State));
             }
-            if ((Extension1 == null)) {
+            if ((ZipCode == null)) {
                 this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(Extension1));
+                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(ZipCode));
             }
-            if ((Phone2 == null)) {
+            if ((Phone1 == null)) {
                 this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[13].Value = ((string)(Phone2));
+                this.Adapter.InsertCommand.Parameters[13].Value = ((string)(Phone1));
             }
-            if ((Extension2 == null)) {
+            if ((Extension1 == null)) {
                 this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[14].Value = ((string)(Extension2));
+                this.Adapter.InsertCommand.Parameters[14].Value = ((string)(Extension1));
+            }
+            if ((Phone2 == null)) {
+                this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[15].Value = ((string)(Phone2));
+            }
+            if ((Extension2 == null)) {
+                this.Adapter.InsertCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[16].Value = ((string)(Extension2));
             }
             if ((CreateDate == null)) {
                 throw new global::System.ArgumentNullException("CreateDate");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[15].Value = ((string)(CreateDate));
+                this.Adapter.InsertCommand.Parameters[17].Value = ((string)(CreateDate));
             }
             if ((ModifiedDate == null)) {
                 throw new global::System.ArgumentNullException("ModifiedDate");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[16].Value = ((string)(ModifiedDate));
+                this.Adapter.InsertCommand.Parameters[18].Value = ((string)(ModifiedDate));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -7046,9 +7316,11 @@ namespace SilentAuction.SilentAuctionDataSetTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
+                    long AuctionId, 
                     long DonorTypeId, 
                     string Name, 
                     global::System.Nullable<long> RequestFormatTypeId, 
+                    global::System.Nullable<long> RequestStatusTypeId, 
                     string ContactName, 
                     string Email, 
                     string Url, 
@@ -7064,9 +7336,11 @@ namespace SilentAuction.SilentAuctionDataSetTableAdapters {
                     string CreateDate, 
                     string ModifiedDate, 
                     long Original_Id, 
+                    long Original_AuctionId, 
                     long Original_DonorTypeId, 
                     string Original_Name, 
                     global::System.Nullable<long> Original_RequestFormatTypeId, 
+                    global::System.Nullable<long> Original_RequestStatusTypeId, 
                     string Original_ContactName, 
                     string Original_Email, 
                     string Original_Url, 
@@ -7081,226 +7355,242 @@ namespace SilentAuction.SilentAuctionDataSetTableAdapters {
                     string Original_Extension2, 
                     string Original_CreateDate, 
                     string Original_ModifiedDate) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(DonorTypeId));
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(AuctionId));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((long)(DonorTypeId));
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Name));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Name));
             }
             if ((RequestFormatTypeId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((long)(RequestFormatTypeId.Value));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((long)(RequestFormatTypeId.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            if ((ContactName == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(ContactName));
+            if ((RequestStatusTypeId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((long)(RequestStatusTypeId.Value));
             }
-            if ((Email == null)) {
+            else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Email));
-            }
-            if ((Url == null)) {
+            if ((ContactName == null)) {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Url));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(ContactName));
             }
-            if ((Street1 == null)) {
+            if ((Email == null)) {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Street1));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Email));
             }
-            if ((Street2 == null)) {
+            if ((Url == null)) {
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Street2));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Url));
             }
-            if ((City == null)) {
+            if ((Street1 == null)) {
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(City));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Street1));
             }
-            if ((State == null)) {
+            if ((Street2 == null)) {
                 this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(State));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Street2));
             }
-            if ((ZipCode == null)) {
+            if ((City == null)) {
                 this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(ZipCode));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(City));
             }
-            if ((Phone1 == null)) {
+            if ((State == null)) {
                 this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Phone1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(State));
             }
-            if ((Extension1 == null)) {
+            if ((ZipCode == null)) {
                 this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Extension1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(ZipCode));
             }
-            if ((Phone2 == null)) {
+            if ((Phone1 == null)) {
                 this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Phone2));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Phone1));
             }
-            if ((Extension2 == null)) {
+            if ((Extension1 == null)) {
                 this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Extension2));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Extension1));
+            }
+            if ((Phone2 == null)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Phone2));
+            }
+            if ((Extension2 == null)) {
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Extension2));
             }
             if ((CreateDate == null)) {
                 throw new global::System.ArgumentNullException("CreateDate");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(CreateDate));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(CreateDate));
             }
             if ((ModifiedDate == null)) {
                 throw new global::System.ArgumentNullException("ModifiedDate");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(ModifiedDate));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(ModifiedDate));
             }
-            this.Adapter.UpdateCommand.Parameters[17].Value = ((long)(Original_Id));
-            this.Adapter.UpdateCommand.Parameters[18].Value = ((long)(Original_DonorTypeId));
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((long)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[20].Value = ((long)(Original_AuctionId));
+            this.Adapter.UpdateCommand.Parameters[21].Value = ((long)(Original_DonorTypeId));
             if ((Original_Name == null)) {
                 throw new global::System.ArgumentNullException("Original_Name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_Name));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_Name));
             }
             if ((Original_RequestFormatTypeId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((long)(Original_RequestFormatTypeId.Value));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((long)(Original_RequestFormatTypeId.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+            }
+            if ((Original_RequestStatusTypeId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((long)(Original_RequestStatusTypeId.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
             }
             if ((Original_ContactName == null)) {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((string)(Original_ContactName));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(Original_ContactName));
             }
             if ((Original_Email == null)) {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(Original_Email));
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((string)(Original_Email));
             }
             if ((Original_Url == null)) {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(Original_Url));
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((string)(Original_Url));
             }
             if ((Original_Street1 == null)) {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((string)(Original_Street1));
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((string)(Original_Street1));
             }
             if ((Original_Street2 == null)) {
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((string)(Original_Street2));
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((string)(Original_Street2));
             }
             if ((Original_City == null)) {
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((string)(Original_City));
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((string)(Original_City));
             }
             if ((Original_State == null)) {
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[35].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[40].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((string)(Original_State));
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((string)(Original_State));
             }
             if ((Original_ZipCode == null)) {
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[37].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[42].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((string)(Original_ZipCode));
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((string)(Original_ZipCode));
             }
             if ((Original_Phone1 == null)) {
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[39].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[44].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((string)(Original_Phone1));
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((string)(Original_Phone1));
             }
             if ((Original_Extension1 == null)) {
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[41].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[46].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((string)(Original_Extension1));
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((string)(Original_Extension1));
             }
             if ((Original_Phone2 == null)) {
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[43].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[47].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[48].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((string)(Original_Phone2));
+                this.Adapter.UpdateCommand.Parameters[47].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((string)(Original_Phone2));
             }
             if ((Original_Extension2 == null)) {
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[45].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[49].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[50].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((string)(Original_Extension2));
+                this.Adapter.UpdateCommand.Parameters[49].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[50].Value = ((string)(Original_Extension2));
             }
             if ((Original_CreateDate == null)) {
                 throw new global::System.ArgumentNullException("Original_CreateDate");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[46].Value = ((string)(Original_CreateDate));
+                this.Adapter.UpdateCommand.Parameters[51].Value = ((string)(Original_CreateDate));
             }
             if ((Original_ModifiedDate == null)) {
                 throw new global::System.ArgumentNullException("Original_ModifiedDate");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[47].Value = ((string)(Original_ModifiedDate));
+                this.Adapter.UpdateCommand.Parameters[52].Value = ((string)(Original_ModifiedDate));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -11126,6 +11416,15 @@ ORDER BY DonorId, Name, Id";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateUpdatedRows(SilentAuctionDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._auctionsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Auctions.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._auctionsTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._donorTypesTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.DonorTypes.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -11144,12 +11443,12 @@ ORDER BY DonorId, Name, Id";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._auctionsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Auctions.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._requestStatusTypesTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.RequestStatusTypes.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._auctionsTableAdapter.Update(updatedRows));
+                    result = (result + this._requestStatusTypesTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -11198,15 +11497,6 @@ ORDER BY DonorId, Name, Id";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._requestStatusTypesTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.RequestStatusTypes.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._requestStatusTypesTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             return result;
         }
         
@@ -11217,6 +11507,14 @@ ORDER BY DonorId, Name, Id";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateInsertedRows(SilentAuctionDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._auctionsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Auctions.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._auctionsTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._donorTypesTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.DonorTypes.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -11233,11 +11531,11 @@ ORDER BY DonorId, Name, Id";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._auctionsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Auctions.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._requestStatusTypesTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.RequestStatusTypes.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._auctionsTableAdapter.Update(addedRows));
+                    result = (result + this._requestStatusTypesTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -11281,14 +11579,6 @@ ORDER BY DonorId, Name, Id";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._requestStatusTypesTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.RequestStatusTypes.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._requestStatusTypesTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             return result;
         }
         
@@ -11299,14 +11589,6 @@ ORDER BY DonorId, Name, Id";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(SilentAuctionDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._requestStatusTypesTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.RequestStatusTypes.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._requestStatusTypesTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._itemsTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Items.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -11347,11 +11629,11 @@ ORDER BY DonorId, Name, Id";
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._auctionsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Auctions.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._requestStatusTypesTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.RequestStatusTypes.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._auctionsTableAdapter.Update(deletedRows));
+                    result = (result + this._requestStatusTypesTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -11368,6 +11650,14 @@ ORDER BY DonorId, Name, Id";
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._donorTypesTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._auctionsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Auctions.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._auctionsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

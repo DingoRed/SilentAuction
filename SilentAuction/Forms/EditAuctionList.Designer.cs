@@ -1,6 +1,6 @@
 ﻿namespace SilentAuction.Forms
 {
-    partial class ViewAuctionsForm
+    partial class EditAuctionList
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.AuctionsDataGridView = new System.Windows.Forms.DataGridView();
             this.AuctionsNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AuctionsDescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,8 +82,8 @@
             // AuctionsDescriptionColumn
             // 
             this.AuctionsDescriptionColumn.DataPropertyName = "Description";
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AuctionsDescriptionColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AuctionsDescriptionColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.AuctionsDescriptionColumn.HeaderText = "Auction Description";
             this.AuctionsDescriptionColumn.Name = "AuctionsDescriptionColumn";
             this.AuctionsDescriptionColumn.Width = 400;
@@ -187,7 +187,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(644, 288);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "ViewAuctionsForm";
+            this.Name = "EditAuctionList";
             this.Text = "View/Edit Auctions";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ViewAuctionsFormFormClosing);
             this.Load += new System.EventHandler(this.ViewAuctionsLoad);

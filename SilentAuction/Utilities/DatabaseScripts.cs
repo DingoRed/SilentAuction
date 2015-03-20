@@ -11,6 +11,7 @@ namespace SilentAuction.Utilities
 
         // Table Names
         public static string AuctionsTableName = "Auctions";
+        public static string AuctionDonorRequestStatusTableName = "AuctionDonorRequestStatus";
         public static string BidIncrementTypesTableName = "BidIncrementTypes";
         public static string DonationDeliveryTypesTableName = "DonationDeliveryTypes";
         public static string DonorsTableName = "Donors";
@@ -22,6 +23,12 @@ namespace SilentAuction.Utilities
 
 
         // Table Create Scripts
+        public static string AuctionDonorRequestStatusTableCreateSql = string.Format(@"CREATE TABLE [{0}](
+                                                                   [Id] [integer] PRIMARY KEY AUTOINCREMENT NOT NULL,
+                                                                   [AuctionId] [integer] NOT NULL,
+                                                                   [DonorId] [integer] NOT NULL,
+                                                                   [RequestStatusId] [integer] NOT NULL)", AuctionDonorRequestStatusTableName);
+
         public static string AuctionsTableCreateSql = string.Format(@"CREATE TABLE [{0}](
                                                                    [Id] [integer] PRIMARY KEY AUTOINCREMENT NOT NULL,
                                                                    [Name] [nvarchar](200) NOT NULL,

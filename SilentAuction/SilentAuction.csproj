@@ -60,41 +60,48 @@
     <Compile Include="Forms\AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CreateNewAuction.cs">
+    <Compile Include="Forms\CopyDonors.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CreateNewAuction.Designer.cs">
-      <DependentUpon>CreateNewAuction.cs</DependentUpon>
+    <Compile Include="Forms\CopyDonors.Designer.cs">
+      <DependentUpon>CopyDonors.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CreateNewDonor.cs">
+    <Compile Include="Forms\CreateAuction.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CreateNewDonor.Designer.cs">
-      <DependentUpon>CreateNewDonor.cs</DependentUpon>
+    <Compile Include="Forms\CreateAuction.Designer.cs">
+      <DependentUpon>CreateAuction.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\EditAuction.cs">
+    <Compile Include="Forms\CreateDonor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\EditAuction.Designer.cs">
-      <DependentUpon>EditAuction.cs</DependentUpon>
+    <Compile Include="Forms\CreateDonor.Designer.cs">
+      <DependentUpon>CreateDonor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\EditAuctionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditAuctionForm.Designer.cs">
+      <DependentUpon>EditAuctionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\GenericPageHelper.cs" />
     <Compile Include="Forms\OpenAuction.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\OpenAuction.Designer.cs">
       <DependentUpon>OpenAuction.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ViewAuctions.cs">
+    <Compile Include="Forms\EditAuctionList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ViewAuctions.Designer.cs">
-      <DependentUpon>ViewAuctions.cs</DependentUpon>
+    <Compile Include="Forms\EditAuctionList.Designer.cs">
+      <DependentUpon>EditAuctionList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ViewDonors.cs">
+    <Compile Include="Forms\EditDonorList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ViewDonors.Designer.cs">
-      <DependentUpon>ViewDonors.cs</DependentUpon>
+    <Compile Include="Forms\EditDonorList.Designer.cs">
+      <DependentUpon>EditDonorList.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -125,23 +132,26 @@
     <EmbeddedResource Include="Forms\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CreateNewAuction.resx">
-      <DependentUpon>CreateNewAuction.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CopyDonors.resx">
+      <DependentUpon>CopyDonors.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CreateNewDonor.resx">
-      <DependentUpon>CreateNewDonor.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CreateAuction.resx">
+      <DependentUpon>CreateAuction.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\EditAuction.resx">
-      <DependentUpon>EditAuction.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CreateDonor.resx">
+      <DependentUpon>CreateDonor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditAuctionForm.resx">
+      <DependentUpon>EditAuctionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OpenAuction.resx">
       <DependentUpon>OpenAuction.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ViewAuctions.resx">
-      <DependentUpon>ViewAuctions.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\EditAuctionList.resx">
+      <DependentUpon>EditAuctionList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ViewDonors.resx">
-      <DependentUpon>ViewDonors.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\EditDonorList.resx">
+      <DependentUpon>EditDonorList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

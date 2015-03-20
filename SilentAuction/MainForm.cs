@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using SilentAuction.Forms;
 using SilentAuction.Properties;
+using SilentAuction.Utilities;
 
 namespace SilentAuction
 {
@@ -28,21 +29,20 @@ namespace SilentAuction
             ImportFormSettings();
             
             requestFormatTypesTableAdapter.FillRequestFormatTypes(silentAuctionDataSet.RequestFormatTypes);
+            requestStatusTypesTableAdapter.FillRequestStatusType(silentAuctionDataSet.RequestStatusTypes);
             donationDeliveryTypesTableAdapter.FillDonationDeliveryTypes(silentAuctionDataSet.DonationDeliveryTypes);
             itemTypesTableAdapter.FillItemTypes(silentAuctionDataSet.ItemTypes);
             bidIncrementTypesTableAdapter.FillBidIncremenetTypes(silentAuctionDataSet.BidIncrementTypes);
             donorTypesTableAdapter.FillDonorTypes(silentAuctionDataSet.DonorTypes);
             auctionsTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
-            donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors);
+
+            donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionIdInUse);
             itemsTableAdapter.FillItems(silentAuctionDataSet.Items, AuctionIdInUse);
             
-            ItemsDataGridView.Visible = AuctionIdInUse > 0;
-           
             SetupInitialWindow();
             SetupGrids();
-            SetupOpenAuctionToolStripMenuItem();
-            SetupCloseAuctionToolStripMenuItem();
-            SetupSaveToolStripMenuItem();
+            SetAuctionNameAndGrid();
+            SetupToolStripMenuItems();
         }
 
         private void MainForm2FormClosing(object sender, FormClosingEventArgs e)
@@ -50,11 +50,7 @@ namespace SilentAuction
             var silentAuctionDataSetChanges = silentAuctionDataSet.GetChanges();
             if (silentAuctionDataSetChanges != null)
             {
-                var result = MessageBox.Show("You have unsaved changes.\n\rAre you sure you want to close without saving?", "Unsaved Changes",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                if(result == DialogResult.No)
-                    e.Cancel = true;
+                e.Cancel = GenericPageHelper.StayOnPage();
             }
              
             if (!e.Cancel)
@@ -132,7 +128,7 @@ namespace SilentAuction
                     itemsTableAdapter.FillItems(silentAuctionDataSet.Items, AuctionIdInUse);
                     MainFormStatusLabel.Text = string.Format("Saved data for {0} records", recordCount);
                     MainFormStatusLabel.Visible = true;
-                    SetupSaveToolStripMenuItem();
+                    SetupToolStripMenuItems();
                 }
                 else
                 {
@@ -201,14 +197,27 @@ namespace SilentAuction
         #endregion
 
         #region MenuStrip Event Handlers
+        #region File Section...
         private void NewAuctionToolStripMenuItemClick(object sender, EventArgs e)
         {
             using (CreateNewAuctionForm createNewAuctionForm = new CreateNewAuctionForm())
             {
                 createNewAuctionForm.ShowDialog();
+                silentAuctionDataSet.Donors.Clear();
                 auctionsTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
-                SetupOpenAuctionToolStripMenuItem();
-                SetupCloseAuctionToolStripMenuItem();
+                donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionIdInUse);
+                SetupToolStripMenuItems();
+            }
+        }
+
+        private void NewDonorToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            using (CreateNewDonorForm createNewDonorForm = new CreateNewDonorForm())
+            {
+                createNewDonorForm.AuctionId = AuctionIdInUse;
+                createNewDonorForm.ShowDialog();
+                donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionIdInUse);
+                SetupToolStripMenuItems();
             }
         }
 
@@ -223,61 +232,23 @@ namespace SilentAuction
                 {
                     AuctionNameInUse = silentAuctionDataSet.Auctions.First(a => a.Id == AuctionIdInUse).Name;
                     itemsTableAdapter.FillItems(silentAuctionDataSet.Items, AuctionIdInUse);
+                    donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionIdInUse);
                     SetAuctionNameAndGrid();
                 }
 
-                SetupCloseAuctionToolStripMenuItem();
+                SetupToolStripMenuItems();
             }
         }
 
-        private void EditAuctionToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            using (EditAuctionForm editAuctionForm = new EditAuctionForm())
-            {
-                editAuctionForm.ShowDialog();
-            }
-        }
-
-        private void EditDonorToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            // TODO: Create an Edit Donor form?
-            MessageBox.Show("Need to implement");
-        }
-        
         private void CloseAuctionToolStripMenuItemClick(object sender, EventArgs e)
         {
             AuctionIdInUse = 0;
             AuctionNameInUse = "";
             itemsTableAdapter.FillItems(silentAuctionDataSet.Items, AuctionIdInUse);
-            ItemsDataGridView.Visible = AuctionIdInUse > 0;
-            SetupCloseAuctionToolStripMenuItem();
-        }
-
-        private void NewDonorToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            using (CreateNewDonorForm createNewDonorForm = new CreateNewDonorForm())
-            {
-                createNewDonorForm.ShowDialog();
-                donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors);
-                SetupOpenAuctionToolStripMenuItem();
-                SetupCloseAuctionToolStripMenuItem();
-            }
-        }
-
-        private void DonorsListToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            using (ViewDonorsForm viewDonors = new ViewDonorsForm())
-            {
-                viewDonors.ShowDialog();
-            }
-        }
-
-        private void AuctionsListToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            using (ViewAuctionsForm viewAuctions = new ViewAuctionsForm())
-            {
-                viewAuctions.ShowDialog();
-            }
+            donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionIdInUse);
+            
+            SetAuctionNameAndGrid();
+            SetupToolStripMenuItems();
         }
 
         private void SaveToolStripMenuItemClick(object sender, EventArgs e)
@@ -299,7 +270,57 @@ namespace SilentAuction
         {
             Application.Exit();
         }
+        #endregion
 
+        #region Edit/View Section...
+        private void EditAuctionListToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            using (EditAuctionList editAuctionList = new EditAuctionList())
+            {
+                editAuctionList.ShowDialog();
+                SetAuctionNameAndGrid();
+            }
+        }
+
+        private void EditAuctionFormToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            using (EditAuctionForm editAuctionForm = new EditAuctionForm())
+            {
+                editAuctionForm.ShowDialog();
+                SetAuctionNameAndGrid();
+            }
+        }
+
+        private void EditDonorListToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            using (EditDonorList editDonorList = new EditDonorList())
+            {
+                editDonorList.AuctionIdInUse = AuctionIdInUse;
+                editDonorList.ShowDialog();
+                SetAuctionNameAndGrid();
+            }
+        }
+
+        private void EditDonorFormToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // TODO: Create an Edit Donor form?
+            MessageBox.Show("Need to implement");
+        }
+        #endregion
+
+        #region Tools Section...
+        private void CopyDonorsToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            using (CopyDonorsForm copyDonorsForm = new CopyDonorsForm())
+            {
+                copyDonorsForm.ShowDialog();
+                donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionIdInUse);
+                SetAuctionNameAndGrid();
+            }
+        }
+        #endregion
+
+        #region Help Section...
         private void AboutToolStripMenuItemClick(object sender, EventArgs e)
         {
             using (AboutBox ab = new AboutBox())
@@ -307,6 +328,7 @@ namespace SilentAuction
                 ab.ShowDialog();
             }
         }
+        #endregion
         #endregion
 
         #region Private Methods
@@ -407,32 +429,44 @@ namespace SilentAuction
 
         private void SetAuctionNameAndGrid()
         {
-            ItemsDataGridView.Visible = AuctionIdInUse > 0;
-            ItemsSaveAllButton.Visible = AuctionIdInUse > 0;
-            AddItemsButton.Visible = AuctionIdInUse > 0;
-            ItemsRequirementLabel.Visible = AuctionIdInUse > 0;
-            AuctionNameLabel1.Visible = AuctionIdInUse > 0;
-            AuctionNameLabel2.Visible = AuctionIdInUse > 0;
+            ItemsDataGridView.Visible = ((AuctionIdInUse > 0) &&
+                                         (silentAuctionDataSet.Donors.Rows.Count > 0));
+            ButtonsPanel.Visible = ((AuctionIdInUse > 0) &&
+                                    (silentAuctionDataSet.Donors.Rows.Count > 0));
+            LabelsPanel.Visible = ((AuctionIdInUse > 0) &&
+                                   (silentAuctionDataSet.Donors.Rows.Count > 0));
+            AuctionNamePanel.Visible = ((AuctionIdInUse > 0) &&
+                                        (silentAuctionDataSet.Donors.Rows.Count > 0));
             AuctionNameLabel2.Text = AuctionNameInUse;
-            Text = "Silent Auction - " + AuctionNameInUse;
+            
+            Text = "Silent Auction";
+            if (!string.IsNullOrWhiteSpace(AuctionNameInUse))
+                Text += " - " + AuctionNameInUse;
         }
 
-        private void SetupSaveToolStripMenuItem()
+        private void SetupToolStripMenuItems()
         {
-            SaveToolStripMenuItem.Enabled = silentAuctionDataSet.Items.Rows.Count > 0;
-        }
-
-        private void SetupOpenAuctionToolStripMenuItem()
-        {
-            OpenAuctionToolStripMenuItem.Enabled = (silentAuctionDataSet.Auctions.Rows.Count > 0 &&
-                                                    silentAuctionDataSet.Donors.Rows.Count > 0);
-        }
-
-        private void SetupCloseAuctionToolStripMenuItem()
-        {
+            // File Section...
+            NewDonorToolStripMenuItem.Enabled = AuctionIdInUse > 0;
+            OpenAuctionToolStripMenuItem.Enabled = (silentAuctionDataSet.Auctions.Rows.Count > 0);
             CloseAuctionToolStripMenuItem.Enabled = AuctionIdInUse > 0;
+            SaveToolStripMenuItem.Enabled = ((AuctionIdInUse > 0) && 
+                (ItemsDataGridView.Visible));
+            PrintToolStripMenuItem.Enabled = ((AuctionIdInUse > 0) &&
+                (ItemsDataGridView.Visible));
+            PrintPreviewToolStripMenuItem.Enabled = ((AuctionIdInUse > 0) &&
+                (ItemsDataGridView.Visible));
+
+            // Edit/View Section...
+            EditAuctionListToolStripMenuItem.Enabled = silentAuctionDataSet.Auctions.Rows.Count > 0;
+            EditAuctionFormToolStripMenuItem.Enabled = silentAuctionDataSet.Auctions.Rows.Count > 0;
+            EditDonorListToolStripMenuItem.Enabled = ((AuctionIdInUse > 0) &&
+                (silentAuctionDataSet.Donors.Rows.Count > 0));
+            EditDonorFormToolStripMenuItem.Enabled = ((AuctionIdInUse > 0) &&
+                (silentAuctionDataSet.Donors.Rows.Count > 0));
         }
         #endregion
+
 
 
     }

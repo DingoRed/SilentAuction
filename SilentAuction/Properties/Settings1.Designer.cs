@@ -433,24 +433,24 @@ namespace SilentAuction.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ViewDonorsFormInitialLocation {
+        public string EditDonorListInitialLocation {
             get {
-                return ((string)(this["ViewDonorsFormInitialLocation"]));
+                return ((string)(this["EditDonorListInitialLocation"]));
             }
             set {
-                this["ViewDonorsFormInitialLocation"] = value;
+                this["EditDonorListInitialLocation"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ViewAuctionsFormInitialLocation {
+        public string EditAuctionListInitialLocation {
             get {
-                return ((string)(this["ViewAuctionsFormInitialLocation"]));
+                return ((string)(this["EditAuctionListInitialLocation"]));
             }
             set {
-                this["ViewAuctionsFormInitialLocation"] = value;
+                this["EditAuctionListInitialLocation"] = value;
             }
         }
         
@@ -475,6 +475,18 @@ namespace SilentAuction.Properties {
             }
             set {
                 this["AuctionNameInUse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int DonorsRequestStatusTypeIdColumnWidth {
+            get {
+                return ((int)(this["DonorsRequestStatusTypeIdColumnWidth"]));
+            }
+            set {
+                this["DonorsRequestStatusTypeIdColumnWidth"] = value;
             }
         }
     }

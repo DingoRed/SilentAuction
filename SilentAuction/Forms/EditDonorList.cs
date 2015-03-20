@@ -1,32 +1,83 @@
 ﻿using System;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using SilentAuction.Properties;
+using SilentAuction.Utilities;
 
 namespace SilentAuction.Forms
 {
-    public partial class ViewDonorsForm : Form
+    public partial class EditDonorList : Form
     {
+        #region Properties
+        public int AuctionIdInUse { get; set; }
+        #endregion
+
         #region Form Event Handlers
-        public ViewDonorsForm()
+        public EditDonorList()
         {
             InitializeComponent();
         }
 
-        private void ViewDonorsFormLoad(object sender, EventArgs e)
+        private void EditDonorListFormLoad(object sender, EventArgs e)
         {
+            auctionsTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
+            requestStatusTypesTableAdapter.FillRequestStatusType(silentAuctionDataSet.RequestStatusTypes);
             requestFormatTypesTableAdapter.FillRequestFormatTypes(silentAuctionDataSet.RequestFormatTypes);
             donorTypesTableAdapter.FillDonorTypes(silentAuctionDataSet.DonorTypes);
-            donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors);
+            donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionIdInUse);
 
             SetupInitialWindow();
-            SetupGrids();
+            OpenGridSettings();
         }
 
-        private void ViewDonorsFormFormClosing(object sender, FormClosingEventArgs e)
+        private void EditDonorListFormClosing(object sender, FormClosingEventArgs e)
         {
-            SaveWindowSettings();
-            SaveGridSettings();
+            donorsBindingSource.EndEdit();
+            var silentAuctionDataSetChanges = silentAuctionDataSet.GetChanges();
+            if (silentAuctionDataSetChanges != null)
+            {
+                e.Cancel = GenericPageHelper.StayOnPage();
+            }
+
+            if (!e.Cancel)
+            {
+                SaveWindowSettings();
+                SaveGridSettings();
+            }
+        }
+        #endregion
+
+        #region Event Handlers
+        private void DonorsSaveAllButtonClick(object sender, EventArgs e)
+        {
+            SilentAuctionDataSet.DonorsDataTable modifiedItems =
+                (SilentAuctionDataSet.DonorsDataTable)silentAuctionDataSet.Donors.GetChanges(DataRowState.Modified);
+
+            try
+            {
+                if (modifiedItems != null)
+                {
+                    foreach (DataRow row in modifiedItems.Rows)
+                    {
+                        row["ModifiedDate"] = DateTime.Now;
+                    }
+
+                    donorsTableAdapter.Update(modifiedItems);
+                }
+
+                silentAuctionDataSet.AcceptChanges();
+                donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionIdInUse);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Update Failed: " + ex.Message);
+            }
+            finally
+            {
+                if (modifiedItems != null)
+                    modifiedItems.Dispose();
+            }
         }
         #endregion
 
@@ -35,7 +86,7 @@ namespace SilentAuction.Forms
         {
             if ((ModifierKeys & Keys.Shift) == 0)
             {
-                string initLocation = Settings.Default.ViewDonorsFormInitialLocation;
+                string initLocation = Settings.Default.EditDonorListInitialLocation;
                 Point il = new Point(0, 0);
                 Size sz = Size;
                 if (!string.IsNullOrWhiteSpace(initLocation))
@@ -67,12 +118,12 @@ namespace SilentAuction.Forms
                     size = RestoreBounds.Size;
                 }
                 string initLocation = string.Join(",", location.X, location.Y, size.Width, size.Height);
-                Settings.Default.ViewDonorsFormInitialLocation = initLocation;
+                Settings.Default.EditDonorListInitialLocation = initLocation;
                 Settings.Default.Save();
             }
         }
 
-        private void SetupGrids()
+        private void OpenGridSettings()
         {
             // Donors grid settings...
             DonorTypeColumn.Width = Settings.Default.DonorsDonorTypeColumnWidth;
@@ -88,6 +139,7 @@ namespace SilentAuction.Forms
             EmailColumn.Width = Settings.Default.DonorsEmailColumnWidth;
             RequestFormatTypeIdColumn.Width = Settings.Default.DonorsRequestFormatTypeIdColumnWidth;
             UrlColumn.Width = Settings.Default.DonorsUrlColumnWidth;
+            RequestStatusTypeIdColumn.Width = Settings.Default.DonorsRequestStatusTypeIdColumnWidth;
         }
 
         private void SaveGridSettings()
@@ -108,6 +160,7 @@ namespace SilentAuction.Forms
             Settings.Default.DonorsEmailColumnWidth = EmailColumn.Width;
             Settings.Default.DonorsRequestFormatTypeIdColumnWidth = RequestFormatTypeIdColumn.Width;
             Settings.Default.DonorsUrlColumnWidth = UrlColumn.Width;
+            Settings.Default.DonorsRequestStatusTypeIdColumnWidth = RequestStatusTypeIdColumn.Width;
 
             Settings.Default.Save();
         }

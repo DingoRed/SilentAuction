@@ -109,10 +109,10 @@
     <Setting Name="ItemsDonationDeliveryTypeIdColumnWidth" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">120</Value>
     </Setting>
-    <Setting Name="ViewDonorsFormInitialLocation" Type="System.String" Scope="User">
+    <Setting Name="EditDonorListInitialLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="ViewAuctionsFormInitialLocation" Type="System.String" Scope="User">
+    <Setting Name="EditAuctionListInitialLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="AuctionIdInUse" Type="System.Int32" Scope="User">
@@ -120,6 +120,9 @@
     </Setting>
     <Setting Name="AuctionNameInUse" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DonorsRequestStatusTypeIdColumnWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

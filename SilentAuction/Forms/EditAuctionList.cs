@@ -3,13 +3,14 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using SilentAuction.Properties;
+using SilentAuction.Utilities;
 
 namespace SilentAuction.Forms
 {
-    public partial class ViewAuctionsForm : Form
+    public partial class EditAuctionList : Form
     {
         #region Form Event Handlers
-        public ViewAuctionsForm()
+        public EditAuctionList()
         {
             InitializeComponent();
         }
@@ -19,13 +20,23 @@ namespace SilentAuction.Forms
             auctionsTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
 
             SetupInitialWindow();
-            SetupGrids();
+            OpenGridSettings();
         }
 
         private void ViewAuctionsFormFormClosing(object sender, FormClosingEventArgs e)
         {
-            SaveWindowSettings();
-            SaveGridSettings();
+            auctionsBindingSource.EndEdit();
+            var silentAuctionDataSetChanges = silentAuctionDataSet.GetChanges();
+            if (silentAuctionDataSetChanges != null)
+            {
+                e.Cancel = GenericPageHelper.StayOnPage();
+            }
+
+            if (!e.Cancel)
+            {
+                SaveWindowSettings();
+                SaveGridSettings();
+            }
         }
         #endregion
 
@@ -67,7 +78,7 @@ namespace SilentAuction.Forms
         {
             if ((ModifierKeys & Keys.Shift) == 0)
             {
-                string initLocation = Settings.Default.ViewAuctionsFormInitialLocation;
+                string initLocation = Settings.Default.EditAuctionListInitialLocation;
                 Point il = new Point(0, 0);
                 Size sz = Size;
                 if (!string.IsNullOrWhiteSpace(initLocation))
@@ -99,12 +110,12 @@ namespace SilentAuction.Forms
                     size = RestoreBounds.Size;
                 }
                 string initLocation = string.Join(",", location.X, location.Y, size.Width, size.Height);
-                Settings.Default.ViewAuctionsFormInitialLocation = initLocation;
+                Settings.Default.EditAuctionListInitialLocation = initLocation;
                 Settings.Default.Save();
             }
         }
 
-        private void SetupGrids()
+        private void OpenGridSettings()
         {
             // Auctions grid settings...
             AuctionsNameColumn.Width = Settings.Default.AuctionsNameColumnWidth;
@@ -123,6 +134,5 @@ namespace SilentAuction.Forms
 
 
         #endregion
-
     }
 }

@@ -40,6 +40,10 @@ namespace SilentAuction.Utilities
                     SQLiteCommand command = new SQLiteCommand(DatabaseScripts.AuctionsTableCreateSql, connection);
                     command.ExecuteNonQuery();
 
+                    // AuctionDonorRequestStatus table
+                    command = new SQLiteCommand(DatabaseScripts.AuctionDonorRequestStatusTableCreateSql, connection);
+                    command.ExecuteNonQuery();
+
                     // BidIncrementTypes table
                     command = new SQLiteCommand(DatabaseScripts.BidIncrementTypesCreateSql, connection);
                     command.ExecuteNonQuery();
