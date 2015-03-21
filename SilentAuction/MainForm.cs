@@ -22,7 +22,7 @@ namespace SilentAuction
             InitializeComponent();
         }
         #endregion
-
+         
         #region Form Event Handlers
         private void MainForm2Load(object sender, EventArgs e)
         {
