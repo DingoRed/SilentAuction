@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditAuctionForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.DescriptionTextBox = new System.Windows.Forms.TextBox();
             this.NameTextBox = new System.Windows.Forms.TextBox();
-            this.ErrorLabel = new System.Windows.Forms.Label();
             this.NameLabel = new System.Windows.Forms.Label();
             this.DescriptionLabel = new System.Windows.Forms.Label();
             this.SaveAuctionAndCloseButton = new System.Windows.Forms.Button();
@@ -43,22 +43,23 @@
             this.silentAuctionDataSet = new SilentAuction.SilentAuctionDataSet();
             this.label1 = new System.Windows.Forms.Label();
             this.auctionsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.AuctionsTableAdapter();
+            this.AuctionNameErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AuctionNameErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.DescriptionTextBox);
             this.groupBox1.Controls.Add(this.NameTextBox);
-            this.groupBox1.Controls.Add(this.ErrorLabel);
             this.groupBox1.Controls.Add(this.NameLabel);
             this.groupBox1.Controls.Add(this.DescriptionLabel);
             this.groupBox1.Location = new System.Drawing.Point(19, 66);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(305, 236);
-            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Auction Items";
             // 
@@ -79,17 +80,6 @@
             this.NameTextBox.Size = new System.Drawing.Size(260, 20);
             this.NameTextBox.TabIndex = 1;
             this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBoxTextChanged);
-            // 
-            // ErrorLabel
-            // 
-            this.ErrorLabel.AutoSize = true;
-            this.ErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.ErrorLabel.Location = new System.Drawing.Point(157, 32);
-            this.ErrorLabel.Name = "ErrorLabel";
-            this.ErrorLabel.Size = new System.Drawing.Size(103, 13);
-            this.ErrorLabel.TabIndex = 5;
-            this.ErrorLabel.Text = "Name Already Exists";
-            this.ErrorLabel.Visible = false;
             // 
             // NameLabel
             // 
@@ -115,7 +105,7 @@
             this.SaveAuctionAndCloseButton.Location = new System.Drawing.Point(125, 344);
             this.SaveAuctionAndCloseButton.Name = "SaveAuctionAndCloseButton";
             this.SaveAuctionAndCloseButton.Size = new System.Drawing.Size(92, 23);
-            this.SaveAuctionAndCloseButton.TabIndex = 7;
+            this.SaveAuctionAndCloseButton.TabIndex = 4;
             this.SaveAuctionAndCloseButton.Text = "Save and Close";
             this.SaveAuctionAndCloseButton.UseVisualStyleBackColor = true;
             this.SaveAuctionAndCloseButton.Click += new System.EventHandler(this.SaveAuctionAndCloseButtonClick);
@@ -126,7 +116,7 @@
             this.CancelAuctionButton.Location = new System.Drawing.Point(241, 344);
             this.CancelAuctionButton.Name = "CancelAuctionButton";
             this.CancelAuctionButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelAuctionButton.TabIndex = 8;
+            this.CancelAuctionButton.TabIndex = 5;
             this.CancelAuctionButton.Text = "Cancel";
             this.CancelAuctionButton.UseVisualStyleBackColor = true;
             // 
@@ -135,7 +125,7 @@
             this.SaveAuctionButton.Location = new System.Drawing.Point(26, 344);
             this.SaveAuctionButton.Name = "SaveAuctionButton";
             this.SaveAuctionButton.Size = new System.Drawing.Size(75, 23);
-            this.SaveAuctionButton.TabIndex = 6;
+            this.SaveAuctionButton.TabIndex = 3;
             this.SaveAuctionButton.Text = "Save";
             this.SaveAuctionButton.UseVisualStyleBackColor = true;
             this.SaveAuctionButton.Click += new System.EventHandler(this.SaveAuctionButtonClick);
@@ -150,7 +140,7 @@
             this.AuctionComboBox.Location = new System.Drawing.Point(137, 20);
             this.AuctionComboBox.Name = "AuctionComboBox";
             this.AuctionComboBox.Size = new System.Drawing.Size(187, 21);
-            this.AuctionComboBox.TabIndex = 9;
+            this.AuctionComboBox.TabIndex = 1;
             this.AuctionComboBox.ValueMember = "Id";
             this.AuctionComboBox.SelectedIndexChanged += new System.EventHandler(this.AuctionComboBoxSelectedIndexChanged);
             // 
@@ -177,6 +167,10 @@
             // 
             this.auctionsTableAdapter.ClearBeforeFill = true;
             // 
+            // AuctionNameErrorProvider
+            // 
+            this.AuctionNameErrorProvider.ContainerControl = this;
+            // 
             // EditAuctionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -188,6 +182,7 @@
             this.Controls.Add(this.SaveAuctionAndCloseButton);
             this.Controls.Add(this.CancelAuctionButton);
             this.Controls.Add(this.SaveAuctionButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EditAuctionForm";
             this.Text = "Edit an Auction";
             this.Load += new System.EventHandler(this.EditAuctionFormLoad);
@@ -195,6 +190,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AuctionNameErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,7 +201,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox DescriptionTextBox;
         private System.Windows.Forms.TextBox NameTextBox;
-        private System.Windows.Forms.Label ErrorLabel;
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.Label DescriptionLabel;
         private System.Windows.Forms.Button SaveAuctionAndCloseButton;
@@ -216,5 +211,6 @@
         private SilentAuctionDataSet silentAuctionDataSet;
         private System.Windows.Forms.BindingSource auctionsBindingSource;
         private SilentAuctionDataSetTableAdapters.AuctionsTableAdapter auctionsTableAdapter;
+        private System.Windows.Forms.ErrorProvider AuctionNameErrorProvider;
     }
 }

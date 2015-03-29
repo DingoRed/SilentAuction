@@ -92,6 +92,9 @@
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CopyDonorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editPrintDonorRequestDocumentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editPrintDonorFollowUpDocumentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -115,6 +118,7 @@
             this.requestFormatTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter();
             this.requestStatusTypesbindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.requestStatusTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter();
+            this.donorRequestPrintDocument = new System.Drawing.Printing.PrintDocument();
             this.ItemsTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).BeginInit();
@@ -470,6 +474,7 @@
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
             this.toolsToolStripMenuItem,
+            this.reportsToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -492,6 +497,7 @@
             this.PrintPreviewToolStripMenuItem,
             this.toolStripSeparator2,
             this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlText;
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "&File";
@@ -508,7 +514,6 @@
             // 
             // NewDonorToolStripMenuItem
             // 
-            this.NewDonorToolStripMenuItem.Enabled = false;
             this.NewDonorToolStripMenuItem.Name = "NewDonorToolStripMenuItem";
             this.NewDonorToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
             this.NewDonorToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
@@ -523,7 +528,7 @@
             // OpenAuctionToolStripMenuItem
             // 
             this.OpenAuctionToolStripMenuItem.Enabled = false;
-            this.OpenAuctionToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OpenAuctionToolStripMenuItem.Image")));
+            this.OpenAuctionToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.open;
             this.OpenAuctionToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.OpenAuctionToolStripMenuItem.Name = "OpenAuctionToolStripMenuItem";
             this.OpenAuctionToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
@@ -547,7 +552,7 @@
             // SaveToolStripMenuItem
             // 
             this.SaveToolStripMenuItem.Enabled = false;
-            this.SaveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("SaveToolStripMenuItem.Image")));
+            this.SaveToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.save;
             this.SaveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
             this.SaveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
@@ -563,7 +568,7 @@
             // PrintToolStripMenuItem
             // 
             this.PrintToolStripMenuItem.Enabled = false;
-            this.PrintToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("PrintToolStripMenuItem.Image")));
+            this.PrintToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.print;
             this.PrintToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PrintToolStripMenuItem.Name = "PrintToolStripMenuItem";
             this.PrintToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
@@ -574,7 +579,7 @@
             // PrintPreviewToolStripMenuItem
             // 
             this.PrintPreviewToolStripMenuItem.Enabled = false;
-            this.PrintPreviewToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("PrintPreviewToolStripMenuItem.Image")));
+            this.PrintPreviewToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.printpreview;
             this.PrintPreviewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PrintPreviewToolStripMenuItem.Name = "PrintPreviewToolStripMenuItem";
             this.PrintPreviewToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
@@ -649,16 +654,40 @@
             // 
             // CopyDonorsToolStripMenuItem
             // 
+            this.CopyDonorsToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.copy;
             this.CopyDonorsToolStripMenuItem.Name = "CopyDonorsToolStripMenuItem";
-            this.CopyDonorsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.CopyDonorsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.CopyDonorsToolStripMenuItem.Text = "&Copy Donors";
             this.CopyDonorsToolStripMenuItem.Click += new System.EventHandler(this.CopyDonorsToolStripMenuItemClick);
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.optionsToolStripMenuItem.Text = "&Options";
+            // 
+            // reportsToolStripMenuItem
+            // 
+            this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editPrintDonorRequestDocumentToolStripMenuItem,
+            this.editPrintDonorFollowUpDocumentToolStripMenuItem});
+            this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
+            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.reportsToolStripMenuItem.Text = "&Reports";
+            // 
+            // editPrintDonorRequestDocumentToolStripMenuItem
+            // 
+            this.editPrintDonorRequestDocumentToolStripMenuItem.Name = "editPrintDonorRequestDocumentToolStripMenuItem";
+            this.editPrintDonorRequestDocumentToolStripMenuItem.Size = new System.Drawing.Size(275, 22);
+            this.editPrintDonorRequestDocumentToolStripMenuItem.Text = "Edit/Print Donor Request Document";
+            this.editPrintDonorRequestDocumentToolStripMenuItem.Click += new System.EventHandler(this.EditPrintDonorRequestDocumentToolStripMenuItemClick);
+            // 
+            // editPrintDonorFollowUpDocumentToolStripMenuItem
+            // 
+            this.editPrintDonorFollowUpDocumentToolStripMenuItem.Name = "editPrintDonorFollowUpDocumentToolStripMenuItem";
+            this.editPrintDonorFollowUpDocumentToolStripMenuItem.Size = new System.Drawing.Size(275, 22);
+            this.editPrintDonorFollowUpDocumentToolStripMenuItem.Text = "Edit/Print Donor Follow Up Document";
+            this.editPrintDonorFollowUpDocumentToolStripMenuItem.Click += new System.EventHandler(this.EditPrintDonorFollowUpDocumentToolStripMenuItemClick);
             // 
             // helpToolStripMenuItem
             // 
@@ -717,7 +746,7 @@
             // 
             this.AuctionNameLabel2.AutoSize = true;
             this.AuctionNameLabel2.Font = new System.Drawing.Font("Lucida Calligraphy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AuctionNameLabel2.ForeColor = System.Drawing.Color.Green;
+            this.AuctionNameLabel2.ForeColor = System.Drawing.Color.SaddleBrown;
             this.AuctionNameLabel2.Location = new System.Drawing.Point(3, 0);
             this.AuctionNameLabel2.Name = "AuctionNameLabel2";
             this.AuctionNameLabel2.Size = new System.Drawing.Size(135, 21);
@@ -796,6 +825,10 @@
             // requestStatusTypesTableAdapter
             // 
             this.requestStatusTypesTableAdapter.ClearBeforeFill = true;
+            // 
+            // donorRequestPrintDocument
+            // 
+            this.donorRequestPrintDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.DonorRequestPrintDocumentPrintPage);
             // 
             // MainForm
             // 
@@ -917,5 +950,9 @@
         private System.Windows.Forms.ToolStripMenuItem EditDonorListToolStripMenuItem;
         private System.Windows.Forms.BindingSource requestStatusTypesbindingSource;
         private SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter requestStatusTypesTableAdapter;
+        private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
+        private System.Drawing.Printing.PrintDocument donorRequestPrintDocument;
+        private System.Windows.Forms.ToolStripMenuItem editPrintDonorRequestDocumentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editPrintDonorFollowUpDocumentToolStripMenuItem;
     }
 }

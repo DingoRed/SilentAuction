@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OpenAuctionForm));
             this.AuctionsListLabel = new System.Windows.Forms.Label();
             this.AuctionComboBox = new System.Windows.Forms.ComboBox();
             this.auctionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -108,6 +109,7 @@
             this.Controls.Add(this.OpenButton);
             this.Controls.Add(this.AuctionComboBox);
             this.Controls.Add(this.AuctionsListLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OpenAuctionForm";
             this.Text = "Open Auction";
             this.Load += new System.EventHandler(this.OpenAuctionFormLoad);

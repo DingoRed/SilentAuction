@@ -320,6 +320,20 @@ namespace SilentAuction
         }
         #endregion
 
+        #region Reports Section...
+        private void EditPrintDonorRequestDocumentToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            DocumentEditor documentEditor = new DocumentEditor(AuctionIdInUse, DocumentEditor.DonationDocumentType.DonationRequestDocument);
+            documentEditor.ShowDialog();
+        }
+
+        private void EditPrintDonorFollowUpDocumentToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            DocumentEditor documentEditor = new DocumentEditor(AuctionIdInUse, DocumentEditor.DonationDocumentType.DonationFollowUpDocument);
+            documentEditor.ShowDialog();
+        }
+        #endregion
+        
         #region Help Section...
         private void AboutToolStripMenuItemClick(object sender, EventArgs e)
         {
@@ -416,6 +430,9 @@ namespace SilentAuction
 
         private void ImportFormSettings()
         {
+            // TODO:  Fix AuctionNameInUse
+            // AuctionNameInUse is incorrect when deleting database and creating new.  It keeps 
+            // the old auctionNameInUse stored in Settings
             AuctionIdInUse = Settings.Default.AuctionIdInUse;
             AuctionNameInUse = Settings.Default.AuctionNameInUse;
         }
@@ -447,7 +464,7 @@ namespace SilentAuction
         private void SetupToolStripMenuItems()
         {
             // File Section...
-            NewDonorToolStripMenuItem.Enabled = AuctionIdInUse > 0;
+            // NewDonorToolStripMenuItem.Enabled = AuctionIdInUse > 0;
             OpenAuctionToolStripMenuItem.Enabled = (silentAuctionDataSet.Auctions.Rows.Count > 0);
             CloseAuctionToolStripMenuItem.Enabled = AuctionIdInUse > 0;
             SaveToolStripMenuItem.Enabled = ((AuctionIdInUse > 0) && 
@@ -467,6 +484,13 @@ namespace SilentAuction
         }
         #endregion
 
+        #region Printing Event Handlers
+        private void DonorRequestPrintDocumentPrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.FillRectangle(Brushes.Red, new Rectangle(500, 500, 500, 500));
+        }
+
+        #endregion
 
 
     }

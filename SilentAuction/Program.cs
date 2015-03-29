@@ -14,7 +14,7 @@ namespace SilentAuction
         [STAThread]
         static void Main()
         {
-            if (!File.Exists(DatabaseScripts.DatabaseName))
+            if (!File.Exists(DatabaseCreateScripts.DatabaseName))
             {
                 DatabaseInitializer.CreateDatabase();
                 DatabaseInitializer.CreateAllTables();
@@ -25,7 +25,7 @@ namespace SilentAuction
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
-            //Application.Run(new CopyDonorsForm());
+            //Application.Run(new DocumentEditor(1));
         }
     }
 }

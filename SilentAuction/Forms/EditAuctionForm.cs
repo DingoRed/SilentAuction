@@ -30,6 +30,7 @@ namespace SilentAuction.Forms
 
         private void SaveAuctionButtonClick(object sender, EventArgs e)
         {
+            Text = "Edit an Auction";
             if (!ValidForm()) return;
 
             SaveAuctionData();
@@ -37,6 +38,7 @@ namespace SilentAuction.Forms
 
             FillTextBoxes();
             AuctionComboBox.SelectedValue = AuctionId;
+            Text = "Edit an Auction - Data Updated";
         }
 
         private void SaveAuctionAndCloseButtonClick(object sender, EventArgs e)
@@ -50,9 +52,11 @@ namespace SilentAuction.Forms
         private void NameTextBoxTextChanged(object sender, EventArgs e)
         {
             if (NameTextBox.Text == AuctionComboBox.Text)
-                ErrorLabel.Visible = false;
-            else
-                ErrorLabel.Visible = AuctionNameExists();
+                AuctionNameErrorProvider.SetError(NameTextBox, "");
+                //ErrorLabel.Visible = false;
+            else if (AuctionNameExists())
+                AuctionNameErrorProvider.SetError(NameTextBox, "Name already exists");
+                //ErrorLabel.Visible = AuctionNameExists();
         }
         #endregion
 
@@ -64,11 +68,13 @@ namespace SilentAuction.Forms
 
             if (AuctionNameExists())
             {
-                ErrorLabel.Visible = true;
+                //ErrorLabel.Visible = true;
+                AuctionNameErrorProvider.SetError(NameTextBox,"Name already exists");
                 return false;
             }
 
-            ErrorLabel.Visible = false;
+            //ErrorLabel.Visible = false;
+            AuctionNameErrorProvider.SetError(NameTextBox, "");
 
             return true;
         }
@@ -119,10 +125,6 @@ namespace SilentAuction.Forms
                 }
             }
         }
-
-
         #endregion
-
-
     }
 }

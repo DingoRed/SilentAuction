@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateNewDonorForm));
             this.label1 = new System.Windows.Forms.Label();
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -65,7 +66,6 @@
             this.Street2TextBox = new System.Windows.Forms.TextBox();
             this.CityTextBox = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.ErrorLabel = new System.Windows.Forms.Label();
             this.SaveDonorAndCloseButton = new System.Windows.Forms.Button();
             this.SaveDonorButton = new System.Windows.Forms.Button();
             this.CancelDonorButton = new System.Windows.Forms.Button();
@@ -75,6 +75,12 @@
             this.donorsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorsTableAdapter();
             this.auctionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.auctionsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.AuctionsTableAdapter();
+            this.AuctionsComboBox = new System.Windows.Forms.ComboBox();
+            this.auctionsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.label16 = new System.Windows.Forms.Label();
+            this.NameErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.AuctionErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.DonorTypeErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.donorTypesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).BeginInit();
@@ -83,12 +89,16 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NameErrorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AuctionErrorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DonorTypeErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 39);
+            this.label1.Location = new System.Drawing.Point(59, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 13);
             this.label1.TabIndex = 0;
@@ -96,16 +106,17 @@
             // 
             // NameTextBox
             // 
-            this.NameTextBox.Location = new System.Drawing.Point(99, 36);
+            this.NameTextBox.Location = new System.Drawing.Point(134, 34);
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(219, 20);
             this.NameTextBox.TabIndex = 1;
-            this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBoxTextChanged);
+            this.NameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.NameTextBoxValidating);
+            this.NameTextBox.Validated += new System.EventHandler(this.NameTextBoxValidated);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(344, 39);
+            this.label2.Location = new System.Drawing.Point(379, 37);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 0;
@@ -118,11 +129,13 @@
             this.DonorTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DonorTypeComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DonorTypeComboBox.FormattingEnabled = true;
-            this.DonorTypeComboBox.Location = new System.Drawing.Point(416, 36);
+            this.DonorTypeComboBox.Location = new System.Drawing.Point(451, 34);
             this.DonorTypeComboBox.Name = "DonorTypeComboBox";
             this.DonorTypeComboBox.Size = new System.Drawing.Size(121, 21);
             this.DonorTypeComboBox.TabIndex = 2;
             this.DonorTypeComboBox.ValueMember = "Id";
+            this.DonorTypeComboBox.Validating += new System.ComponentModel.CancelEventHandler(this.DonorTypeComboBoxValidating);
+            this.DonorTypeComboBox.Validated += new System.EventHandler(this.DonorTypeComboBoxValidated);
             // 
             // donorTypesBindingSource
             // 
@@ -137,7 +150,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(312, 32);
+            this.label3.Location = new System.Drawing.Point(315, 34);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(98, 13);
             this.label3.TabIndex = 0;
@@ -150,7 +163,7 @@
             this.RequestFormatTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.RequestFormatTypeComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RequestFormatTypeComboBox.FormattingEnabled = true;
-            this.RequestFormatTypeComboBox.Location = new System.Drawing.Point(416, 29);
+            this.RequestFormatTypeComboBox.Location = new System.Drawing.Point(419, 31);
             this.RequestFormatTypeComboBox.Name = "RequestFormatTypeComboBox";
             this.RequestFormatTypeComboBox.Size = new System.Drawing.Size(121, 21);
             this.RequestFormatTypeComboBox.TabIndex = 4;
@@ -164,7 +177,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 33);
+            this.label4.Location = new System.Drawing.Point(19, 35);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(78, 13);
             this.label4.TabIndex = 0;
@@ -172,7 +185,7 @@
             // 
             // ContactNameTextBox
             // 
-            this.ContactNameTextBox.Location = new System.Drawing.Point(99, 30);
+            this.ContactNameTextBox.Location = new System.Drawing.Point(102, 32);
             this.ContactNameTextBox.Name = "ContactNameTextBox";
             this.ContactNameTextBox.Size = new System.Drawing.Size(153, 20);
             this.ContactNameTextBox.TabIndex = 3;
@@ -195,23 +208,23 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.ContactNameTextBox);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(12, 105);
+            this.groupBox1.Location = new System.Drawing.Point(10, 132);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(630, 136);
-            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Contact";
             // 
             // Ext2TextBox
             // 
-            this.Ext2TextBox.Location = new System.Drawing.Point(562, 82);
+            this.Ext2TextBox.Location = new System.Drawing.Point(565, 84);
             this.Ext2TextBox.Name = "Ext2TextBox";
             this.Ext2TextBox.Size = new System.Drawing.Size(46, 20);
             this.Ext2TextBox.TabIndex = 10;
             // 
             // Phone2TextBox
             // 
-            this.Phone2TextBox.Location = new System.Drawing.Point(416, 82);
+            this.Phone2TextBox.Location = new System.Drawing.Point(419, 84);
             this.Phone2TextBox.Mask = "(999) 000-0000";
             this.Phone2TextBox.Name = "Phone2TextBox";
             this.Phone2TextBox.Size = new System.Drawing.Size(100, 20);
@@ -220,7 +233,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(522, 85);
+            this.label9.Location = new System.Drawing.Point(525, 87);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(34, 13);
             this.label9.TabIndex = 18;
@@ -229,7 +242,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(360, 85);
+            this.label10.Location = new System.Drawing.Point(363, 87);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(50, 13);
             this.label10.TabIndex = 17;
@@ -237,14 +250,14 @@
             // 
             // Ext1TextBox
             // 
-            this.Ext1TextBox.Location = new System.Drawing.Point(562, 56);
+            this.Ext1TextBox.Location = new System.Drawing.Point(565, 58);
             this.Ext1TextBox.Name = "Ext1TextBox";
             this.Ext1TextBox.Size = new System.Drawing.Size(46, 20);
             this.Ext1TextBox.TabIndex = 7;
             // 
             // Phone1TextBox
             // 
-            this.Phone1TextBox.Location = new System.Drawing.Point(416, 56);
+            this.Phone1TextBox.Location = new System.Drawing.Point(419, 58);
             this.Phone1TextBox.Mask = "(999) 000-0000";
             this.Phone1TextBox.Name = "Phone1TextBox";
             this.Phone1TextBox.Size = new System.Drawing.Size(100, 20);
@@ -253,7 +266,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(522, 59);
+            this.label8.Location = new System.Drawing.Point(525, 61);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(34, 13);
             this.label8.TabIndex = 14;
@@ -262,7 +275,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(360, 59);
+            this.label7.Location = new System.Drawing.Point(363, 61);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(50, 13);
             this.label7.TabIndex = 0;
@@ -270,7 +283,7 @@
             // 
             // UrlTextBox
             // 
-            this.UrlTextBox.Location = new System.Drawing.Point(99, 82);
+            this.UrlTextBox.Location = new System.Drawing.Point(102, 84);
             this.UrlTextBox.Name = "UrlTextBox";
             this.UrlTextBox.Size = new System.Drawing.Size(153, 20);
             this.UrlTextBox.TabIndex = 8;
@@ -278,7 +291,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(45, 86);
+            this.label6.Location = new System.Drawing.Point(48, 88);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(49, 13);
             this.label6.TabIndex = 10;
@@ -286,7 +299,7 @@
             // 
             // EmailTextBox
             // 
-            this.EmailTextBox.Location = new System.Drawing.Point(99, 56);
+            this.EmailTextBox.Location = new System.Drawing.Point(102, 58);
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.Size = new System.Drawing.Size(153, 20);
             this.EmailTextBox.TabIndex = 5;
@@ -294,7 +307,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(59, 60);
+            this.label5.Location = new System.Drawing.Point(62, 62);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 0;
@@ -312,10 +325,10 @@
             this.groupBox2.Controls.Add(this.Street1TextBox);
             this.groupBox2.Controls.Add(this.Street2TextBox);
             this.groupBox2.Controls.Add(this.CityTextBox);
-            this.groupBox2.Location = new System.Drawing.Point(12, 247);
+            this.groupBox2.Location = new System.Drawing.Point(10, 274);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(630, 134);
-            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Address";
             // 
@@ -375,7 +388,7 @@
             "WV",
             "WI",
             "WY"});
-            this.StateComboBox.Location = new System.Drawing.Point(365, 86);
+            this.StateComboBox.Location = new System.Drawing.Point(367, 84);
             this.StateComboBox.Name = "StateComboBox";
             this.StateComboBox.Size = new System.Drawing.Size(49, 21);
             this.StateComboBox.TabIndex = 14;
@@ -383,7 +396,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(66, 89);
+            this.label14.Location = new System.Drawing.Point(68, 87);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(27, 13);
             this.label14.TabIndex = 4;
@@ -391,7 +404,7 @@
             // 
             // ZipCodeTextBox
             // 
-            this.ZipCodeTextBox.Location = new System.Drawing.Point(479, 86);
+            this.ZipCodeTextBox.Location = new System.Drawing.Point(481, 84);
             this.ZipCodeTextBox.Name = "ZipCodeTextBox";
             this.ZipCodeTextBox.Size = new System.Drawing.Size(100, 20);
             this.ZipCodeTextBox.TabIndex = 15;
@@ -399,7 +412,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(47, 63);
+            this.label12.Location = new System.Drawing.Point(49, 61);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(47, 13);
             this.label12.TabIndex = 2;
@@ -408,7 +421,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(420, 89);
+            this.label13.Location = new System.Drawing.Point(422, 87);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(53, 13);
             this.label13.TabIndex = 6;
@@ -417,7 +430,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(324, 89);
+            this.label15.Location = new System.Drawing.Point(326, 87);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(35, 13);
             this.label15.TabIndex = 8;
@@ -426,7 +439,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(47, 37);
+            this.label11.Location = new System.Drawing.Point(49, 35);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(47, 13);
             this.label11.TabIndex = 0;
@@ -434,67 +447,55 @@
             // 
             // Street1TextBox
             // 
-            this.Street1TextBox.Location = new System.Drawing.Point(100, 34);
+            this.Street1TextBox.Location = new System.Drawing.Point(102, 32);
             this.Street1TextBox.Name = "Street1TextBox";
             this.Street1TextBox.Size = new System.Drawing.Size(218, 20);
             this.Street1TextBox.TabIndex = 11;
             // 
             // Street2TextBox
             // 
-            this.Street2TextBox.Location = new System.Drawing.Point(100, 60);
+            this.Street2TextBox.Location = new System.Drawing.Point(102, 58);
             this.Street2TextBox.Name = "Street2TextBox";
             this.Street2TextBox.Size = new System.Drawing.Size(218, 20);
             this.Street2TextBox.TabIndex = 12;
             // 
             // CityTextBox
             // 
-            this.CityTextBox.Location = new System.Drawing.Point(99, 86);
+            this.CityTextBox.Location = new System.Drawing.Point(101, 84);
             this.CityTextBox.Name = "CityTextBox";
             this.CityTextBox.Size = new System.Drawing.Size(219, 20);
             this.CityTextBox.TabIndex = 13;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.ErrorLabel);
             this.groupBox3.Controls.Add(this.DonorTypeComboBox);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.NameTextBox);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Location = new System.Drawing.Point(12, 12);
+            this.groupBox3.Location = new System.Drawing.Point(10, 39);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(630, 87);
-            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Required";
-            // 
-            // ErrorLabel
-            // 
-            this.ErrorLabel.AutoSize = true;
-            this.ErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.ErrorLabel.Location = new System.Drawing.Point(100, 63);
-            this.ErrorLabel.Name = "ErrorLabel";
-            this.ErrorLabel.Size = new System.Drawing.Size(131, 13);
-            this.ErrorLabel.TabIndex = 3;
-            this.ErrorLabel.Text = "Donor name already exists";
-            this.ErrorLabel.Visible = false;
             // 
             // SaveDonorAndCloseButton
             // 
             this.SaveDonorAndCloseButton.AutoSize = true;
-            this.SaveDonorAndCloseButton.Location = new System.Drawing.Point(280, 415);
+            this.SaveDonorAndCloseButton.Location = new System.Drawing.Point(280, 438);
             this.SaveDonorAndCloseButton.Name = "SaveDonorAndCloseButton";
             this.SaveDonorAndCloseButton.Size = new System.Drawing.Size(92, 23);
-            this.SaveDonorAndCloseButton.TabIndex = 17;
+            this.SaveDonorAndCloseButton.TabIndex = 6;
             this.SaveDonorAndCloseButton.Text = "Save and Close";
             this.SaveDonorAndCloseButton.UseVisualStyleBackColor = true;
             this.SaveDonorAndCloseButton.Click += new System.EventHandler(this.SaveAndCloseButtonClick);
             // 
             // SaveDonorButton
             // 
-            this.SaveDonorButton.Location = new System.Drawing.Point(165, 415);
+            this.SaveDonorButton.Location = new System.Drawing.Point(165, 438);
             this.SaveDonorButton.Name = "SaveDonorButton";
             this.SaveDonorButton.Size = new System.Drawing.Size(75, 23);
-            this.SaveDonorButton.TabIndex = 16;
+            this.SaveDonorButton.TabIndex = 5;
             this.SaveDonorButton.Text = "Save";
             this.SaveDonorButton.UseVisualStyleBackColor = true;
             this.SaveDonorButton.Click += new System.EventHandler(this.SaveButtonClick);
@@ -502,10 +503,10 @@
             // CancelDonorButton
             // 
             this.CancelDonorButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelDonorButton.Location = new System.Drawing.Point(412, 415);
+            this.CancelDonorButton.Location = new System.Drawing.Point(412, 438);
             this.CancelDonorButton.Name = "CancelDonorButton";
             this.CancelDonorButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelDonorButton.TabIndex = 18;
+            this.CancelDonorButton.TabIndex = 7;
             this.CancelDonorButton.Text = "Cancel";
             this.CancelDonorButton.UseVisualStyleBackColor = true;
             // 
@@ -535,18 +536,62 @@
             // 
             this.auctionsTableAdapter.ClearBeforeFill = true;
             // 
+            // AuctionsComboBox
+            // 
+            this.AuctionsComboBox.DataSource = this.auctionsBindingSource1;
+            this.AuctionsComboBox.DisplayMember = "Name";
+            this.AuctionsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.AuctionsComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AuctionsComboBox.FormattingEnabled = true;
+            this.AuctionsComboBox.Location = new System.Drawing.Point(227, 12);
+            this.AuctionsComboBox.Name = "AuctionsComboBox";
+            this.AuctionsComboBox.Size = new System.Drawing.Size(250, 21);
+            this.AuctionsComboBox.TabIndex = 1;
+            this.AuctionsComboBox.ValueMember = "Id";
+            this.AuctionsComboBox.SelectedIndexChanged += new System.EventHandler(this.AuctionsComboBoxSelectedIndexChanged);
+            this.AuctionsComboBox.Validating += new System.ComponentModel.CancelEventHandler(this.AuctionsComboBoxValidating);
+            this.AuctionsComboBox.Validated += new System.EventHandler(this.AuctionsComboBoxValidated);
+            // 
+            // auctionsBindingSource1
+            // 
+            this.auctionsBindingSource1.DataMember = "Auctions";
+            this.auctionsBindingSource1.DataSource = this.silentAuctionDataSet;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(175, 15);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(46, 13);
+            this.label16.TabIndex = 20;
+            this.label16.Text = "Auction:";
+            // 
+            // NameErrorProvider
+            // 
+            this.NameErrorProvider.ContainerControl = this;
+            // 
+            // AuctionErrorProvider
+            // 
+            this.AuctionErrorProvider.ContainerControl = this;
+            // 
+            // DonorTypeErrorProvider
+            // 
+            this.DonorTypeErrorProvider.ContainerControl = this;
+            // 
             // CreateNewDonorForm
             // 
-            this.AcceptButton = this.SaveDonorButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(652, 466);
+            this.ClientSize = new System.Drawing.Size(652, 493);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.AuctionsComboBox);
             this.Controls.Add(this.CancelDonorButton);
             this.Controls.Add(this.SaveDonorButton);
             this.Controls.Add(this.SaveDonorAndCloseButton);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CreateNewDonorForm";
             this.Text = "Create New Donor";
             this.Load += new System.EventHandler(this.CreateNewDonorFormLoad);
@@ -561,6 +606,10 @@
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NameErrorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AuctionErrorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DonorTypeErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -609,10 +658,15 @@
         private SilentAuctionDataSetTableAdapters.DonorTypesTableAdapter donorTypesTableAdapter;
         private System.Windows.Forms.BindingSource requestFormatTypesBindingSource;
         private SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter requestFormatTypesTableAdapter;
-        private System.Windows.Forms.Label ErrorLabel;
         private System.Windows.Forms.BindingSource donorsBindingSource;
         private SilentAuctionDataSetTableAdapters.DonorsTableAdapter donorsTableAdapter;
         private System.Windows.Forms.BindingSource auctionsBindingSource;
         private SilentAuctionDataSetTableAdapters.AuctionsTableAdapter auctionsTableAdapter;
+        private System.Windows.Forms.ComboBox AuctionsComboBox;
+        private System.Windows.Forms.BindingSource auctionsBindingSource1;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ErrorProvider NameErrorProvider;
+        private System.Windows.Forms.ErrorProvider AuctionErrorProvider;
+        private System.Windows.Forms.ErrorProvider DonorTypeErrorProvider;
     }
 }

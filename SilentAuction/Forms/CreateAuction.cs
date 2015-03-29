@@ -2,6 +2,7 @@
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using SilentAuction.Utilities;
 
 namespace SilentAuction.Forms
 {
@@ -19,6 +20,10 @@ namespace SilentAuction.Forms
 
         private void CreateNewAuctionFormLoad(object sender, EventArgs e)
         {
+            requestStatusTypesTableAdapter.FillRequestStatusType(silentAuctionDataSet.RequestStatusTypes);
+            requestFormatTypesTableAdapter.FillRequestFormatTypes(silentAuctionDataSet.RequestFormatTypes);
+            donorTypesTableAdapter.FillDonorTypes(silentAuctionDataSet.DonorTypes);
+            
             auctionsTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
         }
         #endregion
@@ -26,25 +31,56 @@ namespace SilentAuction.Forms
         #region Event Handlers
         private void SaveButtonClick(object sender, EventArgs e)
         {
+            Text = "Create New Auction";
+
             if (!ValidForm()) return;
             
             SaveAuctionData();
+
+            if (CopyDonorsCheckBox.Checked)
+                CopyDonors();
+
             DialogResult = DialogResult.None;
 
             ClearForm();
+
+            Text = "Create New Auction - New Auction Created";
         }
 
         private void SaveAuctionAndCloseButtonClick(object sender, EventArgs e)
         {
+            Text = "Create New Auction";
+
             if (!ValidForm()) return;
 
             SaveAuctionData();
+
+            if (CopyDonorsCheckBox.Checked)
+                CopyDonors();
+
             DialogResult = DialogResult.OK;
         }
 
         private void NameTextBoxTextChanged(object sender, EventArgs e)
         {
-            ErrorLabel.Visible = AuctionNameExists();
+            if (AuctionNameExists())
+            {
+                AuctionNameErrorProvider.SetError(NameTextBox, "Auction already exists");
+            }
+        }
+
+        private void CopyDonorsCheckBoxCheckedChanged(object sender, EventArgs e)
+        {
+            if (CopyDonorsCheckBox.Checked)
+            {
+                CopyFromAuctionLabel.Enabled = true;
+                CopyFromAuctionComboBox.Enabled = true;
+            }
+            else
+            {
+                CopyFromAuctionLabel.Enabled = false;
+                CopyFromAuctionComboBox.Enabled = false;
+            }
         }
         #endregion
 
@@ -52,15 +88,18 @@ namespace SilentAuction.Forms
         private bool ValidForm()
         {
             if (string.IsNullOrWhiteSpace(NameTextBox.Text))
-                return false;
-
-            if (AuctionNameExists())
             {
-                ErrorLabel.Visible = true;
+                AuctionNameErrorProvider.SetError(NameTextBox, "Auction name required");
                 return false;
             }
 
-            ErrorLabel.Visible = false;
+            if (AuctionNameExists())
+            {
+                AuctionNameErrorProvider.SetError(NameTextBox, "Auction already exists");
+                return false;
+            }
+
+            AuctionNameErrorProvider.SetError(NameTextBox, "");
 
             return true;
         }
@@ -69,7 +108,7 @@ namespace SilentAuction.Forms
         {
             DateTime currentDate = DateTime.Now;
             silentAuctionDataSet.Auctions.AddAuctionsRow(NameTextBox.Text, DescriptionTextBox.Text,
-                currentDate.ToString(), currentDate.ToString());
+                currentDate.ToString(), currentDate.ToString(), "", "");
 
             SilentAuctionDataSet.AuctionsDataTable newItems =
                 (SilentAuctionDataSet.AuctionsDataTable) silentAuctionDataSet.Auctions.GetChanges(DataRowState.Added);
@@ -83,6 +122,33 @@ namespace SilentAuction.Forms
             }
 
             AuctionId = (int) silentAuctionDataSet.Auctions.Max(a => a.Id);
+        }
+
+        private void CopyDonors()
+        {
+            int copyFromAuctionId = MathHelper.ParseIntZeroIfNull(CopyFromAuctionComboBox.SelectedValue.ToString());
+
+            donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, copyFromAuctionId);
+            SilentAuctionDataSet.DonorsDataTable toTable = new SilentAuctionDataSet.DonorsDataTable();
+
+            foreach (DataRow row in silentAuctionDataSet.Donors.Rows)
+            {
+                    row["AuctionId"] = AuctionId;
+                    row["RequestStatusTypeId"] = 1;
+                    row["CreateDate"] = DateTime.Now;
+                    row["ModifiedDate"] = DateTime.Now;
+                    toTable.Rows.Add(row.ItemArray);
+            }
+
+            SilentAuctionDataSet.DonorsDataTable newItems =
+                    (SilentAuctionDataSet.DonorsDataTable)toTable.GetChanges(DataRowState.Added);
+
+            if (newItems != null)
+            {
+                donorsTableAdapter.Update(newItems);
+                silentAuctionDataSet.AcceptChanges();
+                newItems.Dispose();
+            }
         }
         
         private bool AuctionNameExists()

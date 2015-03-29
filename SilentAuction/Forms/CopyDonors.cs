@@ -30,26 +30,32 @@ namespace SilentAuction.Forms
         #region Event Handlers
         private void AuctionFromComboBoxSelectedIndexChanged(object sender, EventArgs e)
         {
+            Text = "Copy Donors";
             FillDonorsListBox();
         }
         
         private void AuctionToComboBoxSelectedIndexChanged(object sender, EventArgs e)
         {
+            Text = "Copy Donors";
             FillDonorsListBox();
         }
 
         private void SaveDonorsButtonClick(object sender, EventArgs e)
         {
+            Text = "Copy Donors";
             if (ValidateForm())
                 SaveData();
+
+            DialogResult = DialogResult.None;
         }
 
         private void SaveDonorsAndCloseButtonClick(object sender, EventArgs e)
         {
+            Text = "Copy Donors";
             if (ValidateForm())
             {
                 SaveData();
-                Close();
+                DialogResult = DialogResult.OK;
             }
         }
         #endregion
@@ -112,6 +118,7 @@ namespace SilentAuction.Forms
                     silentAuctionDataSet.AcceptChanges();
                     newItems.Dispose();
                     FillDonorsListBox();
+                    Text = "Copy Donors - Copy Successful";
                 }
             }
         }
@@ -145,7 +152,5 @@ namespace SilentAuction.Forms
             }
         }
         #endregion
-
-
     }
 }

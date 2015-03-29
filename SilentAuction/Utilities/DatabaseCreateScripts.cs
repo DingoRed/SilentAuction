@@ -3,7 +3,7 @@ using SilentAuction.Properties;
 
 namespace SilentAuction.Utilities
 {
-    public class DatabaseScripts
+    public class DatabaseCreateScripts
     {
         // Database strings
         public static string DatabaseConnectionString = Settings.Default.SilentAuctionConnectionString;   // ConfigurationManager.ConnectionStrings["SilentAuctionDb"].ConnectionString;  //"Data Source=SilentAuction.sqlite;Version=3;";
@@ -11,7 +11,6 @@ namespace SilentAuction.Utilities
 
         // Table Names
         public static string AuctionsTableName = "Auctions";
-        public static string AuctionDonorRequestStatusTableName = "AuctionDonorRequestStatus";
         public static string BidIncrementTypesTableName = "BidIncrementTypes";
         public static string DonationDeliveryTypesTableName = "DonationDeliveryTypes";
         public static string DonorsTableName = "Donors";
@@ -20,19 +19,14 @@ namespace SilentAuction.Utilities
         public static string ItemTypesTableName = "ItemTypes";
         public static string RequestFormatTypesTableName = "RequestFormatTypes";
         public static string RequestStatusTypesTableName = "RequestStatusTypes";
-
-
+        
         // Table Create Scripts
-        public static string AuctionDonorRequestStatusTableCreateSql = string.Format(@"CREATE TABLE [{0}](
-                                                                   [Id] [integer] PRIMARY KEY AUTOINCREMENT NOT NULL,
-                                                                   [AuctionId] [integer] NOT NULL,
-                                                                   [DonorId] [integer] NOT NULL,
-                                                                   [RequestStatusId] [integer] NOT NULL)", AuctionDonorRequestStatusTableName);
-
         public static string AuctionsTableCreateSql = string.Format(@"CREATE TABLE [{0}](
                                                                    [Id] [integer] PRIMARY KEY AUTOINCREMENT NOT NULL,
                                                                    [Name] [nvarchar](200) NOT NULL,
                                                                    [Description] [nvarchar](5000) NULL,
+                                                                   [DonationRequestDocument] [test] NULL,
+                                                                   [DonationFollowUpDocument] [test] NULL,
                                                                    [CreateDate] [text] NOT NULL,
                 	                                               [ModifiedDate] [text] NOT NULL)", AuctionsTableName);
         
@@ -46,11 +40,17 @@ namespace SilentAuction.Utilities
                                                                    [Name] [nvarchar](200) NOT NULL,
                                                                    [Description] [nvarchar](5000) NOT NULL)", DonationDeliveryTypesTableName);
         
+        public static string DonorTypesTableCreateSql = string.Format(@"CREATE TABLE [{0}](
+                                                                      [Id] [integer] PRIMARY KEY AUTOINCREMENT NOT NULL,
+                                                                      [Name] [nvarchar](200) NOT NULL)", DonorTypesTableName);
+        
         public static string DonorsTableCreateSql = string.Format(@"CREATE TABLE [{0}](
                 	                                        [Id] [integer] PRIMARY KEY AUTOINCREMENT NOT NULL,
+                                                            [AuctionId] [integer] NOT NULL,
                                                             [DonorTypeId] [integer] NOT NULL,
                 	                                        [Name] [nvarchar](200) NOT NULL,
                                                             [RequestFormatTypeId] [integer] NULL,
+                                                            [RequestStatusTypeId] [integer] NULL,
                 	                                        [ContactName] [nvarchar](200) NULL,
                 	                                        [Email] [nvarchar](100) NULL,
                 	                                        [Url] [nvarchar](5000) NULL,
@@ -66,9 +66,9 @@ namespace SilentAuction.Utilities
                 	                                        [CreateDate] [text] NOT NULL,
                 	                                        [ModifiedDate] [text] NOT NULL)", DonorsTableName);
         
-        public static string DonorTypesTableCreateSql = string.Format(@"CREATE TABLE [{0}](
+        public static string ItemTypesTableCreateSql = string.Format(@"CREATE TABLE [{0}](
                                                                       [Id] [integer] PRIMARY KEY AUTOINCREMENT NOT NULL,
-                                                                      [Name] [nvarchar](200) NOT NULL)", DonorTypesTableName);
+                                                                      [Name] [nvarchar](200) NOT NULL)", ItemTypesTableName);
         
         public static string ItemsTableCreateSql = string.Format(@"CREATE TABLE [{0}](
                                                                   [Id] [integer] PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -89,10 +89,6 @@ namespace SilentAuction.Utilities
                                                                   [Notes]  [nvarchar](5000) NULL,
                 	                                              [CreateDate] [text] NOT NULL,
                 	                                              [ModifiedDate] [text] NOT NULL)", ItemsTableName);
-        
-        public static string ItemTypesTableCreateSql = string.Format(@"CREATE TABLE [{0}](
-                                                                      [Id] [integer] PRIMARY KEY AUTOINCREMENT NOT NULL,
-                                                                      [Name] [nvarchar](200) NOT NULL)", ItemTypesTableName);
         
         public static string RequestFormatTypesCreateSql = string.Format(@"CREATE TABLE [{0}](
                                                                    [Id] [integer] PRIMARY KEY AUTOINCREMENT NOT NULL,

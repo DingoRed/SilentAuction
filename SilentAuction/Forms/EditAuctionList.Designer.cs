@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditAuctionList));
             this.AuctionsDataGridView = new System.Windows.Forms.DataGridView();
             this.AuctionsNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AuctionsDescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -181,12 +182,13 @@
             this.AuctionsSaveAllButton.UseVisualStyleBackColor = true;
             this.AuctionsSaveAllButton.Click += new System.EventHandler(this.AuctionsSaveAllButtonClick);
             // 
-            // ViewAuctionsForm
+            // EditAuctionList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(644, 288);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EditAuctionList";
             this.Text = "View/Edit Auctions";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ViewAuctionsFormFormClosing);

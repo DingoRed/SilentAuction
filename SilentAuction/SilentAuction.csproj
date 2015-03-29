@@ -38,19 +38,20 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.96.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.96.0\lib\net45\System.Data.SQLite.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="TXTextControl, Version=21.0.1400.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638" />
+    <Reference Include="TXTextControl.Windows.Forms, Version=21.0.600.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\DataTableExtender.cs" />
@@ -78,11 +79,23 @@
     <Compile Include="Forms\CreateDonor.Designer.cs">
       <DependentUpon>CreateDonor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DonorSelections.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DonorSelections.Designer.cs">
+      <DependentUpon>DonorSelections.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\EditAuctionForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\EditAuctionForm.Designer.cs">
       <DependentUpon>EditAuctionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DocumentEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DocumentEditor.Designer.cs">
+      <DependentUpon>DocumentEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\GenericPageHelper.cs" />
     <Compile Include="Forms\OpenAuction.cs">
@@ -125,10 +138,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SilentAuctionDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Utilities\DatabaseScripts.cs" />
+    <Compile Include="Utilities\DatabaseCreateScripts.cs" />
     <Compile Include="Utilities\DatabaseInitializer.cs" />
     <Compile Include="Utilities\MathHelper.cs" />
-    <Compile Include="Utilities\WindowLocation.cs" />
     <EmbeddedResource Include="Forms\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -140,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CreateDonor.resx">
       <DependentUpon>CreateDonor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DonorSelections.resx">
+      <DependentUpon>DonorSelections.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EditAuctionForm.resx">
       <DependentUpon>EditAuctionForm.cs</DependentUpon>
@@ -153,9 +168,13 @@
     <EmbeddedResource Include="Forms\EditDonorList.resx">
       <DependentUpon>EditDonorList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DocumentEditor.resx">
+      <DependentUpon>DocumentEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -164,6 +183,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -189,6 +209,34 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\SilentAuctionGavel.ico" />
+    <None Include="Resources\exit1.png" />
+    <None Include="Resources\tabs.png" />
+    <None Include="Resources\styledialog1.png" />
+    <None Include="Resources\listdialog.png" />
+    <None Include="Resources\paragraphsettings.png" />
+    <None Include="Resources\pagebreak.png" />
+    <None Include="Resources\mailmergeinsertfield.png" />
+    <None Include="Resources\charactersettings.png" />
+    <None Include="Resources\insertfile.png" />
+    <None Include="Resources\redo.png" />
+    <None Include="Resources\undo.png" />
+    <None Include="Resources\pagedialog.png" />
+    <None Include="Resources\textframe.png" />
+    <None Include="Resources\table.png" />
+    <None Include="Resources\styledialog.png" />
+    <None Include="Resources\save.png" />
+    <None Include="Resources\printpreview.png" />
+    <None Include="Resources\print.png" />
+    <None Include="Resources\paste.png" />
+    <None Include="Resources\open.png" />
+    <None Include="Resources\indentincrease.png" />
+    <None Include="Resources\indentdecrease.png" />
+    <None Include="Resources\image.png" />
+    <None Include="Resources\help.png" />
+    <None Include="Resources\exit.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\cut.png" />
+    <None Include="Resources\copy.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
