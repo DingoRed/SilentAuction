@@ -147,6 +147,8 @@
             this.requestStatusTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.requestStatusTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter();
             this.printDocumentMain = new System.Drawing.Printing.PrintDocument();
+            this.contextMenuStripMain = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -158,6 +160,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.donorTypesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestStatusTypesBindingSource)).BeginInit();
+            this.contextMenuStripMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripContainer1
@@ -189,6 +192,7 @@
             // documentEditorControl
             // 
             this.documentEditorControl.ButtonBar = this.documentButtonBar;
+            this.documentEditorControl.ContextMenuStrip = this.contextMenuStripMain;
             this.documentEditorControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.documentEditorControl.Font = new System.Drawing.Font("Arial", 10F);
             this.documentEditorControl.Location = new System.Drawing.Point(25, 53);
@@ -274,7 +278,7 @@
             this.openToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.open;
             this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openToolStripMenuItem.Text = "&Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItemClick);
             // 
@@ -283,20 +287,20 @@
             this.saveToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.save;
             this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveToolStripMenuItem.Text = "&Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItemClick);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(140, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // pageSetupToolStripMenuItem
             // 
             this.pageSetupToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.pagedialog;
             this.pageSetupToolStripMenuItem.Name = "pageSetupToolStripMenuItem";
-            this.pageSetupToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.pageSetupToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.pageSetupToolStripMenuItem.Text = "Page Setup...";
             this.pageSetupToolStripMenuItem.Click += new System.EventHandler(this.PageSetupToolStripMenuItemClick);
             // 
@@ -305,7 +309,7 @@
             this.printToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.print;
             this.printToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.printToolStripMenuItem.Text = "&Print";
             this.printToolStripMenuItem.Click += new System.EventHandler(this.PrintToolStripMenuItemClick);
             // 
@@ -314,20 +318,20 @@
             this.printPreviewToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.printpreview;
             this.printPreviewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
-            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.printPreviewToolStripMenuItem.Text = "Print Pre&view";
             this.printPreviewToolStripMenuItem.Click += new System.EventHandler(this.PrintPreviewToolStripMenuItemClick);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(140, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.exit;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
             // 
@@ -732,7 +736,7 @@
             this.tableInsertRowBelowToolStripMenuItem});
             this.tableInsertToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.table;
             this.tableInsertToolStripMenuItem.Name = "tableInsertToolStripMenuItem";
-            this.tableInsertToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tableInsertToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.tableInsertToolStripMenuItem.Text = "&Insert";
             this.tableInsertToolStripMenuItem.DropDownOpening += new System.EventHandler(this.TableInsertToolStripMenuItemDropDownOpening);
             // 
@@ -795,7 +799,7 @@
             this.tableDeleteCellsToolStripMenuItem});
             this.tableDeleteToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.deletetable;
             this.tableDeleteToolStripMenuItem.Name = "tableDeleteToolStripMenuItem";
-            this.tableDeleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tableDeleteToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.tableDeleteToolStripMenuItem.Text = "&Delete";
             this.tableDeleteToolStripMenuItem.DropDownOpening += new System.EventHandler(this.TableDeleteToolStripMenuItemDropDownOpening);
             // 
@@ -803,7 +807,7 @@
             // 
             this.tableDeleteTableToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.deletetable;
             this.tableDeleteTableToolStripMenuItem.Name = "tableDeleteTableToolStripMenuItem";
-            this.tableDeleteTableToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tableDeleteTableToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.tableDeleteTableToolStripMenuItem.Text = "&Table";
             this.tableDeleteTableToolStripMenuItem.Click += new System.EventHandler(this.TableDeleteTableToolStripMenuItemClick);
             // 
@@ -811,7 +815,7 @@
             // 
             this.tableDeleteColumnToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.deletetablecol;
             this.tableDeleteColumnToolStripMenuItem.Name = "tableDeleteColumnToolStripMenuItem";
-            this.tableDeleteColumnToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tableDeleteColumnToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.tableDeleteColumnToolStripMenuItem.Text = "&Column(s)";
             this.tableDeleteColumnToolStripMenuItem.Click += new System.EventHandler(this.TableDeleteColumnToolStripMenuItemClick);
             // 
@@ -819,7 +823,7 @@
             // 
             this.tableDeleteRowsToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.deletetablerow;
             this.tableDeleteRowsToolStripMenuItem.Name = "tableDeleteRowsToolStripMenuItem";
-            this.tableDeleteRowsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tableDeleteRowsToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.tableDeleteRowsToolStripMenuItem.Text = "&Row(s)";
             this.tableDeleteRowsToolStripMenuItem.Click += new System.EventHandler(this.TableDeleteRowsToolStripMenuItemClick);
             // 
@@ -831,7 +835,7 @@
             this.tableDeleteDeleteEntireColumnToolStripMenuItem});
             this.tableDeleteCellsToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.deletetablecell;
             this.tableDeleteCellsToolStripMenuItem.Name = "tableDeleteCellsToolStripMenuItem";
-            this.tableDeleteCellsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tableDeleteCellsToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.tableDeleteCellsToolStripMenuItem.Text = "C&ells...";
             // 
             // tableDeleteCellsShiftCellsLeftToolStripMenuItem
@@ -864,7 +868,7 @@
             this.tableSelectCellToolStripMenuItem});
             this.tableSelectToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.selecttablerow;
             this.tableSelectToolStripMenuItem.Name = "tableSelectToolStripMenuItem";
-            this.tableSelectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tableSelectToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.tableSelectToolStripMenuItem.Text = "S&elect";
             this.tableSelectToolStripMenuItem.DropDownOpening += new System.EventHandler(this.TableSelectToolStripMenuItemDropDownOpening);
             // 
@@ -904,7 +908,7 @@
             // 
             this.tableMergeCellsToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.mergetablecells;
             this.tableMergeCellsToolStripMenuItem.Name = "tableMergeCellsToolStripMenuItem";
-            this.tableMergeCellsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tableMergeCellsToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.tableMergeCellsToolStripMenuItem.Text = "&Merge Cells";
             this.tableMergeCellsToolStripMenuItem.Click += new System.EventHandler(this.TableMergeCellsToolStripMenuItemClick);
             // 
@@ -912,7 +916,7 @@
             // 
             this.tableSplitCellsToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.splittablecells;
             this.tableSplitCellsToolStripMenuItem.Name = "tableSplitCellsToolStripMenuItem";
-            this.tableSplitCellsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tableSplitCellsToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.tableSplitCellsToolStripMenuItem.Text = "&Split Cells";
             this.tableSplitCellsToolStripMenuItem.Click += new System.EventHandler(this.TableSplitCellsToolStripMenuItemClick);
             // 
@@ -923,7 +927,7 @@
             this.tableSplitTableBelowToolStripMenuItem});
             this.tableSplitTableToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.splittable;
             this.tableSplitTableToolStripMenuItem.Name = "tableSplitTableToolStripMenuItem";
-            this.tableSplitTableToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tableSplitTableToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.tableSplitTableToolStripMenuItem.Text = "S&plit Table";
             this.tableSplitTableToolStripMenuItem.DropDownOpening += new System.EventHandler(this.TableSplitTableToolStripMenuItemDropDownOpening);
             // 
@@ -947,20 +951,20 @@
             // 
             this.tableGridLinesToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.tablegridlines;
             this.tableGridLinesToolStripMenuItem.Name = "tableGridLinesToolStripMenuItem";
-            this.tableGridLinesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tableGridLinesToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.tableGridLinesToolStripMenuItem.Text = "&Grid Lines";
             this.tableGridLinesToolStripMenuItem.Click += new System.EventHandler(this.TableGridLinesToolStripMenuItemClick);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(133, 6);
             // 
             // tablePropertiesToolStripMenuItem
             // 
             this.tablePropertiesToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.tabledialog;
             this.tablePropertiesToolStripMenuItem.Name = "tablePropertiesToolStripMenuItem";
-            this.tablePropertiesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tablePropertiesToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.tablePropertiesToolStripMenuItem.Text = "&Properties...";
             this.tablePropertiesToolStripMenuItem.Click += new System.EventHandler(this.TablePropertiesToolStripMenuItemClick);
             // 
@@ -1151,6 +1155,19 @@
             // 
             this.requestStatusTypesTableAdapter.ClearBeforeFill = true;
             // 
+            // contextMenuStripMain
+            // 
+            this.contextMenuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cutToolStripMenuItem1});
+            this.contextMenuStripMain.Name = "contextMenuStripMain";
+            this.contextMenuStripMain.Size = new System.Drawing.Size(94, 26);
+            // 
+            // cutToolStripMenuItem1
+            // 
+            this.cutToolStripMenuItem1.Name = "cutToolStripMenuItem1";
+            this.cutToolStripMenuItem1.Size = new System.Drawing.Size(93, 22);
+            this.cutToolStripMenuItem1.Text = "&Cut";
+            // 
             // DocumentEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1178,6 +1195,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.donorTypesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestStatusTypesBindingSource)).EndInit();
+            this.contextMenuStripMain.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1301,5 +1319,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem tablePropertiesToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton deleteToolStripButton;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripMain;
+        private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem1;
     }
 }
