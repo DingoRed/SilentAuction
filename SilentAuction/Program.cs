@@ -25,7 +25,7 @@ namespace SilentAuction
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
-            //Application.Run(new DocumentEditor(1));
+            //Application.Run(new SearchByDonorName());
         }
     }
 }

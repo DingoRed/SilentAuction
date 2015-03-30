@@ -7,17 +7,17 @@
 <DiagramLayout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ex:showrelationlabel="False" ViewPortX="-58" ViewPortY="-47" xmlns:ex="urn:schemas-microsoft-com:xml-msdatasource-layout-extended" xmlns="urn:schemas-microsoft-com:xml-msdatasource-layout">
   <Shapes>
     <Shape ID="DesignTable:Auctions" ZOrder="18" X="66" Y="-9" Height="172" Width="195" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
-    <Shape ID="DesignTable:Donors" ZOrder="3" X="337" Y="-5" Height="476" Width="238" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="425" />
+    <Shape ID="DesignTable:Donors" ZOrder="4" X="337" Y="-5" Height="476" Width="255" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="406" />
     <Shape ID="DesignTable:DonorTypes" ZOrder="17" X="591" Y="70" Height="115" Width="215" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="64" />
-    <Shape ID="DesignTable:Items" ZOrder="16" X="71" Y="259" Height="419" Width="176" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="368" />
-    <Shape ID="DesignTable:BidIncrementTypes" ZOrder="7" X="356" Y="627" Height="134" Width="256" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
-    <Shape ID="DesignTable:DonationDeliveryTypes" ZOrder="11" X="-48" Y="753" Height="134" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
-    <Shape ID="DesignTable:ItemTypes" ZOrder="4" X="123" Y="751" Height="115" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="24" OldDataTableHeight="0" SplitterPosition="64" />
-    <Shape ID="DesignTable:RequestFormatTypes" ZOrder="10" X="586" Y="212" Height="115" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="64" />
-    <Shape ID="DesignTable:RequestStatusTypes" ZOrder="9" X="675" Y="419" Height="134" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
+    <Shape ID="DesignTable:Items" ZOrder="1" X="-16" Y="218" Height="438" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="368" />
+    <Shape ID="DesignTable:BidIncrementTypes" ZOrder="8" X="356" Y="627" Height="134" Width="256" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
+    <Shape ID="DesignTable:DonationDeliveryTypes" ZOrder="12" X="-48" Y="753" Height="134" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
+    <Shape ID="DesignTable:ItemTypes" ZOrder="5" X="123" Y="751" Height="115" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="24" OldDataTableHeight="0" SplitterPosition="64" />
+    <Shape ID="DesignTable:RequestFormatTypes" ZOrder="11" X="586" Y="212" Height="115" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="64" />
+    <Shape ID="DesignTable:RequestStatusTypes" ZOrder="10" X="675" Y="419" Height="134" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
   </Shapes>
   <Connectors>
-    <Connector ID="DesignRelation:FK_Auctions_Donors" ZOrder="1" LineWidth="11">
+    <Connector ID="DesignRelation:FK_Auctions_Donors" ZOrder="2" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>261</X>
@@ -29,103 +29,115 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK_RequestStatusTypes_Donors" ZOrder="2" LineWidth="11">
+    <Connector ID="DesignRelation:FK_RequestStatusTypes_Donors" ZOrder="3" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>675</X>
-          <Y>471</Y>
+          <Y>452</Y>
         </Point>
         <Point>
-          <X>575</X>
-          <Y>471</Y>
-        </Point>
-      </RoutePoints>
-    </Connector>
-    <Connector ID="DesignRelation:FK_RequestFormatTypes_Donors" ZOrder="8" LineWidth="11">
-      <RoutePoints>
-        <Point>
-          <X>586</X>
-          <Y>269</Y>
-        </Point>
-        <Point>
-          <X>575</X>
-          <Y>269</Y>
+          <X>592</X>
+          <Y>452</Y>
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK_DonorTypes_Donors" ZOrder="15" LineWidth="11">
+    <Connector ID="DesignRelation:FK_RequestFormatTypes_Donors" ZOrder="9" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>591</X>
-          <Y>127</Y>
+          <X>654</X>
+          <Y>327</Y>
         </Point>
         <Point>
-          <X>575</X>
-          <Y>127</Y>
+          <X>654</X>
+          <Y>344</Y>
+        </Point>
+        <Point>
+          <X>592</X>
+          <Y>344</Y>
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK_ItemTypes_Items" ZOrder="5" LineWidth="11">
+    <Connector ID="DesignRelation:FK_DonorTypes_Donors" ZOrder="16" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>216</X>
+          <X>662</X>
+          <Y>185</Y>
+        </Point>
+        <Point>
+          <X>662</X>
+          <Y>202</Y>
+        </Point>
+        <Point>
+          <X>592</X>
+          <Y>202</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
+    <Connector ID="DesignRelation:FK_ItemTypes_Items" ZOrder="6" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>129</X>
           <Y>751</Y>
         </Point>
         <Point>
-          <X>216</X>
-          <Y>678</Y>
+          <X>129</X>
+          <Y>656</Y>
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK_BidIncrementTypes_Items" ZOrder="12" LineWidth="11">
+    <Connector ID="DesignRelation:FK_BidIncrementTypes_Items" ZOrder="13" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>356</X>
-          <Y>652</Y>
+          <Y>714</Y>
         </Point>
         <Point>
-          <X>247</X>
-          <Y>652</Y>
+          <X>252</X>
+          <Y>714</Y>
+        </Point>
+        <Point>
+          <X>252</X>
+          <Y>656</Y>
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK_Auctions_Items" ZOrder="14" LineWidth="11">
+    <Connector ID="DesignRelation:FK_Auctions_Items" ZOrder="15" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>155</X>
+          <X>68</X>
           <Y>163</Y>
         </Point>
         <Point>
-          <X>155</X>
-          <Y>259</Y>
+          <X>68</X>
+          <Y>218</Y>
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK_Donors_Items" ZOrder="13" LineWidth="11">
+    <Connector ID="DesignRelation:FK_Donors_Items" ZOrder="14" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>354</X>
+          <X>379</X>
           <Y>471</Y>
         </Point>
         <Point>
-          <X>354</X>
-          <Y>612</Y>
+          <X>379</X>
+          <Y>571</Y>
         </Point>
         <Point>
-          <X>247</X>
-          <Y>612</Y>
+          <X>284</X>
+          <Y>571</Y>
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK_DonationDeliveryTypes_Items" ZOrder="6" LineWidth="11">
+    <Connector ID="DesignRelation:FK_DonationDeliveryTypes_Items" ZOrder="7" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>88</X>
+          <X>1</X>
           <Y>753</Y>
         </Point>
         <Point>
-          <X>88</X>
-          <Y>678</Y>
+          <X>1</X>
+          <Y>656</Y>
         </Point>
       </RoutePoints>
     </Connector>

@@ -32,10 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DocumentEditor));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.documentEditorControl = new TXTextControl.TextControl();
-            this.buttonBar1 = new TXTextControl.ButtonBar();
-            this.rulerBar2 = new TXTextControl.RulerBar();
-            this.statusBar1 = new TXTextControl.StatusBar();
-            this.rulerBar1 = new TXTextControl.RulerBar();
+            this.documentButtonBar = new TXTextControl.ButtonBar();
+            this.horizontalRulerBar = new TXTextControl.RulerBar();
+            this.documentStatusBar = new TXTextControl.StatusBar();
+            this.verticalRulerBar = new TXTextControl.RulerBar();
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -92,6 +92,35 @@
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.formatImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableInsertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableInsertTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
+            this.tableInsertColumnToTheLeftToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableInsertColumnToTheRightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
+            this.tableInsertRowAboveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableInsertRowBelowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableDeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableDeleteTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableDeleteColumnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableDeleteRowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableDeleteCellsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableDeleteCellsShiftCellsLeftToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableDeleteCellsDeleteEntireRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableDeleteDeleteEntireColumnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableSelectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableSelectTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableSelectColumnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableSelectRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableSelectCellToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableMergeCellsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableSplitCellsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableSplitTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableSplitTableAboveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableSplitTableBelowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableGridLinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.tablePropertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMain = new System.Windows.Forms.ToolStrip();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -102,6 +131,7 @@
             this.cutToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.copyToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.pasteToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.deleteToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.undoToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.redoToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -116,7 +146,7 @@
             this.requestFormatTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter();
             this.requestStatusTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.requestStatusTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printDocumentMain = new System.Drawing.Printing.PrintDocument();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -137,10 +167,10 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.documentEditorControl);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.rulerBar1);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.rulerBar2);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.buttonBar1);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.statusBar1);
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.verticalRulerBar);
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.horizontalRulerBar);
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.documentButtonBar);
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.documentStatusBar);
             this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(958, 608);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
@@ -158,55 +188,55 @@
             // 
             // documentEditorControl
             // 
-            this.documentEditorControl.ButtonBar = this.buttonBar1;
+            this.documentEditorControl.ButtonBar = this.documentButtonBar;
             this.documentEditorControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.documentEditorControl.Font = new System.Drawing.Font("Arial", 10F);
             this.documentEditorControl.Location = new System.Drawing.Point(25, 53);
             this.documentEditorControl.Name = "documentEditorControl";
-            this.documentEditorControl.RulerBar = this.rulerBar2;
+            this.documentEditorControl.RulerBar = this.horizontalRulerBar;
             this.documentEditorControl.Size = new System.Drawing.Size(933, 533);
-            this.documentEditorControl.StatusBar = this.statusBar1;
+            this.documentEditorControl.StatusBar = this.documentStatusBar;
             this.documentEditorControl.TabIndex = 0;
-            this.documentEditorControl.VerticalRulerBar = this.rulerBar1;
+            this.documentEditorControl.VerticalRulerBar = this.verticalRulerBar;
             this.documentEditorControl.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DocumentEditorControlKeyPress);
             // 
-            // buttonBar1
+            // documentButtonBar
             // 
-            this.buttonBar1.BackColor = System.Drawing.SystemColors.Control;
-            this.buttonBar1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonBar1.Location = new System.Drawing.Point(0, 0);
-            this.buttonBar1.Name = "buttonBar1";
-            this.buttonBar1.Size = new System.Drawing.Size(958, 28);
-            this.buttonBar1.TabIndex = 1;
-            this.buttonBar1.Text = "buttonBar1";
+            this.documentButtonBar.BackColor = System.Drawing.SystemColors.Control;
+            this.documentButtonBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.documentButtonBar.Location = new System.Drawing.Point(0, 0);
+            this.documentButtonBar.Name = "documentButtonBar";
+            this.documentButtonBar.Size = new System.Drawing.Size(958, 28);
+            this.documentButtonBar.TabIndex = 1;
+            this.documentButtonBar.Text = "buttonBar1";
             // 
-            // rulerBar2
+            // horizontalRulerBar
             // 
-            this.rulerBar2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.rulerBar2.Location = new System.Drawing.Point(0, 28);
-            this.rulerBar2.Name = "rulerBar2";
-            this.rulerBar2.Size = new System.Drawing.Size(958, 25);
-            this.rulerBar2.TabIndex = 4;
-            this.rulerBar2.Text = "rulerBar2";
+            this.horizontalRulerBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.horizontalRulerBar.Location = new System.Drawing.Point(0, 28);
+            this.horizontalRulerBar.Name = "horizontalRulerBar";
+            this.horizontalRulerBar.Size = new System.Drawing.Size(958, 25);
+            this.horizontalRulerBar.TabIndex = 4;
+            this.horizontalRulerBar.Text = "rulerBar2";
             // 
-            // statusBar1
+            // documentStatusBar
             // 
-            this.statusBar1.BackColor = System.Drawing.SystemColors.Control;
-            this.statusBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.statusBar1.Location = new System.Drawing.Point(0, 586);
-            this.statusBar1.Name = "statusBar1";
-            this.statusBar1.Size = new System.Drawing.Size(958, 22);
-            this.statusBar1.TabIndex = 2;
+            this.documentStatusBar.BackColor = System.Drawing.SystemColors.Control;
+            this.documentStatusBar.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.documentStatusBar.Location = new System.Drawing.Point(0, 586);
+            this.documentStatusBar.Name = "documentStatusBar";
+            this.documentStatusBar.Size = new System.Drawing.Size(958, 22);
+            this.documentStatusBar.TabIndex = 2;
             // 
-            // rulerBar1
+            // verticalRulerBar
             // 
-            this.rulerBar1.Alignment = TXTextControl.RulerBarAlignment.Left;
-            this.rulerBar1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.rulerBar1.Location = new System.Drawing.Point(0, 53);
-            this.rulerBar1.Name = "rulerBar1";
-            this.rulerBar1.Size = new System.Drawing.Size(25, 533);
-            this.rulerBar1.TabIndex = 3;
-            this.rulerBar1.Text = "rulerBar1";
+            this.verticalRulerBar.Alignment = TXTextControl.RulerBarAlignment.Left;
+            this.verticalRulerBar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.verticalRulerBar.Location = new System.Drawing.Point(0, 53);
+            this.verticalRulerBar.Name = "verticalRulerBar";
+            this.verticalRulerBar.Size = new System.Drawing.Size(25, 533);
+            this.verticalRulerBar.TabIndex = 3;
+            this.verticalRulerBar.Text = "rulerBar1";
             // 
             // menuStripMain
             // 
@@ -675,9 +705,264 @@
             // 
             // tableToolStripMenuItem
             // 
+            this.tableToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tableInsertToolStripMenuItem,
+            this.tableDeleteToolStripMenuItem,
+            this.tableSelectToolStripMenuItem,
+            this.tableMergeCellsToolStripMenuItem,
+            this.tableSplitCellsToolStripMenuItem,
+            this.tableSplitTableToolStripMenuItem,
+            this.tableGridLinesToolStripMenuItem,
+            this.toolStripSeparator5,
+            this.tablePropertiesToolStripMenuItem});
             this.tableToolStripMenuItem.Name = "tableToolStripMenuItem";
             this.tableToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.tableToolStripMenuItem.Text = "T&able";
+            this.tableToolStripMenuItem.DropDownOpening += new System.EventHandler(this.TableToolStripMenuItemDropDownOpening);
+            // 
+            // tableInsertToolStripMenuItem
+            // 
+            this.tableInsertToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tableInsertTableToolStripMenuItem,
+            this.toolStripSeparator14,
+            this.tableInsertColumnToTheLeftToolStripMenuItem,
+            this.tableInsertColumnToTheRightToolStripMenuItem,
+            this.toolStripSeparator15,
+            this.tableInsertRowAboveToolStripMenuItem,
+            this.tableInsertRowBelowToolStripMenuItem});
+            this.tableInsertToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.table;
+            this.tableInsertToolStripMenuItem.Name = "tableInsertToolStripMenuItem";
+            this.tableInsertToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tableInsertToolStripMenuItem.Text = "&Insert";
+            this.tableInsertToolStripMenuItem.DropDownOpening += new System.EventHandler(this.TableInsertToolStripMenuItemDropDownOpening);
+            // 
+            // tableInsertTableToolStripMenuItem
+            // 
+            this.tableInsertTableToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.table;
+            this.tableInsertTableToolStripMenuItem.Name = "tableInsertTableToolStripMenuItem";
+            this.tableInsertTableToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.tableInsertTableToolStripMenuItem.Text = "&Table";
+            this.tableInsertTableToolStripMenuItem.Click += new System.EventHandler(this.TableInsertTableToolStripMenuItemClick);
+            // 
+            // toolStripSeparator14
+            // 
+            this.toolStripSeparator14.Name = "toolStripSeparator14";
+            this.toolStripSeparator14.Size = new System.Drawing.Size(185, 6);
+            // 
+            // tableInsertColumnToTheLeftToolStripMenuItem
+            // 
+            this.tableInsertColumnToTheLeftToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.inserttablecolleft;
+            this.tableInsertColumnToTheLeftToolStripMenuItem.Name = "tableInsertColumnToTheLeftToolStripMenuItem";
+            this.tableInsertColumnToTheLeftToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.tableInsertColumnToTheLeftToolStripMenuItem.Text = "Column To The &Left";
+            this.tableInsertColumnToTheLeftToolStripMenuItem.Click += new System.EventHandler(this.TableInsertColumnToTheLeftToolStripMenuItemClick);
+            // 
+            // tableInsertColumnToTheRightToolStripMenuItem
+            // 
+            this.tableInsertColumnToTheRightToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.inserttablecolright;
+            this.tableInsertColumnToTheRightToolStripMenuItem.Name = "tableInsertColumnToTheRightToolStripMenuItem";
+            this.tableInsertColumnToTheRightToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.tableInsertColumnToTheRightToolStripMenuItem.Text = "Column To The &Right";
+            this.tableInsertColumnToTheRightToolStripMenuItem.Click += new System.EventHandler(this.TableInsertColumnToTheRightToolStripMenuItemClick);
+            // 
+            // toolStripSeparator15
+            // 
+            this.toolStripSeparator15.Name = "toolStripSeparator15";
+            this.toolStripSeparator15.Size = new System.Drawing.Size(185, 6);
+            // 
+            // tableInsertRowAboveToolStripMenuItem
+            // 
+            this.tableInsertRowAboveToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.inserttablerowabove;
+            this.tableInsertRowAboveToolStripMenuItem.Name = "tableInsertRowAboveToolStripMenuItem";
+            this.tableInsertRowAboveToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.tableInsertRowAboveToolStripMenuItem.Text = "Row &Above";
+            this.tableInsertRowAboveToolStripMenuItem.Click += new System.EventHandler(this.TableInsertRowAboveToolStripMenuItemClick);
+            // 
+            // tableInsertRowBelowToolStripMenuItem
+            // 
+            this.tableInsertRowBelowToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.inserttablerowbelow;
+            this.tableInsertRowBelowToolStripMenuItem.Name = "tableInsertRowBelowToolStripMenuItem";
+            this.tableInsertRowBelowToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.tableInsertRowBelowToolStripMenuItem.Text = "Row &Below";
+            this.tableInsertRowBelowToolStripMenuItem.Click += new System.EventHandler(this.TableInsertRowBelowToolStripMenuItemClick);
+            // 
+            // tableDeleteToolStripMenuItem
+            // 
+            this.tableDeleteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tableDeleteTableToolStripMenuItem,
+            this.tableDeleteColumnToolStripMenuItem,
+            this.tableDeleteRowsToolStripMenuItem,
+            this.tableDeleteCellsToolStripMenuItem});
+            this.tableDeleteToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.deletetable;
+            this.tableDeleteToolStripMenuItem.Name = "tableDeleteToolStripMenuItem";
+            this.tableDeleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tableDeleteToolStripMenuItem.Text = "&Delete";
+            this.tableDeleteToolStripMenuItem.DropDownOpening += new System.EventHandler(this.TableDeleteToolStripMenuItemDropDownOpening);
+            // 
+            // tableDeleteTableToolStripMenuItem
+            // 
+            this.tableDeleteTableToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.deletetable;
+            this.tableDeleteTableToolStripMenuItem.Name = "tableDeleteTableToolStripMenuItem";
+            this.tableDeleteTableToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tableDeleteTableToolStripMenuItem.Text = "&Table";
+            this.tableDeleteTableToolStripMenuItem.Click += new System.EventHandler(this.TableDeleteTableToolStripMenuItemClick);
+            // 
+            // tableDeleteColumnToolStripMenuItem
+            // 
+            this.tableDeleteColumnToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.deletetablecol;
+            this.tableDeleteColumnToolStripMenuItem.Name = "tableDeleteColumnToolStripMenuItem";
+            this.tableDeleteColumnToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tableDeleteColumnToolStripMenuItem.Text = "&Column(s)";
+            this.tableDeleteColumnToolStripMenuItem.Click += new System.EventHandler(this.TableDeleteColumnToolStripMenuItemClick);
+            // 
+            // tableDeleteRowsToolStripMenuItem
+            // 
+            this.tableDeleteRowsToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.deletetablerow;
+            this.tableDeleteRowsToolStripMenuItem.Name = "tableDeleteRowsToolStripMenuItem";
+            this.tableDeleteRowsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tableDeleteRowsToolStripMenuItem.Text = "&Row(s)";
+            this.tableDeleteRowsToolStripMenuItem.Click += new System.EventHandler(this.TableDeleteRowsToolStripMenuItemClick);
+            // 
+            // tableDeleteCellsToolStripMenuItem
+            // 
+            this.tableDeleteCellsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tableDeleteCellsShiftCellsLeftToolStripMenuItem,
+            this.tableDeleteCellsDeleteEntireRowToolStripMenuItem,
+            this.tableDeleteDeleteEntireColumnToolStripMenuItem});
+            this.tableDeleteCellsToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.deletetablecell;
+            this.tableDeleteCellsToolStripMenuItem.Name = "tableDeleteCellsToolStripMenuItem";
+            this.tableDeleteCellsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tableDeleteCellsToolStripMenuItem.Text = "C&ells...";
+            // 
+            // tableDeleteCellsShiftCellsLeftToolStripMenuItem
+            // 
+            this.tableDeleteCellsShiftCellsLeftToolStripMenuItem.Name = "tableDeleteCellsShiftCellsLeftToolStripMenuItem";
+            this.tableDeleteCellsShiftCellsLeftToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.tableDeleteCellsShiftCellsLeftToolStripMenuItem.Text = "Shift Cells &Left";
+            this.tableDeleteCellsShiftCellsLeftToolStripMenuItem.Click += new System.EventHandler(this.TableDeleteCellsShiftCellsLeftToolStripMenuItemClick);
+            // 
+            // tableDeleteCellsDeleteEntireRowToolStripMenuItem
+            // 
+            this.tableDeleteCellsDeleteEntireRowToolStripMenuItem.Name = "tableDeleteCellsDeleteEntireRowToolStripMenuItem";
+            this.tableDeleteCellsDeleteEntireRowToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.tableDeleteCellsDeleteEntireRowToolStripMenuItem.Text = "Delete Entire &Row";
+            this.tableDeleteCellsDeleteEntireRowToolStripMenuItem.Click += new System.EventHandler(this.TableDeleteCellsDeleteEntireRowToolStripMenuItemClick);
+            // 
+            // tableDeleteDeleteEntireColumnToolStripMenuItem
+            // 
+            this.tableDeleteDeleteEntireColumnToolStripMenuItem.Name = "tableDeleteDeleteEntireColumnToolStripMenuItem";
+            this.tableDeleteDeleteEntireColumnToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.tableDeleteDeleteEntireColumnToolStripMenuItem.Text = "Delete Entire &Column";
+            this.tableDeleteDeleteEntireColumnToolStripMenuItem.Click += new System.EventHandler(this.TableDeleteDeleteEntireColumnToolStripMenuItemClick);
+            // 
+            // tableSelectToolStripMenuItem
+            // 
+            this.tableSelectToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tableSelectTableToolStripMenuItem,
+            this.tableSelectColumnToolStripMenuItem,
+            this.tableSelectRowToolStripMenuItem,
+            this.tableSelectCellToolStripMenuItem});
+            this.tableSelectToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.selecttablerow;
+            this.tableSelectToolStripMenuItem.Name = "tableSelectToolStripMenuItem";
+            this.tableSelectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tableSelectToolStripMenuItem.Text = "S&elect";
+            this.tableSelectToolStripMenuItem.DropDownOpening += new System.EventHandler(this.TableSelectToolStripMenuItemDropDownOpening);
+            // 
+            // tableSelectTableToolStripMenuItem
+            // 
+            this.tableSelectTableToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.selecttable;
+            this.tableSelectTableToolStripMenuItem.Name = "tableSelectTableToolStripMenuItem";
+            this.tableSelectTableToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.tableSelectTableToolStripMenuItem.Text = "&Table";
+            this.tableSelectTableToolStripMenuItem.Click += new System.EventHandler(this.TableSelectTableToolStripMenuItemClick);
+            // 
+            // tableSelectColumnToolStripMenuItem
+            // 
+            this.tableSelectColumnToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.selecttablecol;
+            this.tableSelectColumnToolStripMenuItem.Name = "tableSelectColumnToolStripMenuItem";
+            this.tableSelectColumnToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.tableSelectColumnToolStripMenuItem.Text = "&Column";
+            this.tableSelectColumnToolStripMenuItem.Click += new System.EventHandler(this.TableSelectColumnToolStripMenuItemClick);
+            // 
+            // tableSelectRowToolStripMenuItem
+            // 
+            this.tableSelectRowToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.selecttablerow;
+            this.tableSelectRowToolStripMenuItem.Name = "tableSelectRowToolStripMenuItem";
+            this.tableSelectRowToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.tableSelectRowToolStripMenuItem.Text = "&Row";
+            this.tableSelectRowToolStripMenuItem.Click += new System.EventHandler(this.TableSelectRowToolStripMenuItemClick);
+            // 
+            // tableSelectCellToolStripMenuItem
+            // 
+            this.tableSelectCellToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.selecttablecell;
+            this.tableSelectCellToolStripMenuItem.Name = "tableSelectCellToolStripMenuItem";
+            this.tableSelectCellToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.tableSelectCellToolStripMenuItem.Text = "C&ell";
+            this.tableSelectCellToolStripMenuItem.Click += new System.EventHandler(this.TableSelectCellToolStripMenuItemClick);
+            // 
+            // tableMergeCellsToolStripMenuItem
+            // 
+            this.tableMergeCellsToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.mergetablecells;
+            this.tableMergeCellsToolStripMenuItem.Name = "tableMergeCellsToolStripMenuItem";
+            this.tableMergeCellsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tableMergeCellsToolStripMenuItem.Text = "&Merge Cells";
+            this.tableMergeCellsToolStripMenuItem.Click += new System.EventHandler(this.TableMergeCellsToolStripMenuItemClick);
+            // 
+            // tableSplitCellsToolStripMenuItem
+            // 
+            this.tableSplitCellsToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.splittablecells;
+            this.tableSplitCellsToolStripMenuItem.Name = "tableSplitCellsToolStripMenuItem";
+            this.tableSplitCellsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tableSplitCellsToolStripMenuItem.Text = "&Split Cells";
+            this.tableSplitCellsToolStripMenuItem.Click += new System.EventHandler(this.TableSplitCellsToolStripMenuItemClick);
+            // 
+            // tableSplitTableToolStripMenuItem
+            // 
+            this.tableSplitTableToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tableSplitTableAboveToolStripMenuItem,
+            this.tableSplitTableBelowToolStripMenuItem});
+            this.tableSplitTableToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.splittable;
+            this.tableSplitTableToolStripMenuItem.Name = "tableSplitTableToolStripMenuItem";
+            this.tableSplitTableToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tableSplitTableToolStripMenuItem.Text = "S&plit Table";
+            this.tableSplitTableToolStripMenuItem.DropDownOpening += new System.EventHandler(this.TableSplitTableToolStripMenuItemDropDownOpening);
+            // 
+            // tableSplitTableAboveToolStripMenuItem
+            // 
+            this.tableSplitTableAboveToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.splittableabove;
+            this.tableSplitTableAboveToolStripMenuItem.Name = "tableSplitTableAboveToolStripMenuItem";
+            this.tableSplitTableAboveToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.tableSplitTableAboveToolStripMenuItem.Text = "&Above";
+            this.tableSplitTableAboveToolStripMenuItem.Click += new System.EventHandler(this.TableSplitTableAboveToolStripMenuItemClick);
+            // 
+            // tableSplitTableBelowToolStripMenuItem
+            // 
+            this.tableSplitTableBelowToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.splittablebelow;
+            this.tableSplitTableBelowToolStripMenuItem.Name = "tableSplitTableBelowToolStripMenuItem";
+            this.tableSplitTableBelowToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.tableSplitTableBelowToolStripMenuItem.Text = "&Below";
+            this.tableSplitTableBelowToolStripMenuItem.Click += new System.EventHandler(this.TableSplitTableBelowToolStripMenuItemClick);
+            // 
+            // tableGridLinesToolStripMenuItem
+            // 
+            this.tableGridLinesToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.tablegridlines;
+            this.tableGridLinesToolStripMenuItem.Name = "tableGridLinesToolStripMenuItem";
+            this.tableGridLinesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tableGridLinesToolStripMenuItem.Text = "&Grid Lines";
+            this.tableGridLinesToolStripMenuItem.Click += new System.EventHandler(this.TableGridLinesToolStripMenuItemClick);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
+            // 
+            // tablePropertiesToolStripMenuItem
+            // 
+            this.tablePropertiesToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.tabledialog;
+            this.tablePropertiesToolStripMenuItem.Name = "tablePropertiesToolStripMenuItem";
+            this.tablePropertiesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tablePropertiesToolStripMenuItem.Text = "&Properties...";
+            this.tablePropertiesToolStripMenuItem.Click += new System.EventHandler(this.TablePropertiesToolStripMenuItemClick);
             // 
             // toolStripMain
             // 
@@ -692,12 +977,13 @@
             this.cutToolStripButton,
             this.copyToolStripButton,
             this.pasteToolStripButton,
+            this.deleteToolStripButton,
             this.toolStripSeparator8,
             this.undoToolStripButton,
             this.redoToolStripButton});
             this.toolStripMain.Location = new System.Drawing.Point(3, 24);
             this.toolStripMain.Name = "toolStripMain";
-            this.toolStripMain.Size = new System.Drawing.Size(237, 25);
+            this.toolStripMain.Size = new System.Drawing.Size(260, 25);
             this.toolStripMain.TabIndex = 1;
             // 
             // openToolStripButton
@@ -779,6 +1065,16 @@
             this.pasteToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.pasteToolStripButton.Text = "Paste";
             this.pasteToolStripButton.Click += new System.EventHandler(this.PasteToolStripButtonClick);
+            // 
+            // deleteToolStripButton
+            // 
+            this.deleteToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.deleteToolStripButton.Image = global::SilentAuction.Properties.Resources.delete;
+            this.deleteToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.deleteToolStripButton.Name = "deleteToolStripButton";
+            this.deleteToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.deleteToolStripButton.Text = "toolStripButton1";
+            this.deleteToolStripButton.Click += new System.EventHandler(this.DeleteToolStripButtonClick);
             // 
             // toolStripSeparator8
             // 
@@ -928,10 +1224,10 @@
         private System.Windows.Forms.ToolStripMenuItem tableToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pageSetupToolStripMenuItem;
         private TXTextControl.TextControl documentEditorControl;
-        private TXTextControl.ButtonBar buttonBar1;
-        private TXTextControl.RulerBar rulerBar2;
-        private TXTextControl.StatusBar statusBar1;
-        private TXTextControl.RulerBar rulerBar1;
+        private TXTextControl.ButtonBar documentButtonBar;
+        private TXTextControl.RulerBar horizontalRulerBar;
+        private TXTextControl.StatusBar documentStatusBar;
+        private TXTextControl.RulerBar verticalRulerBar;
         private System.Windows.Forms.BindingSource auctionsBindingSource;
         private SilentAuctionDataSet silentAuctionDataSet;
         private SilentAuctionDataSetTableAdapters.AuctionsTableAdapter auctionsTableAdapter;
@@ -945,7 +1241,7 @@
         private SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter requestFormatTypesTableAdapter;
         private System.Windows.Forms.BindingSource requestStatusTypesBindingSource;
         private SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter requestStatusTypesTableAdapter;
-        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Drawing.Printing.PrintDocument printDocumentMain;
         private System.Windows.Forms.ToolStripMenuItem insertCompanyNameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem insertStreet1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem insertStreet2ToolStripMenuItem;
@@ -975,5 +1271,35 @@
         private System.Windows.Forms.ToolStripMenuItem formatListArabicNumberstoolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem formatListCapitalLettersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem formatListBulletsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tableInsertToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tableInsertTableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
+        private System.Windows.Forms.ToolStripMenuItem tableInsertColumnToTheLeftToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tableInsertColumnToTheRightToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
+        private System.Windows.Forms.ToolStripMenuItem tableInsertRowAboveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tableInsertRowBelowToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tableDeleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tableDeleteTableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tableDeleteColumnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tableDeleteRowsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tableDeleteCellsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tableDeleteCellsShiftCellsLeftToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tableDeleteCellsDeleteEntireRowToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tableDeleteDeleteEntireColumnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tableSelectToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tableSelectTableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tableSelectColumnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tableSelectRowToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tableSelectCellToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tableMergeCellsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tableSplitCellsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tableSplitTableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tableSplitTableAboveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tableSplitTableBelowToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tableGridLinesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem tablePropertiesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton deleteToolStripButton;
     }
 }

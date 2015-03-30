@@ -97,6 +97,12 @@
     <Compile Include="Forms\DocumentEditor.Designer.cs">
       <DependentUpon>DocumentEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ShowAllItemsByDonorName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ShowAllItemsByDonorName.Designer.cs">
+      <DependentUpon>ShowAllItemsByDonorName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\GenericPageHelper.cs" />
     <Compile Include="Forms\OpenAuction.cs">
       <SubType>Form</SubType>
@@ -171,6 +177,9 @@
     <EmbeddedResource Include="Forms\DocumentEditor.resx">
       <DependentUpon>DocumentEditor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ShowAllItemsByDonorName.resx">
+      <DependentUpon>ShowAllItemsByDonorName.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -209,6 +218,26 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\SilentAuctionGavel.ico" />
+    <None Include="Resources\tablegridlines.png" />
+    <None Include="Resources\tabledialog.png" />
+    <None Include="Resources\table1.png" />
+    <None Include="Resources\splittablecells.png" />
+    <None Include="Resources\splittablebelow.png" />
+    <None Include="Resources\splittableabove.png" />
+    <None Include="Resources\splittable.png" />
+    <None Include="Resources\selecttablerow.png" />
+    <None Include="Resources\selecttablecol.png" />
+    <None Include="Resources\selecttablecell.png" />
+    <None Include="Resources\selecttable.png" />
+    <None Include="Resources\mergetablecells.png" />
+    <None Include="Resources\inserttablerowbelow.png" />
+    <None Include="Resources\inserttablerowabove.png" />
+    <None Include="Resources\inserttablecolright.png" />
+    <None Include="Resources\inserttablecolleft.png" />
+    <None Include="Resources\deletetablerow.png" />
+    <None Include="Resources\deletetablecol.png" />
+    <None Include="Resources\deletetablecell.png" />
+    <None Include="Resources\deletetable.png" />
     <None Include="Resources\exit1.png" />
     <None Include="Resources\tabs.png" />
     <None Include="Resources\styledialog1.png" />

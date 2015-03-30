@@ -119,6 +119,8 @@
             this.requestStatusTypesbindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.requestStatusTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter();
             this.donorRequestPrintDocument = new System.Drawing.Printing.PrintDocument();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.showAllItemsByDonorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ItemsTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).BeginInit();
@@ -656,21 +658,23 @@
             // 
             this.CopyDonorsToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.copy;
             this.CopyDonorsToolStripMenuItem.Name = "CopyDonorsToolStripMenuItem";
-            this.CopyDonorsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.CopyDonorsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.CopyDonorsToolStripMenuItem.Text = "&Copy Donors";
             this.CopyDonorsToolStripMenuItem.Click += new System.EventHandler(this.CopyDonorsToolStripMenuItemClick);
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.optionsToolStripMenuItem.Text = "&Options";
             // 
             // reportsToolStripMenuItem
             // 
             this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editPrintDonorRequestDocumentToolStripMenuItem,
-            this.editPrintDonorFollowUpDocumentToolStripMenuItem});
+            this.editPrintDonorFollowUpDocumentToolStripMenuItem,
+            this.toolStripSeparator4,
+            this.showAllItemsByDonorToolStripMenuItem});
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
             this.reportsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.reportsToolStripMenuItem.Text = "&Reports";
@@ -679,14 +683,14 @@
             // 
             this.editPrintDonorRequestDocumentToolStripMenuItem.Name = "editPrintDonorRequestDocumentToolStripMenuItem";
             this.editPrintDonorRequestDocumentToolStripMenuItem.Size = new System.Drawing.Size(275, 22);
-            this.editPrintDonorRequestDocumentToolStripMenuItem.Text = "Edit/Print Donor Request Document";
+            this.editPrintDonorRequestDocumentToolStripMenuItem.Text = "Edit/Print Donor &Request Document";
             this.editPrintDonorRequestDocumentToolStripMenuItem.Click += new System.EventHandler(this.EditPrintDonorRequestDocumentToolStripMenuItemClick);
             // 
             // editPrintDonorFollowUpDocumentToolStripMenuItem
             // 
             this.editPrintDonorFollowUpDocumentToolStripMenuItem.Name = "editPrintDonorFollowUpDocumentToolStripMenuItem";
             this.editPrintDonorFollowUpDocumentToolStripMenuItem.Size = new System.Drawing.Size(275, 22);
-            this.editPrintDonorFollowUpDocumentToolStripMenuItem.Text = "Edit/Print Donor Follow Up Document";
+            this.editPrintDonorFollowUpDocumentToolStripMenuItem.Text = "Edit/Print Donor &Follow Up Document";
             this.editPrintDonorFollowUpDocumentToolStripMenuItem.Click += new System.EventHandler(this.EditPrintDonorFollowUpDocumentToolStripMenuItemClick);
             // 
             // helpToolStripMenuItem
@@ -704,30 +708,30 @@
             // contentsToolStripMenuItem
             // 
             this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
-            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.contentsToolStripMenuItem.Text = "&Contents";
             // 
             // indexToolStripMenuItem
             // 
             this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
-            this.indexToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.indexToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.indexToolStripMenuItem.Text = "&Index";
             // 
             // searchToolStripMenuItem
             // 
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.searchToolStripMenuItem.Text = "&Search";
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(119, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem.Text = "&About...";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItemClick);
             // 
@@ -829,6 +833,18 @@
             // donorRequestPrintDocument
             // 
             this.donorRequestPrintDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.DonorRequestPrintDocumentPrintPage);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(272, 6);
+            // 
+            // showAllItemsByDonorToolStripMenuItem
+            // 
+            this.showAllItemsByDonorToolStripMenuItem.Name = "showAllItemsByDonorToolStripMenuItem";
+            this.showAllItemsByDonorToolStripMenuItem.Size = new System.Drawing.Size(275, 22);
+            this.showAllItemsByDonorToolStripMenuItem.Text = "&Show All Items By Donor";
+            this.showAllItemsByDonorToolStripMenuItem.Click += new System.EventHandler(this.ShowAllItemsByDonorToolStripMenuItemClick);
             // 
             // MainForm
             // 
@@ -954,5 +970,7 @@
         private System.Drawing.Printing.PrintDocument donorRequestPrintDocument;
         private System.Windows.Forms.ToolStripMenuItem editPrintDonorRequestDocumentToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editPrintDonorFollowUpDocumentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem showAllItemsByDonorToolStripMenuItem;
     }
 }

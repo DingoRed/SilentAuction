@@ -46,12 +46,25 @@ namespace SilentAuction.Forms
         #region Form Event Handlers
         private void DocumentEditorLoad(object sender, EventArgs e)
         {
+            switch (DocType)
+            {
+                case DonationDocumentType.DonationRequestDocument:
+                    Text = "Document Editor (Request Document)";
+                    break;
+                case DonationDocumentType.DonationFollowUpDocument:
+                    Text = "Document Editor (Follow Up Document)";
+                    break;
+            }
             requestStatusTypesTableAdapter.FillRequestStatusType(silentAuctionDataSet.RequestStatusTypes);
             requestFormatTypesTableAdapter.FillRequestFormatTypes(silentAuctionDataSet.RequestFormatTypes);
             donorTypesTableAdapter.FillDonorTypes(silentAuctionDataSet.DonorTypes);
             auctionsTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
 
             donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionId);
+
+            string rtfData = GetDocumentData();
+            if(!string.IsNullOrWhiteSpace(rtfData))
+                documentEditorControl.Load(rtfData, StringStreamType.RichTextFormat);
         }
 
         private void DocumentEditorFormClosing(object sender, FormClosingEventArgs e)
@@ -102,7 +115,8 @@ namespace SilentAuction.Forms
 
         private void PrintPreviewToolStripMenuItemClick(object sender, EventArgs e)
         {
-            documentEditorControl.PrintPreview(printDocument1);
+            // TODO: Remove Print Preview?
+            documentEditorControl.PrintPreview(printDocumentMain);
         }
 
         private void ExitToolStripMenuItemClick(object sender, EventArgs e)
@@ -164,10 +178,10 @@ namespace SilentAuction.Forms
         private void ViewToolStripMenuItemDropDownOpening(object sender, EventArgs e)
         {
             viewToolbarToolStripMenuItem.Checked = toolStripMain.Visible;
-            viewButtonBarToolStripMenuItem.Checked = buttonBar1.Visible;
-            viewStatusBarToolStripMenuItem.Checked = statusBar1.Visible;
-            viewHorizontalRulerToolStripMenuItem.Checked = rulerBar2.Visible;
-            viewVerticalRulerToolStripMenuItem.Checked = rulerBar1.Visible;
+            viewButtonBarToolStripMenuItem.Checked = documentButtonBar.Visible;
+            viewStatusBarToolStripMenuItem.Checked = documentStatusBar.Visible;
+            viewHorizontalRulerToolStripMenuItem.Checked = horizontalRulerBar.Visible;
+            viewVerticalRulerToolStripMenuItem.Checked = verticalRulerBar.Visible;
         }
 
         private void ViewToolbarToolStripMenuItemClick(object sender, EventArgs e)
@@ -177,22 +191,22 @@ namespace SilentAuction.Forms
 
         private void ViewButtonBarToolStripMenuItemClick(object sender, EventArgs e)
         {
-            buttonBar1.Visible = !buttonBar1.Visible;
+            documentButtonBar.Visible = !documentButtonBar.Visible;
         }
 
         private void ViewStatusBarToolStripMenuItemClick(object sender, EventArgs e)
         {
-            statusBar1.Visible = !statusBar1.Visible;
+            documentStatusBar.Visible = !documentStatusBar.Visible;
         }
 
         private void ViewHorizontalRulerToolStripMenuItemClick(object sender, EventArgs e)
         {
-            rulerBar2.Visible = !rulerBar2.Visible;
+            horizontalRulerBar.Visible = !horizontalRulerBar.Visible;
         }
 
         private void ViewVerticalRulerToolStripMenuItemClick(object sender, EventArgs e)
         {
-            rulerBar1.Visible = !rulerBar1.Visible;
+            verticalRulerBar.Visible = !verticalRulerBar.Visible;
         }
         #endregion
 
@@ -357,7 +371,217 @@ namespace SilentAuction.Forms
         #endregion
 
         #region Table Menu Items Event Handlers
+        private void TableToolStripMenuItemDropDownOpening(object sender, EventArgs e)
+        {
+            Table thisTable = documentEditorControl.Tables.GetItem();
 
+            tablePropertiesToolStripMenuItem.Enabled = (thisTable != null);
+            tableGridLinesToolStripMenuItem.Checked = documentEditorControl.Tables.GridLines;
+
+            if (thisTable != null)
+            {
+                tableDeleteToolStripMenuItem.Enabled = true;
+                tableSplitTableToolStripMenuItem.Enabled = thisTable.CanSplit;
+                tableMergeCellsToolStripMenuItem.Enabled = thisTable.CanMergeCells;
+                tableSplitCellsToolStripMenuItem.Enabled = thisTable.CanSplitCells;
+                tableSelectTableToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                tableSplitTableToolStripMenuItem.Enabled = false;
+                tableDeleteToolStripMenuItem.Enabled = false;
+                tableMergeCellsToolStripMenuItem.Enabled = false;
+                tableSplitCellsToolStripMenuItem.Enabled = false;
+                tableSelectTableToolStripMenuItem.Enabled = false;
+            }
+        }
+
+        private void TableInsertToolStripMenuItemDropDownOpening(object sender, EventArgs e)
+        {
+            tableInsertTableToolStripMenuItem.Enabled = documentEditorControl.Tables.CanAdd;
+
+            Table tableAtInputPosition = documentEditorControl.Tables.GetItem();
+            if (tableAtInputPosition == null)
+            {
+                tableInsertColumnToTheLeftToolStripMenuItem.Enabled = false;
+                tableInsertColumnToTheRightToolStripMenuItem.Enabled = false;
+                tableInsertRowAboveToolStripMenuItem.Enabled = false;
+                tableInsertRowBelowToolStripMenuItem.Enabled = false;
+            }
+            else
+            {
+                tableInsertColumnToTheLeftToolStripMenuItem.Enabled = tableAtInputPosition.Columns.CanAdd;
+                tableInsertColumnToTheRightToolStripMenuItem.Enabled = tableAtInputPosition.Columns.CanAdd;
+                tableInsertRowAboveToolStripMenuItem.Enabled = tableAtInputPosition.Rows.CanAdd;
+                tableInsertRowBelowToolStripMenuItem.Enabled = tableAtInputPosition.Rows.CanAdd;
+            }
+        }
+
+        private void TableInsertTableToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            if (documentEditorControl.Tables.Add())
+            {
+                _documentIsDirty = true;
+            }
+        }
+
+        private void TableInsertColumnToTheLeftToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            documentEditorControl.Tables.GetItem().Columns.Add(TableAddPosition.Before);
+        }
+
+        private void TableInsertColumnToTheRightToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            documentEditorControl.Tables.GetItem().Columns.Add(TableAddPosition.After);
+        }
+
+        private void TableInsertRowAboveToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            documentEditorControl.Tables.GetItem().Rows.Add(TableAddPosition.Before, 1);
+        }
+
+        private void TableInsertRowBelowToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            documentEditorControl.Tables.GetItem().Rows.Add(TableAddPosition.After, 1);
+        }
+
+        private void TableDeleteToolStripMenuItemDropDownOpening(object sender, EventArgs e)
+        {
+            Table tableAtInputPosition = documentEditorControl.Tables.GetItem();
+
+            if (tableAtInputPosition == null)
+            {
+                tableDeleteTableToolStripMenuItem.Enabled = false;
+                tableDeleteColumnToolStripMenuItem.Enabled = false;
+                tableDeleteRowsToolStripMenuItem.Enabled = false;
+                tableDeleteCellsToolStripMenuItem.Enabled = false;
+            }
+            else
+            {
+                tableDeleteTableToolStripMenuItem.Enabled = tableAtInputPosition.Columns.CanRemove;
+                tableDeleteColumnToolStripMenuItem.Enabled = tableAtInputPosition.Columns.CanRemove;
+                tableDeleteRowsToolStripMenuItem.Enabled = tableAtInputPosition.Rows.CanRemove;
+                tableDeleteCellsToolStripMenuItem.Enabled = tableAtInputPosition.Cells.CanRemove;
+                tableDeleteDeleteEntireColumnToolStripMenuItem.Enabled = tableAtInputPosition.Columns.CanRemove;
+                tableDeleteCellsDeleteEntireRowToolStripMenuItem.Enabled = tableAtInputPosition.Rows.CanRemove;
+            }
+        }
+
+        private void TableDeleteTableToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            documentEditorControl.Tables.Remove();
+        }
+
+        private void TableDeleteColumnToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            documentEditorControl.Tables.GetItem().Columns.Remove();
+        }
+
+        private void TableDeleteRowsToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            documentEditorControl.Tables.GetItem().Rows.Remove();
+        }
+
+        private void TableDeleteCellsShiftCellsLeftToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            documentEditorControl.Tables.GetItem().Cells.Remove();
+        }
+
+        private void TableDeleteCellsDeleteEntireRowToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            documentEditorControl.Tables.GetItem().Rows.Remove();
+        }
+
+        private void TableDeleteDeleteEntireColumnToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            documentEditorControl.Tables.GetItem().Columns.Remove();
+        }
+
+        private void TableSelectToolStripMenuItemDropDownOpening(object sender, EventArgs e)
+        {
+            TableRow rowAtInputPosition = null;
+            TableCell cellAtInputPosition = null;
+            TableColumn columnAtInputPosition = null;
+
+            var tableAtInputPosition = documentEditorControl.Tables.GetItem();
+            if (tableAtInputPosition != null)
+            {
+                rowAtInputPosition = tableAtInputPosition.Rows.GetItem();
+                cellAtInputPosition = tableAtInputPosition.Cells.GetItem();
+                columnAtInputPosition = tableAtInputPosition.Columns.GetItem();
+            }
+
+            tableSelectTableToolStripMenuItem.Enabled = (tableAtInputPosition != null);
+            tableSelectRowToolStripMenuItem.Enabled = (rowAtInputPosition != null);
+            tableSelectCellToolStripMenuItem.Enabled = (cellAtInputPosition != null);
+            tableSelectColumnToolStripMenuItem.Enabled = (columnAtInputPosition != null);
+        }
+
+        private void TableSelectTableToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            documentEditorControl.Tables.GetItem().Select();
+        }
+
+        private void TableSelectColumnToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            documentEditorControl.Tables.GetItem().Columns.GetItem().Select();
+        }
+
+        private void TableSelectRowToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            documentEditorControl.Tables.GetItem().Rows.GetItem().Select();
+        }
+
+        private void TableSelectCellToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            documentEditorControl.Tables.GetItem().Cells.GetItem().Select();
+        }
+
+        private void TableMergeCellsToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            documentEditorControl.Tables.GetItem().MergeCells();
+        }
+
+        private void TableSplitCellsToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            documentEditorControl.Tables.GetItem().SplitCells();
+        }
+
+        private void TableSplitTableToolStripMenuItemDropDownOpening(object sender, EventArgs e)
+        {
+            Table tableAtInputPosition = documentEditorControl.Tables.GetItem();
+
+            if (tableAtInputPosition == null)
+            {
+                tableSplitTableAboveToolStripMenuItem.Enabled = false;
+                tableSplitTableBelowToolStripMenuItem.Enabled = false;
+            }
+            else
+            {
+                tableSplitTableAboveToolStripMenuItem.Enabled = true;
+                tableSplitTableBelowToolStripMenuItem.Enabled = true;
+            }
+        }
+
+        private void TableSplitTableAboveToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            documentEditorControl.Tables.GetItem().Split(TableAddPosition.Before);
+        }
+
+        private void TableSplitTableBelowToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            documentEditorControl.Tables.GetItem().Split(TableAddPosition.After);
+        }
+
+        private void TableGridLinesToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            documentEditorControl.Tables.GridLines = !documentEditorControl.Tables.GridLines;
+        }
+
+        private void TablePropertiesToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            documentEditorControl.TableFormatDialog();
+        }
         #endregion
         #endregion
 
@@ -380,7 +604,8 @@ namespace SilentAuction.Forms
 
         private void PrintPreviewToolStripButtonClick(object sender, EventArgs e)
         {
-            documentEditorControl.PrintPreview(printDocument1);
+            // TODO: Remove Print Preview?
+            documentEditorControl.PrintPreview(printDocumentMain);
         }
 
         private void CutToolStripButtonClick(object sender, EventArgs e)
@@ -396,6 +621,11 @@ namespace SilentAuction.Forms
         private void PasteToolStripButtonClick(object sender, EventArgs e)
         {
             documentEditorControl.Paste();
+        }
+
+        private void DeleteToolStripButtonClick(object sender, EventArgs e)
+        {
+            documentEditorControl.Clear();
         }
 
         private void UndoToolStripButtonClick(object sender, EventArgs e)
@@ -518,7 +748,7 @@ namespace SilentAuction.Forms
                         }
                     }
 
-                    documentEditorControl.Print(printDocument1);
+                    documentEditorControl.Print(printDocumentMain);
 
                     foreach (TextField field in documentEditorControl.TextFields)
                     {
@@ -611,5 +841,6 @@ namespace SilentAuction.Forms
             }
         }
         #endregion
+
     }
 }

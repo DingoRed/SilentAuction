@@ -231,8 +231,11 @@ namespace SilentAuction
                 if (AuctionIdInUse > 0)
                 {
                     AuctionNameInUse = silentAuctionDataSet.Auctions.First(a => a.Id == AuctionIdInUse).Name;
-                    itemsTableAdapter.FillItems(silentAuctionDataSet.Items, AuctionIdInUse);
+                    silentAuctionDataSet.Items.Clear();
+                    silentAuctionDataSet.Donors.Clear();
+
                     donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionIdInUse);
+                    itemsTableAdapter.FillItems(silentAuctionDataSet.Items, AuctionIdInUse);
                     SetAuctionNameAndGrid();
                 }
 
@@ -331,6 +334,11 @@ namespace SilentAuction
         {
             DocumentEditor documentEditor = new DocumentEditor(AuctionIdInUse, DocumentEditor.DonationDocumentType.DonationFollowUpDocument);
             documentEditor.ShowDialog();
+        }
+        
+        private void ShowAllItemsByDonorToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            new ShowAllItemsByDonorName().ShowDialog();
         }
         #endregion
         
@@ -481,6 +489,16 @@ namespace SilentAuction
                 (silentAuctionDataSet.Donors.Rows.Count > 0));
             EditDonorFormToolStripMenuItem.Enabled = ((AuctionIdInUse > 0) &&
                 (silentAuctionDataSet.Donors.Rows.Count > 0));
+
+            // Reports Section...
+            editPrintDonorRequestDocumentToolStripMenuItem.Enabled = ((AuctionIdInUse > 0) &&
+                (silentAuctionDataSet.Donors.Rows.Count > 0));
+            editPrintDonorFollowUpDocumentToolStripMenuItem.Enabled = ((AuctionIdInUse > 0) &&
+                (silentAuctionDataSet.Donors.Rows.Count > 0));
+
+            SilentAuctionDataSet.DonorsDataTable allDonorsTable = new SilentAuctionDataSet.DonorsDataTable();
+            donorsTableAdapter.FillAllDonors(allDonorsTable);
+            showAllItemsByDonorToolStripMenuItem.Enabled = (allDonorsTable.Rows.Count > 0);
         }
         #endregion
 
