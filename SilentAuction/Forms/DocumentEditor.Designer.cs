@@ -33,6 +33,8 @@
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.documentEditorControl = new TXTextControl.TextControl();
             this.documentButtonBar = new TXTextControl.ButtonBar();
+            this.contextMenuStripMain = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuCut = new System.Windows.Forms.ToolStripMenuItem();
             this.horizontalRulerBar = new TXTextControl.RulerBar();
             this.documentStatusBar = new TXTextControl.StatusBar();
             this.verticalRulerBar = new TXTextControl.RulerBar();
@@ -147,11 +149,21 @@
             this.requestStatusTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.requestStatusTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter();
             this.printDocumentMain = new System.Drawing.Printing.PrintDocument();
-            this.contextMenuStripMain = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuPaste = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
+            this.contextMenuCharacter = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuParagraph = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuBulletsAndNumbering = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStyles = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
+            this.contextMenuInsert = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuInsertTable = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuInsertImage = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
+            this.contextMenuStripMain.SuspendLayout();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).BeginInit();
@@ -160,7 +172,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.donorTypesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestStatusTypesBindingSource)).BeginInit();
-            this.contextMenuStripMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripContainer1
@@ -213,6 +224,30 @@
             this.documentButtonBar.Size = new System.Drawing.Size(958, 28);
             this.documentButtonBar.TabIndex = 1;
             this.documentButtonBar.Text = "buttonBar1";
+            // 
+            // contextMenuStripMain
+            // 
+            this.contextMenuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextMenuCut,
+            this.contextMenuCopy,
+            this.contextMenuPaste,
+            this.toolStripSeparator16,
+            this.contextMenuCharacter,
+            this.contextMenuParagraph,
+            this.contextMenuBulletsAndNumbering,
+            this.contextMenuStyles,
+            this.toolStripSeparator17,
+            this.contextMenuInsert});
+            this.contextMenuStripMain.Name = "contextMenuStripMain";
+            this.contextMenuStripMain.Size = new System.Drawing.Size(206, 214);
+            // 
+            // contextMenuCut
+            // 
+            this.contextMenuCut.Image = global::SilentAuction.Properties.Resources.cut;
+            this.contextMenuCut.Name = "contextMenuCut";
+            this.contextMenuCut.Size = new System.Drawing.Size(205, 22);
+            this.contextMenuCut.Text = "Cut";
+            this.contextMenuCut.Click += new System.EventHandler(this.ContextMenuCutClick);
             // 
             // horizontalRulerBar
             // 
@@ -278,7 +313,7 @@
             this.openToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.open;
             this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.openToolStripMenuItem.Text = "&Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItemClick);
             // 
@@ -287,20 +322,20 @@
             this.saveToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.save;
             this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.saveToolStripMenuItem.Text = "&Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItemClick);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(140, 6);
             // 
             // pageSetupToolStripMenuItem
             // 
             this.pageSetupToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.pagedialog;
             this.pageSetupToolStripMenuItem.Name = "pageSetupToolStripMenuItem";
-            this.pageSetupToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pageSetupToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.pageSetupToolStripMenuItem.Text = "Page Setup...";
             this.pageSetupToolStripMenuItem.Click += new System.EventHandler(this.PageSetupToolStripMenuItemClick);
             // 
@@ -309,7 +344,7 @@
             this.printToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.print;
             this.printToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.printToolStripMenuItem.Text = "&Print";
             this.printToolStripMenuItem.Click += new System.EventHandler(this.PrintToolStripMenuItemClick);
             // 
@@ -318,20 +353,20 @@
             this.printPreviewToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.printpreview;
             this.printPreviewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
-            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.printPreviewToolStripMenuItem.Text = "Print Pre&view";
             this.printPreviewToolStripMenuItem.Click += new System.EventHandler(this.PrintPreviewToolStripMenuItemClick);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(140, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.exit;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
             // 
@@ -1155,18 +1190,88 @@
             // 
             this.requestStatusTypesTableAdapter.ClearBeforeFill = true;
             // 
-            // contextMenuStripMain
+            // contextMenuCopy
             // 
-            this.contextMenuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cutToolStripMenuItem1});
-            this.contextMenuStripMain.Name = "contextMenuStripMain";
-            this.contextMenuStripMain.Size = new System.Drawing.Size(94, 26);
+            this.contextMenuCopy.Image = global::SilentAuction.Properties.Resources.copy;
+            this.contextMenuCopy.Name = "contextMenuCopy";
+            this.contextMenuCopy.Size = new System.Drawing.Size(205, 22);
+            this.contextMenuCopy.Text = "Copy";
+            this.contextMenuCopy.Click += new System.EventHandler(this.ContextMenuCopyClick);
             // 
-            // cutToolStripMenuItem1
+            // contextMenuPaste
             // 
-            this.cutToolStripMenuItem1.Name = "cutToolStripMenuItem1";
-            this.cutToolStripMenuItem1.Size = new System.Drawing.Size(93, 22);
-            this.cutToolStripMenuItem1.Text = "&Cut";
+            this.contextMenuPaste.Image = global::SilentAuction.Properties.Resources.paste;
+            this.contextMenuPaste.Name = "contextMenuPaste";
+            this.contextMenuPaste.Size = new System.Drawing.Size(205, 22);
+            this.contextMenuPaste.Text = "Paste";
+            this.contextMenuPaste.Click += new System.EventHandler(this.ContextMenuPasteClick);
+            // 
+            // toolStripSeparator16
+            // 
+            this.toolStripSeparator16.Name = "toolStripSeparator16";
+            this.toolStripSeparator16.Size = new System.Drawing.Size(202, 6);
+            // 
+            // contextMenuCharacter
+            // 
+            this.contextMenuCharacter.Image = global::SilentAuction.Properties.Resources.charactersettings;
+            this.contextMenuCharacter.Name = "contextMenuCharacter";
+            this.contextMenuCharacter.Size = new System.Drawing.Size(205, 22);
+            this.contextMenuCharacter.Text = "Character...";
+            this.contextMenuCharacter.Click += new System.EventHandler(this.ContextMenuCharacterClick);
+            // 
+            // contextMenuParagraph
+            // 
+            this.contextMenuParagraph.Image = global::SilentAuction.Properties.Resources.paragraphsettings;
+            this.contextMenuParagraph.Name = "contextMenuParagraph";
+            this.contextMenuParagraph.Size = new System.Drawing.Size(205, 22);
+            this.contextMenuParagraph.Text = "Paragraph...";
+            this.contextMenuParagraph.Click += new System.EventHandler(this.ContextMenuParagraphClick);
+            // 
+            // contextMenuBulletsAndNumbering
+            // 
+            this.contextMenuBulletsAndNumbering.Image = global::SilentAuction.Properties.Resources.listdialog;
+            this.contextMenuBulletsAndNumbering.Name = "contextMenuBulletsAndNumbering";
+            this.contextMenuBulletsAndNumbering.Size = new System.Drawing.Size(205, 22);
+            this.contextMenuBulletsAndNumbering.Text = "Bullets and Numbering...";
+            this.contextMenuBulletsAndNumbering.Click += new System.EventHandler(this.ContextMenuBulletsAndNumberingClick);
+            // 
+            // contextMenuStyles
+            // 
+            this.contextMenuStyles.Image = global::SilentAuction.Properties.Resources.styledialog;
+            this.contextMenuStyles.Name = "contextMenuStyles";
+            this.contextMenuStyles.Size = new System.Drawing.Size(205, 22);
+            this.contextMenuStyles.Text = "Styles...";
+            this.contextMenuStyles.Click += new System.EventHandler(this.ContextMenuStylesClick);
+            // 
+            // toolStripSeparator17
+            // 
+            this.toolStripSeparator17.Name = "toolStripSeparator17";
+            this.toolStripSeparator17.Size = new System.Drawing.Size(202, 6);
+            // 
+            // contextMenuInsert
+            // 
+            this.contextMenuInsert.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextMenuInsertTable,
+            this.contextMenuInsertImage});
+            this.contextMenuInsert.Name = "contextMenuInsert";
+            this.contextMenuInsert.Size = new System.Drawing.Size(205, 22);
+            this.contextMenuInsert.Text = "Insert";
+            // 
+            // contextMenuInsertTable
+            // 
+            this.contextMenuInsertTable.Image = global::SilentAuction.Properties.Resources.table;
+            this.contextMenuInsertTable.Name = "contextMenuInsertTable";
+            this.contextMenuInsertTable.Size = new System.Drawing.Size(152, 22);
+            this.contextMenuInsertTable.Text = "Table...";
+            this.contextMenuInsertTable.Click += new System.EventHandler(this.ContextMenuInsertTableClick);
+            // 
+            // contextMenuInsertImage
+            // 
+            this.contextMenuInsertImage.Image = global::SilentAuction.Properties.Resources.image;
+            this.contextMenuInsertImage.Name = "contextMenuInsertImage";
+            this.contextMenuInsertImage.Size = new System.Drawing.Size(152, 22);
+            this.contextMenuInsertImage.Text = "Image...";
+            this.contextMenuInsertImage.Click += new System.EventHandler(this.ContextMenuInsertImageClick);
             // 
             // DocumentEditor
             // 
@@ -1185,6 +1290,7 @@
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
+            this.contextMenuStripMain.ResumeLayout(false);
             this.menuStripMain.ResumeLayout(false);
             this.menuStripMain.PerformLayout();
             this.toolStripMain.ResumeLayout(false);
@@ -1195,7 +1301,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.donorTypesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestStatusTypesBindingSource)).EndInit();
-            this.contextMenuStripMain.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1320,6 +1425,17 @@
         private System.Windows.Forms.ToolStripMenuItem tablePropertiesToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton deleteToolStripButton;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripMain;
-        private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuCut;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuCopy;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuPaste;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator16;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuCharacter;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuParagraph;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuBulletsAndNumbering;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuStyles;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator17;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuInsert;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuInsertTable;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuInsertImage;
     }
 }

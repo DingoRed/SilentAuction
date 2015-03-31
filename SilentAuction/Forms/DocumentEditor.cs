@@ -85,7 +85,6 @@ namespace SilentAuction.Forms
         {
             _documentIsDirty = true;
         }
-
         #endregion
 
         #region Menu Items Event Handlers
@@ -367,7 +366,6 @@ namespace SilentAuction.Forms
                 documentEditorControl.Selection.DecreaseIndent();
             }
         }
-
         #endregion
 
         #region Table Menu Items Event Handlers
@@ -583,6 +581,58 @@ namespace SilentAuction.Forms
             documentEditorControl.TableFormatDialog();
         }
         #endregion
+        #endregion
+
+        #region Context Menu Items Event Handlers
+        private void ContextMenuCutClick(object sender, EventArgs e)
+        {
+            documentEditorControl.Cut();
+        }
+
+        private void ContextMenuCopyClick(object sender, EventArgs e)
+        {
+            documentEditorControl.Copy();
+        }
+
+        private void ContextMenuPasteClick(object sender, EventArgs e)
+        {
+            documentEditorControl.Paste();
+        }
+
+        private void ContextMenuCharacterClick(object sender, EventArgs e)
+        {
+            documentEditorControl.FontDialog();
+        }
+
+        private void ContextMenuParagraphClick(object sender, EventArgs e)
+        {
+            documentEditorControl.ParagraphFormatDialog();
+        }
+
+        private void ContextMenuBulletsAndNumberingClick(object sender, EventArgs e)
+        {
+            documentEditorControl.ListFormatDialog();
+        }
+
+        private void ContextMenuStylesClick(object sender, EventArgs e)
+        {
+            documentEditorControl.FormattingStylesDialog();
+        }
+
+        private void ContextMenuInsertTableClick(object sender, EventArgs e)
+        {
+            if (documentEditorControl.Tables.Add())
+            {
+                _documentIsDirty = true;
+            }
+        }
+
+        private void ContextMenuInsertImageClick(object sender, EventArgs e)
+        {
+            Image imageNew = new Image();
+            if (documentEditorControl.Images.Add(imageNew, HorizontalAlignment.Left, -1, ImageInsertionMode.DisplaceText))
+                _documentIsDirty = true;
+        }
         #endregion
 
         #region Toolstrip Button Items Event Handlers
@@ -842,5 +892,6 @@ namespace SilentAuction.Forms
         }
         #endregion
 
+        
     }
 }
