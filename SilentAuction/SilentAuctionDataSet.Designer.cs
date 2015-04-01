@@ -44,23 +44,23 @@ namespace SilentAuction {
         
         private NoResponseDonorsDataTable tableNoResponseDonors;
         
-        private global::System.Data.DataRelation relationFK_Auctions_Donors;
-        
-        private global::System.Data.DataRelation relationFK_RequestStatusTypes_Donors;
+        private global::System.Data.DataRelation relationFK_DonorTypes_Donors;
         
         private global::System.Data.DataRelation relationFK_RequestFormatTypes_Donors;
         
-        private global::System.Data.DataRelation relationFK_DonorTypes_Donors;
+        private global::System.Data.DataRelation relationFK_RequestStatusTypes_Donors;
         
-        private global::System.Data.DataRelation relationFK_ItemTypes_Items;
+        private global::System.Data.DataRelation relationFK_Auctions_Donors;
         
-        private global::System.Data.DataRelation relationFK_BidIncrementTypes_Items;
-        
-        private global::System.Data.DataRelation relationFK_Auctions_Items;
+        private global::System.Data.DataRelation relationFK_DonationDeliveryTypes_Items;
         
         private global::System.Data.DataRelation relationFK_Donors_Items;
         
-        private global::System.Data.DataRelation relationFK_DonationDeliveryTypes_Items;
+        private global::System.Data.DataRelation relationFK_Auctions_Items;
+        
+        private global::System.Data.DataRelation relationFK_BidIncrementTypes_Items;
+        
+        private global::System.Data.DataRelation relationFK_ItemTypes_Items;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -428,15 +428,15 @@ namespace SilentAuction {
                     this.tableNoResponseDonors.InitVars();
                 }
             }
-            this.relationFK_Auctions_Donors = this.Relations["FK_Auctions_Donors"];
-            this.relationFK_RequestStatusTypes_Donors = this.Relations["FK_RequestStatusTypes_Donors"];
-            this.relationFK_RequestFormatTypes_Donors = this.Relations["FK_RequestFormatTypes_Donors"];
             this.relationFK_DonorTypes_Donors = this.Relations["FK_DonorTypes_Donors"];
-            this.relationFK_ItemTypes_Items = this.Relations["FK_ItemTypes_Items"];
-            this.relationFK_BidIncrementTypes_Items = this.Relations["FK_BidIncrementTypes_Items"];
-            this.relationFK_Auctions_Items = this.Relations["FK_Auctions_Items"];
-            this.relationFK_Donors_Items = this.Relations["FK_Donors_Items"];
+            this.relationFK_RequestFormatTypes_Donors = this.Relations["FK_RequestFormatTypes_Donors"];
+            this.relationFK_RequestStatusTypes_Donors = this.Relations["FK_RequestStatusTypes_Donors"];
+            this.relationFK_Auctions_Donors = this.Relations["FK_Auctions_Donors"];
             this.relationFK_DonationDeliveryTypes_Items = this.Relations["FK_DonationDeliveryTypes_Items"];
+            this.relationFK_Donors_Items = this.Relations["FK_Donors_Items"];
+            this.relationFK_Auctions_Items = this.Relations["FK_Auctions_Items"];
+            this.relationFK_BidIncrementTypes_Items = this.Relations["FK_BidIncrementTypes_Items"];
+            this.relationFK_ItemTypes_Items = this.Relations["FK_ItemTypes_Items"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -468,16 +468,9 @@ namespace SilentAuction {
             this.tableNoResponseDonors = new NoResponseDonorsDataTable();
             base.Tables.Add(this.tableNoResponseDonors);
             global::System.Data.ForeignKeyConstraint fkc;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Auctions_Donors", new global::System.Data.DataColumn[] {
-                        this.tableAuctions.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDonors.AuctionIdColumn});
-            this.tableDonors.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_RequestStatusTypes_Donors", new global::System.Data.DataColumn[] {
-                        this.tableRequestStatusTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDonors.RequestStatusTypeIdColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_DonorTypes_Donors", new global::System.Data.DataColumn[] {
+                        this.tableDonorTypes.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDonors.DonorTypeIdColumn});
             this.tableDonors.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
@@ -489,30 +482,23 @@ namespace SilentAuction {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_DonorTypes_Donors", new global::System.Data.DataColumn[] {
-                        this.tableDonorTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDonors.DonorTypeIdColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_RequestStatusTypes_Donors", new global::System.Data.DataColumn[] {
+                        this.tableRequestStatusTypes.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDonors.RequestStatusTypeIdColumn});
             this.tableDonors.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_ItemTypes_Items", new global::System.Data.DataColumn[] {
-                        this.tableItemTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.ItemTypeIdColumn});
-            this.tableItems.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_BidIncrementTypes_Items", new global::System.Data.DataColumn[] {
-                        this.tableBidIncrementTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.BidIncrementTypeIdColumn});
-            this.tableItems.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Auctions_Items", new global::System.Data.DataColumn[] {
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Auctions_Donors", new global::System.Data.DataColumn[] {
                         this.tableAuctions.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.AuctionIdColumn});
+                        this.tableDonors.AuctionIdColumn});
+            this.tableDonors.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_DonationDeliveryTypes_Items", new global::System.Data.DataColumn[] {
+                        this.tableDonationDeliveryTypes.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableItems.DonationDeliveryTypeIdColumn});
             this.tableItems.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
@@ -524,49 +510,63 @@ namespace SilentAuction {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_DonationDeliveryTypes_Items", new global::System.Data.DataColumn[] {
-                        this.tableDonationDeliveryTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.DonationDeliveryTypeIdColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Auctions_Items", new global::System.Data.DataColumn[] {
+                        this.tableAuctions.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableItems.AuctionIdColumn});
             this.tableItems.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            this.relationFK_Auctions_Donors = new global::System.Data.DataRelation("FK_Auctions_Donors", new global::System.Data.DataColumn[] {
-                        this.tableAuctions.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDonors.AuctionIdColumn}, false);
-            this.Relations.Add(this.relationFK_Auctions_Donors);
-            this.relationFK_RequestStatusTypes_Donors = new global::System.Data.DataRelation("FK_RequestStatusTypes_Donors", new global::System.Data.DataColumn[] {
-                        this.tableRequestStatusTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDonors.RequestStatusTypeIdColumn}, false);
-            this.Relations.Add(this.relationFK_RequestStatusTypes_Donors);
-            this.relationFK_RequestFormatTypes_Donors = new global::System.Data.DataRelation("FK_RequestFormatTypes_Donors", new global::System.Data.DataColumn[] {
-                        this.tableRequestFormatTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDonors.RequestFormatTypeIdColumn}, false);
-            this.Relations.Add(this.relationFK_RequestFormatTypes_Donors);
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_BidIncrementTypes_Items", new global::System.Data.DataColumn[] {
+                        this.tableBidIncrementTypes.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableItems.BidIncrementTypeIdColumn});
+            this.tableItems.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_ItemTypes_Items", new global::System.Data.DataColumn[] {
+                        this.tableItemTypes.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableItems.ItemTypeIdColumn});
+            this.tableItems.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             this.relationFK_DonorTypes_Donors = new global::System.Data.DataRelation("FK_DonorTypes_Donors", new global::System.Data.DataColumn[] {
                         this.tableDonorTypes.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableDonors.DonorTypeIdColumn}, false);
             this.Relations.Add(this.relationFK_DonorTypes_Donors);
-            this.relationFK_ItemTypes_Items = new global::System.Data.DataRelation("FK_ItemTypes_Items", new global::System.Data.DataColumn[] {
-                        this.tableItemTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.ItemTypeIdColumn}, false);
-            this.Relations.Add(this.relationFK_ItemTypes_Items);
-            this.relationFK_BidIncrementTypes_Items = new global::System.Data.DataRelation("FK_BidIncrementTypes_Items", new global::System.Data.DataColumn[] {
-                        this.tableBidIncrementTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.BidIncrementTypeIdColumn}, false);
-            this.Relations.Add(this.relationFK_BidIncrementTypes_Items);
-            this.relationFK_Auctions_Items = new global::System.Data.DataRelation("FK_Auctions_Items", new global::System.Data.DataColumn[] {
+            this.relationFK_RequestFormatTypes_Donors = new global::System.Data.DataRelation("FK_RequestFormatTypes_Donors", new global::System.Data.DataColumn[] {
+                        this.tableRequestFormatTypes.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDonors.RequestFormatTypeIdColumn}, false);
+            this.Relations.Add(this.relationFK_RequestFormatTypes_Donors);
+            this.relationFK_RequestStatusTypes_Donors = new global::System.Data.DataRelation("FK_RequestStatusTypes_Donors", new global::System.Data.DataColumn[] {
+                        this.tableRequestStatusTypes.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDonors.RequestStatusTypeIdColumn}, false);
+            this.Relations.Add(this.relationFK_RequestStatusTypes_Donors);
+            this.relationFK_Auctions_Donors = new global::System.Data.DataRelation("FK_Auctions_Donors", new global::System.Data.DataColumn[] {
                         this.tableAuctions.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.AuctionIdColumn}, false);
-            this.Relations.Add(this.relationFK_Auctions_Items);
-            this.relationFK_Donors_Items = new global::System.Data.DataRelation("FK_Donors_Items", new global::System.Data.DataColumn[] {
-                        this.tableDonors.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.DonorIdColumn}, false);
-            this.Relations.Add(this.relationFK_Donors_Items);
+                        this.tableDonors.AuctionIdColumn}, false);
+            this.Relations.Add(this.relationFK_Auctions_Donors);
             this.relationFK_DonationDeliveryTypes_Items = new global::System.Data.DataRelation("FK_DonationDeliveryTypes_Items", new global::System.Data.DataColumn[] {
                         this.tableDonationDeliveryTypes.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableItems.DonationDeliveryTypeIdColumn}, false);
             this.Relations.Add(this.relationFK_DonationDeliveryTypes_Items);
+            this.relationFK_Donors_Items = new global::System.Data.DataRelation("FK_Donors_Items", new global::System.Data.DataColumn[] {
+                        this.tableDonors.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableItems.DonorIdColumn}, false);
+            this.Relations.Add(this.relationFK_Donors_Items);
+            this.relationFK_Auctions_Items = new global::System.Data.DataRelation("FK_Auctions_Items", new global::System.Data.DataColumn[] {
+                        this.tableAuctions.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableItems.AuctionIdColumn}, false);
+            this.Relations.Add(this.relationFK_Auctions_Items);
+            this.relationFK_BidIncrementTypes_Items = new global::System.Data.DataRelation("FK_BidIncrementTypes_Items", new global::System.Data.DataColumn[] {
+                        this.tableBidIncrementTypes.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableItems.BidIncrementTypeIdColumn}, false);
+            this.Relations.Add(this.relationFK_BidIncrementTypes_Items);
+            this.relationFK_ItemTypes_Items = new global::System.Data.DataRelation("FK_ItemTypes_Items", new global::System.Data.DataColumn[] {
+                        this.tableItemTypes.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableItems.ItemTypeIdColumn}, false);
+            this.Relations.Add(this.relationFK_ItemTypes_Items);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1964,6 +1964,8 @@ namespace SilentAuction {
             
             private global::System.Data.DataColumn columnDonationDeliveryTypeId;
             
+            private global::System.Data.DataColumn columnImage;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ItemsDataTable() {
@@ -2143,6 +2145,14 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ImageColumn {
+                get {
+                    return this.columnImage;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2195,7 +2205,8 @@ namespace SilentAuction {
                         double BidBuyItNowValue, 
                         double BidNumberOfBids, 
                         ItemTypesRow parentItemTypesRowByFK_ItemTypes_Items, 
-                        DonationDeliveryTypesRow parentDonationDeliveryTypesRowByFK_DonationDeliveryTypes_Items) {
+                        DonationDeliveryTypesRow parentDonationDeliveryTypesRowByFK_DonationDeliveryTypes_Items, 
+                        byte[] Image) {
                 ItemsRow rowItemsRow = ((ItemsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2215,7 +2226,8 @@ namespace SilentAuction {
                         BidBuyItNowValue,
                         BidNumberOfBids,
                         null,
-                        null};
+                        null,
+                        Image};
                 if ((parentDonorsRowByFK_Donors_Items != null)) {
                     columnValuesArray[1] = parentDonorsRowByFK_Donors_Items[0];
                 }
@@ -2278,6 +2290,7 @@ namespace SilentAuction {
                 this.columnBidNumberOfBids = base.Columns["BidNumberOfBids"];
                 this.columnItemTypeId = base.Columns["ItemTypeId"];
                 this.columnDonationDeliveryTypeId = base.Columns["DonationDeliveryTypeId"];
+                this.columnImage = base.Columns["Image"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2319,6 +2332,8 @@ namespace SilentAuction {
                 base.Columns.Add(this.columnItemTypeId);
                 this.columnDonationDeliveryTypeId = new global::System.Data.DataColumn("DonationDeliveryTypeId", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDonationDeliveryTypeId);
+                this.columnImage = new global::System.Data.DataColumn("Image", typeof(byte[]), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnImage);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -4659,23 +4674,12 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public AuctionsRow AuctionsRow {
+            public DonorTypesRow DonorTypesRow {
                 get {
-                    return ((AuctionsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Auctions_Donors"])));
+                    return ((DonorTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_DonorTypes_Donors"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Auctions_Donors"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RequestStatusTypesRow RequestStatusTypesRow {
-                get {
-                    return ((RequestStatusTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_RequestStatusTypes_Donors"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_RequestStatusTypes_Donors"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_DonorTypes_Donors"]);
                 }
             }
             
@@ -4692,12 +4696,23 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorTypesRow DonorTypesRow {
+            public RequestStatusTypesRow RequestStatusTypesRow {
                 get {
-                    return ((DonorTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_DonorTypes_Donors"])));
+                    return ((RequestStatusTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_RequestStatusTypes_Donors"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_DonorTypes_Donors"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_RequestStatusTypes_Donors"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public AuctionsRow AuctionsRow {
+                get {
+                    return ((AuctionsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Auctions_Donors"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Auctions_Donors"]);
                 }
             }
             
@@ -5193,34 +5208,28 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemTypesRow ItemTypesRow {
+            public byte[] Image {
                 get {
-                    return ((ItemTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_ItemTypes_Items"])));
+                    try {
+                        return ((byte[])(this[this.tableItems.ImageColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Image\' in table \'Items\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_ItemTypes_Items"]);
+                    this[this.tableItems.ImageColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public BidIncrementTypesRow BidIncrementTypesRow {
+            public DonationDeliveryTypesRow DonationDeliveryTypesRow {
                 get {
-                    return ((BidIncrementTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_BidIncrementTypes_Items"])));
+                    return ((DonationDeliveryTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_DonationDeliveryTypes_Items"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_BidIncrementTypes_Items"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public AuctionsRow AuctionsRow {
-                get {
-                    return ((AuctionsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Auctions_Items"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Auctions_Items"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_DonationDeliveryTypes_Items"]);
                 }
             }
             
@@ -5237,12 +5246,34 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonationDeliveryTypesRow DonationDeliveryTypesRow {
+            public AuctionsRow AuctionsRow {
                 get {
-                    return ((DonationDeliveryTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_DonationDeliveryTypes_Items"])));
+                    return ((AuctionsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Auctions_Items"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_DonationDeliveryTypes_Items"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Auctions_Items"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public BidIncrementTypesRow BidIncrementTypesRow {
+                get {
+                    return ((BidIncrementTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_BidIncrementTypes_Items"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_BidIncrementTypes_Items"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ItemTypesRow ItemTypesRow {
+                get {
+                    return ((ItemTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_ItemTypes_Items"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_ItemTypes_Items"]);
                 }
             }
             
@@ -5364,6 +5395,18 @@ namespace SilentAuction {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDonationDeliveryTypeIdNull() {
                 this[this.tableItems.DonationDeliveryTypeIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsImageNull() {
+                return this.IsNull(this.tableItems.ImageColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetImageNull() {
+                this[this.tableItems.ImageColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -8765,10 +8808,30 @@ ORDER BY Name";
             tableMapping.ColumnMappings.Add("BidNumberOfBids", "BidNumberOfBids");
             tableMapping.ColumnMappings.Add("ItemTypeId", "ItemTypeId");
             tableMapping.ColumnMappings.Add("DonationDeliveryTypeId", "DonationDeliveryTypeId");
+            tableMapping.ColumnMappings.Add("Image", "Image");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SQLite.SQLiteCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [main].[sqlite_default_schema].[Items] WHERE (([Id] = @Original_Id) AND ([DonorId] = @Original_DonorId) AND ([AuctionId] = @Original_AuctionId) AND ((@IsNull_ItemTypeId = 1 AND [ItemTypeId] IS NULL) OR ([ItemTypeId] = @Original_ItemTypeId)) AND ((@IsNull_DonationDeliveryTypeId = 1 AND [DonationDeliveryTypeId] IS NULL) OR ([DonationDeliveryTypeId] = @Original_DonationDeliveryTypeId)) AND ([Name] = @Original_Name) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = @Original_Description)) AND ([Qty] = @Original_Qty) AND ((@IsNull_RetailValue = 1 AND [RetailValue] IS NULL) OR ([RetailValue] = @Original_RetailValue)) AND ([BidIncrementTypeId] = @Original_BidIncrementTypeId) AND ((@IsNull_BidMinValue = 1 AND [BidMinValue] IS NULL) OR ([BidMinValue] = @Original_BidMinValue)) AND ((@IsNull_BidMaxValue = 1 AND [BidMaxValue] IS NULL) OR ([BidMaxValue] = @Original_BidMaxValue)) AND ((@IsNull_BidIncrementValue = 1 AND [BidIncrementValue] IS NULL) OR ([BidIncrementValue] = @Original_BidIncrementValue)) AND ((@IsNull_BidBuyItNowValue = 1 AND [BidBuyItNowValue] IS NULL) OR ([BidBuyItNowValue] = @Original_BidBuyItNowValue)) AND ((@IsNull_BidNumberOfBids = 1 AND [BidNumberOfBids] IS NULL) OR ([BidNumberOfBids] = @Original_BidNumberOfBids)) AND ((@IsNull_Notes = 1 AND [Notes] IS NULL) OR ([Notes] = @Original_Notes)) AND ([CreateDate] = @Original_CreateDate) AND ([ModifiedDate] = @Original_ModifiedDate))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [main].[sqlite_default_schema].[Items] WHERE (([Id] = @Original_Id) A" +
+                "ND ([DonorId] = @Original_DonorId) AND ([AuctionId] = @Original_AuctionId) AND (" +
+                "(@IsNull_ItemTypeId = 1 AND [ItemTypeId] IS NULL) OR ([ItemTypeId] = @Original_I" +
+                "temTypeId)) AND ((@IsNull_DonationDeliveryTypeId = 1 AND [DonationDeliveryTypeId" +
+                "] IS NULL) OR ([DonationDeliveryTypeId] = @Original_DonationDeliveryTypeId)) AND" +
+                " ([Name] = @Original_Name) AND ((@IsNull_Description = 1 AND [Description] IS NU" +
+                "LL) OR ([Description] = @Original_Description)) AND ([Qty] = @Original_Qty) AND " +
+                "((@IsNull_RetailValue = 1 AND [RetailValue] IS NULL) OR ([RetailValue] = @Origin" +
+                "al_RetailValue)) AND ([BidIncrementTypeId] = @Original_BidIncrementTypeId) AND (" +
+                "(@IsNull_BidMinValue = 1 AND [BidMinValue] IS NULL) OR ([BidMinValue] = @Origina" +
+                "l_BidMinValue)) AND ((@IsNull_BidMaxValue = 1 AND [BidMaxValue] IS NULL) OR ([Bi" +
+                "dMaxValue] = @Original_BidMaxValue)) AND ((@IsNull_BidIncrementValue = 1 AND [Bi" +
+                "dIncrementValue] IS NULL) OR ([BidIncrementValue] = @Original_BidIncrementValue)" +
+                ") AND ((@IsNull_BidBuyItNowValue = 1 AND [BidBuyItNowValue] IS NULL) OR ([BidBuy" +
+                "ItNowValue] = @Original_BidBuyItNowValue)) AND ((@IsNull_BidNumberOfBids = 1 AND" +
+                " [BidNumberOfBids] IS NULL) OR ([BidNumberOfBids] = @Original_BidNumberOfBids)) " +
+                "AND ((@IsNull_Notes = 1 AND [Notes] IS NULL) OR ([Notes] = @Original_Notes)) AND" +
+                " ((@IsNull_Image = 1 AND [Image] IS NULL) OR ([Image] = @Original_Image)) AND ([" +
+                "CreateDate] = @Original_CreateDate) AND ([ModifiedDate] = @Original_ModifiedDate" +
+                "))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::System.Data.SQLite.SQLiteParameter param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Original_Id";
@@ -8960,6 +9023,21 @@ ORDER BY Name";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@IsNull_Image";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SourceColumn = "Image";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Original_Image";
+            param.DbType = global::System.Data.DbType.Binary;
+            param.DbType = global::System.Data.DbType.Binary;
+            param.SourceColumn = "Image";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Original_CreateDate";
             param.DbType = global::System.Data.DbType.String;
             param.SourceColumn = "CreateDate";
@@ -8973,7 +9051,7 @@ ORDER BY Name";
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::System.Data.SQLite.SQLiteCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [main].[sqlite_default_schema].[Items] ([DonorId], [AuctionId], [ItemTypeId], [DonationDeliveryTypeId], [Name], [Description], [Qty], [RetailValue], [BidIncrementTypeId], [BidMinValue], [BidMaxValue], [BidIncrementValue], [BidBuyItNowValue], [BidNumberOfBids], [Notes], [CreateDate], [ModifiedDate]) VALUES (@DonorId, @AuctionId, @ItemTypeId, @DonationDeliveryTypeId, @Name, @Description, @Qty, @RetailValue, @BidIncrementTypeId, @BidMinValue, @BidMaxValue, @BidIncrementValue, @BidBuyItNowValue, @BidNumberOfBids, @Notes, @CreateDate, @ModifiedDate)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [main].[sqlite_default_schema].[Items] ([DonorId], [AuctionId], [ItemTypeId], [DonationDeliveryTypeId], [Name], [Description], [Qty], [RetailValue], [BidIncrementTypeId], [BidMinValue], [BidMaxValue], [BidIncrementValue], [BidBuyItNowValue], [BidNumberOfBids], [Notes], [Image], [CreateDate], [ModifiedDate]) VALUES (@DonorId, @AuctionId, @ItemTypeId, @DonationDeliveryTypeId, @Name, @Description, @Qty, @RetailValue, @BidIncrementTypeId, @BidMinValue, @BidMaxValue, @BidIncrementValue, @BidBuyItNowValue, @BidNumberOfBids, @Notes, @Image, @CreateDate, @ModifiedDate)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@DonorId";
@@ -9063,6 +9141,12 @@ ORDER BY Name";
             param.SourceColumn = "Notes";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Image";
+            param.DbType = global::System.Data.DbType.Binary;
+            param.DbType = global::System.Data.DbType.Binary;
+            param.SourceColumn = "Image";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@CreateDate";
             param.DbType = global::System.Data.DbType.String;
             param.SourceColumn = "CreateDate";
@@ -9080,25 +9164,26 @@ ORDER BY Name";
                 "tailValue] = @RetailValue, [BidIncrementTypeId] = @BidIncrementTypeId, [BidMinVa" +
                 "lue] = @BidMinValue, [BidMaxValue] = @BidMaxValue, [BidIncrementValue] = @BidInc" +
                 "rementValue, [BidBuyItNowValue] = @BidBuyItNowValue, [BidNumberOfBids] = @BidNum" +
-                "berOfBids, [Notes] = @Notes, [CreateDate] = @CreateDate, [ModifiedDate] = @Modif" +
-                "iedDate WHERE (([Id] = @Original_Id) AND ([DonorId] = @Original_DonorId) AND ([A" +
-                "uctionId] = @Original_AuctionId) AND ((@IsNull_ItemTypeId = 1 AND [ItemTypeId] I" +
-                "S NULL) OR ([ItemTypeId] = @Original_ItemTypeId)) AND ((@IsNull_DonationDelivery" +
-                "TypeId = 1 AND [DonationDeliveryTypeId] IS NULL) OR ([DonationDeliveryTypeId] = " +
-                "@Original_DonationDeliveryTypeId)) AND ([Name] = @Original_Name) AND ((@IsNull_D" +
-                "escription = 1 AND [Description] IS NULL) OR ([Description] = @Original_Descript" +
-                "ion)) AND ([Qty] = @Original_Qty) AND ((@IsNull_RetailValue = 1 AND [RetailValue" +
-                "] IS NULL) OR ([RetailValue] = @Original_RetailValue)) AND ([BidIncrementTypeId]" +
-                " = @Original_BidIncrementTypeId) AND ((@IsNull_BidMinValue = 1 AND [BidMinValue]" +
-                " IS NULL) OR ([BidMinValue] = @Original_BidMinValue)) AND ((@IsNull_BidMaxValue " +
-                "= 1 AND [BidMaxValue] IS NULL) OR ([BidMaxValue] = @Original_BidMaxValue)) AND (" +
-                "(@IsNull_BidIncrementValue = 1 AND [BidIncrementValue] IS NULL) OR ([BidIncremen" +
-                "tValue] = @Original_BidIncrementValue)) AND ((@IsNull_BidBuyItNowValue = 1 AND [" +
-                "BidBuyItNowValue] IS NULL) OR ([BidBuyItNowValue] = @Original_BidBuyItNowValue))" +
-                " AND ((@IsNull_BidNumberOfBids = 1 AND [BidNumberOfBids] IS NULL) OR ([BidNumber" +
-                "OfBids] = @Original_BidNumberOfBids)) AND ((@IsNull_Notes = 1 AND [Notes] IS NUL" +
-                "L) OR ([Notes] = @Original_Notes)) AND ([CreateDate] = @Original_CreateDate) AND" +
-                " ([ModifiedDate] = @Original_ModifiedDate))";
+                "berOfBids, [Notes] = @Notes, [Image] = @Image, [CreateDate] = @CreateDate, [Modi" +
+                "fiedDate] = @ModifiedDate WHERE (([Id] = @Original_Id) AND ([DonorId] = @Origina" +
+                "l_DonorId) AND ([AuctionId] = @Original_AuctionId) AND ((@IsNull_ItemTypeId = 1 " +
+                "AND [ItemTypeId] IS NULL) OR ([ItemTypeId] = @Original_ItemTypeId)) AND ((@IsNul" +
+                "l_DonationDeliveryTypeId = 1 AND [DonationDeliveryTypeId] IS NULL) OR ([Donation" +
+                "DeliveryTypeId] = @Original_DonationDeliveryTypeId)) AND ([Name] = @Original_Nam" +
+                "e) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = " +
+                "@Original_Description)) AND ([Qty] = @Original_Qty) AND ((@IsNull_RetailValue = " +
+                "1 AND [RetailValue] IS NULL) OR ([RetailValue] = @Original_RetailValue)) AND ([B" +
+                "idIncrementTypeId] = @Original_BidIncrementTypeId) AND ((@IsNull_BidMinValue = 1" +
+                " AND [BidMinValue] IS NULL) OR ([BidMinValue] = @Original_BidMinValue)) AND ((@I" +
+                "sNull_BidMaxValue = 1 AND [BidMaxValue] IS NULL) OR ([BidMaxValue] = @Original_B" +
+                "idMaxValue)) AND ((@IsNull_BidIncrementValue = 1 AND [BidIncrementValue] IS NULL" +
+                ") OR ([BidIncrementValue] = @Original_BidIncrementValue)) AND ((@IsNull_BidBuyIt" +
+                "NowValue = 1 AND [BidBuyItNowValue] IS NULL) OR ([BidBuyItNowValue] = @Original_" +
+                "BidBuyItNowValue)) AND ((@IsNull_BidNumberOfBids = 1 AND [BidNumberOfBids] IS NU" +
+                "LL) OR ([BidNumberOfBids] = @Original_BidNumberOfBids)) AND ((@IsNull_Notes = 1 " +
+                "AND [Notes] IS NULL) OR ([Notes] = @Original_Notes)) AND ((@IsNull_Image = 1 AND" +
+                " [Image] IS NULL) OR ([Image] = @Original_Image)) AND ([CreateDate] = @Original_" +
+                "CreateDate) AND ([ModifiedDate] = @Original_ModifiedDate))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@DonorId";
@@ -9186,6 +9271,12 @@ ORDER BY Name";
             param.ParameterName = "@Notes";
             param.DbType = global::System.Data.DbType.String;
             param.SourceColumn = "Notes";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Image";
+            param.DbType = global::System.Data.DbType.Binary;
+            param.DbType = global::System.Data.DbType.Binary;
+            param.SourceColumn = "Image";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@CreateDate";
@@ -9387,6 +9478,21 @@ ORDER BY Name";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@IsNull_Image";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SourceColumn = "Image";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Original_Image";
+            param.DbType = global::System.Data.DbType.Binary;
+            param.DbType = global::System.Data.DbType.Binary;
+            param.SourceColumn = "Image";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Original_CreateDate";
             param.DbType = global::System.Data.DbType.String;
             param.SourceColumn = "CreateDate";
@@ -9414,7 +9520,7 @@ ORDER BY Name";
             this._commandCollection[0] = new global::System.Data.SQLite.SQLiteCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        Id, DonorId, AuctionId, ItemTypeId, DonationDeliveryTypeId, Name, Description, Qty, RetailValue, BidIncrementTypeId, BidMinValue, BidMaxValue, 
-                         BidIncrementValue, BidBuyItNowValue, BidNumberOfBids, Notes, CreateDate, ModifiedDate
+                         BidIncrementValue, BidBuyItNowValue, BidNumberOfBids, Notes, Image, CreateDate, ModifiedDate
 FROM            Items
 WHERE        (AuctionId = @AuctionId)
 ORDER BY DonorId, Name, Id";
@@ -9428,13 +9534,7 @@ ORDER BY DonorId, Name, Id";
             this._commandCollection[0].Parameters.Add(param);
             this._commandCollection[1] = new global::System.Data.SQLite.SQLiteCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT        Items.Id, Items.DonorId, Items.AuctionId, Items.ItemTypeId, Items.DonationDeliveryTypeId, Items.Name, Items.Description, Items.Qty, Items.RetailValue, 
-                         Items.BidIncrementTypeId, Items.BidMinValue, Items.BidMaxValue, Items.BidIncrementValue, Items.BidBuyItNowValue, Items.BidNumberOfBids, Items.Notes, 
-                         Items.CreateDate, Items.ModifiedDate
-FROM            Items INNER JOIN
-                         Donors ON Items.DonorId = Donors.Id
-WHERE        (Donors.Name LIKE @DonorName)
-ORDER BY Items.AuctionId, Items.Name, Items.Id";
+            this._commandCollection[1].CommandText = @"SELECT Items.AuctionId, Items.BidBuyItNowValue, Items.BidIncrementTypeId, Items.BidIncrementValue, Items.BidMaxValue, Items.BidMinValue, Items.BidNumberOfBids, Items.CreateDate, Items.Description, Items.DonationDeliveryTypeId, Items.DonorId, Items.Id, Items.Image, Items.ItemTypeId, Items.ModifiedDate, Items.Name, Items.Notes, Items.Qty, Items.RetailValue FROM Items INNER JOIN Donors ON Items.DonorId = Donors.Id WHERE (Donors.Name LIKE @DonorName) ORDER BY Items.AuctionId, Items.Name, Items.Id";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@DonorName";
@@ -9556,6 +9656,7 @@ ORDER BY Items.AuctionId, Items.Name, Items.Id";
                     global::System.Nullable<double> Original_BidBuyItNowValue, 
                     global::System.Nullable<double> Original_BidNumberOfBids, 
                     string Original_Notes, 
+                    byte[] Original_Image, 
                     string Original_CreateDate, 
                     string Original_ModifiedDate) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_Id));
@@ -9649,17 +9750,25 @@ ORDER BY Items.AuctionId, Items.Name, Items.Id";
                 this.Adapter.DeleteCommand.Parameters[24].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[25].Value = ((string)(Original_Notes));
             }
+            if ((Original_Image == null)) {
+                this.Adapter.DeleteCommand.Parameters[26].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[27].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[26].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[27].Value = ((byte[])(Original_Image));
+            }
             if ((Original_CreateDate == null)) {
                 throw new global::System.ArgumentNullException("Original_CreateDate");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[26].Value = ((string)(Original_CreateDate));
+                this.Adapter.DeleteCommand.Parameters[28].Value = ((string)(Original_CreateDate));
             }
             if ((Original_ModifiedDate == null)) {
                 throw new global::System.ArgumentNullException("Original_ModifiedDate");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[27].Value = ((string)(Original_ModifiedDate));
+                this.Adapter.DeleteCommand.Parameters[29].Value = ((string)(Original_ModifiedDate));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -9697,6 +9806,7 @@ ORDER BY Items.AuctionId, Items.Name, Items.Id";
                     global::System.Nullable<double> BidBuyItNowValue, 
                     global::System.Nullable<double> BidNumberOfBids, 
                     string Notes, 
+                    byte[] Image, 
                     string CreateDate, 
                     string ModifiedDate) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((long)(DonorId));
@@ -9769,17 +9879,23 @@ ORDER BY Items.AuctionId, Items.Name, Items.Id";
             else {
                 this.Adapter.InsertCommand.Parameters[14].Value = ((string)(Notes));
             }
+            if ((Image == null)) {
+                this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[15].Value = ((byte[])(Image));
+            }
             if ((CreateDate == null)) {
                 throw new global::System.ArgumentNullException("CreateDate");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[15].Value = ((string)(CreateDate));
+                this.Adapter.InsertCommand.Parameters[16].Value = ((string)(CreateDate));
             }
             if ((ModifiedDate == null)) {
                 throw new global::System.ArgumentNullException("ModifiedDate");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[16].Value = ((string)(ModifiedDate));
+                this.Adapter.InsertCommand.Parameters[17].Value = ((string)(ModifiedDate));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -9817,6 +9933,7 @@ ORDER BY Items.AuctionId, Items.Name, Items.Id";
                     global::System.Nullable<double> BidBuyItNowValue, 
                     global::System.Nullable<double> BidNumberOfBids, 
                     string Notes, 
+                    byte[] Image, 
                     string CreateDate, 
                     string ModifiedDate, 
                     long Original_Id, 
@@ -9835,6 +9952,7 @@ ORDER BY Items.AuctionId, Items.Name, Items.Id";
                     global::System.Nullable<double> Original_BidBuyItNowValue, 
                     global::System.Nullable<double> Original_BidNumberOfBids, 
                     string Original_Notes, 
+                    byte[] Original_Image, 
                     string Original_CreateDate, 
                     string Original_ModifiedDate) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(DonorId));
@@ -9907,120 +10025,134 @@ ORDER BY Items.AuctionId, Items.Name, Items.Id";
             else {
                 this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Notes));
             }
+            if ((Image == null)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((byte[])(Image));
+            }
             if ((CreateDate == null)) {
                 throw new global::System.ArgumentNullException("CreateDate");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(CreateDate));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(CreateDate));
             }
             if ((ModifiedDate == null)) {
                 throw new global::System.ArgumentNullException("ModifiedDate");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(ModifiedDate));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(ModifiedDate));
             }
-            this.Adapter.UpdateCommand.Parameters[17].Value = ((long)(Original_Id));
-            this.Adapter.UpdateCommand.Parameters[18].Value = ((long)(Original_DonorId));
-            this.Adapter.UpdateCommand.Parameters[19].Value = ((long)(Original_AuctionId));
+            this.Adapter.UpdateCommand.Parameters[18].Value = ((long)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((long)(Original_DonorId));
+            this.Adapter.UpdateCommand.Parameters[20].Value = ((long)(Original_AuctionId));
             if ((Original_ItemTypeId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((long)(Original_ItemTypeId.Value));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((long)(Original_ItemTypeId.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
             if ((Original_DonationDeliveryTypeId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((long)(Original_DonationDeliveryTypeId.Value));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((long)(Original_DonationDeliveryTypeId.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
             if ((Original_Name == null)) {
                 throw new global::System.ArgumentNullException("Original_Name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_Name));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(Original_Name));
             }
             if ((Original_Description == null)) {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(Original_Description));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(Original_Description));
             }
-            this.Adapter.UpdateCommand.Parameters[27].Value = ((long)(Original_Qty));
+            this.Adapter.UpdateCommand.Parameters[28].Value = ((long)(Original_Qty));
             if ((Original_RetailValue.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((double)(Original_RetailValue.Value));
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((double)(Original_RetailValue.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[30].Value = ((long)(Original_BidIncrementTypeId));
+            this.Adapter.UpdateCommand.Parameters[31].Value = ((long)(Original_BidIncrementTypeId));
             if ((Original_BidMinValue.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((double)(Original_BidMinValue.Value));
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((double)(Original_BidMinValue.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
             }
             if ((Original_BidMaxValue.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((double)(Original_BidMaxValue.Value));
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((double)(Original_BidMaxValue.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[35].Value = global::System.DBNull.Value;
             }
             if ((Original_BidIncrementValue.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((double)(Original_BidIncrementValue.Value));
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((double)(Original_BidIncrementValue.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[37].Value = global::System.DBNull.Value;
             }
             if ((Original_BidBuyItNowValue.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((double)(Original_BidBuyItNowValue.Value));
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((double)(Original_BidBuyItNowValue.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[39].Value = global::System.DBNull.Value;
             }
             if ((Original_BidNumberOfBids.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((double)(Original_BidNumberOfBids.Value));
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((double)(Original_BidNumberOfBids.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[40].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[41].Value = global::System.DBNull.Value;
             }
             if ((Original_Notes == null)) {
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[42].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[43].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((string)(Original_Notes));
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((string)(Original_Notes));
+            }
+            if ((Original_Image == null)) {
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[45].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((byte[])(Original_Image));
             }
             if ((Original_CreateDate == null)) {
                 throw new global::System.ArgumentNullException("Original_CreateDate");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((string)(Original_CreateDate));
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((string)(Original_CreateDate));
             }
             if ((Original_ModifiedDate == null)) {
                 throw new global::System.ArgumentNullException("Original_ModifiedDate");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((string)(Original_ModifiedDate));
+                this.Adapter.UpdateCommand.Parameters[47].Value = ((string)(Original_ModifiedDate));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 

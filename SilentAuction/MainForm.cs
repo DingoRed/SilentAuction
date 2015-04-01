@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Windows.Forms;
 using SilentAuction.Forms;
@@ -43,6 +44,12 @@ namespace SilentAuction
             SetupGrids();
             SetAuctionNameAndGrid();
             SetupToolStripMenuItems();
+
+            foreach (var column in ItemsDataGridView.Columns)
+            {
+                if (column is DataGridViewImageColumn)
+                    (column as DataGridViewImageColumn).DefaultCellStyle.NullValue = null;
+            }
         }
 
         private void MainForm2FormClosing(object sender, FormClosingEventArgs e)
@@ -167,6 +174,39 @@ namespace SilentAuction
         private void ItemsDataGridViewCellClick(object sender, DataGridViewCellEventArgs e)
         {
             MainFormStatusLabel.Visible = false;
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
+            {
+                if (ItemsDataGridView.Columns[e.ColumnIndex].CellType == typeof (DataGridViewImageCell))
+                {
+                    using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                    {
+                        ImageCodecInfo[] codecs = ImageCodecInfo.GetImageEncoders();
+                        string sep = string.Empty;
+
+                        foreach (var c in codecs)
+                        {
+                            string codecName = c.CodecName.Substring(8).Replace("Codec", "Files").Trim();
+                            openFileDialog.Filter = String.Format("{0}{1}{2} ({3})|{3}", openFileDialog.Filter, sep,
+                                codecName, c.FilenameExtension);
+                            sep = "|";
+                        }
+
+                        openFileDialog.Filter = String.Format("{0}{1}{2} ({3})|{3}", openFileDialog.Filter, sep,
+                            "All Files", "*.*");
+
+                        openFileDialog.DefaultExt = ".PNG"; // Default file extension 
+                        
+                        if (openFileDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            var bitmap = new Bitmap(openFileDialog.FileName);
+                            ImageConverter converter = new ImageConverter();
+                            var byteArray = (byte[]) converter.ConvertTo(bitmap, typeof (byte[]));
+
+                            ItemsDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = byteArray;
+                        }
+                    }
+                }
+            }
         }
 
         private void ItemsDataGridViewCellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -377,6 +417,7 @@ namespace SilentAuction
             ItemsNameColumn.Width = Settings.Default.ItemsNameColumnWidth;
             ItemsQtyColumn.Width = Settings.Default.ItemsQtyColumnWidth;
             ItemsItemDescriptionColumn.Width = Settings.Default.ItemsItemDescriptionColumnWidth;
+            ItemsImageColumn.Width = Settings.Default.ItemsImageColumnWidth;
             ItemsNotesColumn.Width = Settings.Default.ItemsNotesColumnWidth;
             ItemsRetailValueColumn.Width = Settings.Default.ItemsRetailValueColumnWidth;
             ItemsBidBuyItNowValueColumn.Width = Settings.Default.ItemsBuyItNowValueColumnWidth;
@@ -396,6 +437,7 @@ namespace SilentAuction
             Settings.Default.ItemsNameColumnWidth = ItemsNameColumn.Width;
             Settings.Default.ItemsQtyColumnWidth = ItemsQtyColumn.Width;
             Settings.Default.ItemsItemDescriptionColumnWidth = ItemsItemDescriptionColumn.Width;
+            Settings.Default.ItemsImageColumnWidth = ItemsImageColumn.Width;
             Settings.Default.ItemsNotesColumnWidth = ItemsNotesColumn.Width;
             Settings.Default.ItemsRetailValueColumnWidth = ItemsRetailValueColumn.Width;
             Settings.Default.ItemsBuyItNowValueColumnWidth = ItemsBidBuyItNowValueColumn.Width;

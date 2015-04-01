@@ -9,7 +9,7 @@
     <Shape ID="DesignTable:Auctions" ZOrder="19" X="66" Y="-9" Height="172" Width="195" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
     <Shape ID="DesignTable:Donors" ZOrder="5" X="337" Y="-5" Height="476" Width="238" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="406" />
     <Shape ID="DesignTable:DonorTypes" ZOrder="18" X="591" Y="70" Height="115" Width="215" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="64" />
-    <Shape ID="DesignTable:Items" ZOrder="2" X="-16" Y="218" Height="438" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="368" />
+    <Shape ID="DesignTable:Items" ZOrder="2" X="-16" Y="218" Height="324" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:BidIncrementTypes" ZOrder="9" X="356" Y="627" Height="134" Width="256" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
     <Shape ID="DesignTable:DonationDeliveryTypes" ZOrder="13" X="-48" Y="753" Height="134" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
     <Shape ID="DesignTable:ItemTypes" ZOrder="6" X="123" Y="751" Height="115" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="24" OldDataTableHeight="0" SplitterPosition="64" />
@@ -18,19 +18,27 @@
     <Shape ID="DesignTable:NoResponseDonors" ZOrder="1" X="678" Y="599" Height="134" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
   </Shapes>
   <Connectors>
-    <Connector ID="DesignRelation:FK_DonorTypes_Donors" ZOrder="17" LineWidth="11">
+    <Connector ID="DesignRelation:FK_Auctions_Donors" ZOrder="3" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>662</X>
-          <Y>185</Y>
+          <X>261</X>
+          <Y>79</Y>
         </Point>
         <Point>
-          <X>662</X>
-          <Y>202</Y>
+          <X>337</X>
+          <Y>79</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
+    <Connector ID="DesignRelation:FK_RequestStatusTypes_Donors" ZOrder="4" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>675</X>
+          <Y>452</Y>
         </Point>
         <Point>
           <X>575</X>
-          <Y>202</Y>
+          <Y>452</Y>
         </Point>
       </RoutePoints>
     </Connector>
@@ -50,67 +58,31 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK_RequestStatusTypes_Donors" ZOrder="4" LineWidth="11">
+    <Connector ID="DesignRelation:FK_DonorTypes_Donors" ZOrder="17" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>675</X>
-          <Y>452</Y>
+          <X>662</X>
+          <Y>185</Y>
+        </Point>
+        <Point>
+          <X>662</X>
+          <Y>202</Y>
         </Point>
         <Point>
           <X>575</X>
-          <Y>452</Y>
+          <Y>202</Y>
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK_Auctions_Donors" ZOrder="3" LineWidth="11">
+    <Connector ID="DesignRelation:FK_ItemTypes_Items" ZOrder="7" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>261</X>
-          <Y>79</Y>
+          <X>129</X>
+          <Y>751</Y>
         </Point>
         <Point>
-          <X>337</X>
-          <Y>79</Y>
-        </Point>
-      </RoutePoints>
-    </Connector>
-    <Connector ID="DesignRelation:FK_DonationDeliveryTypes_Items" ZOrder="8" LineWidth="11">
-      <RoutePoints>
-        <Point>
-          <X>1</X>
-          <Y>753</Y>
-        </Point>
-        <Point>
-          <X>1</X>
-          <Y>656</Y>
-        </Point>
-      </RoutePoints>
-    </Connector>
-    <Connector ID="DesignRelation:FK_Donors_Items" ZOrder="15" LineWidth="11">
-      <RoutePoints>
-        <Point>
-          <X>379</X>
-          <Y>471</Y>
-        </Point>
-        <Point>
-          <X>379</X>
-          <Y>571</Y>
-        </Point>
-        <Point>
-          <X>284</X>
-          <Y>571</Y>
-        </Point>
-      </RoutePoints>
-    </Connector>
-    <Connector ID="DesignRelation:FK_Auctions_Items" ZOrder="16" LineWidth="11">
-      <RoutePoints>
-        <Point>
-          <X>68</X>
-          <Y>163</Y>
-        </Point>
-        <Point>
-          <X>68</X>
-          <Y>218</Y>
+          <X>129</X>
+          <Y>542</Y>
         </Point>
       </RoutePoints>
     </Connector>
@@ -126,19 +98,47 @@
         </Point>
         <Point>
           <X>252</X>
-          <Y>656</Y>
+          <Y>542</Y>
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK_ItemTypes_Items" ZOrder="7" LineWidth="11">
+    <Connector ID="DesignRelation:FK_Auctions_Items" ZOrder="16" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>129</X>
-          <Y>751</Y>
+          <X>68</X>
+          <Y>163</Y>
         </Point>
         <Point>
-          <X>129</X>
-          <Y>656</Y>
+          <X>68</X>
+          <Y>218</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
+    <Connector ID="DesignRelation:FK_Donors_Items" ZOrder="15" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>379</X>
+          <Y>471</Y>
+        </Point>
+        <Point>
+          <X>379</X>
+          <Y>542</Y>
+        </Point>
+        <Point>
+          <X>284</X>
+          <Y>542</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
+    <Connector ID="DesignRelation:FK_DonationDeliveryTypes_Items" ZOrder="8" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>1</X>
+          <Y>753</Y>
+        </Point>
+        <Point>
+          <X>1</X>
+          <Y>542</Y>
         </Point>
       </RoutePoints>
     </Connector>
