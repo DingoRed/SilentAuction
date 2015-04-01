@@ -185,6 +185,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EditAuctionForm";
             this.Text = "Edit an Auction";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditAuctionFormFormClosing);
             this.Load += new System.EventHandler(this.EditAuctionFormLoad);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

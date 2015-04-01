@@ -96,7 +96,6 @@
             this.CancelOpenButton.TabIndex = 3;
             this.CancelOpenButton.Text = "Cancel";
             this.CancelOpenButton.UseVisualStyleBackColor = true;
-            this.CancelOpenButton.Click += new System.EventHandler(this.CancelOpenButtonClick);
             // 
             // OpenAuctionForm
             // 
@@ -112,6 +111,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OpenAuctionForm";
             this.Text = "Open Auction";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OpenAuctionFormFormClosing);
             this.Load += new System.EventHandler(this.OpenAuctionFormLoad);
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).EndInit();

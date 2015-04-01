@@ -87,6 +87,7 @@ namespace SilentAuction.Utilities
                                                                   [BidBuyItNowValue] [real] NULL,
                                                                   [BidNumberOfBids] [real] NULL,
                                                                   [Notes]  [nvarchar](5000) NULL,
+                                                                  [Image] [blob] NULL,
                 	                                              [CreateDate] [text] NOT NULL,
                 	                                              [ModifiedDate] [text] NOT NULL)", ItemsTableName);
         

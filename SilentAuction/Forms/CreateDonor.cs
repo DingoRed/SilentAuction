@@ -29,7 +29,13 @@ namespace SilentAuction.Forms
 
             AuctionsComboBox.SelectedValue = AuctionId;
 
+            WindowSettings.SetupInitialWindow(this, "CreateDonorInitialLocation");
         }
+
+        private void CreateNewDonorFormFormClosing(object sender, FormClosingEventArgs e)
+        {
+            WindowSettings.SaveWindowSettings(this, "CreateDonorInitialLocation");
+        }        
         #endregion
 
         #region Event Handlers
@@ -227,5 +233,6 @@ namespace SilentAuction.Forms
             DonorTypeErrorProvider.SetError(DonorTypeComboBox, "");
         }
         #endregion
+
     }
 }

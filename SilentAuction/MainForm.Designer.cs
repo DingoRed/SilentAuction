@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ItemsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.ItemsDataGridView = new System.Windows.Forms.DataGridView();
@@ -91,10 +91,9 @@
             this.EditDonorFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CopyDonorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editPrintDonorRequestDocumentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editPrintDonorFollowUpDocumentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.showAllItemsByDonorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -119,8 +118,10 @@
             this.requestStatusTypesbindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.requestStatusTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter();
             this.donorRequestPrintDocument = new System.Drawing.Printing.PrintDocument();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.showAllItemsByDonorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.documentsStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DonorRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DonorFollowUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.donorNoResponseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ItemsTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).BeginInit();
@@ -143,9 +144,9 @@
             // ItemsTableLayoutPanel
             // 
             this.ItemsTableLayoutPanel.ColumnCount = 3;
-            this.ItemsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
-            this.ItemsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34F));
-            this.ItemsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
+            this.ItemsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
+            this.ItemsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            this.ItemsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.ItemsTableLayoutPanel.Controls.Add(this.ItemsDataGridView, 0, 1);
             this.ItemsTableLayoutPanel.Controls.Add(this.ButtonsPanel, 0, 2);
             this.ItemsTableLayoutPanel.Controls.Add(this.LabelsPanel, 0, 3);
@@ -242,10 +243,10 @@
             // ItemsQtyColumn
             // 
             this.ItemsQtyColumn.DataPropertyName = "Qty";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.Format = "N0";
-            dataGridViewCellStyle1.NullValue = null;
-            this.ItemsQtyColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle25.Format = "N0";
+            dataGridViewCellStyle25.NullValue = null;
+            this.ItemsQtyColumn.DefaultCellStyle = dataGridViewCellStyle25;
             this.ItemsQtyColumn.HeaderText = "* Qty";
             this.ItemsQtyColumn.Name = "ItemsQtyColumn";
             this.ItemsQtyColumn.Width = 55;
@@ -253,8 +254,8 @@
             // ItemsItemDescriptionColumn
             // 
             this.ItemsItemDescriptionColumn.DataPropertyName = "Description";
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ItemsItemDescriptionColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ItemsItemDescriptionColumn.DefaultCellStyle = dataGridViewCellStyle26;
             this.ItemsItemDescriptionColumn.HeaderText = "Item Description";
             this.ItemsItemDescriptionColumn.Name = "ItemsItemDescriptionColumn";
             this.ItemsItemDescriptionColumn.Width = 120;
@@ -306,9 +307,9 @@
             // ItemsRetailValueColumn
             // 
             this.ItemsRetailValueColumn.DataPropertyName = "RetailValue";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "C2";
-            this.ItemsRetailValueColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle27.Format = "C2";
+            this.ItemsRetailValueColumn.DefaultCellStyle = dataGridViewCellStyle27;
             this.ItemsRetailValueColumn.HeaderText = "Retail Value";
             this.ItemsRetailValueColumn.Name = "ItemsRetailValueColumn";
             this.ItemsRetailValueColumn.Width = 90;
@@ -316,9 +317,9 @@
             // ItemsBidBuyItNowValueColumn
             // 
             this.ItemsBidBuyItNowValueColumn.DataPropertyName = "BidBuyItNowValue";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "C2";
-            this.ItemsBidBuyItNowValueColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle28.Format = "C2";
+            this.ItemsBidBuyItNowValueColumn.DefaultCellStyle = dataGridViewCellStyle28;
             this.ItemsBidBuyItNowValueColumn.HeaderText = "Buy It Now Amount";
             this.ItemsBidBuyItNowValueColumn.Name = "ItemsBidBuyItNowValueColumn";
             this.ItemsBidBuyItNowValueColumn.Width = 140;
@@ -345,10 +346,10 @@
             // ItemsBidMinValueColumn
             // 
             this.ItemsBidMinValueColumn.DataPropertyName = "BidMinValue";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "C2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.ItemsBidMinValueColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle29.Format = "C2";
+            dataGridViewCellStyle29.NullValue = null;
+            this.ItemsBidMinValueColumn.DefaultCellStyle = dataGridViewCellStyle29;
             this.ItemsBidMinValueColumn.HeaderText = "Minimum Bid";
             this.ItemsBidMinValueColumn.Name = "ItemsBidMinValueColumn";
             this.ItemsBidMinValueColumn.Width = 95;
@@ -356,9 +357,9 @@
             // ItemsBidMaxValueColumn
             // 
             this.ItemsBidMaxValueColumn.DataPropertyName = "BidMaxValue";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "C2";
-            this.ItemsBidMaxValueColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle30.Format = "C2";
+            this.ItemsBidMaxValueColumn.DefaultCellStyle = dataGridViewCellStyle30;
             this.ItemsBidMaxValueColumn.HeaderText = "Maximum Bid";
             this.ItemsBidMaxValueColumn.Name = "ItemsBidMaxValueColumn";
             this.ItemsBidMaxValueColumn.Width = 95;
@@ -366,9 +367,9 @@
             // ItemsBidIncrementValueColumn
             // 
             this.ItemsBidIncrementValueColumn.DataPropertyName = "BidIncrementValue";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "C2";
-            this.ItemsBidIncrementValueColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle31.Format = "C2";
+            this.ItemsBidIncrementValueColumn.DefaultCellStyle = dataGridViewCellStyle31;
             this.ItemsBidIncrementValueColumn.HeaderText = "Bid Incr";
             this.ItemsBidIncrementValueColumn.Name = "ItemsBidIncrementValueColumn";
             this.ItemsBidIncrementValueColumn.Width = 70;
@@ -376,10 +377,10 @@
             // ItemsBidNumberOfBidsColumn
             // 
             this.ItemsBidNumberOfBidsColumn.DataPropertyName = "BidNumberOfBids";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.Format = "N0";
-            dataGridViewCellStyle8.NullValue = null;
-            this.ItemsBidNumberOfBidsColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle32.Format = "N0";
+            dataGridViewCellStyle32.NullValue = null;
+            this.ItemsBidNumberOfBidsColumn.DefaultCellStyle = dataGridViewCellStyle32;
             this.ItemsBidNumberOfBidsColumn.HeaderText = "# of Bids";
             this.ItemsBidNumberOfBidsColumn.Name = "ItemsBidNumberOfBidsColumn";
             this.ItemsBidNumberOfBidsColumn.Width = 75;
@@ -475,12 +476,13 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
+            this.documentsStripMenuItem,
             this.toolsToolStripMenuItem,
             this.reportsToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(288, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(400, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -609,8 +611,8 @@
             this.EditDonorListToolStripMenuItem,
             this.EditDonorFormToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
-            this.editToolStripMenuItem.Text = "&Edit/View";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "&Edit";
             // 
             // EditAuctionListToolStripMenuItem
             // 
@@ -648,8 +650,7 @@
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CopyDonorsToolStripMenuItem,
-            this.optionsToolStripMenuItem});
+            this.CopyDonorsToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
@@ -662,36 +663,27 @@
             this.CopyDonorsToolStripMenuItem.Text = "&Copy Donors";
             this.CopyDonorsToolStripMenuItem.Click += new System.EventHandler(this.CopyDonorsToolStripMenuItemClick);
             // 
-            // optionsToolStripMenuItem
-            // 
-            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.optionsToolStripMenuItem.Text = "&Options";
-            // 
             // reportsToolStripMenuItem
             // 
             this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editPrintDonorRequestDocumentToolStripMenuItem,
-            this.editPrintDonorFollowUpDocumentToolStripMenuItem,
             this.toolStripSeparator4,
-            this.showAllItemsByDonorToolStripMenuItem});
+            this.showAllItemsByDonorToolStripMenuItem,
+            this.donorNoResponseToolStripMenuItem});
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
             this.reportsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.reportsToolStripMenuItem.Text = "&Reports";
             // 
-            // editPrintDonorRequestDocumentToolStripMenuItem
+            // toolStripSeparator4
             // 
-            this.editPrintDonorRequestDocumentToolStripMenuItem.Name = "editPrintDonorRequestDocumentToolStripMenuItem";
-            this.editPrintDonorRequestDocumentToolStripMenuItem.Size = new System.Drawing.Size(275, 22);
-            this.editPrintDonorRequestDocumentToolStripMenuItem.Text = "Edit/Print Donor &Request Document";
-            this.editPrintDonorRequestDocumentToolStripMenuItem.Click += new System.EventHandler(this.EditPrintDonorRequestDocumentToolStripMenuItemClick);
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(201, 6);
             // 
-            // editPrintDonorFollowUpDocumentToolStripMenuItem
+            // showAllItemsByDonorToolStripMenuItem
             // 
-            this.editPrintDonorFollowUpDocumentToolStripMenuItem.Name = "editPrintDonorFollowUpDocumentToolStripMenuItem";
-            this.editPrintDonorFollowUpDocumentToolStripMenuItem.Size = new System.Drawing.Size(275, 22);
-            this.editPrintDonorFollowUpDocumentToolStripMenuItem.Text = "Edit/Print Donor &Follow Up Document";
-            this.editPrintDonorFollowUpDocumentToolStripMenuItem.Click += new System.EventHandler(this.EditPrintDonorFollowUpDocumentToolStripMenuItemClick);
+            this.showAllItemsByDonorToolStripMenuItem.Name = "showAllItemsByDonorToolStripMenuItem";
+            this.showAllItemsByDonorToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.showAllItemsByDonorToolStripMenuItem.Text = "&Show All Items By Donor";
+            this.showAllItemsByDonorToolStripMenuItem.Click += new System.EventHandler(this.ShowAllItemsByDonorToolStripMenuItemClick);
             // 
             // helpToolStripMenuItem
             // 
@@ -740,9 +732,9 @@
             this.ItemsTableLayoutPanel.SetColumnSpan(this.AuctionNamePanel, 2);
             this.AuctionNamePanel.Controls.Add(this.AuctionNameLabel2);
             this.AuctionNamePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AuctionNamePanel.Location = new System.Drawing.Point(291, 3);
+            this.AuctionNamePanel.Location = new System.Drawing.Point(403, 3);
             this.AuctionNamePanel.Name = "AuctionNamePanel";
-            this.AuctionNamePanel.Size = new System.Drawing.Size(580, 24);
+            this.AuctionNamePanel.Size = new System.Drawing.Size(468, 24);
             this.AuctionNamePanel.TabIndex = 6;
             this.AuctionNamePanel.Visible = false;
             // 
@@ -834,17 +826,35 @@
             // 
             this.donorRequestPrintDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.DonorRequestPrintDocumentPrintPage);
             // 
-            // toolStripSeparator4
+            // documentsStripMenuItem
             // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(272, 6);
+            this.documentsStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DonorRequestToolStripMenuItem,
+            this.DonorFollowUpToolStripMenuItem});
+            this.documentsStripMenuItem.Name = "documentsStripMenuItem";
+            this.documentsStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.documentsStripMenuItem.Text = "&Documents";
             // 
-            // showAllItemsByDonorToolStripMenuItem
+            // DonorRequestToolStripMenuItem
             // 
-            this.showAllItemsByDonorToolStripMenuItem.Name = "showAllItemsByDonorToolStripMenuItem";
-            this.showAllItemsByDonorToolStripMenuItem.Size = new System.Drawing.Size(275, 22);
-            this.showAllItemsByDonorToolStripMenuItem.Text = "&Show All Items By Donor";
-            this.showAllItemsByDonorToolStripMenuItem.Click += new System.EventHandler(this.ShowAllItemsByDonorToolStripMenuItemClick);
+            this.DonorRequestToolStripMenuItem.Name = "DonorRequestToolStripMenuItem";
+            this.DonorRequestToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.DonorRequestToolStripMenuItem.Text = "Donor &Request";
+            this.DonorRequestToolStripMenuItem.Click += new System.EventHandler(this.DonorRequestToolStripMenuItemClick);
+            // 
+            // DonorFollowUpToolStripMenuItem
+            // 
+            this.DonorFollowUpToolStripMenuItem.Name = "DonorFollowUpToolStripMenuItem";
+            this.DonorFollowUpToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.DonorFollowUpToolStripMenuItem.Text = "Donor &Follow Up";
+            this.DonorFollowUpToolStripMenuItem.Click += new System.EventHandler(this.DonorFollowUpToolStripMenuItemClick);
+            // 
+            // donorNoResponseToolStripMenuItem
+            // 
+            this.donorNoResponseToolStripMenuItem.Name = "donorNoResponseToolStripMenuItem";
+            this.donorNoResponseToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.donorNoResponseToolStripMenuItem.Text = "Donor &No Response";
+            this.donorNoResponseToolStripMenuItem.Click += new System.EventHandler(this.DonorNoResponseToolStripMenuItemClick);
             // 
             // MainForm
             // 
@@ -856,6 +866,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Silent Auction";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm2FormClosing);
             this.Load += new System.EventHandler(this.MainForm2Load);
@@ -926,7 +937,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CopyDonorsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contentsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem indexToolStripMenuItem;
@@ -968,9 +978,11 @@
         private SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter requestStatusTypesTableAdapter;
         private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
         private System.Drawing.Printing.PrintDocument donorRequestPrintDocument;
-        private System.Windows.Forms.ToolStripMenuItem editPrintDonorRequestDocumentToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editPrintDonorFollowUpDocumentToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem showAllItemsByDonorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem documentsStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem DonorRequestToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem DonorFollowUpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem donorNoResponseToolStripMenuItem;
     }
 }

@@ -594,6 +594,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CreateNewDonorForm";
             this.Text = "Create New Donor";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CreateNewDonorFormFormClosing);
             this.Load += new System.EventHandler(this.CreateNewDonorFormLoad);
             ((System.ComponentModel.ISupportInitialize)(this.donorTypesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).EndInit();

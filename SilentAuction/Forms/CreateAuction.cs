@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Configuration;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using SilentAuction.Properties;
 using SilentAuction.Utilities;
 
 namespace SilentAuction.Forms
@@ -25,6 +28,13 @@ namespace SilentAuction.Forms
             donorTypesTableAdapter.FillDonorTypes(silentAuctionDataSet.DonorTypes);
             
             auctionsTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
+            
+            WindowSettings.SetupInitialWindow(this, "CreateAuctionInitialLocation");
+        }
+
+        private void CreateNewAuctionFormFormClosing(object sender, FormClosingEventArgs e)
+        {
+            WindowSettings.SaveWindowSettings(this, "CreateAuctionInitialLocation");
         }
         #endregion
 

@@ -489,5 +489,113 @@ namespace SilentAuction.Properties {
                 this["DonorsRequestStatusTypeIdColumnWidth"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DocumentEditorInitialLocation {
+            get {
+                return ((string)(this["DocumentEditorInitialLocation"]));
+            }
+            set {
+                this["DocumentEditorInitialLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ShowAllItemsByDonorNamesInitialLocation {
+            get {
+                return ((string)(this["ShowAllItemsByDonorNamesInitialLocation"]));
+            }
+            set {
+                this["ShowAllItemsByDonorNamesInitialLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CreateAuctionInitialLocation {
+            get {
+                return ((string)(this["CreateAuctionInitialLocation"]));
+            }
+            set {
+                this["CreateAuctionInitialLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CopyDonorsInitialLocation {
+            get {
+                return ((string)(this["CopyDonorsInitialLocation"]));
+            }
+            set {
+                this["CopyDonorsInitialLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DonorSelectionsInitialLocation {
+            get {
+                return ((string)(this["DonorSelectionsInitialLocation"]));
+            }
+            set {
+                this["DonorSelectionsInitialLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string EditAuctionFormInitialLocation {
+            get {
+                return ((string)(this["EditAuctionFormInitialLocation"]));
+            }
+            set {
+                this["EditAuctionFormInitialLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CreateDonorInitialLocation {
+            get {
+                return ((string)(this["CreateDonorInitialLocation"]));
+            }
+            set {
+                this["CreateDonorInitialLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string OpenAuctionInitialLocation {
+            get {
+                return ((string)(this["OpenAuctionInitialLocation"]));
+            }
+            set {
+                this["OpenAuctionInitialLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string NoResponseByDonorInitialLocation {
+            get {
+                return ((string)(this["NoResponseByDonorInitialLocation"]));
+            }
+            set {
+                this["NoResponseByDonorInitialLocation"] = value;
+            }
+        }
     }
 }

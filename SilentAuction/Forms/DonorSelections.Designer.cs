@@ -157,6 +157,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DonorSelections";
             this.Text = "DonorSelections";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DonorSelectionsFormClosing);
             this.Load += new System.EventHandler(this.DonorSelectionsLoad);
             ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).EndInit();

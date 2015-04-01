@@ -34,36 +34,22 @@
             this.label1 = new System.Windows.Forms.Label();
             this.donorsComboBox = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.donorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.silentAuctionDataSet = new SilentAuction.SilentAuctionDataSet();
-            this.donorsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorsTableAdapter();
-            this.donorTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.donorTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorTypesTableAdapter();
-            this.requestFormatTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.requestFormatTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter();
-            this.requestStatusTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.requestStatusTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter();
-            this.auctionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.auctionsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.AuctionsTableAdapter();
             this.donorItemsDataGridView = new System.Windows.Forms.DataGridView();
-            this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.itemsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.ItemsTableAdapter();
-            this.itemTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.itemTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.ItemTypesTableAdapter();
-            this.donationDeliveryTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.donationDeliveryTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonationDeliveryTypesTableAdapter();
-            this.bidIncrementTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bidIncrementTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.BidIncrementTypesTableAdapter();
             this.auctionIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.auctionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.silentAuctionDataSet = new SilentAuction.SilentAuctionDataSet();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.notesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemTypeIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.itemTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.donationDeliveryTypeIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.donationDeliveryTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.retailValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bidBuyItNowValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bidIncrementTypeIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.bidIncrementTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bidMinValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bidMaxValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bidIncrementValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,20 +58,34 @@
             this.donorIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modifiedDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.donorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.donorsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorsTableAdapter();
+            this.donorTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.donorTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorTypesTableAdapter();
+            this.requestFormatTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.requestFormatTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter();
+            this.requestStatusTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.requestStatusTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter();
+            this.auctionsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.AuctionsTableAdapter();
+            this.itemsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.ItemsTableAdapter();
+            this.itemTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.ItemTypesTableAdapter();
+            this.donationDeliveryTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonationDeliveryTypesTableAdapter();
+            this.bidIncrementTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.BidIncrementTypesTableAdapter();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.donorTypesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.requestStatusTypesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.donorItemsDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemTypesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.donationDeliveryTypesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bidIncrementTypesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donorTypesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.requestStatusTypesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -99,8 +99,8 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.663189F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 94.33681F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(922, 671);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -112,7 +112,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(916, 31);
+            this.panel1.Size = new System.Drawing.Size(916, 34);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -140,60 +140,10 @@
             this.tableLayoutPanel1.SetColumnSpan(this.panel2, 2);
             this.panel2.Controls.Add(this.donorItemsDataGridView);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 40);
+            this.panel2.Location = new System.Drawing.Point(3, 43);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(916, 628);
+            this.panel2.Size = new System.Drawing.Size(916, 625);
             this.panel2.TabIndex = 1;
-            // 
-            // donorsBindingSource
-            // 
-            this.donorsBindingSource.DataMember = "Donors";
-            this.donorsBindingSource.DataSource = this.silentAuctionDataSet;
-            // 
-            // silentAuctionDataSet
-            // 
-            this.silentAuctionDataSet.DataSetName = "SilentAuctionDataSet";
-            this.silentAuctionDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // donorsTableAdapter
-            // 
-            this.donorsTableAdapter.ClearBeforeFill = true;
-            // 
-            // donorTypesBindingSource
-            // 
-            this.donorTypesBindingSource.DataMember = "DonorTypes";
-            this.donorTypesBindingSource.DataSource = this.silentAuctionDataSet;
-            // 
-            // donorTypesTableAdapter
-            // 
-            this.donorTypesTableAdapter.ClearBeforeFill = true;
-            // 
-            // requestFormatTypesBindingSource
-            // 
-            this.requestFormatTypesBindingSource.DataMember = "RequestFormatTypes";
-            this.requestFormatTypesBindingSource.DataSource = this.silentAuctionDataSet;
-            // 
-            // requestFormatTypesTableAdapter
-            // 
-            this.requestFormatTypesTableAdapter.ClearBeforeFill = true;
-            // 
-            // requestStatusTypesBindingSource
-            // 
-            this.requestStatusTypesBindingSource.DataMember = "RequestStatusTypes";
-            this.requestStatusTypesBindingSource.DataSource = this.silentAuctionDataSet;
-            // 
-            // requestStatusTypesTableAdapter
-            // 
-            this.requestStatusTypesTableAdapter.ClearBeforeFill = true;
-            // 
-            // auctionsBindingSource
-            // 
-            this.auctionsBindingSource.DataMember = "Auctions";
-            this.auctionsBindingSource.DataSource = this.silentAuctionDataSet;
-            // 
-            // auctionsTableAdapter
-            // 
-            this.auctionsTableAdapter.ClearBeforeFill = true;
             // 
             // donorItemsDataGridView
             // 
@@ -225,44 +175,8 @@
             this.donorItemsDataGridView.Location = new System.Drawing.Point(0, 0);
             this.donorItemsDataGridView.Name = "donorItemsDataGridView";
             this.donorItemsDataGridView.ReadOnly = true;
-            this.donorItemsDataGridView.Size = new System.Drawing.Size(916, 628);
+            this.donorItemsDataGridView.Size = new System.Drawing.Size(916, 625);
             this.donorItemsDataGridView.TabIndex = 0;
-            // 
-            // itemsBindingSource
-            // 
-            this.itemsBindingSource.DataMember = "Items";
-            this.itemsBindingSource.DataSource = this.silentAuctionDataSet;
-            // 
-            // itemsTableAdapter
-            // 
-            this.itemsTableAdapter.ClearBeforeFill = true;
-            // 
-            // itemTypesBindingSource
-            // 
-            this.itemTypesBindingSource.DataMember = "ItemTypes";
-            this.itemTypesBindingSource.DataSource = this.silentAuctionDataSet;
-            // 
-            // itemTypesTableAdapter
-            // 
-            this.itemTypesTableAdapter.ClearBeforeFill = true;
-            // 
-            // donationDeliveryTypesBindingSource
-            // 
-            this.donationDeliveryTypesBindingSource.DataMember = "DonationDeliveryTypes";
-            this.donationDeliveryTypesBindingSource.DataSource = this.silentAuctionDataSet;
-            // 
-            // donationDeliveryTypesTableAdapter
-            // 
-            this.donationDeliveryTypesTableAdapter.ClearBeforeFill = true;
-            // 
-            // bidIncrementTypesBindingSource
-            // 
-            this.bidIncrementTypesBindingSource.DataMember = "BidIncrementTypes";
-            this.bidIncrementTypesBindingSource.DataSource = this.silentAuctionDataSet;
-            // 
-            // bidIncrementTypesTableAdapter
-            // 
-            this.bidIncrementTypesTableAdapter.ClearBeforeFill = true;
             // 
             // auctionIdDataGridViewTextBoxColumn
             // 
@@ -277,6 +191,16 @@
             this.auctionIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.auctionIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.auctionIdDataGridViewTextBoxColumn.ValueMember = "Id";
+            // 
+            // auctionsBindingSource
+            // 
+            this.auctionsBindingSource.DataMember = "Auctions";
+            this.auctionsBindingSource.DataSource = this.silentAuctionDataSet;
+            // 
+            // silentAuctionDataSet
+            // 
+            this.silentAuctionDataSet.DataSetName = "SilentAuctionDataSet";
+            this.silentAuctionDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -324,6 +248,11 @@
             this.itemTypeIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.itemTypeIdDataGridViewTextBoxColumn.ValueMember = "Id";
             // 
+            // itemTypesBindingSource
+            // 
+            this.itemTypesBindingSource.DataMember = "ItemTypes";
+            this.itemTypesBindingSource.DataSource = this.silentAuctionDataSet;
+            // 
             // donationDeliveryTypeIdDataGridViewTextBoxColumn
             // 
             this.donationDeliveryTypeIdDataGridViewTextBoxColumn.DataPropertyName = "DonationDeliveryTypeId";
@@ -338,6 +267,11 @@
             this.donationDeliveryTypeIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.donationDeliveryTypeIdDataGridViewTextBoxColumn.ValueMember = "Id";
             this.donationDeliveryTypeIdDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // donationDeliveryTypesBindingSource
+            // 
+            this.donationDeliveryTypesBindingSource.DataMember = "DonationDeliveryTypes";
+            this.donationDeliveryTypesBindingSource.DataSource = this.silentAuctionDataSet;
             // 
             // retailValueDataGridViewTextBoxColumn
             // 
@@ -369,6 +303,11 @@
             this.bidIncrementTypeIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.bidIncrementTypeIdDataGridViewTextBoxColumn.ValueMember = "Id";
             this.bidIncrementTypeIdDataGridViewTextBoxColumn.Width = 110;
+            // 
+            // bidIncrementTypesBindingSource
+            // 
+            this.bidIncrementTypesBindingSource.DataMember = "BidIncrementTypes";
+            this.bidIncrementTypesBindingSource.DataSource = this.silentAuctionDataSet;
             // 
             // bidMinValueDataGridViewTextBoxColumn
             // 
@@ -432,30 +371,92 @@
             this.modifiedDateDataGridViewTextBoxColumn.Name = "modifiedDateDataGridViewTextBoxColumn";
             this.modifiedDateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // SearchByDonorName
+            // itemsBindingSource
+            // 
+            this.itemsBindingSource.DataMember = "Items";
+            this.itemsBindingSource.DataSource = this.silentAuctionDataSet;
+            // 
+            // donorsBindingSource
+            // 
+            this.donorsBindingSource.DataMember = "Donors";
+            this.donorsBindingSource.DataSource = this.silentAuctionDataSet;
+            // 
+            // donorsTableAdapter
+            // 
+            this.donorsTableAdapter.ClearBeforeFill = true;
+            // 
+            // donorTypesBindingSource
+            // 
+            this.donorTypesBindingSource.DataMember = "DonorTypes";
+            this.donorTypesBindingSource.DataSource = this.silentAuctionDataSet;
+            // 
+            // donorTypesTableAdapter
+            // 
+            this.donorTypesTableAdapter.ClearBeforeFill = true;
+            // 
+            // requestFormatTypesBindingSource
+            // 
+            this.requestFormatTypesBindingSource.DataMember = "RequestFormatTypes";
+            this.requestFormatTypesBindingSource.DataSource = this.silentAuctionDataSet;
+            // 
+            // requestFormatTypesTableAdapter
+            // 
+            this.requestFormatTypesTableAdapter.ClearBeforeFill = true;
+            // 
+            // requestStatusTypesBindingSource
+            // 
+            this.requestStatusTypesBindingSource.DataMember = "RequestStatusTypes";
+            this.requestStatusTypesBindingSource.DataSource = this.silentAuctionDataSet;
+            // 
+            // requestStatusTypesTableAdapter
+            // 
+            this.requestStatusTypesTableAdapter.ClearBeforeFill = true;
+            // 
+            // auctionsTableAdapter
+            // 
+            this.auctionsTableAdapter.ClearBeforeFill = true;
+            // 
+            // itemsTableAdapter
+            // 
+            this.itemsTableAdapter.ClearBeforeFill = true;
+            // 
+            // itemTypesTableAdapter
+            // 
+            this.itemTypesTableAdapter.ClearBeforeFill = true;
+            // 
+            // donationDeliveryTypesTableAdapter
+            // 
+            this.donationDeliveryTypesTableAdapter.ClearBeforeFill = true;
+            // 
+            // bidIncrementTypesTableAdapter
+            // 
+            this.bidIncrementTypesTableAdapter.ClearBeforeFill = true;
+            // 
+            // ShowAllItemsByDonorName
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(922, 671);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "SearchByDonorName";
+            this.Name = "ShowAllItemsByDonorName";
             this.Text = "SearchByDonorName";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ShowAllItemsByDonorNameFormClosing);
             this.Load += new System.EventHandler(this.SearchByDonorNameLoad);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.donorTypesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.requestStatusTypesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.donorItemsDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemTypesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.donationDeliveryTypesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bidIncrementTypesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donorTypesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.requestStatusTypesBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -38,8 +38,8 @@ namespace SilentAuction
 
             donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionIdInUse);
             itemsTableAdapter.FillItems(silentAuctionDataSet.Items, AuctionIdInUse);
-            
-            SetupInitialWindow();
+
+            WindowSettings.SetupInitialWindow(this, "MainFormInitialLocation");
             SetupGrids();
             SetAuctionNameAndGrid();
             SetupToolStripMenuItems();
@@ -55,7 +55,7 @@ namespace SilentAuction
              
             if (!e.Cancel)
             {
-                SaveWindowSettings();
+                WindowSettings.SaveWindowSettings(this, "MainFormInitialLocation");
                 SaveItemsGridSettings();
                 SaveFormSettings();
             }
@@ -203,6 +203,7 @@ namespace SilentAuction
             using (CreateNewAuctionForm createNewAuctionForm = new CreateNewAuctionForm())
             {
                 createNewAuctionForm.ShowDialog();
+                silentAuctionDataSet.Items.Clear();
                 silentAuctionDataSet.Donors.Clear();
                 auctionsTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
                 donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionIdInUse);
@@ -311,6 +312,20 @@ namespace SilentAuction
         }
         #endregion
 
+        #region Documents Section...
+        private void DonorRequestToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            DocumentEditor documentEditor = new DocumentEditor(AuctionIdInUse, DocumentEditor.DonationDocumentType.DonationRequestDocument);
+            documentEditor.ShowDialog();
+        }
+
+        private void DonorFollowUpToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            DocumentEditor documentEditor = new DocumentEditor(AuctionIdInUse, DocumentEditor.DonationDocumentType.DonationFollowUpDocument);
+            documentEditor.ShowDialog();
+        }
+        #endregion
+
         #region Tools Section...
         private void CopyDonorsToolStripMenuItemClick(object sender, EventArgs e)
         {
@@ -324,21 +339,14 @@ namespace SilentAuction
         #endregion
 
         #region Reports Section...
-        private void EditPrintDonorRequestDocumentToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            DocumentEditor documentEditor = new DocumentEditor(AuctionIdInUse, DocumentEditor.DonationDocumentType.DonationRequestDocument);
-            documentEditor.ShowDialog();
-        }
-
-        private void EditPrintDonorFollowUpDocumentToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            DocumentEditor documentEditor = new DocumentEditor(AuctionIdInUse, DocumentEditor.DonationDocumentType.DonationFollowUpDocument);
-            documentEditor.ShowDialog();
-        }
-        
         private void ShowAllItemsByDonorToolStripMenuItemClick(object sender, EventArgs e)
         {
             new ShowAllItemsByDonorName().ShowDialog();
+        }
+
+        private void DonorNoResponseToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            new NoResponseByDonor().ShowDialog();
         }
         #endregion
         
@@ -353,49 +361,15 @@ namespace SilentAuction
         #endregion
         #endregion
 
+        #region Printing Event Handlers
+        private void DonorRequestPrintDocumentPrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.FillRectangle(Brushes.Red, new Rectangle(500, 500, 500, 500));
+        }
+
+        #endregion
+
         #region Private Methods
-        private void SetupInitialWindow()
-        {
-            if ((ModifierKeys & Keys.Shift) == 0)
-            {
-                string initLocation = Settings.Default.MainFormInitialLocation;
-                Point il = new Point(0, 0);
-                Size sz = Size;
-                if (!string.IsNullOrWhiteSpace(initLocation))
-                {
-                    string[] parts = initLocation.Split(',');
-                    if (parts.Length >= 2)
-                    {
-                        il = new Point(int.Parse(parts[0]), int.Parse(parts[1]));
-                    }
-                    if (parts.Length >= 4)
-                    {
-                        sz = new Size(int.Parse(parts[2]), int.Parse(parts[3]));
-                    }
-                    Size = sz;
-                    Location = il;
-                }
-            }
-        }
-
-        // TODO: Move to its own class
-        private void SaveWindowSettings()
-        {
-            if ((ModifierKeys & Keys.Shift) == 0)
-            {
-                Point location = Location;
-                Size size = Size;
-                if (WindowState != FormWindowState.Normal)
-                {
-                    location = RestoreBounds.Location;
-                    size = RestoreBounds.Size;
-                }
-                string initLocation = string.Join(",", location.X, location.Y, size.Width, size.Height);
-                Settings.Default.MainFormInitialLocation = initLocation;
-                Settings.Default.Save();
-            }
-        }
-
         private void SetupGrids()
         {
             // Items grid settings...
@@ -438,9 +412,6 @@ namespace SilentAuction
 
         private void ImportFormSettings()
         {
-            // TODO:  Fix AuctionNameInUse
-            // AuctionNameInUse is incorrect when deleting database and creating new.  It keeps 
-            // the old auctionNameInUse stored in Settings
             AuctionIdInUse = Settings.Default.AuctionIdInUse;
             AuctionNameInUse = Settings.Default.AuctionNameInUse;
         }
@@ -491,9 +462,9 @@ namespace SilentAuction
                 (silentAuctionDataSet.Donors.Rows.Count > 0));
 
             // Reports Section...
-            editPrintDonorRequestDocumentToolStripMenuItem.Enabled = ((AuctionIdInUse > 0) &&
+            DonorRequestToolStripMenuItem.Enabled = ((AuctionIdInUse > 0) &&
                 (silentAuctionDataSet.Donors.Rows.Count > 0));
-            editPrintDonorFollowUpDocumentToolStripMenuItem.Enabled = ((AuctionIdInUse > 0) &&
+            DonorFollowUpToolStripMenuItem.Enabled = ((AuctionIdInUse > 0) &&
                 (silentAuctionDataSet.Donors.Rows.Count > 0));
 
             SilentAuctionDataSet.DonorsDataTable allDonorsTable = new SilentAuctionDataSet.DonorsDataTable();
@@ -501,15 +472,6 @@ namespace SilentAuction
             showAllItemsByDonorToolStripMenuItem.Enabled = (allDonorsTable.Rows.Count > 0);
         }
         #endregion
-
-        #region Printing Event Handlers
-        private void DonorRequestPrintDocumentPrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            e.Graphics.FillRectangle(Brushes.Red, new Rectangle(500, 500, 500, 500));
-        }
-
-        #endregion
-
 
     }
 }

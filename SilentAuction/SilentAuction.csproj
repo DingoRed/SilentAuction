@@ -97,12 +97,20 @@
     <Compile Include="Forms\DocumentEditor.Designer.cs">
       <DependentUpon>DocumentEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\NoResponseByDonor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NoResponseByDonor.Designer.cs">
+      <DependentUpon>NoResponseByDonor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\WindowSettings.cs" />
     <Compile Include="Forms\ShowAllItemsByDonorName.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\ShowAllItemsByDonorName.Designer.cs">
       <DependentUpon>ShowAllItemsByDonorName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="Utilities\GenericPageHelper.cs" />
     <Compile Include="Forms\OpenAuction.cs">
       <SubType>Form</SubType>
@@ -165,6 +173,9 @@
     <EmbeddedResource Include="Forms\EditAuctionForm.resx">
       <DependentUpon>EditAuctionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NoResponseByDonor.resx">
+      <DependentUpon>NoResponseByDonor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\OpenAuction.resx">
       <DependentUpon>OpenAuction.cs</DependentUpon>
     </EmbeddedResource>
@@ -194,6 +205,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Documents\ImportItemsTemplate.xlsx" />
     <None Include="Documents\Stories.xlsx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

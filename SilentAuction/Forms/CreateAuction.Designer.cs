@@ -261,6 +261,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CreateNewAuctionForm";
             this.Text = "Create New Auction";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CreateNewAuctionFormFormClosing);
             this.Load += new System.EventHandler(this.CreateNewAuctionFormLoad);
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).EndInit();

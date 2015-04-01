@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SilentAuction.Utilities;
 
@@ -20,21 +13,27 @@ namespace SilentAuction.Forms
             InitializeComponent();
         }
 
+        #region Form Event Handlers
         private void OpenAuctionFormLoad(object sender, EventArgs e)
         {
             auctionsTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
+
+            WindowSettings.SetupInitialWindow(this, "OpenAuctionInitialLocation");
         }
 
+        private void OpenAuctionFormFormClosing(object sender, FormClosingEventArgs e)
+        {
+            WindowSettings.SaveWindowSettings(this, "OpenAuctionInitialLocation");
+        }
+        #endregion
+
+        #region Event Handlers
         private void OpenButtonClick(object sender, EventArgs e)
         {
             AuctionId = MathHelper.ParseIntZeroIfNull(AuctionComboBox.SelectedValue.ToString());
             DialogResult = DialogResult.OK;
             Close();
         }
-
-        private void CancelOpenButtonClick(object sender, EventArgs e)
-        {
-
-        }
+        #endregion
     }
 }

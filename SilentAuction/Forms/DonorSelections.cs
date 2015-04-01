@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SilentAuction.Utilities;
 
@@ -36,7 +31,14 @@ namespace SilentAuction.Forms
             donorTypesTableAdapter.FillDonorTypes(silentAuctionDataSet.DonorTypes);
 
             donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionId);
+
+            WindowSettings.SetupInitialWindow(this, "DonorSelectionsInitialLocation");
         }
+
+        private void DonorSelectionsFormClosing(object sender, FormClosingEventArgs e)
+        {
+            WindowSettings.SaveWindowSettings(this, "DonorSelectionsInitialLocation");
+        }        
         #endregion
 
         #region Button Event Handlers

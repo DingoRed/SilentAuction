@@ -4,6 +4,8 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using SilentAuction.Properties;
+using SilentAuction.Utilities;
 using TXTextControl;
 using HorizontalAlignment = TXTextControl.HorizontalAlignment;
 using Image = TXTextControl.Image;
@@ -65,6 +67,8 @@ namespace SilentAuction.Forms
             string rtfData = GetDocumentData();
             if(!string.IsNullOrWhiteSpace(rtfData))
                 documentEditorControl.Load(rtfData, StringStreamType.RichTextFormat);
+
+            WindowSettings.SetupInitialWindow(this, "DocumentEditorInitialLocation");
         }
 
         private void DocumentEditorFormClosing(object sender, FormClosingEventArgs e)
@@ -78,6 +82,11 @@ namespace SilentAuction.Forms
                     _documentIsDirty = false;
                 }
                 else if (dlgRes == DialogResult.Cancel) e.Cancel = true;
+            }
+
+            if (!e.Cancel)
+            {
+                WindowSettings.SaveWindowSettings(this, "DocumentEditorInitialLocation");
             }
         }
 
@@ -891,7 +900,5 @@ namespace SilentAuction.Forms
             }
         }
         #endregion
-
-        
     }
 }

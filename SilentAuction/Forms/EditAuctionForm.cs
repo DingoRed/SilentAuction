@@ -15,12 +15,21 @@ namespace SilentAuction.Forms
             InitializeComponent();
         }
 
+        #region Form Event Handlers
         private void EditAuctionFormLoad(object sender, EventArgs e)
         {
             auctionsTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
             FillTextBoxes();
             AuctionId = MathHelper.ParseIntZeroIfNull(AuctionComboBox.SelectedValue.ToString());
+
+            WindowSettings.SetupInitialWindow(this, "EditAuctionFormInitialLocation");
         }
+
+        private void EditAuctionFormFormClosing(object sender, FormClosingEventArgs e)
+        {
+            WindowSettings.SaveWindowSettings(this, "EditAuctionFormInitialLocation");
+        }
+        #endregion
 
         #region Event Handlers
         private void AuctionComboBoxSelectedIndexChanged(object sender, EventArgs e)

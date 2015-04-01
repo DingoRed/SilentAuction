@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
+using SilentAuction.Properties;
 using SilentAuction.Utilities;
 
 namespace SilentAuction.Forms
@@ -24,6 +26,12 @@ namespace SilentAuction.Forms
             donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, id);
 
             ValidateForm();
+            WindowSettings.SetupInitialWindow(this, "CopyDonorsInitialLocation");
+        }
+
+        private void CopyDonorsFormFormClosing(object sender, FormClosingEventArgs e)
+        {
+            WindowSettings.SaveWindowSettings(this, "CopyDonorsInitialLocation");
         }
         #endregion
 

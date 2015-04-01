@@ -257,6 +257,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CopyDonorsForm";
             this.Text = "Copy Donors";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CopyDonorsFormFormClosing);
             this.Load += new System.EventHandler(this.CopyDonorsLoad);
             ((System.ComponentModel.ISupportInitialize)(this.auctionToBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).EndInit();
