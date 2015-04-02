@@ -1,4 +1,5 @@
-﻿using System;
+﻿#region Using Statements
+using System;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -7,11 +8,23 @@ using System.Windows.Forms;
 using SilentAuction.Forms;
 using SilentAuction.Properties;
 using SilentAuction.Utilities;
+#endregion
 
 namespace SilentAuction
 {
     public partial class MainForm : Form
     {
+        #region Fields
+        private readonly byte[] _emptyImage = {
+            137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 
+            1, 8, 6, 0, 0, 0, 31, 21, 196, 137, 0, 0, 0, 1, 115, 82, 71, 66, 0, 174, 206, 28, 
+            233, 0, 0, 0, 4, 103, 65, 77, 65, 0, 0, 177, 143, 11, 252, 97, 5, 0, 0, 0, 9, 112, 
+            72, 89, 115, 0, 0, 14, 195, 0, 0, 14, 195, 1, 199, 111, 168, 100, 0, 0, 0, 11, 73, 
+            68, 65, 84, 24, 87, 99, 96, 0, 2, 0, 0, 5, 0, 1, 170, 213, 200, 81, 0, 0, 0, 0, 73, 
+            69, 78, 68, 174, 66, 96, 130
+        };
+        #endregion
+
         #region Properties
         public int AuctionIdInUse { get; set; }
         public string AuctionNameInUse { get; set; }
@@ -169,6 +182,7 @@ namespace SilentAuction
             e.Row.Cells["ItemsQtyColumn"].Value = 1;
             e.Row.Cells["ItemsAuctionIdColumn"].Value = AuctionIdInUse;
             e.Row.Cells["ItemsBidIncrementTypeColumn"].Value = 1;
+            e.Row.Cells["ItemsImageColumn"].Value = new Bitmap(1, 1);
         }        
         
         private void ItemsDataGridViewCellClick(object sender, DataGridViewCellEventArgs e)
@@ -178,31 +192,46 @@ namespace SilentAuction
             {
                 if (ItemsDataGridView.Columns[e.ColumnIndex].CellType == typeof (DataGridViewImageCell))
                 {
-                    using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                    if (((byte[])ItemsDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value).SequenceEqual(_emptyImage))
                     {
-                        ImageCodecInfo[] codecs = ImageCodecInfo.GetImageEncoders();
-                        string sep = string.Empty;
-
-                        foreach (var c in codecs)
+                        DialogResult result = MessageBox.Show("Add an image?", "Add Image", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
                         {
-                            string codecName = c.CodecName.Substring(8).Replace("Codec", "Files").Trim();
-                            openFileDialog.Filter = String.Format("{0}{1}{2} ({3})|{3}", openFileDialog.Filter, sep,
-                                codecName, c.FilenameExtension);
-                            sep = "|";
+                            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                            {
+                                ImageCodecInfo[] codecs = ImageCodecInfo.GetImageEncoders();
+                                string sep = string.Empty;
+
+                                foreach (var c in codecs)
+                                {
+                                    string codecName = c.CodecName.Substring(8).Replace("Codec", "Files").Trim();
+                                    openFileDialog.Filter = String.Format("{0}{1}{2} ({3})|{3}", openFileDialog.Filter, sep,
+                                        codecName, c.FilenameExtension);
+                                    sep = "|";
+                                }
+
+                                openFileDialog.Filter = String.Format("{0}{1}{2} ({3})|{3}", openFileDialog.Filter, sep,
+                                    "All Files", "*.*");
+
+                                openFileDialog.DefaultExt = ".PNG"; // Default file extension 
+
+                                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                                {
+                                    var bitmap = new Bitmap(openFileDialog.FileName);
+                                    ImageConverter converter = new ImageConverter();
+                                    var byteArray = (byte[])converter.ConvertTo(bitmap, typeof(byte[]));
+
+                                    ItemsDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = byteArray;
+                                }
+                            }
                         }
-
-                        openFileDialog.Filter = String.Format("{0}{1}{2} ({3})|{3}", openFileDialog.Filter, sep,
-                            "All Files", "*.*");
-
-                        openFileDialog.DefaultExt = ".PNG"; // Default file extension 
-                        
-                        if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    }
+                    else
+                    {
+                        DialogResult result = MessageBox.Show("Delete the image?", "Delete Image", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
                         {
-                            var bitmap = new Bitmap(openFileDialog.FileName);
-                            ImageConverter converter = new ImageConverter();
-                            var byteArray = (byte[]) converter.ConvertTo(bitmap, typeof (byte[]));
-
-                            ItemsDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = byteArray;
+                            ItemsDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = _emptyImage;
                         }
                     }
                 }

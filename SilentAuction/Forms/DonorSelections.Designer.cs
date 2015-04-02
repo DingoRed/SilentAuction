@@ -156,7 +156,7 @@
             this.Controls.Add(this.DonorsListBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DonorSelections";
-            this.Text = "DonorSelections";
+            this.Text = "Donor Print Selections";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DonorSelectionsFormClosing);
             this.Load += new System.EventHandler(this.DonorSelectionsLoad);
             ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).EndInit();

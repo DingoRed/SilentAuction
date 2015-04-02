@@ -79,6 +79,12 @@
     <Compile Include="Forms\CreateDonor.Designer.cs">
       <DependentUpon>CreateDonor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DonorEmailSelections.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DonorEmailSelections.Designer.cs">
+      <DependentUpon>DonorEmailSelections.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DonorSelections.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,7 @@
     <Compile Include="Forms\NoResponseByDonor.Designer.cs">
       <DependentUpon>NoResponseByDonor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\EmailHelper.cs" />
     <Compile Include="Utilities\WindowSettings.cs" />
     <Compile Include="Forms\ShowAllItemsByDonorName.cs">
       <SubType>Form</SubType>
@@ -166,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CreateDonor.resx">
       <DependentUpon>CreateDonor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DonorEmailSelections.resx">
+      <DependentUpon>DonorEmailSelections.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DonorSelections.resx">
       <DependentUpon>DonorSelections.cs</DependentUpon>
@@ -231,6 +241,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\SilentAuctionGavel.ico" />
+    <None Include="Resources\email.png" />
     <None Include="Resources\tablegridlines.png" />
     <None Include="Resources\tabledialog.png" />
     <None Include="Resources\table1.png" />

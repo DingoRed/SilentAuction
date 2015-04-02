@@ -609,5 +609,17 @@ namespace SilentAuction.Properties {
                 this["ItemsImageColumnWidth"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DonorEmailSelectionsInitialLocation {
+            get {
+                return ((string)(this["DonorEmailSelectionsInitialLocation"]));
+            }
+            set {
+                this["DonorEmailSelectionsInitialLocation"] = value;
+            }
+        }
     }
 }

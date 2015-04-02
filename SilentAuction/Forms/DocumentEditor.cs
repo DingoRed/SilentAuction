@@ -4,7 +4,6 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using SilentAuction.Properties;
 using SilentAuction.Utilities;
 using TXTextControl;
 using HorizontalAlignment = TXTextControl.HorizontalAlignment;
@@ -125,6 +124,11 @@ namespace SilentAuction.Forms
         {
             // TODO: Remove Print Preview?
             documentEditorControl.PrintPreview(printDocumentMain);
+        }
+
+        private void EmailToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            EmailDocuments();
         }
 
         private void ExitToolStripMenuItemClick(object sender, EventArgs e)
@@ -667,6 +671,11 @@ namespace SilentAuction.Forms
             documentEditorControl.PrintPreview(printDocumentMain);
         }
 
+        private void EmailToolStripButtonClick(object sender, EventArgs e)
+        {
+            EmailDocuments();
+        }
+
         private void CutToolStripButtonClick(object sender, EventArgs e)
         {
             documentEditorControl.Cut();
@@ -840,6 +849,16 @@ namespace SilentAuction.Forms
             }
         }
 
+        private void EmailDocuments()
+        {
+            MessageBox.Show("Need to implement");
+
+
+            EmailHelper.SendEmail("john.b.buell@gmail.com", 
+                new List<string>() {"john.b.buell@intel.com"},
+                "Test Subject", "Test Body");
+        }
+
         private void InsertNewField(string fieldType)
         {
             TextField newField = new TextField
@@ -900,5 +919,6 @@ namespace SilentAuction.Forms
             }
         }
         #endregion
+
     }
 }
