@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SilentAuction.Utilities;
 
@@ -20,7 +12,7 @@ namespace SilentAuction.Forms
             InitializeComponent();
         }
         #endregion
-
+           
         #region Form Event Handlers
         private void NoResponseByDonorLoad(object sender, EventArgs e)
         {
@@ -44,7 +36,7 @@ namespace SilentAuction.Forms
         private void DoData()
         {
             int auctionId = MathHelper.ParseIntZeroIfNull(auctionsComboBox.SelectedValue.ToString());
-            noResponseDonorsTableAdapter.FillNoResponseDonors(silentAuctionDataSet.NoResponseDonors, auctionId);
+            DonorsWithNoResponseTableAdapter.FillDonorsWithNoResponse(silentAuctionDataSet.DonorsWithNoResponse, auctionId);
         }
 
     }

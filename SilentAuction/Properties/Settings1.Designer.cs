@@ -621,5 +621,41 @@ namespace SilentAuction.Properties {
                 this["DonorEmailSelectionsInitialLocation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string GenerateAddressLabelsFileInitialLocation {
+            get {
+                return ((string)(this["GenerateAddressLabelsFileInitialLocation"]));
+            }
+            set {
+                this["GenerateAddressLabelsFileInitialLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public int ItemsIdColumnWidth {
+            get {
+                return ((int)(this["ItemsIdColumnWidth"]));
+            }
+            set {
+                this["ItemsIdColumnWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string GenerateItemLabelsFileInitialLocation {
+            get {
+                return ((string)(this["GenerateItemLabelsFileInitialLocation"]));
+            }
+            set {
+                this["GenerateItemLabelsFileInitialLocation"] = value;
+            }
+        }
     }
 }

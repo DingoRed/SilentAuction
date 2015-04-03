@@ -42,27 +42,33 @@ namespace SilentAuction {
         
         private RequestStatusTypesDataTable tableRequestStatusTypes;
         
-        private NoResponseDonorsDataTable tableNoResponseDonors;
+        private DonorsWithNoResponseDataTable tableDonorsWithNoResponse;
         
         private DonorsWithEmailsDataTable tableDonorsWithEmails;
         
-        private global::System.Data.DataRelation relationFK_DonorTypes_Donors;
+        private DonorAddressesDataTable tableDonorAddresses;
         
-        private global::System.Data.DataRelation relationFK_RequestFormatTypes_Donors;
+        private DonorsWithLettersDataTable tableDonorsWithLetters;
         
-        private global::System.Data.DataRelation relationFK_RequestStatusTypes_Donors;
+        private ItemsShortListDataTable tableItemsShortList;
         
         private global::System.Data.DataRelation relationFK_Auctions_Donors;
         
-        private global::System.Data.DataRelation relationFK_DonationDeliveryTypes_Items;
+        private global::System.Data.DataRelation relationFK_RequestStatusTypes_Donors;
         
-        private global::System.Data.DataRelation relationFK_Donors_Items;
+        private global::System.Data.DataRelation relationFK_RequestFormatTypes_Donors;
         
-        private global::System.Data.DataRelation relationFK_Auctions_Items;
+        private global::System.Data.DataRelation relationFK_DonorTypes_Donors;
+        
+        private global::System.Data.DataRelation relationFK_ItemTypes_Items;
         
         private global::System.Data.DataRelation relationFK_BidIncrementTypes_Items;
         
-        private global::System.Data.DataRelation relationFK_ItemTypes_Items;
+        private global::System.Data.DataRelation relationFK_Auctions_Items;
+        
+        private global::System.Data.DataRelation relationFK_Donors_Items;
+        
+        private global::System.Data.DataRelation relationFK_DonationDeliveryTypes_Items;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -119,11 +125,20 @@ namespace SilentAuction {
                 if ((ds.Tables["RequestStatusTypes"] != null)) {
                     base.Tables.Add(new RequestStatusTypesDataTable(ds.Tables["RequestStatusTypes"]));
                 }
-                if ((ds.Tables["NoResponseDonors"] != null)) {
-                    base.Tables.Add(new NoResponseDonorsDataTable(ds.Tables["NoResponseDonors"]));
+                if ((ds.Tables["DonorsWithNoResponse"] != null)) {
+                    base.Tables.Add(new DonorsWithNoResponseDataTable(ds.Tables["DonorsWithNoResponse"]));
                 }
                 if ((ds.Tables["DonorsWithEmails"] != null)) {
                     base.Tables.Add(new DonorsWithEmailsDataTable(ds.Tables["DonorsWithEmails"]));
+                }
+                if ((ds.Tables["DonorAddresses"] != null)) {
+                    base.Tables.Add(new DonorAddressesDataTable(ds.Tables["DonorAddresses"]));
+                }
+                if ((ds.Tables["DonorsWithLetters"] != null)) {
+                    base.Tables.Add(new DonorsWithLettersDataTable(ds.Tables["DonorsWithLetters"]));
+                }
+                if ((ds.Tables["ItemsShortList"] != null)) {
+                    base.Tables.Add(new ItemsShortListDataTable(ds.Tables["ItemsShortList"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -237,9 +252,9 @@ namespace SilentAuction {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public NoResponseDonorsDataTable NoResponseDonors {
+        public DonorsWithNoResponseDataTable DonorsWithNoResponse {
             get {
-                return this.tableNoResponseDonors;
+                return this.tableDonorsWithNoResponse;
             }
         }
         
@@ -250,6 +265,36 @@ namespace SilentAuction {
         public DonorsWithEmailsDataTable DonorsWithEmails {
             get {
                 return this.tableDonorsWithEmails;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public DonorAddressesDataTable DonorAddresses {
+            get {
+                return this.tableDonorAddresses;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public DonorsWithLettersDataTable DonorsWithLetters {
+            get {
+                return this.tableDonorsWithLetters;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ItemsShortListDataTable ItemsShortList {
+            get {
+                return this.tableItemsShortList;
             }
         }
         
@@ -347,11 +392,20 @@ namespace SilentAuction {
                 if ((ds.Tables["RequestStatusTypes"] != null)) {
                     base.Tables.Add(new RequestStatusTypesDataTable(ds.Tables["RequestStatusTypes"]));
                 }
-                if ((ds.Tables["NoResponseDonors"] != null)) {
-                    base.Tables.Add(new NoResponseDonorsDataTable(ds.Tables["NoResponseDonors"]));
+                if ((ds.Tables["DonorsWithNoResponse"] != null)) {
+                    base.Tables.Add(new DonorsWithNoResponseDataTable(ds.Tables["DonorsWithNoResponse"]));
                 }
                 if ((ds.Tables["DonorsWithEmails"] != null)) {
                     base.Tables.Add(new DonorsWithEmailsDataTable(ds.Tables["DonorsWithEmails"]));
+                }
+                if ((ds.Tables["DonorAddresses"] != null)) {
+                    base.Tables.Add(new DonorAddressesDataTable(ds.Tables["DonorAddresses"]));
+                }
+                if ((ds.Tables["DonorsWithLetters"] != null)) {
+                    base.Tables.Add(new DonorsWithLettersDataTable(ds.Tables["DonorsWithLetters"]));
+                }
+                if ((ds.Tables["ItemsShortList"] != null)) {
+                    base.Tables.Add(new ItemsShortListDataTable(ds.Tables["ItemsShortList"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -440,10 +494,10 @@ namespace SilentAuction {
                     this.tableRequestStatusTypes.InitVars();
                 }
             }
-            this.tableNoResponseDonors = ((NoResponseDonorsDataTable)(base.Tables["NoResponseDonors"]));
+            this.tableDonorsWithNoResponse = ((DonorsWithNoResponseDataTable)(base.Tables["DonorsWithNoResponse"]));
             if ((initTable == true)) {
-                if ((this.tableNoResponseDonors != null)) {
-                    this.tableNoResponseDonors.InitVars();
+                if ((this.tableDonorsWithNoResponse != null)) {
+                    this.tableDonorsWithNoResponse.InitVars();
                 }
             }
             this.tableDonorsWithEmails = ((DonorsWithEmailsDataTable)(base.Tables["DonorsWithEmails"]));
@@ -452,15 +506,33 @@ namespace SilentAuction {
                     this.tableDonorsWithEmails.InitVars();
                 }
             }
-            this.relationFK_DonorTypes_Donors = this.Relations["FK_DonorTypes_Donors"];
-            this.relationFK_RequestFormatTypes_Donors = this.Relations["FK_RequestFormatTypes_Donors"];
-            this.relationFK_RequestStatusTypes_Donors = this.Relations["FK_RequestStatusTypes_Donors"];
+            this.tableDonorAddresses = ((DonorAddressesDataTable)(base.Tables["DonorAddresses"]));
+            if ((initTable == true)) {
+                if ((this.tableDonorAddresses != null)) {
+                    this.tableDonorAddresses.InitVars();
+                }
+            }
+            this.tableDonorsWithLetters = ((DonorsWithLettersDataTable)(base.Tables["DonorsWithLetters"]));
+            if ((initTable == true)) {
+                if ((this.tableDonorsWithLetters != null)) {
+                    this.tableDonorsWithLetters.InitVars();
+                }
+            }
+            this.tableItemsShortList = ((ItemsShortListDataTable)(base.Tables["ItemsShortList"]));
+            if ((initTable == true)) {
+                if ((this.tableItemsShortList != null)) {
+                    this.tableItemsShortList.InitVars();
+                }
+            }
             this.relationFK_Auctions_Donors = this.Relations["FK_Auctions_Donors"];
-            this.relationFK_DonationDeliveryTypes_Items = this.Relations["FK_DonationDeliveryTypes_Items"];
-            this.relationFK_Donors_Items = this.Relations["FK_Donors_Items"];
-            this.relationFK_Auctions_Items = this.Relations["FK_Auctions_Items"];
-            this.relationFK_BidIncrementTypes_Items = this.Relations["FK_BidIncrementTypes_Items"];
+            this.relationFK_RequestStatusTypes_Donors = this.Relations["FK_RequestStatusTypes_Donors"];
+            this.relationFK_RequestFormatTypes_Donors = this.Relations["FK_RequestFormatTypes_Donors"];
+            this.relationFK_DonorTypes_Donors = this.Relations["FK_DonorTypes_Donors"];
             this.relationFK_ItemTypes_Items = this.Relations["FK_ItemTypes_Items"];
+            this.relationFK_BidIncrementTypes_Items = this.Relations["FK_BidIncrementTypes_Items"];
+            this.relationFK_Auctions_Items = this.Relations["FK_Auctions_Items"];
+            this.relationFK_Donors_Items = this.Relations["FK_Donors_Items"];
+            this.relationFK_DonationDeliveryTypes_Items = this.Relations["FK_DonationDeliveryTypes_Items"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -489,21 +561,20 @@ namespace SilentAuction {
             base.Tables.Add(this.tableRequestFormatTypes);
             this.tableRequestStatusTypes = new RequestStatusTypesDataTable();
             base.Tables.Add(this.tableRequestStatusTypes);
-            this.tableNoResponseDonors = new NoResponseDonorsDataTable();
-            base.Tables.Add(this.tableNoResponseDonors);
+            this.tableDonorsWithNoResponse = new DonorsWithNoResponseDataTable();
+            base.Tables.Add(this.tableDonorsWithNoResponse);
             this.tableDonorsWithEmails = new DonorsWithEmailsDataTable();
             base.Tables.Add(this.tableDonorsWithEmails);
+            this.tableDonorAddresses = new DonorAddressesDataTable();
+            base.Tables.Add(this.tableDonorAddresses);
+            this.tableDonorsWithLetters = new DonorsWithLettersDataTable();
+            base.Tables.Add(this.tableDonorsWithLetters);
+            this.tableItemsShortList = new ItemsShortListDataTable();
+            base.Tables.Add(this.tableItemsShortList);
             global::System.Data.ForeignKeyConstraint fkc;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_DonorTypes_Donors", new global::System.Data.DataColumn[] {
-                        this.tableDonorTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDonors.DonorTypeIdColumn});
-            this.tableDonors.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_RequestFormatTypes_Donors", new global::System.Data.DataColumn[] {
-                        this.tableRequestFormatTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDonors.RequestFormatTypeIdColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Auctions_Donors", new global::System.Data.DataColumn[] {
+                        this.tableAuctions.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDonors.AuctionIdColumn});
             this.tableDonors.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
@@ -515,30 +586,23 @@ namespace SilentAuction {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Auctions_Donors", new global::System.Data.DataColumn[] {
-                        this.tableAuctions.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDonors.AuctionIdColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_RequestFormatTypes_Donors", new global::System.Data.DataColumn[] {
+                        this.tableRequestFormatTypes.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDonors.RequestFormatTypeIdColumn});
             this.tableDonors.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_DonationDeliveryTypes_Items", new global::System.Data.DataColumn[] {
-                        this.tableDonationDeliveryTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.DonationDeliveryTypeIdColumn});
-            this.tableItems.Constraints.Add(fkc);
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_DonorTypes_Donors", new global::System.Data.DataColumn[] {
+                        this.tableDonorTypes.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDonors.DonorTypeIdColumn});
+            this.tableDonors.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Donors_Items", new global::System.Data.DataColumn[] {
-                        this.tableDonors.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.DonorIdColumn});
-            this.tableItems.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Auctions_Items", new global::System.Data.DataColumn[] {
-                        this.tableAuctions.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.AuctionIdColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_ItemTypes_Items", new global::System.Data.DataColumn[] {
+                        this.tableItemTypes.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableItems.ItemTypeIdColumn});
             this.tableItems.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
@@ -550,49 +614,63 @@ namespace SilentAuction {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_ItemTypes_Items", new global::System.Data.DataColumn[] {
-                        this.tableItemTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.ItemTypeIdColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Auctions_Items", new global::System.Data.DataColumn[] {
+                        this.tableAuctions.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableItems.AuctionIdColumn});
             this.tableItems.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            this.relationFK_DonorTypes_Donors = new global::System.Data.DataRelation("FK_DonorTypes_Donors", new global::System.Data.DataColumn[] {
-                        this.tableDonorTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDonors.DonorTypeIdColumn}, false);
-            this.Relations.Add(this.relationFK_DonorTypes_Donors);
-            this.relationFK_RequestFormatTypes_Donors = new global::System.Data.DataRelation("FK_RequestFormatTypes_Donors", new global::System.Data.DataColumn[] {
-                        this.tableRequestFormatTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDonors.RequestFormatTypeIdColumn}, false);
-            this.Relations.Add(this.relationFK_RequestFormatTypes_Donors);
-            this.relationFK_RequestStatusTypes_Donors = new global::System.Data.DataRelation("FK_RequestStatusTypes_Donors", new global::System.Data.DataColumn[] {
-                        this.tableRequestStatusTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDonors.RequestStatusTypeIdColumn}, false);
-            this.Relations.Add(this.relationFK_RequestStatusTypes_Donors);
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Donors_Items", new global::System.Data.DataColumn[] {
+                        this.tableDonors.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableItems.DonorIdColumn});
+            this.tableItems.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_DonationDeliveryTypes_Items", new global::System.Data.DataColumn[] {
+                        this.tableDonationDeliveryTypes.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableItems.DonationDeliveryTypeIdColumn});
+            this.tableItems.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             this.relationFK_Auctions_Donors = new global::System.Data.DataRelation("FK_Auctions_Donors", new global::System.Data.DataColumn[] {
                         this.tableAuctions.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableDonors.AuctionIdColumn}, false);
             this.Relations.Add(this.relationFK_Auctions_Donors);
-            this.relationFK_DonationDeliveryTypes_Items = new global::System.Data.DataRelation("FK_DonationDeliveryTypes_Items", new global::System.Data.DataColumn[] {
-                        this.tableDonationDeliveryTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.DonationDeliveryTypeIdColumn}, false);
-            this.Relations.Add(this.relationFK_DonationDeliveryTypes_Items);
-            this.relationFK_Donors_Items = new global::System.Data.DataRelation("FK_Donors_Items", new global::System.Data.DataColumn[] {
-                        this.tableDonors.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.DonorIdColumn}, false);
-            this.Relations.Add(this.relationFK_Donors_Items);
-            this.relationFK_Auctions_Items = new global::System.Data.DataRelation("FK_Auctions_Items", new global::System.Data.DataColumn[] {
-                        this.tableAuctions.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.AuctionIdColumn}, false);
-            this.Relations.Add(this.relationFK_Auctions_Items);
-            this.relationFK_BidIncrementTypes_Items = new global::System.Data.DataRelation("FK_BidIncrementTypes_Items", new global::System.Data.DataColumn[] {
-                        this.tableBidIncrementTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.BidIncrementTypeIdColumn}, false);
-            this.Relations.Add(this.relationFK_BidIncrementTypes_Items);
+            this.relationFK_RequestStatusTypes_Donors = new global::System.Data.DataRelation("FK_RequestStatusTypes_Donors", new global::System.Data.DataColumn[] {
+                        this.tableRequestStatusTypes.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDonors.RequestStatusTypeIdColumn}, false);
+            this.Relations.Add(this.relationFK_RequestStatusTypes_Donors);
+            this.relationFK_RequestFormatTypes_Donors = new global::System.Data.DataRelation("FK_RequestFormatTypes_Donors", new global::System.Data.DataColumn[] {
+                        this.tableRequestFormatTypes.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDonors.RequestFormatTypeIdColumn}, false);
+            this.Relations.Add(this.relationFK_RequestFormatTypes_Donors);
+            this.relationFK_DonorTypes_Donors = new global::System.Data.DataRelation("FK_DonorTypes_Donors", new global::System.Data.DataColumn[] {
+                        this.tableDonorTypes.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDonors.DonorTypeIdColumn}, false);
+            this.Relations.Add(this.relationFK_DonorTypes_Donors);
             this.relationFK_ItemTypes_Items = new global::System.Data.DataRelation("FK_ItemTypes_Items", new global::System.Data.DataColumn[] {
                         this.tableItemTypes.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableItems.ItemTypeIdColumn}, false);
             this.Relations.Add(this.relationFK_ItemTypes_Items);
+            this.relationFK_BidIncrementTypes_Items = new global::System.Data.DataRelation("FK_BidIncrementTypes_Items", new global::System.Data.DataColumn[] {
+                        this.tableBidIncrementTypes.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableItems.BidIncrementTypeIdColumn}, false);
+            this.Relations.Add(this.relationFK_BidIncrementTypes_Items);
+            this.relationFK_Auctions_Items = new global::System.Data.DataRelation("FK_Auctions_Items", new global::System.Data.DataColumn[] {
+                        this.tableAuctions.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableItems.AuctionIdColumn}, false);
+            this.Relations.Add(this.relationFK_Auctions_Items);
+            this.relationFK_Donors_Items = new global::System.Data.DataRelation("FK_Donors_Items", new global::System.Data.DataColumn[] {
+                        this.tableDonors.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableItems.DonorIdColumn}, false);
+            this.Relations.Add(this.relationFK_Donors_Items);
+            this.relationFK_DonationDeliveryTypes_Items = new global::System.Data.DataRelation("FK_DonationDeliveryTypes_Items", new global::System.Data.DataColumn[] {
+                        this.tableDonationDeliveryTypes.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableItems.DonationDeliveryTypeIdColumn}, false);
+            this.Relations.Add(this.relationFK_DonationDeliveryTypes_Items);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -651,13 +729,31 @@ namespace SilentAuction {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeNoResponseDonors() {
+        private bool ShouldSerializeDonorsWithNoResponse() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeDonorsWithEmails() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeDonorAddresses() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeDonorsWithLetters() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeItemsShortList() {
             return false;
         }
         
@@ -744,10 +840,19 @@ namespace SilentAuction {
         public delegate void RequestStatusTypesRowChangeEventHandler(object sender, RequestStatusTypesRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void NoResponseDonorsRowChangeEventHandler(object sender, NoResponseDonorsRowChangeEvent e);
+        public delegate void DonorsWithNoResponseRowChangeEventHandler(object sender, DonorsWithNoResponseRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void DonorsWithEmailsRowChangeEventHandler(object sender, DonorsWithEmailsRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void DonorAddressesRowChangeEventHandler(object sender, DonorAddressesRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void DonorsWithLettersRowChangeEventHandler(object sender, DonorsWithLettersRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void ItemsShortListRowChangeEventHandler(object sender, ItemsShortListRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -3952,7 +4057,7 @@ namespace SilentAuction {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class NoResponseDonorsDataTable : global::System.Data.TypedTableBase<NoResponseDonorsRow> {
+        public partial class DonorsWithNoResponseDataTable : global::System.Data.TypedTableBase<DonorsWithNoResponseRow> {
             
             private global::System.Data.DataColumn columnId;
             
@@ -3962,8 +4067,8 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NoResponseDonorsDataTable() {
-                this.TableName = "NoResponseDonors";
+            public DonorsWithNoResponseDataTable() {
+                this.TableName = "DonorsWithNoResponse";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -3971,7 +4076,7 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal NoResponseDonorsDataTable(global::System.Data.DataTable table) {
+            internal DonorsWithNoResponseDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -3988,7 +4093,7 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected NoResponseDonorsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected DonorsWithNoResponseDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -4028,54 +4133,54 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NoResponseDonorsRow this[int index] {
+            public DonorsWithNoResponseRow this[int index] {
                 get {
-                    return ((NoResponseDonorsRow)(this.Rows[index]));
+                    return ((DonorsWithNoResponseRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event NoResponseDonorsRowChangeEventHandler NoResponseDonorsRowChanging;
+            public event DonorsWithNoResponseRowChangeEventHandler DonorsWithNoResponseRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event NoResponseDonorsRowChangeEventHandler NoResponseDonorsRowChanged;
+            public event DonorsWithNoResponseRowChangeEventHandler DonorsWithNoResponseRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event NoResponseDonorsRowChangeEventHandler NoResponseDonorsRowDeleting;
+            public event DonorsWithNoResponseRowChangeEventHandler DonorsWithNoResponseRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event NoResponseDonorsRowChangeEventHandler NoResponseDonorsRowDeleted;
+            public event DonorsWithNoResponseRowChangeEventHandler DonorsWithNoResponseRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddNoResponseDonorsRow(NoResponseDonorsRow row) {
+            public void AddDonorsWithNoResponseRow(DonorsWithNoResponseRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NoResponseDonorsRow AddNoResponseDonorsRow(string Name, long RequestStatusTypeId) {
-                NoResponseDonorsRow rowNoResponseDonorsRow = ((NoResponseDonorsRow)(this.NewRow()));
+            public DonorsWithNoResponseRow AddDonorsWithNoResponseRow(string Name, long RequestStatusTypeId) {
+                DonorsWithNoResponseRow rowDonorsWithNoResponseRow = ((DonorsWithNoResponseRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Name,
                         RequestStatusTypeId};
-                rowNoResponseDonorsRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowNoResponseDonorsRow);
-                return rowNoResponseDonorsRow;
+                rowDonorsWithNoResponseRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDonorsWithNoResponseRow);
+                return rowDonorsWithNoResponseRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NoResponseDonorsRow FindById(long Id) {
-                return ((NoResponseDonorsRow)(this.Rows.Find(new object[] {
+            public DonorsWithNoResponseRow FindById(long Id) {
+                return ((DonorsWithNoResponseRow)(this.Rows.Find(new object[] {
                             Id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                NoResponseDonorsDataTable cln = ((NoResponseDonorsDataTable)(base.Clone()));
+                DonorsWithNoResponseDataTable cln = ((DonorsWithNoResponseDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -4083,7 +4188,7 @@ namespace SilentAuction {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new NoResponseDonorsDataTable();
+                return new DonorsWithNoResponseDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4116,28 +4221,28 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NoResponseDonorsRow NewNoResponseDonorsRow() {
-                return ((NoResponseDonorsRow)(this.NewRow()));
+            public DonorsWithNoResponseRow NewDonorsWithNoResponseRow() {
+                return ((DonorsWithNoResponseRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new NoResponseDonorsRow(builder);
+                return new DonorsWithNoResponseRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(NoResponseDonorsRow);
+                return typeof(DonorsWithNoResponseRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.NoResponseDonorsRowChanged != null)) {
-                    this.NoResponseDonorsRowChanged(this, new NoResponseDonorsRowChangeEvent(((NoResponseDonorsRow)(e.Row)), e.Action));
+                if ((this.DonorsWithNoResponseRowChanged != null)) {
+                    this.DonorsWithNoResponseRowChanged(this, new DonorsWithNoResponseRowChangeEvent(((DonorsWithNoResponseRow)(e.Row)), e.Action));
                 }
             }
             
@@ -4145,8 +4250,8 @@ namespace SilentAuction {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.NoResponseDonorsRowChanging != null)) {
-                    this.NoResponseDonorsRowChanging(this, new NoResponseDonorsRowChangeEvent(((NoResponseDonorsRow)(e.Row)), e.Action));
+                if ((this.DonorsWithNoResponseRowChanging != null)) {
+                    this.DonorsWithNoResponseRowChanging(this, new DonorsWithNoResponseRowChangeEvent(((DonorsWithNoResponseRow)(e.Row)), e.Action));
                 }
             }
             
@@ -4154,8 +4259,8 @@ namespace SilentAuction {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.NoResponseDonorsRowDeleted != null)) {
-                    this.NoResponseDonorsRowDeleted(this, new NoResponseDonorsRowChangeEvent(((NoResponseDonorsRow)(e.Row)), e.Action));
+                if ((this.DonorsWithNoResponseRowDeleted != null)) {
+                    this.DonorsWithNoResponseRowDeleted(this, new DonorsWithNoResponseRowChangeEvent(((DonorsWithNoResponseRow)(e.Row)), e.Action));
                 }
             }
             
@@ -4163,14 +4268,14 @@ namespace SilentAuction {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.NoResponseDonorsRowDeleting != null)) {
-                    this.NoResponseDonorsRowDeleting(this, new NoResponseDonorsRowChangeEvent(((NoResponseDonorsRow)(e.Row)), e.Action));
+                if ((this.DonorsWithNoResponseRowDeleting != null)) {
+                    this.DonorsWithNoResponseRowDeleting(this, new DonorsWithNoResponseRowChangeEvent(((DonorsWithNoResponseRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveNoResponseDonorsRow(NoResponseDonorsRow row) {
+            public void RemoveDonorsWithNoResponseRow(DonorsWithNoResponseRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -4197,7 +4302,7 @@ namespace SilentAuction {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "NoResponseDonorsDataTable";
+                attribute2.FixedValue = "DonorsWithNoResponseDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -4475,6 +4580,977 @@ namespace SilentAuction {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "DonorsWithEmailsDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class DonorAddressesDataTable : global::System.Data.TypedTableBase<DonorAddressesRow> {
+            
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnName;
+            
+            private global::System.Data.DataColumn columnContactName;
+            
+            private global::System.Data.DataColumn columnStreet1;
+            
+            private global::System.Data.DataColumn columnStreet2;
+            
+            private global::System.Data.DataColumn columnCity;
+            
+            private global::System.Data.DataColumn columnState;
+            
+            private global::System.Data.DataColumn columnZipCode;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DonorAddressesDataTable() {
+                this.TableName = "DonorAddresses";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal DonorAddressesDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected DonorAddressesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NameColumn {
+                get {
+                    return this.columnName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ContactNameColumn {
+                get {
+                    return this.columnContactName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Street1Column {
+                get {
+                    return this.columnStreet1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Street2Column {
+                get {
+                    return this.columnStreet2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CityColumn {
+                get {
+                    return this.columnCity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn StateColumn {
+                get {
+                    return this.columnState;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ZipCodeColumn {
+                get {
+                    return this.columnZipCode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DonorAddressesRow this[int index] {
+                get {
+                    return ((DonorAddressesRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event DonorAddressesRowChangeEventHandler DonorAddressesRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event DonorAddressesRowChangeEventHandler DonorAddressesRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event DonorAddressesRowChangeEventHandler DonorAddressesRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event DonorAddressesRowChangeEventHandler DonorAddressesRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddDonorAddressesRow(DonorAddressesRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DonorAddressesRow AddDonorAddressesRow(string Name, string ContactName, string Street1, string Street2, string City, string State, string ZipCode) {
+                DonorAddressesRow rowDonorAddressesRow = ((DonorAddressesRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        Name,
+                        ContactName,
+                        Street1,
+                        Street2,
+                        City,
+                        State,
+                        ZipCode};
+                rowDonorAddressesRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDonorAddressesRow);
+                return rowDonorAddressesRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DonorAddressesRow FindById(long Id) {
+                return ((DonorAddressesRow)(this.Rows.Find(new object[] {
+                            Id})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                DonorAddressesDataTable cln = ((DonorAddressesDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new DonorAddressesDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnId = base.Columns["Id"];
+                this.columnName = base.Columns["Name"];
+                this.columnContactName = base.Columns["ContactName"];
+                this.columnStreet1 = base.Columns["Street1"];
+                this.columnStreet2 = base.Columns["Street2"];
+                this.columnCity = base.Columns["City"];
+                this.columnState = base.Columns["State"];
+                this.columnZipCode = base.Columns["ZipCode"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnName);
+                this.columnContactName = new global::System.Data.DataColumn("ContactName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnContactName);
+                this.columnStreet1 = new global::System.Data.DataColumn("Street1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStreet1);
+                this.columnStreet2 = new global::System.Data.DataColumn("Street2", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStreet2);
+                this.columnCity = new global::System.Data.DataColumn("City", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCity);
+                this.columnState = new global::System.Data.DataColumn("State", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnState);
+                this.columnZipCode = new global::System.Data.DataColumn("ZipCode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnZipCode);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint11", new global::System.Data.DataColumn[] {
+                                this.columnId}, true));
+                this.columnId.AutoIncrement = true;
+                this.columnId.AutoIncrementSeed = -1;
+                this.columnId.AutoIncrementStep = -1;
+                this.columnId.AllowDBNull = false;
+                this.columnId.Unique = true;
+                this.columnName.AllowDBNull = false;
+                this.columnName.MaxLength = 2147483647;
+                this.columnContactName.MaxLength = 2147483647;
+                this.columnStreet1.MaxLength = 2147483647;
+                this.columnStreet2.MaxLength = 2147483647;
+                this.columnCity.MaxLength = 2147483647;
+                this.columnState.MaxLength = 2147483647;
+                this.columnZipCode.MaxLength = 2147483647;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DonorAddressesRow NewDonorAddressesRow() {
+                return ((DonorAddressesRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new DonorAddressesRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(DonorAddressesRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.DonorAddressesRowChanged != null)) {
+                    this.DonorAddressesRowChanged(this, new DonorAddressesRowChangeEvent(((DonorAddressesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.DonorAddressesRowChanging != null)) {
+                    this.DonorAddressesRowChanging(this, new DonorAddressesRowChangeEvent(((DonorAddressesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.DonorAddressesRowDeleted != null)) {
+                    this.DonorAddressesRowDeleted(this, new DonorAddressesRowChangeEvent(((DonorAddressesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.DonorAddressesRowDeleting != null)) {
+                    this.DonorAddressesRowDeleting(this, new DonorAddressesRowChangeEvent(((DonorAddressesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveDonorAddressesRow(DonorAddressesRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                SilentAuctionDataSet ds = new SilentAuctionDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "DonorAddressesDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class DonorsWithLettersDataTable : global::System.Data.TypedTableBase<DonorsWithLettersRow> {
+            
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnName;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DonorsWithLettersDataTable() {
+                this.TableName = "DonorsWithLetters";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal DonorsWithLettersDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected DonorsWithLettersDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NameColumn {
+                get {
+                    return this.columnName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DonorsWithLettersRow this[int index] {
+                get {
+                    return ((DonorsWithLettersRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event DonorsWithLettersRowChangeEventHandler DonorsWithLettersRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event DonorsWithLettersRowChangeEventHandler DonorsWithLettersRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event DonorsWithLettersRowChangeEventHandler DonorsWithLettersRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event DonorsWithLettersRowChangeEventHandler DonorsWithLettersRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddDonorsWithLettersRow(DonorsWithLettersRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DonorsWithLettersRow AddDonorsWithLettersRow(string Name) {
+                DonorsWithLettersRow rowDonorsWithLettersRow = ((DonorsWithLettersRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        Name};
+                rowDonorsWithLettersRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDonorsWithLettersRow);
+                return rowDonorsWithLettersRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DonorsWithLettersRow FindById(long Id) {
+                return ((DonorsWithLettersRow)(this.Rows.Find(new object[] {
+                            Id})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                DonorsWithLettersDataTable cln = ((DonorsWithLettersDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new DonorsWithLettersDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnId = base.Columns["Id"];
+                this.columnName = base.Columns["Name"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnName);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnId}, true));
+                this.columnId.AutoIncrement = true;
+                this.columnId.AutoIncrementSeed = -1;
+                this.columnId.AutoIncrementStep = -1;
+                this.columnId.AllowDBNull = false;
+                this.columnId.Unique = true;
+                this.columnName.AllowDBNull = false;
+                this.columnName.MaxLength = 2147483647;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DonorsWithLettersRow NewDonorsWithLettersRow() {
+                return ((DonorsWithLettersRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new DonorsWithLettersRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(DonorsWithLettersRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.DonorsWithLettersRowChanged != null)) {
+                    this.DonorsWithLettersRowChanged(this, new DonorsWithLettersRowChangeEvent(((DonorsWithLettersRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.DonorsWithLettersRowChanging != null)) {
+                    this.DonorsWithLettersRowChanging(this, new DonorsWithLettersRowChangeEvent(((DonorsWithLettersRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.DonorsWithLettersRowDeleted != null)) {
+                    this.DonorsWithLettersRowDeleted(this, new DonorsWithLettersRowChangeEvent(((DonorsWithLettersRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.DonorsWithLettersRowDeleting != null)) {
+                    this.DonorsWithLettersRowDeleting(this, new DonorsWithLettersRowChangeEvent(((DonorsWithLettersRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveDonorsWithLettersRow(DonorsWithLettersRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                SilentAuctionDataSet ds = new SilentAuctionDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "DonorsWithLettersDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ItemsShortListDataTable : global::System.Data.TypedTableBase<ItemsShortListRow> {
+            
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnItemName;
+            
+            private global::System.Data.DataColumn columnDonorName;
+            
+            private global::System.Data.DataColumn columnDescription;
+            
+            private global::System.Data.DataColumn columnQty;
+            
+            private global::System.Data.DataColumn columnItemType;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ItemsShortListDataTable() {
+                this.TableName = "ItemsShortList";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ItemsShortListDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected ItemsShortListDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ItemNameColumn {
+                get {
+                    return this.columnItemName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DonorNameColumn {
+                get {
+                    return this.columnDonorName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DescriptionColumn {
+                get {
+                    return this.columnDescription;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn QtyColumn {
+                get {
+                    return this.columnQty;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ItemTypeColumn {
+                get {
+                    return this.columnItemType;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ItemsShortListRow this[int index] {
+                get {
+                    return ((ItemsShortListRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ItemsShortListRowChangeEventHandler ItemsShortListRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ItemsShortListRowChangeEventHandler ItemsShortListRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ItemsShortListRowChangeEventHandler ItemsShortListRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ItemsShortListRowChangeEventHandler ItemsShortListRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddItemsShortListRow(ItemsShortListRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ItemsShortListRow AddItemsShortListRow(string ItemName, string DonorName, string Description, long Qty, object ItemType) {
+                ItemsShortListRow rowItemsShortListRow = ((ItemsShortListRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        ItemName,
+                        DonorName,
+                        Description,
+                        Qty,
+                        ItemType};
+                rowItemsShortListRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowItemsShortListRow);
+                return rowItemsShortListRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ItemsShortListDataTable cln = ((ItemsShortListDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ItemsShortListDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnId = base.Columns["Id"];
+                this.columnItemName = base.Columns["ItemName"];
+                this.columnDonorName = base.Columns["DonorName"];
+                this.columnDescription = base.Columns["Description"];
+                this.columnQty = base.Columns["Qty"];
+                this.columnItemType = base.Columns["ItemType"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnItemName = new global::System.Data.DataColumn("ItemName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnItemName);
+                this.columnDonorName = new global::System.Data.DataColumn("DonorName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDonorName);
+                this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDescription);
+                this.columnQty = new global::System.Data.DataColumn("Qty", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQty);
+                this.columnItemType = new global::System.Data.DataColumn("ItemType", typeof(object), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnItemType);
+                this.columnId.AutoIncrement = true;
+                this.columnId.AutoIncrementSeed = -1;
+                this.columnId.AutoIncrementStep = -1;
+                this.columnId.AllowDBNull = false;
+                this.columnItemName.AllowDBNull = false;
+                this.columnItemName.MaxLength = 2147483647;
+                this.columnDonorName.AllowDBNull = false;
+                this.columnDonorName.MaxLength = 2147483647;
+                this.columnDescription.MaxLength = 2147483647;
+                this.columnQty.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ItemsShortListRow NewItemsShortListRow() {
+                return ((ItemsShortListRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ItemsShortListRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ItemsShortListRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ItemsShortListRowChanged != null)) {
+                    this.ItemsShortListRowChanged(this, new ItemsShortListRowChangeEvent(((ItemsShortListRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ItemsShortListRowChanging != null)) {
+                    this.ItemsShortListRowChanging(this, new ItemsShortListRowChangeEvent(((ItemsShortListRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ItemsShortListRowDeleted != null)) {
+                    this.ItemsShortListRowDeleted(this, new ItemsShortListRowChangeEvent(((ItemsShortListRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ItemsShortListRowDeleting != null)) {
+                    this.ItemsShortListRowDeleting(this, new ItemsShortListRowChangeEvent(((ItemsShortListRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveItemsShortListRow(ItemsShortListRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                SilentAuctionDataSet ds = new SilentAuctionDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ItemsShortListDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -4986,23 +6062,12 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorTypesRow DonorTypesRow {
+            public AuctionsRow AuctionsRow {
                 get {
-                    return ((DonorTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_DonorTypes_Donors"])));
+                    return ((AuctionsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Auctions_Donors"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_DonorTypes_Donors"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RequestFormatTypesRow RequestFormatTypesRow {
-                get {
-                    return ((RequestFormatTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_RequestFormatTypes_Donors"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_RequestFormatTypes_Donors"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Auctions_Donors"]);
                 }
             }
             
@@ -5019,12 +6084,23 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public AuctionsRow AuctionsRow {
+            public RequestFormatTypesRow RequestFormatTypesRow {
                 get {
-                    return ((AuctionsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Auctions_Donors"])));
+                    return ((RequestFormatTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_RequestFormatTypes_Donors"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Auctions_Donors"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_RequestFormatTypes_Donors"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DonorTypesRow DonorTypesRow {
+                get {
+                    return ((DonorTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_DonorTypes_Donors"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_DonorTypes_Donors"]);
                 }
             }
             
@@ -5536,34 +6612,12 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonationDeliveryTypesRow DonationDeliveryTypesRow {
+            public ItemTypesRow ItemTypesRow {
                 get {
-                    return ((DonationDeliveryTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_DonationDeliveryTypes_Items"])));
+                    return ((ItemTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_ItemTypes_Items"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_DonationDeliveryTypes_Items"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsRow DonorsRow {
-                get {
-                    return ((DonorsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Donors_Items"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Donors_Items"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public AuctionsRow AuctionsRow {
-                get {
-                    return ((AuctionsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Auctions_Items"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Auctions_Items"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_ItemTypes_Items"]);
                 }
             }
             
@@ -5580,12 +6634,34 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemTypesRow ItemTypesRow {
+            public AuctionsRow AuctionsRow {
                 get {
-                    return ((ItemTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_ItemTypes_Items"])));
+                    return ((AuctionsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Auctions_Items"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_ItemTypes_Items"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Auctions_Items"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DonorsRow DonorsRow {
+                get {
+                    return ((DonorsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Donors_Items"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Donors_Items"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DonationDeliveryTypesRow DonationDeliveryTypesRow {
+                get {
+                    return ((DonationDeliveryTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_DonationDeliveryTypes_Items"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_DonationDeliveryTypes_Items"]);
                 }
             }
             
@@ -5998,25 +7074,25 @@ namespace SilentAuction {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class NoResponseDonorsRow : global::System.Data.DataRow {
+        public partial class DonorsWithNoResponseRow : global::System.Data.DataRow {
             
-            private NoResponseDonorsDataTable tableNoResponseDonors;
+            private DonorsWithNoResponseDataTable tableDonorsWithNoResponse;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal NoResponseDonorsRow(global::System.Data.DataRowBuilder rb) : 
+            internal DonorsWithNoResponseRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableNoResponseDonors = ((NoResponseDonorsDataTable)(this.Table));
+                this.tableDonorsWithNoResponse = ((DonorsWithNoResponseDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public long Id {
                 get {
-                    return ((long)(this[this.tableNoResponseDonors.IdColumn]));
+                    return ((long)(this[this.tableDonorsWithNoResponse.IdColumn]));
                 }
                 set {
-                    this[this.tableNoResponseDonors.IdColumn] = value;
+                    this[this.tableDonorsWithNoResponse.IdColumn] = value;
                 }
             }
             
@@ -6024,10 +7100,10 @@ namespace SilentAuction {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Name {
                 get {
-                    return ((string)(this[this.tableNoResponseDonors.NameColumn]));
+                    return ((string)(this[this.tableDonorsWithNoResponse.NameColumn]));
                 }
                 set {
-                    this[this.tableNoResponseDonors.NameColumn] = value;
+                    this[this.tableDonorsWithNoResponse.NameColumn] = value;
                 }
             }
             
@@ -6036,28 +7112,28 @@ namespace SilentAuction {
             public long RequestStatusTypeId {
                 get {
                     try {
-                        return ((long)(this[this.tableNoResponseDonors.RequestStatusTypeIdColumn]));
+                        return ((long)(this[this.tableDonorsWithNoResponse.RequestStatusTypeIdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'RequestStatusTypeId\' in table \'NoResponseDonors\' is DBNull." +
-                                "", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'RequestStatusTypeId\' in table \'DonorsWithNoResponse\' is DBN" +
+                                "ull.", e);
                     }
                 }
                 set {
-                    this[this.tableNoResponseDonors.RequestStatusTypeIdColumn] = value;
+                    this[this.tableDonorsWithNoResponse.RequestStatusTypeIdColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsRequestStatusTypeIdNull() {
-                return this.IsNull(this.tableNoResponseDonors.RequestStatusTypeIdColumn);
+                return this.IsNull(this.tableDonorsWithNoResponse.RequestStatusTypeIdColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetRequestStatusTypeIdNull() {
-                this[this.tableNoResponseDonors.RequestStatusTypeIdColumn] = global::System.Convert.DBNull;
+                this[this.tableDonorsWithNoResponse.RequestStatusTypeIdColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -6095,6 +7171,363 @@ namespace SilentAuction {
                 set {
                     this[this.tableDonorsWithEmails.NameColumn] = value;
                 }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class DonorAddressesRow : global::System.Data.DataRow {
+            
+            private DonorAddressesDataTable tableDonorAddresses;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal DonorAddressesRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableDonorAddresses = ((DonorAddressesDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public long Id {
+                get {
+                    return ((long)(this[this.tableDonorAddresses.IdColumn]));
+                }
+                set {
+                    this[this.tableDonorAddresses.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Name {
+                get {
+                    return ((string)(this[this.tableDonorAddresses.NameColumn]));
+                }
+                set {
+                    this[this.tableDonorAddresses.NameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ContactName {
+                get {
+                    try {
+                        return ((string)(this[this.tableDonorAddresses.ContactNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ContactName\' in table \'DonorAddresses\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDonorAddresses.ContactNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Street1 {
+                get {
+                    try {
+                        return ((string)(this[this.tableDonorAddresses.Street1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Street1\' in table \'DonorAddresses\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDonorAddresses.Street1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Street2 {
+                get {
+                    try {
+                        return ((string)(this[this.tableDonorAddresses.Street2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Street2\' in table \'DonorAddresses\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDonorAddresses.Street2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string City {
+                get {
+                    try {
+                        return ((string)(this[this.tableDonorAddresses.CityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'City\' in table \'DonorAddresses\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDonorAddresses.CityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string State {
+                get {
+                    try {
+                        return ((string)(this[this.tableDonorAddresses.StateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'State\' in table \'DonorAddresses\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDonorAddresses.StateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ZipCode {
+                get {
+                    try {
+                        return ((string)(this[this.tableDonorAddresses.ZipCodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ZipCode\' in table \'DonorAddresses\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDonorAddresses.ZipCodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsContactNameNull() {
+                return this.IsNull(this.tableDonorAddresses.ContactNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetContactNameNull() {
+                this[this.tableDonorAddresses.ContactNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsStreet1Null() {
+                return this.IsNull(this.tableDonorAddresses.Street1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetStreet1Null() {
+                this[this.tableDonorAddresses.Street1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsStreet2Null() {
+                return this.IsNull(this.tableDonorAddresses.Street2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetStreet2Null() {
+                this[this.tableDonorAddresses.Street2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCityNull() {
+                return this.IsNull(this.tableDonorAddresses.CityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCityNull() {
+                this[this.tableDonorAddresses.CityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsStateNull() {
+                return this.IsNull(this.tableDonorAddresses.StateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetStateNull() {
+                this[this.tableDonorAddresses.StateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsZipCodeNull() {
+                return this.IsNull(this.tableDonorAddresses.ZipCodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetZipCodeNull() {
+                this[this.tableDonorAddresses.ZipCodeColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class DonorsWithLettersRow : global::System.Data.DataRow {
+            
+            private DonorsWithLettersDataTable tableDonorsWithLetters;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal DonorsWithLettersRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableDonorsWithLetters = ((DonorsWithLettersDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public long Id {
+                get {
+                    return ((long)(this[this.tableDonorsWithLetters.IdColumn]));
+                }
+                set {
+                    this[this.tableDonorsWithLetters.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Name {
+                get {
+                    return ((string)(this[this.tableDonorsWithLetters.NameColumn]));
+                }
+                set {
+                    this[this.tableDonorsWithLetters.NameColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ItemsShortListRow : global::System.Data.DataRow {
+            
+            private ItemsShortListDataTable tableItemsShortList;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ItemsShortListRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableItemsShortList = ((ItemsShortListDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public long Id {
+                get {
+                    return ((long)(this[this.tableItemsShortList.IdColumn]));
+                }
+                set {
+                    this[this.tableItemsShortList.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ItemName {
+                get {
+                    return ((string)(this[this.tableItemsShortList.ItemNameColumn]));
+                }
+                set {
+                    this[this.tableItemsShortList.ItemNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string DonorName {
+                get {
+                    return ((string)(this[this.tableItemsShortList.DonorNameColumn]));
+                }
+                set {
+                    this[this.tableItemsShortList.DonorNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Description {
+                get {
+                    try {
+                        return ((string)(this[this.tableItemsShortList.DescriptionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Description\' in table \'ItemsShortList\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableItemsShortList.DescriptionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public long Qty {
+                get {
+                    return ((long)(this[this.tableItemsShortList.QtyColumn]));
+                }
+                set {
+                    this[this.tableItemsShortList.QtyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public object ItemType {
+                get {
+                    try {
+                        return ((object)(this[this.tableItemsShortList.ItemTypeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ItemType\' in table \'ItemsShortList\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableItemsShortList.ItemTypeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDescriptionNull() {
+                return this.IsNull(this.tableItemsShortList.DescriptionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDescriptionNull() {
+                this[this.tableItemsShortList.DescriptionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsItemTypeNull() {
+                return this.IsNull(this.tableItemsShortList.ItemTypeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetItemTypeNull() {
+                this[this.tableItemsShortList.ItemTypeColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -6408,22 +7841,22 @@ namespace SilentAuction {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class NoResponseDonorsRowChangeEvent : global::System.EventArgs {
+        public class DonorsWithNoResponseRowChangeEvent : global::System.EventArgs {
             
-            private NoResponseDonorsRow eventRow;
+            private DonorsWithNoResponseRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NoResponseDonorsRowChangeEvent(NoResponseDonorsRow row, global::System.Data.DataRowAction action) {
+            public DonorsWithNoResponseRowChangeEvent(DonorsWithNoResponseRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NoResponseDonorsRow Row {
+            public DonorsWithNoResponseRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -6458,6 +7891,108 @@ namespace SilentAuction {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DonorsWithEmailsRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class DonorAddressesRowChangeEvent : global::System.EventArgs {
+            
+            private DonorAddressesRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DonorAddressesRowChangeEvent(DonorAddressesRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DonorAddressesRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class DonorsWithLettersRowChangeEvent : global::System.EventArgs {
+            
+            private DonorsWithLettersRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DonorsWithLettersRowChangeEvent(DonorsWithLettersRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DonorsWithLettersRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class ItemsShortListRowChangeEvent : global::System.EventArgs {
+            
+            private ItemsShortListRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ItemsShortListRowChangeEvent(ItemsShortListRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ItemsShortListRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -12396,7 +13931,7 @@ ORDER BY DonorId, Name, Id";
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class NoResponseDonorsTableAdapter : global::System.ComponentModel.Component {
+    public partial class DonorsWithNoResponseTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SQLite.SQLiteDataAdapter _adapter;
         
@@ -12410,7 +13945,7 @@ ORDER BY DonorId, Name, Id";
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public NoResponseDonorsTableAdapter() {
+        public DonorsWithNoResponseTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -12507,7 +14042,7 @@ ORDER BY DonorId, Name, Id";
             this._adapter = new global::System.Data.SQLite.SQLiteDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "NoResponseDonors";
+            tableMapping.DataSetTable = "DonorsWithNoResponse";
             tableMapping.ColumnMappings.Add("Id", "Id");
             tableMapping.ColumnMappings.Add("Name", "Name");
             tableMapping.ColumnMappings.Add("RequestStatusTypeId", "RequestStatusTypeId");
@@ -12544,7 +14079,7 @@ ORDER BY DonorId, Name, Id";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int FillNoResponseDonors(SilentAuctionDataSet.NoResponseDonorsDataTable dataTable, long AuctionId) {
+        public virtual int FillDonorsWithNoResponse(SilentAuctionDataSet.DonorsWithNoResponseDataTable dataTable, long AuctionId) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
             if ((this.ClearBeforeFill == true)) {
@@ -12558,10 +14093,10 @@ ORDER BY DonorId, Name, Id";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SilentAuctionDataSet.NoResponseDonorsDataTable GetNoResponseDonorsData(long AuctionId) {
+        public virtual SilentAuctionDataSet.DonorsWithNoResponseDataTable GetDonorsWithNoResponseData(long AuctionId) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
-            SilentAuctionDataSet.NoResponseDonorsDataTable dataTable = new SilentAuctionDataSet.NoResponseDonorsDataTable();
+            SilentAuctionDataSet.DonorsWithNoResponseDataTable dataTable = new SilentAuctionDataSet.DonorsWithNoResponseDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -12740,6 +14275,574 @@ ORDER BY DonorId, Name, Id";
             this.Adapter.SelectCommand = this.CommandCollection[0];
             this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
             SilentAuctionDataSet.DonorsWithEmailsDataTable dataTable = new SilentAuctionDataSet.DonorsWithEmailsDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class DonorAddressesTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SQLite.SQLiteDataAdapter _adapter;
+        
+        private global::System.Data.SQLite.SQLiteConnection _connection;
+        
+        private global::System.Data.SQLite.SQLiteTransaction _transaction;
+        
+        private global::System.Data.SQLite.SQLiteCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public DonorAddressesTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SQLite.SQLiteDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SQLite.SQLiteConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SQLite.SQLiteCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SQLite.SQLiteTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SQLite.SQLiteCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SQLite.SQLiteDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "DonorAddresses";
+            tableMapping.ColumnMappings.Add("Name", "Name");
+            tableMapping.ColumnMappings.Add("ContactName", "ContactName");
+            tableMapping.ColumnMappings.Add("Street1", "Street1");
+            tableMapping.ColumnMappings.Add("Street2", "Street2");
+            tableMapping.ColumnMappings.Add("City", "City");
+            tableMapping.ColumnMappings.Add("State", "State");
+            tableMapping.ColumnMappings.Add("ZipCode", "ZipCode");
+            tableMapping.ColumnMappings.Add("Id", "Id");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SQLite.SQLiteConnection();
+            this._connection.ConnectionString = global::SilentAuction.Properties.Settings.Default.SilentAuctionConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SQLite.SQLiteCommand[1];
+            this._commandCollection[0] = new global::System.Data.SQLite.SQLiteCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT Id, Name, ContactName, Street1, Street2, City, State, ZipCode FROM Donors " +
+                "WHERE (AuctionId = @AuctionId) ORDER BY Name";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            global::System.Data.SQLite.SQLiteParameter param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@AuctionId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.Size = 8;
+            param.SourceColumn = "AuctionId";
+            this._commandCollection[0].Parameters.Add(param);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int FillDonorAddresses(SilentAuctionDataSet.DonorAddressesDataTable dataTable, long AuctionId) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual SilentAuctionDataSet.DonorAddressesDataTable GetDonorAddressesData(long AuctionId) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
+            SilentAuctionDataSet.DonorAddressesDataTable dataTable = new SilentAuctionDataSet.DonorAddressesDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class DonorsWithLettersTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SQLite.SQLiteDataAdapter _adapter;
+        
+        private global::System.Data.SQLite.SQLiteConnection _connection;
+        
+        private global::System.Data.SQLite.SQLiteTransaction _transaction;
+        
+        private global::System.Data.SQLite.SQLiteCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public DonorsWithLettersTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SQLite.SQLiteDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SQLite.SQLiteConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SQLite.SQLiteCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SQLite.SQLiteTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SQLite.SQLiteCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SQLite.SQLiteDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "DonorsWithLetters";
+            tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("Name", "Name");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SQLite.SQLiteConnection();
+            this._connection.ConnectionString = global::SilentAuction.Properties.Settings.Default.SilentAuctionConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SQLite.SQLiteCommand[1];
+            this._commandCollection[0] = new global::System.Data.SQLite.SQLiteCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT        D.Id, D.Name\r\nFROM            Donors D INNER JOIN\r\n                " +
+                "         RequestFormatTypes R ON D.Id = R.Id\r\nWHERE        (D.AuctionId = @Aucti" +
+                "onId) AND (R.Id = IFNULL(@RequestFormatTypeId, R.Id))\r\nORDER BY D.Name";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            global::System.Data.SQLite.SQLiteParameter param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@AuctionId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.Size = 8;
+            param.SourceColumn = "AuctionId";
+            this._commandCollection[0].Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@RequestFormatTypeId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.Size = 8;
+            param.SourceColumn = "Id";
+            this._commandCollection[0].Parameters.Add(param);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int FillDonorsWithLetters(SilentAuctionDataSet.DonorsWithLettersDataTable dataTable, long AuctionId, global::System.Nullable<long> RequestFormatTypeId) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
+            if ((RequestFormatTypeId.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((long)(RequestFormatTypeId.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual SilentAuctionDataSet.DonorsWithLettersDataTable GetDonorWithLettersData(long AuctionId, global::System.Nullable<long> RequestFormatTypeId) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
+            if ((RequestFormatTypeId.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((long)(RequestFormatTypeId.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            SilentAuctionDataSet.DonorsWithLettersDataTable dataTable = new SilentAuctionDataSet.DonorsWithLettersDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class ItemsShortListTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SQLite.SQLiteDataAdapter _adapter;
+        
+        private global::System.Data.SQLite.SQLiteConnection _connection;
+        
+        private global::System.Data.SQLite.SQLiteTransaction _transaction;
+        
+        private global::System.Data.SQLite.SQLiteCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public ItemsShortListTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SQLite.SQLiteDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SQLite.SQLiteConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SQLite.SQLiteCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SQLite.SQLiteTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SQLite.SQLiteCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SQLite.SQLiteDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "ItemsShortList";
+            tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("ItemName", "ItemName");
+            tableMapping.ColumnMappings.Add("DonorName", "DonorName");
+            tableMapping.ColumnMappings.Add("Description", "Description");
+            tableMapping.ColumnMappings.Add("Qty", "Qty");
+            tableMapping.ColumnMappings.Add("ItemType", "ItemType");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SQLite.SQLiteConnection();
+            this._connection.ConnectionString = global::SilentAuction.Properties.Settings.Default.SilentAuctionConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SQLite.SQLiteCommand[1];
+            this._commandCollection[0] = new global::System.Data.SQLite.SQLiteCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"SELECT        I.Id, I.Name AS ItemName, D.Name AS DonorName, I.Description, I.Qty, IFNULL(IT.Name, 'Empty') AS ItemType
+FROM            Items I INNER JOIN
+                         Donors D ON I.DonorId = D.Id LEFT OUTER JOIN
+                         ItemTypes IT ON I.ItemTypeId = IT.Id
+WHERE        (I.AuctionId = @AuctionId)
+ORDER BY I.Id";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            global::System.Data.SQLite.SQLiteParameter param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@AuctionId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.Size = 8;
+            param.SourceColumn = "AuctionId";
+            this._commandCollection[0].Parameters.Add(param);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int FillItems(SilentAuctionDataSet.ItemsShortListDataTable dataTable, long AuctionId) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual SilentAuctionDataSet.ItemsShortListDataTable GetItemsData(long AuctionId) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
+            SilentAuctionDataSet.ItemsShortListDataTable dataTable = new SilentAuctionDataSet.ItemsShortListDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

@@ -41,8 +41,8 @@
             this.requestStatusColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.requestStatusTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.noResponseDonorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.noResponseDonorsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.NoResponseDonorsTableAdapter();
+            this.DonorsWithNoResponseBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.DonorsWithNoResponseTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorsWithNoResponseTableAdapter();
             this.requestStatusTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter();
             this.auctionsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.AuctionsTableAdapter();
             this.tableLayoutPanel1.SuspendLayout();
@@ -52,7 +52,7 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.donorsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestStatusTypesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.noResponseDonorsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DonorsWithNoResponseBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -135,7 +135,7 @@
             this.donorNameColumn,
             this.requestStatusColumn,
             this.idDataGridViewTextBoxColumn});
-            this.donorsDataGridView.DataSource = this.noResponseDonorsBindingSource;
+            this.donorsDataGridView.DataSource = this.DonorsWithNoResponseBindingSource;
             this.donorsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.donorsDataGridView.Location = new System.Drawing.Point(0, 0);
             this.donorsDataGridView.Name = "donorsDataGridView";
@@ -181,12 +181,12 @@
             // 
             // noResponseDonorsBindingSource
             // 
-            this.noResponseDonorsBindingSource.DataMember = "NoResponseDonors";
-            this.noResponseDonorsBindingSource.DataSource = this.silentAuctionDataSet;
+            this.DonorsWithNoResponseBindingSource.DataMember = "DonorsWithNoResponse";
+            this.DonorsWithNoResponseBindingSource.DataSource = this.silentAuctionDataSet;
             // 
             // noResponseDonorsTableAdapter
             // 
-            this.noResponseDonorsTableAdapter.ClearBeforeFill = true;
+            this.DonorsWithNoResponseTableAdapter.ClearBeforeFill = true;
             // 
             // requestStatusTypesTableAdapter
             // 
@@ -196,8 +196,8 @@
             // 
             this.auctionsTableAdapter.ClearBeforeFill = true;
             // 
-            // NoResponseByDonor
-            // 
+            // DonorsWithNotResponse
+            //   
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(350, 230);
@@ -214,7 +214,7 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.donorsDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestStatusTypesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.noResponseDonorsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DonorsWithNoResponseBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -225,9 +225,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView donorsDataGridView;
-        private System.Windows.Forms.BindingSource noResponseDonorsBindingSource;
+        private System.Windows.Forms.BindingSource DonorsWithNoResponseBindingSource;
         private SilentAuctionDataSet silentAuctionDataSet;
-        private SilentAuctionDataSetTableAdapters.NoResponseDonorsTableAdapter noResponseDonorsTableAdapter;
+        private SilentAuctionDataSetTableAdapters.DonorsWithNoResponseTableAdapter DonorsWithNoResponseTableAdapter;
         private System.Windows.Forms.BindingSource requestStatusTypesBindingSource;
         private SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter requestStatusTypesTableAdapter;
         private System.Windows.Forms.ComboBox auctionsComboBox;

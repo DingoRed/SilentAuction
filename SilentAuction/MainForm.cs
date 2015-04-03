@@ -1,10 +1,12 @@
 ﻿#region Using Statements
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Windows.Forms;
+using SilentAuction.Extensions;
 using SilentAuction.Forms;
 using SilentAuction.Properties;
 using SilentAuction.Utilities;
@@ -38,7 +40,7 @@ namespace SilentAuction
         #endregion
          
         #region Form Event Handlers
-        private void MainForm2Load(object sender, EventArgs e)
+        private void MainFormLoad(object sender, EventArgs e)
         {
             ImportFormSettings();
             
@@ -58,14 +60,15 @@ namespace SilentAuction
             SetAuctionNameAndGrid();
             SetupToolStripMenuItems();
 
-            foreach (var column in ItemsDataGridView.Columns)
-            {
-                if (column is DataGridViewImageColumn)
-                    (column as DataGridViewImageColumn).DefaultCellStyle.NullValue = null;
-            }
+            // TODO: Do we need this?
+            //foreach (var column in ItemsDataGridView.Columns)
+            //{
+            //    if (column is DataGridViewImageColumn)
+            //        (column as DataGridViewImageColumn).DefaultCellStyle.NullValue = null;
+            //}
         }
 
-        private void MainForm2FormClosing(object sender, FormClosingEventArgs e)
+        private void MainFormFormClosing(object sender, FormClosingEventArgs e)
         {
             var silentAuctionDataSetChanges = silentAuctionDataSet.GetChanges();
             if (silentAuctionDataSetChanges != null)
@@ -192,6 +195,7 @@ namespace SilentAuction
             {
                 if (ItemsDataGridView.Columns[e.ColumnIndex].CellType == typeof (DataGridViewImageCell))
                 {
+                    // TODO: Something wrong with _emptyImage...not the same on each computer?
                     if (((byte[])ItemsDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value).SequenceEqual(_emptyImage))
                     {
                         DialogResult result = MessageBox.Show("Add an image?", "Add Image", MessageBoxButtons.YesNo);
@@ -286,7 +290,9 @@ namespace SilentAuction
             {
                 createNewDonorForm.AuctionId = AuctionIdInUse;
                 createNewDonorForm.ShowDialog();
+                silentAuctionDataSet.Items.Clear();
                 donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionIdInUse);
+                itemsTableAdapter.FillItems(silentAuctionDataSet.Items, AuctionIdInUse);
                 SetupToolStripMenuItems();
             }
         }
@@ -331,11 +337,13 @@ namespace SilentAuction
 
         private void PrintToolStripMenuItemClick(object sender, EventArgs e)
         {
+            // Todo: Implement PrintToolStripMenuItemClick
             MessageBox.Show("Not Implemented");
         }
 
         private void PrintPreviewToolStripMenuItemClick(object sender, EventArgs e)
         {
+            // TODO:  Implement PrintPreviewToolStripMenuItemClick
             MessageBox.Show("Not Implemented");
         }
 
@@ -393,6 +401,40 @@ namespace SilentAuction
             DocumentEditor documentEditor = new DocumentEditor(AuctionIdInUse, DocumentEditor.DonationDocumentType.DonationFollowUpDocument);
             documentEditor.ShowDialog();
         }
+
+        private void CreateLabelsFileToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            List<int> donorIdsToInclude = new List<int>();
+
+            GenerateAddressLabelsFile labelsFile = new GenerateAddressLabelsFile(AuctionIdInUse);
+            DialogResult result = labelsFile.ShowDialog();
+            if (result == DialogResult.OK)
+                donorIdsToInclude = labelsFile.DonorIdsToInclude;
+            else if(result == DialogResult.Cancel)
+                return;
+            
+            DialogResult = DialogResult.None;
+
+            donorAddressesTableAdapter.FillDonorAddresses(silentAuctionDataSet.DonorAddresses, AuctionIdInUse);
+            DataTable dt = new SilentAuctionDataSet.DonorAddressesDataTable();
+
+            foreach (SilentAuctionDataSet.DonorAddressesRow dataRow in silentAuctionDataSet.DonorAddresses.Rows)
+            {
+                if (donorIdsToInclude.Contains((int) dataRow.Id))
+                {
+                    dt.Rows.Add(dataRow.ItemArray);
+                }
+            }
+
+            string csvFile = dt.DataTableToCsvFormat();
+            SaveCsvFile(csvFile, "SilentAuctionLabels");
+        }
+        
+        private void CreateItemLabelsFileToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            GenerateItemLabelsFile itemLabelsFile = new GenerateItemLabelsFile(AuctionIdInUse);
+            itemLabelsFile.ShowDialog();
+        }
         #endregion
 
         #region Tools Section...
@@ -439,9 +481,34 @@ namespace SilentAuction
         #endregion
 
         #region Private Methods
+        private void SaveCsvFile(string dataToSave, string initialFilename)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "csv files (*.csv)|*.csv";
+            saveFileDialog.DefaultExt = "csv";
+            saveFileDialog.FileName = initialFilename;
+            saveFileDialog.RestoreDirectory = true;
+
+            DialogResult saveResult = saveFileDialog.ShowDialog();
+            if (saveResult == DialogResult.OK)
+            {
+                try
+                {
+                    System.IO.File.WriteAllText(saveFileDialog.FileName, dataToSave);
+                    MainFormStatusLabel.Text = "Item(s) Saved";
+                    MainFormStatusLabel.Visible = true;
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message);
+                }
+            }
+        }
+
         private void SetupGrids()
         {
             // Items grid settings...
+            ItemsIdColumn.Width = Settings.Default.ItemsIdColumnWidth;
             ItemsDonorIdColumn.Width = Settings.Default.ItemsDonorIdColumnWidth;
             ItemsNameColumn.Width = Settings.Default.ItemsNameColumnWidth;
             ItemsQtyColumn.Width = Settings.Default.ItemsQtyColumnWidth;
@@ -462,6 +529,7 @@ namespace SilentAuction
         private void SaveItemsGridSettings()
         {
             // Items grid user settings...
+            Settings.Default.ItemsIdColumnWidth = ItemsIdColumn.Width;
             Settings.Default.ItemsDonorIdColumnWidth = ItemsDonorIdColumn.Width;
             Settings.Default.ItemsNameColumnWidth = ItemsNameColumn.Width;
             Settings.Default.ItemsQtyColumnWidth = ItemsQtyColumn.Width;

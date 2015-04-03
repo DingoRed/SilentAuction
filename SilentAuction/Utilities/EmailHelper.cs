@@ -32,7 +32,8 @@ namespace SilentAuction.Utilities
                 //smtp.Host = "ormail.intel.com";
                 smtp.EnableSsl = true;
                 smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential("john.b.buell@gmail.com", "GMpassword01!");
+                // TODO: Replace with stored acct/pwd
+                smtp.Credentials = new NetworkCredential("john.b.buell@gmail.com", "");
                 smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                 smtp.Send(mail);
 

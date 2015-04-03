@@ -851,6 +851,7 @@ namespace SilentAuction.Forms
 
         private void EmailDocuments()
         {
+            // TODO:  Finish Email work
             MessageBox.Show("Need to implement");
 
 
