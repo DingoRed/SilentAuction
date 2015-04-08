@@ -136,7 +136,7 @@
     <Setting Name="CopyDonorsInitialLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="DonorSelectionsInitialLocation" Type="System.String" Scope="User">
+    <Setting Name="PrintFormInitialLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="EditAuctionFormInitialLocation" Type="System.String" Scope="User">
@@ -154,7 +154,7 @@
     <Setting Name="ItemsImageColumnWidth" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">100</Value>
     </Setting>
-    <Setting Name="DonorEmailSelectionsInitialLocation" Type="System.String" Scope="User">
+    <Setting Name="EmailFormInitialLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="GenerateAddressLabelsFileInitialLocation" Type="System.String" Scope="User">
@@ -164,6 +164,12 @@
       <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="GenerateItemLabelsFileInitialLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DocumentNameEntryInitialLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DocumentOpenFormInitialLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

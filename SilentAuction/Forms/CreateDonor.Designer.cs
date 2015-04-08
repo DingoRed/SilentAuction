@@ -78,9 +78,7 @@
             this.AuctionsComboBox = new System.Windows.Forms.ComboBox();
             this.auctionsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.label16 = new System.Windows.Forms.Label();
-            this.NameErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.AuctionErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.DonorTypeErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.CreateDonorErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.donorTypesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).BeginInit();
@@ -90,9 +88,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NameErrorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AuctionErrorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DonorTypeErrorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CreateDonorErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -110,8 +106,7 @@
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(219, 20);
             this.NameTextBox.TabIndex = 1;
-            this.NameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.NameTextBoxValidating);
-            this.NameTextBox.Validated += new System.EventHandler(this.NameTextBoxValidated);
+            this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBoxTextChanged);
             // 
             // label2
             // 
@@ -134,8 +129,6 @@
             this.DonorTypeComboBox.Size = new System.Drawing.Size(121, 21);
             this.DonorTypeComboBox.TabIndex = 2;
             this.DonorTypeComboBox.ValueMember = "Id";
-            this.DonorTypeComboBox.Validating += new System.ComponentModel.CancelEventHandler(this.DonorTypeComboBoxValidating);
-            this.DonorTypeComboBox.Validated += new System.EventHandler(this.DonorTypeComboBoxValidated);
             // 
             // donorTypesBindingSource
             // 
@@ -549,8 +542,6 @@
             this.AuctionsComboBox.TabIndex = 1;
             this.AuctionsComboBox.ValueMember = "Id";
             this.AuctionsComboBox.SelectedIndexChanged += new System.EventHandler(this.AuctionsComboBoxSelectedIndexChanged);
-            this.AuctionsComboBox.Validating += new System.ComponentModel.CancelEventHandler(this.AuctionsComboBoxValidating);
-            this.AuctionsComboBox.Validated += new System.EventHandler(this.AuctionsComboBoxValidated);
             // 
             // auctionsBindingSource1
             // 
@@ -566,17 +557,9 @@
             this.label16.TabIndex = 20;
             this.label16.Text = "Auction:";
             // 
-            // NameErrorProvider
+            // CreateDonorErrorProvider
             // 
-            this.NameErrorProvider.ContainerControl = this;
-            // 
-            // AuctionErrorProvider
-            // 
-            this.AuctionErrorProvider.ContainerControl = this;
-            // 
-            // DonorTypeErrorProvider
-            // 
-            this.DonorTypeErrorProvider.ContainerControl = this;
+            this.CreateDonorErrorProvider.ContainerControl = this;
             // 
             // CreateNewDonorForm
             // 
@@ -608,9 +591,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NameErrorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AuctionErrorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DonorTypeErrorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CreateDonorErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -666,8 +647,6 @@
         private System.Windows.Forms.ComboBox AuctionsComboBox;
         private System.Windows.Forms.BindingSource auctionsBindingSource1;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.ErrorProvider NameErrorProvider;
-        private System.Windows.Forms.ErrorProvider AuctionErrorProvider;
-        private System.Windows.Forms.ErrorProvider DonorTypeErrorProvider;
+        private System.Windows.Forms.ErrorProvider CreateDonorErrorProvider;
     }
 }

@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SilentAuction.Utilities;
 
@@ -15,7 +10,7 @@ namespace SilentAuction.Forms
     {
         #region Properties
         private int AuctionId { get; set; }
-        public List<int> DonorIdsToInclude { get; set; }
+        public List<int> ItemIdsToInclude { get; set; }
         #endregion
 
         #region Constructor
@@ -48,10 +43,6 @@ namespace SilentAuction.Forms
             checkboxHeader.CheckedChanged += CheckboxHeaderCheckedChanged;
 
             ItemsDataGridView.Controls.Add(checkboxHeader);
-
-
-
-
 
             itemsShortListTableAdapter.FillItems(silentAuctionDataSet.ItemsShortList, AuctionId);
 
@@ -86,13 +77,13 @@ namespace SilentAuction.Forms
 
         private void MakeFileButtonClick(object sender, EventArgs e)
         {
-            DonorIdsToInclude = new List<int>();
+            ItemIdsToInclude = new List<int>();
 
             foreach (DataGridViewRow row in ItemsDataGridView.Rows)
             {
                 if ((bool) row.Cells[0].Value)
                 {
-                    DonorIdsToInclude.Add(MathHelper.ParseIntZeroIfNull(row.Cells[1].Value.ToString()));
+                    ItemIdsToInclude.Add(MathHelper.ParseIntZeroIfNull(row.Cells[1].Value.ToString()));
                 }
             }
 

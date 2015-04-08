@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NoResponseByDonor));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.auctionsComboBox = new System.Windows.Forms.ComboBox();
@@ -179,12 +180,12 @@
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             this.idDataGridViewTextBoxColumn.Visible = false;
             // 
-            // noResponseDonorsBindingSource
+            // DonorsWithNoResponseBindingSource
             // 
             this.DonorsWithNoResponseBindingSource.DataMember = "DonorsWithNoResponse";
             this.DonorsWithNoResponseBindingSource.DataSource = this.silentAuctionDataSet;
             // 
-            // noResponseDonorsTableAdapter
+            // DonorsWithNoResponseTableAdapter
             // 
             this.DonorsWithNoResponseTableAdapter.ClearBeforeFill = true;
             // 
@@ -196,12 +197,13 @@
             // 
             this.auctionsTableAdapter.ClearBeforeFill = true;
             // 
-            // DonorsWithNotResponse
-            //   
+            // NoResponseByDonor
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(350, 230);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NoResponseByDonor";
             this.Text = "No Response By Donor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NoResponseByDonorFormClosing);

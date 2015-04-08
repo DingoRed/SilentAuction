@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DocumentEditor));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.horizontalRulerBar = new TXTextControl.RulerBar();
+            this.verticalRulerBar = new TXTextControl.RulerBar();
             this.documentEditorControl = new TXTextControl.TextControl();
             this.documentButtonBar = new TXTextControl.ButtonBar();
             this.contextMenuStripMain = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -46,14 +50,16 @@
             this.contextMenuInsert = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuInsertTable = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuInsertImage = new System.Windows.Forms.ToolStripMenuItem();
-            this.horizontalRulerBar = new TXTextControl.RulerBar();
             this.documentStatusBar = new TXTextControl.StatusBar();
-            this.verticalRulerBar = new TXTextControl.RulerBar();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.bottomStatusStrip = new System.Windows.Forms.StatusStrip();
+            this.bottomToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newDocumentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.pageSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -139,6 +145,7 @@
             this.newDocumentToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.saveAsToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.printToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.emailToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -159,7 +166,11 @@
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.contextMenuStripMain.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.bottomStatusStrip.SuspendLayout();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).BeginInit();
@@ -173,11 +184,8 @@
             // 
             // toolStripContainer1.ContentPanel
             // 
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.documentEditorControl);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.verticalRulerBar);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.horizontalRulerBar);
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.tableLayoutPanel1);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.documentButtonBar);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.documentStatusBar);
             this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(958, 608);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
@@ -193,16 +201,62 @@
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menuStripMain);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripMain);
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 28);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(958, 580);
+            this.tableLayoutPanel1.TabIndex = 6;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.horizontalRulerBar);
+            this.panel1.Controls.Add(this.verticalRulerBar);
+            this.panel1.Controls.Add(this.documentEditorControl);
+            this.panel1.Controls.Add(this.documentStatusBar);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(952, 544);
+            this.panel1.TabIndex = 0;
+            // 
+            // horizontalRulerBar
+            // 
+            this.horizontalRulerBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.horizontalRulerBar.Location = new System.Drawing.Point(25, 0);
+            this.horizontalRulerBar.Name = "horizontalRulerBar";
+            this.horizontalRulerBar.Size = new System.Drawing.Size(927, 25);
+            this.horizontalRulerBar.TabIndex = 4;
+            this.horizontalRulerBar.Text = "rulerBar2";
+            // 
+            // verticalRulerBar
+            // 
+            this.verticalRulerBar.Alignment = TXTextControl.RulerBarAlignment.Left;
+            this.verticalRulerBar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.verticalRulerBar.Location = new System.Drawing.Point(0, 0);
+            this.verticalRulerBar.Name = "verticalRulerBar";
+            this.verticalRulerBar.Size = new System.Drawing.Size(25, 522);
+            this.verticalRulerBar.TabIndex = 3;
+            this.verticalRulerBar.Text = "rulerBar1";
+            // 
             // documentEditorControl
             // 
             this.documentEditorControl.ButtonBar = this.documentButtonBar;
             this.documentEditorControl.ContextMenuStrip = this.contextMenuStripMain;
             this.documentEditorControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.documentEditorControl.Font = new System.Drawing.Font("Arial", 10F);
-            this.documentEditorControl.Location = new System.Drawing.Point(25, 53);
+            this.documentEditorControl.Location = new System.Drawing.Point(0, 0);
             this.documentEditorControl.Name = "documentEditorControl";
             this.documentEditorControl.RulerBar = this.horizontalRulerBar;
-            this.documentEditorControl.Size = new System.Drawing.Size(933, 533);
+            this.documentEditorControl.Size = new System.Drawing.Size(952, 522);
             this.documentEditorControl.StatusBar = this.documentStatusBar;
             this.documentEditorControl.TabIndex = 0;
             this.documentEditorControl.VerticalRulerBar = this.verticalRulerBar;
@@ -325,33 +379,39 @@
             this.contextMenuInsertImage.Text = "Image...";
             this.contextMenuInsertImage.Click += new System.EventHandler(this.ContextMenuInsertImageClick);
             // 
-            // horizontalRulerBar
-            // 
-            this.horizontalRulerBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.horizontalRulerBar.Location = new System.Drawing.Point(0, 28);
-            this.horizontalRulerBar.Name = "horizontalRulerBar";
-            this.horizontalRulerBar.Size = new System.Drawing.Size(958, 25);
-            this.horizontalRulerBar.TabIndex = 4;
-            this.horizontalRulerBar.Text = "rulerBar2";
-            // 
             // documentStatusBar
             // 
             this.documentStatusBar.BackColor = System.Drawing.SystemColors.Control;
             this.documentStatusBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.documentStatusBar.Location = new System.Drawing.Point(0, 586);
+            this.documentStatusBar.Location = new System.Drawing.Point(0, 522);
             this.documentStatusBar.Name = "documentStatusBar";
-            this.documentStatusBar.Size = new System.Drawing.Size(958, 22);
+            this.documentStatusBar.Size = new System.Drawing.Size(952, 22);
             this.documentStatusBar.TabIndex = 2;
             // 
-            // verticalRulerBar
+            // panel2
             // 
-            this.verticalRulerBar.Alignment = TXTextControl.RulerBarAlignment.Left;
-            this.verticalRulerBar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.verticalRulerBar.Location = new System.Drawing.Point(0, 53);
-            this.verticalRulerBar.Name = "verticalRulerBar";
-            this.verticalRulerBar.Size = new System.Drawing.Size(25, 533);
-            this.verticalRulerBar.TabIndex = 3;
-            this.verticalRulerBar.Text = "rulerBar1";
+            this.panel2.Controls.Add(this.bottomStatusStrip);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 553);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(952, 24);
+            this.panel2.TabIndex = 1;
+            // 
+            // bottomStatusStrip
+            // 
+            this.bottomStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bottomToolStripStatusLabel});
+            this.bottomStatusStrip.Location = new System.Drawing.Point(0, 2);
+            this.bottomStatusStrip.Name = "bottomStatusStrip";
+            this.bottomStatusStrip.Size = new System.Drawing.Size(952, 22);
+            this.bottomStatusStrip.TabIndex = 5;
+            // 
+            // bottomToolStripStatusLabel
+            // 
+            this.bottomToolStripStatusLabel.Name = "bottomToolStripStatusLabel";
+            this.bottomToolStripStatusLabel.Size = new System.Drawing.Size(97, 17);
+            this.bottomToolStripStatusLabel.Text = "Document Saved";
+            this.bottomToolStripStatusLabel.Visible = false;
             // 
             // menuStripMain
             // 
@@ -375,6 +435,7 @@
             this.newDocumentToolStripMenuItem,
             this.openToolStripMenuItem,
             this.saveToolStripMenuItem,
+            this.saveAsToolStripMenuItem,
             this.toolStripSeparator1,
             this.pageSetupToolStripMenuItem,
             this.printToolStripMenuItem,
@@ -413,6 +474,13 @@
             this.saveToolStripMenuItem.Text = "&Save";
             this.saveToolStripMenuItem.ToolTipText = "Save Current Document";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItemClick);
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.save_as;
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveAsToolStripMenuItem.Text = "Save As...";
             // 
             // toolStripSeparator1
             // 
@@ -1100,6 +1168,7 @@
             this.newDocumentToolStripButton,
             this.openToolStripButton,
             this.saveToolStripButton,
+            this.saveAsToolStripButton,
             this.toolStripSeparator6,
             this.printToolStripButton,
             this.emailToolStripButton,
@@ -1113,7 +1182,7 @@
             this.redoToolStripButton});
             this.toolStripMain.Location = new System.Drawing.Point(3, 24);
             this.toolStripMain.Name = "toolStripMain";
-            this.toolStripMain.Size = new System.Drawing.Size(283, 25);
+            this.toolStripMain.Size = new System.Drawing.Size(306, 25);
             this.toolStripMain.TabIndex = 1;
             // 
             // newDocumentToolStripButton
@@ -1146,6 +1215,16 @@
             this.saveToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.saveToolStripButton.Text = "Save";
             this.saveToolStripButton.Click += new System.EventHandler(this.SaveToolStripButtonClick);
+            // 
+            // saveAsToolStripButton
+            // 
+            this.saveAsToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.saveAsToolStripButton.Image = global::SilentAuction.Properties.Resources.save_as;
+            this.saveAsToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveAsToolStripButton.Name = "saveAsToolStripButton";
+            this.saveAsToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.saveAsToolStripButton.Text = "toolStripButton1";
+            this.saveAsToolStripButton.Click += new System.EventHandler(this.SaveAsToolStripButtonClick);
             // 
             // toolStripSeparator6
             // 
@@ -1285,7 +1364,13 @@
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.contextMenuStripMain.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.bottomStatusStrip.ResumeLayout(false);
+            this.bottomStatusStrip.PerformLayout();
             this.menuStripMain.ResumeLayout(false);
             this.menuStripMain.PerformLayout();
             this.toolStripMain.ResumeLayout(false);
@@ -1425,5 +1510,12 @@
         private SilentAuctionDataSetTableAdapters.DocumentsTableAdapter documentsTableAdapter;
         private System.Windows.Forms.ToolStripButton newDocumentToolStripButton;
         private System.Windows.Forms.ToolStripMenuItem newDocumentToolStripMenuItem;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.StatusStrip bottomStatusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel bottomToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripButton saveAsToolStripButton;
+        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
     }
 }

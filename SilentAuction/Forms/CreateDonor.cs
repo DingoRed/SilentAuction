@@ -9,17 +9,18 @@ namespace SilentAuction.Forms
     public partial class CreateNewDonorForm : Form
     {
         #region Properties
-        public int DonorId { get; set; }
-        public string DonorName { get; set; }
-        public int AuctionId { get; set; }
+        private int AuctionId { get; set; }
+        #endregion
+
+        #region Constructor
+        public CreateNewDonorForm(int auctionId)
+        {
+            AuctionId = auctionId;
+            InitializeComponent();
+        }
         #endregion
 
         #region Form Event Handlers
-        public CreateNewDonorForm()
-        {
-            InitializeComponent();
-        }
-
         private void CreateNewDonorFormLoad(object sender, EventArgs e)
         {
             auctionsTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
@@ -42,12 +43,11 @@ namespace SilentAuction.Forms
         private void SaveButtonClick(object sender, EventArgs e)
         {
             Text = "Create New Donor";
-            if (!MasterIsValid())
+            if (!IsValidForm())
                 return;
             
             SaveDonorData();
             DialogResult = DialogResult.None;
-
             ClearForm();
 
             Text = "Create New Donor - Saved Successful";
@@ -55,7 +55,7 @@ namespace SilentAuction.Forms
 
         private void SaveAndCloseButtonClick(object sender, EventArgs e)
         {
-            if (!MasterIsValid())
+            if (!IsValidForm())
                 return;
 
             SaveDonorData();
@@ -71,54 +71,79 @@ namespace SilentAuction.Forms
                 donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionId);
             }
         }
+
+        private void NameTextBoxTextChanged(object sender, EventArgs e)
+        {
+            CreateDonorErrorProvider.SetError(NameTextBox, "");
+            if (string.IsNullOrEmpty(NameTextBox.Text))
+                CreateDonorErrorProvider.SetError(NameTextBox, "Donor name required");
+            else if (DonorNameExists(AuctionId))
+                CreateDonorErrorProvider.SetError(NameTextBox, "Donor name already exists for selected Auction");
+        }
         #endregion
         
         #region Private Methods
-        private bool MasterIsValid()
+        private bool IsValidForm()
         {
             bool isValid = true;
-            if (!IsAuctionValid())
+            var auctionsComboBoxSelectedValue = AuctionsComboBox.SelectedValue;
+            var donorTypesSelectedValue = DonorTypeComboBox.SelectedValue;
+            int auctionId = 0;
+            int donorTypeId = 0;
+
+            CreateDonorErrorProvider.SetError(AuctionsComboBox, "");
+            CreateDonorErrorProvider.SetError(NameTextBox, "");
+            CreateDonorErrorProvider.SetError(DonorTypeComboBox, "");
+            CreateDonorErrorProvider.SetError(EmailTextBox, "");
+
+            if(auctionsComboBoxSelectedValue != null)
+                auctionId = MathHelper.ParseIntZeroIfNull(auctionsComboBoxSelectedValue.ToString());
+            if (donorTypesSelectedValue != null)
+                donorTypeId = MathHelper.ParseIntZeroIfNull(donorTypesSelectedValue.ToString());
+
+            // Test for Auction...
+            if (auctionId <= 0)
             {
-                AuctionsComboBox.Focus();
-                AuctionErrorProvider.SetError(AuctionsComboBox, "Auction selection required");
+                CreateDonorErrorProvider.SetError(AuctionsComboBox, "Auction selection required");
                 isValid = false;
             }
 
-            if (!IsDonorNameNotEmpty())
+            // Test for Donor Name...
+            if (string.IsNullOrEmpty(NameTextBox.Text))
             {
-                NameTextBox.Focus();
-                NameErrorProvider.SetError(NameTextBox, "Donor name required");
+                CreateDonorErrorProvider.SetError(NameTextBox, "Donor name required");
                 isValid = false;
             }
-            else if (!IsDonorNameUnique())
+            else if (DonorNameExists(auctionId))
             {
                 NameTextBox.Select(0, NameTextBox.Text.Length);
-                NameErrorProvider.SetError(NameTextBox, "Donor name already exists for selected Auction");
+                CreateDonorErrorProvider.SetError(NameTextBox, "Donor name already exists for selected Auction");
                 isValid = false;
+            }
+
+            // Test for Donor Type...
+            if (donorTypeId <= 0)
+            {
+                CreateDonorErrorProvider.SetError(DonorTypeComboBox, "Donor Type required");
+            }
+
+            // Test for Email Address...
+            if (!string.IsNullOrEmpty(EmailTextBox.Text))
+            {
+                if (!EmailHelper.IsValidEmailAddress(EmailTextBox.Text))
+                {
+                    CreateDonorErrorProvider.SetError(EmailTextBox, "Invalid email address");
+                    isValid = false;
+                }
             }
 
             return isValid;
         }
 
-        private bool IsAuctionValid()
+        private bool DonorNameExists(int auctionId)
         {
-            var val = AuctionsComboBox.SelectedValue;
-            return val != null && MathHelper.ParseIntZeroIfNull(val.ToString()) > 0;
-        }
-
-        private bool IsDonorNameNotEmpty()
-        {
-            return !string.IsNullOrWhiteSpace(NameTextBox.Text);
-        }
-
-        private bool IsDonorNameUnique()
-        {
-            var val = AuctionsComboBox.SelectedValue;
-            if (val == null)
-                return false;
-
-            return !silentAuctionDataSet.Donors.Any(d => d.Name.ToLower() == NameTextBox.Text.ToLower() &&
-                                                         d.AuctionId == MathHelper.ParseIntZeroIfNull(val.ToString()));
+            return silentAuctionDataSet.Donors.Any(d => d.Name.ToLower() == NameTextBox.Text.ToLower() 
+                                                        && d.AuctionId == auctionId);
         }
 
         private void SaveDonorData()
@@ -154,8 +179,6 @@ namespace SilentAuction.Forms
                 newDonors.Dispose();
                 donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionId);
             }
-
-            DonorId = (int) silentAuctionDataSet.Donors.Max(a => a.Id);
         }
         
         private void ClearForm()
@@ -176,61 +199,6 @@ namespace SilentAuction.Forms
             DonorTypeComboBox.SelectedIndex = 0;
             RequestFormatTypeComboBox.SelectedIndex = 0;
             StateComboBox.SelectedValue = "";
-        }
-        #endregion
-
-        #region Individual Controls Validation Event Handlers
-        private void AuctionsComboBoxValidating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            var val = AuctionsComboBox.SelectedValue;
-            if (val == null || MathHelper.ParseIntZeroIfNull(val.ToString()) <= 0)
-            {
-                e.Cancel = true;
-                AuctionsComboBox.Focus();
-                AuctionErrorProvider.SetError(AuctionsComboBox, "Auction selection required");
-            }
-        }
-
-        private void AuctionsComboBoxValidated(object sender, EventArgs e)
-        {
-            AuctionErrorProvider.SetError(AuctionsComboBox, "");
-        }
-
-        private void NameTextBoxValidating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(NameTextBox.Text))
-            {
-                e.Cancel = true;
-                NameTextBox.Focus();
-                NameErrorProvider.SetError(NameTextBox, "Donor name required");
-            }
-            else if (silentAuctionDataSet.Donors.Any(d => d.Name.ToLower() == NameTextBox.Text.ToLower() &&
-                        d.AuctionId == MathHelper.ParseIntZeroIfNull(AuctionsComboBox.SelectedValue.ToString())))
-            {
-                e.Cancel = true;
-                NameTextBox.Select(0, NameTextBox.Text.Length);
-                NameErrorProvider.SetError(NameTextBox, "Donor name already exists for selected Auction");
-            }
-        }
-
-        private void NameTextBoxValidated(object sender, EventArgs e)
-        {
-            NameErrorProvider.SetError(NameTextBox, "");
-        }
-
-        private void DonorTypeComboBoxValidating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (MathHelper.ParseIntZeroIfNull(DonorTypeComboBox.SelectedValue.ToString()) <= 0)
-            {
-                e.Cancel = true;
-                DonorTypeComboBox.Focus();
-                DonorTypeErrorProvider.SetError(DonorTypeComboBox, "Donor type required");
-            }
-        }
-
-        private void DonorTypeComboBoxValidated(object sender, EventArgs e)
-        {
-            DonorTypeErrorProvider.SetError(DonorTypeComboBox, "");
         }
         #endregion
 

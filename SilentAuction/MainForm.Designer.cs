@@ -205,7 +205,6 @@
             this.ItemsDataGridView.Visible = false;
             this.ItemsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemsDataGridViewCellClick);
             this.ItemsDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemsDataGridViewCellEndEdit);
-            this.ItemsDataGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.ItemsDataGridViewCellValidating);
             this.ItemsDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.ItemsDataGridViewDataError);
             this.ItemsDataGridView.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.ItemsDataGridViewDefaultValuesNeeded);
             // 
@@ -499,7 +498,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(400, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(315, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -675,7 +674,7 @@
             this.documentsStripMenuItem.Size = new System.Drawing.Size(80, 20);
             this.documentsStripMenuItem.Text = "&Documents";
             // 
-            // DonorRequestToolStripMenuItem
+            // DocumentEditorToolStripMenuItem
             // 
             this.DocumentEditorToolStripMenuItem.Name = "DocumentEditorToolStripMenuItem";
             this.DocumentEditorToolStripMenuItem.Size = new System.Drawing.Size(210, 22);

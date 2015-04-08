@@ -36,6 +36,7 @@ namespace SilentAuction.Utilities
         private const string DonationDeliveryTypesTableName = "DonationDeliveryTypes";
         private const string DonorsTableName = "Donors";
         private const string DonorTypesTableName = "DonorTypes";
+        private const string EmailAccountsTableName = "EmailAccounts";
         private const string ItemsTableName = "Items";
         private const string ItemTypesTableName = "ItemTypes";
         private const string RequestFormatTypesTableName = "RequestFormatTypes";
@@ -46,7 +47,14 @@ namespace SilentAuction.Utilities
         #region Constructor
         public DatabaseCreateScripts()
         {
-            #region TableCreateScripts
+            FillTableCreateScripts();
+            FillTablePreLoadScripts();
+        }
+        #endregion
+
+        #region Private Methods
+        private void FillTableCreateScripts()
+        {
             TableCreateScripts = new List<string>();
             TableCreateScripts.Add(string.Format(@"CREATE TABLE [{0}](
                                                 [Id] [integer] PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -59,7 +67,7 @@ namespace SilentAuction.Utilities
                                                 [Id] [integer] PRIMARY KEY AUTOINCREMENT NOT NULL,
                 	                            [Name] [nvarchar](200) NOT NULL,
                                                 [Description] [nvarchar](5000) NOT NULL)", BidIncrementTypesTableName));
-        
+
             TableCreateScripts.Add(string.Format(@"CREATE TABLE [{0}](
                                                 [Id] [integer] PRIMARY KEY AUTOINCREMENT NOT NULL,
                                                 [AuctionId] [integer] NOT NULL,
@@ -69,13 +77,18 @@ namespace SilentAuction.Utilities
             TableCreateScripts.Add(string.Format(@"CREATE TABLE [{0}](
                                                 [Id] [integer] PRIMARY KEY AUTOINCREMENT NOT NULL,
                                                 [Name] [nvarchar](200) NOT NULL,
-                                                [Description] [nvarchar](5000) NOT NULL)", DonationDeliveryTypesTableName));
+                                                [Description] [nvarchar](5000) NOT NULL)",DonationDeliveryTypesTableName));
 
             TableCreateScripts.Add(string.Format(@"CREATE TABLE [{0}](
                                                 [Id] [integer] PRIMARY KEY AUTOINCREMENT NOT NULL,
                                                 [Name] [nvarchar](200) NOT NULL,
                                                 [Description] [nvarchar](5000) NOT NULL)", DonorTypesTableName));
-        
+
+            TableCreateScripts.Add(string.Format(@"CREATE TABLE [{0}](
+                                                [Id] [integer] PRIMARY KEY AUTOINCREMENT NOT NULL,
+                                                [Account] [nvarchar](200) NOT NULL,
+                                                [Password] [nvarchar](200) NOT NULL)", EmailAccountsTableName));
+
             TableCreateScripts.Add(string.Format(@"CREATE TABLE [{0}](
                 	                            [Id] [integer] PRIMARY KEY AUTOINCREMENT NOT NULL,
                                                 [AuctionId] [integer] NOT NULL,
@@ -123,58 +136,59 @@ namespace SilentAuction.Utilities
                                                 [Image] [blob] NULL,
                 	                            [CreateDate] [text] NOT NULL,
                 	                            [ModifiedDate] [text] NOT NULL)", ItemsTableName));
-        
+
             TableCreateScripts.Add(string.Format(@"CREATE TABLE [{0}](
                                                 [Id] [integer] PRIMARY KEY AUTOINCREMENT NOT NULL,
                                                 [Name] [nvarchar](200) NOT NULL,
                                                 [Description] [nvarchar](5000) NOT NULL)", RequestFormatTypesTableName));
-        
+
             TableCreateScripts.Add(string.Format(@"CREATE TABLE [{0}](
                                                 [Id] [integer] PRIMARY KEY AUTOINCREMENT NOT NULL,
                                                 [Name] [nvarchar](200) NOT NULL,
                                                 [Description] [nvarchar](5000) NOT NULL)", RequestStatusTypesTableName));
-            #endregion
+        }
 
-            #region TablePreLoadScripts
+        private void FillTablePreLoadScripts()
+        {
             TablePreLoadScripts = new List<string>();
             TablePreLoadScripts.Add(string.Format(
-                    @"INSERT INTO {0} (Name, Description) VALUES ('Increment Value', 'Increments based on the Increment Value');
+                @"INSERT INTO {0} (Name, Description) VALUES ('Increment Value', 'Increments based on the Increment Value');
                     INSERT INTO {0} (Name, Description) VALUES ('Increment Number', 'Increments based on the Number of Bids');"
-                    , BidIncrementTypesTableName));
+                , BidIncrementTypesTableName));
 
             TablePreLoadScripts.Add(string.Format(
-                    @"INSERT INTO {0} (Name, Description) VALUES ('Delivery', 'Item will be delivered by Donor');
+                @"INSERT INTO {0} (Name, Description) VALUES ('Delivery', 'Item will be delivered by Donor');
                             INSERT INTO {0} (Name, Description) VALUES ('Pick-Up', 'Item is to be picked up');
                             INSERT INTO {0} (Name, Description) VALUES ('Gift Certificate', 'Item produced by Donor is enclosed');
                             INSERT INTO {0} (Name, Description) VALUES ('Needs Certificate', 'Item is to be produced by Auction Committee');"
-                    , DonationDeliveryTypesTableName));
-        
-            TablePreLoadScripts.Add(string.Format(@"INSERT INTO {0} (Name, Description) VALUES ('Business', 'Donor is a business');
+                , DonationDeliveryTypesTableName));
+
+            TablePreLoadScripts.Add(
+                string.Format(@"INSERT INTO {0} (Name, Description) VALUES ('Business', 'Donor is a business');
                             INSERT INTO {0} (Name, Description) VALUES ('Individual', 'Donor is an individual');
                             INSERT INTO {0} (Name, Description) VALUES ('Teacher', 'Donor is a teacher');"
                     , DonorTypesTableName));
 
             TablePreLoadScripts.Add(string.Format(
-                    @"INSERT INTO {0} (Name, Description) VALUES ('Certificate', 'Item is a certificate, gift card, etc.');
+                @"INSERT INTO {0} (Name, Description) VALUES ('Certificate', 'Item is a certificate, gift card, etc.');
                             INSERT INTO {0} (Name, Description) VALUES ('Physical Item', 'Item is a physical item');"
-                    , ItemTypesTableName));
+                , ItemTypesTableName));
 
-            TablePreLoadScripts.Add(string.Format(@"INSERT INTO {0} (Name, Description) VALUES ('Email', 'Contact Donor via email');
+            TablePreLoadScripts.Add(
+                string.Format(@"INSERT INTO {0} (Name, Description) VALUES ('Email', 'Contact Donor via email');
                             INSERT INTO {0} (Name, Description) VALUES ('Letter', 'Contact Donor via letter');
                             INSERT INTO {0} (Name, Description) VALUES ('Phone', 'Contact Donor via phone');
                             INSERT INTO {0} (Name, Description) VALUES ('Website', 'Contact Donor via website');"
                     , RequestFormatTypesTableName));
 
             TablePreLoadScripts.Add(string.Format(
-                    @"INSERT INTO {0} (Name, Description) VALUES ('No Response', 'A response has not yet been received');
+                @"INSERT INTO {0} (Name, Description) VALUES ('No Response', 'A response has not yet been received');
                             INSERT INTO {0} (Name, Description) VALUES ('Declined', 'Donor has declined to participate');
                             INSERT INTO {0} (Name, Description) VALUES ('Approval Pending', 'Request has been received.  If approved, an item will be donated.');
                             INSERT INTO {0} (Name, Description) VALUES ('Approved', 'Request has been approved.  Item has not yet been received.');
                             INSERT INTO {0} (Name, Description) VALUES ('Received', 'Item has been received.');"
-                    , RequestStatusTypesTableName));
-            #endregion
+                , RequestStatusTypesTableName));
         }
-
         #endregion
     }
 }

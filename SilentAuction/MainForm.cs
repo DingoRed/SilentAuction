@@ -59,13 +59,6 @@ namespace SilentAuction
             SetupGrids();
             SetAuctionNameAndGrid();
             SetupToolStripMenuItems();
-
-            // TODO: Do we need this?
-            //foreach (var column in ItemsDataGridView.Columns)
-            //{
-            //    if (column is DataGridViewImageColumn)
-            //        (column as DataGridViewImageColumn).DefaultCellStyle.NullValue = null;
-            //}
         }
 
         private void MainFormFormClosing(object sender, FormClosingEventArgs e)
@@ -242,21 +235,6 @@ namespace SilentAuction
             }
         }
 
-        private void ItemsDataGridViewCellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        {
-            //string headerText = ItemsDataGridView.Columns[e.ColumnIndex].HeaderText;
-
-            //// Abort validation if cell is not in the CompanyName column. 
-            //if (!headerText.Equals("* Donor")) return;
-
-            //// Confirm that the cell is not empty. 
-            //if (string.IsNullOrEmpty(e.FormattedValue.ToString()))
-            //{
-            //    ItemsDataGridView.Rows[e.RowIndex].ErrorText = "* Donor must not be empty";
-            //    e.Cancel = true;
-            //}
-        }
-
         private void ItemsDataGridViewCellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             // Clear the row error in case the user presses ESC.   
@@ -286,9 +264,8 @@ namespace SilentAuction
 
         private void NewDonorToolStripMenuItemClick(object sender, EventArgs e)
         {
-            using (CreateNewDonorForm createNewDonorForm = new CreateNewDonorForm())
+            using (CreateNewDonorForm createNewDonorForm = new CreateNewDonorForm(AuctionIdInUse))
             {
-                createNewDonorForm.AuctionId = AuctionIdInUse;
                 createNewDonorForm.ShowDialog();
                 silentAuctionDataSet.Items.Clear();
                 donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionIdInUse);
@@ -426,6 +403,7 @@ namespace SilentAuction
         
         private void CreateItemLabelsFileToolStripMenuItemClick(object sender, EventArgs e)
         {
+            // TODO: Generate file
             GenerateItemLabelsFile itemLabelsFile = new GenerateItemLabelsFile(AuctionIdInUse);
             itemLabelsFile.ShowDialog();
         }

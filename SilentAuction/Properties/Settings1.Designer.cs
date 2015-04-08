@@ -541,12 +541,12 @@ namespace SilentAuction.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string DonorSelectionsInitialLocation {
+        public string PrintFormInitialLocation {
             get {
-                return ((string)(this["DonorSelectionsInitialLocation"]));
+                return ((string)(this["PrintFormInitialLocation"]));
             }
             set {
-                this["DonorSelectionsInitialLocation"] = value;
+                this["PrintFormInitialLocation"] = value;
             }
         }
         
@@ -613,12 +613,12 @@ namespace SilentAuction.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string DonorEmailSelectionsInitialLocation {
+        public string EmailFormInitialLocation {
             get {
-                return ((string)(this["DonorEmailSelectionsInitialLocation"]));
+                return ((string)(this["EmailFormInitialLocation"]));
             }
             set {
-                this["DonorEmailSelectionsInitialLocation"] = value;
+                this["EmailFormInitialLocation"] = value;
             }
         }
         
@@ -655,6 +655,30 @@ namespace SilentAuction.Properties {
             }
             set {
                 this["GenerateItemLabelsFileInitialLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DocumentNameEntryInitialLocation {
+            get {
+                return ((string)(this["DocumentNameEntryInitialLocation"]));
+            }
+            set {
+                this["DocumentNameEntryInitialLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DocumentOpenFormInitialLocation {
+            get {
+                return ((string)(this["DocumentOpenFormInitialLocation"]));
+            }
+            set {
+                this["DocumentOpenFormInitialLocation"] = value;
             }
         }
     }

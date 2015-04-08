@@ -1,6 +1,6 @@
 ﻿namespace SilentAuction.Forms
 {
-    partial class DocumentSelection
+    partial class DocumentOpenForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DocumentSelection));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DocumentOpenForm));
             this.label1 = new System.Windows.Forms.Label();
             this.DocumentsComboBox = new System.Windows.Forms.ComboBox();
             this.documentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -122,8 +122,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DocumentSelection";
             this.Text = "Select Document";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DocumentSelectionFormClosing);
-            this.Load += new System.EventHandler(this.DocumentSelectionLoad);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DocumentOpenFormClosing);
+            this.Load += new System.EventHandler(this.DocumentOpenFormLoad);
             ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).EndInit();

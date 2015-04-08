@@ -6,7 +6,7 @@ using SilentAuction.Utilities;
 
 namespace SilentAuction.Forms
 {
-    public partial class DonorSelections : Form
+    public partial class PrintForm : Form
     {
         #region Properties
         private int AuctionId { get; set; }
@@ -14,7 +14,7 @@ namespace SilentAuction.Forms
         #endregion
 
         #region Constructor
-        public DonorSelections(int auctionId)
+        public PrintForm(int auctionId)
         {
             AuctionId = auctionId;
 
@@ -23,7 +23,7 @@ namespace SilentAuction.Forms
         #endregion
 
         #region Form Event Handlers
-        private void DonorSelectionsLoad(object sender, EventArgs e)
+        private void PrintFormLoad(object sender, EventArgs e)
         {
             auctionsTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
             requestStatusTypesTableAdapter.FillRequestStatusType(silentAuctionDataSet.RequestStatusTypes);
@@ -32,17 +32,17 @@ namespace SilentAuction.Forms
 
             donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionId);
 
-            WindowSettings.SetupInitialWindow(this, "DonorSelectionsInitialLocation");
+            WindowSettings.SetupInitialWindow(this, "PrintFormInitialLocation");
         }
 
-        private void DonorSelectionsFormClosing(object sender, FormClosingEventArgs e)
+        private void PrintFormClosing(object sender, FormClosingEventArgs e)
         {
-            WindowSettings.SaveWindowSettings(this, "DonorSelectionsInitialLocation");
+            WindowSettings.SaveWindowSettings(this, "PrintFormInitialLocation");
         }        
         #endregion
 
         #region Button Event Handlers
-        private void PrintDonorsButtonClick(object sender, EventArgs e)
+        private void PrintButtonClick(object sender, EventArgs e)
         {
             DonorIdsToPrint = new List<int>();
             foreach (DataRowView selectedItem in DonorsListBox.SelectedItems)

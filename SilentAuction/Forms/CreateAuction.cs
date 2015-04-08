@@ -97,21 +97,22 @@ namespace SilentAuction.Forms
         #region Private Methods
         private bool ValidForm()
         {
-            if (string.IsNullOrWhiteSpace(NameTextBox.Text))
-            {
-                AuctionNameErrorProvider.SetError(NameTextBox, "Auction name required");
-                return false;
-            }
-
-            if (AuctionNameExists())
-            {
-                AuctionNameErrorProvider.SetError(NameTextBox, "Auction already exists");
-                return false;
-            }
+            bool isValid = true;
 
             AuctionNameErrorProvider.SetError(NameTextBox, "");
 
-            return true;
+            if (string.IsNullOrWhiteSpace(NameTextBox.Text))
+            {
+                AuctionNameErrorProvider.SetError(NameTextBox, "Auction name required");
+                isValid = false;
+            }
+            else if (AuctionNameExists())
+            {
+                AuctionNameErrorProvider.SetError(NameTextBox, "Auction already exists");
+                isValid = false;
+            }
+
+            return isValid;
         }
 
         private void SaveAuctionData()

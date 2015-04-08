@@ -85,23 +85,23 @@
     <Compile Include="Forms\DocumentNameEntry.Designer.cs">
       <DependentUpon>DocumentNameEntry.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\DocumentSelection.cs">
+    <Compile Include="Forms\DocumentOpenForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DocumentSelection.Designer.cs">
-      <DependentUpon>DocumentSelection.cs</DependentUpon>
+    <Compile Include="Forms\DocumentOpenForm.Designer.cs">
+      <DependentUpon>DocumentOpenForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\DonorEmailSelections.cs">
+    <Compile Include="Forms\EmailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DonorEmailSelections.Designer.cs">
-      <DependentUpon>DonorEmailSelections.cs</DependentUpon>
+    <Compile Include="Forms\EmailForm.Designer.cs">
+      <DependentUpon>EmailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\DonorSelections.cs">
+    <Compile Include="Forms\PrintForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DonorSelections.Designer.cs">
-      <DependentUpon>DonorSelections.cs</DependentUpon>
+    <Compile Include="Forms\PrintForm.Designer.cs">
+      <DependentUpon>PrintForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\EditAuctionForm.cs">
       <SubType>Form</SubType>
@@ -114,12 +114,6 @@
     </Compile>
     <Compile Include="Forms\DocumentEditor.Designer.cs">
       <DependentUpon>DocumentEditor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\EmailAccount.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\EmailAccount.Designer.cs">
-      <DependentUpon>EmailAccount.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\GenerateItemLabelsFile.cs">
       <SubType>Form</SubType>
@@ -207,20 +201,17 @@
     <EmbeddedResource Include="Forms\DocumentNameEntry.resx">
       <DependentUpon>DocumentNameEntry.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DocumentSelection.resx">
-      <DependentUpon>DocumentSelection.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\DocumentOpenForm.resx">
+      <DependentUpon>DocumentOpenForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DonorEmailSelections.resx">
-      <DependentUpon>DonorEmailSelections.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\EmailForm.resx">
+      <DependentUpon>EmailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DonorSelections.resx">
-      <DependentUpon>DonorSelections.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\PrintForm.resx">
+      <DependentUpon>PrintForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EditAuctionForm.resx">
       <DependentUpon>EditAuctionForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\EmailAccount.resx">
-      <DependentUpon>EmailAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GenerateAddressLabelsFile.resx">
       <DependentUpon>GenerateAddressLabelsFile.cs</DependentUpon>
@@ -286,6 +277,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\SilentAuctionGavel.ico" />
+    <None Include="Resources\save_as.png" />
     <None Include="Resources\newpage.png" />
     <None Include="Resources\email.png" />
     <None Include="Resources\tablegridlines.png" />
