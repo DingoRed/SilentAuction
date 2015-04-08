@@ -390,15 +390,9 @@ namespace SilentAuction
         #endregion
 
         #region Documents Section...
-        private void DonorRequestToolStripMenuItemClick(object sender, EventArgs e)
+        private void DocumentEditorToolStripMenuItemClick(object sender, EventArgs e)
         {
-            DocumentEditor documentEditor = new DocumentEditor(AuctionIdInUse, DocumentEditor.DonationDocumentType.DonationRequestDocument);
-            documentEditor.ShowDialog();
-        }
-
-        private void DonorFollowUpToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            DocumentEditor documentEditor = new DocumentEditor(AuctionIdInUse, DocumentEditor.DonationDocumentType.DonationFollowUpDocument);
+            DocumentEditor documentEditor = new DocumentEditor(AuctionIdInUse);
             documentEditor.ShowDialog();
         }
 
@@ -581,6 +575,8 @@ namespace SilentAuction
 
         private void SetupToolStripMenuItems()
         {
+            // TODO: Disable/Enable toolstrip items
+
             // File Section...
             // NewDonorToolStripMenuItem.Enabled = AuctionIdInUse > 0;
             OpenAuctionToolStripMenuItem.Enabled = (silentAuctionDataSet.Auctions.Rows.Count > 0);
@@ -600,11 +596,10 @@ namespace SilentAuction
             EditDonorFormToolStripMenuItem.Enabled = ((AuctionIdInUse > 0) &&
                 (silentAuctionDataSet.Donors.Rows.Count > 0));
 
-            // Reports Section...
-            DonorRequestToolStripMenuItem.Enabled = ((AuctionIdInUse > 0) &&
+            // Documents Section...
+            DocumentEditorToolStripMenuItem.Enabled = ((AuctionIdInUse > 0) &&
                 (silentAuctionDataSet.Donors.Rows.Count > 0));
-            DonorFollowUpToolStripMenuItem.Enabled = ((AuctionIdInUse > 0) &&
-                (silentAuctionDataSet.Donors.Rows.Count > 0));
+
 
             SilentAuctionDataSet.DonorsDataTable allDonorsTable = new SilentAuctionDataSet.DonorsDataTable();
             donorsTableAdapter.FillAllDonors(allDonorsTable);

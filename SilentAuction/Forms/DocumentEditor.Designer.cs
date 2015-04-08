@@ -57,6 +57,7 @@
             this.pageSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printPreviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.emailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -135,6 +136,7 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.tablePropertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMain = new System.Windows.Forms.ToolStrip();
+            this.newDocumentToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
@@ -152,16 +154,12 @@
             this.auctionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.silentAuctionDataSet = new SilentAuction.SilentAuctionDataSet();
             this.auctionsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.AuctionsTableAdapter();
-            this.donorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.donorsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorsTableAdapter();
-            this.donorTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.donorTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorTypesTableAdapter();
-            this.requestFormatTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.requestFormatTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter();
-            this.requestStatusTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.requestStatusTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter();
             this.printDocumentMain = new System.Drawing.Printing.PrintDocument();
-            this.emailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.documentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.documentsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DocumentsTableAdapter();
+            this.documentTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.documentTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DocumentTypesTableAdapter();
+            this.newDocumentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -170,10 +168,8 @@
             this.toolStripMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.donorTypesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.requestStatusTypesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentTypesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStripContainer1
@@ -381,6 +377,7 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newDocumentToolStripMenuItem,
             this.openToolStripMenuItem,
             this.saveToolStripMenuItem,
             this.toolStripSeparator1,
@@ -401,6 +398,7 @@
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openToolStripMenuItem.Text = "&Open";
+            this.openToolStripMenuItem.ToolTipText = "Open Existing Document";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItemClick);
             // 
             // saveToolStripMenuItem
@@ -410,6 +408,7 @@
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveToolStripMenuItem.Text = "&Save";
+            this.saveToolStripMenuItem.ToolTipText = "Save Current Document";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItemClick);
             // 
             // toolStripSeparator1
@@ -432,6 +431,7 @@
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
             this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.printToolStripMenuItem.Text = "&Print";
+            this.printToolStripMenuItem.ToolTipText = "Print Current Document";
             this.printToolStripMenuItem.Click += new System.EventHandler(this.PrintToolStripMenuItemClick);
             // 
             // printPreviewToolStripMenuItem
@@ -442,6 +442,15 @@
             this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.printPreviewToolStripMenuItem.Text = "Print Pre&view";
             this.printPreviewToolStripMenuItem.Click += new System.EventHandler(this.PrintPreviewToolStripMenuItemClick);
+            // 
+            // emailToolStripMenuItem
+            // 
+            this.emailToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.email;
+            this.emailToolStripMenuItem.Name = "emailToolStripMenuItem";
+            this.emailToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.emailToolStripMenuItem.Text = "&Email";
+            this.emailToolStripMenuItem.ToolTipText = "Email Current Document";
+            this.emailToolStripMenuItem.Click += new System.EventHandler(this.EmailToolStripMenuItemClick);
             // 
             // toolStripSeparator2
             // 
@@ -454,6 +463,7 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
+            this.exitToolStripMenuItem.ToolTipText = "Exit Document Editor";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
             // 
             // editToolStripMenuItem
@@ -1093,6 +1103,7 @@
             // 
             this.toolStripMain.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newDocumentToolStripButton,
             this.openToolStripButton,
             this.saveToolStripButton,
             this.toolStripSeparator6,
@@ -1109,8 +1120,18 @@
             this.redoToolStripButton});
             this.toolStripMain.Location = new System.Drawing.Point(3, 24);
             this.toolStripMain.Name = "toolStripMain";
-            this.toolStripMain.Size = new System.Drawing.Size(283, 25);
+            this.toolStripMain.Size = new System.Drawing.Size(306, 25);
             this.toolStripMain.TabIndex = 1;
+            // 
+            // newDocumentToolStripButton
+            // 
+            this.newDocumentToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.newDocumentToolStripButton.Image = global::SilentAuction.Properties.Resources.newpage;
+            this.newDocumentToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.newDocumentToolStripButton.Name = "newDocumentToolStripButton";
+            this.newDocumentToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.newDocumentToolStripButton.Text = "toolStripButton1";
+            this.newDocumentToolStripButton.Click += new System.EventHandler(this.NewDocumentToolStripButtonClick);
             // 
             // openToolStripButton
             // 
@@ -1145,6 +1166,7 @@
             this.printToolStripButton.Name = "printToolStripButton";
             this.printToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.printToolStripButton.Text = "Print";
+            this.printToolStripButton.ToolTipText = "Print Current Document";
             this.printToolStripButton.Click += new System.EventHandler(this.PrintToolStripButtonClick);
             // 
             // printPreviewToolStripButton
@@ -1165,6 +1187,7 @@
             this.emailToolStripButton.Name = "emailToolStripButton";
             this.emailToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.emailToolStripButton.Text = "Send Email";
+            this.emailToolStripButton.ToolTipText = "Email Current Document";
             this.emailToolStripButton.Click += new System.EventHandler(this.EmailToolStripButtonClick);
             // 
             // toolStripSeparator7
@@ -1251,49 +1274,32 @@
             // 
             this.auctionsTableAdapter.ClearBeforeFill = true;
             // 
-            // donorsBindingSource
+            // documentsBindingSource
             // 
-            this.donorsBindingSource.DataMember = "Donors";
-            this.donorsBindingSource.DataSource = this.silentAuctionDataSet;
+            this.documentsBindingSource.DataMember = "Documents";
+            this.documentsBindingSource.DataSource = this.silentAuctionDataSet;
             // 
-            // donorsTableAdapter
+            // documentsTableAdapter
             // 
-            this.donorsTableAdapter.ClearBeforeFill = true;
+            this.documentsTableAdapter.ClearBeforeFill = true;
             // 
-            // donorTypesBindingSource
+            // documentTypesBindingSource
             // 
-            this.donorTypesBindingSource.DataMember = "DonorTypes";
-            this.donorTypesBindingSource.DataSource = this.silentAuctionDataSet;
+            this.documentTypesBindingSource.DataMember = "DocumentTypes";
+            this.documentTypesBindingSource.DataSource = this.silentAuctionDataSet;
             // 
-            // donorTypesTableAdapter
+            // documentTypesTableAdapter
             // 
-            this.donorTypesTableAdapter.ClearBeforeFill = true;
+            this.documentTypesTableAdapter.ClearBeforeFill = true;
             // 
-            // requestFormatTypesBindingSource
+            // newDocumentToolStripMenuItem
             // 
-            this.requestFormatTypesBindingSource.DataMember = "RequestFormatTypes";
-            this.requestFormatTypesBindingSource.DataSource = this.silentAuctionDataSet;
-            // 
-            // requestFormatTypesTableAdapter
-            // 
-            this.requestFormatTypesTableAdapter.ClearBeforeFill = true;
-            // 
-            // requestStatusTypesBindingSource
-            // 
-            this.requestStatusTypesBindingSource.DataMember = "RequestStatusTypes";
-            this.requestStatusTypesBindingSource.DataSource = this.silentAuctionDataSet;
-            // 
-            // requestStatusTypesTableAdapter
-            // 
-            this.requestStatusTypesTableAdapter.ClearBeforeFill = true;
-            // 
-            // emailToolStripMenuItem
-            // 
-            this.emailToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.email;
-            this.emailToolStripMenuItem.Name = "emailToolStripMenuItem";
-            this.emailToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.emailToolStripMenuItem.Text = "&Email";
-            this.emailToolStripMenuItem.Click += new System.EventHandler(this.EmailToolStripMenuItemClick);
+            this.newDocumentToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.newpage;
+            this.newDocumentToolStripMenuItem.Name = "newDocumentToolStripMenuItem";
+            this.newDocumentToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newDocumentToolStripMenuItem.Text = "&New";
+            this.newDocumentToolStripMenuItem.ToolTipText = "Create New Document";
+            this.newDocumentToolStripMenuItem.Click += new System.EventHandler(this.NewDocumentToolStripMenuItemClick);
             // 
             // DocumentEditor
             // 
@@ -1319,10 +1325,8 @@
             this.toolStripMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.donorTypesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.requestStatusTypesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentTypesBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1378,14 +1382,6 @@
         private SilentAuctionDataSetTableAdapters.AuctionsTableAdapter auctionsTableAdapter;
         private System.Windows.Forms.ToolStripMenuItem insertMergeFieldToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem insertContactNameToolStripMenuItem;
-        private System.Windows.Forms.BindingSource donorsBindingSource;
-        private SilentAuctionDataSetTableAdapters.DonorsTableAdapter donorsTableAdapter;
-        private System.Windows.Forms.BindingSource donorTypesBindingSource;
-        private SilentAuctionDataSetTableAdapters.DonorTypesTableAdapter donorTypesTableAdapter;
-        private System.Windows.Forms.BindingSource requestFormatTypesBindingSource;
-        private SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter requestFormatTypesTableAdapter;
-        private System.Windows.Forms.BindingSource requestStatusTypesBindingSource;
-        private SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter requestStatusTypesTableAdapter;
         private System.Drawing.Printing.PrintDocument printDocumentMain;
         private System.Windows.Forms.ToolStripMenuItem insertCompanyNameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem insertStreet1ToolStripMenuItem;
@@ -1461,5 +1457,11 @@
         private System.Windows.Forms.ToolStripMenuItem contextMenuInsertImage;
         private System.Windows.Forms.ToolStripButton emailToolStripButton;
         private System.Windows.Forms.ToolStripMenuItem emailToolStripMenuItem;
+        private System.Windows.Forms.BindingSource documentsBindingSource;
+        private SilentAuctionDataSetTableAdapters.DocumentsTableAdapter documentsTableAdapter;
+        private System.Windows.Forms.BindingSource documentTypesBindingSource;
+        private SilentAuctionDataSetTableAdapters.DocumentTypesTableAdapter documentTypesTableAdapter;
+        private System.Windows.Forms.ToolStripButton newDocumentToolStripButton;
+        private System.Windows.Forms.ToolStripMenuItem newDocumentToolStripMenuItem;
     }
 }

@@ -36,45 +36,13 @@ namespace SilentAuction.Utilities
                 {
                     connection.Open();
 
-                    // Auctions table
-                    SQLiteCommand command = new SQLiteCommand(DatabaseCreateScripts.AuctionsTableCreateSql, connection);
-                    command.ExecuteNonQuery();
-
-                    // AuctionDonorRequestStatus table
-                    //command = new SQLiteCommand(DatabaseScripts.AuctionDonorRequestStatusTableCreateSql, connection);
-                    //command.ExecuteNonQuery();
-
-                    // BidIncrementTypes table
-                    command = new SQLiteCommand(DatabaseCreateScripts.BidIncrementTypesCreateSql, connection);
-                    command.ExecuteNonQuery();
-
-                    // DonationDeliveryTypes table
-                    command = new SQLiteCommand(DatabaseCreateScripts.DonationDeliveryTypesCreateSql, connection);
-                    command.ExecuteNonQuery();
+                    DatabaseCreateScripts databaseCreateScripts = new DatabaseCreateScripts();
                     
-                    // DonorType table
-                    command = new SQLiteCommand(DatabaseCreateScripts.DonorTypesTableCreateSql, connection);
-                    command.ExecuteNonQuery();
-
-                   // Donors table
-                    command = new SQLiteCommand(DatabaseCreateScripts.DonorsTableCreateSql, connection);
-                    command.ExecuteNonQuery();
-                    
-                    // Items table
-                    command = new SQLiteCommand(DatabaseCreateScripts.ItemsTableCreateSql, connection);
-                    command.ExecuteNonQuery();
-
-                    // ItemTypes table
-                    command = new SQLiteCommand(DatabaseCreateScripts.ItemTypesTableCreateSql, connection);
-                    command.ExecuteNonQuery();
-
-                    // RequestFormatTypes table
-                    command = new SQLiteCommand(DatabaseCreateScripts.RequestFormatTypesCreateSql, connection);
-                    command.ExecuteNonQuery();
-
-                    // RequestStatusTypes table
-                    command = new SQLiteCommand(DatabaseCreateScripts.RequestStatusTypesCreateSql, connection);
-                    command.ExecuteNonQuery();
+                    foreach (string tableCreateScript in databaseCreateScripts.TableCreateScripts)
+                    {
+                        SQLiteCommand cmd = new SQLiteCommand(tableCreateScript, connection);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
                 return true;
             }
@@ -96,29 +64,13 @@ namespace SilentAuction.Utilities
                 {
                     connection.Open();
 
-                    // BidIncrementTypes table
-                    SQLiteCommand command = new SQLiteCommand(DatabaseCreateScripts.BidIncrementTypesPreload, connection);
-                    command.ExecuteNonQuery();
+                    DatabaseCreateScripts databaseCreateScripts = new DatabaseCreateScripts();
 
-                    // DonationDelivery table
-                    command = new SQLiteCommand(DatabaseCreateScripts.DonationDeliveryTypesPreload, connection);
-                    command.ExecuteNonQuery();
-
-                    // DonorType table
-                    command = new SQLiteCommand(DatabaseCreateScripts.DonorTypesPreload, connection);
-                    command.ExecuteNonQuery();
-
-                    // ItemTypes table
-                    command = new SQLiteCommand(DatabaseCreateScripts.ItemTypesPreload, connection);
-                    command.ExecuteNonQuery();
-
-                    // RequestFormatTypes table
-                    command = new SQLiteCommand(DatabaseCreateScripts.RequestFormatTypesPreload, connection);
-                    command.ExecuteNonQuery();
-
-                    // RequestStatusTypes table
-                    command = new SQLiteCommand(DatabaseCreateScripts.RequestStatusTypesPreload, connection);
-                    command.ExecuteNonQuery();
+                    foreach (string tablePreLoadScript in databaseCreateScripts.TablePreLoadScripts)
+                    {
+                        SQLiteCommand cmd = new SQLiteCommand(tablePreLoadScript, connection);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
                 return true;
             }

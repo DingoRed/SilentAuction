@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -79,6 +79,18 @@
     <Compile Include="Forms\CreateDonor.Designer.cs">
       <DependentUpon>CreateDonor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DocumentNameEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DocumentNameEntry.Designer.cs">
+      <DependentUpon>DocumentNameEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DocumentSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DocumentSelection.Designer.cs">
+      <DependentUpon>DocumentSelection.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DonorEmailSelections.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +114,12 @@
     </Compile>
     <Compile Include="Forms\DocumentEditor.Designer.cs">
       <DependentUpon>DocumentEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EmailAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EmailAccount.Designer.cs">
+      <DependentUpon>EmailAccount.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\GenerateItemLabelsFile.cs">
       <SubType>Form</SubType>
@@ -186,6 +204,12 @@
     <EmbeddedResource Include="Forms\CreateDonor.resx">
       <DependentUpon>CreateDonor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DocumentNameEntry.resx">
+      <DependentUpon>DocumentNameEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DocumentSelection.resx">
+      <DependentUpon>DocumentSelection.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DonorEmailSelections.resx">
       <DependentUpon>DonorEmailSelections.cs</DependentUpon>
     </EmbeddedResource>
@@ -194,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EditAuctionForm.resx">
       <DependentUpon>EditAuctionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EmailAccount.resx">
+      <DependentUpon>EmailAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GenerateAddressLabelsFile.resx">
       <DependentUpon>GenerateAddressLabelsFile.cs</DependentUpon>
@@ -259,6 +286,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\SilentAuctionGavel.ico" />
+    <None Include="Resources\newpage.png" />
     <None Include="Resources\email.png" />
     <None Include="Resources\tablegridlines.png" />
     <None Include="Resources\tabledialog.png" />

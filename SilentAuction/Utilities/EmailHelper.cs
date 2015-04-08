@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Mail;
+using System.Security;
 
 namespace SilentAuction.Utilities
 {
     public class EmailHelper
     {
-        public static bool SendEmail(string fromAddress, List<string> toAddressList, string subject, string body)
+        public static bool SendEmail(string gmailAccount, SecureString gmailPassword, 
+            string fromAddress, List<string> toAddressList, string subject, string body)
         {
             try
             {
@@ -27,13 +29,14 @@ namespace SilentAuction.Utilities
                 mail.Body = body;
                 mail.IsBodyHtml = true;
 
-                smtp.Port = 587;
+                smtp.Port = 587;  //465  587  25
                 smtp.Host = "smtp.gmail.com";
-                //smtp.Host = "ormail.intel.com";
                 smtp.EnableSsl = true;
                 smtp.UseDefaultCredentials = false;
+
                 // TODO: Replace with stored acct/pwd
-                smtp.Credentials = new NetworkCredential("john.b.buell@gmail.com", "");
+                smtp.Credentials = new NetworkCredential(gmailAccount, gmailPassword);
+
                 smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                 smtp.Send(mail);
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security;
 using System.Windows.Forms;
 using SilentAuction.Utilities;
 using TXTextControl;
@@ -13,7 +14,7 @@ namespace SilentAuction.Forms
 {
     public partial class DocumentEditor : Form
     {
-        public enum DonationDocumentType { DonationRequestDocument, DonationFollowUpDocument }
+        //public enum DonationDocumentType { DonationRequestDocument, DonationFollowUpDocument }
 
         #region Fields
         private bool _documentIsDirty;
@@ -25,21 +26,19 @@ namespace SilentAuction.Forms
         private const string City = "<<City>>";
         private const string State = "<<State>>";
         private const string ZipCode = "<<ZipCode>>";
+        private const string TitleText = "Document Editor - ";
         #endregion
 
         #region Properties
         private int AuctionId { get; set; }
-        private DonationDocumentType DocType { get; set; }
+        private int DocumentId { get; set; }
         #endregion
-
+        
         #region Constructors
-        //public DocumentEditor(){}
-
-        public DocumentEditor(int auctionId, DonationDocumentType docType)
+        public DocumentEditor(int auctionId)
         {
             AuctionId = auctionId;
-            DocType = docType;
-
+            
             InitializeComponent();
         }
         #endregion
@@ -47,26 +46,12 @@ namespace SilentAuction.Forms
         #region Form Event Handlers
         private void DocumentEditorLoad(object sender, EventArgs e)
         {
-            switch (DocType)
-            {
-                case DonationDocumentType.DonationRequestDocument:
-                    Text = "Document Editor (Request Document)";
-                    break;
-                case DonationDocumentType.DonationFollowUpDocument:
-                    Text = "Document Editor (Follow Up Document)";
-                    break;
-            }
-            requestStatusTypesTableAdapter.FillRequestStatusType(silentAuctionDataSet.RequestStatusTypes);
-            requestFormatTypesTableAdapter.FillRequestFormatTypes(silentAuctionDataSet.RequestFormatTypes);
-            donorTypesTableAdapter.FillDonorTypes(silentAuctionDataSet.DonorTypes);
             auctionsTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
+            documentTypesTableAdapter.FillDocumentTypes(silentAuctionDataSet.DocumentTypes);
+            documentsTableAdapter.FillDocuments(silentAuctionDataSet.Documents);
 
-            donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionId);
-
-            string rtfData = GetDocumentData();
-            if(!string.IsNullOrWhiteSpace(rtfData))
-                documentEditorControl.Load(rtfData, StringStreamType.RichTextFormat);
-
+            SetupToolStripMenuItems();
+            Text = TitleText + "(new)";
             WindowSettings.SetupInitialWindow(this, "DocumentEditorInitialLocation");
         }
 
@@ -77,7 +62,7 @@ namespace SilentAuction.Forms
                 DialogResult dlgRes = MessageBox.Show("Save changes before exiting?", "Save Changes", MessageBoxButtons.YesNoCancel);
                 if (dlgRes == DialogResult.Yes)
                 {
-                    SaveDocumentData();
+                    FileSave();
                     _documentIsDirty = false;
                 }
                 else if (dlgRes == DialogResult.Cancel) e.Cancel = true;
@@ -97,15 +82,19 @@ namespace SilentAuction.Forms
 
         #region Menu Items Event Handlers
         #region File Menu Items Event Handlers
+        private void NewDocumentToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            FileNew();
+        }
+
         private void OpenToolStripMenuItemClick(object sender, EventArgs e)
         {
-            string rtfData = GetDocumentData();
-            documentEditorControl.Load(rtfData, StringStreamType.RichTextFormat);
+            FileOpen();
         }
 
         private void SaveToolStripMenuItemClick(object sender, EventArgs e)
         {
-            SaveDocumentData();
+            FileSave();
         }
 
         private void PageSetupToolStripMenuItemClick(object sender, EventArgs e)
@@ -117,7 +106,7 @@ namespace SilentAuction.Forms
 
         private void PrintToolStripMenuItemClick(object sender, EventArgs e)
         {
-            PrintDocuments();
+            FilePrint();
         }
 
         private void PrintPreviewToolStripMenuItemClick(object sender, EventArgs e)
@@ -128,7 +117,7 @@ namespace SilentAuction.Forms
 
         private void EmailToolStripMenuItemClick(object sender, EventArgs e)
         {
-            EmailDocuments();
+            FileEmail();
         }
 
         private void ExitToolStripMenuItemClick(object sender, EventArgs e)
@@ -649,20 +638,24 @@ namespace SilentAuction.Forms
         #endregion
 
         #region Toolstrip Button Items Event Handlers
+        private void NewDocumentToolStripButtonClick(object sender, EventArgs e)
+        {
+            FileNew();
+        }
+
         private void OpenToolStripButtonClick(object sender, EventArgs e)
         {
-            string rtfData = GetDocumentData();
-            documentEditorControl.Load(rtfData, StringStreamType.RichTextFormat);
+            FileOpen();
         }
 
         private void SaveToolStripButtonClick(object sender, EventArgs e)
         {
-            SaveDocumentData();
+            FileSave();
         }
         
         private void PrintToolStripButtonClick(object sender, EventArgs e)
         {
-            PrintDocuments();
+            FilePrint();
         }
 
         private void PrintPreviewToolStripButtonClick(object sender, EventArgs e)
@@ -673,7 +666,7 @@ namespace SilentAuction.Forms
 
         private void EmailToolStripButtonClick(object sender, EventArgs e)
         {
-            EmailDocuments();
+            FileEmail();
         }
 
         private void CutToolStripButtonClick(object sender, EventArgs e)
@@ -709,63 +702,135 @@ namespace SilentAuction.Forms
         #endregion
 
         #region Private Methods
-        private void SaveDocumentData()
+
+        private void FileNew()
         {
+            if (_documentIsDirty)
+            {
+                switch (MessageBox.Show("Save changes?", "Save Changes", MessageBoxButtons.YesNoCancel))
+                {
+                    case DialogResult.Yes:
+                        FileSave();
+                        break;
+                    case DialogResult.No:
+                        break;
+                    case DialogResult.Cancel:
+                        return;
+                }
+            }
+
+            documentEditorControl.ResetContents();
+            _documentIsDirty = false;
+            SetupToolStripMenuItems();
+            Text = TitleText + "(new)";
+        }
+
+        private void FileSave()
+        {
+            if (DocumentId <= 0)
+            {
+                FileSaveAs();
+                return;
+            }
+
             string rtfData;
-
             documentEditorControl.Save(out rtfData, StringStreamType.RichTextFormat);
-            DateTime currentDate = DateTime.Now;
-            
-            SilentAuctionDataSet.AuctionsRow row = silentAuctionDataSet.Auctions.FirstOrDefault(a => a.Id == AuctionId);
-            if (row != null)
+
+            // TODO: Replace the 1 here...
+            SilentAuctionDataSet.DocumentsRow dRow = silentAuctionDataSet.Documents.FirstOrDefault(d => d.Id == 1);
+            if (dRow != null)
             {
-                switch (DocType)
+                dRow.Document = rtfData;
+
+
+                SilentAuctionDataSet.DocumentsDataTable modifiedItems =
+                    (SilentAuctionDataSet.DocumentsDataTable)
+                        silentAuctionDataSet.Documents.GetChanges(DataRowState.Modified);
+
+                if (modifiedItems != null)
                 {
-                    case DonationDocumentType.DonationRequestDocument:
-                        row.DonationRequestDocument = rtfData;
-                        break;
-                    case DonationDocumentType.DonationFollowUpDocument:
-                        row.DonationFollowUpDocument = rtfData;
-                        break;
+                    documentsTableAdapter.Update(modifiedItems);
+                    silentAuctionDataSet.AcceptChanges();
+                    modifiedItems.Dispose();
+                    openToolStripButton.Enabled = true;
+                    openToolStripMenuItem.Enabled = true;
+                    _documentIsDirty = false;
                 }
-                row.ModifiedDate = currentDate.ToString();
-            }
 
-            SilentAuctionDataSet.AuctionsDataTable modifiedItems =
-                (SilentAuctionDataSet.AuctionsDataTable)silentAuctionDataSet.Auctions.GetChanges(DataRowState.Modified);
-
-            if (modifiedItems != null)
-            {
-                auctionsTableAdapter.Update(modifiedItems);
-                silentAuctionDataSet.AcceptChanges();
-                modifiedItems.Dispose();
-                silentAuctionDataSet.Donors.Clear();
-                auctionsTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
-                donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionId);
+                Text = TitleText + dRow.Name;
+                SetupToolStripMenuItems();
+                MessageBox.Show("Document Saved");
             }
         }
 
-        private string GetDocumentData()
+        private void FileSaveAs()
         {
-            string rtfData = "";
-            SilentAuctionDataSet.AuctionsRow row = silentAuctionDataSet.Auctions.FirstOrDefault(a => a.Id == AuctionId);
-            if (row != null)
+            // TODO: Check for Name already exists
+            using (DocumentNameEntry documentNameEntry = new DocumentNameEntry())
             {
-                switch (DocType)
+                DialogResult dialogResult = documentNameEntry.ShowDialog();
+                if (dialogResult == DialogResult.OK)
                 {
-                    case DonationDocumentType.DonationRequestDocument:
-                        rtfData = row.DonationRequestDocument.ToString();
-                        break;
-                    case DonationDocumentType.DonationFollowUpDocument:
-                        rtfData = row.DonationFollowUpDocument.ToString();
-                        break;
+                    string rtfData;
+                    documentEditorControl.Save(out rtfData, StringStreamType.RichTextFormat);
+
+                    SilentAuctionDataSet.AuctionsRow auctionsRow =
+                        silentAuctionDataSet.Auctions.FirstOrDefault(a => a.Id == AuctionId);
+
+                    // TODO: Replace the 1 here...
+                    SilentAuctionDataSet.DocumentTypesRow documentTypesRow =
+                        silentAuctionDataSet.DocumentTypes.FirstOrDefault(d => d.Id == 1);
+
+                    silentAuctionDataSet.Documents.AddDocumentsRow(auctionsRow, documentTypesRow,
+                        documentNameEntry.DocumentName, rtfData);
+
+                    SilentAuctionDataSet.DocumentsDataTable newDocuments =
+                        (SilentAuctionDataSet.DocumentsDataTable)silentAuctionDataSet.Documents.GetChanges(DataRowState.Added);
+
+                    if (newDocuments != null)
+                    {
+                        documentsTableAdapter.Update(newDocuments);
+                        silentAuctionDataSet.AcceptChanges();
+                        newDocuments.Dispose();
+                        documentsTableAdapter.FillDocuments(silentAuctionDataSet.Documents);
+                        openToolStripButton.Enabled = true;
+                        openToolStripMenuItem.Enabled = true;
+                        _documentIsDirty = false;
+                        DocumentId = (int) silentAuctionDataSet.Documents.Max(a => a.Id);
+                    }
+
+                    Text = TitleText + documentNameEntry.DocumentName;
+                    SetupToolStripMenuItems();
+                    MessageBox.Show("Document Saved");
                 }
             }
-
-            return rtfData;
         }
 
-        private void PrintDocuments()
+        private void FileOpen()
+        {
+            using (DocumentSelection documentSelection = new DocumentSelection(AuctionId))
+            {
+                DialogResult dialogResult = documentSelection.ShowDialog();
+                if (dialogResult == DialogResult.OK)
+                {
+                    SilentAuctionDataSet.DocumentsRow row =
+                        silentAuctionDataSet.Documents.FirstOrDefault(d => d.Id == documentSelection.DocumentId);
+
+                    if (row != null)
+                    {
+                        if (!string.IsNullOrEmpty(row.Document))
+                        {
+                            documentEditorControl.Load(row.Document, StringStreamType.RichTextFormat);
+                            SetupToolStripMenuItems();
+                            Text = TitleText + row.Name;
+                            DocumentId = documentSelection.DocumentId;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void FilePrint()
         {
             List<int> donorIdsToPrint = new List<int>();
 
@@ -849,15 +914,32 @@ namespace SilentAuction.Forms
             }
         }
 
-        private void EmailDocuments()
+        private void FileEmail()
         {
             // TODO:  Finish Email work
-            MessageBox.Show("Need to implement");
+            // Use DonorEmailSelections??  Don't need two forms.
+            using (EmailAccount emailAccount = new EmailAccount())
+            {
+                DialogResult result = emailAccount.ShowDialog();
 
+                SecureString pwd = new SecureString();
+                foreach (char c in emailAccount.passwordTextBox.Text)
+                {
+                    pwd.AppendChar(c);
+                }
 
-            EmailHelper.SendEmail("john.b.buell@gmail.com", 
-                new List<string>() {"john.b.buell@intel.com"},
-                "Test Subject", "Test Body");
+                if (result == DialogResult.OK)
+                {
+                    string subject = "Test Subject";
+                    string body;
+                    documentEditorControl.Save(out body, StringStreamType.HTMLFormat);
+                    string acct = emailAccount.accountTextBox.Text;
+                    string from = "homer@simpson.com";
+                    List<string> to = new List<string>() {"john.b.buell@gmail.com"};
+
+                    EmailHelper.SendEmail(acct, pwd, from, to, subject, body);
+                }
+            }
         }
 
         private void InsertNewField(string fieldType)
@@ -919,6 +1001,14 @@ namespace SilentAuction.Forms
                 //    break;
             }
         }
+
+        private void SetupToolStripMenuItems()
+        {
+            openToolStripButton.Enabled = silentAuctionDataSet.Documents.Rows.Count > 0;
+            openToolStripMenuItem.Enabled = silentAuctionDataSet.Documents.Rows.Count > 0;
+        }
+
+
         #endregion
 
     }

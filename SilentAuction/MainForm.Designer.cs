@@ -92,9 +92,10 @@
             this.EditDonorListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditDonorFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.documentsStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DonorRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DonorFollowUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DocumentEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.createLabelsFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createItemLabelsFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CopyDonorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -127,8 +128,6 @@
             this.donorRequestPrintDocument = new System.Drawing.Printing.PrintDocument();
             this.donorAddressesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.donorAddressesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorAddressesTableAdapter();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.createItemLabelsFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ItemsTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).BeginInit();
@@ -668,8 +667,7 @@
             // documentsStripMenuItem
             // 
             this.documentsStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.DonorRequestToolStripMenuItem,
-            this.DonorFollowUpToolStripMenuItem,
+            this.DocumentEditorToolStripMenuItem,
             this.toolStripSeparator6,
             this.createLabelsFileToolStripMenuItem,
             this.createItemLabelsFileToolStripMenuItem});
@@ -679,17 +677,15 @@
             // 
             // DonorRequestToolStripMenuItem
             // 
-            this.DonorRequestToolStripMenuItem.Name = "DonorRequestToolStripMenuItem";
-            this.DonorRequestToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.DonorRequestToolStripMenuItem.Text = "Donor &Request";
-            this.DonorRequestToolStripMenuItem.Click += new System.EventHandler(this.DonorRequestToolStripMenuItemClick);
+            this.DocumentEditorToolStripMenuItem.Name = "DocumentEditorToolStripMenuItem";
+            this.DocumentEditorToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.DocumentEditorToolStripMenuItem.Text = "&Document Editor";
+            this.DocumentEditorToolStripMenuItem.Click += new System.EventHandler(this.DocumentEditorToolStripMenuItemClick);
             // 
-            // DonorFollowUpToolStripMenuItem
+            // toolStripSeparator6
             // 
-            this.DonorFollowUpToolStripMenuItem.Name = "DonorFollowUpToolStripMenuItem";
-            this.DonorFollowUpToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.DonorFollowUpToolStripMenuItem.Text = "Donor &Follow Up";
-            this.DonorFollowUpToolStripMenuItem.Click += new System.EventHandler(this.DonorFollowUpToolStripMenuItemClick);
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(207, 6);
             // 
             // createLabelsFileToolStripMenuItem
             // 
@@ -697,6 +693,13 @@
             this.createLabelsFileToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.createLabelsFileToolStripMenuItem.Text = "Create &Address Labels File";
             this.createLabelsFileToolStripMenuItem.Click += new System.EventHandler(this.CreateLabelsFileToolStripMenuItemClick);
+            // 
+            // createItemLabelsFileToolStripMenuItem
+            // 
+            this.createItemLabelsFileToolStripMenuItem.Name = "createItemLabelsFileToolStripMenuItem";
+            this.createItemLabelsFileToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.createItemLabelsFileToolStripMenuItem.Text = "Create &Item Labels File";
+            this.createItemLabelsFileToolStripMenuItem.Click += new System.EventHandler(this.CreateItemLabelsFileToolStripMenuItemClick);
             // 
             // toolsToolStripMenuItem
             // 
@@ -893,18 +896,6 @@
             // 
             this.donorAddressesTableAdapter.ClearBeforeFill = true;
             // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(207, 6);
-            // 
-            // createItemLabelsFileToolStripMenuItem
-            // 
-            this.createItemLabelsFileToolStripMenuItem.Name = "createItemLabelsFileToolStripMenuItem";
-            this.createItemLabelsFileToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.createItemLabelsFileToolStripMenuItem.Text = "Create &Item Labels File";
-            this.createItemLabelsFileToolStripMenuItem.Click += new System.EventHandler(this.CreateItemLabelsFileToolStripMenuItemClick);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1013,8 +1004,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem showAllItemsByDonorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem documentsStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem DonorRequestToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem DonorFollowUpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem DocumentEditorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem donorNoResponseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createLabelsFileToolStripMenuItem;
         private System.Windows.Forms.BindingSource donorAddressesBindingSource;

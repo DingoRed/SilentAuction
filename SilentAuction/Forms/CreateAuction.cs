@@ -118,7 +118,7 @@ namespace SilentAuction.Forms
         {
             DateTime currentDate = DateTime.Now;
             silentAuctionDataSet.Auctions.AddAuctionsRow(NameTextBox.Text, DescriptionTextBox.Text,
-                currentDate.ToString(), currentDate.ToString(), "", "");
+                currentDate.ToString(), currentDate.ToString());
 
             SilentAuctionDataSet.AuctionsDataTable newItems =
                 (SilentAuctionDataSet.AuctionsDataTable) silentAuctionDataSet.Auctions.GetChanges(DataRowState.Added);
