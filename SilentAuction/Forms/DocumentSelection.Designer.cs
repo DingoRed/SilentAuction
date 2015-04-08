@@ -37,8 +37,11 @@
             this.documentsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DocumentsTableAdapter();
             this.SelectDocumentButton = new System.Windows.Forms.Button();
             this.CancelDocumentButton = new System.Windows.Forms.Button();
+            this.auctionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.auctionsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.AuctionsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -97,6 +100,15 @@
             this.CancelDocumentButton.Text = "Cancel";
             this.CancelDocumentButton.UseVisualStyleBackColor = true;
             // 
+            // auctionsBindingSource
+            // 
+            this.auctionsBindingSource.DataMember = "Auctions";
+            this.auctionsBindingSource.DataSource = this.silentAuctionDataSet;
+            // 
+            // auctionsTableAdapter
+            // 
+            this.auctionsTableAdapter.ClearBeforeFill = true;
+            // 
             // DocumentSelection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -114,6 +126,7 @@
             this.Load += new System.EventHandler(this.DocumentSelectionLoad);
             ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,5 +141,7 @@
         private SilentAuctionDataSetTableAdapters.DocumentsTableAdapter documentsTableAdapter;
         private System.Windows.Forms.Button SelectDocumentButton;
         private System.Windows.Forms.Button CancelDocumentButton;
+        private System.Windows.Forms.BindingSource auctionsBindingSource;
+        private SilentAuctionDataSetTableAdapters.AuctionsTableAdapter auctionsTableAdapter;
     }
 }

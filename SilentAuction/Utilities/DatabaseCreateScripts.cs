@@ -33,7 +33,6 @@ namespace SilentAuction.Utilities
         private const string AuctionsTableName = "Auctions";
         private const string BidIncrementTypesTableName = "BidIncrementTypes";
         private const string DocumentsTableName = "Documents";
-        private const string DocumentTypesTableName = "DocumentTypes";
         private const string DonationDeliveryTypesTableName = "DonationDeliveryTypes";
         private const string DonorsTableName = "Donors";
         private const string DonorTypesTableName = "DonorTypes";
@@ -64,14 +63,8 @@ namespace SilentAuction.Utilities
             TableCreateScripts.Add(string.Format(@"CREATE TABLE [{0}](
                                                 [Id] [integer] PRIMARY KEY AUTOINCREMENT NOT NULL,
                                                 [AuctionId] [integer] NOT NULL,
-                                                [DocumentTypeId] [integer] NOT NULL,
-                	                            [Name] [nvarchar](200) NOT NULL,
-                                                [Document] [text] NOT NULL)", DocumentsTableName));
-
-            TableCreateScripts.Add(string.Format(@"CREATE TABLE [{0}](
-                                                [Id] [integer] PRIMARY KEY AUTOINCREMENT NOT NULL,
                                                 [Name] [nvarchar](200) NOT NULL,
-                                                [Description] [nvarchar](5000) NOT NULL)", DocumentTypesTableName));
+                                                [Document] [text] NOT NULL)", DocumentsTableName));
 
             TableCreateScripts.Add(string.Format(@"CREATE TABLE [{0}](
                                                 [Id] [integer] PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -148,10 +141,6 @@ namespace SilentAuction.Utilities
                     @"INSERT INTO {0} (Name, Description) VALUES ('Increment Value', 'Increments based on the Increment Value');
                     INSERT INTO {0} (Name, Description) VALUES ('Increment Number', 'Increments based on the Number of Bids');"
                     , BidIncrementTypesTableName));
-
-            TablePreLoadScripts.Add(string.Format(@"INSERT INTO {0} (Name, Description) VALUES ('Letter', 'Document is a letter');
-                            INSERT INTO {0} (Name, Description) VALUES ('Email', 'Document is an email');"
-                    , DocumentTypesTableName));
 
             TablePreLoadScripts.Add(string.Format(
                     @"INSERT INTO {0} (Name, Description) VALUES ('Delivery', 'Item will be delivered by Donor');

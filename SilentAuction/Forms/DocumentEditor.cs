@@ -14,8 +14,6 @@ namespace SilentAuction.Forms
 {
     public partial class DocumentEditor : Form
     {
-        //public enum DonationDocumentType { DonationRequestDocument, DonationFollowUpDocument }
-
         #region Fields
         private bool _documentIsDirty;
         private int _fieldId;
@@ -47,7 +45,6 @@ namespace SilentAuction.Forms
         private void DocumentEditorLoad(object sender, EventArgs e)
         {
             auctionsTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
-            documentTypesTableAdapter.FillDocumentTypes(silentAuctionDataSet.DocumentTypes);
             documentsTableAdapter.FillDocuments(silentAuctionDataSet.Documents);
 
             SetupToolStripMenuItems();
@@ -109,12 +106,6 @@ namespace SilentAuction.Forms
             FilePrint();
         }
 
-        private void PrintPreviewToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            // TODO: Remove Print Preview?
-            documentEditorControl.PrintPreview(printDocumentMain);
-        }
-
         private void EmailToolStripMenuItemClick(object sender, EventArgs e)
         {
             FileEmail();
@@ -142,31 +133,37 @@ namespace SilentAuction.Forms
         private void UndoToolStripMenuItemClick(object sender, EventArgs e)
         {
             documentEditorControl.Undo();
+            _documentIsDirty = true;
         }
 
         private void RedoToolStripMenuItemClick(object sender, EventArgs e)
         {
             documentEditorControl.Redo();
+            _documentIsDirty = true;
         }
 
         private void CutToolStripMenuItemClick(object sender, EventArgs e)
         {
             documentEditorControl.Cut();
+            _documentIsDirty = true;
         }
 
         private void CopyToolStripMenuItemClick(object sender, EventArgs e)
         {
             documentEditorControl.Copy();
+            _documentIsDirty = true;
         }
 
         private void PasteToolStripMenuItemClick(object sender, EventArgs e)
         {
             documentEditorControl.Paste();
+            _documentIsDirty = true;
         }
 
         private void DeleteToolStripMenuItemClick(object sender, EventArgs e)
         {
             documentEditorControl.Clear();
+            _documentIsDirty = true;
         }
 
         private void SelectAllToolStripMenuItemClick(object sender, EventArgs e)
@@ -250,7 +247,8 @@ namespace SilentAuction.Forms
         private void InsertImageToolStripMenuItemClick(object sender, EventArgs e)
         {
             Image imageNew = new Image();
-            documentEditorControl.Images.Add(imageNew, HorizontalAlignment.Left, -1, ImageInsertionMode.DisplaceText);
+            if(documentEditorControl.Images.Add(imageNew, HorizontalAlignment.Left, -1, ImageInsertionMode.DisplaceText))
+                _documentIsDirty = true;
         }
 
         private void InsertPageBreakToolStripMenuItemClick(object sender, EventArgs e)
@@ -263,6 +261,7 @@ namespace SilentAuction.Forms
                   documentEditorControl.ScrollLocation.X,
                   (int)(documentEditorControl.InputPosition.Location.Y - (documentEditorControl.Selection.SectionFormat.PageMargins.Top * dpi))
                  );
+            _documentIsDirty = true;
         }
 
         #endregion
@@ -275,27 +274,32 @@ namespace SilentAuction.Forms
 
         private void FormatCharacterToolStripMenuItemClick(object sender, EventArgs e)
         {
-            documentEditorControl.FontDialog();
+            if (documentEditorControl.FontDialog() == DialogResult.OK)
+                _documentIsDirty = true;
         }
 
         private void FormatParagraphToolStripMenuItemClick(object sender, EventArgs e)
         {
-            documentEditorControl.ParagraphFormatDialog();
+            if(documentEditorControl.ParagraphFormatDialog() == DialogResult.OK)
+                _documentIsDirty = true;
         }
 
         private void FormatStylesToolStripMenuItemClick(object sender, EventArgs e)
         {
-            documentEditorControl.FormattingStylesDialog();
+            if(documentEditorControl.FormattingStylesDialog() == DialogResult.OK)
+                _documentIsDirty = true;
         }
 
         private void FormatTabsToolStripMenuItemClick(object sender, EventArgs e)
         {
-            documentEditorControl.TabDialog();
+            if(documentEditorControl.TabDialog() == DialogResult.OK)
+                _documentIsDirty = true;
         }
 
         private void FormatImageToolStripMenuItemClick(object sender, EventArgs e)
         {
-            documentEditorControl.ImageAttributesDialog();
+            if(documentEditorControl.ImageAttributesDialog() == DialogResult.OK)
+                _documentIsDirty = true;
         }
 
         private void FormatListToolStripMenuItemDropDownOpening(object sender, EventArgs e)
@@ -313,11 +317,13 @@ namespace SilentAuction.Forms
 
         private void FormatListPropertiesToolStripMenuItemClick(object sender, EventArgs e)
         {
-            documentEditorControl.ListFormatDialog();
+            if(documentEditorControl.ListFormatDialog() == DialogResult.OK)
+                _documentIsDirty = true;
         }
 
         private void FormatListArabicNumberstoolStripMenuItemClick(object sender, EventArgs e)
         {
+            _documentIsDirty = true;
             if (formatListArabicNumberstoolStripMenuItem.Checked)
             {
                 documentEditorControl.Selection.ListFormat.Type = ListType.None;
@@ -331,6 +337,7 @@ namespace SilentAuction.Forms
 
         private void FormatListCapitalLettersToolStripMenuItemClick(object sender, EventArgs e)
         {
+            _documentIsDirty = true;
             if (formatListCapitalLettersToolStripMenuItem.Checked)
             {
                 documentEditorControl.Selection.ListFormat.Type = ListType.None;
@@ -344,6 +351,7 @@ namespace SilentAuction.Forms
 
         private void FormatListBulletsToolStripMenuItemClick(object sender, EventArgs e)
         {
+            _documentIsDirty = true;
             if (formatListBulletsToolStripMenuItem.Checked)
             {
                 documentEditorControl.Selection.ListFormat.Type = ListType.None;
@@ -358,6 +366,7 @@ namespace SilentAuction.Forms
         {
             documentEditorControl.Selection.ListFormat.Level += 1;
             documentEditorControl.Selection.IncreaseIndent();
+            _documentIsDirty = true;
         }
 
         private void FormatListDecreaseLevelToolStripMenuItemClick(object sender, EventArgs e)
@@ -366,6 +375,7 @@ namespace SilentAuction.Forms
             {
                 documentEditorControl.Selection.ListFormat.Level -= 1;
                 documentEditorControl.Selection.DecreaseIndent();
+                _documentIsDirty = true;
             }
         }
         #endregion
@@ -427,22 +437,26 @@ namespace SilentAuction.Forms
 
         private void TableInsertColumnToTheLeftToolStripMenuItemClick(object sender, EventArgs e)
         {
-            documentEditorControl.Tables.GetItem().Columns.Add(TableAddPosition.Before);
+            if(documentEditorControl.Tables.GetItem().Columns.Add(TableAddPosition.Before))
+                _documentIsDirty = true;
         }
 
         private void TableInsertColumnToTheRightToolStripMenuItemClick(object sender, EventArgs e)
         {
-            documentEditorControl.Tables.GetItem().Columns.Add(TableAddPosition.After);
+            if(documentEditorControl.Tables.GetItem().Columns.Add(TableAddPosition.After))
+                _documentIsDirty = true;
         }
 
         private void TableInsertRowAboveToolStripMenuItemClick(object sender, EventArgs e)
         {
-            documentEditorControl.Tables.GetItem().Rows.Add(TableAddPosition.Before, 1);
+            if(documentEditorControl.Tables.GetItem().Rows.Add(TableAddPosition.Before, 1))
+                _documentIsDirty = true;
         }
 
         private void TableInsertRowBelowToolStripMenuItemClick(object sender, EventArgs e)
         {
-            documentEditorControl.Tables.GetItem().Rows.Add(TableAddPosition.After, 1);
+            if(documentEditorControl.Tables.GetItem().Rows.Add(TableAddPosition.After, 1))
+                _documentIsDirty = true;
         }
 
         private void TableDeleteToolStripMenuItemDropDownOpening(object sender, EventArgs e)
@@ -469,32 +483,38 @@ namespace SilentAuction.Forms
 
         private void TableDeleteTableToolStripMenuItemClick(object sender, EventArgs e)
         {
-            documentEditorControl.Tables.Remove();
+            if(documentEditorControl.Tables.Remove())
+                _documentIsDirty = true;
         }
 
         private void TableDeleteColumnToolStripMenuItemClick(object sender, EventArgs e)
         {
-            documentEditorControl.Tables.GetItem().Columns.Remove();
+            if(documentEditorControl.Tables.GetItem().Columns.Remove())
+                _documentIsDirty = true;
         }
 
         private void TableDeleteRowsToolStripMenuItemClick(object sender, EventArgs e)
         {
-            documentEditorControl.Tables.GetItem().Rows.Remove();
+            if(documentEditorControl.Tables.GetItem().Rows.Remove())
+                _documentIsDirty = true;
         }
 
         private void TableDeleteCellsShiftCellsLeftToolStripMenuItemClick(object sender, EventArgs e)
         {
-            documentEditorControl.Tables.GetItem().Cells.Remove();
+            if(documentEditorControl.Tables.GetItem().Cells.Remove())
+                _documentIsDirty = true;
         }
 
         private void TableDeleteCellsDeleteEntireRowToolStripMenuItemClick(object sender, EventArgs e)
         {
-            documentEditorControl.Tables.GetItem().Rows.Remove();
+            if(documentEditorControl.Tables.GetItem().Rows.Remove())
+                _documentIsDirty = true;
         }
 
         private void TableDeleteDeleteEntireColumnToolStripMenuItemClick(object sender, EventArgs e)
         {
-            documentEditorControl.Tables.GetItem().Columns.Remove();
+            if(documentEditorControl.Tables.GetItem().Columns.Remove())
+                _documentIsDirty = true;
         }
 
         private void TableSelectToolStripMenuItemDropDownOpening(object sender, EventArgs e)
@@ -539,12 +559,14 @@ namespace SilentAuction.Forms
 
         private void TableMergeCellsToolStripMenuItemClick(object sender, EventArgs e)
         {
-            documentEditorControl.Tables.GetItem().MergeCells();
+            if(documentEditorControl.Tables.GetItem().MergeCells())
+                _documentIsDirty = true;
         }
 
         private void TableSplitCellsToolStripMenuItemClick(object sender, EventArgs e)
         {
-            documentEditorControl.Tables.GetItem().SplitCells();
+            if(documentEditorControl.Tables.GetItem().SplitCells())
+                _documentIsDirty = true;
         }
 
         private void TableSplitTableToolStripMenuItemDropDownOpening(object sender, EventArgs e)
@@ -565,12 +587,14 @@ namespace SilentAuction.Forms
 
         private void TableSplitTableAboveToolStripMenuItemClick(object sender, EventArgs e)
         {
-            documentEditorControl.Tables.GetItem().Split(TableAddPosition.Before);
+            if(documentEditorControl.Tables.GetItem().Split(TableAddPosition.Before))
+                _documentIsDirty = true;
         }
 
         private void TableSplitTableBelowToolStripMenuItemClick(object sender, EventArgs e)
         {
-            documentEditorControl.Tables.GetItem().Split(TableAddPosition.After);
+            if(documentEditorControl.Tables.GetItem().Split(TableAddPosition.After))
+                _documentIsDirty = true;
         }
 
         private void TableGridLinesToolStripMenuItemClick(object sender, EventArgs e)
@@ -580,7 +604,8 @@ namespace SilentAuction.Forms
 
         private void TablePropertiesToolStripMenuItemClick(object sender, EventArgs e)
         {
-            documentEditorControl.TableFormatDialog();
+            if(documentEditorControl.TableFormatDialog() == DialogResult.OK)
+                _documentIsDirty = true;
         }
         #endregion
         #endregion
@@ -589,36 +614,43 @@ namespace SilentAuction.Forms
         private void ContextMenuCutClick(object sender, EventArgs e)
         {
             documentEditorControl.Cut();
+            _documentIsDirty = true;
         }
 
         private void ContextMenuCopyClick(object sender, EventArgs e)
         {
             documentEditorControl.Copy();
+            _documentIsDirty = true;
         }
 
         private void ContextMenuPasteClick(object sender, EventArgs e)
         {
             documentEditorControl.Paste();
+            _documentIsDirty = true;
         }
 
         private void ContextMenuCharacterClick(object sender, EventArgs e)
         {
-            documentEditorControl.FontDialog();
+            if(documentEditorControl.FontDialog() == DialogResult.OK)
+                _documentIsDirty = true;
         }
 
         private void ContextMenuParagraphClick(object sender, EventArgs e)
         {
-            documentEditorControl.ParagraphFormatDialog();
+            if(documentEditorControl.ParagraphFormatDialog() == DialogResult.OK)
+                _documentIsDirty = true;
         }
 
         private void ContextMenuBulletsAndNumberingClick(object sender, EventArgs e)
         {
-            documentEditorControl.ListFormatDialog();
+            if(documentEditorControl.ListFormatDialog() == DialogResult.OK)
+                _documentIsDirty = true;
         }
 
         private void ContextMenuStylesClick(object sender, EventArgs e)
         {
-            documentEditorControl.FormattingStylesDialog();
+            if(documentEditorControl.FormattingStylesDialog() == DialogResult.OK)
+                _documentIsDirty = true;
         }
 
         private void ContextMenuInsertTableClick(object sender, EventArgs e)
@@ -658,12 +690,6 @@ namespace SilentAuction.Forms
             FilePrint();
         }
 
-        private void PrintPreviewToolStripButtonClick(object sender, EventArgs e)
-        {
-            // TODO: Remove Print Preview?
-            documentEditorControl.PrintPreview(printDocumentMain);
-        }
-
         private void EmailToolStripButtonClick(object sender, EventArgs e)
         {
             FileEmail();
@@ -672,31 +698,37 @@ namespace SilentAuction.Forms
         private void CutToolStripButtonClick(object sender, EventArgs e)
         {
             documentEditorControl.Cut();
+            _documentIsDirty = true;
         }
 
         private void CopyToolStripButtonClick(object sender, EventArgs e)
         {
             documentEditorControl.Copy();
+            _documentIsDirty = true;
         }
 
         private void PasteToolStripButtonClick(object sender, EventArgs e)
         {
             documentEditorControl.Paste();
+            _documentIsDirty = true;
         }
 
         private void DeleteToolStripButtonClick(object sender, EventArgs e)
         {
             documentEditorControl.Clear();
+            _documentIsDirty = true;
         }
 
         private void UndoToolStripButtonClick(object sender, EventArgs e)
         {
             documentEditorControl.Undo();
+            _documentIsDirty = true;
         }
 
         private void RedoToolStripButtonClick(object sender, EventArgs e)
         {
             documentEditorControl.Redo();
+            _documentIsDirty = true;
         }
 
         #endregion
@@ -736,24 +768,19 @@ namespace SilentAuction.Forms
             string rtfData;
             documentEditorControl.Save(out rtfData, StringStreamType.RichTextFormat);
 
-            // TODO: Replace the 1 here...
-            SilentAuctionDataSet.DocumentsRow dRow = silentAuctionDataSet.Documents.FirstOrDefault(d => d.Id == 1);
+            SilentAuctionDataSet.DocumentsRow dRow = silentAuctionDataSet.Documents.FirstOrDefault(d => d.Id == DocumentId);
             if (dRow != null)
             {
                 dRow.Document = rtfData;
 
-
                 SilentAuctionDataSet.DocumentsDataTable modifiedItems =
-                    (SilentAuctionDataSet.DocumentsDataTable)
-                        silentAuctionDataSet.Documents.GetChanges(DataRowState.Modified);
+                    (SilentAuctionDataSet.DocumentsDataTable)silentAuctionDataSet.Documents.GetChanges(DataRowState.Modified);
 
                 if (modifiedItems != null)
                 {
                     documentsTableAdapter.Update(modifiedItems);
                     silentAuctionDataSet.AcceptChanges();
                     modifiedItems.Dispose();
-                    openToolStripButton.Enabled = true;
-                    openToolStripMenuItem.Enabled = true;
                     _documentIsDirty = false;
                 }
 
@@ -777,12 +804,7 @@ namespace SilentAuction.Forms
                     SilentAuctionDataSet.AuctionsRow auctionsRow =
                         silentAuctionDataSet.Auctions.FirstOrDefault(a => a.Id == AuctionId);
 
-                    // TODO: Replace the 1 here...
-                    SilentAuctionDataSet.DocumentTypesRow documentTypesRow =
-                        silentAuctionDataSet.DocumentTypes.FirstOrDefault(d => d.Id == 1);
-
-                    silentAuctionDataSet.Documents.AddDocumentsRow(auctionsRow, documentTypesRow,
-                        documentNameEntry.DocumentName, rtfData);
+                    silentAuctionDataSet.Documents.AddDocumentsRow(auctionsRow, documentNameEntry.DocumentName, rtfData);
 
                     SilentAuctionDataSet.DocumentsDataTable newDocuments =
                         (SilentAuctionDataSet.DocumentsDataTable)silentAuctionDataSet.Documents.GetChanges(DataRowState.Added);
@@ -793,8 +815,6 @@ namespace SilentAuction.Forms
                         silentAuctionDataSet.AcceptChanges();
                         newDocuments.Dispose();
                         documentsTableAdapter.FillDocuments(silentAuctionDataSet.Documents);
-                        openToolStripButton.Enabled = true;
-                        openToolStripMenuItem.Enabled = true;
                         _documentIsDirty = false;
                         DocumentId = (int) silentAuctionDataSet.Documents.Max(a => a.Id);
                     }
@@ -921,23 +941,25 @@ namespace SilentAuction.Forms
             using (EmailAccount emailAccount = new EmailAccount())
             {
                 DialogResult result = emailAccount.ShowDialog();
-
-                SecureString pwd = new SecureString();
-                foreach (char c in emailAccount.passwordTextBox.Text)
-                {
-                    pwd.AppendChar(c);
-                }
-
                 if (result == DialogResult.OK)
                 {
-                    string subject = "Test Subject";
+                    SecureString pwd = new SecureString();
+                    foreach (char c in emailAccount.passwordTextBox.Text)
+                    {
+                        pwd.AppendChar(c);
+                    }
+
+                    string subject = "Email for Money!";
                     string body;
                     documentEditorControl.Save(out body, StringStreamType.HTMLFormat);
                     string acct = emailAccount.accountTextBox.Text;
                     string from = "homer@simpson.com";
                     List<string> to = new List<string>() {"john.b.buell@gmail.com"};
 
-                    EmailHelper.SendEmail(acct, pwd, from, to, subject, body);
+                    if (EmailHelper.SendEmail(acct, pwd, from, to, subject, body))
+                        MessageBox.Show("Email Sent");
+                    else
+                        MessageBox.Show("Failure Sending Email");
                 }
             }
         }
@@ -955,7 +977,8 @@ namespace SilentAuction.Forms
 
             // Insert a new field and increase field ID
             _fieldId += 1;
-            documentEditorControl.TextFields.Add(newField);
+            if(documentEditorControl.TextFields.Add(newField))
+                _documentIsDirty = true;
         }
 
         private void CheckListMenuItem()
@@ -1007,9 +1030,6 @@ namespace SilentAuction.Forms
             openToolStripButton.Enabled = silentAuctionDataSet.Documents.Rows.Count > 0;
             openToolStripMenuItem.Enabled = silentAuctionDataSet.Documents.Rows.Count > 0;
         }
-
-
         #endregion
-
     }
 }

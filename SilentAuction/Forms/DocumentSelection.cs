@@ -17,7 +17,9 @@ namespace SilentAuction.Forms
 
         private void DocumentSelectionLoad(object sender, EventArgs e)
         {
-            documentsTableAdapter.FillDocumentsByAuctionId(silentAuctionDataSet.Documents, AuctionId);
+            // TODO: This line of code loads data into the 'silentAuctionDataSet.Auctions' table. You can move, or remove it, as needed.
+            this.auctionsTableAdapter.FillAuctions(this.silentAuctionDataSet.Auctions);
+            documentsTableAdapter.FillDocuments(silentAuctionDataSet.Documents);
             // TODO: Set window locations
         }
 
