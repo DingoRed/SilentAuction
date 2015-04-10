@@ -274,6 +274,18 @@ namespace SilentAuction
             }
         }
 
+        private void NewItemToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            using (CreateNewItemForm createNewItemForm = new CreateNewItemForm(AuctionIdInUse))
+            {
+                createNewItemForm.ShowDialog();
+                silentAuctionDataSet.Items.Clear();
+                donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionIdInUse);
+                itemsTableAdapter.FillItems(silentAuctionDataSet.Items, AuctionIdInUse);
+                SetupToolStripMenuItems();
+            }
+        }
+
         private void OpenAuctionToolStripMenuItemClick(object sender, EventArgs e)
         {
             using (OpenAuctionForm openAuctionForm = new OpenAuctionForm())

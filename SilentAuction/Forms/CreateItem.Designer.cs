@@ -1,6 +1,6 @@
 ﻿namespace SilentAuction.Forms
 {
-    partial class CreateItem
+    partial class CreateNewItemForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,47 +28,81 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateItem));
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateNewItemForm));
             this.label16 = new System.Windows.Forms.Label();
             this.AuctionsComboBox = new System.Windows.Forms.ComboBox();
+            this.auctionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.silentAuctionDataSet = new SilentAuction.SilentAuctionDataSet();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.DonorsComboBox = new System.Windows.Forms.ComboBox();
+            this.donorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.ItemPictureBox = new System.Windows.Forms.PictureBox();
+            this.DonationDeliveryTypesComboBox = new System.Windows.Forms.ComboBox();
+            this.donationDeliveryTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ItemTypesComboBox = new System.Windows.Forms.ComboBox();
+            this.itemTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.NotesTextBox = new System.Windows.Forms.TextBox();
+            this.QtyTextBox = new System.Windows.Forms.TextBox();
+            this.DescriptionTextBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.NameTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.NumberOfBidsTextBox = new System.Windows.Forms.TextBox();
+            this.BidIncrementTypesComboBox = new System.Windows.Forms.ComboBox();
+            this.bidIncrementTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.BidIncrementValueTextBox = new System.Windows.Forms.TextBox();
+            this.MaximumBidTextBox = new System.Windows.Forms.TextBox();
+            this.MinimumBidTextBox = new System.Windows.Forms.TextBox();
+            this.BuyItNowTextBox = new System.Windows.Forms.TextBox();
+            this.RetailValueTextBox = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.SaveButton = new System.Windows.Forms.Button();
-            this.SaveAndCloseButton = new System.Windows.Forms.Button();
+            this.SaveItemButton = new System.Windows.Forms.Button();
+            this.SaveItemAndCloseButton = new System.Windows.Forms.Button();
             this.CancelItemButton = new System.Windows.Forms.Button();
+            this.auctionsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.AuctionsTableAdapter();
+            this.donorsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorsTableAdapter();
+            this.donorTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.donorTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorTypesTableAdapter();
+            this.requestFormatTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.requestFormatTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter();
+            this.requestStatusBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.requestStatusTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter();
+            this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.itemsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.ItemsTableAdapter();
+            this.itemTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.ItemTypesTableAdapter();
+            this.bidIncrementTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.BidIncrementTypesTableAdapter();
+            this.donationDeliveryTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonationDeliveryTypesTableAdapter();
+            this.itemErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.BidCalculatorButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donationDeliveryTypesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemTypesBindingSource)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bidIncrementTypesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donorTypesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.requestStatusBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label16
@@ -82,6 +116,7 @@
             // 
             // AuctionsComboBox
             // 
+            this.AuctionsComboBox.DataSource = this.auctionsBindingSource;
             this.AuctionsComboBox.DisplayMember = "Name";
             this.AuctionsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.AuctionsComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -89,8 +124,19 @@
             this.AuctionsComboBox.Location = new System.Drawing.Point(158, 12);
             this.AuctionsComboBox.Name = "AuctionsComboBox";
             this.AuctionsComboBox.Size = new System.Drawing.Size(200, 21);
-            this.AuctionsComboBox.TabIndex = 22;
+            this.AuctionsComboBox.TabIndex = 1;
             this.AuctionsComboBox.ValueMember = "Id";
+            this.AuctionsComboBox.SelectedIndexChanged += new System.EventHandler(this.AuctionsComboBoxSelectedIndexChanged);
+            // 
+            // auctionsBindingSource
+            // 
+            this.auctionsBindingSource.DataMember = "Auctions";
+            this.auctionsBindingSource.DataSource = this.silentAuctionDataSet;
+            // 
+            // silentAuctionDataSet
+            // 
+            this.silentAuctionDataSet.DataSetName = "SilentAuctionDataSet";
+            this.silentAuctionDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label1
             // 
@@ -101,17 +147,23 @@
             this.label1.TabIndex = 23;
             this.label1.Text = "Donor:";
             // 
-            // comboBox1
+            // DonorsComboBox
             // 
-            this.comboBox1.DisplayMember = "Name";
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(434, 12);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 21);
-            this.comboBox1.TabIndex = 24;
-            this.comboBox1.ValueMember = "Id";
+            this.DonorsComboBox.DataSource = this.donorsBindingSource;
+            this.DonorsComboBox.DisplayMember = "Name";
+            this.DonorsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DonorsComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DonorsComboBox.FormattingEnabled = true;
+            this.DonorsComboBox.Location = new System.Drawing.Point(434, 12);
+            this.DonorsComboBox.Name = "DonorsComboBox";
+            this.DonorsComboBox.Size = new System.Drawing.Size(200, 21);
+            this.DonorsComboBox.TabIndex = 2;
+            this.DonorsComboBox.ValueMember = "Id";
+            // 
+            // donorsBindingSource
+            // 
+            this.donorsBindingSource.DataMember = "Donors";
+            this.donorsBindingSource.DataSource = this.silentAuctionDataSet;
             // 
             // label2
             // 
@@ -124,16 +176,17 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Controls.Add(this.comboBox3);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.ItemPictureBox);
+            this.groupBox1.Controls.Add(this.DonationDeliveryTypesComboBox);
+            this.groupBox1.Controls.Add(this.ItemTypesComboBox);
+            this.groupBox1.Controls.Add(this.NotesTextBox);
+            this.groupBox1.Controls.Add(this.QtyTextBox);
+            this.groupBox1.Controls.Add(this.DescriptionTextBox);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.NameTextBox);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label4);
@@ -141,64 +194,89 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 39);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(716, 278);
-            this.groupBox1.TabIndex = 26;
+            this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Item Information";
             // 
-            // pictureBox1
+            // label14
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(478, 104);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 150);
-            this.pictureBox1.TabIndex = 35;
-            this.pictureBox1.TabStop = false;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(487, 257);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(132, 13);
+            this.label14.TabIndex = 36;
+            this.label14.Text = "(click above to add image)";
             // 
-            // comboBox3
+            // ItemPictureBox
             // 
-            this.comboBox3.DisplayMember = "Name";
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(478, 64);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(200, 21);
-            this.comboBox3.TabIndex = 34;
-            this.comboBox3.ValueMember = "Id";
+            this.ItemPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ItemPictureBox.Location = new System.Drawing.Point(478, 104);
+            this.ItemPictureBox.Name = "ItemPictureBox";
+            this.ItemPictureBox.Size = new System.Drawing.Size(150, 150);
+            this.ItemPictureBox.TabIndex = 35;
+            this.ItemPictureBox.TabStop = false;
+            this.ItemPictureBox.Click += new System.EventHandler(this.ItemPictureBoxClick);
             // 
-            // comboBox2
+            // DonationDeliveryTypesComboBox
             // 
-            this.comboBox2.DisplayMember = "Name";
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(478, 23);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(200, 21);
-            this.comboBox2.TabIndex = 32;
-            this.comboBox2.ValueMember = "Id";
+            this.DonationDeliveryTypesComboBox.DataSource = this.donationDeliveryTypesBindingSource;
+            this.DonationDeliveryTypesComboBox.DisplayMember = "Name";
+            this.DonationDeliveryTypesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DonationDeliveryTypesComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DonationDeliveryTypesComboBox.FormattingEnabled = true;
+            this.DonationDeliveryTypesComboBox.Location = new System.Drawing.Point(478, 64);
+            this.DonationDeliveryTypesComboBox.Name = "DonationDeliveryTypesComboBox";
+            this.DonationDeliveryTypesComboBox.Size = new System.Drawing.Size(200, 21);
+            this.DonationDeliveryTypesComboBox.TabIndex = 6;
+            this.DonationDeliveryTypesComboBox.ValueMember = "Id";
             // 
-            // textBox4
+            // donationDeliveryTypesBindingSource
             // 
-            this.textBox4.Location = new System.Drawing.Point(84, 165);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(270, 80);
-            this.textBox4.TabIndex = 33;
+            this.donationDeliveryTypesBindingSource.DataMember = "DonationDeliveryTypes";
+            this.donationDeliveryTypesBindingSource.DataSource = this.silentAuctionDataSet;
             // 
-            // textBox2
+            // ItemTypesComboBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(314, 23);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(40, 20);
-            this.textBox2.TabIndex = 31;
+            this.ItemTypesComboBox.DataSource = this.itemTypesBindingSource;
+            this.ItemTypesComboBox.DisplayMember = "Name";
+            this.ItemTypesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ItemTypesComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ItemTypesComboBox.FormattingEnabled = true;
+            this.ItemTypesComboBox.Location = new System.Drawing.Point(478, 23);
+            this.ItemTypesComboBox.Name = "ItemTypesComboBox";
+            this.ItemTypesComboBox.Size = new System.Drawing.Size(200, 21);
+            this.ItemTypesComboBox.TabIndex = 5;
+            this.ItemTypesComboBox.ValueMember = "Id";
             // 
-            // textBox3
+            // itemTypesBindingSource
             // 
-            this.textBox3.Location = new System.Drawing.Point(84, 64);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(270, 80);
-            this.textBox3.TabIndex = 32;
+            this.itemTypesBindingSource.DataMember = "ItemTypes";
+            this.itemTypesBindingSource.DataSource = this.silentAuctionDataSet;
+            // 
+            // NotesTextBox
+            // 
+            this.NotesTextBox.Location = new System.Drawing.Point(84, 165);
+            this.NotesTextBox.Multiline = true;
+            this.NotesTextBox.Name = "NotesTextBox";
+            this.NotesTextBox.Size = new System.Drawing.Size(270, 80);
+            this.NotesTextBox.TabIndex = 4;
+            // 
+            // QtyTextBox
+            // 
+            this.QtyTextBox.Location = new System.Drawing.Point(314, 23);
+            this.QtyTextBox.Name = "QtyTextBox";
+            this.QtyTextBox.Size = new System.Drawing.Size(40, 20);
+            this.QtyTextBox.TabIndex = 2;
+            this.QtyTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.QtyTextBox.Enter += new System.EventHandler(this.TextBoxEnter);
+            // 
+            // DescriptionTextBox
+            // 
+            this.DescriptionTextBox.Location = new System.Drawing.Point(84, 64);
+            this.DescriptionTextBox.Multiline = true;
+            this.DescriptionTextBox.Name = "DescriptionTextBox";
+            this.DescriptionTextBox.Size = new System.Drawing.Size(270, 80);
+            this.DescriptionTextBox.TabIndex = 3;
             // 
             // label9
             // 
@@ -227,12 +305,12 @@
             this.label8.TabIndex = 30;
             this.label8.Text = "Image:";
             // 
-            // textBox1
+            // NameTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(84, 23);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(184, 20);
-            this.textBox1.TabIndex = 26;
+            this.NameTextBox.Location = new System.Drawing.Point(84, 23);
+            this.NameTextBox.Name = "NameTextBox";
+            this.NameTextBox.Size = new System.Drawing.Size(184, 20);
+            this.NameTextBox.TabIndex = 1;
             // 
             // label3
             // 
@@ -272,14 +350,15 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox10);
-            this.groupBox3.Controls.Add(this.comboBox4);
-            this.groupBox3.Controls.Add(this.textBox9);
-            this.groupBox3.Controls.Add(this.textBox8);
-            this.groupBox3.Controls.Add(this.textBox7);
-            this.groupBox3.Controls.Add(this.textBox6);
+            this.groupBox3.Controls.Add(this.BidCalculatorButton);
+            this.groupBox3.Controls.Add(this.NumberOfBidsTextBox);
+            this.groupBox3.Controls.Add(this.BidIncrementTypesComboBox);
+            this.groupBox3.Controls.Add(this.BidIncrementValueTextBox);
+            this.groupBox3.Controls.Add(this.MaximumBidTextBox);
+            this.groupBox3.Controls.Add(this.MinimumBidTextBox);
+            this.groupBox3.Controls.Add(this.BuyItNowTextBox);
             this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.textBox5);
+            this.groupBox3.Controls.Add(this.RetailValueTextBox);
             this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.label13);
@@ -289,63 +368,87 @@
             this.groupBox3.Location = new System.Drawing.Point(13, 323);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(716, 192);
-            this.groupBox3.TabIndex = 31;
+            this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Bid Information";
             // 
-            // textBox10
+            // NumberOfBidsTextBox
             // 
-            this.textBox10.Location = new System.Drawing.Point(328, 148);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(40, 20);
-            this.textBox10.TabIndex = 43;
+            this.NumberOfBidsTextBox.Location = new System.Drawing.Point(328, 148);
+            this.NumberOfBidsTextBox.Name = "NumberOfBidsTextBox";
+            this.NumberOfBidsTextBox.Size = new System.Drawing.Size(40, 20);
+            this.NumberOfBidsTextBox.TabIndex = 7;
+            this.NumberOfBidsTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.NumberOfBidsTextBox.Enter += new System.EventHandler(this.TextBoxEnter);
             // 
-            // comboBox4
+            // BidIncrementTypesComboBox
             // 
-            this.comboBox4.DisplayMember = "Name";
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(328, 66);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(200, 21);
-            this.comboBox4.TabIndex = 35;
-            this.comboBox4.ValueMember = "Id";
+            this.BidIncrementTypesComboBox.DataSource = this.bidIncrementTypesBindingSource;
+            this.BidIncrementTypesComboBox.DisplayMember = "Name";
+            this.BidIncrementTypesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.BidIncrementTypesComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BidIncrementTypesComboBox.FormattingEnabled = true;
+            this.BidIncrementTypesComboBox.Location = new System.Drawing.Point(328, 66);
+            this.BidIncrementTypesComboBox.Name = "BidIncrementTypesComboBox";
+            this.BidIncrementTypesComboBox.Size = new System.Drawing.Size(200, 21);
+            this.BidIncrementTypesComboBox.TabIndex = 5;
+            this.BidIncrementTypesComboBox.ValueMember = "Id";
+            this.BidIncrementTypesComboBox.SelectedIndexChanged += new System.EventHandler(this.BidIncrementTypesComboBoxSelectedIndexChanged);
             // 
-            // textBox9
+            // bidIncrementTypesBindingSource
             // 
-            this.textBox9.Location = new System.Drawing.Point(328, 110);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 20);
-            this.textBox9.TabIndex = 42;
+            this.bidIncrementTypesBindingSource.DataMember = "BidIncrementTypes";
+            this.bidIncrementTypesBindingSource.DataSource = this.silentAuctionDataSet;
             // 
-            // textBox8
+            // BidIncrementValueTextBox
             // 
-            this.textBox8.Location = new System.Drawing.Point(84, 110);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 20);
-            this.textBox8.TabIndex = 41;
+            this.BidIncrementValueTextBox.Location = new System.Drawing.Point(328, 110);
+            this.BidIncrementValueTextBox.Name = "BidIncrementValueTextBox";
+            this.BidIncrementValueTextBox.Size = new System.Drawing.Size(100, 20);
+            this.BidIncrementValueTextBox.TabIndex = 6;
+            this.BidIncrementValueTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.BidIncrementValueTextBox.Enter += new System.EventHandler(this.TextBoxEnter);
+            this.BidIncrementValueTextBox.Leave += new System.EventHandler(this.TextBoxLeaveFormatCurrency);
             // 
-            // textBox7
+            // MaximumBidTextBox
             // 
-            this.textBox7.Location = new System.Drawing.Point(84, 66);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 40;
+            this.MaximumBidTextBox.Location = new System.Drawing.Point(84, 110);
+            this.MaximumBidTextBox.Name = "MaximumBidTextBox";
+            this.MaximumBidTextBox.Size = new System.Drawing.Size(100, 20);
+            this.MaximumBidTextBox.TabIndex = 4;
+            this.MaximumBidTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.MaximumBidTextBox.Enter += new System.EventHandler(this.TextBoxEnter);
+            this.MaximumBidTextBox.Leave += new System.EventHandler(this.TextBoxLeaveFormatCurrency);
             // 
-            // textBox6
+            // MinimumBidTextBox
             // 
-            this.textBox6.Location = new System.Drawing.Point(328, 22);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 39;
+            this.MinimumBidTextBox.Location = new System.Drawing.Point(84, 66);
+            this.MinimumBidTextBox.Name = "MinimumBidTextBox";
+            this.MinimumBidTextBox.Size = new System.Drawing.Size(100, 20);
+            this.MinimumBidTextBox.TabIndex = 3;
+            this.MinimumBidTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.MinimumBidTextBox.Enter += new System.EventHandler(this.TextBoxEnter);
+            this.MinimumBidTextBox.Leave += new System.EventHandler(this.TextBoxLeaveFormatCurrency);
             // 
-            // textBox5
+            // BuyItNowTextBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(84, 22);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 34;
+            this.BuyItNowTextBox.Location = new System.Drawing.Point(328, 22);
+            this.BuyItNowTextBox.Name = "BuyItNowTextBox";
+            this.BuyItNowTextBox.Size = new System.Drawing.Size(100, 20);
+            this.BuyItNowTextBox.TabIndex = 2;
+            this.BuyItNowTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.BuyItNowTextBox.Enter += new System.EventHandler(this.TextBoxEnter);
+            this.BuyItNowTextBox.Leave += new System.EventHandler(this.TextBoxLeaveFormatCurrency);
+            // 
+            // RetailValueTextBox
+            // 
+            this.RetailValueTextBox.Location = new System.Drawing.Point(84, 22);
+            this.RetailValueTextBox.Name = "RetailValueTextBox";
+            this.RetailValueTextBox.Size = new System.Drawing.Size(100, 20);
+            this.RetailValueTextBox.TabIndex = 1;
+            this.RetailValueTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.RetailValueTextBox.Enter += new System.EventHandler(this.TextBoxEnter);
+            this.RetailValueTextBox.Leave += new System.EventHandler(this.TextBoxLeaveFormatCurrency);
             // 
             // label17
             // 
@@ -401,25 +504,27 @@
             this.label10.TabIndex = 32;
             this.label10.Text = "Retail Value:";
             // 
-            // SaveButton
+            // SaveItemButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(209, 535);
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(75, 23);
-            this.SaveButton.TabIndex = 32;
-            this.SaveButton.Text = "Save";
-            this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveItemButton.Location = new System.Drawing.Point(209, 535);
+            this.SaveItemButton.Name = "SaveItemButton";
+            this.SaveItemButton.Size = new System.Drawing.Size(75, 23);
+            this.SaveItemButton.TabIndex = 5;
+            this.SaveItemButton.Text = "Save";
+            this.SaveItemButton.UseVisualStyleBackColor = true;
+            this.SaveItemButton.Click += new System.EventHandler(this.SaveItemButtonClick);
             // 
-            // SaveAndCloseButton
+            // SaveItemAndCloseButton
             // 
-            this.SaveAndCloseButton.AutoSize = true;
-            this.SaveAndCloseButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.SaveAndCloseButton.Location = new System.Drawing.Point(324, 535);
-            this.SaveAndCloseButton.Name = "SaveAndCloseButton";
-            this.SaveAndCloseButton.Size = new System.Drawing.Size(92, 23);
-            this.SaveAndCloseButton.TabIndex = 33;
-            this.SaveAndCloseButton.Text = "Save and Close";
-            this.SaveAndCloseButton.UseVisualStyleBackColor = true;
+            this.SaveItemAndCloseButton.AutoSize = true;
+            this.SaveItemAndCloseButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.SaveItemAndCloseButton.Location = new System.Drawing.Point(324, 535);
+            this.SaveItemAndCloseButton.Name = "SaveItemAndCloseButton";
+            this.SaveItemAndCloseButton.Size = new System.Drawing.Size(92, 23);
+            this.SaveItemAndCloseButton.TabIndex = 6;
+            this.SaveItemAndCloseButton.Text = "Save and Close";
+            this.SaveItemAndCloseButton.UseVisualStyleBackColor = true;
+            this.SaveItemAndCloseButton.Click += new System.EventHandler(this.SaveItemAndCloseButtonClick);
             // 
             // CancelItemButton
             // 
@@ -427,33 +532,121 @@
             this.CancelItemButton.Location = new System.Drawing.Point(456, 535);
             this.CancelItemButton.Name = "CancelItemButton";
             this.CancelItemButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelItemButton.TabIndex = 34;
+            this.CancelItemButton.TabIndex = 7;
             this.CancelItemButton.Text = "Cancel";
             this.CancelItemButton.UseVisualStyleBackColor = true;
             // 
-            // CreateItem
+            // auctionsTableAdapter
             // 
+            this.auctionsTableAdapter.ClearBeforeFill = true;
+            // 
+            // donorsTableAdapter
+            // 
+            this.donorsTableAdapter.ClearBeforeFill = true;
+            // 
+            // donorTypesBindingSource
+            // 
+            this.donorTypesBindingSource.DataMember = "DonorTypes";
+            this.donorTypesBindingSource.DataSource = this.silentAuctionDataSet;
+            // 
+            // donorTypesTableAdapter
+            // 
+            this.donorTypesTableAdapter.ClearBeforeFill = true;
+            // 
+            // requestFormatTypesBindingSource
+            // 
+            this.requestFormatTypesBindingSource.DataMember = "RequestFormatTypes";
+            this.requestFormatTypesBindingSource.DataSource = this.silentAuctionDataSet;
+            // 
+            // requestFormatTypesTableAdapter
+            // 
+            this.requestFormatTypesTableAdapter.ClearBeforeFill = true;
+            // 
+            // requestStatusBindingSource
+            // 
+            this.requestStatusBindingSource.DataMember = "RequestStatusTypes";
+            this.requestStatusBindingSource.DataSource = this.silentAuctionDataSet;
+            // 
+            // requestStatusTypesTableAdapter
+            // 
+            this.requestStatusTypesTableAdapter.ClearBeforeFill = true;
+            // 
+            // itemsBindingSource
+            // 
+            this.itemsBindingSource.DataMember = "Items";
+            this.itemsBindingSource.DataSource = this.silentAuctionDataSet;
+            // 
+            // itemsTableAdapter
+            // 
+            this.itemsTableAdapter.ClearBeforeFill = true;
+            // 
+            // itemTypesTableAdapter
+            // 
+            this.itemTypesTableAdapter.ClearBeforeFill = true;
+            // 
+            // bidIncrementTypesTableAdapter
+            // 
+            this.bidIncrementTypesTableAdapter.ClearBeforeFill = true;
+            // 
+            // donationDeliveryTypesTableAdapter
+            // 
+            this.donationDeliveryTypesTableAdapter.ClearBeforeFill = true;
+            // 
+            // itemErrorProvider
+            // 
+            this.itemErrorProvider.ContainerControl = this;
+            // 
+            // BidCalculatorButton
+            // 
+            this.BidCalculatorButton.AutoSize = true;
+            this.BidCalculatorButton.Location = new System.Drawing.Point(435, 146);
+            this.BidCalculatorButton.Name = "BidCalculatorButton";
+            this.BidCalculatorButton.Size = new System.Drawing.Size(111, 23);
+            this.BidCalculatorButton.TabIndex = 39;
+            this.BidCalculatorButton.Text = "Open Bid Calculator";
+            this.BidCalculatorButton.UseVisualStyleBackColor = true;
+            this.BidCalculatorButton.Click += new System.EventHandler(this.BidCalculatorButtonClick);
+            // 
+            // CreateNewItemForm
+            // 
+            this.AcceptButton = this.SaveItemButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelItemButton;
             this.ClientSize = new System.Drawing.Size(741, 582);
             this.Controls.Add(this.CancelItemButton);
-            this.Controls.Add(this.SaveAndCloseButton);
-            this.Controls.Add(this.SaveButton);
+            this.Controls.Add(this.SaveItemAndCloseButton);
+            this.Controls.Add(this.SaveItemButton);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.DonorsComboBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.AuctionsComboBox);
             this.Controls.Add(this.label16);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "CreateItem";
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "CreateNewItemForm";
             this.Text = "Create New Item";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CreateNewItemFormFormClosing);
+            this.Load += new System.EventHandler(this.CreateItemLoad);
+            ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donationDeliveryTypesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemTypesBindingSource)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bidIncrementTypesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donorTypesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.requestStatusBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -464,39 +657,61 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ComboBox AuctionsComboBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox DonorsComboBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox NameTextBox;
+        private System.Windows.Forms.ComboBox DonationDeliveryTypesComboBox;
+        private System.Windows.Forms.ComboBox ItemTypesComboBox;
+        private System.Windows.Forms.TextBox NotesTextBox;
+        private System.Windows.Forms.TextBox QtyTextBox;
+        private System.Windows.Forms.TextBox DescriptionTextBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox NumberOfBidsTextBox;
+        private System.Windows.Forms.ComboBox BidIncrementTypesComboBox;
+        private System.Windows.Forms.TextBox BidIncrementValueTextBox;
+        private System.Windows.Forms.TextBox MaximumBidTextBox;
+        private System.Windows.Forms.TextBox MinimumBidTextBox;
+        private System.Windows.Forms.TextBox BuyItNowTextBox;
+        private System.Windows.Forms.TextBox RetailValueTextBox;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button SaveButton;
-        private System.Windows.Forms.Button SaveAndCloseButton;
+        private System.Windows.Forms.PictureBox ItemPictureBox;
+        private System.Windows.Forms.Button SaveItemButton;
+        private System.Windows.Forms.Button SaveItemAndCloseButton;
         private System.Windows.Forms.Button CancelItemButton;
+        private System.Windows.Forms.BindingSource auctionsBindingSource;
+        private SilentAuctionDataSet silentAuctionDataSet;
+        private SilentAuctionDataSetTableAdapters.AuctionsTableAdapter auctionsTableAdapter;
+        private System.Windows.Forms.BindingSource donorsBindingSource;
+        private SilentAuctionDataSetTableAdapters.DonorsTableAdapter donorsTableAdapter;
+        private System.Windows.Forms.BindingSource donorTypesBindingSource;
+        private SilentAuctionDataSetTableAdapters.DonorTypesTableAdapter donorTypesTableAdapter;
+        private System.Windows.Forms.BindingSource requestFormatTypesBindingSource;
+        private SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter requestFormatTypesTableAdapter;
+        private System.Windows.Forms.BindingSource requestStatusBindingSource;
+        private SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter requestStatusTypesTableAdapter;
+        private System.Windows.Forms.BindingSource itemsBindingSource;
+        private SilentAuctionDataSetTableAdapters.ItemsTableAdapter itemsTableAdapter;
+        private System.Windows.Forms.BindingSource itemTypesBindingSource;
+        private SilentAuctionDataSetTableAdapters.ItemTypesTableAdapter itemTypesTableAdapter;
+        private System.Windows.Forms.BindingSource bidIncrementTypesBindingSource;
+        private SilentAuctionDataSetTableAdapters.BidIncrementTypesTableAdapter bidIncrementTypesTableAdapter;
+        private System.Windows.Forms.BindingSource donationDeliveryTypesBindingSource;
+        private SilentAuctionDataSetTableAdapters.DonationDeliveryTypesTableAdapter donationDeliveryTypesTableAdapter;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ErrorProvider itemErrorProvider;
+        private System.Windows.Forms.Button BidCalculatorButton;
     }
 }

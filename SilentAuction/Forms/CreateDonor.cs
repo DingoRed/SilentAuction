@@ -25,8 +25,14 @@ namespace SilentAuction.Forms
         {
             auctionsTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
             requestFormatTypesTableAdapter.FillRequestFormatTypes(silentAuctionDataSet.RequestFormatTypes);
+            requestStatusTypesTableAdapter.FillRequestStatusType(silentAuctionDataSet.RequestStatusTypes);
             donorTypesTableAdapter.FillDonorTypes(silentAuctionDataSet.DonorTypes);
-            donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionId);
+
+            if (AuctionId > 0)
+            {
+                donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionId);
+                AuctionsComboBox.Enabled = false;
+            }
 
             AuctionsComboBox.SelectedValue = AuctionId;
 
@@ -49,7 +55,7 @@ namespace SilentAuction.Forms
             SaveDonorData();
             DialogResult = DialogResult.None;
             ClearForm();
-
+            CreateDonorErrorProvider.SetError(NameTextBox, "");
             Text = "Create New Donor - Saved Successful";
         }
 

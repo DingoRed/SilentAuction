@@ -76,9 +76,10 @@
             this.auctionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.auctionsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.AuctionsTableAdapter();
             this.AuctionsComboBox = new System.Windows.Forms.ComboBox();
-            this.auctionsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.label16 = new System.Windows.Forms.Label();
             this.CreateDonorErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.requestStatusTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.requestStatusTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.donorTypesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).BeginInit();
@@ -87,8 +88,8 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CreateDonorErrorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.requestStatusTypesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -531,7 +532,7 @@
             // 
             // AuctionsComboBox
             // 
-            this.AuctionsComboBox.DataSource = this.auctionsBindingSource1;
+            this.AuctionsComboBox.DataSource = this.auctionsBindingSource;
             this.AuctionsComboBox.DisplayMember = "Name";
             this.AuctionsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.AuctionsComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -542,11 +543,6 @@
             this.AuctionsComboBox.TabIndex = 1;
             this.AuctionsComboBox.ValueMember = "Id";
             this.AuctionsComboBox.SelectedIndexChanged += new System.EventHandler(this.AuctionsComboBoxSelectedIndexChanged);
-            // 
-            // auctionsBindingSource1
-            // 
-            this.auctionsBindingSource1.DataMember = "Auctions";
-            this.auctionsBindingSource1.DataSource = this.silentAuctionDataSet;
             // 
             // label16
             // 
@@ -561,10 +557,21 @@
             // 
             this.CreateDonorErrorProvider.ContainerControl = this;
             // 
+            // requestStatusTypesBindingSource
+            // 
+            this.requestStatusTypesBindingSource.DataMember = "RequestStatusTypes";
+            this.requestStatusTypesBindingSource.DataSource = this.silentAuctionDataSet;
+            // 
+            // requestStatusTypesTableAdapter
+            // 
+            this.requestStatusTypesTableAdapter.ClearBeforeFill = true;
+            // 
             // CreateNewDonorForm
             // 
+            this.AcceptButton = this.SaveDonorButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.CancelDonorButton;
             this.ClientSize = new System.Drawing.Size(652, 493);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.AuctionsComboBox);
@@ -574,7 +581,10 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "CreateNewDonorForm";
             this.Text = "Create New Donor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CreateNewDonorFormFormClosing);
@@ -590,8 +600,8 @@
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CreateDonorErrorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.requestStatusTypesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -645,8 +655,9 @@
         private System.Windows.Forms.BindingSource auctionsBindingSource;
         private SilentAuctionDataSetTableAdapters.AuctionsTableAdapter auctionsTableAdapter;
         private System.Windows.Forms.ComboBox AuctionsComboBox;
-        private System.Windows.Forms.BindingSource auctionsBindingSource1;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ErrorProvider CreateDonorErrorProvider;
+        private System.Windows.Forms.BindingSource requestStatusTypesBindingSource;
+        private SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter requestStatusTypesTableAdapter;
     }
 }
