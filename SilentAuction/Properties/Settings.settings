@@ -172,5 +172,8 @@
     <Setting Name="DocumentOpenFormInitialLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="BidCalculatorFormInitialLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

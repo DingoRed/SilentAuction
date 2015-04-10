@@ -54,6 +54,12 @@
     <Reference Include="TXTextControl.Windows.Forms, Version=21.0.600.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\BidCalculatorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BidCalculatorForm.Designer.cs">
+      <DependentUpon>BidCalculatorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\DataTableExtender.cs" />
     <Compile Include="Forms\AboutBox.cs">
       <SubType>Form</SubType>
@@ -78,6 +84,12 @@
     </Compile>
     <Compile Include="Forms\CreateDonor.Designer.cs">
       <DependentUpon>CreateDonor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CreateItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreateItem.Designer.cs">
+      <DependentUpon>CreateItem.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\DocumentNameEntry.cs">
       <SubType>Form</SubType>
@@ -133,6 +145,7 @@
     <Compile Include="Forms\NoResponseByDonor.Designer.cs">
       <DependentUpon>NoResponseByDonor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\BidCalculator.cs" />
     <Compile Include="Utilities\EmailHelper.cs" />
     <Compile Include="Utilities\WindowSettings.cs" />
     <Compile Include="Forms\ShowAllItemsByDonorName.cs">
@@ -186,6 +199,9 @@
     <Compile Include="Utilities\DatabaseCreateScripts.cs" />
     <Compile Include="Utilities\DatabaseInitializer.cs" />
     <Compile Include="Utilities\MathHelper.cs" />
+    <EmbeddedResource Include="Forms\BidCalculatorForm.resx">
+      <DependentUpon>BidCalculatorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -197,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CreateDonor.resx">
       <DependentUpon>CreateDonor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreateItem.resx">
+      <DependentUpon>CreateItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DocumentNameEntry.resx">
       <DependentUpon>DocumentNameEntry.cs</DependentUpon>
@@ -277,6 +296,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\SilentAuctionGavel.ico" />
+    <None Include="Resources\calculator.png" />
     <None Include="Resources\save_as.png" />
     <None Include="Resources\newpage.png" />
     <None Include="Resources\email.png" />

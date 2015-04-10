@@ -419,6 +419,11 @@ namespace SilentAuction
                 SetAuctionNameAndGrid();
             }
         }
+
+        private void BidCalculatorToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            BidCalculatorForm.GetForm.Show();
+        }
         #endregion
 
         #region Reports Section...

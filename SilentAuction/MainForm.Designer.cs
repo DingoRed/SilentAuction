@@ -98,6 +98,7 @@
             this.createItemLabelsFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CopyDonorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bidCalculatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.showAllItemsByDonorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -703,7 +704,8 @@
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CopyDonorsToolStripMenuItem});
+            this.CopyDonorsToolStripMenuItem,
+            this.bidCalculatorToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
@@ -712,9 +714,17 @@
             // 
             this.CopyDonorsToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.copy;
             this.CopyDonorsToolStripMenuItem.Name = "CopyDonorsToolStripMenuItem";
-            this.CopyDonorsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.CopyDonorsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.CopyDonorsToolStripMenuItem.Text = "&Copy Donors";
             this.CopyDonorsToolStripMenuItem.Click += new System.EventHandler(this.CopyDonorsToolStripMenuItemClick);
+            // 
+            // bidCalculatorToolStripMenuItem
+            // 
+            this.bidCalculatorToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.calculator;
+            this.bidCalculatorToolStripMenuItem.Name = "bidCalculatorToolStripMenuItem";
+            this.bidCalculatorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.bidCalculatorToolStripMenuItem.Text = "&Bid Calculator";
+            this.bidCalculatorToolStripMenuItem.Click += new System.EventHandler(this.BidCalculatorToolStripMenuItemClick);
             // 
             // reportsToolStripMenuItem
             // 
@@ -729,20 +739,20 @@
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(201, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(181, 6);
             // 
             // showAllItemsByDonorToolStripMenuItem
             // 
             this.showAllItemsByDonorToolStripMenuItem.Name = "showAllItemsByDonorToolStripMenuItem";
-            this.showAllItemsByDonorToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.showAllItemsByDonorToolStripMenuItem.Text = "&Show All Items By Donor";
+            this.showAllItemsByDonorToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.showAllItemsByDonorToolStripMenuItem.Text = "&Items By Donor";
             this.showAllItemsByDonorToolStripMenuItem.Click += new System.EventHandler(this.ShowAllItemsByDonorToolStripMenuItemClick);
             // 
             // donorNoResponseToolStripMenuItem
             // 
             this.donorNoResponseToolStripMenuItem.Name = "donorNoResponseToolStripMenuItem";
-            this.donorNoResponseToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.donorNoResponseToolStripMenuItem.Text = "Donor &No Response";
+            this.donorNoResponseToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.donorNoResponseToolStripMenuItem.Text = "&No Response Donors";
             this.donorNoResponseToolStripMenuItem.Click += new System.EventHandler(this.DonorNoResponseToolStripMenuItemClick);
             // 
             // helpToolStripMenuItem
@@ -1029,5 +1039,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemsModifiedDateColumn;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem createItemLabelsFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bidCalculatorToolStripMenuItem;
     }
 }
