@@ -57,6 +57,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.BidCalculatorButton = new System.Windows.Forms.Button();
             this.NumberOfBidsTextBox = new System.Windows.Forms.TextBox();
             this.BidIncrementTypesComboBox = new System.Windows.Forms.ComboBox();
             this.bidIncrementTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -88,7 +89,6 @@
             this.bidIncrementTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.BidIncrementTypesTableAdapter();
             this.donationDeliveryTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonationDeliveryTypesTableAdapter();
             this.itemErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.BidCalculatorButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).BeginInit();
@@ -193,7 +193,7 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Location = new System.Drawing.Point(12, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(716, 278);
+            this.groupBox1.Size = new System.Drawing.Size(661, 278);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Item Information";
@@ -210,9 +210,11 @@
             // ItemPictureBox
             // 
             this.ItemPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ItemPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ItemPictureBox.Location = new System.Drawing.Point(478, 104);
             this.ItemPictureBox.Name = "ItemPictureBox";
             this.ItemPictureBox.Size = new System.Drawing.Size(150, 150);
+            this.ItemPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ItemPictureBox.TabIndex = 35;
             this.ItemPictureBox.TabStop = false;
             this.ItemPictureBox.Click += new System.EventHandler(this.ItemPictureBoxClick);
@@ -226,7 +228,7 @@
             this.DonationDeliveryTypesComboBox.FormattingEnabled = true;
             this.DonationDeliveryTypesComboBox.Location = new System.Drawing.Point(478, 64);
             this.DonationDeliveryTypesComboBox.Name = "DonationDeliveryTypesComboBox";
-            this.DonationDeliveryTypesComboBox.Size = new System.Drawing.Size(200, 21);
+            this.DonationDeliveryTypesComboBox.Size = new System.Drawing.Size(150, 21);
             this.DonationDeliveryTypesComboBox.TabIndex = 6;
             this.DonationDeliveryTypesComboBox.ValueMember = "Id";
             // 
@@ -244,7 +246,7 @@
             this.ItemTypesComboBox.FormattingEnabled = true;
             this.ItemTypesComboBox.Location = new System.Drawing.Point(478, 23);
             this.ItemTypesComboBox.Name = "ItemTypesComboBox";
-            this.ItemTypesComboBox.Size = new System.Drawing.Size(200, 21);
+            this.ItemTypesComboBox.Size = new System.Drawing.Size(150, 21);
             this.ItemTypesComboBox.TabIndex = 5;
             this.ItemTypesComboBox.ValueMember = "Id";
             // 
@@ -311,6 +313,7 @@
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(184, 20);
             this.NameTextBox.TabIndex = 1;
+            this.NameTextBox.Enter += new System.EventHandler(this.TextBoxEnter);
             // 
             // label3
             // 
@@ -367,10 +370,21 @@
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Location = new System.Drawing.Point(13, 323);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(716, 192);
+            this.groupBox3.Size = new System.Drawing.Size(660, 192);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Bid Information";
+            // 
+            // BidCalculatorButton
+            // 
+            this.BidCalculatorButton.AutoSize = true;
+            this.BidCalculatorButton.Location = new System.Drawing.Point(435, 146);
+            this.BidCalculatorButton.Name = "BidCalculatorButton";
+            this.BidCalculatorButton.Size = new System.Drawing.Size(111, 23);
+            this.BidCalculatorButton.TabIndex = 39;
+            this.BidCalculatorButton.Text = "Open Bid Calculator";
+            this.BidCalculatorButton.UseVisualStyleBackColor = true;
+            this.BidCalculatorButton.Click += new System.EventHandler(this.BidCalculatorButtonClick);
             // 
             // NumberOfBidsTextBox
             // 
@@ -506,7 +520,7 @@
             // 
             // SaveItemButton
             // 
-            this.SaveItemButton.Location = new System.Drawing.Point(209, 535);
+            this.SaveItemButton.Location = new System.Drawing.Point(181, 535);
             this.SaveItemButton.Name = "SaveItemButton";
             this.SaveItemButton.Size = new System.Drawing.Size(75, 23);
             this.SaveItemButton.TabIndex = 5;
@@ -518,7 +532,7 @@
             // 
             this.SaveItemAndCloseButton.AutoSize = true;
             this.SaveItemAndCloseButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.SaveItemAndCloseButton.Location = new System.Drawing.Point(324, 535);
+            this.SaveItemAndCloseButton.Location = new System.Drawing.Point(296, 535);
             this.SaveItemAndCloseButton.Name = "SaveItemAndCloseButton";
             this.SaveItemAndCloseButton.Size = new System.Drawing.Size(92, 23);
             this.SaveItemAndCloseButton.TabIndex = 6;
@@ -529,7 +543,7 @@
             // CancelItemButton
             // 
             this.CancelItemButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelItemButton.Location = new System.Drawing.Point(456, 535);
+            this.CancelItemButton.Location = new System.Drawing.Point(428, 535);
             this.CancelItemButton.Name = "CancelItemButton";
             this.CancelItemButton.Size = new System.Drawing.Size(75, 23);
             this.CancelItemButton.TabIndex = 7;
@@ -596,24 +610,13 @@
             // 
             this.itemErrorProvider.ContainerControl = this;
             // 
-            // BidCalculatorButton
-            // 
-            this.BidCalculatorButton.AutoSize = true;
-            this.BidCalculatorButton.Location = new System.Drawing.Point(435, 146);
-            this.BidCalculatorButton.Name = "BidCalculatorButton";
-            this.BidCalculatorButton.Size = new System.Drawing.Size(111, 23);
-            this.BidCalculatorButton.TabIndex = 39;
-            this.BidCalculatorButton.Text = "Open Bid Calculator";
-            this.BidCalculatorButton.UseVisualStyleBackColor = true;
-            this.BidCalculatorButton.Click += new System.EventHandler(this.BidCalculatorButtonClick);
-            // 
             // CreateNewItemForm
             // 
             this.AcceptButton = this.SaveItemButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelItemButton;
-            this.ClientSize = new System.Drawing.Size(741, 582);
+            this.ClientSize = new System.Drawing.Size(685, 582);
             this.Controls.Add(this.CancelItemButton);
             this.Controls.Add(this.SaveItemAndCloseButton);
             this.Controls.Add(this.SaveItemButton);

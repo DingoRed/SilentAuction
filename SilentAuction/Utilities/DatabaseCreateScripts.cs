@@ -131,7 +131,7 @@ namespace SilentAuction.Utilities
                                                 [BidMaxValue] [real] NULL,
                                                 [BidIncrementValue] [real] NULL,
                                                 [BidBuyItNowValue] [real] NULL,
-                                                [BidNumberOfBids] [real] NULL,
+                                                [BidNumberOfBids] [integer] NULL,
                                                 [Notes]  [nvarchar](5000) NULL,
                                                 [Image] [blob] NULL,
                 	                            [CreateDate] [text] NOT NULL,
@@ -153,7 +153,7 @@ namespace SilentAuction.Utilities
             TablePreLoadScripts = new List<string>();
             TablePreLoadScripts.Add(string.Format(
                 @"INSERT INTO {0} (Name, Description) VALUES ('Increment Value', 'Increments based on the Increment Value');
-                    INSERT INTO {0} (Name, Description) VALUES ('Increment Number', 'Increments based on the Number of Bids');"
+                    INSERT INTO {0} (Name, Description) VALUES ('Number of Bids', 'Increments based on the Number of Bids');"
                 , BidIncrementTypesTableName));
 
             TablePreLoadScripts.Add(string.Format(

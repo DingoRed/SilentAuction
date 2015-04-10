@@ -649,12 +649,12 @@ namespace SilentAuction.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string GenerateItemLabelsFileInitialLocation {
+        public string SelectItemsFormInitialLocation {
             get {
-                return ((string)(this["GenerateItemLabelsFileInitialLocation"]));
+                return ((string)(this["SelectItemsFormInitialLocation"]));
             }
             set {
-                this["GenerateItemLabelsFileInitialLocation"] = value;
+                this["SelectItemsFormInitialLocation"] = value;
             }
         }
         
@@ -691,6 +691,18 @@ namespace SilentAuction.Properties {
             }
             set {
                 this["BidCalculatorFormInitialLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CreateItemInitialLocation {
+            get {
+                return ((string)(this["CreateItemInitialLocation"]));
+            }
+            set {
+                this["CreateItemInitialLocation"] = value;
             }
         }
     }

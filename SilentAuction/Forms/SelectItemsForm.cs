@@ -6,15 +6,15 @@ using SilentAuction.Utilities;
 
 namespace SilentAuction.Forms
 {
-    public partial class GenerateItemLabelsFile : Form
+    public partial class SelectItemsForm : Form
     {
         #region Properties
         private int AuctionId { get; set; }
-        public List<int> ItemIdsToInclude { get; set; }
+        public List<int> ItemIdsSelected { get; set; }
         #endregion
 
         #region Constructor
-        public GenerateItemLabelsFile(int auctionId)
+        public SelectItemsForm(int auctionId)
         {
             AuctionId = auctionId;
 
@@ -46,17 +46,17 @@ namespace SilentAuction.Forms
 
             itemsShortListTableAdapter.FillItems(silentAuctionDataSet.ItemsShortList, AuctionId);
 
-            WindowSettings.SetupInitialWindow(this, "GenerateItemLabelsFileInitialLocation");
+            WindowSettings.SetupInitialWindow(this, "SelectItemsFormInitialLocation");
         }
 
         private void GenerateItemLabelsFileFormClosing(object sender, FormClosingEventArgs e)
         {
-            WindowSettings.SaveWindowSettings(this, "GenerateItemLabelsFileInitialLocation");
+            WindowSettings.SaveWindowSettings(this, "SelectItemsFormInitialLocation");
         }
 
         #endregion
 
-
+        #region Event Handlers
         private void CheckboxHeaderCheckedChanged(object sender, EventArgs e)
         {
             for (int i = 0; i < ItemsDataGridView.RowCount; i++)
@@ -75,20 +75,24 @@ namespace SilentAuction.Forms
             }
         }
 
-        private void MakeFileButtonClick(object sender, EventArgs e)
+        private void SelectItemsButtonClick(object sender, EventArgs e)
         {
-            ItemIdsToInclude = new List<int>();
+            ItemIdsSelected = new List<int>();
 
             foreach (DataGridViewRow row in ItemsDataGridView.Rows)
             {
-                if ((bool) row.Cells[0].Value)
+                if (row.Cells[0].Value != null)
                 {
-                    ItemIdsToInclude.Add(MathHelper.ParseIntZeroIfNull(row.Cells[1].Value.ToString()));
+                    if ((bool) row.Cells[0].Value)
+                    {
+                        ItemIdsSelected.Add(MathHelper.ParseIntZeroIfNull(row.Cells[1].Value.ToString()));
+                    }
                 }
             }
 
             DialogResult = DialogResult.OK;
             Close();
         }
+        #endregion
     }
 }

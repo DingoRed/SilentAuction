@@ -127,11 +127,11 @@
     <Compile Include="Forms\DocumentEditor.Designer.cs">
       <DependentUpon>DocumentEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\GenerateItemLabelsFile.cs">
+    <Compile Include="Forms\SelectItemsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\GenerateItemLabelsFile.Designer.cs">
-      <DependentUpon>GenerateItemLabelsFile.cs</DependentUpon>
+    <Compile Include="Forms\SelectItemsForm.Designer.cs">
+      <DependentUpon>SelectItemsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\GenerateAddressLabelsFile.cs">
       <SubType>Form</SubType>
@@ -235,8 +235,8 @@
     <EmbeddedResource Include="Forms\GenerateAddressLabelsFile.resx">
       <DependentUpon>GenerateAddressLabelsFile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\GenerateItemLabelsFile.resx">
-      <DependentUpon>GenerateItemLabelsFile.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\SelectItemsForm.resx">
+      <DependentUpon>SelectItemsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NoResponseByDonor.resx">
       <DependentUpon>NoResponseByDonor.cs</DependentUpon>
@@ -296,6 +296,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\SilentAuctionGavel.ico" />
+    <None Include="Resources\report.png" />
+    <None Include="Resources\file_extension_txt.png" />
     <None Include="Resources\calculator.png" />
     <None Include="Resources\save_as.png" />
     <None Include="Resources\newpage.png" />

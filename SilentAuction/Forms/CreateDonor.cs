@@ -66,6 +66,7 @@ namespace SilentAuction.Forms
 
             SaveDonorData();
             DialogResult = DialogResult.OK;
+            Close();
         }
 
         private void AuctionsComboBoxSelectedIndexChanged(object sender, EventArgs e)

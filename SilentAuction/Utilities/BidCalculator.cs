@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SilentAuction.Utilities
 {
-    public enum BidIncrementType { IncrementValue = 1, IncrementNumber }
+    public enum BidIncrementType { IncrementValue = 1, NumberOfBids }
 
     public class BidCalculator
     {
@@ -22,7 +22,7 @@ namespace SilentAuction.Utilities
         {
             List<decimal> bidList = new List<decimal>();
 
-            int numberOfLines = bidIncrementType == BidIncrementType.IncrementNumber ? 
+            int numberOfLines = bidIncrementType == BidIncrementType.NumberOfBids ? 
                 numberOfBids : CalculateNumberOfLines(minValue, maxValue, incrementValue);
 
             decimal amountPerLine = bidIncrementType == BidIncrementType.IncrementValue ? 

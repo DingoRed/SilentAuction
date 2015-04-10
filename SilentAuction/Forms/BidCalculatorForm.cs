@@ -42,7 +42,7 @@ namespace SilentAuction.Forms
         #region Event Handlers
         private void BCalcButtonClick(object sender, EventArgs e)
         {
-            Calc(BidIncrementType.IncrementNumber);
+            Calc(BidIncrementType.NumberOfBids);
         }
         
         private void VCalcButtonClick(object sender, EventArgs e)
@@ -64,7 +64,7 @@ namespace SilentAuction.Forms
             int numberOfBids = 0;
             decimal incrementValue = 0;
 
-            if (bidIncrementType == BidIncrementType.IncrementNumber)
+            if (bidIncrementType == BidIncrementType.NumberOfBids)
             {
                 minValue = MathHelper.ParseDecimalZeroIfNull(BMinValueTextBox.Text);
                 maxValue = MathHelper.ParseDecimalZeroIfNull(BMaxValueTextBox.Text);
@@ -99,11 +99,11 @@ namespace SilentAuction.Forms
             bool isValid = true;
             bidCalculatorErrorProvider.Clear();
 
-            TextBox minValueTextBox = bidIncrementType == BidIncrementType.IncrementNumber
+            TextBox minValueTextBox = bidIncrementType == BidIncrementType.NumberOfBids
                 ? BMinValueTextBox
                 : VMinValueTextBox;
 
-            TextBox maxValueTextBox = bidIncrementType == BidIncrementType.IncrementNumber
+            TextBox maxValueTextBox = bidIncrementType == BidIncrementType.NumberOfBids
                 ? BMaxValueTextBox
                 : VMaxValueTextBox;
             
@@ -141,7 +141,7 @@ namespace SilentAuction.Forms
                 isValid = false;
             }
             
-            if (bidIncrementType == BidIncrementType.IncrementNumber)
+            if (bidIncrementType == BidIncrementType.NumberOfBids)
             {
                 // Validate Number of Bids...
                 if (string.IsNullOrEmpty(BNbrOfBidsTextBox.Text))

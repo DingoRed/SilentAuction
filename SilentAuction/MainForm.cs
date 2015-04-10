@@ -9,7 +9,10 @@ using System.Windows.Forms;
 using SilentAuction.Extensions;
 using SilentAuction.Forms;
 using SilentAuction.Properties;
+using SilentAuction.SilentAuctionDataSetTableAdapters;
 using SilentAuction.Utilities;
+using TXTextControl;
+
 #endregion
 
 namespace SilentAuction
@@ -17,7 +20,8 @@ namespace SilentAuction
     public partial class MainForm : Form
     {
         #region Fields
-        private readonly byte[] _emptyImage = {
+        private readonly byte[] _emptyImage = 
+        {
             137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 
             1, 8, 6, 0, 0, 0, 31, 21, 196, 137, 0, 0, 0, 1, 115, 82, 71, 66, 0, 174, 206, 28, 
             233, 0, 0, 0, 4, 103, 65, 77, 65, 0, 0, 177, 143, 11, 252, 97, 5, 0, 0, 0, 9, 112, 
@@ -55,10 +59,11 @@ namespace SilentAuction
             donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionIdInUse);
             itemsTableAdapter.FillItems(silentAuctionDataSet.Items, AuctionIdInUse);
 
-            WindowSettings.SetupInitialWindow(this, "MainFormInitialLocation");
             SetupGrids();
             SetAuctionNameAndGrid();
             SetupToolStripMenuItems();
+
+            WindowSettings.SetupInitialWindow(this, "MainFormInitialLocation");
         }
 
         private void MainFormFormClosing(object sender, FormClosingEventArgs e)
@@ -80,11 +85,21 @@ namespace SilentAuction
         #endregion
 
         #region Items Event Handlers
+        private void ItemsDataGridViewRowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            DataGridViewRow row = ItemsDataGridView.Rows[e.RowIndex];
+            if (row.IsNewRow)
+            {
+                row.Cells[ItemsImageColumn.Index].Value = _emptyImage;
+            }
+        }
+
         private void ItemsDataGridViewDataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             DataGridView view = (DataGridView) sender;
             view.Rows[e.RowIndex].ErrorText = e.Exception.Message;
-
+            view.Rows[e.RowIndex].Cells[e.ColumnIndex].ErrorText = e.Exception.Message;
+            
             MainFormStatusLabel.Text = e.Exception.Message;
             MainFormStatusLabel.Visible = true;
 
@@ -172,13 +187,13 @@ namespace SilentAuction
         private void ItemsDataGridViewDefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
             DateTime currentDate = DateTime.Now;
-            e.Row.Cells["ItemsCreateDateColumn"].Value = currentDate;
-            e.Row.Cells["ItemsModifiedDateColumn"].Value = currentDate;
-            e.Row.Cells["ItemsDonorIdColumn"].Value = silentAuctionDataSet.Donors.AsEnumerable().Min(d => d.Id);
-            e.Row.Cells["ItemsQtyColumn"].Value = 1;
-            e.Row.Cells["ItemsAuctionIdColumn"].Value = AuctionIdInUse;
-            e.Row.Cells["ItemsBidIncrementTypeColumn"].Value = 1;
-            e.Row.Cells["ItemsImageColumn"].Value = new Bitmap(1, 1);
+            e.Row.Cells[ItemsCreateDateColumn.Index].Value = currentDate;
+            e.Row.Cells[ItemsModifiedDateColumn.Index].Value = currentDate;
+            e.Row.Cells[ItemsDonorIdColumn.Index].Value = silentAuctionDataSet.Donors.AsEnumerable().Min(d => d.Id);
+            e.Row.Cells[ItemsQtyColumn.Index].Value = 1;
+            e.Row.Cells[ItemsAuctionIdColumn.Index].Value = AuctionIdInUse;
+            e.Row.Cells[ItemsBidIncrementTypeColumn.Index].Value = 1;
+            e.Row.Cells[ItemsImageColumn.Index].Value = _emptyImage;
         }        
         
         private void ItemsDataGridViewCellClick(object sender, DataGridViewCellEventArgs e)
@@ -188,42 +203,48 @@ namespace SilentAuction
             {
                 if (ItemsDataGridView.Columns[e.ColumnIndex].CellType == typeof (DataGridViewImageCell))
                 {
-                    // TODO: Something wrong with _emptyImage...not the same on each computer?
-                    if (((byte[])ItemsDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value).SequenceEqual(_emptyImage))
+                    DialogResult result = MessageBox.Show("Replace the image?", "Replace Image", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
                     {
-                        DialogResult result = MessageBox.Show("Add an image?", "Add Image", MessageBoxButtons.YesNo);
-                        if (result == DialogResult.Yes)
+                        using (OpenFileDialog openFileDialog = new OpenFileDialog())
                         {
-                            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                            ImageCodecInfo[] codecs = ImageCodecInfo.GetImageEncoders();
+                            string sep = string.Empty;
+
+                            foreach (var c in codecs)
                             {
-                                ImageCodecInfo[] codecs = ImageCodecInfo.GetImageEncoders();
-                                string sep = string.Empty;
-
-                                foreach (var c in codecs)
-                                {
-                                    string codecName = c.CodecName.Substring(8).Replace("Codec", "Files").Trim();
-                                    openFileDialog.Filter = String.Format("{0}{1}{2} ({3})|{3}", openFileDialog.Filter, sep,
-                                        codecName, c.FilenameExtension);
-                                    sep = "|";
-                                }
-
+                                string codecName = c.CodecName.Substring(8).Replace("Codec", "Files").Trim();
                                 openFileDialog.Filter = String.Format("{0}{1}{2} ({3})|{3}", openFileDialog.Filter, sep,
-                                    "All Files", "*.*");
+                                    codecName, c.FilenameExtension);
+                                sep = "|";
+                            }
 
-                                openFileDialog.DefaultExt = ".PNG"; // Default file extension 
+                            openFileDialog.Filter = String.Format("{0}{1}{2} ({3})|{3}", openFileDialog.Filter, sep,
+                                "All Files", "*.*");
 
-                                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                                {
-                                    var bitmap = new Bitmap(openFileDialog.FileName);
-                                    ImageConverter converter = new ImageConverter();
-                                    var byteArray = (byte[])converter.ConvertTo(bitmap, typeof(byte[]));
+                            openFileDialog.DefaultExt = ".PNG"; // Default file extension 
 
-                                    ItemsDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = byteArray;
-                                }
+                            if (openFileDialog.ShowDialog() == DialogResult.OK)
+                            {
+                                var bitmap = new Bitmap(openFileDialog.FileName);
+                                ImageConverter converter = new ImageConverter();
+                                var byteArray = (byte[]) converter.ConvertTo(bitmap, typeof (byte[]));
+
+                                ItemsDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = byteArray;
                             }
                         }
                     }
-                    else
+                }
+            }
+        }
+
+        private void ItemsDataGridViewCellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    if (ItemsDataGridView.Columns[e.ColumnIndex].CellType == typeof (DataGridViewImageCell))
                     {
                         DialogResult result = MessageBox.Show("Delete the image?", "Delete Image", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
@@ -385,14 +406,54 @@ namespace SilentAuction
             documentEditor.ShowDialog();
         }
 
+        private void PrintBidSheetsToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            List<int> itemIdsToInclude = new List<int>();
+            SelectItemsForm selectItemsForm = new SelectItemsForm(AuctionIdInUse);
+            DialogResult result = selectItemsForm.ShowDialog();
+            if (result == DialogResult.OK)
+                itemIdsToInclude = selectItemsForm.ItemIdsSelected;
+            else if (result == DialogResult.Cancel)
+                return;
+
+            DialogResult = DialogResult.None;
+
+            DataTable itemsToPrintTable = new SilentAuctionDataSet.ItemsDataTable();
+
+            foreach (SilentAuctionDataSet.ItemsRow itemsRow in silentAuctionDataSet.Items.Rows)
+            {
+                if (itemIdsToInclude.Contains((int)itemsRow.Id))
+                {
+                    itemsToPrintTable.Rows.Add(itemsRow.ItemArray);
+                }
+            }
+
+            // TODO: Implement the iteration and printing...
+
+
+
+
+
+
+            TextControl textControl = new TextControl();
+
+
+
+
+
+
+
+
+        }
+
         private void CreateLabelsFileToolStripMenuItemClick(object sender, EventArgs e)
         {
             List<int> donorIdsToInclude = new List<int>();
 
-            GenerateAddressLabelsFile labelsFile = new GenerateAddressLabelsFile(AuctionIdInUse);
-            DialogResult result = labelsFile.ShowDialog();
+            GenerateAddressLabelsFile addressLabelsFile = new GenerateAddressLabelsFile(AuctionIdInUse);
+            DialogResult result = addressLabelsFile.ShowDialog();
             if (result == DialogResult.OK)
-                donorIdsToInclude = labelsFile.DonorIdsToInclude;
+                donorIdsToInclude = addressLabelsFile.DonorIdsToInclude;
             else if(result == DialogResult.Cancel)
                 return;
             
@@ -410,17 +471,41 @@ namespace SilentAuction
             }
 
             string csvFile = dt.DataTableToCsvFormat();
-            SaveCsvFile(csvFile, "SilentAuctionLabels");
+            SaveCsvFile(csvFile, "Silent Auction Addresses");
         }
-        
+
         private void CreateItemLabelsFileToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO: Generate file
-            GenerateItemLabelsFile itemLabelsFile = new GenerateItemLabelsFile(AuctionIdInUse);
-            itemLabelsFile.ShowDialog();
+            List<int> itemIdsToInclude = new List<int>();
+
+            SelectItemsForm selectItemsForm = new SelectItemsForm(AuctionIdInUse);
+            DialogResult result = selectItemsForm.ShowDialog();
+            if (result == DialogResult.OK) 
+                itemIdsToInclude = selectItemsForm.ItemIdsSelected;
+            else if (result == DialogResult.Cancel)
+                return;
+
+            DialogResult = DialogResult.None;
+
+            SilentAuctionDataSet.ItemsShortListDataTable itemsShortListDataTable = 
+                new SilentAuctionDataSet.ItemsShortListDataTable();
+            new ItemsShortListTableAdapter().FillItems(itemsShortListDataTable, AuctionIdInUse);
+
+            DataTable dt = new SilentAuctionDataSet.ItemsShortListDataTable();
+
+            foreach (SilentAuctionDataSet.ItemsShortListRow itemsShortListRow in itemsShortListDataTable.Rows)
+            {
+                if (itemIdsToInclude.Contains((int) itemsShortListRow.Id))
+                {
+                    dt.Rows.Add(itemsShortListRow.ItemArray);
+                }
+            }
+
+            string csvFile = dt.DataTableToCsvFormat();
+            SaveCsvFile(csvFile, "Silent Auction Items");
         }
         #endregion
-
+        
         #region Tools Section...
         private void CopyDonorsToolStripMenuItemClick(object sender, EventArgs e)
         {
@@ -570,10 +655,12 @@ namespace SilentAuction
 
         private void SetupToolStripMenuItems()
         {
-            // TODO: Disable/Enable toolstrip items
-
+            SilentAuctionDataSet.DonorsDataTable allDonorsTable = new SilentAuctionDataSet.DonorsDataTable();
+            donorsTableAdapter.FillAllDonors(allDonorsTable);
+            
             // File Section...
-            // NewDonorToolStripMenuItem.Enabled = AuctionIdInUse > 0;
+            NewDonorToolStripMenuItem.Enabled = (silentAuctionDataSet.Auctions.Rows.Count > 0);
+            NewItemToolStripMenuItem.Enabled = (allDonorsTable.Rows.Count > 0);
             OpenAuctionToolStripMenuItem.Enabled = (silentAuctionDataSet.Auctions.Rows.Count > 0);
             CloseAuctionToolStripMenuItem.Enabled = AuctionIdInUse > 0;
             SaveToolStripMenuItem.Enabled = ((AuctionIdInUse > 0) && 
@@ -594,13 +681,21 @@ namespace SilentAuction
             // Documents Section...
             DocumentEditorToolStripMenuItem.Enabled = ((AuctionIdInUse > 0) &&
                 (silentAuctionDataSet.Donors.Rows.Count > 0));
+            CreateAddressLabelsFileToolStripMenuItem.Enabled = ((AuctionIdInUse > 0) &&
+                (silentAuctionDataSet.Donors.Rows.Count > 0));
+            CreateItemLabelsFileToolStripMenuItem.Enabled = ((AuctionIdInUse > 0) &&
+                (silentAuctionDataSet.Donors.Rows.Count > 0));
 
+            // Tools Section...
+            CopyDonorsToolStripMenuItem.Enabled = silentAuctionDataSet.Auctions.Rows.Count > 1;
 
-            SilentAuctionDataSet.DonorsDataTable allDonorsTable = new SilentAuctionDataSet.DonorsDataTable();
-            donorsTableAdapter.FillAllDonors(allDonorsTable);
-            showAllItemsByDonorToolStripMenuItem.Enabled = (allDonorsTable.Rows.Count > 0);
+            // Reports Section...
+            ShowAllItemsByDonorToolStripMenuItem.Enabled = (allDonorsTable.Rows.Count > 0);
+            donorNoResponseToolStripMenuItem.Enabled = ((AuctionIdInUse > 0) &&
+                (silentAuctionDataSet.Donors.Rows.Count > 0));
         }
         #endregion
+
 
     }
 }

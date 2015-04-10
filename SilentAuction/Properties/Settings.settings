@@ -163,7 +163,7 @@
     <Setting Name="ItemsIdColumnWidth" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">100</Value>
     </Setting>
-    <Setting Name="GenerateItemLabelsFileInitialLocation" Type="System.String" Scope="User">
+    <Setting Name="SelectItemsFormInitialLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="DocumentNameEntryInitialLocation" Type="System.String" Scope="User">
@@ -173,6 +173,9 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="BidCalculatorFormInitialLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CreateItemInitialLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

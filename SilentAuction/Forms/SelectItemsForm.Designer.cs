@@ -1,6 +1,6 @@
 ﻿namespace SilentAuction.Forms
 {
-    partial class GenerateItemLabelsFile
+    partial class SelectItemsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GenerateItemLabelsFile));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectItemsForm));
             this.ItemsDataGridView = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,8 +41,8 @@
             this.silentAuctionDataSet = new SilentAuction.SilentAuctionDataSet();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.CancelMakeFileButton = new System.Windows.Forms.Button();
-            this.MakeFileButton = new System.Windows.Forms.Button();
+            this.CancelSelectItemButton = new System.Windows.Forms.Button();
+            this.SelectFileButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.itemsShortListTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.ItemsShortListTableAdapter();
@@ -156,33 +156,33 @@
             // panel2
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.panel2, 2);
-            this.panel2.Controls.Add(this.CancelMakeFileButton);
-            this.panel2.Controls.Add(this.MakeFileButton);
+            this.panel2.Controls.Add(this.CancelSelectItemButton);
+            this.panel2.Controls.Add(this.SelectFileButton);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 224);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(563, 34);
             this.panel2.TabIndex = 0;
             // 
-            // CancelMakeFileButton
+            // CancelSelectItemButton
             // 
-            this.CancelMakeFileButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelMakeFileButton.Location = new System.Drawing.Point(295, 3);
-            this.CancelMakeFileButton.Name = "CancelMakeFileButton";
-            this.CancelMakeFileButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelMakeFileButton.TabIndex = 1;
-            this.CancelMakeFileButton.Text = "Cancel";
-            this.CancelMakeFileButton.UseVisualStyleBackColor = true;
+            this.CancelSelectItemButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelSelectItemButton.Location = new System.Drawing.Point(295, 3);
+            this.CancelSelectItemButton.Name = "CancelSelectItemButton";
+            this.CancelSelectItemButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelSelectItemButton.TabIndex = 1;
+            this.CancelSelectItemButton.Text = "Cancel";
+            this.CancelSelectItemButton.UseVisualStyleBackColor = true;
             // 
-            // MakeFileButton
+            // SelectFileButton
             // 
-            this.MakeFileButton.Location = new System.Drawing.Point(188, 4);
-            this.MakeFileButton.Name = "MakeFileButton";
-            this.MakeFileButton.Size = new System.Drawing.Size(75, 23);
-            this.MakeFileButton.TabIndex = 0;
-            this.MakeFileButton.Text = "Make File";
-            this.MakeFileButton.UseVisualStyleBackColor = true;
-            this.MakeFileButton.Click += new System.EventHandler(this.MakeFileButtonClick);
+            this.SelectFileButton.Location = new System.Drawing.Point(188, 4);
+            this.SelectFileButton.Name = "SelectFileButton";
+            this.SelectFileButton.Size = new System.Drawing.Size(75, 23);
+            this.SelectFileButton.TabIndex = 0;
+            this.SelectFileButton.Text = "Select";
+            this.SelectFileButton.UseVisualStyleBackColor = true;
+            this.SelectFileButton.Click += new System.EventHandler(this.SelectItemsButtonClick);
             // 
             // panel1
             // 
@@ -199,24 +199,25 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 1);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(145, 13);
+            this.label1.Size = new System.Drawing.Size(115, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Select Items to Include in File";
+            this.label1.Text = "Select Items to Include";
             // 
             // itemsShortListTableAdapter
             // 
             this.itemsShortListTableAdapter.ClearBeforeFill = true;
             // 
-            // GenerateItemLabelsFile
+            // SelectItemsForm
             // 
+            this.AcceptButton = this.SelectFileButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.CancelMakeFileButton;
+            this.CancelButton = this.CancelSelectItemButton;
             this.ClientSize = new System.Drawing.Size(569, 261);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "GenerateItemLabelsFile";
-            this.Text = "Generate Item Labels File";
+            this.Name = "SelectItemsForm";
+            this.Text = "Select Items";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GenerateItemLabelsFileFormClosing);
             this.Load += new System.EventHandler(this.GenerateItemLabelsFileLoad);
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDataGridView)).EndInit();
@@ -240,8 +241,8 @@
         private System.Windows.Forms.BindingSource itemsShortListBindingSource;
         private SilentAuctionDataSet silentAuctionDataSet;
         private SilentAuctionDataSetTableAdapters.ItemsShortListTableAdapter itemsShortListTableAdapter;
-        private System.Windows.Forms.Button CancelMakeFileButton;
-        private System.Windows.Forms.Button MakeFileButton;
+        private System.Windows.Forms.Button CancelSelectItemButton;
+        private System.Windows.Forms.Button SelectFileButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn donorNameDataGridViewTextBoxColumn;
