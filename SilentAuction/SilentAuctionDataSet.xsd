@@ -806,7 +806,8 @@ ORDER BY D.Name</CommandText>
               <DbSource ConnectionRef="SilentAuctionConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillItems" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetItemsData" GeneratorSourceName="FillItems" GetMethodModifier="Public" GetMethodName="GetItemsData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetItemsData" UserSourceName="FillItems">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        I.Id, I.Name AS ItemName, D.Name AS DonorName, I.Description, I.Qty, IFNULL(IT.Name, 'Empty') AS ItemType
+                    <CommandText>SELECT        I.Id, I.Name AS ItemName, D.Name AS DonorName, I.Description, I.Qty, IFNULL(IT.Name, 'Empty') AS ItemType, I.RetailValue, I.BidBuyItNowValue, 
+                         I.BidIncrementTypeId, I.BidMinValue, I.BidMaxValue, I.BidIncrementValue, I.BidNumberOfBids
 FROM            Items I INNER JOIN
                          Donors D ON I.DonorId = D.Id LEFT OUTER JOIN
                          ItemTypes IT ON I.ItemTypeId = IT.Id
@@ -826,6 +827,13 @@ ORDER BY I.Id</CommandText>
               <Mapping SourceColumn="Description" DataSetColumn="Description" />
               <Mapping SourceColumn="Qty" DataSetColumn="Qty" />
               <Mapping SourceColumn="ItemType" DataSetColumn="ItemType" />
+              <Mapping SourceColumn="RetailValue" DataSetColumn="RetailValue" />
+              <Mapping SourceColumn="BidBuyItNowValue" DataSetColumn="BidBuyItNowValue" />
+              <Mapping SourceColumn="BidIncrementTypeId" DataSetColumn="BidIncrementTypeId" />
+              <Mapping SourceColumn="BidMinValue" DataSetColumn="BidMinValue" />
+              <Mapping SourceColumn="BidMaxValue" DataSetColumn="BidMaxValue" />
+              <Mapping SourceColumn="BidIncrementValue" DataSetColumn="BidIncrementValue" />
+              <Mapping SourceColumn="BidNumberOfBids" DataSetColumn="BidNumberOfBids" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -1415,6 +1423,13 @@ FROM            Documents</CommandText>
               </xs:element>
               <xs:element name="Qty" msprop:Generator_ColumnVarNameInTable="columnQty" msprop:Generator_ColumnPropNameInRow="Qty" msprop:Generator_ColumnPropNameInTable="QtyColumn" msprop:Generator_UserColumnName="Qty" type="xs:long" />
               <xs:element name="ItemType" msprop:Generator_ColumnVarNameInTable="columnItemType" msprop:Generator_ColumnPropNameInRow="ItemType" msprop:Generator_ColumnPropNameInTable="ItemTypeColumn" msprop:Generator_UserColumnName="ItemType" type="xs:anyType" minOccurs="0" />
+              <xs:element name="RetailValue" msprop:Generator_ColumnVarNameInTable="columnRetailValue" msprop:Generator_ColumnPropNameInRow="RetailValue" msprop:Generator_ColumnPropNameInTable="RetailValueColumn" msprop:Generator_UserColumnName="RetailValue" type="xs:double" minOccurs="0" />
+              <xs:element name="BidBuyItNowValue" msprop:Generator_ColumnVarNameInTable="columnBidBuyItNowValue" msprop:Generator_ColumnPropNameInRow="BidBuyItNowValue" msprop:Generator_ColumnPropNameInTable="BidBuyItNowValueColumn" msprop:Generator_UserColumnName="BidBuyItNowValue" type="xs:double" minOccurs="0" />
+              <xs:element name="BidIncrementTypeId" msprop:Generator_ColumnVarNameInTable="columnBidIncrementTypeId" msprop:Generator_ColumnPropNameInRow="BidIncrementTypeId" msprop:Generator_ColumnPropNameInTable="BidIncrementTypeIdColumn" msprop:Generator_UserColumnName="BidIncrementTypeId" type="xs:long" />
+              <xs:element name="BidMinValue" msprop:Generator_ColumnVarNameInTable="columnBidMinValue" msprop:Generator_ColumnPropNameInRow="BidMinValue" msprop:Generator_ColumnPropNameInTable="BidMinValueColumn" msprop:Generator_UserColumnName="BidMinValue" type="xs:double" minOccurs="0" />
+              <xs:element name="BidMaxValue" msprop:Generator_ColumnVarNameInTable="columnBidMaxValue" msprop:Generator_ColumnPropNameInRow="BidMaxValue" msprop:Generator_ColumnPropNameInTable="BidMaxValueColumn" msprop:Generator_UserColumnName="BidMaxValue" type="xs:double" minOccurs="0" />
+              <xs:element name="BidIncrementValue" msprop:Generator_ColumnVarNameInTable="columnBidIncrementValue" msprop:Generator_ColumnPropNameInRow="BidIncrementValue" msprop:Generator_ColumnPropNameInTable="BidIncrementValueColumn" msprop:Generator_UserColumnName="BidIncrementValue" type="xs:double" minOccurs="0" />
+              <xs:element name="BidNumberOfBids" msprop:Generator_ColumnVarNameInTable="columnBidNumberOfBids" msprop:Generator_ColumnPropNameInRow="BidNumberOfBids" msprop:Generator_ColumnPropNameInTable="BidNumberOfBidsColumn" msprop:Generator_UserColumnName="BidNumberOfBids" type="xs:long" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

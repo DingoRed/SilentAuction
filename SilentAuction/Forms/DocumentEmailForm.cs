@@ -7,7 +7,7 @@ using SilentAuction.Utilities;
 
 namespace SilentAuction.Forms
 {
-    public partial class EmailForm : Form
+    public partial class DocumentEmailForm : Form
     {
         #region Properties
         private int AuctionId { get; set; }
@@ -19,7 +19,7 @@ namespace SilentAuction.Forms
         #endregion
 
         #region Constructor
-        public EmailForm(int auctionId)
+        public DocumentEmailForm(int auctionId)
         {
             AuctionId = auctionId;
 

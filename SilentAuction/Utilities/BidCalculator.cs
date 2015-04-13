@@ -20,7 +20,17 @@ namespace SilentAuction.Utilities
         public List<decimal> GetBidList(BidIncrementType bidIncrementType, decimal minValue, decimal maxValue,
             decimal incrementValue, int numberOfBids)
         {
+            if (bidIncrementType == BidIncrementType.IncrementValue && incrementValue <= 0)
+                throw new Exception("Invalid Increment Value");
+            if (bidIncrementType == BidIncrementType.NumberOfBids && numberOfBids <= 0)
+                throw new Exception("Invalid Number of Bids");
+            if (minValue < 0)
+                throw new Exception("Invalid Minimum Value");
+            if (maxValue <= minValue)
+                throw new Exception("Invalid Maximum Value");
+
             List<decimal> bidList = new List<decimal>();
+
 
             int numberOfLines = bidIncrementType == BidIncrementType.NumberOfBids ? 
                 numberOfBids : CalculateNumberOfLines(minValue, maxValue, incrementValue);

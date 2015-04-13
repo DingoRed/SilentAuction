@@ -1,20 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using SilentAuction.Extensions;
+using SilentAuction.SilentAuctionDataSetTableAdapters;
 using SilentAuction.Utilities;
 
 namespace SilentAuction.Forms
 {
-    public partial class SelectItemsForm : Form
+    public partial class GenerateItemLabelsFile : Form
     {
         #region Properties
         private int AuctionId { get; set; }
-        public List<int> ItemIdsSelected { get; set; }
+        public List<int> ItemIdsToInclude { get; set; }
         #endregion
 
         #region Constructor
-        public SelectItemsForm(int auctionId)
+        public GenerateItemLabelsFile(int auctionId)
         {
             AuctionId = auctionId;
 
@@ -75,9 +78,9 @@ namespace SilentAuction.Forms
             }
         }
 
-        private void SelectItemsButtonClick(object sender, EventArgs e)
+        private void MakeFileButtonClick(object sender, EventArgs e)
         {
-            ItemIdsSelected = new List<int>();
+            ItemIdsToInclude = new List<int>();
 
             foreach (DataGridViewRow row in ItemsDataGridView.Rows)
             {
@@ -85,13 +88,33 @@ namespace SilentAuction.Forms
                 {
                     if ((bool) row.Cells[0].Value)
                     {
-                        ItemIdsSelected.Add(MathHelper.ParseIntZeroIfNull(row.Cells[1].Value.ToString()));
+                        ItemIdsToInclude.Add(MathHelper.ParseIntZeroIfNull(row.Cells[1].Value.ToString()));
                     }
                 }
             }
 
-            DialogResult = DialogResult.OK;
-            Close();
+            SilentAuctionDataSet.ItemsShortListDataTable itemsShortListDataTable =
+                new SilentAuctionDataSet.ItemsShortListDataTable();
+            new ItemsShortListTableAdapter().FillItems(itemsShortListDataTable, AuctionId);
+
+            DataTable dt = new SilentAuctionDataSet.ItemsShortListDataTable();
+
+            foreach (SilentAuctionDataSet.ItemsShortListRow row in itemsShortListDataTable.Rows)
+            {
+                if (ItemIdsToInclude.Contains((int)row.Id))
+                {
+                    dt.Rows.Add(row.ItemArray);
+                }
+            }
+
+            string csvFile = dt.DataTableToCsvFormat();
+
+            if (FileHelper.SaveCsvFile(csvFile, "Silent Auction Items"))
+            {
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            else DialogResult = DialogResult.None;
         }
         #endregion
     }

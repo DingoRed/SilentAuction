@@ -129,10 +129,6 @@
             this.requestFormatTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter();
             this.requestStatusTypesbindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.requestStatusTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter();
-            this.donorRequestPrintDocument = new System.Drawing.Printing.PrintDocument();
-            this.donorAddressesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.donorAddressesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorAddressesTableAdapter();
-            this.bidSheetPrintDocument = new System.Drawing.Printing.PrintDocument();
             this.ItemsTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).BeginInit();
@@ -150,7 +146,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.donorTypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestStatusTypesbindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.donorAddressesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // ItemsTableLayoutPanel
@@ -707,6 +702,7 @@
             // 
             // PrintBidSheetsToolStripMenuItem
             // 
+            this.PrintBidSheetsToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.print;
             this.PrintBidSheetsToolStripMenuItem.Name = "PrintBidSheetsToolStripMenuItem";
             this.PrintBidSheetsToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.PrintBidSheetsToolStripMenuItem.Text = "&Print Bid Sheets";
@@ -746,7 +742,7 @@
             // 
             this.CopyDonorsToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.copy;
             this.CopyDonorsToolStripMenuItem.Name = "CopyDonorsToolStripMenuItem";
-            this.CopyDonorsToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.CopyDonorsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.CopyDonorsToolStripMenuItem.Text = "&Copy Donors";
             this.CopyDonorsToolStripMenuItem.Click += new System.EventHandler(this.CopyDonorsToolStripMenuItemClick);
             // 
@@ -754,7 +750,7 @@
             // 
             this.bidCalculatorToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.calculator;
             this.bidCalculatorToolStripMenuItem.Name = "bidCalculatorToolStripMenuItem";
-            this.bidCalculatorToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.bidCalculatorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.bidCalculatorToolStripMenuItem.Text = "&Bid Calculator";
             this.bidCalculatorToolStripMenuItem.Click += new System.EventHandler(this.BidCalculatorToolStripMenuItemClick);
             // 
@@ -926,19 +922,6 @@
             // 
             this.requestStatusTypesTableAdapter.ClearBeforeFill = true;
             // 
-            // donorRequestPrintDocument
-            // 
-            this.donorRequestPrintDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.DonorRequestPrintDocumentPrintPage);
-            // 
-            // donorAddressesBindingSource
-            // 
-            this.donorAddressesBindingSource.DataMember = "DonorAddresses";
-            this.donorAddressesBindingSource.DataSource = this.silentAuctionDataSet;
-            // 
-            // donorAddressesTableAdapter
-            // 
-            this.donorAddressesTableAdapter.ClearBeforeFill = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -976,7 +959,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.donorTypeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestStatusTypesbindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.donorAddressesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1043,15 +1025,12 @@
         private System.Windows.Forms.BindingSource requestStatusTypesbindingSource;
         private SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter requestStatusTypesTableAdapter;
         private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
-        private System.Drawing.Printing.PrintDocument donorRequestPrintDocument;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem ShowAllItemsByDonorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem documentsStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem DocumentEditorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem donorNoResponseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CreateAddressLabelsFileToolStripMenuItem;
-        private System.Windows.Forms.BindingSource donorAddressesBindingSource;
-        private SilentAuctionDataSetTableAdapters.DonorAddressesTableAdapter donorAddressesTableAdapter;
         private System.Windows.Forms.ToolStripMenuItem CreateItemLabelsFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bidCalculatorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem NewItemToolStripMenuItem;
@@ -1077,6 +1056,5 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem PrintBidSheetsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
-        private System.Drawing.Printing.PrintDocument bidSheetPrintDocument;
     }
 }

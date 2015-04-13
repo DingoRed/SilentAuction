@@ -4,10 +4,10 @@ using SilentAuction.Utilities;
 
 namespace SilentAuction.Forms
 {
-    public partial class NoResponseByDonor : Form
+    public partial class ReportNoResponseByDonor : Form
     {
         #region Constructor
-        public NoResponseByDonor()
+        public ReportNoResponseByDonor()
         {
             InitializeComponent();
         }

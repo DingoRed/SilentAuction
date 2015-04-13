@@ -6,7 +6,7 @@ using SilentAuction.Utilities;
 
 namespace SilentAuction.Forms
 {
-    public partial class PrintForm : Form
+    public partial class DocumentPrintForm : Form
     {
         #region Properties
         private int AuctionId { get; set; }
@@ -14,7 +14,7 @@ namespace SilentAuction.Forms
         #endregion
 
         #region Constructor
-        public PrintForm(int auctionId)
+        public DocumentPrintForm(int auctionId)
         {
             AuctionId = auctionId;
 

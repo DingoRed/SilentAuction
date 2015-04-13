@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Drawing.Printing;
+using System.Drawing.Text;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using SilentAuction.Extensions;
@@ -59,7 +62,7 @@ namespace SilentAuction
             donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionIdInUse);
             itemsTableAdapter.FillItems(silentAuctionDataSet.Items, AuctionIdInUse);
 
-            SetupGrids();
+            SetupGrid();
             SetAuctionNameAndGrid();
             SetupToolStripMenuItems();
 
@@ -188,13 +191,21 @@ namespace SilentAuction
         private void ItemsDataGridViewDefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
             DateTime currentDate = DateTime.Now;
+            e.Row.Cells[ItemsDonorIdColumn.Index].Value = silentAuctionDataSet.Donors.AsEnumerable().Min(d => d.Id);
+            e.Row.Cells[ItemsAuctionIdColumn.Index].Value = AuctionIdInUse;
+            e.Row.Cells[ItemsQtyColumn.Index].Value = 1;
+            e.Row.Cells[ItemsItemTypeIdColumn.Index].Value = 2;
+            e.Row.Cells[ItemsDonationDeliveryTypeIdColumn.Index].Value = 1;
+            e.Row.Cells[ItemsRetailValueColumn.Index].Value = 0;
+            e.Row.Cells[ItemsBidIncrementTypeColumn.Index].Value = 1;
+            e.Row.Cells[ItemsBidMinValueColumn.Index].Value = 0;
+            e.Row.Cells[ItemsBidMaxValueColumn.Index].Value = 1;
+            e.Row.Cells[ItemsBidIncrementValueColumn.Index].Value = 1;
+            e.Row.Cells[ItemsBidBuyItNowValueColumn.Index].Value = 0;
+            e.Row.Cells[ItemsBidNumberOfBidsColumn.Index].Value = 1;
+            e.Row.Cells[ItemsImageColumn.Index].Value = _emptyImage;
             e.Row.Cells[ItemsCreateDateColumn.Index].Value = currentDate;
             e.Row.Cells[ItemsModifiedDateColumn.Index].Value = currentDate;
-            e.Row.Cells[ItemsDonorIdColumn.Index].Value = silentAuctionDataSet.Donors.AsEnumerable().Min(d => d.Id);
-            e.Row.Cells[ItemsQtyColumn.Index].Value = 1;
-            e.Row.Cells[ItemsAuctionIdColumn.Index].Value = AuctionIdInUse;
-            e.Row.Cells[ItemsBidIncrementTypeColumn.Index].Value = 1;
-            e.Row.Cells[ItemsImageColumn.Index].Value = _emptyImage;
         }        
         
         private void ItemsDataGridViewCellClick(object sender, DataGridViewCellEventArgs e)
@@ -409,125 +420,29 @@ namespace SilentAuction
 
         private void PrintBidSheetsToolStripMenuItemClick(object sender, EventArgs e)
         {
-            List<int> itemIdsToInclude = new List<int>();
-            SelectItemsForm selectItemsForm = new SelectItemsForm(AuctionIdInUse);
-            DialogResult result = selectItemsForm.ShowDialog();
-            if (result == DialogResult.OK)
-                itemIdsToInclude = selectItemsForm.ItemIdsSelected;
-            else if (result == DialogResult.Cancel)
-                return;
-
-            DialogResult = DialogResult.None;
-
-            DataTable itemsToPrintTable = new SilentAuctionDataSet.ItemsDataTable();
-
-            foreach (SilentAuctionDataSet.ItemsRow itemsRow in silentAuctionDataSet.Items.Rows)
-            {
-                if (itemIdsToInclude.Contains((int)itemsRow.Id))
-                {
-                    itemsToPrintTable.Rows.Add(itemsRow.ItemArray);
-                }
-            }
-
-            // TODO: Implement the iteration and printing...
-            // How to print rtf data?  
-            string rtf = @"{\rtf1\ansi\ansicpg1252\uc1\deff0\adeff0\deflang0\deflangfe0\adeflang0{\fonttbl{\f0\fnil\fcharset0\fprq2 Arial;}
-{\f1\fswiss\fcharset0\fprq2 Arial;}{\f2\froman\fcharset2\fprq2 Symbol;}}{\colortbl;}{\stylesheet{\s0\ltrpar\itap0\nowidctlpar\ql\li0\ri0
-\lin0\rin0\rtlch\af0\afs24\ltrch\f0\fs24 [Normal];}{\*\cs10\additive Default Paragraph Font;}}
-\paperw12240\paperh15840\margl1440\margt720\margr1440\margb1440\deftab1134\widowctrl\lytexcttp\formshade\sectd\headery567\footery567
-\pgwsxn12240\pghsxn15840\marglsxn1440\margtsxn720\margrsxn1440\margbsxn1440\pgbrdropt32\pard\ltrpar\itap0\nowidctlpar\ql\li0\ri0
-\lin0\rin0\plain\rtlch\af1\afs20\alang1033\ltrch\f1\fs20\lang1033\langnp1033\langfe1033\langfenp1033 
-Item #: 123
-\par\par 
-Retail Value: $999
-\par\par\plain\rtlch\af1\afs20\alang1033\aul\ltrch\f1\fs20\lang1033\langnp1033\langfe1033\langfenp1033\ul 
-Bid
-\plain\rtlch\af1\afs20\alang1033\ltrch\f1\fs20\lang1033\langnp1033\langfe1033\langfenp1033\tab\plain\rtlch\af1\afs20
-\alang1033\aul\ltrch\f1\fs20\lang1033\langnp1033\langfe1033\langfenp1033\ul 
-Bidder's Full Name, Email Address and Phone #
-\plain\rtlch\af1\afs20\alang1033\ltrch\f1\fs20\lang1033\langnp1033\langfe1033\langfenp1033\par 
-$10.00
-\tab 
-_________________________________________________________________________
-\par\par 
-$20.00
-\tab 
-_________________________________________________________________________
-\par\par\par\par }";
-
-
-
-
-            // MUST BE VISIBLE to work right!
-            TextControl textControl = new TextControl();
-            textControl.Enabled = false;
-            
-            textControl.Load(rtf, StringStreamType.RichTextFormat);
-            textControl.Print(bidSheetPrintDocument);
-
-
-
-
-
+            BidSheetPrintForm printBidSheetForm = new BidSheetPrintForm(AuctionIdInUse);
+            printBidSheetForm.ShowDialog();
         }
 
         private void CreateLabelsFileToolStripMenuItemClick(object sender, EventArgs e)
         {
-            List<int> donorIdsToInclude = new List<int>();
-
             GenerateAddressLabelsFile addressLabelsFile = new GenerateAddressLabelsFile(AuctionIdInUse);
-            DialogResult result = addressLabelsFile.ShowDialog();
-            if (result == DialogResult.OK)
-                donorIdsToInclude = addressLabelsFile.DonorIdsToInclude;
-            else if(result == DialogResult.Cancel)
-                return;
-            
-            DialogResult = DialogResult.None;
-
-            donorAddressesTableAdapter.FillDonorAddresses(silentAuctionDataSet.DonorAddresses, AuctionIdInUse);
-            DataTable dt = new SilentAuctionDataSet.DonorAddressesDataTable();
-
-            foreach (SilentAuctionDataSet.DonorAddressesRow dataRow in silentAuctionDataSet.DonorAddresses.Rows)
+            if (addressLabelsFile.ShowDialog() == DialogResult.OK)
             {
-                if (donorIdsToInclude.Contains((int) dataRow.Id))
-                {
-                    dt.Rows.Add(dataRow.ItemArray);
-                }
+                MainFormStatusLabel.Text = "File created";
+                MainFormStatusLabel.Visible = true;
             }
-
-            string csvFile = dt.DataTableToCsvFormat();
-            SaveCsvFile(csvFile, "Silent Auction Addresses");
         }
 
         private void CreateItemLabelsFileToolStripMenuItemClick(object sender, EventArgs e)
         {
-            List<int> itemIdsToInclude = new List<int>();
-
-            SelectItemsForm selectItemsForm = new SelectItemsForm(AuctionIdInUse);
-            DialogResult result = selectItemsForm.ShowDialog();
-            if (result == DialogResult.OK) 
-                itemIdsToInclude = selectItemsForm.ItemIdsSelected;
-            else if (result == DialogResult.Cancel)
-                return;
-
-            DialogResult = DialogResult.None;
-
-            SilentAuctionDataSet.ItemsShortListDataTable itemsShortListDataTable = 
-                new SilentAuctionDataSet.ItemsShortListDataTable();
-            new ItemsShortListTableAdapter().FillItems(itemsShortListDataTable, AuctionIdInUse);
-
-            DataTable dt = new SilentAuctionDataSet.ItemsShortListDataTable();
-
-            foreach (SilentAuctionDataSet.ItemsShortListRow itemsShortListRow in itemsShortListDataTable.Rows)
+            GenerateItemLabelsFile itemLabelsFile = new GenerateItemLabelsFile(AuctionIdInUse);
+            if(itemLabelsFile.ShowDialog() == DialogResult.OK)
             {
-                if (itemIdsToInclude.Contains((int) itemsShortListRow.Id))
-                {
-                    dt.Rows.Add(itemsShortListRow.ItemArray);
-                }
+                MainFormStatusLabel.Text = "File created";
+                MainFormStatusLabel.Visible = true;
             }
-
-            string csvFile = dt.DataTableToCsvFormat();
-            SaveCsvFile(csvFile, "Silent Auction Items");
+            
         }
         #endregion
         
@@ -551,12 +466,12 @@ _________________________________________________________________________
         #region Reports Section...
         private void ShowAllItemsByDonorToolStripMenuItemClick(object sender, EventArgs e)
         {
-            new ShowAllItemsByDonorName().ShowDialog();
+            new ReportShowAllItemsByDonorName().ShowDialog();
         }
 
         private void DonorNoResponseToolStripMenuItemClick(object sender, EventArgs e)
         {
-            new NoResponseByDonor().ShowDialog();
+            new ReportNoResponseByDonor().ShowDialog();
         }
         #endregion
         
@@ -570,41 +485,9 @@ _________________________________________________________________________
         }
         #endregion
         #endregion
-
-        #region Printing Event Handlers
-        private void DonorRequestPrintDocumentPrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            e.Graphics.FillRectangle(Brushes.Red, new Rectangle(500, 500, 500, 500));
-        }
-
-        #endregion
-
+        
         #region Private Methods
-        private void SaveCsvFile(string dataToSave, string initialFilename)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "csv files (*.csv)|*.csv";
-            saveFileDialog.DefaultExt = "csv";
-            saveFileDialog.FileName = initialFilename;
-            saveFileDialog.RestoreDirectory = true;
-
-            DialogResult saveResult = saveFileDialog.ShowDialog();
-            if (saveResult == DialogResult.OK)
-            {
-                try
-                {
-                    System.IO.File.WriteAllText(saveFileDialog.FileName, dataToSave);
-                    MainFormStatusLabel.Text = "Item(s) Saved";
-                    MainFormStatusLabel.Visible = true;
-                }
-                catch (Exception exception)
-                {
-                    MessageBox.Show(exception.Message);
-                }
-            }
-        }
-
-        private void SetupGrids()
+        private void SetupGrid()
         {
             // Items grid settings...
             ItemsIdColumn.Width = Settings.Default.ItemsIdColumnWidth;
@@ -720,7 +603,5 @@ _________________________________________________________________________
                 (silentAuctionDataSet.Donors.Rows.Count > 0));
         }
         #endregion
-
-
     }
 }

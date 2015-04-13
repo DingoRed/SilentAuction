@@ -1,6 +1,6 @@
 ﻿namespace SilentAuction.Forms
 {
-    partial class NoResponseByDonor
+    partial class ReportNoResponseByDonor
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NoResponseByDonor));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportNoResponseByDonor));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.auctionsComboBox = new System.Windows.Forms.ComboBox();

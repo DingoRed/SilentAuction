@@ -10,6 +10,7 @@ namespace SilentAuction.Forms
 {
     public partial class CreateNewItemForm : Form
     {
+        #region Fields
         private readonly byte[] _emptyImage = {
             137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 
             1, 8, 6, 0, 0, 0, 31, 21, 196, 137, 0, 0, 0, 1, 115, 82, 71, 66, 0, 174, 206, 28, 
@@ -18,6 +19,7 @@ namespace SilentAuction.Forms
             68, 65, 84, 24, 87, 99, 96, 0, 2, 0, 0, 5, 0, 1, 170, 213, 200, 81, 0, 0, 0, 0, 73, 
             69, 78, 68, 174, 66, 96, 130
         };
+        #endregion
 
         #region Properties
         private int AuctionId { get; set; }
@@ -49,10 +51,7 @@ namespace SilentAuction.Forms
                 AuctionsComboBox.Enabled = false;
             }
 
-            AuctionsComboBox.SelectedValue = AuctionId;
-            NumberOfBidsTextBox.Enabled = false;
-
-            ItemPictureBox.Image = (Bitmap)((new ImageConverter()).ConvertFrom(_emptyImage));
+            SetupFormElements();
 
             WindowSettings.SetupInitialWindow(this, "CreateItemInitialLocation");
         }
@@ -376,6 +375,19 @@ namespace SilentAuction.Forms
             }
         }
 
+        private void SetupFormElements()
+        {
+            AuctionsComboBox.SelectedValue = AuctionId;
+            RetailValueTextBox.Text = 0.ToString("C");
+            BuyItNowTextBox.Text = 0.ToString("C");
+            MinimumBidTextBox.Text = 0.ToString("C");
+            MaximumBidTextBox.Text = 1.ToString("C");
+            BidIncrementValueTextBox.Text = 1.ToString("C");
+            NumberOfBidsTextBox.Text = "1";
+            ItemTypesComboBox.SelectedValue = 2;
+            NumberOfBidsTextBox.Enabled = false;
+            ItemPictureBox.Image = (Bitmap)((new ImageConverter()).ConvertFrom(_emptyImage));
+        }
         #endregion
 
     }

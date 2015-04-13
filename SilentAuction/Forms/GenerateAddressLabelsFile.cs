@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using SilentAuction.Extensions;
+using SilentAuction.SilentAuctionDataSetTableAdapters;
 using SilentAuction.Utilities;
 
 namespace SilentAuction.Forms
@@ -55,8 +57,28 @@ namespace SilentAuction.Forms
                 DonorIdsToInclude.Add(MathHelper.ParseIntZeroIfNull(selectedItem[0].ToString()));
             }
 
-            DialogResult = DialogResult.OK;
-            Close();
+            SilentAuctionDataSet.DonorAddressesDataTable donorAddressesDataTable =
+                new SilentAuctionDataSet.DonorAddressesDataTable();
+            new DonorAddressesTableAdapter().FillDonorAddresses(donorAddressesDataTable, AuctionId);
+
+            DataTable dt = new SilentAuctionDataSet.DonorAddressesDataTable();
+
+            foreach (SilentAuctionDataSet.DonorAddressesRow row in donorAddressesDataTable.Rows)
+            {
+                if (DonorIdsToInclude.Contains((int)row.Id))
+                {
+                    dt.Rows.Add(row.ItemArray);
+                }
+            }
+
+            string csvFile = dt.DataTableToCsvFormat();
+
+            if (FileHelper.SaveCsvFile(csvFile, "Silent Auction Addresses"))
+            {
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            else DialogResult = DialogResult.None;
         }
         #endregion
     }

@@ -875,7 +875,7 @@ namespace SilentAuction.Forms
         {
             List<int> donorIdsToPrint = new List<int>();
 
-            PrintForm donorSelections = new PrintForm(AuctionId);
+            DocumentPrintForm donorSelections = new DocumentPrintForm(AuctionId);
             DialogResult result = donorSelections.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -888,6 +888,7 @@ namespace SilentAuction.Forms
 
             foreach (int donorId in donorIdsToPrint)
             {
+                // TODO: Donors is empty?
                 SilentAuctionDataSet.DonorsRow row = silentAuctionDataSet.Donors.FirstOrDefault(d => d.Id == donorId);
                 if (row != null)
                 {
@@ -903,7 +904,7 @@ namespace SilentAuction.Forms
             List<int> donorIdsToEmail = new List<int>();
             List<string> errorEmails = new List<string>();
 
-            EmailForm emailForm = new EmailForm(AuctionId);
+            DocumentEmailForm emailForm = new DocumentEmailForm(AuctionId);
             DialogResult result = emailForm.ShowDialog();
 
             if (result == DialogResult.OK)

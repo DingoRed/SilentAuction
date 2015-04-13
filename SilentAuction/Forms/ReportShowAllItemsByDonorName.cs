@@ -6,10 +6,10 @@ using SilentAuction.Utilities;
 
 namespace SilentAuction.Forms
 {
-    public partial class ShowAllItemsByDonorName : Form
+    public partial class ReportShowAllItemsByDonorName : Form
     {
         #region Constructor
-        public ShowAllItemsByDonorName()
+        public ReportShowAllItemsByDonorName()
         {
             InitializeComponent();
         }

@@ -103,17 +103,17 @@
     <Compile Include="Forms\DocumentOpenForm.Designer.cs">
       <DependentUpon>DocumentOpenForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\EmailForm.cs">
+    <Compile Include="Forms\DocumentEmailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\EmailForm.Designer.cs">
-      <DependentUpon>EmailForm.cs</DependentUpon>
+    <Compile Include="Forms\DocumentEmailForm.Designer.cs">
+      <DependentUpon>DocumentEmailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PrintForm.cs">
+    <Compile Include="Forms\DocumentPrintForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\PrintForm.Designer.cs">
-      <DependentUpon>PrintForm.cs</DependentUpon>
+    <Compile Include="Forms\DocumentPrintForm.Designer.cs">
+      <DependentUpon>DocumentPrintForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\EditAuctionForm.cs">
       <SubType>Form</SubType>
@@ -127,11 +127,17 @@
     <Compile Include="Forms\DocumentEditor.Designer.cs">
       <DependentUpon>DocumentEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SelectItemsForm.cs">
+    <Compile Include="Forms\BidSheetPrintForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SelectItemsForm.Designer.cs">
-      <DependentUpon>SelectItemsForm.cs</DependentUpon>
+    <Compile Include="Forms\BidSheetPrintForm.Designer.cs">
+      <DependentUpon>BidSheetPrintForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GenerateItemLabelsFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GenerateItemLabelsFile.Designer.cs">
+      <DependentUpon>GenerateItemLabelsFile.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\GenerateAddressLabelsFile.cs">
       <SubType>Form</SubType>
@@ -139,20 +145,21 @@
     <Compile Include="Forms\GenerateAddressLabelsFile.Designer.cs">
       <DependentUpon>GenerateAddressLabelsFile.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NoResponseByDonor.cs">
+    <Compile Include="Forms\ReportNoResponseByDonor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\NoResponseByDonor.Designer.cs">
-      <DependentUpon>NoResponseByDonor.cs</DependentUpon>
+    <Compile Include="Forms\ReportNoResponseByDonor.Designer.cs">
+      <DependentUpon>ReportNoResponseByDonor.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\BidCalculator.cs" />
     <Compile Include="Utilities\EmailHelper.cs" />
+    <Compile Include="Utilities\FileHelper.cs" />
     <Compile Include="Utilities\WindowSettings.cs" />
-    <Compile Include="Forms\ShowAllItemsByDonorName.cs">
+    <Compile Include="Forms\ReportShowAllItemsByDonorName.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ShowAllItemsByDonorName.Designer.cs">
-      <DependentUpon>ShowAllItemsByDonorName.cs</DependentUpon>
+    <Compile Include="Forms\ReportShowAllItemsByDonorName.Designer.cs">
+      <DependentUpon>ReportShowAllItemsByDonorName.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="Utilities\GenericPageHelper.cs" />
@@ -223,11 +230,11 @@
     <EmbeddedResource Include="Forms\DocumentOpenForm.resx">
       <DependentUpon>DocumentOpenForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\EmailForm.resx">
-      <DependentUpon>EmailForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\DocumentEmailForm.resx">
+      <DependentUpon>DocumentEmailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PrintForm.resx">
-      <DependentUpon>PrintForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\DocumentPrintForm.resx">
+      <DependentUpon>DocumentPrintForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EditAuctionForm.resx">
       <DependentUpon>EditAuctionForm.cs</DependentUpon>
@@ -235,11 +242,14 @@
     <EmbeddedResource Include="Forms\GenerateAddressLabelsFile.resx">
       <DependentUpon>GenerateAddressLabelsFile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SelectItemsForm.resx">
-      <DependentUpon>SelectItemsForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\BidSheetPrintForm.resx">
+      <DependentUpon>BidSheetPrintForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\NoResponseByDonor.resx">
-      <DependentUpon>NoResponseByDonor.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\GenerateItemLabelsFile.resx">
+      <DependentUpon>GenerateItemLabelsFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReportNoResponseByDonor.resx">
+      <DependentUpon>ReportNoResponseByDonor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OpenAuction.resx">
       <DependentUpon>OpenAuction.cs</DependentUpon>
@@ -253,8 +263,8 @@
     <EmbeddedResource Include="Forms\DocumentEditor.resx">
       <DependentUpon>DocumentEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ShowAllItemsByDonorName.resx">
-      <DependentUpon>ShowAllItemsByDonorName.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ReportShowAllItemsByDonorName.resx">
+      <DependentUpon>ReportShowAllItemsByDonorName.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -277,6 +287,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Resources\CODE Bold.otf" />
     <None Include="SilentAuctionDataSet.xsc">
       <DependentUpon>SilentAuctionDataSet.xsd</DependentUpon>
     </None>

@@ -5389,6 +5389,20 @@ namespace SilentAuction {
             
             private global::System.Data.DataColumn columnItemType;
             
+            private global::System.Data.DataColumn columnRetailValue;
+            
+            private global::System.Data.DataColumn columnBidBuyItNowValue;
+            
+            private global::System.Data.DataColumn columnBidIncrementTypeId;
+            
+            private global::System.Data.DataColumn columnBidMinValue;
+            
+            private global::System.Data.DataColumn columnBidMaxValue;
+            
+            private global::System.Data.DataColumn columnBidIncrementValue;
+            
+            private global::System.Data.DataColumn columnBidNumberOfBids;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ItemsShortListDataTable() {
@@ -5472,6 +5486,62 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn RetailValueColumn {
+                get {
+                    return this.columnRetailValue;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn BidBuyItNowValueColumn {
+                get {
+                    return this.columnBidBuyItNowValue;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn BidIncrementTypeIdColumn {
+                get {
+                    return this.columnBidIncrementTypeId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn BidMinValueColumn {
+                get {
+                    return this.columnBidMinValue;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn BidMaxValueColumn {
+                get {
+                    return this.columnBidMaxValue;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn BidIncrementValueColumn {
+                get {
+                    return this.columnBidIncrementValue;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn BidNumberOfBidsColumn {
+                get {
+                    return this.columnBidNumberOfBids;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -5507,7 +5577,7 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemsShortListRow AddItemsShortListRow(string ItemName, string DonorName, string Description, long Qty, object ItemType) {
+            public ItemsShortListRow AddItemsShortListRow(string ItemName, string DonorName, string Description, long Qty, object ItemType, double RetailValue, double BidBuyItNowValue, long BidIncrementTypeId, double BidMinValue, double BidMaxValue, double BidIncrementValue, long BidNumberOfBids) {
                 ItemsShortListRow rowItemsShortListRow = ((ItemsShortListRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -5515,7 +5585,14 @@ namespace SilentAuction {
                         DonorName,
                         Description,
                         Qty,
-                        ItemType};
+                        ItemType,
+                        RetailValue,
+                        BidBuyItNowValue,
+                        BidIncrementTypeId,
+                        BidMinValue,
+                        BidMaxValue,
+                        BidIncrementValue,
+                        BidNumberOfBids};
                 rowItemsShortListRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowItemsShortListRow);
                 return rowItemsShortListRow;
@@ -5544,6 +5621,13 @@ namespace SilentAuction {
                 this.columnDescription = base.Columns["Description"];
                 this.columnQty = base.Columns["Qty"];
                 this.columnItemType = base.Columns["ItemType"];
+                this.columnRetailValue = base.Columns["RetailValue"];
+                this.columnBidBuyItNowValue = base.Columns["BidBuyItNowValue"];
+                this.columnBidIncrementTypeId = base.Columns["BidIncrementTypeId"];
+                this.columnBidMinValue = base.Columns["BidMinValue"];
+                this.columnBidMaxValue = base.Columns["BidMaxValue"];
+                this.columnBidIncrementValue = base.Columns["BidIncrementValue"];
+                this.columnBidNumberOfBids = base.Columns["BidNumberOfBids"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5561,6 +5645,20 @@ namespace SilentAuction {
                 base.Columns.Add(this.columnQty);
                 this.columnItemType = new global::System.Data.DataColumn("ItemType", typeof(object), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnItemType);
+                this.columnRetailValue = new global::System.Data.DataColumn("RetailValue", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRetailValue);
+                this.columnBidBuyItNowValue = new global::System.Data.DataColumn("BidBuyItNowValue", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBidBuyItNowValue);
+                this.columnBidIncrementTypeId = new global::System.Data.DataColumn("BidIncrementTypeId", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBidIncrementTypeId);
+                this.columnBidMinValue = new global::System.Data.DataColumn("BidMinValue", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBidMinValue);
+                this.columnBidMaxValue = new global::System.Data.DataColumn("BidMaxValue", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBidMaxValue);
+                this.columnBidIncrementValue = new global::System.Data.DataColumn("BidIncrementValue", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBidIncrementValue);
+                this.columnBidNumberOfBids = new global::System.Data.DataColumn("BidNumberOfBids", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBidNumberOfBids);
                 this.columnId.AutoIncrement = true;
                 this.columnId.AutoIncrementSeed = -1;
                 this.columnId.AutoIncrementStep = -1;
@@ -5571,6 +5669,7 @@ namespace SilentAuction {
                 this.columnDonorName.MaxLength = 2147483647;
                 this.columnDescription.MaxLength = 2147483647;
                 this.columnQty.AllowDBNull = false;
+                this.columnBidIncrementTypeId.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8478,6 +8577,113 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double RetailValue {
+                get {
+                    try {
+                        return ((double)(this[this.tableItemsShortList.RetailValueColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RetailValue\' in table \'ItemsShortList\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableItemsShortList.RetailValueColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double BidBuyItNowValue {
+                get {
+                    try {
+                        return ((double)(this[this.tableItemsShortList.BidBuyItNowValueColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BidBuyItNowValue\' in table \'ItemsShortList\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableItemsShortList.BidBuyItNowValueColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public long BidIncrementTypeId {
+                get {
+                    return ((long)(this[this.tableItemsShortList.BidIncrementTypeIdColumn]));
+                }
+                set {
+                    this[this.tableItemsShortList.BidIncrementTypeIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double BidMinValue {
+                get {
+                    try {
+                        return ((double)(this[this.tableItemsShortList.BidMinValueColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BidMinValue\' in table \'ItemsShortList\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableItemsShortList.BidMinValueColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double BidMaxValue {
+                get {
+                    try {
+                        return ((double)(this[this.tableItemsShortList.BidMaxValueColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BidMaxValue\' in table \'ItemsShortList\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableItemsShortList.BidMaxValueColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double BidIncrementValue {
+                get {
+                    try {
+                        return ((double)(this[this.tableItemsShortList.BidIncrementValueColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BidIncrementValue\' in table \'ItemsShortList\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableItemsShortList.BidIncrementValueColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public long BidNumberOfBids {
+                get {
+                    try {
+                        return ((long)(this[this.tableItemsShortList.BidNumberOfBidsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BidNumberOfBids\' in table \'ItemsShortList\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableItemsShortList.BidNumberOfBidsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDescriptionNull() {
                 return this.IsNull(this.tableItemsShortList.DescriptionColumn);
             }
@@ -8498,6 +8704,78 @@ namespace SilentAuction {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetItemTypeNull() {
                 this[this.tableItemsShortList.ItemTypeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsRetailValueNull() {
+                return this.IsNull(this.tableItemsShortList.RetailValueColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetRetailValueNull() {
+                this[this.tableItemsShortList.RetailValueColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsBidBuyItNowValueNull() {
+                return this.IsNull(this.tableItemsShortList.BidBuyItNowValueColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetBidBuyItNowValueNull() {
+                this[this.tableItemsShortList.BidBuyItNowValueColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsBidMinValueNull() {
+                return this.IsNull(this.tableItemsShortList.BidMinValueColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetBidMinValueNull() {
+                this[this.tableItemsShortList.BidMinValueColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsBidMaxValueNull() {
+                return this.IsNull(this.tableItemsShortList.BidMaxValueColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetBidMaxValueNull() {
+                this[this.tableItemsShortList.BidMaxValueColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsBidIncrementValueNull() {
+                return this.IsNull(this.tableItemsShortList.BidIncrementValueColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetBidIncrementValueNull() {
+                this[this.tableItemsShortList.BidIncrementValueColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsBidNumberOfBidsNull() {
+                return this.IsNull(this.tableItemsShortList.BidNumberOfBidsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetBidNumberOfBidsNull() {
+                this[this.tableItemsShortList.BidNumberOfBidsColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -15877,6 +16155,13 @@ ORDER BY DonorId, Name, Id";
             tableMapping.ColumnMappings.Add("Description", "Description");
             tableMapping.ColumnMappings.Add("Qty", "Qty");
             tableMapping.ColumnMappings.Add("ItemType", "ItemType");
+            tableMapping.ColumnMappings.Add("RetailValue", "RetailValue");
+            tableMapping.ColumnMappings.Add("BidBuyItNowValue", "BidBuyItNowValue");
+            tableMapping.ColumnMappings.Add("BidIncrementTypeId", "BidIncrementTypeId");
+            tableMapping.ColumnMappings.Add("BidMinValue", "BidMinValue");
+            tableMapping.ColumnMappings.Add("BidMaxValue", "BidMaxValue");
+            tableMapping.ColumnMappings.Add("BidIncrementValue", "BidIncrementValue");
+            tableMapping.ColumnMappings.Add("BidNumberOfBids", "BidNumberOfBids");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -15893,7 +16178,8 @@ ORDER BY DonorId, Name, Id";
             this._commandCollection = new global::System.Data.SQLite.SQLiteCommand[1];
             this._commandCollection[0] = new global::System.Data.SQLite.SQLiteCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        I.Id, I.Name AS ItemName, D.Name AS DonorName, I.Description, I.Qty, IFNULL(IT.Name, 'Empty') AS ItemType
+            this._commandCollection[0].CommandText = @"SELECT        I.Id, I.Name AS ItemName, D.Name AS DonorName, I.Description, I.Qty, IFNULL(IT.Name, 'Empty') AS ItemType, I.RetailValue, I.BidBuyItNowValue, 
+                         I.BidIncrementTypeId, I.BidMinValue, I.BidMaxValue, I.BidIncrementValue, I.BidNumberOfBids
 FROM            Items I INNER JOIN
                          Donors D ON I.DonorId = D.Id LEFT OUTER JOIN
                          ItemTypes IT ON I.ItemTypeId = IT.Id
