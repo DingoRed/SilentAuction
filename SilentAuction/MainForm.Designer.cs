@@ -132,6 +132,7 @@
             this.donorRequestPrintDocument = new System.Drawing.Printing.PrintDocument();
             this.donorAddressesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.donorAddressesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorAddressesTableAdapter();
+            this.bidSheetPrintDocument = new System.Drawing.Printing.PrintDocument();
             this.ItemsTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).BeginInit();
@@ -504,7 +505,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(400, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(315, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1076,5 +1077,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem PrintBidSheetsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Drawing.Printing.PrintDocument bidSheetPrintDocument;
     }
 }

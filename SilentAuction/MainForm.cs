@@ -88,7 +88,8 @@ namespace SilentAuction
         private void ItemsDataGridViewRowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
             DataGridViewRow row = ItemsDataGridView.Rows[e.RowIndex];
-            if (row.IsNewRow)
+            // TODO: Check this.  Won't close program if no items are entered on page
+            if (row.IsNewRow && e.RowIndex > 0)
             {
                 row.Cells[ItemsImageColumn.Index].Value = _emptyImage;
             }
@@ -429,16 +430,40 @@ namespace SilentAuction
             }
 
             // TODO: Implement the iteration and printing...
+            // How to print rtf data?  
+            string rtf = @"{\rtf1\ansi\ansicpg1252\uc1\deff0\adeff0\deflang0\deflangfe0\adeflang0{\fonttbl{\f0\fnil\fcharset0\fprq2 Arial;}
+{\f1\fswiss\fcharset0\fprq2 Arial;}{\f2\froman\fcharset2\fprq2 Symbol;}}{\colortbl;}{\stylesheet{\s0\ltrpar\itap0\nowidctlpar\ql\li0\ri0
+\lin0\rin0\rtlch\af0\afs24\ltrch\f0\fs24 [Normal];}{\*\cs10\additive Default Paragraph Font;}}
+\paperw12240\paperh15840\margl1440\margt720\margr1440\margb1440\deftab1134\widowctrl\lytexcttp\formshade\sectd\headery567\footery567
+\pgwsxn12240\pghsxn15840\marglsxn1440\margtsxn720\margrsxn1440\margbsxn1440\pgbrdropt32\pard\ltrpar\itap0\nowidctlpar\ql\li0\ri0
+\lin0\rin0\plain\rtlch\af1\afs20\alang1033\ltrch\f1\fs20\lang1033\langnp1033\langfe1033\langfenp1033 
+Item #: 123
+\par\par 
+Retail Value: $999
+\par\par\plain\rtlch\af1\afs20\alang1033\aul\ltrch\f1\fs20\lang1033\langnp1033\langfe1033\langfenp1033\ul 
+Bid
+\plain\rtlch\af1\afs20\alang1033\ltrch\f1\fs20\lang1033\langnp1033\langfe1033\langfenp1033\tab\plain\rtlch\af1\afs20
+\alang1033\aul\ltrch\f1\fs20\lang1033\langnp1033\langfe1033\langfenp1033\ul 
+Bidder's Full Name, Email Address and Phone #
+\plain\rtlch\af1\afs20\alang1033\ltrch\f1\fs20\lang1033\langnp1033\langfe1033\langfenp1033\par 
+$10.00
+\tab 
+_________________________________________________________________________
+\par\par 
+$20.00
+\tab 
+_________________________________________________________________________
+\par\par\par\par }";
 
 
 
 
-
-
+            // MUST BE VISIBLE to work right!
             TextControl textControl = new TextControl();
-
-
-
+            textControl.Enabled = false;
+            
+            textControl.Load(rtf, StringStreamType.RichTextFormat);
+            textControl.Print(bidSheetPrintDocument);
 
 
 
