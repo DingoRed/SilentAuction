@@ -9,43 +9,33 @@ namespace SilentAuction.Forms
 {
     public partial class BidSheetPrintForm : Form
     {
-        #region Fields
+//        #region Fields
         private const string ItemNumber = "<<_ItemNumber_>>";
         private const string RetailValue = "<<_RetailValue_>>";
         private const string BidList = "<<_BidList_>>";
-        private const string BuyItNowValue = "<<_BuyItNowValue_>>";
-        private const string ItemNumberField = @"{\txfielddef{\*\txfieldstart\txfieldtype0\txfieldflags152\txfielddata 3c003c005f004900740065006d004e0075006d006200650072005f003e003e000000}{\*\txfieldtext <<_ItemNumber_>>{\*\txfieldend}}<<_ItemNumber_>>}";
-        private const string RetailValueField = @"{\txfielddef{\*\txfieldstart\txfieldtype0\txfieldflags152\txfielddataval1\txfielddata 3c003c005f00520065007400610069006c00560061006c00750065005f003e003e000000}{\*\txfieldtext <<_RetailValue_>>{\*\txfieldend}}<<_RetailValue_>>}";
-        private const string BidListField = @"{\txfielddef{\*\txfieldstart\txfieldtype0\txfieldflags152\txfielddataval2\txfielddata 3c003c005f004200690064004c006900730074005f003e003e000000}{\*\txfieldtext <<_BidList_>>{\*\txfieldend}}<<_BidList_>>}";
-        private const string BuyItNowValueField = @"{\txfielddef{\*\txfieldstart\txfieldtype0\txfieldflags152\txfielddataval3\txfielddata 3c003c005f00420075007900490074004e006f007700560061006c00750065005f003e003e000000}{\*\txfieldtext <<_BuyItNowValue_>>{\*\txfieldend}}<<_BuyItNowValue_>>}";
-        #endregion
+        private const string BuyItNowValue = "<<BuyItNowValue>>";
+        private const string AuctionName = "<<AuctionName>>";
+        private const string ItemName = "<<ItemName>>";
+        private const string ItemDescription = "<<ItemDescription>>";
+        private const string DonorName = "<<DonorName>>";
+
+
+//        private const string ItemNumberField = @"{\txfielddef{\*\txfieldstart\txfieldtype0\txfieldflags152\txfielddata 3c003c005f004900740065006d004e0075006d006200650072005f003e003e000000}{\*\txfieldtext <<_ItemNumber_>>{\*\txfieldend}}<<_ItemNumber_>>}";
+//        private const string RetailValueField = @"{\txfielddef{\*\txfieldstart\txfieldtype0\txfieldflags152\txfielddataval1\txfielddata 3c003c005f00520065007400610069006c00560061006c00750065005f003e003e000000}{\*\txfieldtext <<_RetailValue_>>{\*\txfieldend}}<<_RetailValue_>>}";
+//        private const string BidListField = @"{\txfielddef{\*\txfieldstart\txfieldtype0\txfieldflags152\txfielddataval2\txfielddata 3c003c005f004200690064004c006900730074005f003e003e000000}{\*\txfieldtext <<_BidList_>>{\*\txfieldend}}<<_BidList_>>}";
+//        private const string BuyItNowValueField =   @"{\txfielddef{\*\txfieldstart\txfieldtype0\txfieldflags152\txfielddataval3\txfielddata 3c003c005f00420075007900490074004e006f007700560061006c00750065005f003e003e000000}{\*\txfieldtext <<_BuyItNowValue_>>{\*\txfieldend}}<<_BuyItNowValue_>>}";
+
+//        private const string AuctionNameField = @"{\txfielddef{\*\txfieldstart\txfieldtype0\txfieldflags152\txfielddataval4\txfielddata 3c003c00410075006300740069006f006e004e0061006d0065003e003e000000}{\*\txfieldtext <<AuctionName>>{\*\txfieldend}}<<AuctionName>>}"; // 
+//        private const string ItemNameField = @"{\txfielddef{\*\txfieldstart\txfieldtype0\txfieldflags152\txfielddataval5\txfielddata 3c003c004900740065006d004e0061006d0065003e003e000000}{\*\txfieldtext <<ItemName>>{\*\txfieldend}}<<ItemName>>}"; // 
+//        private const string ItemDescriptionField = @"{\txfielddef{\*\txfieldstart\txfieldtype0\txfieldflags152\txfielddataval6\txfielddata 3c003c004900740065006d004400650073006300720069007000740069006f006e003e003e000000}{\*\txfieldtext <<ItemDescription>>{\*\txfieldend}}<<ItemDescription>>}"; // 
+//        private const string DonorNameField = @"{\txfielddef{\*\txfieldstart\txfieldtype0\txfieldflags152\txfielddataval7\txfielddata 3c003c0044006f006e006f0072004e0061006d0065003e003e000000}{\*\txfieldtext <<DonorName>>{\*\txfieldend}}<<DonorName>>}"; // 
+
+//        #endregion
 
         #region Properties
         private int AuctionId { get; set; }
         private List<int> ItemIdsSelected { get; set; }
-        private string BidSheetRtf
-        {
-            get
-            {
-                return @"{\rtf1\ansi\ansicpg1252\uc1\deff0\adeff0\deflang0\deflangfe0\adeflang0{\fonttbl
-{\f0\fnil\fcharset0\fprq2 Arial;}
-{\f1\fswiss\fcharset0\fprq2 Arial;}
-{\f2\froman\fcharset2\fprq2 Symbol;}}
-{\colortbl;}
-{\stylesheet{\s0\ltrpar\itap0\nowidctlpar\ql\li0\ri0\lin0\rin0\rtlch\af0\afs24\ltrch\f0\fs24 [Normal];}{\*\cs10\additive Default Paragraph Font;}}
-{\*\generator TX_RTF32 21.0.551.501;}
-\paperw12240\paperh15840\margl1440\margt749\margr1440\margb1066\deftab1134\widowctrl\lytexcttp\formshade\sectd
-\headery567\footery567\pgwsxn12240\pghsxn15840\marglsxn1440\margtsxn749\margrsxn1440\margbsxn1066\pgbrdropt32\pard\ltrpar\itap0\nowidctlpar\ql\li0\ri0\lin0\rin0\plain\rtlch\af1\afs20\alang1033\ltrch\f1\fs20\lang1033\langnp1033\langfe1033\langfenp1033 
-Item #: " + ItemNumberField +
-                    @"\par\par 
-Retail Value: " + RetailValueField +
-                    @"\par\par\plain\rtlch\af1\afs20\alang1033\aul\ltrch\f1\fs20\lang1033\langnp1033\langfe1033\langfenp1033\ul Bid\plain\rtlch\af1\afs20\alang1033\ltrch\f1\fs20\lang1033\langnp1033\langfe1033\langfenp1033\tab\plain\rtlch\af1\afs20\alang1033\aul\ltrch\f1\fs20\lang1033\langnp1033\langfe1033\langfenp1033\ul Bidder's Full Name, Email Address and Phone #\plain\rtlch\af1\afs20\alang1033\ltrch\f1\fs20\lang1033\langnp1033\langfe1033\langfenp1033\par\par 
-" + BidListField +
-                    @"\par\par\par\par\par 
-Buy It Now: " + BuyItNowValueField +
-                    @"\par\par\tab\plain\rtlch\af1\afs20\alang1033\aul\ltrch\f1\fs20\lang1033\langnp1033\langfe1033\langfenp1033\ul Bidder's Full Name, Email Address and Phone #\plain\rtlch\af1\afs20\alang1033\ltrch\f1\fs20\lang1033\langnp1033\langfe1033\langfenp1033\par\par\tab _________________________________________________________________________\par }";
-            }
-        }
+
         #endregion
 
         #region Constructor
@@ -64,7 +54,7 @@ Buy It Now: " + BuyItNowValueField +
 
             itemsShortListTableAdapter.FillItems(silentAuctionDataSet.ItemsShortList, AuctionId);
             
-            bidSheetsTextControl.Load(BidSheetRtf, StringStreamType.RichTextFormat);
+            bidSheetsTextControl.Load(RtfHelper.BidSheetRtf, StringStreamType.RichTextFormat);
 
             WindowSettings.SetupInitialWindow(this, "SelectItemsFormInitialLocation");
         }
@@ -110,14 +100,14 @@ Buy It Now: " + BuyItNowValueField +
                 }
             }
 
-            if (!PrintBidSheet())
-            {
-                DialogResult = DialogResult.None;
-            }
-            else
+            if (PrintBidSheet())
             {
                 DialogResult = DialogResult.OK;
                 Close();
+            }
+            else
+            {
+                DialogResult = DialogResult.None;
             }
         }
         #endregion
@@ -213,10 +203,22 @@ Buy It Now: " + BuyItNowValueField +
                         field.Text = itemsRow.RetailValue.ToString("C");
                         break;
                     case BidList:
-                        field.Text = bidList;
+                        //field.Text = bidList;
                         break;
                     case BuyItNowValue:
                         field.Text = itemsRow.BidBuyItNowValue.ToString("C");
+                        break;
+                    case AuctionName:
+                        field.Text = "Auction Name!";
+                        break;
+                    case ItemName:
+                        field.Text = itemsRow.ItemName;
+                        break;
+                    case ItemDescription:
+                        field.Text = itemsRow.Description;
+                        break;
+                    case DonorName:
+                        field.Text = itemsRow.DonorName;
                         break;
                 }
             }

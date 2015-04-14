@@ -886,16 +886,15 @@ namespace SilentAuction.Forms
 
             DialogResult = DialogResult.None;
 
-            foreach (int donorId in donorIdsToPrint)
+
+            IEnumerable<SilentAuctionDataSet.DonorsRow> donors =
+                new DonorsTableAdapter().GetDonorsData(AuctionId).Where(d => donorIdsToPrint.Contains((int)d.Id));
+
+            foreach (SilentAuctionDataSet.DonorsRow row in donors)
             {
-                // TODO: Donors is empty?
-                SilentAuctionDataSet.DonorsRow row = silentAuctionDataSet.Donors.FirstOrDefault(d => d.Id == donorId);
-                if (row != null)
-                {
-                    MergeTextFields(row);
-                    documentEditorControl.Print(printDocumentMain);
-                    ResetTextFields();
-                }
+                MergeTextFields(row);
+                documentEditorControl.Print(printDocumentMain);
+                ResetTextFields();
             }
         }
 
@@ -918,29 +917,27 @@ namespace SilentAuction.Forms
 
             DialogResult = DialogResult.None;
 
-            foreach (int donorId in donorIdsToEmail)
+            IEnumerable<SilentAuctionDataSet.DonorsRow> donors = 
+                new DonorsTableAdapter().GetDonorsData(AuctionId).Where(d => donorIdsToEmail.Contains((int)d.Id));
+            
+            foreach (SilentAuctionDataSet.DonorsRow row in donors)
             {
-                SilentAuctionDataSet.DonorsDataTable tbl = new DonorsTableAdapter().GetDonorsData(AuctionId);
-                SilentAuctionDataSet.DonorsRow row = tbl.FirstOrDefault(d => d.Id == donorId); 
-                if (row != null)
+                List<string> emailList = new List<string>();
+                emailList.Add(row.Email);
+
+                MergeTextFields(row);
+
+                // TODO: Figure out what to do when behind firewall
+                // TODO: Show progress screen?
+                string body;
+                documentEditorControl.Save(out body, StringStreamType.HTMLFormat);
+                if (!EmailHelper.SendEmail(emailForm.Account, emailForm.Password, emailForm.Account,
+                    emailList, emailForm.CcAddressList, emailForm.Subject, body))
                 {
-                    List<string> emailList = new List<string>();
-                    emailList.Add(row.Email);
-
-                    MergeTextFields(row);
-
-                    // TODO: Figure out what to do when behind firewall
-                    // TODO: Show progress screen?
-                    string body;
-                    documentEditorControl.Save(out body, StringStreamType.HTMLFormat);
-                    if (!EmailHelper.SendEmail(emailForm.Account, emailForm.Password, emailForm.Account,
-                        emailList, emailForm.CcAddressList, emailForm.Subject, body))
-                    {
-                        errorEmails.Add(row.Email);
-                    }
-
-                    ResetTextFields();
+                    errorEmails.Add(row.Email);
                 }
+
+                ResetTextFields();
             }
 
             if (errorEmails.Count > 0)

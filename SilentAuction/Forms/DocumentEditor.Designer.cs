@@ -450,7 +450,7 @@
             // 
             this.newDocumentToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.newpage;
             this.newDocumentToolStripMenuItem.Name = "newDocumentToolStripMenuItem";
-            this.newDocumentToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newDocumentToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.newDocumentToolStripMenuItem.Text = "&New";
             this.newDocumentToolStripMenuItem.ToolTipText = "Create New Document";
             this.newDocumentToolStripMenuItem.Click += new System.EventHandler(this.NewDocumentToolStripMenuItemClick);
@@ -460,7 +460,7 @@
             this.openToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.open;
             this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.openToolStripMenuItem.Text = "&Open";
             this.openToolStripMenuItem.ToolTipText = "Open Existing Document";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItemClick);
@@ -470,7 +470,7 @@
             this.saveToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.save;
             this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.saveToolStripMenuItem.Text = "&Save";
             this.saveToolStripMenuItem.ToolTipText = "Save Current Document";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItemClick);
@@ -479,19 +479,19 @@
             // 
             this.saveAsToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.save_as;
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.saveAsToolStripMenuItem.Text = "Save As...";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(139, 6);
             // 
             // pageSetupToolStripMenuItem
             // 
             this.pageSetupToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.pagedialog;
             this.pageSetupToolStripMenuItem.Name = "pageSetupToolStripMenuItem";
-            this.pageSetupToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pageSetupToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.pageSetupToolStripMenuItem.Text = "Page Setup...";
             this.pageSetupToolStripMenuItem.Click += new System.EventHandler(this.PageSetupToolStripMenuItemClick);
             // 
@@ -500,7 +500,7 @@
             this.printToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.print;
             this.printToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.printToolStripMenuItem.Text = "&Print";
             this.printToolStripMenuItem.ToolTipText = "Print Current Document";
             this.printToolStripMenuItem.Click += new System.EventHandler(this.PrintToolStripMenuItemClick);
@@ -509,7 +509,7 @@
             // 
             this.emailToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.email;
             this.emailToolStripMenuItem.Name = "emailToolStripMenuItem";
-            this.emailToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.emailToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.emailToolStripMenuItem.Text = "&Email";
             this.emailToolStripMenuItem.ToolTipText = "Email Current Document";
             this.emailToolStripMenuItem.Click += new System.EventHandler(this.EmailToolStripMenuItemClick);
@@ -517,13 +517,13 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(139, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.exit;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.ToolTipText = "Exit Document Editor";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
