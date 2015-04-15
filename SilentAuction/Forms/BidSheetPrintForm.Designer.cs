@@ -68,12 +68,11 @@
             this.itemTypeDataGridViewTextBoxColumn});
             this.tableLayoutPanel1.SetColumnSpan(this.ItemsDataGridView, 2);
             this.ItemsDataGridView.DataSource = this.itemsShortListBindingSource;
-            this.ItemsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ItemsDataGridView.Location = new System.Drawing.Point(3, 3);
             this.ItemsDataGridView.Name = "ItemsDataGridView";
             this.ItemsDataGridView.RowHeadersVisible = false;
             this.ItemsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ItemsDataGridView.Size = new System.Drawing.Size(563, 215);
+            this.ItemsDataGridView.Size = new System.Drawing.Size(563, 94);
             this.ItemsDataGridView.TabIndex = 0;
             this.ItemsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemsDataGridViewCellClick);
             // 
@@ -138,36 +137,38 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.bidSheetsTextControl, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.ItemsDataGridView, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(569, 261);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(874, 728);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // panel2
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.panel2, 2);
-            this.panel2.Controls.Add(this.bidSheetsTextControl);
             this.panel2.Controls.Add(this.CancelPrintButton);
             this.panel2.Controls.Add(this.PrintBidSheetButton);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 224);
+            this.panel2.Location = new System.Drawing.Point(3, 691);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(563, 34);
+            this.panel2.Size = new System.Drawing.Size(868, 34);
             this.panel2.TabIndex = 0;
             // 
             // bidSheetsTextControl
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.bidSheetsTextControl, 2);
+            this.bidSheetsTextControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bidSheetsTextControl.Font = new System.Drawing.Font("Arial", 10F);
-            this.bidSheetsTextControl.Location = new System.Drawing.Point(10, -174);
+            this.bidSheetsTextControl.Location = new System.Drawing.Point(3, 103);
             this.bidSheetsTextControl.Name = "bidSheetsTextControl";
-            this.bidSheetsTextControl.Size = new System.Drawing.Size(26, 35);
+            this.bidSheetsTextControl.Size = new System.Drawing.Size(868, 582);
             this.bidSheetsTextControl.TabIndex = 2;
             this.bidSheetsTextControl.Text = "textControl1";
             // 
@@ -195,16 +196,16 @@
             // 
             this.itemsShortListTableAdapter.ClearBeforeFill = true;
             // 
-            // PrintBidSheetForm
+            // BidSheetPrintForm
             // 
             this.AcceptButton = this.PrintBidSheetButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelPrintButton;
-            this.ClientSize = new System.Drawing.Size(569, 261);
+            this.ClientSize = new System.Drawing.Size(874, 728);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "PrintBidSheetForm";
+            this.Name = "BidSheetPrintForm";
             this.Text = "Print Bid Sheet Items";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GenerateItemLabelsFileFormClosing);
             this.Load += new System.EventHandler(this.GenerateItemLabelsFileLoad);
