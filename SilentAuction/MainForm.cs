@@ -1,39 +1,19 @@
 ﻿#region Using Statements
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Drawing.Printing;
-using System.Drawing.Text;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using SilentAuction.Extensions;
 using SilentAuction.Forms;
 using SilentAuction.Properties;
-using SilentAuction.SilentAuctionDataSetTableAdapters;
 using SilentAuction.Utilities;
-using TXTextControl;
-
 #endregion
 
 namespace SilentAuction
 {
     public partial class MainForm : Form
     {
-        #region Fields
-        private readonly byte[] _emptyImage = 
-        {
-            137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 
-            1, 8, 6, 0, 0, 0, 31, 21, 196, 137, 0, 0, 0, 1, 115, 82, 71, 66, 0, 174, 206, 28, 
-            233, 0, 0, 0, 4, 103, 65, 77, 65, 0, 0, 177, 143, 11, 252, 97, 5, 0, 0, 0, 9, 112, 
-            72, 89, 115, 0, 0, 14, 195, 0, 0, 14, 195, 1, 199, 111, 168, 100, 0, 0, 0, 11, 73, 
-            68, 65, 84, 24, 87, 99, 96, 0, 2, 0, 0, 5, 0, 1, 170, 213, 200, 81, 0, 0, 0, 0, 73, 
-            69, 78, 68, 174, 66, 96, 130
-        };
-        #endregion
-
         #region Properties
         public int AuctionIdInUse { get; set; }
         public string AuctionNameInUse { get; set; }
@@ -91,10 +71,9 @@ namespace SilentAuction
         private void ItemsDataGridViewRowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
             DataGridViewRow row = ItemsDataGridView.Rows[e.RowIndex];
-            // TODO: Check this.  Won't close program if no items are entered on page
             if (row.IsNewRow && e.RowIndex > 0)
             {
-                row.Cells[ItemsImageColumn.Index].Value = _emptyImage;
+                row.Cells[ItemsImageColumn.Index].Value = Constants.EmptyImage;
             }
         }
 
@@ -113,6 +92,9 @@ namespace SilentAuction
         private void ItemsSaveAllButtonClick(object sender, EventArgs e)
         {
             int currentRowIndex = 0;
+            bool isValidForm = true;
+            string errorMsg = "";
+
             if(ItemsDataGridView.CurrentRow != null)
                 currentRowIndex = ItemsDataGridView.CurrentRow.Index;
 
@@ -126,6 +108,36 @@ namespace SilentAuction
 
             SilentAuctionDataSet.ItemsDataTable deletedItems =
                 (SilentAuctionDataSet.ItemsDataTable)silentAuctionDataSet.Items.GetChanges(DataRowState.Deleted);
+
+            if (newItems != null)
+            {
+                foreach (SilentAuctionDataSet.ItemsRow row in newItems.Rows)
+                {
+                    isValidForm = IsValidForm(row, ref errorMsg);
+                }
+            }
+
+            if (modifiedItems != null)
+            {
+                foreach (SilentAuctionDataSet.ItemsRow row in modifiedItems.Rows)
+                {
+                    isValidForm = IsValidForm(row, ref errorMsg);
+                }
+            }
+
+            if (!isValidForm)
+            {
+                errorMsg = "Item Id\tError Message\n--------\t---------------\n" + errorMsg;
+                MessageBox.Show(errorMsg, "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (newItems != null)
+                    newItems.Dispose();
+                if (modifiedItems != null)
+                    modifiedItems.Dispose();
+                if (deletedItems != null)
+                    deletedItems.Dispose();
+                MainFormStatusLabel.Text = "Error in data";
+                return;
+            }
 
             try
             {
@@ -198,12 +210,12 @@ namespace SilentAuction
             e.Row.Cells[ItemsDonationDeliveryTypeIdColumn.Index].Value = 1;
             e.Row.Cells[ItemsRetailValueColumn.Index].Value = 0;
             e.Row.Cells[ItemsBidIncrementTypeColumn.Index].Value = 1;
-            e.Row.Cells[ItemsBidMinValueColumn.Index].Value = 0;
-            e.Row.Cells[ItemsBidMaxValueColumn.Index].Value = 1;
+            e.Row.Cells[ItemsBidMinValueColumn.Index].Value = 1;
+            e.Row.Cells[ItemsBidMaxValueColumn.Index].Value = 2;
             e.Row.Cells[ItemsBidIncrementValueColumn.Index].Value = 1;
-            e.Row.Cells[ItemsBidBuyItNowValueColumn.Index].Value = 0;
+            e.Row.Cells[ItemsBidBuyItNowValueColumn.Index].Value = 1;
             e.Row.Cells[ItemsBidNumberOfBidsColumn.Index].Value = 1;
-            e.Row.Cells[ItemsImageColumn.Index].Value = _emptyImage;
+            e.Row.Cells[ItemsImageColumn.Index].Value = Constants.EmptyImage;
             e.Row.Cells[ItemsCreateDateColumn.Index].Value = currentDate;
             e.Row.Cells[ItemsModifiedDateColumn.Index].Value = currentDate;
         }        
@@ -261,7 +273,7 @@ namespace SilentAuction
                         DialogResult result = MessageBox.Show("Delete the image?", "Delete Image", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
-                            ItemsDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = _emptyImage;
+                            ItemsDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = Constants.EmptyImage;
                         }
                     }
                 }
@@ -601,6 +613,119 @@ namespace SilentAuction
             ShowAllItemsByDonorToolStripMenuItem.Enabled = (allDonorsTable.Rows.Count > 0);
             donorNoResponseToolStripMenuItem.Enabled = ((AuctionIdInUse > 0) &&
                 (silentAuctionDataSet.Donors.Rows.Count > 0));
+        }
+        #endregion
+
+        #region Validation Methods
+        private bool IsValidForm(SilentAuctionDataSet.ItemsRow row, ref string errorMsg)
+        {
+            bool isValid = true;
+            
+            isValid = ValidateQty(row.Id, row.Qty, isValid, ref errorMsg);
+            isValid = ValidateRetailValue(row.Id, row.RetailValue, isValid, ref errorMsg);
+            isValid = ValidateMinimumBid(row.Id, row.BidMinValue, isValid, ref errorMsg);
+            isValid = ValidateMaximumBid(row.Id, row.BidMinValue, row.BidMaxValue, isValid, ref errorMsg);
+            isValid = ValidateBuyItNow(row.Id, row.BidBuyItNowValue, isValid, ref errorMsg);
+            isValid = row.BidIncrementTypeId == (int) BidIncrementType.IncrementValue
+                ? ValidateBidIncrementValue(row.Id, row.BidMinValue, row.BidMaxValue, row.BidIncrementValue, isValid, ref errorMsg)
+                : ValidateNumberOfBids(row.Id, row.BidNumberOfBids, isValid, ref errorMsg);
+            
+            return isValid;
+        }
+
+        private bool ValidateNumberOfBids(long id, long numberOfBids, bool isValid, ref string errorMsg)
+        {
+            if (numberOfBids <= 0)
+            {
+                errorMsg += string.Format("{0}\tNumber of Bids must be greater than zero\n", id);
+                isValid = false;
+            }
+            else if (numberOfBids > Constants.MaxNumberOfLines)
+            {
+                errorMsg += string.Format("{0}\tNumber of Bids must be less than or equal to {1}",
+                        id, Constants.MaxNumberOfLines);
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        private bool ValidateBidIncrementValue(long id, double minBid, double maxBid, double incrementValue, bool isValid, ref string errorMsg)
+        {
+            BidCalculator calculator = new BidCalculator();
+            if (minBid >= maxBid) return isValid;
+
+            int numberOfBids = calculator.CalculateNumberOfLines((int)minBid, (int)maxBid, (decimal)incrementValue);
+
+            if (incrementValue <= 0)
+            {
+                errorMsg += string.Format("{0}\tBid Increment value must be greater than zero\n", id);
+                isValid = false;
+            }
+            else if (numberOfBids > Constants.MaxNumberOfLines)
+            {
+                incrementValue = (double) calculator.CalculateAmountPerLine((int)minBid, (int)maxBid, Constants.MaxNumberOfLines);
+                errorMsg += string.Format("{0}\tBid Increment value too small. The number of bids must calculate to {1} or less. Using the maximum number of lines, this calculates to approximately {2}\n",
+                        id, Constants.MaxNumberOfLines, Math.Ceiling(incrementValue).ToString("C0"));
+                isValid = false;
+            }
+            return isValid;
+        }
+
+        private bool ValidateBuyItNow(long id, double buyItNowValue, bool isValid, ref string errorMsg)
+        {
+            if (buyItNowValue <= 0)
+            {
+                errorMsg += string.Format("{0}\tBuy It Now value must be greater than zero\n", id);
+                isValid = false;
+            }
+            return isValid;
+        }
+
+        private bool ValidateMaximumBid(long id, double minBid, double maxBid, bool isValid, ref string errorMsg)
+        {
+            if (maxBid < 0)
+            {
+                errorMsg += string.Format("{0}\tMaximum Bid must be greater than or equal to zero\n", id);
+                isValid = false;
+            }
+            else if (maxBid <= minBid)
+            {
+                errorMsg += string.Format("{0}\tMaximum Bid must be greater than the Minimum Bid\n", id);
+                isValid = false;
+            }
+            return isValid;
+        }
+
+
+        private bool ValidateMinimumBid(long id, double minBid, bool isValid, ref string errorMsg)
+        {
+            if (minBid < 0)
+            {
+                errorMsg += string.Format("{0}\tMinimum Bid must be greater than or equal to zero\n", id);
+                isValid = false;
+            }
+            return isValid;
+        }
+
+        private bool ValidateRetailValue(long id, double retailValue, bool isValid, ref string errorMsg)
+        {
+            if (retailValue < 0)
+            {
+                errorMsg += string.Format("{0}\tRetail Value must be greater than or equal to zero\n", id);
+                isValid = false;
+            }
+            return isValid;
+        }
+
+        private bool ValidateQty(long id, double qty, bool isValid, ref string errorMsg)
+        {
+            if (qty <= 0)
+            {
+                errorMsg += string.Format("{0}\tQuantity must be greater than zero\n", id);
+                isValid = false;
+            }
+            return isValid;
         }
         #endregion
     }

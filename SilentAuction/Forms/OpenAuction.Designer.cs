@@ -108,7 +108,10 @@
             this.Controls.Add(this.OpenButton);
             this.Controls.Add(this.AuctionComboBox);
             this.Controls.Add(this.AuctionsListLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "OpenAuctionForm";
             this.Text = "Open Auction";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OpenAuctionFormFormClosing);

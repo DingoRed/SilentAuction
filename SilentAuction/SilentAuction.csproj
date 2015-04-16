@@ -152,9 +152,9 @@
       <DependentUpon>ReportNoResponseByDonor.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\BidCalculator.cs" />
+    <Compile Include="Utilities\Constants.cs" />
     <Compile Include="Utilities\EmailHelper.cs" />
     <Compile Include="Utilities\FileHelper.cs" />
-    <Compile Include="Utilities\RtfHelper.cs" />
     <Compile Include="Utilities\WindowSettings.cs" />
     <Compile Include="Forms\ReportShowAllItemsByDonorName.cs">
       <SubType>Form</SubType>

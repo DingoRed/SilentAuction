@@ -254,7 +254,10 @@
             this.Controls.Add(this.SaveDonorsAndCloseButton);
             this.Controls.Add(this.SaveDonorsButton);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "CopyDonorsForm";
             this.Text = "Copy Donors";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CopyDonorsFormFormClosing);

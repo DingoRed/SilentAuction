@@ -109,7 +109,7 @@
             // 
             this.auctionsTableAdapter.ClearBeforeFill = true;
             // 
-            // DocumentSelection
+            // DocumentOpenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -119,8 +119,11 @@
             this.Controls.Add(this.SelectDocumentButton);
             this.Controls.Add(this.DocumentsComboBox);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "DocumentSelection";
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "DocumentOpenForm";
             this.Text = "Select Document";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DocumentOpenFormClosing);
             this.Load += new System.EventHandler(this.DocumentOpenFormLoad);

@@ -46,19 +46,15 @@ namespace SilentAuction.Utilities
 
             return bidList;
         }
-        #endregion
 
-        #region Private Methods
-        private decimal CalculateAmountPerLine(decimal minValue, decimal maxValue, int numberOfLines)
-        {
-            numberOfLines = numberOfLines > 1 ? numberOfLines - 1 : 1;
-
-            decimal amountPerLine = (maxValue - minValue)/numberOfLines;
-
-            return amountPerLine;
-        }
-        
-        private int CalculateNumberOfLines(decimal minValue, decimal maxValue, decimal incrementValue)
+        /// <summary>
+        /// Determines the number of lines needed
+        /// </summary>
+        /// <param name="minValue">The minimum or starting value</param>
+        /// <param name="maxValue">The maximum or ending value</param>
+        /// <param name="incrementValue">The amount to increment each time</param>
+        /// <returns>The number of lines needed</returns>
+        public int CalculateNumberOfLines(decimal minValue, decimal maxValue, decimal incrementValue)
         {
             int numberOfLines = 1;
             if (incrementValue > 0)
@@ -67,6 +63,23 @@ namespace SilentAuction.Utilities
             }
             return numberOfLines > 0 ? numberOfLines : 1;
         }
+
+        /// <summary>
+        /// Determines the amount per line
+        /// </summary>
+        /// <param name="minValue">The minimum or starting value</param>
+        /// <param name="maxValue">The maximum or ending value</param>
+        /// <param name="numberOfLines">The number of lines to calculate for</param>
+        /// <returns>The amount per line (exact)</returns>
+        public decimal CalculateAmountPerLine(decimal minValue, decimal maxValue, int numberOfLines)
+        {
+            numberOfLines = numberOfLines > 1 ? numberOfLines - 1 : 1;
+
+            decimal amountPerLine = (maxValue - minValue)/numberOfLines;
+
+            return amountPerLine;
+        }
+        
         #endregion
     }
 }

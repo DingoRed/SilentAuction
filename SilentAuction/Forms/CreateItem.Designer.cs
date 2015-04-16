@@ -389,6 +389,7 @@
             // NumberOfBidsTextBox
             // 
             this.NumberOfBidsTextBox.Location = new System.Drawing.Point(328, 148);
+            this.NumberOfBidsTextBox.MaxLength = 2;
             this.NumberOfBidsTextBox.Name = "NumberOfBidsTextBox";
             this.NumberOfBidsTextBox.Size = new System.Drawing.Size(40, 20);
             this.NumberOfBidsTextBox.TabIndex = 7;
@@ -467,11 +468,11 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(270, 151);
+            this.label17.Location = new System.Drawing.Point(227, 151);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(52, 13);
+            this.label17.Size = new System.Drawing.Size(95, 13);
             this.label17.TabIndex = 38;
-            this.label17.Text = "# of Bids:";
+            this.label17.Text = "# of Bids (max 20):";
             // 
             // label15
             // 

@@ -742,7 +742,7 @@
             // 
             this.CopyDonorsToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.copy;
             this.CopyDonorsToolStripMenuItem.Name = "CopyDonorsToolStripMenuItem";
-            this.CopyDonorsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.CopyDonorsToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.CopyDonorsToolStripMenuItem.Text = "&Copy Donors";
             this.CopyDonorsToolStripMenuItem.Click += new System.EventHandler(this.CopyDonorsToolStripMenuItemClick);
             // 
@@ -750,7 +750,7 @@
             // 
             this.bidCalculatorToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.calculator;
             this.bidCalculatorToolStripMenuItem.Name = "bidCalculatorToolStripMenuItem";
-            this.bidCalculatorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.bidCalculatorToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.bidCalculatorToolStripMenuItem.Text = "&Bid Calculator";
             this.bidCalculatorToolStripMenuItem.Click += new System.EventHandler(this.BidCalculatorToolStripMenuItemClick);
             // 

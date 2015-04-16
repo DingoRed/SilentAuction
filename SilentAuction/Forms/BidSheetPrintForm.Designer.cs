@@ -41,16 +41,22 @@
             this.silentAuctionDataSet = new SilentAuction.SilentAuctionDataSet();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.bidSheetsTextControl = new TXTextControl.TextControl();
             this.CancelPrintButton = new System.Windows.Forms.Button();
             this.PrintBidSheetButton = new System.Windows.Forms.Button();
             this.bidSheetsPrintDocument = new System.Drawing.Printing.PrintDocument();
             this.itemsShortListTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.ItemsShortListTableAdapter();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.bidSheetsTextControl = new TXTextControl.TextControl();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemsShortListBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // ItemsDataGridView
@@ -66,13 +72,13 @@
             this.descriptionDataGridViewTextBoxColumn,
             this.qtyDataGridViewTextBoxColumn,
             this.itemTypeDataGridViewTextBoxColumn});
-            this.tableLayoutPanel1.SetColumnSpan(this.ItemsDataGridView, 2);
             this.ItemsDataGridView.DataSource = this.itemsShortListBindingSource;
-            this.ItemsDataGridView.Location = new System.Drawing.Point(3, 3);
+            this.ItemsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ItemsDataGridView.Location = new System.Drawing.Point(0, 0);
             this.ItemsDataGridView.Name = "ItemsDataGridView";
             this.ItemsDataGridView.RowHeadersVisible = false;
             this.ItemsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ItemsDataGridView.Size = new System.Drawing.Size(563, 94);
+            this.ItemsDataGridView.Size = new System.Drawing.Size(561, 258);
             this.ItemsDataGridView.TabIndex = 0;
             this.ItemsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemsDataGridViewCellClick);
             // 
@@ -137,17 +143,17 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.bidSheetsTextControl, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.ItemsDataGridView, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(874, 728);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(567, 344);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // panel2
@@ -156,21 +162,10 @@
             this.panel2.Controls.Add(this.CancelPrintButton);
             this.panel2.Controls.Add(this.PrintBidSheetButton);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 691);
+            this.panel2.Location = new System.Drawing.Point(3, 307);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(868, 34);
+            this.panel2.Size = new System.Drawing.Size(561, 34);
             this.panel2.TabIndex = 0;
-            // 
-            // bidSheetsTextControl
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.bidSheetsTextControl, 2);
-            this.bidSheetsTextControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bidSheetsTextControl.Font = new System.Drawing.Font("Arial", 10F);
-            this.bidSheetsTextControl.Location = new System.Drawing.Point(3, 103);
-            this.bidSheetsTextControl.Name = "bidSheetsTextControl";
-            this.bidSheetsTextControl.Size = new System.Drawing.Size(868, 582);
-            this.bidSheetsTextControl.TabIndex = 2;
-            this.bidSheetsTextControl.Text = "textControl1";
             // 
             // CancelPrintButton
             // 
@@ -196,13 +191,60 @@
             // 
             this.itemsShortListTableAdapter.ClearBeforeFill = true;
             // 
+            // panel1
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.panel1, 2);
+            this.panel1.Controls.Add(this.ItemsDataGridView);
+            this.panel1.Controls.Add(this.bidSheetsTextControl);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(561, 258);
+            this.panel1.TabIndex = 1;
+            // 
+            // bidSheetsTextControl
+            // 
+            this.bidSheetsTextControl.Font = new System.Drawing.Font("Arial", 10F);
+            this.bidSheetsTextControl.Location = new System.Drawing.Point(42, 40);
+            this.bidSheetsTextControl.Name = "bidSheetsTextControl";
+            this.bidSheetsTextControl.Size = new System.Drawing.Size(63, 48);
+            this.bidSheetsTextControl.TabIndex = 1;
+            this.bidSheetsTextControl.Text = "textControl1";
+            // 
+            // panel3
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.panel3, 2);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.progressBar1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 267);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(561, 34);
+            this.panel3.TabIndex = 2;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(98, 4);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(463, 23);
+            this.progressBar1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Printing Progress:";
+            // 
             // BidSheetPrintForm
             // 
             this.AcceptButton = this.PrintBidSheetButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelPrintButton;
-            this.ClientSize = new System.Drawing.Size(874, 728);
+            this.ClientSize = new System.Drawing.Size(567, 344);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BidSheetPrintForm";
@@ -214,6 +256,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -226,7 +271,6 @@
         private SilentAuctionDataSet silentAuctionDataSet;
         private System.Windows.Forms.Button CancelPrintButton;
         private System.Windows.Forms.Button PrintBidSheetButton;
-        private TXTextControl.TextControl bidSheetsTextControl;
         private System.Drawing.Printing.PrintDocument bidSheetsPrintDocument;
         private System.Windows.Forms.BindingSource itemsShortListBindingSource;
         private SilentAuctionDataSetTableAdapters.ItemsShortListTableAdapter itemsShortListTableAdapter;
@@ -236,5 +280,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn qtyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Panel panel1;
+        private TXTextControl.TextControl bidSheetsTextControl;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

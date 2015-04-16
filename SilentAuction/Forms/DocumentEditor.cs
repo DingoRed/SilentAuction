@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Windows.Forms;
 using SilentAuction.SilentAuctionDataSetTableAdapters;
@@ -17,13 +18,13 @@ namespace SilentAuction.Forms
         #region Fields
         private bool _documentIsDirty;
         private int _fieldId;
-        private const string Company = "<<CompanyName>>";
-        private const string ContactName = "<<ContactName>>";
-        private const string Street1 = "<<Street1>>";
-        private const string Street2 = "<<Street2>>";
-        private const string City = "<<City>>";
-        private const string State = "<<State>>";
-        private const string ZipCode = "<<ZipCode>>";
+        //private const string Company = "<<CompanyName>>";
+        //private const string ContactName = "<<ContactName>>";
+        //private const string Street1 = "<<Street1>>";
+        //private const string Street2 = "<<Street2>>";
+        //private const string City = "<<City>>";
+        //private const string State = "<<State>>";
+        //private const string ZipCode = "<<ZipCode>>";
         private const string TitleText = "Document Editor - ";
         #endregion
 
@@ -210,37 +211,37 @@ namespace SilentAuction.Forms
         #region Insert Menu Items Event Handlers
         private void InsertCompanyNameToolStripMenuItemClick(object sender, EventArgs e)
         {
-            InsertNewField(Company);
+            InsertNewField(Constants.Company);
         }
 
         private void InsertContactNameToolStripMenuItemClick(object sender, EventArgs e)
         {
-            InsertNewField(ContactName);
+            InsertNewField(Constants.ContactName);
         }
 
         private void InsertStreet1ToolStripMenuItemClick(object sender, EventArgs e)
         {
-            InsertNewField(Street1);
+            InsertNewField(Constants.Street1);
         }
 
         private void InsertStreet2ToolStripMenuItemClick(object sender, EventArgs e)
         {
-            InsertNewField(Street2);
+            InsertNewField(Constants.Street2);
         }
 
         private void InsertCityToolStripMenuItemClick(object sender, EventArgs e)
         {
-            InsertNewField(City);
+            InsertNewField(Constants.City);
         }
 
         private void InsertStateToolStripMenuItemClick(object sender, EventArgs e)
         {
-            InsertNewField(State);
+            InsertNewField(Constants.State);
         }
 
         private void InsertZipCodeToolStripMenuItemClick(object sender, EventArgs e)
         {
-            InsertNewField(ZipCode);
+            InsertNewField(Constants.ZipCode);
         }
 
         private void InsertImageToolStripMenuItemClick(object sender, EventArgs e)
@@ -873,6 +874,7 @@ namespace SilentAuction.Forms
 
         private void FilePrint()
         {
+            // TODO: Add progress bar?
             List<int> donorIdsToPrint = new List<int>();
 
             DocumentPrintForm donorSelections = new DocumentPrintForm(AuctionId);
@@ -886,9 +888,11 @@ namespace SilentAuction.Forms
 
             DialogResult = DialogResult.None;
 
-
             IEnumerable<SilentAuctionDataSet.DonorsRow> donors =
                 new DonorsTableAdapter().GetDonorsData(AuctionId).Where(d => donorIdsToPrint.Contains((int)d.Id));
+
+            PrintController printController = new StandardPrintController();
+            printDocumentMain.PrintController = printController;
 
             foreach (SilentAuctionDataSet.DonorsRow row in donors)
             {
@@ -975,25 +979,25 @@ namespace SilentAuction.Forms
             {
                 switch (field.Name)
                 {
-                    case Company:
+                    case Constants.Company:
                         field.Text = row.Name;
                         break;
-                    case ContactName:
+                    case Constants.ContactName:
                         field.Text = row.ContactName;
                         break;
-                    case Street1:
+                    case Constants.Street1:
                         field.Text = row.Street1;
                         break;
-                    case Street2:
+                    case Constants.Street2:
                         field.Text = row.Street2;
                         break;
-                    case City:
+                    case Constants.City:
                         field.Text = row.City;
                         break;
-                    case State:
+                    case Constants.State:
                         field.Text = row.State;
                         break;
-                    case ZipCode:
+                    case Constants.ZipCode:
                         field.Text = row.ZipCode;
                         break;
                 }
@@ -1006,26 +1010,26 @@ namespace SilentAuction.Forms
             {
                 switch (field.Name)
                 {
-                    case Company:
-                        field.Text = Company;
+                    case Constants.Company:
+                        field.Text = Constants.Company;
                         break;
-                    case ContactName:
-                        field.Text = ContactName;
+                    case Constants.ContactName:
+                        field.Text = Constants.ContactName;
                         break;
-                    case Street1:
-                        field.Text = Street1;
+                    case Constants.Street1:
+                        field.Text = Constants.Street1;
                         break;
-                    case Street2:
-                        field.Text = Street2;
+                    case Constants.Street2:
+                        field.Text = Constants.Street2;
                         break;
-                    case City:
-                        field.Text = City;
+                    case Constants.City:
+                        field.Text = Constants.City;
                         break;
-                    case State:
-                        field.Text = State;
+                    case Constants.State:
+                        field.Text = Constants.State;
                         break;
-                    case ZipCode:
-                        field.Text = ZipCode;
+                    case Constants.ZipCode:
+                        field.Text = Constants.ZipCode;
                         break;
                 }
             }

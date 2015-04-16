@@ -258,7 +258,10 @@
             this.Controls.Add(this.SaveAuctionAndCloseButton);
             this.Controls.Add(this.CancelAuctionButton);
             this.Controls.Add(this.SaveAuctionButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "CreateNewAuctionForm";
             this.Text = "Create New Auction";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CreateNewAuctionFormFormClosing);

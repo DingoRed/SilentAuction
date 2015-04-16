@@ -31,11 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DocumentEmailForm));
             this.DonorsListBox = new System.Windows.Forms.ListBox();
+            this.donorsWithEmailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.silentAuctionDataSet = new SilentAuction.SilentAuctionDataSet();
             this.label1 = new System.Windows.Forms.Label();
             this.EmailButton = new System.Windows.Forms.Button();
             this.CancelEmailButton = new System.Windows.Forms.Button();
-            this.donorsWithEmailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.silentAuctionDataSet = new SilentAuction.SilentAuctionDataSet();
             this.donorsWithEmailsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorsWithEmailsTableAdapter();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -71,6 +71,16 @@
             this.DonorsListBox.TabIndex = 0;
             this.DonorsListBox.ValueMember = "Id";
             // 
+            // donorsWithEmailsBindingSource
+            // 
+            this.donorsWithEmailsBindingSource.DataMember = "DonorsWithEmails";
+            this.donorsWithEmailsBindingSource.DataSource = this.silentAuctionDataSet;
+            // 
+            // silentAuctionDataSet
+            // 
+            this.silentAuctionDataSet.DataSetName = "SilentAuctionDataSet";
+            this.silentAuctionDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -100,16 +110,6 @@
             this.CancelEmailButton.TabIndex = 3;
             this.CancelEmailButton.Text = "Cancel";
             this.CancelEmailButton.UseVisualStyleBackColor = true;
-            // 
-            // donorsWithEmailsBindingSource
-            // 
-            this.donorsWithEmailsBindingSource.DataMember = "DonorsWithEmails";
-            this.donorsWithEmailsBindingSource.DataSource = this.silentAuctionDataSet;
-            // 
-            // silentAuctionDataSet
-            // 
-            this.silentAuctionDataSet.DataSetName = "SilentAuctionDataSet";
-            this.silentAuctionDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // donorsWithEmailsTableAdapter
             // 
@@ -236,7 +236,7 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // EmailForm
+            // DocumentEmailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -246,8 +246,11 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.CancelEmailButton);
             this.Controls.Add(this.EmailButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "EmailForm";
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "DocumentEmailForm";
             this.Text = "Email";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EmailFormClosing);
             this.Load += new System.EventHandler(this.EmailFormLoad);
