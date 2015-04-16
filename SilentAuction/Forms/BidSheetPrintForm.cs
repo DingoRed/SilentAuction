@@ -13,7 +13,7 @@ namespace SilentAuction.Forms
         private const string ItemNumber = "<<ItemNumber>>";
         private const string RetailValue = "<<RetailValue>>";
         private const string BidList = "<<BidList>>";
-        private const string BuyItNowValue = "<<BuyItNowValue>>";
+        private const string BuyItNowValue = "<<BuyItNow>>";
         private const string AuctionName = "<<AuctionName>>";
         private const string ItemName = "<<ItemName>>";
         private const string ItemDescription = "<<ItemDescription>>";
@@ -161,8 +161,8 @@ namespace SilentAuction.Forms
                         // TODO:  Clean this up.
                         foreach (decimal bid in bids)
                         {
-                            bidList += string.Format(@"\trowd\irow{0}\irowband1\trgaph108\trrh428\trleft0\trftsWidth1\trftsWidthB3\trftsWidthA3\trpaddl108\trpaddr108\trpaddfl3\trpaddft3\trpaddfr3\trpaddfb3\clvertalc\clbrdrl\brdrs\brdrw10\clbrdrt\brdrs\brdrw10\clbrdrr\brdrs\brdrw10\clbrdrb\brdrs\brdrw10\clftsWidth3\clwWidth648\cellx648\clvertalt\clbrdrl\brdrs\brdrw10\clbrdrt\brdrs\brdrw10\clbrdrr\brdrs\brdrw10\clbrdrb\brdrs\brdrw10\clftsWidth3\clwWidth3420\cellx4068\clvertalt\clbrdrl\brdrs\brdrw10\clbrdrt\brdrs\brdrw10\clbrdrr\brdrs\brdrw10\clbrdrb\brdrs\brdrw10\clftsWidth3\clwWidth3521\cellx7589\clvertalt\clbrdrl\brdrs\brdrw10\clbrdrt\brdrs\brdrw10\clbrdrr\brdrs\brdrw10\clbrdrb\brdrs\brdrw10\clftsWidth3\clwWidth2635\cellx10224\pard\ltrpar\intbl\widctlpar\ql\li0\ri0\lin0\rin0\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\tx9360\tx10080\plain\rtlch\af4\afs24\alang1033\ltrch\f4\fs24\lang1033\langnp1033\langfe1033\langfenp1033 {1}\cell\cell\cell\cell
-\trowd\irow1\irowband1\trgaph108\trrh428\trleft0\trftsWidth1\trftsWidthB3\trftsWidthA3\trpaddl108\trpaddr108\trpaddfl3\trpaddft3\trpaddfr3\trpaddfb3\clvertalc\clbrdrl\brdrs\brdrw10\clbrdrt\brdrs\brdrw10\clbrdrr\brdrs\brdrw10\clbrdrb\brdrs\brdrw10\clftsWidth3\clwWidth648\cellx648\clvertalt\clbrdrl\brdrs\brdrw10\clbrdrt\brdrs\brdrw10\clbrdrr\brdrs\brdrw10\clbrdrb\brdrs\brdrw10\clftsWidth3\clwWidth3420\cellx4068\clvertalt\clbrdrl\brdrs\brdrw10\clbrdrt\brdrs\brdrw10\clbrdrr\brdrs\brdrw10\clbrdrb\brdrs\brdrw10\clftsWidth3\clwWidth3521\cellx7589\clvertalt\clbrdrl\brdrs\brdrw10\clbrdrt\brdrs\brdrw10\clbrdrr\brdrs\brdrw10\clbrdrb\brdrs\brdrw10\clftsWidth3\clwWidth2635\cellx10224\row", rowNumber, bid.ToString("C0"));
+                            bidList += string.Format(@"\trowd\irow{0}\irowband1\trgaph108\trrh428\trleft0\trftsWidth1\trftsWidthB3\trftsWidthA3\trpaddl108\trpaddr108\trpaddfl3\trpaddft3\trpaddfr3\trpaddfb3\clvertalc\clbrdrl\brdrs\brdrw10\clbrdrt\brdrs\brdrw10\clbrdrr\brdrs\brdrw10\clbrdrb\brdrs\brdrw10\clftsWidth3\clwWidth1014\cellx1014\clvertalt\clbrdrl\brdrs\brdrw10\clbrdrt\brdrs\brdrw10\clbrdrr\brdrs\brdrw10\clbrdrb\brdrs\brdrw10\clftsWidth3\clwWidth3054\cellx4068\clvertalt\clbrdrl\brdrs\brdrw10\clbrdrt\brdrs\brdrw10\clbrdrr\brdrs\brdrw10\clbrdrb\brdrs\brdrw10\clftsWidth3\clwWidth3521\cellx7589\clvertalt\clbrdrl\brdrs\brdrw10\clbrdrt\brdrs\brdrw10\clbrdrr\brdrs\brdrw10\clbrdrb\brdrs\brdrw10\clftsWidth3\clwWidth2635\cellx10224\pard\ltrpar\intbl\widctlpar\ql\li0\ri0\lin0\rin0\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\tx9360\tx10080\plain\rtlch\af4\afs24\alang1033\ltrch\f4\fs24\lang1033\langnp1033\langfe1033\langfenp1033 {1}\cell\cell\cell\cell
+\trowd\irow1\irowband1\trgaph108\trrh428\trleft0\trftsWidth1\trftsWidthB3\trftsWidthA3\trpaddl108\trpaddr108\trpaddfl3\trpaddft3\trpaddfr3\trpaddfb3\clvertalc\clbrdrl\brdrs\brdrw10\clbrdrt\brdrs\brdrw10\clbrdrr\brdrs\brdrw10\clbrdrb\brdrs\brdrw10\clftsWidth3\clwWidth1014\cellx1014\clvertalt\clbrdrl\brdrs\brdrw10\clbrdrt\brdrs\brdrw10\clbrdrr\brdrs\brdrw10\clbrdrb\brdrs\brdrw10\clftsWidth3\clwWidth3054\cellx4068\clvertalt\clbrdrl\brdrs\brdrw10\clbrdrt\brdrs\brdrw10\clbrdrr\brdrs\brdrw10\clbrdrb\brdrs\brdrw10\clftsWidth3\clwWidth3521\cellx7589\clvertalt\clbrdrl\brdrs\brdrw10\clbrdrt\brdrs\brdrw10\clbrdrr\brdrs\brdrw10\clbrdrb\brdrs\brdrw10\clftsWidth3\clwWidth2635\cellx10224\row", rowNumber, bid.ToString("C0")); 
                             rowNumber++;
                         }
 
@@ -172,9 +172,20 @@ namespace SilentAuction.Forms
                             bidList += "\n\n";
                         }
 
+                        string rtfData;
+                        bidSheetsTextControl.Save(out rtfData, StringStreamType.RichTextFormat);
+                        rtfData = rtfData.Replace(BidList, bidList);
+                        bidSheetsTextControl.Load(rtfData, StringStreamType.RichTextFormat);
+
                         MergeTextFields(row, bidList);
                         bidSheetsTextControl.Print(bidSheetsPrintDocument);
                         ResetTextFields();
+
+                        bidSheetsTextControl.Save(out rtfData, StringStreamType.RichTextFormat);
+                        rtfData = rtfData.Replace(bidList, BidList);
+                        bidSheetsTextControl.Load(rtfData, StringStreamType.RichTextFormat);
+
+                        
                     }
                     catch (Exception exception)
                     {
@@ -199,38 +210,49 @@ namespace SilentAuction.Forms
             // TODO:  The doc has a bunch of frames.  the textfields are inside
             // ((TXTextControl.TextFrame)((new System.Linq.SystemCore_EnumerableDebugView(bidSheetsTextControl.Frames)).Items[0])).TextFields
 
+            foreach (TextField field in bidSheetsTextControl.TextFields)
+            {
+                SetTextFieldValue(itemsRow, bidList, field);
+            }
+
+
             foreach (TextFrame frame in bidSheetsTextControl.Frames)
             {
                 foreach (TextField field in frame.TextFields)
                 {
-                    switch (field.Name)
-                    {
-                        case ItemNumber:
-                            field.Text = itemsRow.Id.ToString();
-                            break;
-                        case RetailValue:
-                            field.Text = itemsRow.RetailValue.ToString("C");
-                            break;
-                        case BidList:
-                            //field.Text = bidList;
-                            break;
-                        case BuyItNowValue:
-                            field.Text = itemsRow.BidBuyItNowValue.ToString("C");
-                            break;
-                        case AuctionName:
-                            field.Text = "Auction Name!";
-                            break;
-                        case ItemName:
-                            field.Text = itemsRow.ItemName;
-                            break;
-                        case ItemDescription:
-                            field.Text = itemsRow.Description;
-                            break;
-                        case DonorName:
-                            field.Text = itemsRow.DonorName;
-                            break;
-                    }
+                    SetTextFieldValue(itemsRow, bidList, field);
                 }
+            }
+        }
+
+        private static void SetTextFieldValue(SilentAuctionDataSet.ItemsShortListRow itemsRow, string bidList, TextField field)
+        {
+            switch (field.Name)
+            {
+                case ItemNumber:
+                    field.Text = itemsRow.Id.ToString();
+                    break;
+                case RetailValue:
+                    field.Text = itemsRow.RetailValue.ToString("C");
+                    break;
+                case BidList:
+                    field.Text = bidList;
+                    break;
+                case BuyItNowValue:
+                    field.Text = itemsRow.BidBuyItNowValue.ToString("C");
+                    break;
+                case AuctionName:
+                    field.Text = itemsRow.AuctionName;
+                    break;
+                case ItemName:
+                    field.Text = itemsRow.ItemName;
+                    break;
+                case ItemDescription:
+                    field.Text = itemsRow.Description;
+                    break;
+                case DonorName:
+                    field.Text = itemsRow.DonorName;
+                    break;
             }
         }
 
