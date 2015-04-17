@@ -15,7 +15,7 @@ namespace SilentAuction.Utilities
         #region Public Methods
         public static bool SendEmail(string gmailAccount, SecureString gmailPassword, 
             string fromAddress, List<string> toAddressList, List<string> ccAddressList, 
-            string subject, string body)
+            string subject, string body, List<string> attachmentFilenameList)
         {
             try
             {
@@ -41,6 +41,12 @@ namespace SilentAuction.Utilities
                 mail.Subject = subject;
                 mail.Body = body;
                 mail.IsBodyHtml = true;
+
+                foreach (string filename in attachmentFilenameList)
+                {
+                    Attachment attachment = new Attachment(filename);
+                    mail.Attachments.Add(attachment);
+                }
 
                 smtp.Port = 587;  //465  587  25
                 smtp.Host = "smtp.gmail.com";

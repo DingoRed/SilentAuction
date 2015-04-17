@@ -133,6 +133,12 @@
     <Compile Include="Forms\BidSheetPrintForm.Designer.cs">
       <DependentUpon>BidSheetPrintForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Eula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Eula.Designer.cs">
+      <DependentUpon>Eula.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\GenerateItemLabelsFile.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +150,12 @@
     </Compile>
     <Compile Include="Forms\GenerateAddressLabelsFile.Designer.cs">
       <DependentUpon>GenerateAddressLabelsFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ProgressBarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProgressBarForm.Designer.cs">
+      <DependentUpon>ProgressBarForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ReportNoResponseByDonor.cs">
       <SubType>Form</SubType>
@@ -240,6 +252,9 @@
     <EmbeddedResource Include="Forms\EditAuctionForm.resx">
       <DependentUpon>EditAuctionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Eula.resx">
+      <DependentUpon>Eula.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\GenerateAddressLabelsFile.resx">
       <DependentUpon>GenerateAddressLabelsFile.cs</DependentUpon>
     </EmbeddedResource>
@@ -248,6 +263,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GenerateItemLabelsFile.resx">
       <DependentUpon>GenerateItemLabelsFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProgressBarForm.resx">
+      <DependentUpon>ProgressBarForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReportNoResponseByDonor.resx">
       <DependentUpon>ReportNoResponseByDonor.cs</DependentUpon>
@@ -307,6 +325,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\SilentAuctionGavel.ico" />
+    <None Include="Resources\EULA.txt" />
     <None Include="Resources\report.png" />
     <None Include="Resources\file_extension_txt.png" />
     <None Include="Resources\calculator.png" />

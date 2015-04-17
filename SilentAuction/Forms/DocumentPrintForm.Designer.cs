@@ -90,7 +90,7 @@
             // 
             // PrintButton
             // 
-            this.PrintButton.Location = new System.Drawing.Point(51, 227);
+            this.PrintButton.Location = new System.Drawing.Point(51, 243);
             this.PrintButton.Name = "PrintButton";
             this.PrintButton.Size = new System.Drawing.Size(75, 23);
             this.PrintButton.TabIndex = 2;
@@ -101,7 +101,7 @@
             // CancelPrintButton
             // 
             this.CancelPrintButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelPrintButton.Location = new System.Drawing.Point(158, 227);
+            this.CancelPrintButton.Location = new System.Drawing.Point(158, 243);
             this.CancelPrintButton.Name = "CancelPrintButton";
             this.CancelPrintButton.Size = new System.Drawing.Size(75, 23);
             this.CancelPrintButton.TabIndex = 3;
@@ -144,18 +144,18 @@
             // 
             this.auctionsTableAdapter.ClearBeforeFill = true;
             // 
-            // PrintForm
+            // DocumentPrintForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelPrintButton;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(284, 290);
             this.Controls.Add(this.CancelPrintButton);
             this.Controls.Add(this.PrintButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.DonorsListBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "PrintForm";
+            this.Name = "DocumentPrintForm";
             this.Text = "Print Options";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PrintFormClosing);
             this.Load += new System.EventHandler(this.PrintFormLoad);

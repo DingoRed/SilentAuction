@@ -67,6 +67,7 @@
             this.ItemsModifiedDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ButtonsPanel = new System.Windows.Forms.Panel();
+            this.exportButton = new System.Windows.Forms.Button();
             this.AddItemsButton = new System.Windows.Forms.Button();
             this.ItemsSaveAllButton = new System.Windows.Forms.Button();
             this.LabelsPanel = new System.Windows.Forms.Panel();
@@ -81,9 +82,6 @@
             this.CloseAuctionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.PrintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.PrintPreviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -174,6 +172,7 @@
             // 
             this.ItemsDataGridView.AutoGenerateColumns = false;
             this.ItemsDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.ItemsDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
             this.ItemsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ItemsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemsIdColumn,
@@ -437,6 +436,7 @@
             // ButtonsPanel
             // 
             this.ItemsTableLayoutPanel.SetColumnSpan(this.ButtonsPanel, 3);
+            this.ButtonsPanel.Controls.Add(this.exportButton);
             this.ButtonsPanel.Controls.Add(this.AddItemsButton);
             this.ButtonsPanel.Controls.Add(this.ItemsSaveAllButton);
             this.ButtonsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -445,6 +445,19 @@
             this.ButtonsPanel.Size = new System.Drawing.Size(868, 34);
             this.ButtonsPanel.TabIndex = 3;
             this.ButtonsPanel.Visible = false;
+            // 
+            // exportButton
+            // 
+            this.exportButton.Image = global::SilentAuction.Properties.Resources.file_extension_txt;
+            this.exportButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.exportButton.Location = new System.Drawing.Point(795, 3);
+            this.exportButton.Name = "exportButton";
+            this.exportButton.Size = new System.Drawing.Size(64, 23);
+            this.exportButton.TabIndex = 4;
+            this.exportButton.Text = "Export";
+            this.exportButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.exportButton.UseVisualStyleBackColor = true;
+            this.exportButton.Click += new System.EventHandler(this.ExportButtonClick);
             // 
             // AddItemsButton
             // 
@@ -500,7 +513,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(315, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(400, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -515,9 +528,6 @@
             this.CloseAuctionToolStripMenuItem,
             this.toolStripSeparator,
             this.SaveToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.PrintToolStripMenuItem,
-            this.PrintPreviewToolStripMenuItem,
             this.toolStripSeparator2,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -590,32 +600,6 @@
             this.SaveToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.SaveToolStripMenuItem.Text = "&Save";
             this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItemClick);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(188, 6);
-            // 
-            // PrintToolStripMenuItem
-            // 
-            this.PrintToolStripMenuItem.Enabled = false;
-            this.PrintToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.print;
-            this.PrintToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.PrintToolStripMenuItem.Name = "PrintToolStripMenuItem";
-            this.PrintToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.PrintToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.PrintToolStripMenuItem.Text = "&Print";
-            this.PrintToolStripMenuItem.Click += new System.EventHandler(this.PrintToolStripMenuItemClick);
-            // 
-            // PrintPreviewToolStripMenuItem
-            // 
-            this.PrintPreviewToolStripMenuItem.Enabled = false;
-            this.PrintPreviewToolStripMenuItem.Image = global::SilentAuction.Properties.Resources.printpreview;
-            this.PrintPreviewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.PrintPreviewToolStripMenuItem.Name = "PrintPreviewToolStripMenuItem";
-            this.PrintPreviewToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.PrintPreviewToolStripMenuItem.Text = "Print Pre&view";
-            this.PrintPreviewToolStripMenuItem.Click += new System.EventHandler(this.PrintPreviewToolStripMenuItemClick);
             // 
             // toolStripSeparator2
             // 
@@ -994,9 +978,6 @@
         private System.Windows.Forms.ToolStripMenuItem OpenAuctionToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
         private System.Windows.Forms.ToolStripMenuItem SaveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem PrintToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem PrintPreviewToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
@@ -1056,5 +1037,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem PrintBidSheetsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.Button exportButton;
     }
 }

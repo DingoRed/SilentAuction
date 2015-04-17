@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using SilentAuction.SilentAuctionDataSetTableAdapters;
 using SilentAuction.Utilities;
@@ -18,13 +20,10 @@ namespace SilentAuction.Forms
         #region Fields
         private bool _documentIsDirty;
         private int _fieldId;
-        //private const string Company = "<<CompanyName>>";
-        //private const string ContactName = "<<ContactName>>";
-        //private const string Street1 = "<<Street1>>";
-        //private const string Street2 = "<<Street2>>";
-        //private const string City = "<<City>>";
-        //private const string State = "<<State>>";
-        //private const string ZipCode = "<<ZipCode>>";
+        private ProgressBarForm _progressBarForm;
+        private List<int> _donorIdsToPrint;
+        private int _currentRow;
+        private int _totalRows;
         private const string TitleText = "Document Editor - ";
         #endregion
 
@@ -39,6 +38,8 @@ namespace SilentAuction.Forms
             AuctionId = auctionId;
             
             InitializeComponent();
+            documentEditorBackgroundWorker.WorkerReportsProgress = true;
+            documentEditorBackgroundWorker.WorkerSupportsCancellation = true;
         }
         #endregion
 
@@ -57,7 +58,7 @@ namespace SilentAuction.Forms
         {
             if (_documentIsDirty)
             {
-                DialogResult dlgRes = MessageBox.Show("Save changes before exiting?", "Save Changes", MessageBoxButtons.YesNoCancel);
+                DialogResult dlgRes = MessageBox.Show("Save changes before exiting Document Editor?", "Save Changes", MessageBoxButtons.YesNoCancel);
                 if (dlgRes == DialogResult.Yes)
                 {
                     FileSave();
@@ -874,31 +875,29 @@ namespace SilentAuction.Forms
 
         private void FilePrint()
         {
-            // TODO: Add progress bar?
-            List<int> donorIdsToPrint = new List<int>();
+            _donorIdsToPrint = new List<int>();
 
-            DocumentPrintForm donorSelections = new DocumentPrintForm(AuctionId);
-            DialogResult result = donorSelections.ShowDialog();
+            DocumentPrintForm documentPrintForm = new DocumentPrintForm(AuctionId);
+            DialogResult result = documentPrintForm.ShowDialog();
             if (result == DialogResult.OK)
             {
-                donorIdsToPrint = donorSelections.DonorIdsToPrint;
+                _donorIdsToPrint = documentPrintForm.DonorIdsToPrint;
             }
             else if (result == DialogResult.Cancel)
                 return;
 
             DialogResult = DialogResult.None;
 
-            IEnumerable<SilentAuctionDataSet.DonorsRow> donors =
-                new DonorsTableAdapter().GetDonorsData(AuctionId).Where(d => donorIdsToPrint.Contains((int)d.Id));
+            _progressBarForm = new ProgressBarForm();
+            _progressBarForm.Text = "Printing Progress";
+            _progressBarForm.PercentFinished = 0;
+            _progressBarForm.CurrentJobText = "Starting printing...";
+            _progressBarForm.Show();
 
-            PrintController printController = new StandardPrintController();
-            printDocumentMain.PrintController = printController;
-
-            foreach (SilentAuctionDataSet.DonorsRow row in donors)
+            if (documentEditorBackgroundWorker.IsBusy != true)
             {
-                MergeTextFields(row);
-                documentEditorControl.Print(printDocumentMain);
-                ResetTextFields();
+                // Start the asynchronous operation.
+                documentEditorBackgroundWorker.RunWorkerAsync();
             }
         }
 
@@ -932,11 +931,10 @@ namespace SilentAuction.Forms
                 MergeTextFields(row);
 
                 // TODO: Figure out what to do when behind firewall
-                // TODO: Show progress screen?
                 string body;
                 documentEditorControl.Save(out body, StringStreamType.HTMLFormat);
                 if (!EmailHelper.SendEmail(emailForm.Account, emailForm.Password, emailForm.Account,
-                    emailList, emailForm.CcAddressList, emailForm.Subject, body))
+                    emailList, emailForm.CcAddressList, emailForm.Subject, body, emailForm.AttachmentFilenameList))
                 {
                     errorEmails.Add(row.Email);
                 }
@@ -953,6 +951,11 @@ namespace SilentAuction.Forms
                 }
 
                 MessageBox.Show(string.Format(msg), "Error Sending Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                bottomToolStripStatusLabel.Text = "Email(s) sent";
+                bottomToolStripStatusLabel.Visible = true;
             }
         }
 
@@ -1086,5 +1089,59 @@ namespace SilentAuction.Forms
         }
         #endregion
 
+        #region BackgroundWorker Event Handlers
+        private void DocumentEditorBackgroundWorkerDoWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker worker = sender as BackgroundWorker;
+            
+            IEnumerable<SilentAuctionDataSet.DonorsRow> donors =
+                new DonorsTableAdapter().GetDonorsData(AuctionId).Where(d => _donorIdsToPrint.Contains((int)d.Id));
+
+            PrintController printController = new StandardPrintController();
+            printDocumentMain.PrintController = printController;
+
+            _currentRow = 1;
+            _totalRows = donors.Count();
+            foreach (SilentAuctionDataSet.DonorsRow row in donors)
+            {
+                MergeTextFields(row);
+
+                // TODO: Swap this for printing
+                Thread.Sleep(1000);
+                //documentEditorControl.Print(printDocumentMain);
+
+                ResetTextFields();
+
+                if(worker != null)
+                    worker.ReportProgress(_currentRow*100/_totalRows);
+
+                _currentRow++;
+            }
+        }
+
+        private void DocumentEditorBackgroundWorkerProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            _progressBarForm.CurrentJobText =string.Format("Printing: {0} of {1}", _currentRow, _totalRows); //e.ProgressPercentage + "% Finished!";
+            _progressBarForm.PercentFinished = e.ProgressPercentage;
+        }
+
+        private void DocumentEditorBackgroundWorkerRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled)
+            {
+                //resultLabel.Text = "Canceled!";
+            }
+            else if (e.Error != null)
+            {
+                //resultLabel.Text = "Error: " + e.Error.Message;
+            }
+            else
+            {
+                //resultLabel.Text = "Done!";
+                _progressBarForm.Close();
+                _progressBarForm.Dispose();
+            }
+        }
+        #endregion
     }
 }

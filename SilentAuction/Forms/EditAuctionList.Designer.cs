@@ -58,6 +58,7 @@
             this.AuctionsDataGridView.AllowUserToAddRows = false;
             this.AuctionsDataGridView.AllowUserToDeleteRows = false;
             this.AuctionsDataGridView.AutoGenerateColumns = false;
+            this.AuctionsDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
             this.AuctionsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.AuctionsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.AuctionsNameColumn,

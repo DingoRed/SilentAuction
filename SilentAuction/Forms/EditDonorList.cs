@@ -9,12 +9,13 @@ namespace SilentAuction.Forms
     public partial class EditDonorList : Form
     {
         #region Properties
-        public int AuctionIdInUse { get; set; }
+        private int AuctionIdInUse { get; set; }
         #endregion
 
         #region Form Event Handlers
-        public EditDonorList()
+        public EditDonorList(int auctionId)
         {
+            AuctionIdInUse = auctionId;
             InitializeComponent();
         }
 

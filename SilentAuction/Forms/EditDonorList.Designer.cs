@@ -84,6 +84,7 @@
             this.DonorsDataGridView.AllowUserToAddRows = false;
             this.DonorsDataGridView.AllowUserToDeleteRows = false;
             this.DonorsDataGridView.AutoGenerateColumns = false;
+            this.DonorsDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
             this.DonorsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DonorsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DonorTypeColumn,

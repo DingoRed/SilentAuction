@@ -480,7 +480,7 @@ namespace SilentAuction.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("130")]
         public int DonorsRequestStatusTypeIdColumnWidth {
             get {
                 return ((int)(this["DonorsRequestStatusTypeIdColumnWidth"]));
@@ -703,6 +703,30 @@ namespace SilentAuction.Properties {
             }
             set {
                 this["CreateItemInitialLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ProgressBarFormInitialLocation {
+            get {
+                return ((string)(this["ProgressBarFormInitialLocation"]));
+            }
+            set {
+                this["ProgressBarFormInitialLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool EULAAccepted {
+            get {
+                return ((bool)(this["EULAAccepted"]));
+            }
+            set {
+                this["EULAAccepted"] = value;
             }
         }
     }

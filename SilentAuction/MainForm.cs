@@ -5,8 +5,10 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Windows.Forms;
+using SilentAuction.Extensions;
 using SilentAuction.Forms;
 using SilentAuction.Properties;
+using SilentAuction.SilentAuctionDataSetTableAdapters;
 using SilentAuction.Utilities;
 #endregion
 
@@ -29,6 +31,15 @@ namespace SilentAuction
         #region Form Event Handlers
         private void MainFormLoad(object sender, EventArgs e)
         {
+            if (!Settings.Default.EULAAccepted)
+            {
+                Eula eula = new Eula();
+                DialogResult dialogResult = eula.ShowDialog();
+
+                if(dialogResult == DialogResult.No || dialogResult == DialogResult.Cancel)
+                    Application.Exit();
+            }
+            
             ImportFormSettings();
             
             requestFormatTypesTableAdapter.FillRequestFormatTypes(silentAuctionDataSet.RequestFormatTypes);
@@ -37,10 +48,8 @@ namespace SilentAuction
             itemTypesTableAdapter.FillItemTypes(silentAuctionDataSet.ItemTypes);
             bidIncrementTypesTableAdapter.FillBidIncremenetTypes(silentAuctionDataSet.BidIncrementTypes);
             donorTypesTableAdapter.FillDonorTypes(silentAuctionDataSet.DonorTypes);
-            auctionsTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
-
-            donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionIdInUse);
-            itemsTableAdapter.FillItems(silentAuctionDataSet.Items, AuctionIdInUse);
+            
+            FillItems();
 
             SetupGrid();
             SetAuctionNameAndGrid();
@@ -290,6 +299,17 @@ namespace SilentAuction
         {
             ItemsDataGridView.FirstDisplayedScrollingRowIndex = ItemsDataGridView.RowCount - 1;
         }
+
+        private void ExportButtonClick(object sender, EventArgs e)
+        {
+            var dt = new ItemsShortListTableAdapter().GetItemsData(AuctionIdInUse);
+
+            dt.Columns.Remove("BidIncrementTypeId");
+            
+            string data = dt.DataTableToCsvFormat();
+
+            FileHelper.SaveCsvFile(data, "Silent Auction Items");
+        }
         #endregion
 
         #region MenuStrip Event Handlers
@@ -340,12 +360,7 @@ namespace SilentAuction
                 AuctionIdInUse = openAuctionForm.AuctionId;
                 if (AuctionIdInUse > 0)
                 {
-                    AuctionNameInUse = silentAuctionDataSet.Auctions.First(a => a.Id == AuctionIdInUse).Name;
-                    silentAuctionDataSet.Items.Clear();
-                    silentAuctionDataSet.Donors.Clear();
-
-                    donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionIdInUse);
-                    itemsTableAdapter.FillItems(silentAuctionDataSet.Items, AuctionIdInUse);
+                    FillItems();
                     SetAuctionNameAndGrid();
                 }
 
@@ -357,8 +372,7 @@ namespace SilentAuction
         {
             AuctionIdInUse = 0;
             AuctionNameInUse = "";
-            itemsTableAdapter.FillItems(silentAuctionDataSet.Items, AuctionIdInUse);
-            donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionIdInUse);
+            FillItems();
             
             SetAuctionNameAndGrid();
             SetupToolStripMenuItems();
@@ -367,18 +381,6 @@ namespace SilentAuction
         private void SaveToolStripMenuItemClick(object sender, EventArgs e)
         {
             ItemsSaveAllButtonClick(sender, e);
-        }
-
-        private void PrintToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            // Todo: Implement PrintToolStripMenuItemClick
-            MessageBox.Show("Not Implemented");
-        }
-
-        private void PrintPreviewToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            // TODO:  Implement PrintPreviewToolStripMenuItemClick
-            MessageBox.Show("Not Implemented");
         }
 
         private void ExitToolStripMenuItemClick(object sender, EventArgs e)
@@ -393,6 +395,7 @@ namespace SilentAuction
             using (EditAuctionList editAuctionList = new EditAuctionList())
             {
                 editAuctionList.ShowDialog();
+                FillItems();
                 SetAuctionNameAndGrid();
             }
         }
@@ -402,16 +405,17 @@ namespace SilentAuction
             using (EditAuctionForm editAuctionForm = new EditAuctionForm())
             {
                 editAuctionForm.ShowDialog();
+                FillItems();
                 SetAuctionNameAndGrid();
             }
         }
 
         private void EditDonorListToolStripMenuItemClick(object sender, EventArgs e)
         {
-            using (EditDonorList editDonorList = new EditDonorList())
+            using (EditDonorList editDonorList = new EditDonorList(AuctionIdInUse))
             {
-                editDonorList.AuctionIdInUse = AuctionIdInUse;
                 editDonorList.ShowDialog();
+                FillItems();
                 SetAuctionNameAndGrid();
             }
         }
@@ -499,6 +503,19 @@ namespace SilentAuction
         #endregion
         
         #region Private Methods
+        private void FillItems()
+        {
+            silentAuctionDataSet.Items.Clear();
+            silentAuctionDataSet.Donors.Clear();
+            silentAuctionDataSet.Auctions.Clear();
+
+            auctionsTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
+            donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionIdInUse);
+            itemsTableAdapter.FillItems(silentAuctionDataSet.Items, AuctionIdInUse);
+
+            AuctionNameInUse = AuctionIdInUse > 0 ? silentAuctionDataSet.Auctions.First(a => a.Id == AuctionIdInUse).Name : "";
+        }
+
         private void SetupGrid()
         {
             // Items grid settings...
@@ -585,10 +602,6 @@ namespace SilentAuction
             CloseAuctionToolStripMenuItem.Enabled = AuctionIdInUse > 0;
             SaveToolStripMenuItem.Enabled = ((AuctionIdInUse > 0) && 
                 (ItemsDataGridView.Visible));
-            PrintToolStripMenuItem.Enabled = ((AuctionIdInUse > 0) &&
-                (ItemsDataGridView.Visible));
-            PrintPreviewToolStripMenuItem.Enabled = ((AuctionIdInUse > 0) &&
-                (ItemsDataGridView.Visible));
 
             // Edit/View Section...
             EditAuctionListToolStripMenuItem.Enabled = silentAuctionDataSet.Auctions.Rows.Count > 0;
@@ -619,9 +632,7 @@ namespace SilentAuction
         #region Validation Methods
         private bool IsValidForm(SilentAuctionDataSet.ItemsRow row, ref string errorMsg)
         {
-            bool isValid = true;
-            
-            isValid = ValidateQty(row.Id, row.Qty, isValid, ref errorMsg);
+            bool isValid = ValidateQty(row.Id, row.Qty, true, ref errorMsg);
             isValid = ValidateRetailValue(row.Id, row.RetailValue, isValid, ref errorMsg);
             isValid = ValidateMinimumBid(row.Id, row.BidMinValue, isValid, ref errorMsg);
             isValid = ValidateMaximumBid(row.Id, row.BidMinValue, row.BidMaxValue, isValid, ref errorMsg);
@@ -728,5 +739,6 @@ namespace SilentAuction
             return isValid;
         }
         #endregion
+
     }
 }

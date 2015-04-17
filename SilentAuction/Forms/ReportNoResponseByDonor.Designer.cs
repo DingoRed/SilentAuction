@@ -131,6 +131,7 @@
             this.donorsDataGridView.AllowUserToAddRows = false;
             this.donorsDataGridView.AllowUserToDeleteRows = false;
             this.donorsDataGridView.AutoGenerateColumns = false;
+            this.donorsDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
             this.donorsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.donorsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.donorNameColumn,
@@ -197,14 +198,14 @@
             // 
             this.auctionsTableAdapter.ClearBeforeFill = true;
             // 
-            // NoResponseByDonor
+            // ReportNoResponseByDonor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(350, 230);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "NoResponseByDonor";
+            this.Name = "ReportNoResponseByDonor";
             this.Text = "No Response By Donor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NoResponseByDonorFormClosing);
             this.Load += new System.EventHandler(this.NoResponseByDonorLoad);

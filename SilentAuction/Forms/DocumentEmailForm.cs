@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Security;
 using System.Windows.Forms;
 using SilentAuction.Utilities;
@@ -16,6 +17,7 @@ namespace SilentAuction.Forms
         public List<int> DonorIdsToEmail { get; set; } 
         public List<string> CcAddressList { get; set; } 
         public string Subject { get; set; }
+        public List<string> AttachmentFilenameList { get; set; }
         #endregion
 
         #region Constructor
@@ -169,5 +171,34 @@ namespace SilentAuction.Forms
             }
         }
         #endregion
+
+        private void AttachFileButtonClick(object sender, EventArgs e)
+        {
+            using (attachmentOpenFileDialog)
+            {
+                if (attachmentOpenFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    AttachmentFilenameList = new List<string>();
+                    string attachmentFiles = "";
+                    
+                    foreach (string fileName in attachmentOpenFileDialog.FileNames)
+                    {
+                        AttachmentFilenameList.Add(fileName);
+
+                        attachmentFiles += "'" + Path.GetFileName(fileName) + "', ";
+                    }
+
+                    attachmentFiles = attachmentFiles.TrimEnd(' ', ',');
+                    attachmentListLabel.Text = attachmentFiles;
+                    toolTip1.SetToolTip(attachmentListLabel, attachmentFiles);
+                }
+            }
+        }
+
+        private void ClearAttachmentsButtonClick(object sender, EventArgs e)
+        {
+            AttachmentFilenameList = new List<string>();
+            attachmentListLabel.Text = "";
+        }
     }
 }

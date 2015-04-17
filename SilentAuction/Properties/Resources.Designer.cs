@@ -161,6 +161,19 @@ namespace SilentAuction.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to End-User License Agreement for DingoRed Services&apos; Silent Auction
+        ///
+        ///This End-User License Agreement (EULA) is a legal agreement between you (either an individual or a single entity) and the mentioned author (DingoRed Services) of this Software for the software product identified above, which includes computer software and may include associated media, printed materials, and &quot;online&quot; or electronic documentation (&quot;SOFTWARE PRODUCT&quot;).
+        ///
+        ///By installing, copying, or otherwise using the SOFTWARE PRODUCT, you agre [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string EULA {
+            get {
+                return ResourceManager.GetString("EULA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap exit {

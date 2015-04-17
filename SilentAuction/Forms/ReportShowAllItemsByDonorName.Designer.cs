@@ -151,6 +151,7 @@
             this.donorItemsDataGridView.AllowUserToAddRows = false;
             this.donorItemsDataGridView.AllowUserToDeleteRows = false;
             this.donorItemsDataGridView.AutoGenerateColumns = false;
+            this.donorItemsDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
             this.donorItemsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.donorItemsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.auctionIdDataGridViewTextBoxColumn,
@@ -433,15 +434,15 @@
             // 
             this.bidIncrementTypesTableAdapter.ClearBeforeFill = true;
             // 
-            // ShowAllItemsByDonorName
+            // ReportShowAllItemsByDonorName
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(922, 671);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "ShowAllItemsByDonorName";
-            this.Text = "SearchByDonorName";
+            this.Name = "ReportShowAllItemsByDonorName";
+            this.Text = "Search By Donor Name";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ShowAllItemsByDonorNameFormClosing);
             this.Load += new System.EventHandler(this.SearchByDonorNameLoad);
             this.tableLayoutPanel1.ResumeLayout(false);

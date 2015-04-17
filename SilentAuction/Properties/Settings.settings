@@ -122,7 +122,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="DonorsRequestStatusTypeIdColumnWidth" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">130</Value>
     </Setting>
     <Setting Name="DocumentEditorInitialLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -177,6 +177,12 @@
     </Setting>
     <Setting Name="CreateItemInitialLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ProgressBarFormInitialLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="EULAAccepted" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

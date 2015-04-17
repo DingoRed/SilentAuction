@@ -56,6 +56,7 @@
             this.ItemsDataGridView.AllowUserToAddRows = false;
             this.ItemsDataGridView.AllowUserToDeleteRows = false;
             this.ItemsDataGridView.AutoGenerateColumns = false;
+            this.ItemsDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
             this.ItemsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ItemsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
@@ -184,7 +185,7 @@
             // 
             this.itemsShortListTableAdapter.ClearBeforeFill = true;
             // 
-            // SelectItemsForm
+            // GenerateItemLabelsFile
             // 
             this.AcceptButton = this.MakeFileButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -193,7 +194,7 @@
             this.ClientSize = new System.Drawing.Size(569, 261);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "SelectItemsForm";
+            this.Name = "GenerateItemLabelsFile";
             this.Text = "Select Items to Include";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GenerateItemLabelsFileFormClosing);
             this.Load += new System.EventHandler(this.GenerateItemLabelsFileLoad);

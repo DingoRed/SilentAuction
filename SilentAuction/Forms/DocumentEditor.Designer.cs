@@ -163,6 +163,7 @@
             this.printDocumentMain = new System.Drawing.Printing.PrintDocument();
             this.documentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.documentsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DocumentsTableAdapter();
+            this.documentEditorBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -1347,6 +1348,12 @@
             // 
             this.documentsTableAdapter.ClearBeforeFill = true;
             // 
+            // documentEditorBackgroundWorker
+            // 
+            this.documentEditorBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.DocumentEditorBackgroundWorkerDoWork);
+            this.documentEditorBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.DocumentEditorBackgroundWorkerProgressChanged);
+            this.documentEditorBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.DocumentEditorBackgroundWorkerRunWorkerCompleted);
+            // 
             // DocumentEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1517,5 +1524,6 @@
         private System.Windows.Forms.ToolStripStatusLabel bottomToolStripStatusLabel;
         private System.Windows.Forms.ToolStripButton saveAsToolStripButton;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
+        private System.ComponentModel.BackgroundWorker documentEditorBackgroundWorker;
     }
 }

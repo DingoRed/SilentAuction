@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.IO;
 using SilentAuction.Forms;
+using SilentAuction.Properties;
 using SilentAuction.Utilities;
 
 namespace SilentAuction
@@ -24,8 +25,10 @@ namespace SilentAuction
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            //Application.Run(new Eula());
             Application.Run(new MainForm());
-            //Application.Run(new CreateNewItemForm());
+            
         }
     }
 }

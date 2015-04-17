@@ -79,7 +79,7 @@
             // 
             // OpenButton
             // 
-            this.OpenButton.Location = new System.Drawing.Point(46, 198);
+            this.OpenButton.Location = new System.Drawing.Point(52, 110);
             this.OpenButton.Name = "OpenButton";
             this.OpenButton.Size = new System.Drawing.Size(75, 23);
             this.OpenButton.TabIndex = 2;
@@ -90,7 +90,7 @@
             // CancelOpenButton
             // 
             this.CancelOpenButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelOpenButton.Location = new System.Drawing.Point(152, 198);
+            this.CancelOpenButton.Location = new System.Drawing.Point(158, 110);
             this.CancelOpenButton.Name = "CancelOpenButton";
             this.CancelOpenButton.Size = new System.Drawing.Size(75, 23);
             this.CancelOpenButton.TabIndex = 3;
@@ -103,7 +103,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelOpenButton;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(284, 168);
             this.Controls.Add(this.CancelOpenButton);
             this.Controls.Add(this.OpenButton);
             this.Controls.Add(this.AuctionComboBox);
