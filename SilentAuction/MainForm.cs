@@ -98,123 +98,13 @@ namespace SilentAuction
             e.Cancel = true;
         }
 
-        private void ItemsSaveAllButtonClick(object sender, EventArgs e)
-        {
-            int currentRowIndex = 0;
-            bool isValidForm = true;
-            string errorMsg = "";
-
-            if(ItemsDataGridView.CurrentRow != null)
-                currentRowIndex = ItemsDataGridView.CurrentRow.Index;
-
-            MainFormStatusLabel.Text = "Saving data...";
-            MainFormStatusLabel.Visible = true;
-            SilentAuctionDataSet.ItemsDataTable newItems =
-                (SilentAuctionDataSet.ItemsDataTable) silentAuctionDataSet.Items.GetChanges(DataRowState.Added);
-
-            SilentAuctionDataSet.ItemsDataTable modifiedItems =
-                (SilentAuctionDataSet.ItemsDataTable)silentAuctionDataSet.Items.GetChanges(DataRowState.Modified);
-
-            SilentAuctionDataSet.ItemsDataTable deletedItems =
-                (SilentAuctionDataSet.ItemsDataTable)silentAuctionDataSet.Items.GetChanges(DataRowState.Deleted);
-
-            if (newItems != null)
-            {
-                foreach (SilentAuctionDataSet.ItemsRow row in newItems.Rows)
-                {
-                    isValidForm = IsValidForm(row, ref errorMsg);
-                }
-            }
-
-            if (modifiedItems != null)
-            {
-                foreach (SilentAuctionDataSet.ItemsRow row in modifiedItems.Rows)
-                {
-                    isValidForm = IsValidForm(row, ref errorMsg);
-                }
-            }
-
-            if (!isValidForm)
-            {
-                errorMsg = "Item Id\tError Message\n--------\t---------------\n" + errorMsg;
-                MessageBox.Show(errorMsg, "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                if (newItems != null)
-                    newItems.Dispose();
-                if (modifiedItems != null)
-                    modifiedItems.Dispose();
-                if (deletedItems != null)
-                    deletedItems.Dispose();
-                MainFormStatusLabel.Text = "Error in data";
-                return;
-            }
-
-            try
-            {
-                bool changesMade = false;
-                int recordCount = 0;
-                if (newItems != null)
-                {
-                    itemsTableAdapter.Update(newItems);
-                    changesMade = true;
-                    recordCount += newItems.Rows.Count;
-                }
-
-                if (modifiedItems != null)
-                {
-                    foreach (DataRow row in modifiedItems.Rows)
-                    {
-                        row["ModifiedDate"] = DateTime.Now;
-                    }
-                    itemsTableAdapter.Update(modifiedItems);
-                    changesMade = true;
-                    recordCount += modifiedItems.Rows.Count;
-                }
-
-                if (deletedItems != null)
-                {
-                    itemsTableAdapter.Update(deletedItems);
-                    changesMade = true;
-                    recordCount += deletedItems.Rows.Count;
-                }
-
-                if (changesMade)
-                {
-                    silentAuctionDataSet.AcceptChanges();
-
-                    itemsTableAdapter.FillItems(silentAuctionDataSet.Items, AuctionIdInUse);
-                    MainFormStatusLabel.Text = string.Format("Saved data for {0} records", recordCount);
-                    MainFormStatusLabel.Visible = true;
-                    SetupToolStripMenuItems();
-                }
-                else
-                {
-                    MainFormStatusLabel.Visible = false;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Update Failed: " + ex.Message);
-            }
-            finally
-            {
-                if(newItems != null)
-                    newItems.Dispose();
-                if(modifiedItems != null)
-                    modifiedItems.Dispose();
-                if(deletedItems != null)
-                    deletedItems.Dispose();
-            }
-
-            if(currentRowIndex > 0)
-                ItemsDataGridView.FirstDisplayedScrollingRowIndex = currentRowIndex; //ItemsDataGridView.RowCount - 1;
-        }
-
         private void ItemsDataGridViewDefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
             DateTime currentDate = DateTime.Now;
             e.Row.Cells[ItemsDonorIdColumn.Index].Value = silentAuctionDataSet.Donors.AsEnumerable().Min(d => d.Id);
             e.Row.Cells[ItemsAuctionIdColumn.Index].Value = AuctionIdInUse;
             e.Row.Cells[ItemsQtyColumn.Index].Value = 1;
+            e.Row.Cells[ItemsItemDescriptionColumn.Index].Value = "";
             e.Row.Cells[ItemsItemTypeIdColumn.Index].Value = 2;
             e.Row.Cells[ItemsDonationDeliveryTypeIdColumn.Index].Value = 1;
             e.Row.Cells[ItemsRetailValueColumn.Index].Value = 0;
@@ -293,6 +183,119 @@ namespace SilentAuction
         {
             // Clear the row error in case the user presses ESC.   
             ItemsDataGridView.Rows[e.RowIndex].ErrorText = String.Empty;
+        }
+
+        #endregion
+
+        #region Button Event Handlers
+        private void ItemsSaveAllButtonClick(object sender, EventArgs e)
+        {
+            int currentRowIndex = 0;
+            bool isValidForm = true;
+            
+            if(ItemsDataGridView.CurrentRow != null)
+                currentRowIndex = ItemsDataGridView.CurrentRow.Index;
+
+            MainFormStatusLabel.Text = "Saving data...";
+            MainFormStatusLabel.Visible = true;
+            SilentAuctionDataSet.ItemsDataTable newItems =
+                (SilentAuctionDataSet.ItemsDataTable) silentAuctionDataSet.Items.GetChanges(DataRowState.Added);
+
+            SilentAuctionDataSet.ItemsDataTable modifiedItems =
+                (SilentAuctionDataSet.ItemsDataTable)silentAuctionDataSet.Items.GetChanges(DataRowState.Modified);
+
+            SilentAuctionDataSet.ItemsDataTable deletedItems =
+                (SilentAuctionDataSet.ItemsDataTable)silentAuctionDataSet.Items.GetChanges(DataRowState.Deleted);
+
+            if (newItems != null)
+            {
+                foreach (SilentAuctionDataSet.ItemsRow row in newItems.Rows)
+                {
+                    if (!IsValidForm(row))
+                        isValidForm = false;
+                }
+            }
+
+            if (modifiedItems != null)
+            {
+                foreach (SilentAuctionDataSet.ItemsRow row in modifiedItems.Rows)
+                {
+                    if (!IsValidForm(row))
+                        isValidForm = false;
+                }
+            }
+
+            if (!isValidForm)
+            {
+                if (newItems != null)
+                    newItems.Dispose();
+                if (modifiedItems != null)
+                    modifiedItems.Dispose();
+                if (deletedItems != null)
+                    deletedItems.Dispose();
+                MainFormStatusLabel.Text = "Error in data";
+                return;
+            }
+
+            try
+            {
+                bool changesMade = false;
+                int recordCount = 0;
+                if (newItems != null)
+                {
+                    itemsTableAdapter.Update(newItems);
+                    changesMade = true;
+                    recordCount += newItems.Rows.Count;
+                }
+
+                if (modifiedItems != null)
+                {
+                    foreach (DataRow row in modifiedItems.Rows)
+                    {
+                        row["ModifiedDate"] = DateTime.Now;
+                    }
+                    itemsTableAdapter.Update(modifiedItems);
+                    changesMade = true;
+                    recordCount += modifiedItems.Rows.Count;
+                }
+
+                if (deletedItems != null)
+                {
+                    itemsTableAdapter.Update(deletedItems);
+                    changesMade = true;
+                    recordCount += deletedItems.Rows.Count;
+                }
+
+                if (changesMade)
+                {
+                    silentAuctionDataSet.AcceptChanges();
+
+                    itemsTableAdapter.FillItems(silentAuctionDataSet.Items, AuctionIdInUse);
+                    MainFormStatusLabel.Text = string.Format("Saved data for {0} records", recordCount);
+                    MainFormStatusLabel.Visible = true;
+                    SetupToolStripMenuItems();
+                }
+                else
+                {
+                    MainFormStatusLabel.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Update Failed: " + ex.Message);
+            }
+            finally
+            {
+                if(newItems != null)
+                    newItems.Dispose();
+                if(modifiedItems != null)
+                    modifiedItems.Dispose();
+                if(deletedItems != null)
+                    deletedItems.Dispose();
+            }
+
+            if(currentRowIndex > 0)
+                ItemsDataGridView.FirstDisplayedScrollingRowIndex = currentRowIndex; //ItemsDataGridView.RowCount - 1;
         }
 
         private void AddItemsButtonClick(object sender, EventArgs e)
@@ -503,6 +506,88 @@ namespace SilentAuction
         #endregion
         
         #region Private Methods
+        private bool IsValidForm(SilentAuctionDataSet.ItemsRow row)
+        {
+            bool isValid = true;
+            string errorMsg = "";
+            bool tempAllowUserToAddRows = ItemsDataGridView.AllowUserToAddRows;
+
+            ItemsDataGridView.AllowUserToAddRows = false; // Turn off or .Value below will throw null exception
+            DataGridViewRow dgRow = ItemsDataGridView.Rows
+                .Cast<DataGridViewRow>()
+                .FirstOrDefault(r => r.Cells["ItemsIdColumn"].Value.Equals(row.Id));
+
+            if (dgRow != null)
+            {
+                var rowIndex = dgRow.Index;
+                ItemsDataGridView.AllowUserToAddRows = tempAllowUserToAddRows;
+
+                if (!SilentAuctionValidator.ValidateItemName(row.Name, ref errorMsg))
+                {
+                    ItemsDataGridView.Rows[rowIndex].Cells[ItemsNameColumn.Index].ErrorText = errorMsg;
+                    isValid = false;
+                }
+
+                if (!SilentAuctionValidator.ValidateQty((int) row.Qty, ref errorMsg))
+                {
+                    ItemsDataGridView.Rows[rowIndex].Cells[ItemsQtyColumn.Index].ErrorText = errorMsg;
+                    isValid = false;
+                }
+
+                if (!SilentAuctionValidator.ValidateRetailValue((decimal) row.RetailValue, ref errorMsg))
+                {
+                    ItemsDataGridView.Rows[rowIndex].Cells[ItemsRetailValueColumn.Index].ErrorText = errorMsg;
+                    isValid = false;
+                }
+
+                if (!SilentAuctionValidator.ValidateMinimumBid((decimal) row.BidMinValue, ref errorMsg))
+                {
+                    ItemsDataGridView.Rows[rowIndex].Cells[ItemsBidMinValueColumn.Index].ErrorText = errorMsg;
+                    isValid = false;
+                }
+
+                if (!SilentAuctionValidator.ValidateMaximumBid((decimal) row.BidMaxValue, ref errorMsg))
+                {
+                    ItemsDataGridView.Rows[rowIndex].Cells[ItemsBidMaxValueColumn.Index].ErrorText = errorMsg;
+                    isValid = false;
+                }
+
+                if (!SilentAuctionValidator.ValidateMaximumBidGreaterThanMinimumBid((decimal) row.BidMinValue,
+                    (decimal) row.BidMaxValue, ref errorMsg))
+                {
+                    ItemsDataGridView.Rows[rowIndex].Cells[ItemsBidMaxValueColumn.Index].ErrorText = errorMsg;
+                    isValid = false;
+                }
+
+                if (!SilentAuctionValidator.ValidateBuyItNow((decimal) row.BidBuyItNowValue, ref errorMsg))
+                {
+                    ItemsDataGridView.Rows[rowIndex].Cells[ItemsBidBuyItNowValueColumn.Index].ErrorText = errorMsg;
+                    isValid = false;
+                }
+
+
+                if (row.BidIncrementTypeId == (int) BidIncrementType.IncrementValue)
+                {
+                    if (!SilentAuctionValidator.ValidateBidIncrementValue((decimal) row.BidMinValue,
+                        (decimal) row.BidMaxValue, (decimal) row.BidIncrementValue, ref errorMsg))
+                    {
+                        ItemsDataGridView.Rows[rowIndex].Cells[ItemsBidIncrementValueColumn.Index].ErrorText = errorMsg;
+                        isValid = false;
+                    }
+                }
+                else
+                {
+                    if (!SilentAuctionValidator.ValidateNumberOfBids((int) row.BidNumberOfBids, ref errorMsg))
+                    {
+                        ItemsDataGridView.Rows[rowIndex].Cells[ItemsBidNumberOfBidsColumn.Index].ErrorText = errorMsg;
+                        isValid = false;
+                    }
+                }
+            }
+
+            return isValid;
+        }
+        
         private void FillItems()
         {
             silentAuctionDataSet.Items.Clear();
@@ -628,117 +713,5 @@ namespace SilentAuction
                 (silentAuctionDataSet.Donors.Rows.Count > 0));
         }
         #endregion
-
-        #region Validation Methods
-        private bool IsValidForm(SilentAuctionDataSet.ItemsRow row, ref string errorMsg)
-        {
-            bool isValid = ValidateQty(row.Id, row.Qty, true, ref errorMsg);
-            isValid = ValidateRetailValue(row.Id, row.RetailValue, isValid, ref errorMsg);
-            isValid = ValidateMinimumBid(row.Id, row.BidMinValue, isValid, ref errorMsg);
-            isValid = ValidateMaximumBid(row.Id, row.BidMinValue, row.BidMaxValue, isValid, ref errorMsg);
-            isValid = ValidateBuyItNow(row.Id, row.BidBuyItNowValue, isValid, ref errorMsg);
-            isValid = row.BidIncrementTypeId == (int) BidIncrementType.IncrementValue
-                ? ValidateBidIncrementValue(row.Id, row.BidMinValue, row.BidMaxValue, row.BidIncrementValue, isValid, ref errorMsg)
-                : ValidateNumberOfBids(row.Id, row.BidNumberOfBids, isValid, ref errorMsg);
-            
-            return isValid;
-        }
-
-        private bool ValidateNumberOfBids(long id, long numberOfBids, bool isValid, ref string errorMsg)
-        {
-            if (numberOfBids <= 0)
-            {
-                errorMsg += string.Format("{0}\tNumber of Bids must be greater than zero\n", id);
-                isValid = false;
-            }
-            else if (numberOfBids > Constants.MaxNumberOfLines)
-            {
-                errorMsg += string.Format("{0}\tNumber of Bids must be less than or equal to {1}",
-                        id, Constants.MaxNumberOfLines);
-                isValid = false;
-            }
-
-            return isValid;
-        }
-
-        private bool ValidateBidIncrementValue(long id, double minBid, double maxBid, double incrementValue, bool isValid, ref string errorMsg)
-        {
-            BidCalculator calculator = new BidCalculator();
-            if (minBid >= maxBid) return isValid;
-
-            int numberOfBids = calculator.CalculateNumberOfLines((int)minBid, (int)maxBid, (decimal)incrementValue);
-
-            if (incrementValue <= 0)
-            {
-                errorMsg += string.Format("{0}\tBid Increment value must be greater than zero\n", id);
-                isValid = false;
-            }
-            else if (numberOfBids > Constants.MaxNumberOfLines)
-            {
-                incrementValue = (double) calculator.CalculateAmountPerLine((int)minBid, (int)maxBid, Constants.MaxNumberOfLines);
-                errorMsg += string.Format("{0}\tBid Increment value too small. The number of bids must calculate to {1} or less. Using the maximum number of lines, this calculates to approximately {2}\n",
-                        id, Constants.MaxNumberOfLines, Math.Ceiling(incrementValue).ToString("C0"));
-                isValid = false;
-            }
-            return isValid;
-        }
-
-        private bool ValidateBuyItNow(long id, double buyItNowValue, bool isValid, ref string errorMsg)
-        {
-            if (buyItNowValue <= 0)
-            {
-                errorMsg += string.Format("{0}\tBuy It Now value must be greater than zero\n", id);
-                isValid = false;
-            }
-            return isValid;
-        }
-
-        private bool ValidateMaximumBid(long id, double minBid, double maxBid, bool isValid, ref string errorMsg)
-        {
-            if (maxBid < 0)
-            {
-                errorMsg += string.Format("{0}\tMaximum Bid must be greater than or equal to zero\n", id);
-                isValid = false;
-            }
-            else if (maxBid <= minBid)
-            {
-                errorMsg += string.Format("{0}\tMaximum Bid must be greater than the Minimum Bid\n", id);
-                isValid = false;
-            }
-            return isValid;
-        }
-
-
-        private bool ValidateMinimumBid(long id, double minBid, bool isValid, ref string errorMsg)
-        {
-            if (minBid < 0)
-            {
-                errorMsg += string.Format("{0}\tMinimum Bid must be greater than or equal to zero\n", id);
-                isValid = false;
-            }
-            return isValid;
-        }
-
-        private bool ValidateRetailValue(long id, double retailValue, bool isValid, ref string errorMsg)
-        {
-            if (retailValue < 0)
-            {
-                errorMsg += string.Format("{0}\tRetail Value must be greater than or equal to zero\n", id);
-                isValid = false;
-            }
-            return isValid;
-        }
-
-        private bool ValidateQty(long id, double qty, bool isValid, ref string errorMsg)
-        {
-            if (qty <= 0)
-            {
-                errorMsg += string.Format("{0}\tQuantity must be greater than zero\n", id);
-                isValid = false;
-            }
-            return isValid;
-        }
-        #endregion
-
     }
 }

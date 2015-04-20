@@ -776,6 +776,7 @@ namespace SilentAuction.Forms
             }
 
             documentEditorControl.ResetContents();
+            DocumentId = 0;
             _documentIsDirty = false;
             SetupToolStripMenuItems();
             Text = TitleText + "(new)";

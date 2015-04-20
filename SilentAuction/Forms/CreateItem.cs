@@ -194,8 +194,6 @@ namespace SilentAuction.Forms
                 silentAuctionDataSet.BidIncrementTypes.FirstOrDefault(b => b.Id == bidIncrementTypeId);
             SilentAuctionDataSet.ItemTypesRow itemTypesRow =
                 silentAuctionDataSet.ItemTypes.FirstOrDefault(i => i.Id == itemTypeId);
-            //SilentAuctionDataSet.RequestStatusTypesRow requestStatusTypesRow =
-            //    silentAuctionDataSet.RequestStatusTypes.FirstOrDefault(r => r.Id == 1);
             SilentAuctionDataSet.DonationDeliveryTypesRow donationDeliveryTypesRow =
                 silentAuctionDataSet.DonationDeliveryTypes.FirstOrDefault(d => d.Id == donationDeliveryTypeId);
 
@@ -213,7 +211,6 @@ namespace SilentAuction.Forms
                 silentAuctionDataSet.AcceptChanges();
                 newItems.Dispose();
                 
-                // donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionId);
                 itemsTableAdapter.FillItems(silentAuctionDataSet.Items, auctionId);
             }
         }
@@ -240,31 +237,111 @@ namespace SilentAuction.Forms
         private bool IsValidForm()
         {
             bool isValid = true;
-            decimal minBid = 0;
-            decimal maxBid = 0;
+            int qty = MathHelper.ParseIntZeroIfNull(QtyTextBox.Text);
+            decimal retailValue = MathHelper.ParseDecimalZeroIfNull(RetailValueTextBox.Text);
+            decimal minBid = MathHelper.ParseDecimalZeroIfNull(DigitsOnly(MinimumBidTextBox.Text));
+            decimal maxBid = MathHelper.ParseDecimalZeroIfNull(DigitsOnly(MaximumBidTextBox.Text));
+            decimal buyItNowValue = MathHelper.ParseDecimalZeroIfNull(DigitsOnly(BuyItNowTextBox.Text));
+            int bidIncrementTypeId = MathHelper.ParseIntZeroIfNull(BidIncrementTypesComboBox.SelectedValue.ToString());
+            decimal bidIncrementValue = MathHelper.ParseDecimalZeroIfNull(DigitsOnly(BidIncrementValueTextBox.Text));
+            int numberOfBids = MathHelper.ParseIntZeroIfNull(NumberOfBidsTextBox.Text);
+            string errorMsg = "";
 
             ClearErrorProviders();
 
-            ValidateAuction();
+            //ValidateAuction();
+            if (AuctionsComboBox.SelectedValue == null)
+            {
+                itemErrorProvider.SetError(AuctionsComboBox, "Auction is required");
+                isValid = false;
+            }
+            else if(!SilentAuctionValidator.ValidateAuctionId(MathHelper.ParseIntZeroIfNull(AuctionsComboBox.SelectedValue.ToString()), ref errorMsg))
+            {
+                itemErrorProvider.SetError(AuctionsComboBox, errorMsg);
+                isValid = false;
+            }
 
-            ValidateDonor();
+            //ValidateDonor();
+            if (DonorsComboBox.SelectedValue == null)
+            {
+                itemErrorProvider.SetError(DonorsComboBox, "Donor is required");
+            }
+            else if (!SilentAuctionValidator.ValidateAuctionId(MathHelper.ParseIntZeroIfNull(DonorsComboBox.SelectedValue.ToString()), ref errorMsg))
+            {
+                itemErrorProvider.SetError(DonorsComboBox, errorMsg);
+                isValid = false;
+            }
 
-            isValid = ValidateItemName(isValid);
+            //isValid = ValidateItemName(isValid);
+            if (!SilentAuctionValidator.ValidateItemName(NameTextBox.Text, ref errorMsg))
+            {
+                itemErrorProvider.SetError(NameTextBox, errorMsg);
+                isValid = false;
+            }
 
-            isValid = ValidateQty(isValid);
+            //isValid = ValidateQty(isValid);
+            if (!SilentAuctionValidator.ValidateQty(qty, ref errorMsg))
+            {
+                itemErrorProvider.SetError(QtyTextBox, errorMsg);
+                isValid = false;
+            }
 
-            isValid = ValidateRetailValue(isValid);
+            //isValid = ValidateRetailValue(isValid);
+            if (!SilentAuctionValidator.ValidateRetailValue(retailValue, ref errorMsg))
+            {
+                itemErrorProvider.SetError(RetailValueTextBox, errorMsg);
+                isValid = false;
+            }
 
-            minBid = ValidateMinimumBid(minBid, ref isValid);
+            //minBid = ValidateMinimumBid(minBid, ref isValid);
+            if (!SilentAuctionValidator.ValidateMinimumBid(minBid, ref errorMsg))
+            {
+                itemErrorProvider.SetError(MinimumBidTextBox, errorMsg);
+                isValid = false;
+            }
 
-            maxBid = ValidateMaximumBid(maxBid, ref isValid);
+            //maxBid = ValidateMaximumBid(maxBid, ref isValid);
+            if (!SilentAuctionValidator.ValidateMaximumBid(maxBid, ref errorMsg))
+            {
+                itemErrorProvider.SetError(MaximumBidTextBox, errorMsg);
+                isValid = false;
+            }
 
-            isValid = ValidateBuyItNow(isValid);
+            if (!SilentAuctionValidator.ValidateMaximumBidGreaterThanMinimumBid(minBid, maxBid, ref errorMsg))
+            {
+                itemErrorProvider.SetError(MaximumBidTextBox, errorMsg);
+                isValid = false;
+            }
 
-            isValid = MathHelper.ParseIntZeroIfNull(BidIncrementTypesComboBox.SelectedValue.ToString()) ==
-                      (int) BidIncrementType.IncrementValue
-                ? ValidateBidIncrementValue(minBid, maxBid, isValid)
-                : ValidateNumberOfBids(isValid);
+            //isValid = ValidateBuyItNow(isValid);
+            if (!SilentAuctionValidator.ValidateBuyItNow(buyItNowValue, ref errorMsg))
+            {
+                itemErrorProvider.SetError(BuyItNowTextBox, errorMsg);
+                isValid = false;
+            }
+
+            if (bidIncrementTypeId == (int) BidIncrementType.IncrementValue)
+            {
+                if (!SilentAuctionValidator.ValidateBidIncrementValue(minBid, maxBid, bidIncrementValue, ref errorMsg))
+                {
+                    itemErrorProvider.SetError(BidIncrementValueTextBox, errorMsg);
+                    isValid = false;
+                }
+            }
+            else
+            {
+                if (!SilentAuctionValidator.ValidateNumberOfBids(numberOfBids, ref errorMsg))
+                {
+                    itemErrorProvider.SetError(NumberOfBidsTextBox, errorMsg);
+                    isValid = false;
+                }
+            }
+
+
+            //isValid = MathHelper.ParseIntZeroIfNull(BidIncrementTypesComboBox.SelectedValue.ToString()) ==
+            //          (int) BidIncrementType.IncrementValue
+            //    ? ValidateBidIncrementValue(minBid, maxBid, isValid)
+            //    : ValidateNumberOfBids(isValid);
 
             return isValid;
         }
@@ -328,154 +405,154 @@ namespace SilentAuction.Forms
         #endregion
 
         #region Validation Methods
-        private bool ValidateNumberOfBids(bool isValid)
-        {
-            if (!string.IsNullOrEmpty(NumberOfBidsTextBox.Text))
-            {
-                int numberOfBids = MathHelper.ParseIntZeroIfNull(NumberOfBidsTextBox.Text);
-                if (numberOfBids <= 0)
-                {
-                    itemErrorProvider.SetError(NumberOfBidsTextBox, "Number of Bids must be greater than zero");
-                    isValid = false;
-                }
-                else if (numberOfBids > Constants.MaxNumberOfLines)
-                {
-                    itemErrorProvider.SetError(NumberOfBidsTextBox,
-                        string.Format("Number of Bids must be less than or equal to {0}",
-                            Constants.MaxNumberOfLines));
-                    NumberOfBidsTextBox.Text = Constants.MaxNumberOfLines.ToString();
-                    isValid = false;
-                }
-            }
-            return isValid;
-        }
+        //private bool ValidateNumberOfBids(bool isValid)
+        //{
+        //    if (!string.IsNullOrEmpty(NumberOfBidsTextBox.Text))
+        //    {
+        //        int numberOfBids = MathHelper.ParseIntZeroIfNull(NumberOfBidsTextBox.Text);
+        //        if (numberOfBids <= 0)
+        //        {
+        //            itemErrorProvider.SetError(NumberOfBidsTextBox, "Number of Bids must be greater than zero");
+        //            isValid = false;
+        //        }
+        //        else if (numberOfBids > Constants.MaxNumberOfLines)
+        //        {
+        //            itemErrorProvider.SetError(NumberOfBidsTextBox,
+        //                string.Format("Number of Bids must be less than or equal to {0}",
+        //                    Constants.MaxNumberOfLines));
+        //            NumberOfBidsTextBox.Text = Constants.MaxNumberOfLines.ToString();
+        //            isValid = false;
+        //        }
+        //    }
+        //    return isValid;
+        //}
 
-        private bool ValidateBidIncrementValue(decimal minBid, decimal maxBid, bool isValid)
-        {
-            if (!string.IsNullOrEmpty(BidIncrementValueTextBox.Text))
-            {
-                BidCalculator calculator = new BidCalculator();
-                var incrementValue = MathHelper.ParseDecimalZeroIfNull(DigitsOnly(BidIncrementValueTextBox.Text));
-                int numberOfBids = calculator.CalculateNumberOfLines(minBid, maxBid, incrementValue);
+        //private bool ValidateBidIncrementValue(decimal minBid, decimal maxBid, bool isValid)
+        //{
+        //    if (!string.IsNullOrEmpty(BidIncrementValueTextBox.Text))
+        //    {
+        //        BidCalculator calculator = new BidCalculator();
+        //        var incrementValue = MathHelper.ParseDecimalZeroIfNull(DigitsOnly(BidIncrementValueTextBox.Text));
+        //        int numberOfBids = calculator.CalculateNumberOfLines(minBid, maxBid, incrementValue);
 
-                if (incrementValue <= 0)
-                {
-                    itemErrorProvider.SetError(BidIncrementValueTextBox, "Bid Increment value must be greater than zero");
-                    BidIncrementValueTextBox.Text = 1.ToString("C");
-                    isValid = false;
-                }
-                else if (numberOfBids > Constants.MaxNumberOfLines)
-                {
-                    incrementValue = calculator.CalculateAmountPerLine(minBid, maxBid, Constants.MaxNumberOfLines);
-                    itemErrorProvider.SetError(BidIncrementValueTextBox,
-                        string.Format(
-                            "Bid Increment value too small. The number of bids must calculate to {0} or less.\nUsing the maximum number of lines, this calculates to approximately {1}",
-                            Constants.MaxNumberOfLines, Math.Ceiling(incrementValue).ToString("C0")));
-                    isValid = false;
-                }
-            }
-            else
-            {
-                itemErrorProvider.SetError(BidIncrementValueTextBox, "Bid Increment value required");
-                isValid = false;
-            }
-            return isValid;
-        }
+        //        if (incrementValue <= 0)
+        //        {
+        //            itemErrorProvider.SetError(BidIncrementValueTextBox, "Bid Increment value must be greater than zero");
+        //            BidIncrementValueTextBox.Text = 1.ToString("C");
+        //            isValid = false;
+        //        }
+        //        else if (numberOfBids > Constants.MaxNumberOfLines)
+        //        {
+        //            incrementValue = calculator.CalculateAmountPerLine(minBid, maxBid, Constants.MaxNumberOfLines);
+        //            itemErrorProvider.SetError(BidIncrementValueTextBox,
+        //                string.Format(
+        //                    "Bid Increment value too small. The number of bids must calculate to {0} or less.\nUsing the maximum number of lines, this calculates to approximately {1}",
+        //                    Constants.MaxNumberOfLines, Math.Ceiling(incrementValue).ToString("C0")));
+        //            isValid = false;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        itemErrorProvider.SetError(BidIncrementValueTextBox, "Bid Increment value required");
+        //        isValid = false;
+        //    }
+        //    return isValid;
+        //}
 
-        private bool ValidateBuyItNow(bool isValid)
-        {
-            if (!string.IsNullOrEmpty(BuyItNowTextBox.Text))
-            {
-                if (MathHelper.ParseDecimalZeroIfNull(DigitsOnly(BuyItNowTextBox.Text)) < 0)
-                {
-                    itemErrorProvider.SetError(BuyItNowTextBox, "Buy It Now value must be greater than or equal to zero");
-                    isValid = false;
-                }
-            }
-            return isValid;
-        }
+        //private bool ValidateBuyItNow(bool isValid)
+        //{
+        //    if (!string.IsNullOrEmpty(BuyItNowTextBox.Text))
+        //    {
+        //        if (MathHelper.ParseDecimalZeroIfNull(DigitsOnly(BuyItNowTextBox.Text)) < 0)
+        //        {
+        //            itemErrorProvider.SetError(BuyItNowTextBox, "Buy It Now value must be greater than or equal to zero");
+        //            isValid = false;
+        //        }
+        //    }
+        //    return isValid;
+        //}
 
-        private decimal ValidateMaximumBid(decimal maxBid, ref bool isValid)
-        {
-            if (!string.IsNullOrEmpty(MaximumBidTextBox.Text))
-            {
-                maxBid = MathHelper.ParseDecimalZeroIfNull(DigitsOnly(MaximumBidTextBox.Text));
-                if (maxBid < 0)
-                {
-                    itemErrorProvider.SetError(MaximumBidTextBox, "Maximum Bid must be greater than or equal to zero");
-                    isValid = false;
-                }
-            }
-            return maxBid;
-        }
+        //private decimal ValidateMaximumBid(decimal maxBid, ref bool isValid)
+        //{
+        //    if (!string.IsNullOrEmpty(MaximumBidTextBox.Text))
+        //    {
+        //        maxBid = MathHelper.ParseDecimalZeroIfNull(DigitsOnly(MaximumBidTextBox.Text));
+        //        if (maxBid < 0)
+        //        {
+        //            itemErrorProvider.SetError(MaximumBidTextBox, "Maximum Bid must be greater than or equal to zero");
+        //            isValid = false;
+        //        }
+        //    }
+        //    return maxBid;
+        //}
 
-        private decimal ValidateMinimumBid(decimal minBid, ref bool isValid)
-        {
-            if (!string.IsNullOrEmpty(MinimumBidTextBox.Text))
-            {
-                minBid = MathHelper.ParseDecimalZeroIfNull(DigitsOnly(MinimumBidTextBox.Text));
-                if (minBid < 0)
-                {
-                    itemErrorProvider.SetError(MinimumBidTextBox, "Minimum Bid must be greater than or equal to zero");
-                    isValid = false;
-                }
-            }
-            return minBid;
-        }
+        //private decimal ValidateMinimumBid(decimal minBid, ref bool isValid)
+        //{
+        //    if (!string.IsNullOrEmpty(MinimumBidTextBox.Text))
+        //    {
+        //        minBid = MathHelper.ParseDecimalZeroIfNull(DigitsOnly(MinimumBidTextBox.Text));
+        //        if (minBid < 0)
+        //        {
+        //            itemErrorProvider.SetError(MinimumBidTextBox, "Minimum Bid must be greater than or equal to zero");
+        //            isValid = false;
+        //        }
+        //    }
+        //    return minBid;
+        //}
 
-        private bool ValidateRetailValue(bool isValid)
-        {
-            if (!string.IsNullOrEmpty(RetailValueTextBox.Text))
-            {
-                if (MathHelper.ParseDecimalZeroIfNull(DigitsOnly(RetailValueTextBox.Text)) < 0)
-                {
-                    itemErrorProvider.SetError(RetailValueTextBox, "Retail Value must be greater than or equal to zero");
-                    isValid = false;
-                }
-            }
-            return isValid;
-        }
+        //private bool ValidateRetailValue(bool isValid)
+        //{
+        //    if (!string.IsNullOrEmpty(RetailValueTextBox.Text))
+        //    {
+        //        if (MathHelper.ParseDecimalZeroIfNull(DigitsOnly(RetailValueTextBox.Text)) < 0)
+        //        {
+        //            itemErrorProvider.SetError(RetailValueTextBox, "Retail Value must be greater than or equal to zero");
+        //            isValid = false;
+        //        }
+        //    }
+        //    return isValid;
+        //}
 
-        private bool ValidateQty(bool isValid)
-        {
-            if (string.IsNullOrEmpty(QtyTextBox.Text))
-            {
-                itemErrorProvider.SetError(QtyTextBox, "Quantity required");
-                isValid = false;
-            }
-            else if (MathHelper.ParseIntZeroIfNull(QtyTextBox.Text) <= 0)
-            {
-                itemErrorProvider.SetError(QtyTextBox, "Quantity must be greater than zero");
-                isValid = false;
-            }
-            return isValid;
-        }
+        //private bool ValidateQty(bool isValid)
+        //{
+        //    if (string.IsNullOrEmpty(QtyTextBox.Text))
+        //    {
+        //        itemErrorProvider.SetError(QtyTextBox, "Quantity required");
+        //        isValid = false;
+        //    }
+        //    else if (MathHelper.ParseIntZeroIfNull(QtyTextBox.Text) <= 0)
+        //    {
+        //        itemErrorProvider.SetError(QtyTextBox, "Quantity must be greater than zero");
+        //        isValid = false;
+        //    }
+        //    return isValid;
+        //}
 
-        private bool ValidateItemName(bool isValid)
-        {
-            if (string.IsNullOrEmpty(NameTextBox.Text))
-            {
-                itemErrorProvider.SetError(NameTextBox, "Item Name required");
-                isValid = false;
-            }
-            return isValid;
-        }
+        //private bool ValidateItemName(bool isValid)
+        //{
+        //    if (string.IsNullOrEmpty(NameTextBox.Text))
+        //    {
+        //        itemErrorProvider.SetError(NameTextBox, "Item Name required");
+        //        isValid = false;
+        //    }
+        //    return isValid;
+        //}
 
-        private void ValidateDonor()
-        {
-            if (DonorsComboBox.SelectedValue == null)
-            {
-                itemErrorProvider.SetError(DonorsComboBox, "Donor is required");
-            }
-        }
+        //private void ValidateDonor()
+        //{
+        //    if (DonorsComboBox.SelectedValue == null)
+        //    {
+        //        itemErrorProvider.SetError(DonorsComboBox, "Donor is required");
+        //    }
+        //}
 
-        private void ValidateAuction()
-        {
-            if (AuctionsComboBox.SelectedValue == null)
-            {
-                itemErrorProvider.SetError(AuctionsComboBox, "Auction is required");
-            }
-        }
+        //private void ValidateAuction()
+        //{
+        //    if (AuctionsComboBox.SelectedValue == null)
+        //    {
+        //        itemErrorProvider.SetError(AuctionsComboBox, "Auction is required");
+        //    }
+        //}
         #endregion
 
     }

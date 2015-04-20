@@ -112,9 +112,6 @@ namespace SilentAuction.Forms
             ItemsDataGridView.Controls.Add(checkboxHeader);
         }
 
-
-
-
         private bool PrintBidSheet()
         {
             List<Exception> exceptions = new List<Exception>();
@@ -174,6 +171,7 @@ namespace SilentAuction.Forms
             {
                 MessageBox.Show(string.Format("Unable to print the following Items:\n\nID\tError\n{0}", exceptionString),
                     "Error Printing", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                progressBar1.Value = 0;
                 return false;
             }
             return true;
@@ -223,7 +221,7 @@ namespace SilentAuction.Forms
                     field.Text = itemsRow.ItemName;
                     break;
                 case Constants.ItemDescription:
-                    field.Text = itemsRow.Description;
+                    field.Text = itemsRow.Description ?? "";
                     break;
                 case Constants.DonorName:
                     field.Text = itemsRow.DonorName;

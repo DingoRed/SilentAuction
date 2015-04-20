@@ -164,6 +164,7 @@
       <DependentUpon>ReportNoResponseByDonor.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\BidCalculator.cs" />
+    <Compile Include="Utilities\SilentAuctionValidator.cs" />
     <Compile Include="Utilities\Constants.cs" />
     <Compile Include="Utilities\EmailHelper.cs" />
     <Compile Include="Utilities\FileHelper.cs" />

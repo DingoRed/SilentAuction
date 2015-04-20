@@ -1,5 +1,5 @@
 ﻿namespace SilentAuction
-{ 
+{    
     partial class MainForm
     {  
         /// <summary>
@@ -127,6 +127,8 @@
             this.requestFormatTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter();
             this.requestStatusTypesbindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.requestStatusTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter();
+            this.ScreenTitlePanel = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.ItemsTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).BeginInit();
@@ -144,6 +146,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.donorTypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestStatusTypesbindingSource)).BeginInit();
+            this.ScreenTitlePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // ItemsTableLayoutPanel
@@ -152,15 +155,17 @@
             this.ItemsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
             this.ItemsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.ItemsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.ItemsTableLayoutPanel.Controls.Add(this.ItemsDataGridView, 0, 1);
-            this.ItemsTableLayoutPanel.Controls.Add(this.ButtonsPanel, 0, 2);
-            this.ItemsTableLayoutPanel.Controls.Add(this.LabelsPanel, 0, 3);
+            this.ItemsTableLayoutPanel.Controls.Add(this.ItemsDataGridView, 0, 2);
+            this.ItemsTableLayoutPanel.Controls.Add(this.ButtonsPanel, 0, 3);
+            this.ItemsTableLayoutPanel.Controls.Add(this.LabelsPanel, 0, 4);
             this.ItemsTableLayoutPanel.Controls.Add(this.menuStrip1, 0, 0);
             this.ItemsTableLayoutPanel.Controls.Add(this.AuctionNamePanel, 1, 0);
+            this.ItemsTableLayoutPanel.Controls.Add(this.ScreenTitlePanel, 0, 1);
             this.ItemsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ItemsTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.ItemsTableLayoutPanel.Name = "ItemsTableLayoutPanel";
-            this.ItemsTableLayoutPanel.RowCount = 4;
+            this.ItemsTableLayoutPanel.RowCount = 5;
+            this.ItemsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.ItemsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.ItemsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.ItemsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
@@ -197,9 +202,9 @@
             this.ItemsTableLayoutPanel.SetColumnSpan(this.ItemsDataGridView, 3);
             this.ItemsDataGridView.DataSource = this.itemsBindingSource;
             this.ItemsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ItemsDataGridView.Location = new System.Drawing.Point(3, 33);
+            this.ItemsDataGridView.Location = new System.Drawing.Point(3, 63);
             this.ItemsDataGridView.Name = "ItemsDataGridView";
-            this.ItemsDataGridView.Size = new System.Drawing.Size(868, 318);
+            this.ItemsDataGridView.Size = new System.Drawing.Size(868, 288);
             this.ItemsDataGridView.TabIndex = 0;
             this.ItemsDataGridView.Visible = false;
             this.ItemsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemsDataGridViewCellClick);
@@ -513,7 +518,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(400, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(315, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -906,6 +911,27 @@
             // 
             this.requestStatusTypesTableAdapter.ClearBeforeFill = true;
             // 
+            // ScreenTitlePanel
+            // 
+            this.ItemsTableLayoutPanel.SetColumnSpan(this.ScreenTitlePanel, 3);
+            this.ScreenTitlePanel.Controls.Add(this.label1);
+            this.ScreenTitlePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ScreenTitlePanel.Location = new System.Drawing.Point(3, 33);
+            this.ScreenTitlePanel.Name = "ScreenTitlePanel";
+            this.ScreenTitlePanel.Size = new System.Drawing.Size(868, 24);
+            this.ScreenTitlePanel.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Lucida Calligraphy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 21);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Items:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -943,6 +969,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.donorTypeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestStatusTypesbindingSource)).EndInit();
+            this.ScreenTitlePanel.ResumeLayout(false);
+            this.ScreenTitlePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1038,5 +1066,7 @@
         private System.Windows.Forms.ToolStripMenuItem PrintBidSheetsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.Button exportButton;
+        private System.Windows.Forms.Panel ScreenTitlePanel;
+        private System.Windows.Forms.Label label1;
     }
 }
