@@ -30,7 +30,7 @@ namespace SilentAuction.Forms
 
             if (AuctionId > 0)
             {
-                donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionId);
+                donorsTableAdapter.FillByAuctionId(silentAuctionDataSet.Donors, AuctionId);
                 AuctionsComboBox.Enabled = false;
             }
 
@@ -75,7 +75,7 @@ namespace SilentAuction.Forms
             if (val != null)
             {
                 AuctionId = MathHelper.ParseIntZeroIfNull(val.ToString());
-                donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionId);
+                donorsTableAdapter.FillByAuctionId(silentAuctionDataSet.Donors, AuctionId);
             }
         }
 
@@ -160,21 +160,13 @@ namespace SilentAuction.Forms
             int requestFormatTypeId = MathHelper.ParseIntZeroIfNull(RequestFormatTypeComboBox.SelectedValue.ToString());
             string state = StateComboBox.SelectedItem == null ? "" : StateComboBox.SelectedItem.ToString();
 
-            SilentAuctionDataSet.DonorTypesRow donorTypesRow =
-                silentAuctionDataSet.DonorTypes.FirstOrDefault(d => d.Id == donorTypeId);
-            SilentAuctionDataSet.RequestFormatTypesRow requestFormatTypesRow =
-                silentAuctionDataSet.RequestFormatTypes.FirstOrDefault(r => r.Id == requestFormatTypeId);
-            SilentAuctionDataSet.AuctionsRow auctionsRow =
-                silentAuctionDataSet.Auctions.FirstOrDefault(a => a.Id == AuctionId);
-            SilentAuctionDataSet.RequestStatusTypesRow requestStatusTypesRow =
-                silentAuctionDataSet.RequestStatusTypes.FirstOrDefault(r => r.Id == 1);
-
-            silentAuctionDataSet.Donors.AddDonorsRow(donorTypesRow, NameTextBox.Text,
-                ContactNameTextBox.Text, Street1TextBox.Text, Street2TextBox.Text,
+            silentAuctionDataSet.Donors.AddDonorsRow(donorTypeId, NameTextBox.Text, ContactNameTextBox.Text,
+                Street1TextBox.Text, Street2TextBox.Text,
                 CityTextBox.Text, state, ZipCodeTextBox.Text, Phone1TextBox.Text,
                 Ext1TextBox.Text, Phone2TextBox.Text, Ext2TextBox.Text, EmailTextBox.Text,
-                currentDate.ToString(), currentDate.ToString(), requestFormatTypesRow, UrlTextBox.Text,
-                auctionsRow, requestStatusTypesRow);
+                currentDate.ToString(), currentDate.ToString(), requestFormatTypeId, UrlTextBox.Text,
+                AuctionId, 1);
+
 
             SilentAuctionDataSet.DonorsDataTable newDonors =
                 (SilentAuctionDataSet.DonorsDataTable) silentAuctionDataSet.Donors.GetChanges(DataRowState.Added);
@@ -184,7 +176,7 @@ namespace SilentAuction.Forms
                 donorsTableAdapter.Update(newDonors);
                 silentAuctionDataSet.AcceptChanges();
                 newDonors.Dispose();
-                donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionId);
+                donorsTableAdapter.FillByAuctionId(silentAuctionDataSet.Donors, AuctionId);
             }
         }
         

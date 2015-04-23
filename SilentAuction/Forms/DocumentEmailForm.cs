@@ -33,7 +33,7 @@ namespace SilentAuction.Forms
         private void EmailFormLoad(object sender, EventArgs e)
         {
             emailAccountsTableAdapter.FillEmailAccounts(silentAuctionDataSet.EmailAccounts);
-            donorsWithEmailsTableAdapter.FillDonorsWithEmails(silentAuctionDataSet.DonorsWithEmails, AuctionId);
+            donorsTableAdapter.FillByNonEmptyEmail(silentAuctionDataSet.Donors, AuctionId);
             
             if (silentAuctionDataSet.EmailAccounts.Rows.Count > 0)
             {
@@ -84,6 +84,35 @@ namespace SilentAuction.Forms
 
             DialogResult = DialogResult.OK;
             Close();
+        }
+
+        private void AttachFileButtonClick(object sender, EventArgs e)
+        {
+            using (attachmentOpenFileDialog)
+            {
+                if (attachmentOpenFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    AttachmentFilenameList = new List<string>();
+                    string attachmentFiles = "";
+                    
+                    foreach (string fileName in attachmentOpenFileDialog.FileNames)
+                    {
+                        AttachmentFilenameList.Add(fileName);
+
+                        attachmentFiles += "'" + Path.GetFileName(fileName) + "', ";
+                    }
+
+                    attachmentFiles = attachmentFiles.TrimEnd(' ', ',');
+                    attachmentListLabel.Text = attachmentFiles;
+                    toolTip1.SetToolTip(attachmentListLabel, attachmentFiles);
+                }
+            }
+        }
+
+        private void ClearAttachmentsButtonClick(object sender, EventArgs e)
+        {
+            AttachmentFilenameList = new List<string>();
+            attachmentListLabel.Text = "";
         }
         #endregion
 
@@ -172,33 +201,5 @@ namespace SilentAuction.Forms
         }
         #endregion
 
-        private void AttachFileButtonClick(object sender, EventArgs e)
-        {
-            using (attachmentOpenFileDialog)
-            {
-                if (attachmentOpenFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    AttachmentFilenameList = new List<string>();
-                    string attachmentFiles = "";
-                    
-                    foreach (string fileName in attachmentOpenFileDialog.FileNames)
-                    {
-                        AttachmentFilenameList.Add(fileName);
-
-                        attachmentFiles += "'" + Path.GetFileName(fileName) + "', ";
-                    }
-
-                    attachmentFiles = attachmentFiles.TrimEnd(' ', ',');
-                    attachmentListLabel.Text = attachmentFiles;
-                    toolTip1.SetToolTip(attachmentListLabel, attachmentFiles);
-                }
-            }
-        }
-
-        private void ClearAttachmentsButtonClick(object sender, EventArgs e)
-        {
-            AttachmentFilenameList = new List<string>();
-            attachmentListLabel.Text = "";
-        }
     }
 }

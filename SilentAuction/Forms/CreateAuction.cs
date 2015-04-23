@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Configuration;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using SilentAuction.Properties;
 using SilentAuction.Utilities;
 
 namespace SilentAuction.Forms
@@ -138,17 +135,23 @@ namespace SilentAuction.Forms
         private void CopyDonors()
         {
             int copyFromAuctionId = MathHelper.ParseIntZeroIfNull(CopyFromAuctionComboBox.SelectedValue.ToString());
+            DateTime currentDate = DateTime.Now;
 
-            donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, copyFromAuctionId);
+            donorsTableAdapter.FillByAuctionId(silentAuctionDataSet.Donors, copyFromAuctionId);
             SilentAuctionDataSet.DonorsDataTable toTable = new SilentAuctionDataSet.DonorsDataTable();
 
-            foreach (DataRow row in silentAuctionDataSet.Donors.Rows)
+            foreach (SilentAuctionDataSet.DonorsRow row in silentAuctionDataSet.Donors.Rows)
             {
-                    row["AuctionId"] = AuctionId;
-                    row["RequestStatusTypeId"] = 1;
-                    row["CreateDate"] = DateTime.Now;
-                    row["ModifiedDate"] = DateTime.Now;
-                    toTable.Rows.Add(row.ItemArray);
+                row.AuctionId = AuctionId;
+                row.RequestStatusTypeId = 1;
+                row.CreateDate = currentDate.ToString();
+                row.ModifiedDate = currentDate.ToString();
+
+                //row["AuctionId"] = AuctionId;
+                //row["RequestStatusTypeId"] = 1;
+                //row["CreateDate"] = DateTime.Now;
+                //row["ModifiedDate"] = DateTime.Now;
+                toTable.Rows.Add(row.ItemArray);
             }
 
             SilentAuctionDataSet.DonorsDataTable newItems =

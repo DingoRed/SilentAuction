@@ -31,27 +31,45 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BidSheetPrintForm));
             this.ItemsDataGridView = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.donorNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemsShortListBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.silentAuctionDataSet = new SilentAuction.SilentAuctionDataSet();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.CancelPrintButton = new System.Windows.Forms.Button();
             this.PrintBidSheetButton = new System.Windows.Forms.Button();
-            this.bidSheetsPrintDocument = new System.Drawing.Printing.PrintDocument();
-            this.itemsShortListTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.ItemsShortListTableAdapter();
             this.panel1 = new System.Windows.Forms.Panel();
             this.bidSheetsTextControl = new TXTextControl.TextControl();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.bidSheetsPrintDocument = new System.Drawing.Printing.PrintDocument();
+            this.itemsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.ItemsTableAdapter();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemTypeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.donorTypeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.donorIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.auctionIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.auctionNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemTypeIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.donationDeliveryTypeIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sellValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.retailValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bidIncrementTypeIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bidMinValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bidMaxValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bidIncrementValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bidBuyItNowValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bidNumberOfBidsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.notesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imageDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.createDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.modifiedDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemsShortListBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -66,13 +84,31 @@
             this.ItemsDataGridView.AutoGenerateColumns = false;
             this.ItemsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ItemsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.itemNameDataGridViewTextBoxColumn,
-            this.donorNameDataGridViewTextBoxColumn,
-            this.descriptionDataGridViewTextBoxColumn,
-            this.qtyDataGridViewTextBoxColumn,
-            this.itemTypeDataGridViewTextBoxColumn});
-            this.ItemsDataGridView.DataSource = this.itemsShortListBindingSource;
+            this.dataGridViewTextBoxColumn1,
+            this.nameDataGridViewTextBoxColumn,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.itemTypeNameDataGridViewTextBoxColumn,
+            this.donorTypeNameDataGridViewTextBoxColumn,
+            this.donorIdDataGridViewTextBoxColumn,
+            this.auctionIdDataGridViewTextBoxColumn,
+            this.auctionNameDataGridViewTextBoxColumn,
+            this.itemTypeIdDataGridViewTextBoxColumn,
+            this.donationDeliveryTypeIdDataGridViewTextBoxColumn,
+            this.sellValueDataGridViewTextBoxColumn,
+            this.retailValueDataGridViewTextBoxColumn,
+            this.bidIncrementTypeIdDataGridViewTextBoxColumn,
+            this.bidMinValueDataGridViewTextBoxColumn,
+            this.bidMaxValueDataGridViewTextBoxColumn,
+            this.bidIncrementValueDataGridViewTextBoxColumn,
+            this.bidBuyItNowValueDataGridViewTextBoxColumn,
+            this.bidNumberOfBidsDataGridViewTextBoxColumn,
+            this.notesDataGridViewTextBoxColumn,
+            this.imageDataGridViewImageColumn,
+            this.createDateDataGridViewTextBoxColumn,
+            this.modifiedDateDataGridViewTextBoxColumn});
+            this.ItemsDataGridView.DataSource = this.itemsBindingSource;
             this.ItemsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ItemsDataGridView.Location = new System.Drawing.Point(0, 0);
             this.ItemsDataGridView.Name = "ItemsDataGridView";
@@ -82,56 +118,10 @@
             this.ItemsDataGridView.TabIndex = 0;
             this.ItemsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemsDataGridViewCellClick);
             // 
-            // idDataGridViewTextBoxColumn
+            // itemsBindingSource
             // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Width = 41;
-            // 
-            // itemNameDataGridViewTextBoxColumn
-            // 
-            this.itemNameDataGridViewTextBoxColumn.DataPropertyName = "ItemName";
-            this.itemNameDataGridViewTextBoxColumn.HeaderText = "Item Name";
-            this.itemNameDataGridViewTextBoxColumn.Name = "itemNameDataGridViewTextBoxColumn";
-            this.itemNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.itemNameDataGridViewTextBoxColumn.Width = 90;
-            // 
-            // donorNameDataGridViewTextBoxColumn
-            // 
-            this.donorNameDataGridViewTextBoxColumn.DataPropertyName = "DonorName";
-            this.donorNameDataGridViewTextBoxColumn.HeaderText = "Donor";
-            this.donorNameDataGridViewTextBoxColumn.Name = "donorNameDataGridViewTextBoxColumn";
-            this.donorNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.donorNameDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.descriptionDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // qtyDataGridViewTextBoxColumn
-            // 
-            this.qtyDataGridViewTextBoxColumn.DataPropertyName = "Qty";
-            this.qtyDataGridViewTextBoxColumn.HeaderText = "Qty";
-            this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
-            this.qtyDataGridViewTextBoxColumn.ReadOnly = true;
-            this.qtyDataGridViewTextBoxColumn.Width = 55;
-            // 
-            // itemTypeDataGridViewTextBoxColumn
-            // 
-            this.itemTypeDataGridViewTextBoxColumn.DataPropertyName = "ItemType";
-            this.itemTypeDataGridViewTextBoxColumn.HeaderText = "Item Type";
-            this.itemTypeDataGridViewTextBoxColumn.Name = "itemTypeDataGridViewTextBoxColumn";
-            // 
-            // itemsShortListBindingSource
-            // 
-            this.itemsShortListBindingSource.DataMember = "ItemsShortList";
-            this.itemsShortListBindingSource.DataSource = this.silentAuctionDataSet;
+            this.itemsBindingSource.DataMember = "Items";
+            this.itemsBindingSource.DataSource = this.silentAuctionDataSet;
             // 
             // silentAuctionDataSet
             // 
@@ -187,10 +177,6 @@
             this.PrintBidSheetButton.UseVisualStyleBackColor = true;
             this.PrintBidSheetButton.Click += new System.EventHandler(this.PrintBidSheetsButtonClick);
             // 
-            // itemsShortListTableAdapter
-            // 
-            this.itemsShortListTableAdapter.ClearBeforeFill = true;
-            // 
             // panel1
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.panel1, 2);
@@ -222,13 +208,6 @@
             this.panel3.Size = new System.Drawing.Size(561, 34);
             this.panel3.TabIndex = 2;
             // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(98, 4);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(463, 23);
-            this.progressBar1.TabIndex = 0;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -237,6 +216,190 @@
             this.label1.Size = new System.Drawing.Size(89, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Printing Progress:";
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(98, 4);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(463, 23);
+            this.progressBar1.TabIndex = 0;
+            // 
+            // itemsTableAdapter
+            // 
+            this.itemsTableAdapter.ClearBeforeFill = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 41;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Item Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "DonorName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Donor";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Description";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Description";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Qty";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Qty";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 55;
+            // 
+            // itemTypeNameDataGridViewTextBoxColumn
+            // 
+            this.itemTypeNameDataGridViewTextBoxColumn.DataPropertyName = "ItemTypeName";
+            this.itemTypeNameDataGridViewTextBoxColumn.HeaderText = "Item Type";
+            this.itemTypeNameDataGridViewTextBoxColumn.Name = "itemTypeNameDataGridViewTextBoxColumn";
+            this.itemTypeNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // donorTypeNameDataGridViewTextBoxColumn
+            // 
+            this.donorTypeNameDataGridViewTextBoxColumn.DataPropertyName = "DonorTypeName";
+            this.donorTypeNameDataGridViewTextBoxColumn.HeaderText = "DonorTypeName";
+            this.donorTypeNameDataGridViewTextBoxColumn.Name = "donorTypeNameDataGridViewTextBoxColumn";
+            this.donorTypeNameDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // donorIdDataGridViewTextBoxColumn
+            // 
+            this.donorIdDataGridViewTextBoxColumn.DataPropertyName = "DonorId";
+            this.donorIdDataGridViewTextBoxColumn.HeaderText = "DonorId";
+            this.donorIdDataGridViewTextBoxColumn.Name = "donorIdDataGridViewTextBoxColumn";
+            this.donorIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // auctionIdDataGridViewTextBoxColumn
+            // 
+            this.auctionIdDataGridViewTextBoxColumn.DataPropertyName = "AuctionId";
+            this.auctionIdDataGridViewTextBoxColumn.HeaderText = "AuctionId";
+            this.auctionIdDataGridViewTextBoxColumn.Name = "auctionIdDataGridViewTextBoxColumn";
+            this.auctionIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // auctionNameDataGridViewTextBoxColumn
+            // 
+            this.auctionNameDataGridViewTextBoxColumn.DataPropertyName = "AuctionName";
+            this.auctionNameDataGridViewTextBoxColumn.HeaderText = "AuctionName";
+            this.auctionNameDataGridViewTextBoxColumn.Name = "auctionNameDataGridViewTextBoxColumn";
+            this.auctionNameDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // itemTypeIdDataGridViewTextBoxColumn
+            // 
+            this.itemTypeIdDataGridViewTextBoxColumn.DataPropertyName = "ItemTypeId";
+            this.itemTypeIdDataGridViewTextBoxColumn.HeaderText = "ItemTypeId";
+            this.itemTypeIdDataGridViewTextBoxColumn.Name = "itemTypeIdDataGridViewTextBoxColumn";
+            this.itemTypeIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // donationDeliveryTypeIdDataGridViewTextBoxColumn
+            // 
+            this.donationDeliveryTypeIdDataGridViewTextBoxColumn.DataPropertyName = "DonationDeliveryTypeId";
+            this.donationDeliveryTypeIdDataGridViewTextBoxColumn.HeaderText = "DonationDeliveryTypeId";
+            this.donationDeliveryTypeIdDataGridViewTextBoxColumn.Name = "donationDeliveryTypeIdDataGridViewTextBoxColumn";
+            this.donationDeliveryTypeIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // sellValueDataGridViewTextBoxColumn
+            // 
+            this.sellValueDataGridViewTextBoxColumn.DataPropertyName = "SellValue";
+            this.sellValueDataGridViewTextBoxColumn.HeaderText = "SellValue";
+            this.sellValueDataGridViewTextBoxColumn.Name = "sellValueDataGridViewTextBoxColumn";
+            this.sellValueDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // retailValueDataGridViewTextBoxColumn
+            // 
+            this.retailValueDataGridViewTextBoxColumn.DataPropertyName = "RetailValue";
+            this.retailValueDataGridViewTextBoxColumn.HeaderText = "RetailValue";
+            this.retailValueDataGridViewTextBoxColumn.Name = "retailValueDataGridViewTextBoxColumn";
+            this.retailValueDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // bidIncrementTypeIdDataGridViewTextBoxColumn
+            // 
+            this.bidIncrementTypeIdDataGridViewTextBoxColumn.DataPropertyName = "BidIncrementTypeId";
+            this.bidIncrementTypeIdDataGridViewTextBoxColumn.HeaderText = "BidIncrementTypeId";
+            this.bidIncrementTypeIdDataGridViewTextBoxColumn.Name = "bidIncrementTypeIdDataGridViewTextBoxColumn";
+            this.bidIncrementTypeIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // bidMinValueDataGridViewTextBoxColumn
+            // 
+            this.bidMinValueDataGridViewTextBoxColumn.DataPropertyName = "BidMinValue";
+            this.bidMinValueDataGridViewTextBoxColumn.HeaderText = "BidMinValue";
+            this.bidMinValueDataGridViewTextBoxColumn.Name = "bidMinValueDataGridViewTextBoxColumn";
+            this.bidMinValueDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // bidMaxValueDataGridViewTextBoxColumn
+            // 
+            this.bidMaxValueDataGridViewTextBoxColumn.DataPropertyName = "BidMaxValue";
+            this.bidMaxValueDataGridViewTextBoxColumn.HeaderText = "BidMaxValue";
+            this.bidMaxValueDataGridViewTextBoxColumn.Name = "bidMaxValueDataGridViewTextBoxColumn";
+            this.bidMaxValueDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // bidIncrementValueDataGridViewTextBoxColumn
+            // 
+            this.bidIncrementValueDataGridViewTextBoxColumn.DataPropertyName = "BidIncrementValue";
+            this.bidIncrementValueDataGridViewTextBoxColumn.HeaderText = "BidIncrementValue";
+            this.bidIncrementValueDataGridViewTextBoxColumn.Name = "bidIncrementValueDataGridViewTextBoxColumn";
+            this.bidIncrementValueDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // bidBuyItNowValueDataGridViewTextBoxColumn
+            // 
+            this.bidBuyItNowValueDataGridViewTextBoxColumn.DataPropertyName = "BidBuyItNowValue";
+            this.bidBuyItNowValueDataGridViewTextBoxColumn.HeaderText = "BidBuyItNowValue";
+            this.bidBuyItNowValueDataGridViewTextBoxColumn.Name = "bidBuyItNowValueDataGridViewTextBoxColumn";
+            this.bidBuyItNowValueDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // bidNumberOfBidsDataGridViewTextBoxColumn
+            // 
+            this.bidNumberOfBidsDataGridViewTextBoxColumn.DataPropertyName = "BidNumberOfBids";
+            this.bidNumberOfBidsDataGridViewTextBoxColumn.HeaderText = "BidNumberOfBids";
+            this.bidNumberOfBidsDataGridViewTextBoxColumn.Name = "bidNumberOfBidsDataGridViewTextBoxColumn";
+            this.bidNumberOfBidsDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // notesDataGridViewTextBoxColumn
+            // 
+            this.notesDataGridViewTextBoxColumn.DataPropertyName = "Notes";
+            this.notesDataGridViewTextBoxColumn.HeaderText = "Notes";
+            this.notesDataGridViewTextBoxColumn.Name = "notesDataGridViewTextBoxColumn";
+            this.notesDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // imageDataGridViewImageColumn
+            // 
+            this.imageDataGridViewImageColumn.DataPropertyName = "Image";
+            this.imageDataGridViewImageColumn.HeaderText = "Image";
+            this.imageDataGridViewImageColumn.Name = "imageDataGridViewImageColumn";
+            this.imageDataGridViewImageColumn.Visible = false;
+            // 
+            // createDateDataGridViewTextBoxColumn
+            // 
+            this.createDateDataGridViewTextBoxColumn.DataPropertyName = "CreateDate";
+            this.createDateDataGridViewTextBoxColumn.HeaderText = "CreateDate";
+            this.createDateDataGridViewTextBoxColumn.Name = "createDateDataGridViewTextBoxColumn";
+            this.createDateDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // modifiedDateDataGridViewTextBoxColumn
+            // 
+            this.modifiedDateDataGridViewTextBoxColumn.DataPropertyName = "ModifiedDate";
+            this.modifiedDateDataGridViewTextBoxColumn.HeaderText = "ModifiedDate";
+            this.modifiedDateDataGridViewTextBoxColumn.Name = "modifiedDateDataGridViewTextBoxColumn";
+            this.modifiedDateDataGridViewTextBoxColumn.Visible = false;
             // 
             // BidSheetPrintForm
             // 
@@ -252,7 +415,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GenerateItemLabelsFileFormClosing);
             this.Load += new System.EventHandler(this.GenerateItemLabelsFileLoad);
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemsShortListBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -272,18 +435,36 @@
         private System.Windows.Forms.Button CancelPrintButton;
         private System.Windows.Forms.Button PrintBidSheetButton;
         private System.Drawing.Printing.PrintDocument bidSheetsPrintDocument;
-        private System.Windows.Forms.BindingSource itemsShortListBindingSource;
-        private SilentAuctionDataSetTableAdapters.ItemsShortListTableAdapter itemsShortListTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itemNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn donorNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itemTypeDataGridViewTextBoxColumn;
         private System.Windows.Forms.Panel panel1;
         private TXTextControl.TextControl bidSheetsTextControl;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.BindingSource itemsBindingSource;
+        private SilentAuctionDataSetTableAdapters.ItemsTableAdapter itemsTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemTypeNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn donorTypeNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn donorIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn auctionIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn auctionNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemTypeIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn donationDeliveryTypeIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sellValueDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn retailValueDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bidIncrementTypeIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bidMinValueDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bidMaxValueDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bidIncrementValueDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bidBuyItNowValueDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bidNumberOfBidsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn notesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewImageColumn imageDataGridViewImageColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn modifiedDateDataGridViewTextBoxColumn;
     }
 }

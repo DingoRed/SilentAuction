@@ -15,7 +15,7 @@ namespace SilentAuction.Forms
 
         private void EulaLoad(object sender, EventArgs e)
         {
-            DeclineButton.Focus();
+            EulaDeclineButton.Focus();
         }
 
         private void AcceptButtonClick(object sender, EventArgs e)

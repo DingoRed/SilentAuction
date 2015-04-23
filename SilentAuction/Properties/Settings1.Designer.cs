@@ -49,13 +49,13 @@ namespace SilentAuction.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("70")]
-        public int ItemsDonorIdColumnWidth {
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public int ItemsDonorNameColumnWidth {
             get {
-                return ((int)(this["ItemsDonorIdColumnWidth"]));
+                return ((int)(this["ItemsDonorNameColumnWidth"]));
             }
             set {
-                this["ItemsDonorIdColumnWidth"] = value;
+                this["ItemsDonorNameColumnWidth"] = value;
             }
         }
         
@@ -121,7 +121,7 @@ namespace SilentAuction.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("110")]
+        [global::System.Configuration.DefaultSettingValueAttribute("150")]
         public int ItemsBidIncrementTypeColumnWidth {
             get {
                 return ((int)(this["ItemsBidIncrementTypeColumnWidth"]));
@@ -169,7 +169,7 @@ namespace SilentAuction.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("70")]
+        [global::System.Configuration.DefaultSettingValueAttribute("80")]
         public int ItemsBidIncrementValuesColumnWidth {
             get {
                 return ((int)(this["ItemsBidIncrementValuesColumnWidth"]));
@@ -409,12 +409,12 @@ namespace SilentAuction.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("100")]
-        public int ItemsItemTypeIdColumnWidth {
+        public int ItemsItemTypeNameColumnWidth {
             get {
-                return ((int)(this["ItemsItemTypeIdColumnWidth"]));
+                return ((int)(this["ItemsItemTypeNameColumnWidth"]));
             }
             set {
-                this["ItemsItemTypeIdColumnWidth"] = value;
+                this["ItemsItemTypeNameColumnWidth"] = value;
             }
         }
         
@@ -636,7 +636,7 @@ namespace SilentAuction.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
         public int ItemsIdColumnWidth {
             get {
                 return ((int)(this["ItemsIdColumnWidth"]));
@@ -727,6 +727,30 @@ namespace SilentAuction.Properties {
             }
             set {
                 this["EULAAccepted"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("90")]
+        public int ItemsSellValueColumnWidth {
+            get {
+                return ((int)(this["ItemsSellValueColumnWidth"]));
+            }
+            set {
+                this["ItemsSellValueColumnWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public int ItemsDonorTypeNameColumnWidth {
+            get {
+                return ((int)(this["ItemsDonorTypeNameColumnWidth"]));
+            }
+            set {
+                this["ItemsDonorTypeNameColumnWidth"] = value;
             }
         }
     }

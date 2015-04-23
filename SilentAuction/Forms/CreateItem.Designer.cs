@@ -77,18 +77,12 @@
             this.CancelItemButton = new System.Windows.Forms.Button();
             this.auctionsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.AuctionsTableAdapter();
             this.donorsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorsTableAdapter();
-            this.donorTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.donorTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorTypesTableAdapter();
-            this.requestFormatTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.requestFormatTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter();
-            this.requestStatusBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.requestStatusTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter();
             this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.itemsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.ItemsTableAdapter();
             this.itemTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.ItemTypesTableAdapter();
             this.bidIncrementTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.BidIncrementTypesTableAdapter();
             this.donationDeliveryTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonationDeliveryTypesTableAdapter();
             this.itemErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.itemsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.ItemsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).BeginInit();
@@ -98,9 +92,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.itemTypesBindingSource)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bidIncrementTypesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.donorTypesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.requestStatusBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemErrorProvider)).BeginInit();
             this.SuspendLayout();
@@ -559,41 +550,10 @@
             // 
             this.donorsTableAdapter.ClearBeforeFill = true;
             // 
-            // donorTypesBindingSource
-            // 
-            this.donorTypesBindingSource.DataMember = "DonorTypes";
-            this.donorTypesBindingSource.DataSource = this.silentAuctionDataSet;
-            // 
-            // donorTypesTableAdapter
-            // 
-            this.donorTypesTableAdapter.ClearBeforeFill = true;
-            // 
-            // requestFormatTypesBindingSource
-            // 
-            this.requestFormatTypesBindingSource.DataMember = "RequestFormatTypes";
-            this.requestFormatTypesBindingSource.DataSource = this.silentAuctionDataSet;
-            // 
-            // requestFormatTypesTableAdapter
-            // 
-            this.requestFormatTypesTableAdapter.ClearBeforeFill = true;
-            // 
-            // requestStatusBindingSource
-            // 
-            this.requestStatusBindingSource.DataMember = "RequestStatusTypes";
-            this.requestStatusBindingSource.DataSource = this.silentAuctionDataSet;
-            // 
-            // requestStatusTypesTableAdapter
-            // 
-            this.requestStatusTypesTableAdapter.ClearBeforeFill = true;
-            // 
             // itemsBindingSource
             // 
             this.itemsBindingSource.DataMember = "Items";
             this.itemsBindingSource.DataSource = this.silentAuctionDataSet;
-            // 
-            // itemsTableAdapter
-            // 
-            this.itemsTableAdapter.ClearBeforeFill = true;
             // 
             // itemTypesTableAdapter
             // 
@@ -610,6 +570,10 @@
             // itemErrorProvider
             // 
             this.itemErrorProvider.ContainerControl = this;
+            // 
+            // itemsTableAdapter
+            // 
+            this.itemsTableAdapter.ClearBeforeFill = true;
             // 
             // CreateNewItemForm
             // 
@@ -646,9 +610,6 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bidIncrementTypesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.donorTypesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.requestStatusBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemErrorProvider)).EndInit();
             this.ResumeLayout(false);
@@ -700,14 +661,7 @@
         private SilentAuctionDataSetTableAdapters.AuctionsTableAdapter auctionsTableAdapter;
         private System.Windows.Forms.BindingSource donorsBindingSource;
         private SilentAuctionDataSetTableAdapters.DonorsTableAdapter donorsTableAdapter;
-        private System.Windows.Forms.BindingSource donorTypesBindingSource;
-        private SilentAuctionDataSetTableAdapters.DonorTypesTableAdapter donorTypesTableAdapter;
-        private System.Windows.Forms.BindingSource requestFormatTypesBindingSource;
-        private SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter requestFormatTypesTableAdapter;
-        private System.Windows.Forms.BindingSource requestStatusBindingSource;
-        private SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter requestStatusTypesTableAdapter;
         private System.Windows.Forms.BindingSource itemsBindingSource;
-        private SilentAuctionDataSetTableAdapters.ItemsTableAdapter itemsTableAdapter;
         private System.Windows.Forms.BindingSource itemTypesBindingSource;
         private SilentAuctionDataSetTableAdapters.ItemTypesTableAdapter itemTypesTableAdapter;
         private System.Windows.Forms.BindingSource bidIncrementTypesBindingSource;
@@ -717,5 +671,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ErrorProvider itemErrorProvider;
         private System.Windows.Forms.Button BidCalculatorButton;
+        private SilentAuctionDataSetTableAdapters.ItemsTableAdapter itemsTableAdapter;
     }
 }

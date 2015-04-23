@@ -26,7 +26,7 @@ namespace SilentAuction
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //Application.Run(new Eula());
+            //Application.Run(new Test());
             Application.Run(new MainForm());
             
         }

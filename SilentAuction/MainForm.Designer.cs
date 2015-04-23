@@ -37,38 +37,43 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ItemsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.ItemsDataGridView = new System.Windows.Forms.DataGridView();
             this.ItemsIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemsDonorIdColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.donorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ItemsDonorTypeNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemsDonorNameColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.donorsNameOnlyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.silentAuctionDataSet = new SilentAuction.SilentAuctionDataSet();
-            this.ItemsAuctionIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemsNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemsItemNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemsQtyColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemsItemDescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemsDescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemsImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.ItemsNotesColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemsItemTypeIdColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ItemsItemTypeNameColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.itemTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ItemsDonationDeliveryTypeIdColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.donationDeliveryTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ItemsSellValueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemsRetailValueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemsBidBuyItNowValueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemsBidIncrementTypeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ItemsBidIncrementTypeIdColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.bidIncrementTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ItemsBidMinValueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemsBidMaxValueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemsBidIncrementValueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemsBidNumberOfBidsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemsDonorIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemsAuctionIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemsAuctionNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemsItemTypeIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemsCreateDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemsModifiedDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ButtonsPanel = new System.Windows.Forms.Panel();
+            this.RefreshButton = new System.Windows.Forms.Button();
             this.exportButton = new System.Windows.Forms.Button();
-            this.AddItemsButton = new System.Windows.Forms.Button();
+            this.GoToBottomButton = new System.Windows.Forms.Button();
             this.ItemsSaveAllButton = new System.Windows.Forms.Button();
             this.LabelsPanel = new System.Windows.Forms.Panel();
             this.ItemsRequirementLabel = new System.Windows.Forms.Label();
@@ -112,26 +117,18 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AuctionNamePanel = new System.Windows.Forms.Panel();
             this.AuctionNameLabel2 = new System.Windows.Forms.Label();
-            this.auctionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.itemsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.ItemsTableAdapter();
-            this.donorsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorsTableAdapter();
-            this.auctionsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.AuctionsTableAdapter();
-            this.bidIncrementTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.BidIncrementTypesTableAdapter();
+            this.ScreenTitlePanel = new System.Windows.Forms.Panel();
+            this.ItemsLabel = new System.Windows.Forms.Label();
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
             this.MainFormStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.itemsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.ItemsTableAdapter();
+            this.donorsNameOnlyTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorsNameOnlyTableAdapter();
             this.itemTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.ItemTypesTableAdapter();
             this.donationDeliveryTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonationDeliveryTypesTableAdapter();
-            this.donorTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.donorTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorTypesTableAdapter();
-            this.requestFormatTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.requestFormatTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter();
-            this.requestStatusTypesbindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.requestStatusTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter();
-            this.ScreenTitlePanel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.bidIncrementTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.BidIncrementTypesTableAdapter();
             this.ItemsTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donorsNameOnlyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemTypesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.donationDeliveryTypesBindingSource)).BeginInit();
@@ -141,12 +138,8 @@
             this.LabelsPanel.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.AuctionNamePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).BeginInit();
-            this.statusStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.donorTypeBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.requestStatusTypesbindingSource)).BeginInit();
             this.ScreenTitlePanel.SuspendLayout();
+            this.statusStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // ItemsTableLayoutPanel
@@ -181,22 +174,27 @@
             this.ItemsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ItemsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemsIdColumn,
-            this.ItemsDonorIdColumn,
-            this.ItemsAuctionIdColumn,
-            this.ItemsNameColumn,
+            this.ItemsDonorTypeNameColumn,
+            this.ItemsDonorNameColumn,
+            this.ItemsItemNameColumn,
             this.ItemsQtyColumn,
-            this.ItemsItemDescriptionColumn,
+            this.ItemsDescriptionColumn,
             this.ItemsImageColumn,
             this.ItemsNotesColumn,
-            this.ItemsItemTypeIdColumn,
+            this.ItemsItemTypeNameColumn,
             this.ItemsDonationDeliveryTypeIdColumn,
+            this.ItemsSellValueColumn,
             this.ItemsRetailValueColumn,
             this.ItemsBidBuyItNowValueColumn,
-            this.ItemsBidIncrementTypeColumn,
+            this.ItemsBidIncrementTypeIdColumn,
             this.ItemsBidMinValueColumn,
             this.ItemsBidMaxValueColumn,
             this.ItemsBidIncrementValueColumn,
             this.ItemsBidNumberOfBidsColumn,
+            this.ItemsDonorIdColumn,
+            this.ItemsAuctionIdColumn,
+            this.ItemsAuctionNameColumn,
+            this.ItemsItemTypeIdColumn,
             this.ItemsCreateDateColumn,
             this.ItemsModifiedDateColumn});
             this.ItemsTableLayoutPanel.SetColumnSpan(this.ItemsDataGridView, 3);
@@ -217,77 +215,74 @@
             // ItemsIdColumn
             // 
             this.ItemsIdColumn.DataPropertyName = "Id";
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            this.ItemsIdColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.ItemsIdColumn.HeaderText = "Id";
             this.ItemsIdColumn.Name = "ItemsIdColumn";
             this.ItemsIdColumn.ReadOnly = true;
-            this.ItemsIdColumn.Width = 41;
+            this.ItemsIdColumn.Width = 30;
             // 
-            // ItemsDonorIdColumn
+            // ItemsDonorTypeNameColumn
             // 
-            this.ItemsDonorIdColumn.DataPropertyName = "DonorId";
-            this.ItemsDonorIdColumn.DataSource = this.donorsBindingSource;
-            this.ItemsDonorIdColumn.DisplayMember = "Name";
-            this.ItemsDonorIdColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.ItemsDonorIdColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ItemsDonorIdColumn.HeaderText = "* Donor";
-            this.ItemsDonorIdColumn.Name = "ItemsDonorIdColumn";
-            this.ItemsDonorIdColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ItemsDonorIdColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ItemsDonorIdColumn.ValueMember = "Id";
-            this.ItemsDonorIdColumn.Width = 70;
+            this.ItemsDonorTypeNameColumn.DataPropertyName = "DonorTypeName";
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            this.ItemsDonorTypeNameColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ItemsDonorTypeNameColumn.HeaderText = "Donor Type";
+            this.ItemsDonorTypeNameColumn.Name = "ItemsDonorTypeNameColumn";
+            this.ItemsDonorTypeNameColumn.ReadOnly = true;
             // 
-            // donorsBindingSource
+            // ItemsDonorNameColumn
             // 
-            this.donorsBindingSource.DataMember = "Donors";
-            this.donorsBindingSource.DataSource = this.silentAuctionDataSet;
+            this.ItemsDonorNameColumn.DataPropertyName = "DonorName";
+            this.ItemsDonorNameColumn.DataSource = this.donorsNameOnlyBindingSource;
+            this.ItemsDonorNameColumn.DisplayMember = "Name";
+            this.ItemsDonorNameColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.ItemsDonorNameColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ItemsDonorNameColumn.HeaderText = "* Donor Name";
+            this.ItemsDonorNameColumn.Name = "ItemsDonorNameColumn";
+            this.ItemsDonorNameColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ItemsDonorNameColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ItemsDonorNameColumn.ValueMember = "Name";
+            // 
+            // donorsNameOnlyBindingSource
+            // 
+            this.donorsNameOnlyBindingSource.DataMember = "DonorsNameOnly";
+            this.donorsNameOnlyBindingSource.DataSource = this.silentAuctionDataSet;
             // 
             // silentAuctionDataSet
             // 
             this.silentAuctionDataSet.DataSetName = "SilentAuctionDataSet";
             this.silentAuctionDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // ItemsAuctionIdColumn
+            // ItemsItemNameColumn
             // 
-            this.ItemsAuctionIdColumn.DataPropertyName = "AuctionId";
-            this.ItemsAuctionIdColumn.HeaderText = "AuctionId";
-            this.ItemsAuctionIdColumn.Name = "ItemsAuctionIdColumn";
-            this.ItemsAuctionIdColumn.Visible = false;
-            this.ItemsAuctionIdColumn.Width = 80;
-            // 
-            // ItemsNameColumn
-            // 
-            this.ItemsNameColumn.DataPropertyName = "Name";
-            this.ItemsNameColumn.HeaderText = "* Item Name";
-            this.ItemsNameColumn.Name = "ItemsNameColumn";
-            this.ItemsNameColumn.Width = 90;
+            this.ItemsItemNameColumn.DataPropertyName = "Name";
+            this.ItemsItemNameColumn.HeaderText = "* Item Name";
+            this.ItemsItemNameColumn.Name = "ItemsItemNameColumn";
+            this.ItemsItemNameColumn.Width = 90;
             // 
             // ItemsQtyColumn
             // 
             this.ItemsQtyColumn.DataPropertyName = "Qty";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.Format = "N0";
-            dataGridViewCellStyle1.NullValue = null;
-            this.ItemsQtyColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.ItemsQtyColumn.HeaderText = "* Qty";
             this.ItemsQtyColumn.Name = "ItemsQtyColumn";
             this.ItemsQtyColumn.Width = 55;
             // 
-            // ItemsItemDescriptionColumn
+            // ItemsDescriptionColumn
             // 
-            this.ItemsItemDescriptionColumn.DataPropertyName = "Description";
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ItemsItemDescriptionColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ItemsItemDescriptionColumn.HeaderText = "Item Description";
-            this.ItemsItemDescriptionColumn.Name = "ItemsItemDescriptionColumn";
-            this.ItemsItemDescriptionColumn.Width = 120;
+            this.ItemsDescriptionColumn.DataPropertyName = "Description";
+            this.ItemsDescriptionColumn.HeaderText = "Item Description";
+            this.ItemsDescriptionColumn.Name = "ItemsDescriptionColumn";
+            this.ItemsDescriptionColumn.Width = 120;
             // 
             // ItemsImageColumn
             // 
             this.ItemsImageColumn.DataPropertyName = "Image";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ItemsImageColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.ItemsImageColumn.HeaderText = "Image";
-            this.ItemsImageColumn.Image = global::SilentAuction.Properties.Resources.image;
             this.ItemsImageColumn.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.ItemsImageColumn.Name = "ItemsImageColumn";
             // 
@@ -298,18 +293,18 @@
             this.ItemsNotesColumn.Name = "ItemsNotesColumn";
             this.ItemsNotesColumn.Width = 60;
             // 
-            // ItemsItemTypeIdColumn
+            // ItemsItemTypeNameColumn
             // 
-            this.ItemsItemTypeIdColumn.DataPropertyName = "ItemTypeId";
-            this.ItemsItemTypeIdColumn.DataSource = this.itemTypesBindingSource;
-            this.ItemsItemTypeIdColumn.DisplayMember = "Name";
-            this.ItemsItemTypeIdColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.ItemsItemTypeIdColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ItemsItemTypeIdColumn.HeaderText = "Item Type";
-            this.ItemsItemTypeIdColumn.Name = "ItemsItemTypeIdColumn";
-            this.ItemsItemTypeIdColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ItemsItemTypeIdColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ItemsItemTypeIdColumn.ValueMember = "Id";
+            this.ItemsItemTypeNameColumn.DataPropertyName = "ItemTypeName";
+            this.ItemsItemTypeNameColumn.DataSource = this.itemTypesBindingSource;
+            this.ItemsItemTypeNameColumn.DisplayMember = "Name";
+            this.ItemsItemTypeNameColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.ItemsItemTypeNameColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ItemsItemTypeNameColumn.HeaderText = "Item Type";
+            this.ItemsItemTypeNameColumn.Name = "ItemsItemTypeNameColumn";
+            this.ItemsItemTypeNameColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ItemsItemTypeNameColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ItemsItemTypeNameColumn.ValueMember = "Name";
             // 
             // itemTypesBindingSource
             // 
@@ -335,10 +330,19 @@
             this.donationDeliveryTypesBindingSource.DataMember = "DonationDeliveryTypes";
             this.donationDeliveryTypesBindingSource.DataSource = this.silentAuctionDataSet;
             // 
+            // ItemsSellValueColumn
+            // 
+            this.ItemsSellValueColumn.DataPropertyName = "SellValue";
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.ItemsSellValueColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ItemsSellValueColumn.HeaderText = "Sell Value";
+            this.ItemsSellValueColumn.Name = "ItemsSellValueColumn";
+            this.ItemsSellValueColumn.Width = 90;
+            // 
             // ItemsRetailValueColumn
             // 
             this.ItemsRetailValueColumn.DataPropertyName = "RetailValue";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle4.Format = "C2";
             this.ItemsRetailValueColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.ItemsRetailValueColumn.HeaderText = "Retail Value";
@@ -348,26 +352,25 @@
             // ItemsBidBuyItNowValueColumn
             // 
             this.ItemsBidBuyItNowValueColumn.DataPropertyName = "BidBuyItNowValue";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle5.Format = "C2";
             this.ItemsBidBuyItNowValueColumn.DefaultCellStyle = dataGridViewCellStyle5;
-            this.ItemsBidBuyItNowValueColumn.HeaderText = "Buy It Now Amount";
+            this.ItemsBidBuyItNowValueColumn.HeaderText = "Buy It Now Amt";
             this.ItemsBidBuyItNowValueColumn.Name = "ItemsBidBuyItNowValueColumn";
             this.ItemsBidBuyItNowValueColumn.Width = 140;
             // 
-            // ItemsBidIncrementTypeColumn
+            // ItemsBidIncrementTypeIdColumn
             // 
-            this.ItemsBidIncrementTypeColumn.DataPropertyName = "BidIncrementTypeId";
-            this.ItemsBidIncrementTypeColumn.DataSource = this.bidIncrementTypesBindingSource;
-            this.ItemsBidIncrementTypeColumn.DisplayMember = "Name";
-            this.ItemsBidIncrementTypeColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.ItemsBidIncrementTypeColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ItemsBidIncrementTypeColumn.HeaderText = "* Bid Incr Type";
-            this.ItemsBidIncrementTypeColumn.Name = "ItemsBidIncrementTypeColumn";
-            this.ItemsBidIncrementTypeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ItemsBidIncrementTypeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ItemsBidIncrementTypeColumn.ValueMember = "Id";
-            this.ItemsBidIncrementTypeColumn.Width = 110;
+            this.ItemsBidIncrementTypeIdColumn.DataPropertyName = "BidIncrementTypeId";
+            this.ItemsBidIncrementTypeIdColumn.DataSource = this.bidIncrementTypesBindingSource;
+            this.ItemsBidIncrementTypeIdColumn.DisplayMember = "Name";
+            this.ItemsBidIncrementTypeIdColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.ItemsBidIncrementTypeIdColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ItemsBidIncrementTypeIdColumn.HeaderText = "Bid Incr Type";
+            this.ItemsBidIncrementTypeIdColumn.Name = "ItemsBidIncrementTypeIdColumn";
+            this.ItemsBidIncrementTypeIdColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ItemsBidIncrementTypeIdColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ItemsBidIncrementTypeIdColumn.ValueMember = "Id";
+            this.ItemsBidIncrementTypeIdColumn.Width = 150;
             // 
             // bidIncrementTypesBindingSource
             // 
@@ -377,53 +380,79 @@
             // ItemsBidMinValueColumn
             // 
             this.ItemsBidMinValueColumn.DataPropertyName = "BidMinValue";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle6.Format = "C2";
-            dataGridViewCellStyle6.NullValue = null;
             this.ItemsBidMinValueColumn.DefaultCellStyle = dataGridViewCellStyle6;
-            this.ItemsBidMinValueColumn.HeaderText = "Minimum Bid";
+            this.ItemsBidMinValueColumn.HeaderText = "Min Bid";
             this.ItemsBidMinValueColumn.Name = "ItemsBidMinValueColumn";
             this.ItemsBidMinValueColumn.Width = 95;
             // 
             // ItemsBidMaxValueColumn
             // 
             this.ItemsBidMaxValueColumn.DataPropertyName = "BidMaxValue";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle7.Format = "C2";
             this.ItemsBidMaxValueColumn.DefaultCellStyle = dataGridViewCellStyle7;
-            this.ItemsBidMaxValueColumn.HeaderText = "Maximum Bid";
+            this.ItemsBidMaxValueColumn.HeaderText = "Max Bid";
             this.ItemsBidMaxValueColumn.Name = "ItemsBidMaxValueColumn";
             this.ItemsBidMaxValueColumn.Width = 95;
             // 
             // ItemsBidIncrementValueColumn
             // 
             this.ItemsBidIncrementValueColumn.DataPropertyName = "BidIncrementValue";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle8.Format = "C2";
             this.ItemsBidIncrementValueColumn.DefaultCellStyle = dataGridViewCellStyle8;
             this.ItemsBidIncrementValueColumn.HeaderText = "Bid Incr";
             this.ItemsBidIncrementValueColumn.Name = "ItemsBidIncrementValueColumn";
-            this.ItemsBidIncrementValueColumn.Width = 70;
+            this.ItemsBidIncrementValueColumn.Width = 80;
             // 
             // ItemsBidNumberOfBidsColumn
             // 
             this.ItemsBidNumberOfBidsColumn.DataPropertyName = "BidNumberOfBids";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.Format = "N0";
-            dataGridViewCellStyle9.NullValue = null;
-            this.ItemsBidNumberOfBidsColumn.DefaultCellStyle = dataGridViewCellStyle9;
             this.ItemsBidNumberOfBidsColumn.HeaderText = "# of Bids";
             this.ItemsBidNumberOfBidsColumn.Name = "ItemsBidNumberOfBidsColumn";
-            this.ItemsBidNumberOfBidsColumn.Width = 75;
+            // 
+            // ItemsDonorIdColumn
+            // 
+            this.ItemsDonorIdColumn.DataPropertyName = "DonorId";
+            this.ItemsDonorIdColumn.HeaderText = "DonorId";
+            this.ItemsDonorIdColumn.Name = "ItemsDonorIdColumn";
+            this.ItemsDonorIdColumn.ReadOnly = true;
+            this.ItemsDonorIdColumn.Visible = false;
+            this.ItemsDonorIdColumn.Width = 30;
+            // 
+            // ItemsAuctionIdColumn
+            // 
+            this.ItemsAuctionIdColumn.DataPropertyName = "AuctionId";
+            this.ItemsAuctionIdColumn.HeaderText = "Auction Id";
+            this.ItemsAuctionIdColumn.Name = "ItemsAuctionIdColumn";
+            this.ItemsAuctionIdColumn.ReadOnly = true;
+            this.ItemsAuctionIdColumn.Visible = false;
+            this.ItemsAuctionIdColumn.Width = 30;
+            // 
+            // ItemsAuctionNameColumn
+            // 
+            this.ItemsAuctionNameColumn.DataPropertyName = "AuctionName";
+            this.ItemsAuctionNameColumn.HeaderText = "Auction Name";
+            this.ItemsAuctionNameColumn.Name = "ItemsAuctionNameColumn";
+            this.ItemsAuctionNameColumn.ReadOnly = true;
+            this.ItemsAuctionNameColumn.Visible = false;
+            this.ItemsAuctionNameColumn.Width = 30;
+            // 
+            // ItemsItemTypeIdColumn
+            // 
+            this.ItemsItemTypeIdColumn.DataPropertyName = "ItemTypeId";
+            this.ItemsItemTypeIdColumn.HeaderText = "Item Type Id";
+            this.ItemsItemTypeIdColumn.Name = "ItemsItemTypeIdColumn";
+            this.ItemsItemTypeIdColumn.ReadOnly = true;
+            this.ItemsItemTypeIdColumn.Visible = false;
+            this.ItemsItemTypeIdColumn.Width = 30;
             // 
             // ItemsCreateDateColumn
             // 
             this.ItemsCreateDateColumn.DataPropertyName = "CreateDate";
-            this.ItemsCreateDateColumn.HeaderText = "CreateDate";
+            this.ItemsCreateDateColumn.HeaderText = "Create Date";
             this.ItemsCreateDateColumn.Name = "ItemsCreateDateColumn";
-            this.ItemsCreateDateColumn.ReadOnly = true;
             this.ItemsCreateDateColumn.Visible = false;
-            this.ItemsCreateDateColumn.Width = 86;
+            this.ItemsCreateDateColumn.Width = 30;
             // 
             // ItemsModifiedDateColumn
             // 
@@ -431,7 +460,7 @@
             this.ItemsModifiedDateColumn.HeaderText = "ModifiedDate";
             this.ItemsModifiedDateColumn.Name = "ItemsModifiedDateColumn";
             this.ItemsModifiedDateColumn.Visible = false;
-            this.ItemsModifiedDateColumn.Width = 95;
+            this.ItemsModifiedDateColumn.Width = 30;
             // 
             // itemsBindingSource
             // 
@@ -441,8 +470,9 @@
             // ButtonsPanel
             // 
             this.ItemsTableLayoutPanel.SetColumnSpan(this.ButtonsPanel, 3);
+            this.ButtonsPanel.Controls.Add(this.RefreshButton);
             this.ButtonsPanel.Controls.Add(this.exportButton);
-            this.ButtonsPanel.Controls.Add(this.AddItemsButton);
+            this.ButtonsPanel.Controls.Add(this.GoToBottomButton);
             this.ButtonsPanel.Controls.Add(this.ItemsSaveAllButton);
             this.ButtonsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ButtonsPanel.Location = new System.Drawing.Point(3, 357);
@@ -450,6 +480,16 @@
             this.ButtonsPanel.Size = new System.Drawing.Size(868, 34);
             this.ButtonsPanel.TabIndex = 3;
             this.ButtonsPanel.Visible = false;
+            // 
+            // RefreshButton
+            // 
+            this.RefreshButton.Location = new System.Drawing.Point(217, 3);
+            this.RefreshButton.Name = "RefreshButton";
+            this.RefreshButton.Size = new System.Drawing.Size(75, 23);
+            this.RefreshButton.TabIndex = 5;
+            this.RefreshButton.Text = "Refresh";
+            this.RefreshButton.UseVisualStyleBackColor = true;
+            this.RefreshButton.Click += new System.EventHandler(this.RefreshButtonClick);
             // 
             // exportButton
             // 
@@ -464,16 +504,16 @@
             this.exportButton.UseVisualStyleBackColor = true;
             this.exportButton.Click += new System.EventHandler(this.ExportButtonClick);
             // 
-            // AddItemsButton
+            // GoToBottomButton
             // 
-            this.AddItemsButton.AutoSize = true;
-            this.AddItemsButton.Location = new System.Drawing.Point(110, 3);
-            this.AddItemsButton.Name = "AddItemsButton";
-            this.AddItemsButton.Size = new System.Drawing.Size(101, 23);
-            this.AddItemsButton.TabIndex = 3;
-            this.AddItemsButton.Text = "Add Item";
-            this.AddItemsButton.UseVisualStyleBackColor = true;
-            this.AddItemsButton.Click += new System.EventHandler(this.AddItemsButtonClick);
+            this.GoToBottomButton.AutoSize = true;
+            this.GoToBottomButton.Location = new System.Drawing.Point(110, 3);
+            this.GoToBottomButton.Name = "GoToBottomButton";
+            this.GoToBottomButton.Size = new System.Drawing.Size(101, 23);
+            this.GoToBottomButton.TabIndex = 3;
+            this.GoToBottomButton.Text = "Go to Bottom";
+            this.GoToBottomButton.UseVisualStyleBackColor = true;
+            this.GoToBottomButton.Click += new System.EventHandler(this.AddItemsButtonClick);
             // 
             // ItemsSaveAllButton
             // 
@@ -838,26 +878,26 @@
             this.AuctionNameLabel2.TabIndex = 6;
             this.AuctionNameLabel2.Text = "(Placeholder)";
             // 
-            // auctionsBindingSource
+            // ScreenTitlePanel
             // 
-            this.auctionsBindingSource.DataMember = "Auctions";
-            this.auctionsBindingSource.DataSource = this.silentAuctionDataSet;
+            this.ItemsTableLayoutPanel.SetColumnSpan(this.ScreenTitlePanel, 3);
+            this.ScreenTitlePanel.Controls.Add(this.ItemsLabel);
+            this.ScreenTitlePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ScreenTitlePanel.Location = new System.Drawing.Point(3, 33);
+            this.ScreenTitlePanel.Name = "ScreenTitlePanel";
+            this.ScreenTitlePanel.Size = new System.Drawing.Size(868, 24);
+            this.ScreenTitlePanel.TabIndex = 7;
             // 
-            // itemsTableAdapter
+            // ItemsLabel
             // 
-            this.itemsTableAdapter.ClearBeforeFill = true;
-            // 
-            // donorsTableAdapter
-            // 
-            this.donorsTableAdapter.ClearBeforeFill = true;
-            // 
-            // auctionsTableAdapter
-            // 
-            this.auctionsTableAdapter.ClearBeforeFill = true;
-            // 
-            // bidIncrementTypesTableAdapter
-            // 
-            this.bidIncrementTypesTableAdapter.ClearBeforeFill = true;
+            this.ItemsLabel.AutoSize = true;
+            this.ItemsLabel.Font = new System.Drawing.Font("Lucida Calligraphy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ItemsLabel.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.ItemsLabel.Location = new System.Drawing.Point(3, 0);
+            this.ItemsLabel.Name = "ItemsLabel";
+            this.ItemsLabel.Size = new System.Drawing.Size(66, 21);
+            this.ItemsLabel.TabIndex = 7;
+            this.ItemsLabel.Text = "Items:";
             // 
             // statusStrip2
             // 
@@ -876,6 +916,14 @@
             this.MainFormStatusLabel.Text = "Data Saved";
             this.MainFormStatusLabel.Visible = false;
             // 
+            // itemsTableAdapter
+            // 
+            this.itemsTableAdapter.ClearBeforeFill = true;
+            // 
+            // donorsNameOnlyTableAdapter
+            // 
+            this.donorsNameOnlyTableAdapter.ClearBeforeFill = true;
+            // 
             // itemTypesTableAdapter
             // 
             this.itemTypesTableAdapter.ClearBeforeFill = true;
@@ -884,53 +932,9 @@
             // 
             this.donationDeliveryTypesTableAdapter.ClearBeforeFill = true;
             // 
-            // donorTypeBindingSource
+            // bidIncrementTypesTableAdapter
             // 
-            this.donorTypeBindingSource.DataMember = "DonorTypes";
-            this.donorTypeBindingSource.DataSource = this.silentAuctionDataSet;
-            // 
-            // donorTypesTableAdapter
-            // 
-            this.donorTypesTableAdapter.ClearBeforeFill = true;
-            // 
-            // requestFormatTypesBindingSource
-            // 
-            this.requestFormatTypesBindingSource.DataMember = "RequestFormatTypes";
-            this.requestFormatTypesBindingSource.DataSource = this.silentAuctionDataSet;
-            // 
-            // requestFormatTypesTableAdapter
-            // 
-            this.requestFormatTypesTableAdapter.ClearBeforeFill = true;
-            // 
-            // requestStatusTypesbindingSource
-            // 
-            this.requestStatusTypesbindingSource.DataMember = "RequestStatusTypes";
-            this.requestStatusTypesbindingSource.DataSource = this.silentAuctionDataSet;
-            // 
-            // requestStatusTypesTableAdapter
-            // 
-            this.requestStatusTypesTableAdapter.ClearBeforeFill = true;
-            // 
-            // ScreenTitlePanel
-            // 
-            this.ItemsTableLayoutPanel.SetColumnSpan(this.ScreenTitlePanel, 3);
-            this.ScreenTitlePanel.Controls.Add(this.label1);
-            this.ScreenTitlePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ScreenTitlePanel.Location = new System.Drawing.Point(3, 33);
-            this.ScreenTitlePanel.Name = "ScreenTitlePanel";
-            this.ScreenTitlePanel.Size = new System.Drawing.Size(868, 24);
-            this.ScreenTitlePanel.TabIndex = 7;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Lucida Calligraphy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 21);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Items:";
+            this.bidIncrementTypesTableAdapter.ClearBeforeFill = true;
             // 
             // MainForm
             // 
@@ -949,7 +953,7 @@
             this.ItemsTableLayoutPanel.ResumeLayout(false);
             this.ItemsTableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donorsNameOnlyBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemTypesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.donationDeliveryTypesBindingSource)).EndInit();
@@ -963,14 +967,10 @@
             this.menuStrip1.PerformLayout();
             this.AuctionNamePanel.ResumeLayout(false);
             this.AuctionNamePanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).EndInit();
-            this.statusStrip2.ResumeLayout(false);
-            this.statusStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.donorTypeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.requestFormatTypesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.requestStatusTypesbindingSource)).EndInit();
             this.ScreenTitlePanel.ResumeLayout(false);
             this.ScreenTitlePanel.PerformLayout();
+            this.statusStrip2.ResumeLayout(false);
+            this.statusStrip2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -979,28 +979,15 @@
         #endregion
 
         private System.Windows.Forms.DataGridView ItemsDataGridView;
-        private System.Windows.Forms.BindingSource itemsBindingSource;
-        private SilentAuctionDataSet silentAuctionDataSet;
-        private SilentAuctionDataSetTableAdapters.ItemsTableAdapter itemsTableAdapter;
         private System.Windows.Forms.Button ItemsSaveAllButton;
         private System.Windows.Forms.TableLayoutPanel ItemsTableLayoutPanel;
-        private System.Windows.Forms.BindingSource donorsBindingSource;
-        private SilentAuctionDataSetTableAdapters.DonorsTableAdapter donorsTableAdapter;
-        private System.Windows.Forms.BindingSource auctionsBindingSource;
-        private SilentAuctionDataSetTableAdapters.AuctionsTableAdapter auctionsTableAdapter;
         private System.Windows.Forms.Panel ButtonsPanel;
         private System.Windows.Forms.Label ItemsRequirementLabel;
-        private System.Windows.Forms.BindingSource bidIncrementTypesBindingSource;
-        private SilentAuctionDataSetTableAdapters.BidIncrementTypesTableAdapter bidIncrementTypesTableAdapter;
         private System.Windows.Forms.StatusStrip statusStrip2;
         private System.Windows.Forms.ToolStripStatusLabel MainFormStatusLabel;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Panel LabelsPanel;
-        private System.Windows.Forms.Button AddItemsButton;
-        private System.Windows.Forms.BindingSource itemTypesBindingSource;
-        private SilentAuctionDataSetTableAdapters.ItemTypesTableAdapter itemTypesTableAdapter;
-        private System.Windows.Forms.BindingSource donationDeliveryTypesBindingSource;
-        private SilentAuctionDataSetTableAdapters.DonationDeliveryTypesTableAdapter donationDeliveryTypesTableAdapter;
+        private System.Windows.Forms.Button GoToBottomButton;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem NewAuctionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem OpenAuctionToolStripMenuItem;
@@ -1018,10 +1005,6 @@
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.BindingSource donorTypeBindingSource;
-        private SilentAuctionDataSetTableAdapters.DonorTypesTableAdapter donorTypesTableAdapter;
-        private System.Windows.Forms.BindingSource requestFormatTypesBindingSource;
-        private SilentAuctionDataSetTableAdapters.RequestFormatTypesTableAdapter requestFormatTypesTableAdapter;
         private System.Windows.Forms.Panel AuctionNamePanel;
         private System.Windows.Forms.Label AuctionNameLabel2;
         private System.Windows.Forms.ToolStripMenuItem NewDonorToolStripMenuItem;
@@ -1031,8 +1014,6 @@
         private System.Windows.Forms.ToolStripMenuItem CloseAuctionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem EditAuctionListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem EditDonorListToolStripMenuItem;
-        private System.Windows.Forms.BindingSource requestStatusTypesbindingSource;
-        private SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter requestStatusTypesTableAdapter;
         private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem ShowAllItemsByDonorToolStripMenuItem;
@@ -1043,30 +1024,47 @@
         private System.Windows.Forms.ToolStripMenuItem CreateItemLabelsFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bidCalculatorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem NewItemToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsIdColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ItemsDonorIdColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsAuctionIdColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsQtyColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsItemDescriptionColumn;
-        private System.Windows.Forms.DataGridViewImageColumn ItemsImageColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsNotesColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ItemsItemTypeIdColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ItemsDonationDeliveryTypeIdColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsRetailValueColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsBidBuyItNowValueColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ItemsBidIncrementTypeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsBidMinValueColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsBidMaxValueColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsBidIncrementValueColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsBidNumberOfBidsColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsCreateDateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsModifiedDateColumn;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem PrintBidSheetsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.Button exportButton;
         private System.Windows.Forms.Panel ScreenTitlePanel;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label ItemsLabel;
+        private System.Windows.Forms.BindingSource donorsNameOnlyBindingSource;
+        private SilentAuctionDataSet silentAuctionDataSet;
+        private System.Windows.Forms.BindingSource itemsBindingSource;
+        private SilentAuctionDataSetTableAdapters.ItemsTableAdapter itemsTableAdapter;
+        private SilentAuctionDataSetTableAdapters.DonorsNameOnlyTableAdapter donorsNameOnlyTableAdapter;
+        private System.Windows.Forms.BindingSource itemTypesBindingSource;
+        private SilentAuctionDataSetTableAdapters.ItemTypesTableAdapter itemTypesTableAdapter;
+        private System.Windows.Forms.BindingSource donationDeliveryTypesBindingSource;
+        private SilentAuctionDataSetTableAdapters.DonationDeliveryTypesTableAdapter donationDeliveryTypesTableAdapter;
+        private System.Windows.Forms.BindingSource bidIncrementTypesBindingSource;
+        private SilentAuctionDataSetTableAdapters.BidIncrementTypesTableAdapter bidIncrementTypesTableAdapter;
+        private System.Windows.Forms.Button RefreshButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsIdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsDonorTypeNameColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ItemsDonorNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsItemNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsQtyColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsDescriptionColumn;
+        private System.Windows.Forms.DataGridViewImageColumn ItemsImageColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsNotesColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ItemsItemTypeNameColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ItemsDonationDeliveryTypeIdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsSellValueColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsRetailValueColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsBidBuyItNowValueColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ItemsBidIncrementTypeIdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsBidMinValueColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsBidMaxValueColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsBidIncrementValueColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsBidNumberOfBidsColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsDonorIdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsAuctionIdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsAuctionNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsItemTypeIdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsCreateDateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemsModifiedDateColumn;
     }
 }

@@ -4,7 +4,6 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using SilentAuction.Extensions;
-using SilentAuction.SilentAuctionDataSetTableAdapters;
 using SilentAuction.Utilities;
 
 namespace SilentAuction.Forms
@@ -13,7 +12,7 @@ namespace SilentAuction.Forms
     {
         #region Properties
         private int AuctionId { get; set; }
-        public List<int> ItemIdsToInclude { get; set; }
+        //public List<int> ItemIdsToInclude { get; set; }
         #endregion
 
         #region Constructor
@@ -28,26 +27,9 @@ namespace SilentAuction.Forms
         #region Form Event Handlers
         private void GenerateItemLabelsFileLoad(object sender, EventArgs e)
         {
-            // customize dataviewgrid, add checkbox column
-            DataGridViewCheckBoxColumn checkboxColumn = new DataGridViewCheckBoxColumn();
-            checkboxColumn.Width = 30;
-            checkboxColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            ItemsDataGridView.Columns.Insert(0, checkboxColumn);
+            SetupDataGridView();
 
-            // add checkbox header
-            Rectangle rect = ItemsDataGridView.GetCellDisplayRectangle(0, -1, true);
-            // set checkbox header to center of header cell. +1 pixel to position correctly.
-            rect.X = rect.Location.X + (rect.Width / 4);
-
-            CheckBox checkboxHeader = new CheckBox();
-            checkboxHeader.Name = "checkboxHeader";
-            checkboxHeader.Size = new Size(18, 18);
-            checkboxHeader.Location = rect.Location;
-            checkboxHeader.CheckedChanged += CheckboxHeaderCheckedChanged;
-
-            ItemsDataGridView.Controls.Add(checkboxHeader);
-
-            itemsShortListTableAdapter.FillItems(silentAuctionDataSet.ItemsShortList, AuctionId);
+            itemsTableAdapter.Fill(silentAuctionDataSet.Items, AuctionId);
 
             WindowSettings.SetupInitialWindow(this, "SelectItemsFormInitialLocation");
         }
@@ -80,7 +62,7 @@ namespace SilentAuction.Forms
 
         private void MakeFileButtonClick(object sender, EventArgs e)
         {
-            ItemIdsToInclude = new List<int>();
+            List<int> itemIdsToInclude = new List<int>();
 
             foreach (DataGridViewRow row in ItemsDataGridView.Rows)
             {
@@ -88,25 +70,43 @@ namespace SilentAuction.Forms
                 {
                     if ((bool) row.Cells[0].Value)
                     {
-                        ItemIdsToInclude.Add(MathHelper.ParseIntZeroIfNull(row.Cells[1].Value.ToString()));
+                        itemIdsToInclude.Add(MathHelper.ParseIntZeroIfNull(row.Cells[1].Value.ToString()));
                     }
                 }
             }
 
-            SilentAuctionDataSet.ItemsShortListDataTable itemsShortListDataTable =
-                new SilentAuctionDataSet.ItemsShortListDataTable();
-            new ItemsShortListTableAdapter().FillItems(itemsShortListDataTable, AuctionId);
+            if (itemIdsToInclude.Count == 0) return;
 
-            DataTable dt = new SilentAuctionDataSet.ItemsShortListDataTable();
+            SilentAuctionDataSet.ItemsDataTable dt = new SilentAuctionDataSet.ItemsDataTable();
 
-            foreach (SilentAuctionDataSet.ItemsShortListRow row in itemsShortListDataTable.Rows)
+            foreach (SilentAuctionDataSet.ItemsRow row in silentAuctionDataSet.Items.Rows)
             {
-                if (ItemIdsToInclude.Contains((int)row.Id))
+                if (itemIdsToInclude.Contains((int)row.Id))
                 {
                     dt.Rows.Add(row.ItemArray);
                 }
             }
 
+            dt.Columns.Remove(dt.AuctionIdColumn);
+            dt.Columns.Remove(dt.AuctionNameColumn);
+            dt.Columns.Remove(dt.BidBuyItNowValueColumn);
+            dt.Columns.Remove(dt.BidIncrementTypeIdColumn);
+            dt.Columns.Remove(dt.BidIncrementValueColumn);
+            dt.Columns.Remove(dt.BidMaxValueColumn);
+            dt.Columns.Remove(dt.BidMinValueColumn);
+            dt.Columns.Remove(dt.BidNumberOfBidsColumn);
+            dt.Columns.Remove(dt.CreateDateColumn);
+            dt.Columns.Remove(dt.DonationDeliveryTypeIdColumn);
+            dt.Columns.Remove(dt.DonorIdColumn);
+            dt.Columns.Remove(dt.DonorTypeNameColumn);
+            dt.Columns.Remove(dt.ImageColumn);
+            dt.Columns.Remove(dt.ItemTypeIdColumn);
+            dt.Columns.Remove(dt.ItemTypeNameColumn);
+            dt.Columns.Remove(dt.ModifiedDateColumn);
+            dt.Columns.Remove(dt.NotesColumn);
+            dt.Columns.Remove(dt.RetailValueColumn);
+            dt.Columns.Remove(dt.SellValueColumn);
+            
             string csvFile = dt.DataTableToCsvFormat();
 
             if (FileHelper.SaveCsvFile(csvFile, "Silent Auction Items"))
@@ -115,6 +115,30 @@ namespace SilentAuction.Forms
                 Close();
             }
             else DialogResult = DialogResult.None;
+        }
+        #endregion
+
+        #region Private Methods
+        private void SetupDataGridView()
+        {
+            // customize dataviewgrid, add checkbox column
+            DataGridViewCheckBoxColumn checkboxColumn = new DataGridViewCheckBoxColumn();
+            checkboxColumn.Width = 30;
+            checkboxColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ItemsDataGridView.Columns.Insert(0, checkboxColumn);
+
+            // add checkbox header
+            Rectangle rect = ItemsDataGridView.GetCellDisplayRectangle(0, -1, true);
+            // set checkbox header to center of header cell. +1 pixel to position correctly.
+            rect.X = rect.Location.X + (rect.Width / 4);
+
+            CheckBox checkboxHeader = new CheckBox();
+            checkboxHeader.Name = "checkboxHeader";
+            checkboxHeader.Size = new Size(18, 18);
+            checkboxHeader.Location = rect.Location;
+            checkboxHeader.CheckedChanged += CheckboxHeaderCheckedChanged;
+
+            ItemsDataGridView.Controls.Add(checkboxHeader);
         }
         #endregion
     }

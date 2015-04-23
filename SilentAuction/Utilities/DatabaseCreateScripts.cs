@@ -125,6 +125,7 @@ namespace SilentAuction.Utilities
                                                 [Qty] [integer] NOT NULL,
                                                 [ItemTypeId] [integer] NOT NULL,
                                                 [DonationDeliveryTypeId] [integer] NOT NULL,
+                                                [SellValue] [real] NOT NULL,
                                                 [RetailValue] [real] NOT NULL,
                                                 [BidIncrementTypeId] [integer] NOT NULL,
                                                 [BidMinValue] [real] NOT NULL,
@@ -182,7 +183,8 @@ namespace SilentAuction.Utilities
                     , RequestFormatTypesTableName));
 
             TablePreLoadScripts.Add(string.Format(
-                @"INSERT INTO {0} (Name, Description) VALUES ('No Response', 'A response has not yet been received');
+                @"INSERT INTO {0} (Name, Description) VALUES ('Request Not Yet Made', 'A request has not yet been sent');
+                            INSERT INTO {0} (Name, Description) VALUES ('No Response', 'A response has not yet been received');
                             INSERT INTO {0} (Name, Description) VALUES ('Declined', 'Donor has declined to participate');
                             INSERT INTO {0} (Name, Description) VALUES ('Approval Pending', 'Request has been received.  If approved, an item will be donated.');
                             INSERT INTO {0} (Name, Description) VALUES ('Approved', 'Request has been approved.  Item has not yet been received.');

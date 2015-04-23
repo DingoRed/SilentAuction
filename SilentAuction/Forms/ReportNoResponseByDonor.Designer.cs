@@ -38,14 +38,31 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.donorsDataGridView = new System.Windows.Forms.DataGridView();
-            this.donorNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.requestStatusColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.requestStatusTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonorsWithNoResponseBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.DonorsWithNoResponseTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorsWithNoResponseTableAdapter();
-            this.requestStatusTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter();
+            this.donorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.auctionsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.AuctionsTableAdapter();
+            this.donorsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorsTableAdapter();
+            this.requestStatusTypesTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.requestStatusTypeIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.donorTypeIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contactNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.street1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.street2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.zipCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phone1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.extension1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phone2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.extension2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.modifiedDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.requestFormatTypeIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.urlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.auctionIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).BeginInit();
@@ -53,7 +70,7 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.donorsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestStatusTypesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DonorsWithNoResponseBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -134,10 +151,27 @@
             this.donorsDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
             this.donorsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.donorsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.donorNameColumn,
-            this.requestStatusColumn,
-            this.idDataGridViewTextBoxColumn});
-            this.donorsDataGridView.DataSource = this.DonorsWithNoResponseBindingSource;
+            this.nameDataGridViewTextBoxColumn,
+            this.requestStatusTypeIdDataGridViewTextBoxColumn,
+            this.dataGridViewTextBoxColumn1,
+            this.donorTypeIdDataGridViewTextBoxColumn,
+            this.contactNameDataGridViewTextBoxColumn,
+            this.street1DataGridViewTextBoxColumn,
+            this.street2DataGridViewTextBoxColumn,
+            this.cityDataGridViewTextBoxColumn,
+            this.stateDataGridViewTextBoxColumn,
+            this.zipCodeDataGridViewTextBoxColumn,
+            this.phone1DataGridViewTextBoxColumn,
+            this.extension1DataGridViewTextBoxColumn,
+            this.phone2DataGridViewTextBoxColumn,
+            this.extension2DataGridViewTextBoxColumn,
+            this.emailDataGridViewTextBoxColumn,
+            this.createDateDataGridViewTextBoxColumn,
+            this.modifiedDateDataGridViewTextBoxColumn,
+            this.requestFormatTypeIdDataGridViewTextBoxColumn,
+            this.urlDataGridViewTextBoxColumn,
+            this.auctionIdDataGridViewTextBoxColumn});
+            this.donorsDataGridView.DataSource = this.donorsBindingSource;
             this.donorsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.donorsDataGridView.Location = new System.Drawing.Point(0, 0);
             this.donorsDataGridView.Name = "donorsDataGridView";
@@ -145,58 +179,194 @@
             this.donorsDataGridView.Size = new System.Drawing.Size(344, 184);
             this.donorsDataGridView.TabIndex = 0;
             // 
-            // donorNameColumn
-            // 
-            this.donorNameColumn.DataPropertyName = "Name";
-            this.donorNameColumn.HeaderText = "Donor Name";
-            this.donorNameColumn.Name = "donorNameColumn";
-            this.donorNameColumn.ReadOnly = true;
-            this.donorNameColumn.Width = 150;
-            // 
-            // requestStatusColumn
-            // 
-            this.requestStatusColumn.DataPropertyName = "RequestStatusTypeId";
-            this.requestStatusColumn.DataSource = this.requestStatusTypesBindingSource;
-            this.requestStatusColumn.DisplayMember = "Name";
-            this.requestStatusColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.requestStatusColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.requestStatusColumn.HeaderText = "Request Status";
-            this.requestStatusColumn.Name = "requestStatusColumn";
-            this.requestStatusColumn.ReadOnly = true;
-            this.requestStatusColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.requestStatusColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.requestStatusColumn.ValueMember = "Id";
-            this.requestStatusColumn.Width = 150;
-            // 
             // requestStatusTypesBindingSource
             // 
             this.requestStatusTypesBindingSource.DataMember = "RequestStatusTypes";
             this.requestStatusTypesBindingSource.DataSource = this.silentAuctionDataSet;
             // 
-            // idDataGridViewTextBoxColumn
+            // donorsBindingSource
             // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Visible = false;
+            this.donorsBindingSource.DataMember = "Donors";
+            this.donorsBindingSource.DataSource = this.silentAuctionDataSet;
             // 
-            // DonorsWithNoResponseBindingSource
+            // auctionsTableAdapter
             // 
-            this.DonorsWithNoResponseBindingSource.DataMember = "DonorsWithNoResponse";
-            this.DonorsWithNoResponseBindingSource.DataSource = this.silentAuctionDataSet;
+            this.auctionsTableAdapter.ClearBeforeFill = true;
             // 
-            // DonorsWithNoResponseTableAdapter
+            // donorsTableAdapter
             // 
-            this.DonorsWithNoResponseTableAdapter.ClearBeforeFill = true;
+            this.donorsTableAdapter.ClearBeforeFill = true;
             // 
             // requestStatusTypesTableAdapter
             // 
             this.requestStatusTypesTableAdapter.ClearBeforeFill = true;
             // 
-            // auctionsTableAdapter
+            // nameDataGridViewTextBoxColumn
             // 
-            this.auctionsTableAdapter.ClearBeforeFill = true;
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Donor";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // requestStatusTypeIdDataGridViewTextBoxColumn
+            // 
+            this.requestStatusTypeIdDataGridViewTextBoxColumn.DataPropertyName = "RequestStatusTypeId";
+            this.requestStatusTypeIdDataGridViewTextBoxColumn.DataSource = this.requestStatusTypesBindingSource;
+            this.requestStatusTypeIdDataGridViewTextBoxColumn.DisplayMember = "Name";
+            this.requestStatusTypeIdDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.requestStatusTypeIdDataGridViewTextBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.requestStatusTypeIdDataGridViewTextBoxColumn.HeaderText = "Request Status";
+            this.requestStatusTypeIdDataGridViewTextBoxColumn.Name = "requestStatusTypeIdDataGridViewTextBoxColumn";
+            this.requestStatusTypeIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.requestStatusTypeIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.requestStatusTypeIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.requestStatusTypeIdDataGridViewTextBoxColumn.ValueMember = "Id";
+            this.requestStatusTypeIdDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // donorTypeIdDataGridViewTextBoxColumn
+            // 
+            this.donorTypeIdDataGridViewTextBoxColumn.DataPropertyName = "DonorTypeId";
+            this.donorTypeIdDataGridViewTextBoxColumn.HeaderText = "DonorTypeId";
+            this.donorTypeIdDataGridViewTextBoxColumn.Name = "donorTypeIdDataGridViewTextBoxColumn";
+            this.donorTypeIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.donorTypeIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // contactNameDataGridViewTextBoxColumn
+            // 
+            this.contactNameDataGridViewTextBoxColumn.DataPropertyName = "ContactName";
+            this.contactNameDataGridViewTextBoxColumn.HeaderText = "ContactName";
+            this.contactNameDataGridViewTextBoxColumn.Name = "contactNameDataGridViewTextBoxColumn";
+            this.contactNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.contactNameDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // street1DataGridViewTextBoxColumn
+            // 
+            this.street1DataGridViewTextBoxColumn.DataPropertyName = "Street1";
+            this.street1DataGridViewTextBoxColumn.HeaderText = "Street1";
+            this.street1DataGridViewTextBoxColumn.Name = "street1DataGridViewTextBoxColumn";
+            this.street1DataGridViewTextBoxColumn.ReadOnly = true;
+            this.street1DataGridViewTextBoxColumn.Visible = false;
+            // 
+            // street2DataGridViewTextBoxColumn
+            // 
+            this.street2DataGridViewTextBoxColumn.DataPropertyName = "Street2";
+            this.street2DataGridViewTextBoxColumn.HeaderText = "Street2";
+            this.street2DataGridViewTextBoxColumn.Name = "street2DataGridViewTextBoxColumn";
+            this.street2DataGridViewTextBoxColumn.ReadOnly = true;
+            this.street2DataGridViewTextBoxColumn.Visible = false;
+            // 
+            // cityDataGridViewTextBoxColumn
+            // 
+            this.cityDataGridViewTextBoxColumn.DataPropertyName = "City";
+            this.cityDataGridViewTextBoxColumn.HeaderText = "City";
+            this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
+            this.cityDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cityDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // stateDataGridViewTextBoxColumn
+            // 
+            this.stateDataGridViewTextBoxColumn.DataPropertyName = "State";
+            this.stateDataGridViewTextBoxColumn.HeaderText = "State";
+            this.stateDataGridViewTextBoxColumn.Name = "stateDataGridViewTextBoxColumn";
+            this.stateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.stateDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // zipCodeDataGridViewTextBoxColumn
+            // 
+            this.zipCodeDataGridViewTextBoxColumn.DataPropertyName = "ZipCode";
+            this.zipCodeDataGridViewTextBoxColumn.HeaderText = "ZipCode";
+            this.zipCodeDataGridViewTextBoxColumn.Name = "zipCodeDataGridViewTextBoxColumn";
+            this.zipCodeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.zipCodeDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // phone1DataGridViewTextBoxColumn
+            // 
+            this.phone1DataGridViewTextBoxColumn.DataPropertyName = "Phone1";
+            this.phone1DataGridViewTextBoxColumn.HeaderText = "Phone1";
+            this.phone1DataGridViewTextBoxColumn.Name = "phone1DataGridViewTextBoxColumn";
+            this.phone1DataGridViewTextBoxColumn.ReadOnly = true;
+            this.phone1DataGridViewTextBoxColumn.Visible = false;
+            // 
+            // extension1DataGridViewTextBoxColumn
+            // 
+            this.extension1DataGridViewTextBoxColumn.DataPropertyName = "Extension1";
+            this.extension1DataGridViewTextBoxColumn.HeaderText = "Extension1";
+            this.extension1DataGridViewTextBoxColumn.Name = "extension1DataGridViewTextBoxColumn";
+            this.extension1DataGridViewTextBoxColumn.ReadOnly = true;
+            this.extension1DataGridViewTextBoxColumn.Visible = false;
+            // 
+            // phone2DataGridViewTextBoxColumn
+            // 
+            this.phone2DataGridViewTextBoxColumn.DataPropertyName = "Phone2";
+            this.phone2DataGridViewTextBoxColumn.HeaderText = "Phone2";
+            this.phone2DataGridViewTextBoxColumn.Name = "phone2DataGridViewTextBoxColumn";
+            this.phone2DataGridViewTextBoxColumn.ReadOnly = true;
+            this.phone2DataGridViewTextBoxColumn.Visible = false;
+            // 
+            // extension2DataGridViewTextBoxColumn
+            // 
+            this.extension2DataGridViewTextBoxColumn.DataPropertyName = "Extension2";
+            this.extension2DataGridViewTextBoxColumn.HeaderText = "Extension2";
+            this.extension2DataGridViewTextBoxColumn.Name = "extension2DataGridViewTextBoxColumn";
+            this.extension2DataGridViewTextBoxColumn.ReadOnly = true;
+            this.extension2DataGridViewTextBoxColumn.Visible = false;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            this.emailDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // createDateDataGridViewTextBoxColumn
+            // 
+            this.createDateDataGridViewTextBoxColumn.DataPropertyName = "CreateDate";
+            this.createDateDataGridViewTextBoxColumn.HeaderText = "CreateDate";
+            this.createDateDataGridViewTextBoxColumn.Name = "createDateDataGridViewTextBoxColumn";
+            this.createDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.createDateDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // modifiedDateDataGridViewTextBoxColumn
+            // 
+            this.modifiedDateDataGridViewTextBoxColumn.DataPropertyName = "ModifiedDate";
+            this.modifiedDateDataGridViewTextBoxColumn.HeaderText = "ModifiedDate";
+            this.modifiedDateDataGridViewTextBoxColumn.Name = "modifiedDateDataGridViewTextBoxColumn";
+            this.modifiedDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.modifiedDateDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // requestFormatTypeIdDataGridViewTextBoxColumn
+            // 
+            this.requestFormatTypeIdDataGridViewTextBoxColumn.DataPropertyName = "RequestFormatTypeId";
+            this.requestFormatTypeIdDataGridViewTextBoxColumn.HeaderText = "RequestFormatTypeId";
+            this.requestFormatTypeIdDataGridViewTextBoxColumn.Name = "requestFormatTypeIdDataGridViewTextBoxColumn";
+            this.requestFormatTypeIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.requestFormatTypeIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // urlDataGridViewTextBoxColumn
+            // 
+            this.urlDataGridViewTextBoxColumn.DataPropertyName = "Url";
+            this.urlDataGridViewTextBoxColumn.HeaderText = "Url";
+            this.urlDataGridViewTextBoxColumn.Name = "urlDataGridViewTextBoxColumn";
+            this.urlDataGridViewTextBoxColumn.ReadOnly = true;
+            this.urlDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // auctionIdDataGridViewTextBoxColumn
+            // 
+            this.auctionIdDataGridViewTextBoxColumn.DataPropertyName = "AuctionId";
+            this.auctionIdDataGridViewTextBoxColumn.HeaderText = "AuctionId";
+            this.auctionIdDataGridViewTextBoxColumn.Name = "auctionIdDataGridViewTextBoxColumn";
+            this.auctionIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.auctionIdDataGridViewTextBoxColumn.Visible = false;
+            this.auctionIdDataGridViewTextBoxColumn.Width = 30;
             // 
             // ReportNoResponseByDonor
             // 
@@ -217,7 +387,7 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.donorsDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestStatusTypesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DonorsWithNoResponseBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -228,17 +398,34 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView donorsDataGridView;
-        private System.Windows.Forms.BindingSource DonorsWithNoResponseBindingSource;
         private SilentAuctionDataSet silentAuctionDataSet;
-        private SilentAuctionDataSetTableAdapters.DonorsWithNoResponseTableAdapter DonorsWithNoResponseTableAdapter;
-        private System.Windows.Forms.BindingSource requestStatusTypesBindingSource;
-        private SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter requestStatusTypesTableAdapter;
         private System.Windows.Forms.ComboBox auctionsComboBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn donorNameColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn requestStatusColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource auctionsBindingSource;
         private SilentAuctionDataSetTableAdapters.AuctionsTableAdapter auctionsTableAdapter;
+        private System.Windows.Forms.BindingSource donorsBindingSource;
+        private SilentAuctionDataSetTableAdapters.DonorsTableAdapter donorsTableAdapter;
+        private System.Windows.Forms.BindingSource requestStatusTypesBindingSource;
+        private SilentAuctionDataSetTableAdapters.RequestStatusTypesTableAdapter requestStatusTypesTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn requestStatusTypeIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn donorTypeIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contactNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn street1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn street2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn zipCodeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phone1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn extension1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phone2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn extension2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn modifiedDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn requestFormatTypeIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn urlDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn auctionIdDataGridViewTextBoxColumn;
     }
 }

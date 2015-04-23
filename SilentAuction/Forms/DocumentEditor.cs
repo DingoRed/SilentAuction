@@ -5,7 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
-using System.Threading;
 using System.Windows.Forms;
 using SilentAuction.SilentAuctionDataSetTableAdapters;
 using SilentAuction.Utilities;
@@ -825,10 +824,7 @@ namespace SilentAuction.Forms
                     string rtfData;
                     documentEditorControl.Save(out rtfData, StringStreamType.RichTextFormat);
 
-                    SilentAuctionDataSet.AuctionsRow auctionsRow =
-                        silentAuctionDataSet.Auctions.FirstOrDefault(a => a.Id == AuctionId);
-
-                    silentAuctionDataSet.Documents.AddDocumentsRow(auctionsRow, documentNameEntry.DocumentName, rtfData);
+                    silentAuctionDataSet.Documents.AddDocumentsRow(AuctionId, documentNameEntry.DocumentName, rtfData);
 
                     SilentAuctionDataSet.DocumentsDataTable newDocuments =
                         (SilentAuctionDataSet.DocumentsDataTable)silentAuctionDataSet.Documents.GetChanges(DataRowState.Added);
@@ -922,7 +918,7 @@ namespace SilentAuction.Forms
             DialogResult = DialogResult.None;
 
             IEnumerable<SilentAuctionDataSet.DonorsRow> donors = 
-                new DonorsTableAdapter().GetDonorsData(AuctionId).Where(d => donorIdsToEmail.Contains((int)d.Id));
+                new DonorsTableAdapter().GetDataByAuctionId(AuctionId).Where(d => donorIdsToEmail.Contains((int)d.Id));
             
             foreach (SilentAuctionDataSet.DonorsRow row in donors)
             {
@@ -1096,7 +1092,7 @@ namespace SilentAuction.Forms
             BackgroundWorker worker = sender as BackgroundWorker;
             
             IEnumerable<SilentAuctionDataSet.DonorsRow> donors =
-                new DonorsTableAdapter().GetDonorsData(AuctionId).Where(d => _donorIdsToPrint.Contains((int)d.Id));
+                new DonorsTableAdapter().GetDataByAuctionId(AuctionId).Where(d => _donorIdsToPrint.Contains((int)d.Id));
 
             PrintController printController = new StandardPrintController();
             printDocumentMain.PrintController = printController;
@@ -1106,11 +1102,7 @@ namespace SilentAuction.Forms
             foreach (SilentAuctionDataSet.DonorsRow row in donors)
             {
                 MergeTextFields(row);
-
-                // TODO: Swap this for printing
-                Thread.Sleep(1000);
-                //documentEditorControl.Print(printDocumentMain);
-
+                documentEditorControl.Print(printDocumentMain);
                 ResetTextFields();
 
                 if(worker != null)

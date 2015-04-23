@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using SilentAuction.SilentAuctionDataSetTableAdapters;
 
 namespace SilentAuction.Utilities
 {
@@ -15,6 +17,13 @@ namespace SilentAuction.Utilities
         {
             if(donorId != null && (donorId > 0)) return true;
             errorMsg = "Donor is required";
+            return false;
+        }
+
+        public static bool ValidateDonorName(string donorName, ref string errorMsg)
+        {
+            if (new DonorsTableAdapter().GetDonorsData().Any(d => d.Name == donorName)) return true;
+            errorMsg = "Donor Name is required";
             return false;
         }
 

@@ -8,8 +8,8 @@
     <Setting Name="ItemsItemDescriptionColumnWidth" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">120</Value>
     </Setting>
-    <Setting Name="ItemsDonorIdColumnWidth" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">70</Value>
+    <Setting Name="ItemsDonorNameColumnWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="ItemsNameColumnWidth" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">90</Value>
@@ -27,7 +27,7 @@
       <Value Profile="(Default)">140</Value>
     </Setting>
     <Setting Name="ItemsBidIncrementTypeColumnWidth" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">110</Value>
+      <Value Profile="(Default)">150</Value>
     </Setting>
     <Setting Name="ItemsBidMinColumnWidth" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">95</Value>
@@ -39,7 +39,7 @@
       <Value Profile="(Default)">75</Value>
     </Setting>
     <Setting Name="ItemsBidIncrementValuesColumnWidth" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">70</Value>
+      <Value Profile="(Default)">80</Value>
     </Setting>
     <Setting Name="DonorsDonorTypeColumnWidth" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">100</Value>
@@ -103,7 +103,7 @@
     <Setting Name="DonorsUrlColumnWidth" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">130</Value>
     </Setting>
-    <Setting Name="ItemsItemTypeIdColumnWidth" Type="System.Int32" Scope="User">
+    <Setting Name="ItemsItemTypeNameColumnWidth" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="ItemsDonationDeliveryTypeIdColumnWidth" Type="System.Int32" Scope="User">
@@ -161,7 +161,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="ItemsIdColumnWidth" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">100</Value>
+      <Value Profile="(Default)">30</Value>
     </Setting>
     <Setting Name="SelectItemsFormInitialLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -183,6 +183,12 @@
     </Setting>
     <Setting Name="EULAAccepted" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ItemsSellValueColumnWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">90</Value>
+    </Setting>
+    <Setting Name="ItemsDonorTypeNameColumnWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
     </Setting>
   </Settings>
 </SettingsFile>

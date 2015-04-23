@@ -163,6 +163,11 @@
     <Compile Include="Forms\ReportNoResponseByDonor.Designer.cs">
       <DependentUpon>ReportNoResponseByDonor.cs</DependentUpon>
     </Compile>
+    <Compile Include="SilentAuctionDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SilentAuctionDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\BidCalculator.cs" />
     <Compile Include="Utilities\SilentAuctionValidator.cs" />
     <Compile Include="Utilities\Constants.cs" />
@@ -211,11 +216,6 @@
     <Compile Include="SilentAuctionDataSet.cs">
       <DependentUpon>SilentAuctionDataSet.xsd</DependentUpon>
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="SilentAuctionDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SilentAuctionDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Utilities\DatabaseCreateScripts.cs" />
     <Compile Include="Utilities\DatabaseInitializer.cs" />
@@ -313,7 +313,7 @@
     <None Include="SilentAuctionDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SilentAuctionDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>SilentAuctionDataSet1.Designer.cs</LastGenOutput>
     </None>
     <None Include="SilentAuctionDataSet.xss">
       <DependentUpon>SilentAuctionDataSet.xsd</DependentUpon>

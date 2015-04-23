@@ -31,12 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DocumentEmailForm));
             this.DonorsListBox = new System.Windows.Forms.ListBox();
-            this.donorsWithEmailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.silentAuctionDataSet = new SilentAuction.SilentAuctionDataSet();
             this.label1 = new System.Windows.Forms.Label();
             this.EmailButton = new System.Windows.Forms.Button();
             this.CancelEmailButton = new System.Windows.Forms.Button();
-            this.donorsWithEmailsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorsWithEmailsTableAdapter();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.AccountTextBox = new System.Windows.Forms.TextBox();
@@ -52,24 +50,26 @@
             this.emailAccountsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.EmailAccountsTableAdapter();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.attachmentListLabel = new System.Windows.Forms.Label();
             this.ClearAttachmentsButton = new System.Windows.Forms.Button();
             this.AttachFileButton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.attachmentOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.attachmentListLabel = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.donorsWithEmailsBindingSource)).BeginInit();
+            this.donorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.donorsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.emailAccountsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // DonorsListBox
             // 
-            this.DonorsListBox.DataSource = this.donorsWithEmailsBindingSource;
+            this.DonorsListBox.DataSource = this.donorsBindingSource;
             this.DonorsListBox.DisplayMember = "Name";
             this.DonorsListBox.FormattingEnabled = true;
             this.DonorsListBox.Location = new System.Drawing.Point(85, 19);
@@ -78,11 +78,6 @@
             this.DonorsListBox.Size = new System.Drawing.Size(256, 95);
             this.DonorsListBox.TabIndex = 0;
             this.DonorsListBox.ValueMember = "Id";
-            // 
-            // donorsWithEmailsBindingSource
-            // 
-            this.donorsWithEmailsBindingSource.DataMember = "DonorsWithEmails";
-            this.donorsWithEmailsBindingSource.DataSource = this.silentAuctionDataSet;
             // 
             // silentAuctionDataSet
             // 
@@ -118,10 +113,6 @@
             this.CancelEmailButton.TabIndex = 3;
             this.CancelEmailButton.Text = "Cancel";
             this.CancelEmailButton.UseVisualStyleBackColor = true;
-            // 
-            // donorsWithEmailsTableAdapter
-            // 
-            this.donorsWithEmailsTableAdapter.ClearBeforeFill = true;
             // 
             // label2
             // 
@@ -257,6 +248,18 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Attachments";
             // 
+            // attachmentListLabel
+            // 
+            this.attachmentListLabel.AutoEllipsis = true;
+            this.attachmentListLabel.AutoSize = true;
+            this.attachmentListLabel.Location = new System.Drawing.Point(85, 22);
+            this.attachmentListLabel.MaximumSize = new System.Drawing.Size(256, 13);
+            this.attachmentListLabel.Name = "attachmentListLabel";
+            this.attachmentListLabel.Size = new System.Drawing.Size(33, 13);
+            this.attachmentListLabel.TabIndex = 15;
+            this.attachmentListLabel.Text = "None";
+            this.attachmentListLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // ClearAttachmentsButton
             // 
             this.ClearAttachmentsButton.Location = new System.Drawing.Point(194, 45);
@@ -293,17 +296,14 @@
             this.attachmentOpenFileDialog.Multiselect = true;
             this.attachmentOpenFileDialog.Title = "Attach File(s)";
             // 
-            // attachmentListLabel
+            // donorsBindingSource
             // 
-            this.attachmentListLabel.AutoEllipsis = true;
-            this.attachmentListLabel.AutoSize = true;
-            this.attachmentListLabel.Location = new System.Drawing.Point(85, 22);
-            this.attachmentListLabel.MaximumSize = new System.Drawing.Size(256, 13);
-            this.attachmentListLabel.Name = "attachmentListLabel";
-            this.attachmentListLabel.Size = new System.Drawing.Size(33, 13);
-            this.attachmentListLabel.TabIndex = 15;
-            this.attachmentListLabel.Text = "None";
-            this.attachmentListLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.donorsBindingSource.DataMember = "Donors";
+            this.donorsBindingSource.DataSource = this.silentAuctionDataSet;
+            // 
+            // donorsTableAdapter
+            // 
+            this.donorsTableAdapter.ClearBeforeFill = true;
             // 
             // DocumentEmailForm
             // 
@@ -324,7 +324,6 @@
             this.Text = "Email";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EmailFormClosing);
             this.Load += new System.EventHandler(this.EmailFormLoad);
-            ((System.ComponentModel.ISupportInitialize)(this.donorsWithEmailsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -334,6 +333,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -344,9 +344,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button EmailButton;
         private System.Windows.Forms.Button CancelEmailButton;
-        private System.Windows.Forms.BindingSource donorsWithEmailsBindingSource;
         private SilentAuctionDataSet silentAuctionDataSet;
-        private SilentAuctionDataSetTableAdapters.DonorsWithEmailsTableAdapter donorsWithEmailsTableAdapter;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox AccountTextBox;
@@ -368,5 +366,7 @@
         private System.Windows.Forms.Button ClearAttachmentsButton;
         private System.Windows.Forms.Label attachmentListLabel;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.BindingSource donorsBindingSource;
+        private SilentAuctionDataSetTableAdapters.DonorsTableAdapter donorsTableAdapter;
     }
 }

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Data;
-using System.Drawing;
 using System.Windows.Forms;
-using SilentAuction.Properties;
 using SilentAuction.Utilities;
 
 namespace SilentAuction.Forms
@@ -23,7 +21,7 @@ namespace SilentAuction.Forms
             auctionFromTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
 
             int id = MathHelper.ParseIntZeroIfNull(AuctionFromComboBox.SelectedValue.ToString());
-            donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, id);
+            donorsTableAdapter.FillByAuctionId(silentAuctionDataSet.Donors, id);
 
             ValidateForm();
             WindowSettings.SetupInitialWindow(this, "CopyDonorsInitialLocation");
@@ -97,8 +95,8 @@ namespace SilentAuction.Forms
                 SilentAuctionDataSet.DonorsDataTable fromTable = new SilentAuctionDataSet.DonorsDataTable();
                 SilentAuctionDataSet.DonorsDataTable toTable = new SilentAuctionDataSet.DonorsDataTable();
 
-                donorsTableAdapter.FillDonors(fromTable, auctionFromId);
-                donorsTableAdapter.FillDonors(toTable, auctionToId);
+                donorsTableAdapter.FillByAuctionId(fromTable, auctionFromId);
+                donorsTableAdapter.FillByAuctionId(toTable, auctionToId);
 
                 foreach (DataRowView selectedItem in DonorsListBox.SelectedItems)
                 {
@@ -142,8 +140,8 @@ namespace SilentAuction.Forms
                 int auctionToId = MathHelper.ParseIntZeroIfNull(AuctionToComboBox.SelectedValue.ToString());
 
                 SilentAuctionDataSet.DonorsDataTable tempTable = new SilentAuctionDataSet.DonorsDataTable();
-                donorsTableAdapter.FillDonors(tempTable, auctionToId);
-                donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, auctionFromId);
+                donorsTableAdapter.FillByAuctionId(tempTable, auctionToId);
+                donorsTableAdapter.FillByAuctionId(silentAuctionDataSet.Donors, auctionFromId);
 
                 foreach (DataRow donorsRow in silentAuctionDataSet.Donors.Rows)
                 {

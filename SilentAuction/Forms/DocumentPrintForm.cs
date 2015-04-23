@@ -30,7 +30,7 @@ namespace SilentAuction.Forms
             requestFormatTypesTableAdapter.FillRequestFormatTypes(silentAuctionDataSet.RequestFormatTypes);
             donorTypesTableAdapter.FillDonorTypes(silentAuctionDataSet.DonorTypes);
 
-            donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionId);
+            donorsTableAdapter.FillByAuctionId(silentAuctionDataSet.Donors, AuctionId);
 
             WindowSettings.SetupInitialWindow(this, "PrintFormInitialLocation");
         }

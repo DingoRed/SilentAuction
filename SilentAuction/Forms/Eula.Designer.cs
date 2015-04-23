@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Eula));
             this.EulaTextBox = new System.Windows.Forms.TextBox();
-            this.AcceptButton = new System.Windows.Forms.Button();
-            this.DeclineButton = new System.Windows.Forms.Button();
+            this.EulaAcceptButton = new System.Windows.Forms.Button();
+            this.EulaDeclineButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -51,27 +51,27 @@
             this.EulaTextBox.Size = new System.Drawing.Size(606, 463);
             this.EulaTextBox.TabIndex = 0;
             // 
-            // AcceptButton
+            // EulaAcceptButton
             // 
-            this.AcceptButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.AcceptButton.Location = new System.Drawing.Point(208, 3);
-            this.AcceptButton.Name = "AcceptButton";
-            this.AcceptButton.Size = new System.Drawing.Size(75, 23);
-            this.AcceptButton.TabIndex = 1;
-            this.AcceptButton.Text = "Accept";
-            this.AcceptButton.UseVisualStyleBackColor = true;
-            this.AcceptButton.Click += new System.EventHandler(this.AcceptButtonClick);
+            this.EulaAcceptButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.EulaAcceptButton.Location = new System.Drawing.Point(208, 3);
+            this.EulaAcceptButton.Name = "EulaAcceptButton";
+            this.EulaAcceptButton.Size = new System.Drawing.Size(75, 23);
+            this.EulaAcceptButton.TabIndex = 1;
+            this.EulaAcceptButton.Text = "Accept";
+            this.EulaAcceptButton.UseVisualStyleBackColor = true;
+            this.EulaAcceptButton.Click += new System.EventHandler(this.AcceptButtonClick);
             // 
-            // DeclineButton
+            // EulaDeclineButton
             // 
-            this.DeclineButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.DeclineButton.Location = new System.Drawing.Point(323, 3);
-            this.DeclineButton.Name = "DeclineButton";
-            this.DeclineButton.Size = new System.Drawing.Size(75, 23);
-            this.DeclineButton.TabIndex = 2;
-            this.DeclineButton.Text = "Decline";
-            this.DeclineButton.UseVisualStyleBackColor = true;
-            this.DeclineButton.Click += new System.EventHandler(this.DeclineButtonClick);
+            this.EulaDeclineButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.EulaDeclineButton.Location = new System.Drawing.Point(323, 3);
+            this.EulaDeclineButton.Name = "EulaDeclineButton";
+            this.EulaDeclineButton.Size = new System.Drawing.Size(75, 23);
+            this.EulaDeclineButton.TabIndex = 2;
+            this.EulaDeclineButton.Text = "Decline";
+            this.EulaDeclineButton.UseVisualStyleBackColor = true;
+            this.EulaDeclineButton.Click += new System.EventHandler(this.DeclineButtonClick);
             // 
             // tableLayoutPanel1
             // 
@@ -92,8 +92,8 @@
             // panel2
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.panel2, 2);
-            this.panel2.Controls.Add(this.DeclineButton);
-            this.panel2.Controls.Add(this.AcceptButton);
+            this.panel2.Controls.Add(this.EulaDeclineButton);
+            this.panel2.Controls.Add(this.EulaAcceptButton);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 472);
             this.panel2.Name = "panel2";
@@ -131,8 +131,8 @@
         #endregion
 
         private System.Windows.Forms.TextBox EulaTextBox;
-        private System.Windows.Forms.Button AcceptButton;
-        private System.Windows.Forms.Button DeclineButton;
+        private System.Windows.Forms.Button EulaAcceptButton;
+        private System.Windows.Forms.Button EulaDeclineButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;

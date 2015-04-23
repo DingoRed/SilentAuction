@@ -32,11 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditAuctionList));
             this.AuctionsDataGridView = new System.Windows.Forms.DataGridView();
-            this.AuctionsNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AuctionsDescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.modifiedDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.auctionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.silentAuctionDataSet = new SilentAuction.SilentAuctionDataSet();
             this.auctionsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.AuctionsTableAdapter();
@@ -45,6 +40,11 @@
             this.ItemsRequirementLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.AuctionsSaveAllButton = new System.Windows.Forms.Button();
+            this.AuctionsNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AuctionsDescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AuctionsIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AuctionsCreateDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AuctionsModifiedDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.AuctionsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.auctionsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).BeginInit();
@@ -63,9 +63,9 @@
             this.AuctionsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.AuctionsNameColumn,
             this.AuctionsDescriptionColumn,
-            this.idDataGridViewTextBoxColumn,
-            this.createDateDataGridViewTextBoxColumn,
-            this.modifiedDateDataGridViewTextBoxColumn});
+            this.AuctionsIdColumn,
+            this.AuctionsCreateDateColumn,
+            this.AuctionsModifiedDateColumn});
             this.tableLayoutPanel1.SetColumnSpan(this.AuctionsDataGridView, 2);
             this.AuctionsDataGridView.DataSource = this.auctionsBindingSource;
             this.AuctionsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -73,43 +73,6 @@
             this.AuctionsDataGridView.Name = "AuctionsDataGridView";
             this.AuctionsDataGridView.Size = new System.Drawing.Size(638, 222);
             this.AuctionsDataGridView.TabIndex = 0;
-            // 
-            // AuctionsNameColumn
-            // 
-            this.AuctionsNameColumn.DataPropertyName = "Name";
-            this.AuctionsNameColumn.HeaderText = "Auction Name";
-            this.AuctionsNameColumn.Name = "AuctionsNameColumn";
-            this.AuctionsNameColumn.Width = 200;
-            // 
-            // AuctionsDescriptionColumn
-            // 
-            this.AuctionsDescriptionColumn.DataPropertyName = "Description";
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AuctionsDescriptionColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.AuctionsDescriptionColumn.HeaderText = "Auction Description";
-            this.AuctionsDescriptionColumn.Name = "AuctionsDescriptionColumn";
-            this.AuctionsDescriptionColumn.Width = 400;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // createDateDataGridViewTextBoxColumn
-            // 
-            this.createDateDataGridViewTextBoxColumn.DataPropertyName = "CreateDate";
-            this.createDateDataGridViewTextBoxColumn.HeaderText = "CreateDate";
-            this.createDateDataGridViewTextBoxColumn.Name = "createDateDataGridViewTextBoxColumn";
-            this.createDateDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // modifiedDateDataGridViewTextBoxColumn
-            // 
-            this.modifiedDateDataGridViewTextBoxColumn.DataPropertyName = "ModifiedDate";
-            this.modifiedDateDataGridViewTextBoxColumn.HeaderText = "ModifiedDate";
-            this.modifiedDateDataGridViewTextBoxColumn.Name = "modifiedDateDataGridViewTextBoxColumn";
-            this.modifiedDateDataGridViewTextBoxColumn.Visible = false;
             // 
             // auctionsBindingSource
             // 
@@ -183,6 +146,46 @@
             this.AuctionsSaveAllButton.UseVisualStyleBackColor = true;
             this.AuctionsSaveAllButton.Click += new System.EventHandler(this.AuctionsSaveAllButtonClick);
             // 
+            // AuctionsNameColumn
+            // 
+            this.AuctionsNameColumn.DataPropertyName = "Name";
+            this.AuctionsNameColumn.HeaderText = "Auction Name";
+            this.AuctionsNameColumn.Name = "AuctionsNameColumn";
+            this.AuctionsNameColumn.Width = 200;
+            // 
+            // AuctionsDescriptionColumn
+            // 
+            this.AuctionsDescriptionColumn.DataPropertyName = "Description";
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AuctionsDescriptionColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.AuctionsDescriptionColumn.HeaderText = "Auction Description";
+            this.AuctionsDescriptionColumn.Name = "AuctionsDescriptionColumn";
+            this.AuctionsDescriptionColumn.Width = 400;
+            // 
+            // AuctionsIdColumn
+            // 
+            this.AuctionsIdColumn.DataPropertyName = "Id";
+            this.AuctionsIdColumn.HeaderText = "Id";
+            this.AuctionsIdColumn.Name = "AuctionsIdColumn";
+            this.AuctionsIdColumn.ReadOnly = true;
+            this.AuctionsIdColumn.Visible = false;
+            // 
+            // AuctionsCreateDateColumn
+            // 
+            this.AuctionsCreateDateColumn.DataPropertyName = "CreateDate";
+            this.AuctionsCreateDateColumn.HeaderText = "CreateDate";
+            this.AuctionsCreateDateColumn.Name = "AuctionsCreateDateColumn";
+            this.AuctionsCreateDateColumn.ReadOnly = true;
+            this.AuctionsCreateDateColumn.Visible = false;
+            // 
+            // AuctionsModifiedDateColumn
+            // 
+            this.AuctionsModifiedDateColumn.DataPropertyName = "ModifiedDate";
+            this.AuctionsModifiedDateColumn.HeaderText = "ModifiedDate";
+            this.AuctionsModifiedDateColumn.Name = "AuctionsModifiedDateColumn";
+            this.AuctionsModifiedDateColumn.ReadOnly = true;
+            this.AuctionsModifiedDateColumn.Visible = false;
+            // 
             // EditAuctionList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -212,15 +215,15 @@
         private SilentAuctionDataSet silentAuctionDataSet;
         private System.Windows.Forms.BindingSource auctionsBindingSource;
         private SilentAuctionDataSetTableAdapters.AuctionsTableAdapter auctionsTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AuctionsNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AuctionsDescriptionColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn createDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn modifiedDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button AuctionsSaveAllButton;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label ItemsRequirementLabel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AuctionsNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AuctionsDescriptionColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AuctionsIdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AuctionsCreateDateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AuctionsModifiedDateColumn;
     }
 }

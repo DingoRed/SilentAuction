@@ -33,13 +33,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.FilterByContactCheckBox = new System.Windows.Forms.CheckBox();
             this.DonorsListBox = new System.Windows.Forms.ListBox();
-            this.donorsWithLettersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.silentAuctionDataSet = new SilentAuction.SilentAuctionDataSet();
             this.MakeFileButton = new System.Windows.Forms.Button();
             this.CancelMakeFileButton = new System.Windows.Forms.Button();
-            this.donorsWithLettersTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorsWithLettersTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.donorsWithLettersBindingSource)).BeginInit();
+            this.donorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.donorsTableAdapter = new SilentAuction.SilentAuctionDataSetTableAdapters.DonorsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -64,7 +64,7 @@
             // 
             // DonorsListBox
             // 
-            this.DonorsListBox.DataSource = this.donorsWithLettersBindingSource;
+            this.DonorsListBox.DataSource = this.donorsBindingSource;
             this.DonorsListBox.DisplayMember = "Name";
             this.DonorsListBox.FormattingEnabled = true;
             this.DonorsListBox.Location = new System.Drawing.Point(12, 57);
@@ -73,11 +73,6 @@
             this.DonorsListBox.Size = new System.Drawing.Size(256, 186);
             this.DonorsListBox.TabIndex = 2;
             this.DonorsListBox.ValueMember = "Id";
-            // 
-            // donorsWithLettersBindingSource
-            // 
-            this.donorsWithLettersBindingSource.DataMember = "DonorsWithLetters";
-            this.donorsWithLettersBindingSource.DataSource = this.silentAuctionDataSet;
             // 
             // silentAuctionDataSet
             // 
@@ -104,9 +99,14 @@
             this.CancelMakeFileButton.Text = "Cancel";
             this.CancelMakeFileButton.UseVisualStyleBackColor = true;
             // 
-            // donorsWithLettersTableAdapter
+            // donorsBindingSource
             // 
-            this.donorsWithLettersTableAdapter.ClearBeforeFill = true;
+            this.donorsBindingSource.DataMember = "Donors";
+            this.donorsBindingSource.DataSource = this.silentAuctionDataSet;
+            // 
+            // donorsTableAdapter
+            // 
+            this.donorsTableAdapter.ClearBeforeFill = true;
             // 
             // GenerateAddressLabelsFile
             // 
@@ -129,8 +129,8 @@
             this.Text = "Generate Address Labels File";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GenerateLabelsFileFormClosing);
             this.Load += new System.EventHandler(this.GenerateLabelsFileLoad);
-            ((System.ComponentModel.ISupportInitialize)(this.donorsWithLettersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.silentAuctionDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donorsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,8 +143,8 @@
         private System.Windows.Forms.ListBox DonorsListBox;
         private System.Windows.Forms.Button MakeFileButton;
         private System.Windows.Forms.Button CancelMakeFileButton;
-        private System.Windows.Forms.BindingSource donorsWithLettersBindingSource;
         private SilentAuctionDataSet silentAuctionDataSet;
-        private SilentAuctionDataSetTableAdapters.DonorsWithLettersTableAdapter donorsWithLettersTableAdapter;
+        private System.Windows.Forms.BindingSource donorsBindingSource;
+        private SilentAuctionDataSetTableAdapters.DonorsTableAdapter donorsTableAdapter;
     }
 }

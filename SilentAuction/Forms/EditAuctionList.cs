@@ -19,7 +19,7 @@ namespace SilentAuction.Forms
             auctionsTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
 
             WindowSettings.SetupInitialWindow(this, "EditAuctionListInitialLocation");
-            OpenGridSettings();
+            LoadSettings();
         }
 
         private void ViewAuctionsFormFormClosing(object sender, FormClosingEventArgs e)
@@ -34,7 +34,7 @@ namespace SilentAuction.Forms
             if (!e.Cancel)
             {
                 WindowSettings.SaveWindowSettings(this, "EditAuctionListInitialLocation");
-                SaveGridSettings();
+                SaveSettings();
             }
         }
         #endregion
@@ -73,17 +73,14 @@ namespace SilentAuction.Forms
         #endregion
 
         #region Private Methods
-        private void OpenGridSettings()
+        private void LoadSettings()
         {
-            // Auctions grid settings...
             AuctionsNameColumn.Width = Settings.Default.AuctionsNameColumnWidth;
             AuctionsDescriptionColumn.Width = Settings.Default.AuctionsDescriptionColumnWidth;
-
         }
 
-        private void SaveGridSettings()
+        private void SaveSettings()
         {
-            // Donors grid user settings...
             Settings.Default.AuctionsNameColumnWidth = AuctionsNameColumn.Width;
             Settings.Default.AuctionsDescriptionColumnWidth = AuctionsDescriptionColumn.Width;
 

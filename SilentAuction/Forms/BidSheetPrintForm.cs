@@ -29,7 +29,7 @@ namespace SilentAuction.Forms
         {
             AddCheckBoxColumn();
 
-            itemsShortListTableAdapter.FillItems(silentAuctionDataSet.ItemsShortList, AuctionId);
+            itemsTableAdapter.Fill(silentAuctionDataSet.Items, AuctionId);
             
             bidSheetsTextControl.Load(Constants.BidSheetRtf, StringStreamType.RichTextFormat);
             
@@ -76,6 +76,9 @@ namespace SilentAuction.Forms
                     }
                 }
             }
+
+            if (ItemIdsSelected.Count == 0)
+                return;
 
             if (PrintBidSheet())
             {
@@ -124,7 +127,7 @@ namespace SilentAuction.Forms
             progressBar1.Value = 0;
 
             // TODO: Move progress bar to background worker?
-            foreach (SilentAuctionDataSet.ItemsShortListRow row in silentAuctionDataSet.ItemsShortList.Rows)
+            foreach (SilentAuctionDataSet.ItemsRow row in silentAuctionDataSet.Items.Rows)
             {
                 if (ItemIdsSelected.Contains((int)row.Id))
                 {
@@ -177,7 +180,7 @@ namespace SilentAuction.Forms
             return true;
         }
 
-        private void MergeTextFields(SilentAuctionDataSet.ItemsShortListRow itemsRow, string bidList)
+        private void MergeTextFields(SilentAuctionDataSet.ItemsRow itemsRow, string bidList)
         {
             string rtfData;
             bidSheetsTextControl.Save(out rtfData, StringStreamType.RichTextFormat);
@@ -198,7 +201,7 @@ namespace SilentAuction.Forms
             }
         }
 
-        private static void SetTextFieldValue(SilentAuctionDataSet.ItemsShortListRow itemsRow, string bidList, TextField field)
+        private static void SetTextFieldValue(SilentAuctionDataSet.ItemsRow itemsRow, string bidList, TextField field)
         {
             switch (field.Name)
             {
@@ -218,7 +221,7 @@ namespace SilentAuction.Forms
                     field.Text = itemsRow.AuctionName;
                     break;
                 case Constants.ItemName:
-                    field.Text = itemsRow.ItemName;
+                    field.Text = itemsRow.Name;
                     break;
                 case Constants.ItemDescription:
                     field.Text = itemsRow.Description ?? "";

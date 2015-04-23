@@ -25,10 +25,10 @@ namespace SilentAuction.Forms
             requestStatusTypesTableAdapter.FillRequestStatusType(silentAuctionDataSet.RequestStatusTypes);
             requestFormatTypesTableAdapter.FillRequestFormatTypes(silentAuctionDataSet.RequestFormatTypes);
             donorTypesTableAdapter.FillDonorTypes(silentAuctionDataSet.DonorTypes);
-            donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionIdInUse);
+            donorsTableAdapter.FillByAuctionId(silentAuctionDataSet.Donors, AuctionIdInUse);
 
             WindowSettings.SetupInitialWindow(this, "EditDonorListInitialLocation");
-            OpenGridSettings();
+            LoadSettings();
         }
 
         private void EditDonorListFormClosing(object sender, FormClosingEventArgs e)
@@ -43,7 +43,7 @@ namespace SilentAuction.Forms
             if (!e.Cancel)
             {
                 WindowSettings.SaveWindowSettings(this, "EditDonorListInitialLocation");
-                SaveGridSettings();
+                SaveSettings();
             }
         }
         #endregion
@@ -67,7 +67,7 @@ namespace SilentAuction.Forms
                 }
 
                 silentAuctionDataSet.AcceptChanges();
-                donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionIdInUse);
+                donorsTableAdapter.FillByAuctionId(silentAuctionDataSet.Donors, AuctionIdInUse);
             }
             catch (Exception ex)
             {
@@ -82,44 +82,44 @@ namespace SilentAuction.Forms
         #endregion
 
         #region Private Methods
-        private void OpenGridSettings()
+        private void LoadSettings()
         {
-            // Donors grid settings...
-            DonorTypeColumn.Width = Settings.Default.DonorsDonorTypeColumnWidth;
-            NameColumn.Width = Settings.Default.DonorsNameColumnWidth;
-            ContactNameColumn.Width = Settings.Default.DonorsContactNameColumnWidth;
-            Street1Column.Width = Settings.Default.DonorsStreet1ColumnWidth;
-            Street2Column.Width = Settings.Default.DonorsStreet2ColumnWidth;
-            CityColumn.Width = Settings.Default.DonorsCityColumnWidth;
-            StateColumn.Width = Settings.Default.DonorsStateColumnWidth;
-            ZipCodeColumn.Width = Settings.Default.DonorsZipCodeColumnWidth;
-            Phone1Column.Width = Settings.Default.DonorsPhone1ColumnWidth;
-            Phone2Column.Width = Settings.Default.DonorsPhone2ColumnWidth;
-            EmailColumn.Width = Settings.Default.DonorsEmailColumnWidth;
-            RequestFormatTypeIdColumn.Width = Settings.Default.DonorsRequestFormatTypeIdColumnWidth;
-            UrlColumn.Width = Settings.Default.DonorsUrlColumnWidth;
-            RequestStatusTypeIdColumn.Width = Settings.Default.DonorsRequestStatusTypeIdColumnWidth;
+            DonorsDonorTypeColumn.Width = Settings.Default.DonorsDonorTypeColumnWidth;
+            DonorsNameColumn.Width = Settings.Default.DonorsNameColumnWidth;
+            DonorsRequestFormatTypeIdColumn.Width = Settings.Default.DonorsRequestFormatTypeIdColumnWidth;
+            DonorsRequestStatusTypeIdColumn.Width = Settings.Default.DonorsRequestStatusTypeIdColumnWidth;
+            DonorsContactNameColumn.Width = Settings.Default.DonorsContactNameColumnWidth;
+            DonorsEmailColumn.Width = Settings.Default.DonorsEmailColumnWidth;
+            DonorsUrlColumn.Width = Settings.Default.DonorsUrlColumnWidth;
+            DonorsStreet1Column.Width = Settings.Default.DonorsStreet1ColumnWidth;
+            DonorsStreet2Column.Width = Settings.Default.DonorsStreet2ColumnWidth;
+            DonorsCityColumn.Width = Settings.Default.DonorsCityColumnWidth;
+            DonorsStateColumn.Width = Settings.Default.DonorsStateColumnWidth;
+            DonorsZipCodeColumn.Width = Settings.Default.DonorsZipCodeColumnWidth;
+            DonorsPhone1Column.Width = Settings.Default.DonorsPhone1ColumnWidth;
+            DonorsExt1Column.Width = Settings.Default.DonorsExt1ColumnWidth;
+            DonorsPhone2Column.Width = Settings.Default.DonorsPhone2ColumnWidth;
+            DonorsExt2Column.Width = Settings.Default.DonorsExt2ColumnWidth;
         }
 
-        private void SaveGridSettings()
+        private void SaveSettings()
         {
-            // Donors grid user settings...
-            Settings.Default.DonorsDonorTypeColumnWidth = DonorTypeColumn.Width;
-            Settings.Default.DonorsNameColumnWidth = NameColumn.Width;
-            Settings.Default.DonorsContactNameColumnWidth = ContactNameColumn.Width;
-            Settings.Default.DonorsStreet1ColumnWidth = Street1Column.Width;
-            Settings.Default.DonorsStreet2ColumnWidth = Street2Column.Width;
-            Settings.Default.DonorsCityColumnWidth = CityColumn.Width;
-            Settings.Default.DonorsStateColumnWidth = StateColumn.Width;
-            Settings.Default.DonorsZipCodeColumnWidth = ZipCodeColumn.Width;
-            Settings.Default.DonorsPhone1ColumnWidth = Phone1Column.Width;
-            Settings.Default.DonorsExt1ColumnWidth = Ext1Column.Width;
-            Settings.Default.DonorsPhone2ColumnWidth = Phone2Column.Width;
-            Settings.Default.DonorsExt2ColumnWidth = Ext2Column.Width;
-            Settings.Default.DonorsEmailColumnWidth = EmailColumn.Width;
-            Settings.Default.DonorsRequestFormatTypeIdColumnWidth = RequestFormatTypeIdColumn.Width;
-            Settings.Default.DonorsUrlColumnWidth = UrlColumn.Width;
-            Settings.Default.DonorsRequestStatusTypeIdColumnWidth = RequestStatusTypeIdColumn.Width;
+            Settings.Default.DonorsDonorTypeColumnWidth = DonorsDonorTypeColumn.Width;
+            Settings.Default.DonorsNameColumnWidth = DonorsNameColumn.Width;
+            Settings.Default.DonorsRequestFormatTypeIdColumnWidth = DonorsRequestFormatTypeIdColumn.Width;
+            Settings.Default.DonorsRequestStatusTypeIdColumnWidth = DonorsRequestStatusTypeIdColumn.Width;
+            Settings.Default.DonorsContactNameColumnWidth = DonorsContactNameColumn.Width;
+            Settings.Default.DonorsEmailColumnWidth = DonorsEmailColumn.Width;
+            Settings.Default.DonorsUrlColumnWidth = DonorsUrlColumn.Width;
+            Settings.Default.DonorsStreet1ColumnWidth = DonorsStreet1Column.Width;
+            Settings.Default.DonorsStreet2ColumnWidth = DonorsStreet2Column.Width;
+            Settings.Default.DonorsCityColumnWidth = DonorsCityColumn.Width;
+            Settings.Default.DonorsStateColumnWidth = DonorsStateColumn.Width;
+            Settings.Default.DonorsZipCodeColumnWidth = DonorsZipCodeColumn.Width;
+            Settings.Default.DonorsPhone1ColumnWidth = DonorsPhone1Column.Width;
+            Settings.Default.DonorsExt1ColumnWidth = DonorsExt1Column.Width;
+            Settings.Default.DonorsPhone2ColumnWidth = DonorsPhone2Column.Width;
+            Settings.Default.DonorsExt2ColumnWidth = DonorsExt2Column.Width;
 
             Settings.Default.Save();
         }

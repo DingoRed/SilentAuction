@@ -71,7 +71,7 @@ FROM            Auctions</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DonorsTableAdapter" GeneratorDataComponentClassName="DonorsTableAdapter" Name="Donors" UserDataComponentName="DonorsTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SilentAuctionConnectionString (Settings)" DbObjectName="main.Donors" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillDonors" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDonorsData" GeneratorSourceName="FillDonors" GetMethodModifier="Public" GetMethodName="GetDonorsData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDonorsData" UserSourceName="FillDonors">
+              <DbSource ConnectionRef="SilentAuctionConnectionString (Settings)" DbObjectName="main.Donors" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByAuctionId" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByAuctionId" GeneratorSourceName="FillByAuctionId" GetMethodModifier="Public" GetMethodName="GetDataByAuctionId" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByAuctionId" UserSourceName="FillByAuctionId">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [main].[sqlite_default_schema].[Donors] WHERE (([Id] = @Original_Id) AND ([AuctionId] = @Original_AuctionId) AND ([DonorTypeId] = @Original_DonorTypeId) AND ([Name] = @Original_Name) AND ((@IsNull_RequestFormatTypeId = 1 AND [RequestFormatTypeId] IS NULL) OR ([RequestFormatTypeId] = @Original_RequestFormatTypeId)) AND ((@IsNull_RequestStatusTypeId = 1 AND [RequestStatusTypeId] IS NULL) OR ([RequestStatusTypeId] = @Original_RequestStatusTypeId)) AND ((@IsNull_ContactName = 1 AND [ContactName] IS NULL) OR ([ContactName] = @Original_ContactName)) AND ((@IsNull_Email = 1 AND [Email] IS NULL) OR ([Email] = @Original_Email)) AND ((@IsNull_Url = 1 AND [Url] IS NULL) OR ([Url] = @Original_Url)) AND ((@IsNull_Street1 = 1 AND [Street1] IS NULL) OR ([Street1] = @Original_Street1)) AND ((@IsNull_Street2 = 1 AND [Street2] IS NULL) OR ([Street2] = @Original_Street2)) AND ((@IsNull_City = 1 AND [City] IS NULL) OR ([City] = @Original_City)) AND ((@IsNull_State = 1 AND [State] IS NULL) OR ([State] = @Original_State)) AND ((@IsNull_ZipCode = 1 AND [ZipCode] IS NULL) OR ([ZipCode] = @Original_ZipCode)) AND ((@IsNull_Phone1 = 1 AND [Phone1] IS NULL) OR ([Phone1] = @Original_Phone1)) AND ((@IsNull_Extension1 = 1 AND [Extension1] IS NULL) OR ([Extension1] = @Original_Extension1)) AND ((@IsNull_Phone2 = 1 AND [Phone2] IS NULL) OR ([Phone2] = @Original_Phone2)) AND ((@IsNull_Extension2 = 1 AND [Extension2] IS NULL) OR ([Extension2] = @Original_Extension2)) AND ([CreateDate] = @Original_CreateDate) AND ([ModifiedDate] = @Original_ModifiedDate))</CommandText>
@@ -236,7 +236,36 @@ ORDER BY Name</CommandText>
               <Mapping SourceColumn="RequestStatusTypeId" DataSetColumn="RequestStatusTypeId" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="SilentAuctionConnectionString (Settings)" DbObjectName="main.Donors" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillAllDonors" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetAllDonorsData" GeneratorSourceName="FillAllDonors" GetMethodModifier="Public" GetMethodName="GetAllDonorsData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetAllDonorsData" UserSourceName="FillAllDonors">
+              <DbSource ConnectionRef="SilentAuctionConnectionString (Settings)" DbObjectName="main.Donors" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByNonEmptyEmail" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByNonEmptyEmail" GeneratorSourceName="FillByNonEmptyEmail" GetMethodModifier="Public" GetMethodName="GetDataByNonEmptyEmail" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByNonEmptyEmail" UserSourceName="FillByNonEmptyEmail">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Id, AuctionId, DonorTypeId, Name, RequestFormatTypeId, RequestStatusTypeId, ContactName, Email, Url, Street1, Street2, City, State, ZipCode, Phone1, Extension1, 
+                         Phone2, Extension2, CreateDate, ModifiedDate
+FROM            Donors
+WHERE        (AuctionId = @AuctionId) AND (Email IS NOT NULL) AND (Email &lt;&gt; '')
+ORDER BY Name</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="AuctionId" ColumnName="AuctionId" DataSourceName="main.Donors" DataTypeServer="integer(8)" DbType="Int64" Direction="Input" ParameterName="@AuctionId" Precision="0" ProviderType="Int64" Scale="0" Size="8" SourceColumn="AuctionId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="SilentAuctionConnectionString (Settings)" DbObjectName="main.Donors" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByRequestStatusTypeId" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByRequestStatusTypeId" GeneratorSourceName="FillByRequestStatusTypeId" GetMethodModifier="Public" GetMethodName="GetDataByRequestStatusTypeId" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByRequestStatusTypeId" UserSourceName="FillByRequestStatusTypeId">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Id, AuctionId, DonorTypeId, Name, RequestFormatTypeId, RequestStatusTypeId, ContactName, Email, Url, Street1, Street2, City, State, ZipCode, Phone1, Extension1, 
+                         Phone2, Extension2, CreateDate, ModifiedDate
+FROM            Donors
+WHERE        (AuctionId = @AuctionId) AND (RequestStatusTypeId = IFNULL(@RequestStatusTypeId, RequestStatusTypeId))
+ORDER BY Name</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="AuctionId" ColumnName="AuctionId" DataSourceName="main.Donors" DataTypeServer="integer(8)" DbType="Int64" Direction="Input" ParameterName="@AuctionId" Precision="0" ProviderType="Int64" Scale="0" Size="8" SourceColumn="AuctionId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="RequestStatusTypeId" ColumnName="RequestStatusTypeId" DataSourceName="main.Donors" DataTypeServer="integer(8)" DbType="Int64" Direction="Input" ParameterName="@RequestStatusTypeId" Precision="0" ProviderType="Int64" Scale="0" Size="8" SourceColumn="RequestStatusTypeId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="SilentAuctionConnectionString (Settings)" DbObjectName="main.Donors" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillDonors" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDonorsData" GeneratorSourceName="FillDonors" GetMethodModifier="Public" GetMethodName="GetDonorsData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDonorsData" UserSourceName="FillDonors">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Id, AuctionId, DonorTypeId, Name, RequestFormatTypeId, RequestStatusTypeId, ContactName, Email, Url, Street1, Street2, City, State, ZipCode, Phone1, Extension1, 
@@ -293,170 +322,6 @@ FROM            DonorTypes</CommandText>
               <Mapping SourceColumn="Name" DataSetColumn="Name" />
             </Mappings>
             <Sources />
-          </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ItemsTableAdapter" GeneratorDataComponentClassName="ItemsTableAdapter" Name="Items" UserDataComponentName="ItemsTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="SilentAuctionConnectionString (Settings)" DbObjectName="main.Items" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillItems" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetItemsData" GeneratorSourceName="FillItems" GetMethodModifier="Public" GetMethodName="GetItemsData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetItemsData" UserSourceName="FillItems">
-                <DeleteCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [main].[sqlite_default_schema].[Items] WHERE (([Id] = @Original_Id) AND ([DonorId] = @Original_DonorId) AND ([AuctionId] = @Original_AuctionId) AND ((@IsNull_ItemTypeId = 1 AND [ItemTypeId] IS NULL) OR ([ItemTypeId] = @Original_ItemTypeId)) AND ((@IsNull_DonationDeliveryTypeId = 1 AND [DonationDeliveryTypeId] IS NULL) OR ([DonationDeliveryTypeId] = @Original_DonationDeliveryTypeId)) AND ([Name] = @Original_Name) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = @Original_Description)) AND ([Qty] = @Original_Qty) AND ((@IsNull_RetailValue = 1 AND [RetailValue] IS NULL) OR ([RetailValue] = @Original_RetailValue)) AND ([BidIncrementTypeId] = @Original_BidIncrementTypeId) AND ((@IsNull_BidMinValue = 1 AND [BidMinValue] IS NULL) OR ([BidMinValue] = @Original_BidMinValue)) AND ((@IsNull_BidMaxValue = 1 AND [BidMaxValue] IS NULL) OR ([BidMaxValue] = @Original_BidMaxValue)) AND ((@IsNull_BidIncrementValue = 1 AND [BidIncrementValue] IS NULL) OR ([BidIncrementValue] = @Original_BidIncrementValue)) AND ((@IsNull_BidBuyItNowValue = 1 AND [BidBuyItNowValue] IS NULL) OR ([BidBuyItNowValue] = @Original_BidBuyItNowValue)) AND ((@IsNull_BidNumberOfBids = 1 AND [BidNumberOfBids] IS NULL) OR ([BidNumberOfBids] = @Original_BidNumberOfBids)) AND ((@IsNull_Notes = 1 AND [Notes] IS NULL) OR ([Notes] = @Original_Notes)) AND ((@IsNull_Image = 1 AND [Image] IS NULL) OR ([Image] = @Original_Image)) AND ([CreateDate] = @Original_CreateDate) AND ([ModifiedDate] = @Original_ModifiedDate))</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_Id" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="Id" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_DonorId" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="DonorId" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_AuctionId" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="AuctionId" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ItemTypeId" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="ItemTypeId" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ItemTypeId" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="ItemTypeId" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DonationDeliveryTypeId" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="DonationDeliveryTypeId" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_DonationDeliveryTypeId" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="DonationDeliveryTypeId" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Description" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Description" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_Qty" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="Qty" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_RetailValue" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="RetailValue" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Original_RetailValue" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="RetailValue" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_BidIncrementTypeId" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="BidIncrementTypeId" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_BidMinValue" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="BidMinValue" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Original_BidMinValue" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="BidMinValue" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_BidMaxValue" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="BidMaxValue" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Original_BidMaxValue" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="BidMaxValue" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_BidIncrementValue" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="BidIncrementValue" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Original_BidIncrementValue" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="BidIncrementValue" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_BidBuyItNowValue" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="BidBuyItNowValue" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Original_BidBuyItNowValue" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="BidBuyItNowValue" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_BidNumberOfBids" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="BidNumberOfBids" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Original_BidNumberOfBids" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="BidNumberOfBids" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Notes" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Notes" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Notes" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Notes" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Image" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Image" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Binary" Direction="Input" ParameterName="@Original_Image" Precision="0" ProviderType="Binary" Scale="0" Size="0" SourceColumn="Image" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_CreateDate" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="CreateDate" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_ModifiedDate" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="ModifiedDate" SourceColumnNullMapping="false" SourceVersion="Original" />
-                    </Parameters>
-                  </DbCommand>
-                </DeleteCommand>
-                <InsertCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [main].[sqlite_default_schema].[Items] ([DonorId], [AuctionId], [ItemTypeId], [DonationDeliveryTypeId], [Name], [Description], [Qty], [RetailValue], [BidIncrementTypeId], [BidMinValue], [BidMaxValue], [BidIncrementValue], [BidBuyItNowValue], [BidNumberOfBids], [Notes], [Image], [CreateDate], [ModifiedDate]) VALUES (@DonorId, @AuctionId, @ItemTypeId, @DonationDeliveryTypeId, @Name, @Description, @Qty, @RetailValue, @BidIncrementTypeId, @BidMinValue, @BidMaxValue, @BidIncrementValue, @BidBuyItNowValue, @BidNumberOfBids, @Notes, @Image, @CreateDate, @ModifiedDate)</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@DonorId" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="DonorId" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@AuctionId" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="AuctionId" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@ItemTypeId" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="ItemTypeId" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@DonationDeliveryTypeId" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="DonationDeliveryTypeId" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Description" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Qty" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="Qty" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@RetailValue" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="RetailValue" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@BidIncrementTypeId" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="BidIncrementTypeId" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@BidMinValue" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="BidMinValue" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@BidMaxValue" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="BidMaxValue" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@BidIncrementValue" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="BidIncrementValue" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@BidBuyItNowValue" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="BidBuyItNowValue" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@BidNumberOfBids" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="BidNumberOfBids" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Notes" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Notes" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Binary" Direction="Input" ParameterName="@Image" Precision="0" ProviderType="Binary" Scale="0" Size="0" SourceColumn="Image" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@CreateDate" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="CreateDate" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@ModifiedDate" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="ModifiedDate" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </InsertCommand>
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Id, DonorId, AuctionId, ItemTypeId, DonationDeliveryTypeId, Name, Description, Qty, RetailValue, BidIncrementTypeId, BidMinValue, BidMaxValue, BidIncrementValue, BidBuyItNowValue, BidNumberOfBids, Notes, Image, CreateDate, ModifiedDate FROM Items WHERE (AuctionId = @AuctionId) ORDER BY DonorId, Name, Id</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="AuctionId" ColumnName="AuctionId" DataSourceName="main.Items" DataTypeServer="integer(8)" DbType="Int64" Direction="Input" ParameterName="@AuctionId" Precision="0" ProviderType="Int64" Scale="0" Size="8" SourceColumn="AuctionId" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </SelectCommand>
-                <UpdateCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [main].[sqlite_default_schema].[Items] SET [DonorId] = @DonorId, [AuctionId] = @AuctionId, [ItemTypeId] = @ItemTypeId, [DonationDeliveryTypeId] = @DonationDeliveryTypeId, [Name] = @Name, [Description] = @Description, [Qty] = @Qty, [RetailValue] = @RetailValue, [BidIncrementTypeId] = @BidIncrementTypeId, [BidMinValue] = @BidMinValue, [BidMaxValue] = @BidMaxValue, [BidIncrementValue] = @BidIncrementValue, [BidBuyItNowValue] = @BidBuyItNowValue, [BidNumberOfBids] = @BidNumberOfBids, [Notes] = @Notes, [Image] = @Image, [CreateDate] = @CreateDate, [ModifiedDate] = @ModifiedDate WHERE (([Id] = @Original_Id) AND ([DonorId] = @Original_DonorId) AND ([AuctionId] = @Original_AuctionId) AND ((@IsNull_ItemTypeId = 1 AND [ItemTypeId] IS NULL) OR ([ItemTypeId] = @Original_ItemTypeId)) AND ((@IsNull_DonationDeliveryTypeId = 1 AND [DonationDeliveryTypeId] IS NULL) OR ([DonationDeliveryTypeId] = @Original_DonationDeliveryTypeId)) AND ([Name] = @Original_Name) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = @Original_Description)) AND ([Qty] = @Original_Qty) AND ((@IsNull_RetailValue = 1 AND [RetailValue] IS NULL) OR ([RetailValue] = @Original_RetailValue)) AND ([BidIncrementTypeId] = @Original_BidIncrementTypeId) AND ((@IsNull_BidMinValue = 1 AND [BidMinValue] IS NULL) OR ([BidMinValue] = @Original_BidMinValue)) AND ((@IsNull_BidMaxValue = 1 AND [BidMaxValue] IS NULL) OR ([BidMaxValue] = @Original_BidMaxValue)) AND ((@IsNull_BidIncrementValue = 1 AND [BidIncrementValue] IS NULL) OR ([BidIncrementValue] = @Original_BidIncrementValue)) AND ((@IsNull_BidBuyItNowValue = 1 AND [BidBuyItNowValue] IS NULL) OR ([BidBuyItNowValue] = @Original_BidBuyItNowValue)) AND ((@IsNull_BidNumberOfBids = 1 AND [BidNumberOfBids] IS NULL) OR ([BidNumberOfBids] = @Original_BidNumberOfBids)) AND ((@IsNull_Notes = 1 AND [Notes] IS NULL) OR ([Notes] = @Original_Notes)) AND ((@IsNull_Image = 1 AND [Image] IS NULL) OR ([Image] = @Original_Image)) AND ([CreateDate] = @Original_CreateDate) AND ([ModifiedDate] = @Original_ModifiedDate))</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@DonorId" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="DonorId" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@AuctionId" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="AuctionId" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@ItemTypeId" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="ItemTypeId" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@DonationDeliveryTypeId" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="DonationDeliveryTypeId" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Description" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Qty" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="Qty" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@RetailValue" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="RetailValue" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@BidIncrementTypeId" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="BidIncrementTypeId" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@BidMinValue" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="BidMinValue" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@BidMaxValue" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="BidMaxValue" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@BidIncrementValue" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="BidIncrementValue" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@BidBuyItNowValue" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="BidBuyItNowValue" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@BidNumberOfBids" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="BidNumberOfBids" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Notes" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Notes" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Binary" Direction="Input" ParameterName="@Image" Precision="0" ProviderType="Binary" Scale="0" Size="0" SourceColumn="Image" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@CreateDate" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="CreateDate" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@ModifiedDate" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="ModifiedDate" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_Id" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="Id" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_DonorId" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="DonorId" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_AuctionId" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="AuctionId" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ItemTypeId" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="ItemTypeId" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ItemTypeId" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="ItemTypeId" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DonationDeliveryTypeId" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="DonationDeliveryTypeId" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_DonationDeliveryTypeId" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="DonationDeliveryTypeId" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Description" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Description" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_Qty" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="Qty" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_RetailValue" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="RetailValue" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Original_RetailValue" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="RetailValue" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_BidIncrementTypeId" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="BidIncrementTypeId" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_BidMinValue" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="BidMinValue" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Original_BidMinValue" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="BidMinValue" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_BidMaxValue" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="BidMaxValue" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Original_BidMaxValue" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="BidMaxValue" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_BidIncrementValue" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="BidIncrementValue" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Original_BidIncrementValue" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="BidIncrementValue" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_BidBuyItNowValue" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="BidBuyItNowValue" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Original_BidBuyItNowValue" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="BidBuyItNowValue" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_BidNumberOfBids" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="BidNumberOfBids" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Original_BidNumberOfBids" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumn="BidNumberOfBids" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Notes" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Notes" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Notes" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Notes" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Image" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Image" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Binary" Direction="Input" ParameterName="@Original_Image" Precision="0" ProviderType="Binary" Scale="0" Size="0" SourceColumn="Image" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_CreateDate" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="CreateDate" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_ModifiedDate" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="ModifiedDate" SourceColumnNullMapping="false" SourceVersion="Original" />
-                    </Parameters>
-                  </DbCommand>
-                </UpdateCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="Id" DataSetColumn="Id" />
-              <Mapping SourceColumn="DonorId" DataSetColumn="DonorId" />
-              <Mapping SourceColumn="AuctionId" DataSetColumn="AuctionId" />
-              <Mapping SourceColumn="Name" DataSetColumn="Name" />
-              <Mapping SourceColumn="Description" DataSetColumn="Description" />
-              <Mapping SourceColumn="Qty" DataSetColumn="Qty" />
-              <Mapping SourceColumn="Notes" DataSetColumn="Notes" />
-              <Mapping SourceColumn="CreateDate" DataSetColumn="CreateDate" />
-              <Mapping SourceColumn="ModifiedDate" DataSetColumn="ModifiedDate" />
-              <Mapping SourceColumn="RetailValue" DataSetColumn="RetailValue" />
-              <Mapping SourceColumn="BidIncrementTypeId" DataSetColumn="BidIncrementTypeId" />
-              <Mapping SourceColumn="BidMinValue" DataSetColumn="BidMinValue" />
-              <Mapping SourceColumn="BidMaxValue" DataSetColumn="BidMaxValue" />
-              <Mapping SourceColumn="BidIncrementValue" DataSetColumn="BidIncrementValue" />
-              <Mapping SourceColumn="BidBuyItNowValue" DataSetColumn="BidBuyItNowValue" />
-              <Mapping SourceColumn="BidNumberOfBids" DataSetColumn="BidNumberOfBids" />
-              <Mapping SourceColumn="ItemTypeId" DataSetColumn="ItemTypeId" />
-              <Mapping SourceColumn="DonationDeliveryTypeId" DataSetColumn="DonationDeliveryTypeId" />
-              <Mapping SourceColumn="Image" DataSetColumn="Image" />
-            </Mappings>
-            <Sources>
-              <DbSource ConnectionRef="SilentAuctionConnectionString (Settings)" DbObjectName="main.Items" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillItemsByDonorName" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetItemsDataByDonorName" GeneratorSourceName="FillItemsByDonorName" GetMethodModifier="Public" GetMethodName="GetItemsDataByDonorName" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetItemsDataByDonorName" UserSourceName="FillItemsByDonorName">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Items.AuctionId, Items.BidBuyItNowValue, Items.BidIncrementTypeId, Items.BidIncrementValue, Items.BidMaxValue, Items.BidMinValue, Items.BidNumberOfBids, Items.CreateDate, Items.Description, Items.DonationDeliveryTypeId, Items.DonorId, Items.Id, Items.Image, Items.ItemTypeId, Items.ModifiedDate, Items.Name, Items.Notes, Items.Qty, Items.RetailValue FROM Items INNER JOIN Donors ON Items.DonorId = Donors.Id WHERE (Donors.Name LIKE @DonorName) ORDER BY Items.AuctionId, Items.Name, Items.Id</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="DonorName" ColumnName="Name" DataSourceName="main.Donors" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@DonorName" Precision="0" ProviderType="String" Scale="0" Size="2147483647" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </Sources>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="BidIncrementTypesTableAdapter" GeneratorDataComponentClassName="BidIncrementTypesTableAdapter" Name="BidIncrementTypes" UserDataComponentName="BidIncrementTypesTableAdapter">
             <MainSource>
@@ -701,79 +566,7 @@ ORDER BY Name</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DonorsWithNoResponseTableAdapter" GeneratorDataComponentClassName="DonorsWithNoResponseTableAdapter" Name="DonorsWithNoResponse" UserDataComponentName="DonorsWithNoResponseTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="SilentAuctionConnectionString (Settings)" DbObjectName="main.Donors" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillDonorsWithNoResponse" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetDonorsWithNoResponseData" GeneratorSourceName="FillDonorsWithNoResponse" GetMethodModifier="Public" GetMethodName="GetDonorsWithNoResponseData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetDonorsWithNoResponseData" UserSourceName="FillDonorsWithNoResponse">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Id, Name, RequestStatusTypeId
-FROM            Donors
-WHERE        (AuctionId = @AuctionId) AND (RequestStatusTypeId = 1 OR
-                         RequestStatusTypeId IS NULL)
-ORDER BY Name</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="AuctionId" ColumnName="AuctionId" DataSourceName="main.Donors" DataTypeServer="integer(8)" DbType="Int64" Direction="Input" ParameterName="@AuctionId" Precision="0" ProviderType="Int64" Scale="0" Size="8" SourceColumn="AuctionId" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="Id" DataSetColumn="Id" />
-              <Mapping SourceColumn="Name" DataSetColumn="Name" />
-              <Mapping SourceColumn="RequestStatusTypeId" DataSetColumn="RequestStatusTypeId" />
-            </Mappings>
-            <Sources />
-          </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DonorsWithEmailsTableAdapter" GeneratorDataComponentClassName="DonorsWithEmailsTableAdapter" Name="DonorsWithEmails" UserDataComponentName="DonorsWithEmailsTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="SilentAuctionConnectionString (Settings)" DbObjectName="main.Donors" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillDonorsWithEmails" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetDonorsWithEmailsData" GeneratorSourceName="FillDonorsWithEmails" GetMethodModifier="Public" GetMethodName="GetDonorsWithEmailsData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetDonorsWithEmailsData" UserSourceName="FillDonorsWithEmails">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Id, Name, Email
-FROM            Donors
-WHERE        (Email IS NOT NULL) AND (AuctionId = @AuctionId) AND (Email &lt;&gt; '')
-ORDER BY Name</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="AuctionId" ColumnName="AuctionId" DataSourceName="main.Donors" DataTypeServer="integer(8)" DbType="Int64" Direction="Input" ParameterName="@AuctionId" Precision="0" ProviderType="Int64" Scale="0" Size="8" SourceColumn="AuctionId" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="Id" DataSetColumn="Id" />
-              <Mapping SourceColumn="Name" DataSetColumn="Name" />
-              <Mapping SourceColumn="Email" DataSetColumn="Email" />
-            </Mappings>
-            <Sources />
-          </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DonorAddressesTableAdapter" GeneratorDataComponentClassName="DonorAddressesTableAdapter" Name="DonorAddresses" UserDataComponentName="DonorAddressesTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="SilentAuctionConnectionString (Settings)" DbObjectName="main.Donors" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillDonorAddresses" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetDonorAddressesData" GeneratorSourceName="FillDonorAddresses" GetMethodModifier="Public" GetMethodName="GetDonorAddressesData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetDonorAddressesData" UserSourceName="FillDonorAddresses">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Id, Name, ContactName, Street1, Street2, City, State, ZipCode FROM Donors WHERE (AuctionId = @AuctionId) ORDER BY Name</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="AuctionId" ColumnName="AuctionId" DataSourceName="main.Donors" DataTypeServer="integer(8)" DbType="Int64" Direction="Input" ParameterName="@AuctionId" Precision="0" ProviderType="Int64" Scale="0" Size="8" SourceColumn="AuctionId" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="Name" DataSetColumn="Name" />
-              <Mapping SourceColumn="ContactName" DataSetColumn="ContactName" />
-              <Mapping SourceColumn="Street1" DataSetColumn="Street1" />
-              <Mapping SourceColumn="Street2" DataSetColumn="Street2" />
-              <Mapping SourceColumn="City" DataSetColumn="City" />
-              <Mapping SourceColumn="State" DataSetColumn="State" />
-              <Mapping SourceColumn="ZipCode" DataSetColumn="ZipCode" />
-              <Mapping SourceColumn="Id" DataSetColumn="Id" />
-            </Mappings>
-            <Sources />
-          </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DonorsWithLettersTableAdapter" GeneratorDataComponentClassName="DonorsWithLettersTableAdapter" Name="DonorsWithLetters" UserDataComponentName="DonorsWithLettersTableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DonorsWithLetters_OLDTableAdapter" GeneratorDataComponentClassName="DonorsWithLetters_OLDTableAdapter" Name="DonorsWithLetters_OLD" UserDataComponentName="DonorsWithLetters_OLDTableAdapter">
             <MainSource>
               <DbSource ConnectionRef="SilentAuctionConnectionString (Settings)" DbObjectName="main.Donors" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillDonorsWithLetters" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetDonorWithLettersData" GeneratorSourceName="FillDonorsWithLetters" GetMethodModifier="Public" GetMethodName="GetDonorWithLettersData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetDonorWithLettersData" UserSourceName="FillDonorsWithLetters">
                 <SelectCommand>
@@ -794,44 +587,6 @@ ORDER BY D.Name</CommandText>
             <Mappings>
               <Mapping SourceColumn="Id" DataSetColumn="Id" />
               <Mapping SourceColumn="Name" DataSetColumn="Name" />
-            </Mappings>
-            <Sources />
-          </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ItemsShortListTableAdapter" GeneratorDataComponentClassName="ItemsShortListTableAdapter" Name="ItemsShortList" UserDataComponentName="ItemsShortListTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="SilentAuctionConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillItems" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetItemsData" GeneratorSourceName="FillItems" GetMethodModifier="Public" GetMethodName="GetItemsData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetItemsData" UserSourceName="FillItems">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        I.Id, A.Name AS AuctionName, I.Name AS ItemName, D.Name AS DonorName, I.Description, I.Qty, IFNULL(IT.Name, 'Empty') AS ItemType, I.RetailValue, I.BidBuyItNowValue, 
-                         I.BidIncrementTypeId, I.BidMinValue, I.BidMaxValue, I.BidIncrementValue, I.BidNumberOfBids
-FROM            Items I INNER JOIN
-                         Donors D ON I.DonorId = D.Id INNER JOIN
-                         Auctions A ON I.AuctionId = A.Id LEFT OUTER JOIN
-                         ItemTypes IT ON I.ItemTypeId = IT.Id
-WHERE        (I.AuctionId = @AuctionId)
-ORDER BY I.Id</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="AuctionId" ColumnName="AuctionId" DataSourceName="main.Items" DataTypeServer="integer(8)" DbType="Int64" Direction="Input" ParameterName="@AuctionId" Precision="0" ProviderType="Int64" Scale="0" Size="8" SourceColumn="AuctionId" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="Id" DataSetColumn="Id" />
-              <Mapping SourceColumn="ItemName" DataSetColumn="ItemName" />
-              <Mapping SourceColumn="DonorName" DataSetColumn="DonorName" />
-              <Mapping SourceColumn="Description" DataSetColumn="Description" />
-              <Mapping SourceColumn="Qty" DataSetColumn="Qty" />
-              <Mapping SourceColumn="ItemType" DataSetColumn="ItemType" />
-              <Mapping SourceColumn="RetailValue" DataSetColumn="RetailValue" />
-              <Mapping SourceColumn="BidBuyItNowValue" DataSetColumn="BidBuyItNowValue" />
-              <Mapping SourceColumn="BidIncrementTypeId" DataSetColumn="BidIncrementTypeId" />
-              <Mapping SourceColumn="BidMinValue" DataSetColumn="BidMinValue" />
-              <Mapping SourceColumn="BidMaxValue" DataSetColumn="BidMaxValue" />
-              <Mapping SourceColumn="BidIncrementValue" DataSetColumn="BidIncrementValue" />
-              <Mapping SourceColumn="BidNumberOfBids" DataSetColumn="BidNumberOfBids" />
-              <Mapping SourceColumn="AuctionName" DataSetColumn="AuctionName" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -968,6 +723,161 @@ FROM            Documents</CommandText>
               <Mapping SourceColumn="Name" DataSetColumn="Name" />
             </Mappings>
             <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DonorsNameOnlyTableAdapter" GeneratorDataComponentClassName="DonorsNameOnlyTableAdapter" Name="DonorsNameOnly" UserDataComponentName="DonorsNameOnlyTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SilentAuctionConnectionString (Settings)" DbObjectName="main.Donors" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Name
+FROM            Donors
+WHERE        (AuctionId = @AuctionId)
+ORDER BY Name</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="AuctionId" ColumnName="AuctionId" DataSourceName="main.Donors" DataTypeServer="integer(8)" DbType="Int64" Direction="Input" ParameterName="@AuctionId" Precision="0" ProviderType="Int64" Scale="0" Size="8" SourceColumn="AuctionId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ItemsTableAdapter" GeneratorDataComponentClassName="ItemsTableAdapter" Name="Items" UserDataComponentName="ItemsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SilentAuctionConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>INSERT INTO Items
+                         (AuctionId, Name, DonorId, Description, Qty, ItemTypeId, DonationDeliveryTypeId, SellValue, RetailValue, BidIncrementTypeId, BidMinValue, BidMaxValue, 
+                         BidIncrementValue, BidBuyItNowValue, BidNumberOfBids, Notes, Image, CreateDate, ModifiedDate)
+VALUES        (@AuctionId, @Name, @DonorId, @Description, @Qty, @ItemTypeId, @DonationDeliveryTypeId, @SellValue, @RetailValue, @BidIncrementTypeId, @BidMinValue, 
+                         @BidMaxValue, @BidIncrementValue, @BidBuyItNowValue, @BidNumberOfBids, @Notes, @Image, @CreateDate, @ModifiedDate)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="AuctionId" ColumnName="AuctionId" DataSourceName="main.Items" DataTypeServer="integer(8)" DbType="Int64" Direction="Input" ParameterName="@AuctionId" Precision="0" ProviderType="Int64" Scale="0" Size="8" SourceColumn="AuctionId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Name" ColumnName="Name" DataSourceName="main.Items" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="String" Scale="0" Size="2147483647" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="DonorId" ColumnName="DonorId" DataSourceName="main.Items" DataTypeServer="integer(8)" DbType="Int64" Direction="Input" ParameterName="@DonorId" Precision="0" ProviderType="Int64" Scale="0" Size="8" SourceColumn="DonorId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Description" ColumnName="Description" DataSourceName="main.Items" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@Description" Precision="0" ProviderType="String" Scale="0" Size="2147483647" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Qty" ColumnName="Qty" DataSourceName="main.Items" DataTypeServer="integer(8)" DbType="Int64" Direction="Input" ParameterName="@Qty" Precision="0" ProviderType="Int64" Scale="0" Size="8" SourceColumn="Qty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ItemTypeId" ColumnName="ItemTypeId" DataSourceName="main.Items" DataTypeServer="integer(8)" DbType="Int64" Direction="Input" ParameterName="@ItemTypeId" Precision="0" ProviderType="Int64" Scale="0" Size="8" SourceColumn="ItemTypeId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="DonationDeliveryTypeId" ColumnName="DonationDeliveryTypeId" DataSourceName="main.Items" DataTypeServer="integer(8)" DbType="Int64" Direction="Input" ParameterName="@DonationDeliveryTypeId" Precision="0" ProviderType="Int64" Scale="0" Size="8" SourceColumn="DonationDeliveryTypeId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="SellValue" ColumnName="SellValue" DataSourceName="main.Items" DataTypeServer="real(8)" DbType="Decimal" Direction="Input" ParameterName="@SellValue" Precision="53" ProviderType="Double" Scale="0" Size="8" SourceColumn="SellValue" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="RetailValue" ColumnName="RetailValue" DataSourceName="main.Items" DataTypeServer="real(8)" DbType="Decimal" Direction="Input" ParameterName="@RetailValue" Precision="53" ProviderType="Double" Scale="0" Size="8" SourceColumn="RetailValue" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="BidIncrementTypeId" ColumnName="BidIncrementTypeId" DataSourceName="main.Items" DataTypeServer="integer(8)" DbType="Int64" Direction="Input" ParameterName="@BidIncrementTypeId" Precision="0" ProviderType="Int64" Scale="0" Size="8" SourceColumn="BidIncrementTypeId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="BidMinValue" ColumnName="BidMinValue" DataSourceName="main.Items" DataTypeServer="real(8)" DbType="Decimal" Direction="Input" ParameterName="@BidMinValue" Precision="53" ProviderType="Double" Scale="0" Size="8" SourceColumn="BidMinValue" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="BidMaxValue" ColumnName="BidMaxValue" DataSourceName="main.Items" DataTypeServer="real(8)" DbType="Decimal" Direction="Input" ParameterName="@BidMaxValue" Precision="53" ProviderType="Double" Scale="0" Size="8" SourceColumn="BidMaxValue" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="BidIncrementValue" ColumnName="BidIncrementValue" DataSourceName="main.Items" DataTypeServer="real(8)" DbType="Decimal" Direction="Input" ParameterName="@BidIncrementValue" Precision="53" ProviderType="Double" Scale="0" Size="8" SourceColumn="BidIncrementValue" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="BidBuyItNowValue" ColumnName="BidBuyItNowValue" DataSourceName="main.Items" DataTypeServer="real(8)" DbType="Decimal" Direction="Input" ParameterName="@BidBuyItNowValue" Precision="53" ProviderType="Double" Scale="0" Size="8" SourceColumn="BidBuyItNowValue" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="BidNumberOfBids" ColumnName="BidNumberOfBids" DataSourceName="main.Items" DataTypeServer="integer(8)" DbType="Int64" Direction="Input" ParameterName="@BidNumberOfBids" Precision="0" ProviderType="Int64" Scale="0" Size="8" SourceColumn="BidNumberOfBids" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Notes" ColumnName="Notes" DataSourceName="main.Items" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@Notes" Precision="0" ProviderType="String" Scale="0" Size="2147483647" SourceColumn="Notes" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Image" ColumnName="Image" DataSourceName="main.Items" DataTypeServer="blob" DbType="Binary" Direction="Input" ParameterName="@Image" Precision="0" ProviderType="Binary" Scale="0" Size="2147483647" SourceColumn="Image" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="CreateDate" ColumnName="CreateDate" DataSourceName="main.Items" DataTypeServer="text" DbType="String" Direction="Input" ParameterName="@CreateDate" Precision="0" ProviderType="String" Scale="0" Size="2147483647" SourceColumn="CreateDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ModifiedDate" ColumnName="ModifiedDate" DataSourceName="main.Items" DataTypeServer="text" DbType="String" Direction="Input" ParameterName="@ModifiedDate" Precision="0" ProviderType="String" Scale="0" Size="2147483647" SourceColumn="ModifiedDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        I.Id, DT.Name AS DonorTypeName, I.DonorId, D.Name AS DonorName, I.AuctionId, A.Name AS AuctionName, I.Name, I.Description, I.Qty, I.ItemTypeId, 
+                         IT.Name AS ItemTypeName, I.DonationDeliveryTypeId, I.SellValue, I.RetailValue, I.BidIncrementTypeId, I.BidMinValue, I.BidMaxValue, I.BidIncrementValue, 
+                         I.BidBuyItNowValue, I.BidNumberOfBids, I.Notes, I.Image, I.CreateDate, I.ModifiedDate
+FROM            Items I INNER JOIN
+                         Auctions A ON I.AuctionId = A.Id INNER JOIN
+                         Donors D ON I.DonorId = D.Id INNER JOIN
+                         DonorTypes DT ON D.DonorTypeId = DT.Id INNER JOIN
+                         ItemTypes IT ON I.ItemTypeId = IT.Id INNER JOIN
+                         DonationDeliveryTypes DDT ON I.DonationDeliveryTypeId = DDT.Id INNER JOIN
+                         BidIncrementTypes BIT ON I.BidIncrementTypeId = BIT.Id
+WHERE        (I.AuctionId = @AuctionId)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="AuctionId" ColumnName="AuctionId" DataSourceName="main.Items" DataTypeServer="integer(8)" DbType="Int64" Direction="Input" ParameterName="@AuctionId" Precision="0" ProviderType="Int64" Scale="0" Size="8" SourceColumn="AuctionId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE       Items
+SET                DonorId = @DonorId, AuctionId = @AuctionId, Name = @Name, Description = @Description, Qty = @Qty, ItemTypeId = @ItemTypeId, 
+                         DonationDeliveryTypeId = @DonationDeliveryTypeId, SellValue = @SellValue, RetailValue = @RetailValue, BidIncrementTypeId = @BidIncrementTypeId, 
+                         BidMinValue = @BidMinValue, BidMaxValue = @BidMaxValue, BidIncrementValue = @BidIncrementValue, BidBuyItNowValue = @BidBuyItNowValue, 
+                         BidNumberOfBids = @BidNumberOfBids, Notes = @Notes, Image = @Image, CreateDate = @CreateDate, ModifiedDate = @ModifiedDate
+WHERE        (Id = @Id)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="DonorId" ColumnName="DonorId" DataSourceName="main.Items" DataTypeServer="integer(8)" DbType="Int64" Direction="Input" ParameterName="@DonorId" Precision="0" ProviderType="Int64" Scale="0" Size="8" SourceColumn="DonorId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="AuctionId" ColumnName="AuctionId" DataSourceName="main.Items" DataTypeServer="integer(8)" DbType="Int64" Direction="Input" ParameterName="@AuctionId" Precision="0" ProviderType="Int64" Scale="0" Size="8" SourceColumn="AuctionId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Name" ColumnName="Name" DataSourceName="main.Items" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="String" Scale="0" Size="2147483647" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Description" ColumnName="Description" DataSourceName="main.Items" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@Description" Precision="0" ProviderType="String" Scale="0" Size="2147483647" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Qty" ColumnName="Qty" DataSourceName="main.Items" DataTypeServer="integer(8)" DbType="Int64" Direction="Input" ParameterName="@Qty" Precision="0" ProviderType="Int64" Scale="0" Size="8" SourceColumn="Qty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ItemTypeId" ColumnName="ItemTypeId" DataSourceName="main.Items" DataTypeServer="integer(8)" DbType="Int64" Direction="Input" ParameterName="@ItemTypeId" Precision="0" ProviderType="Int64" Scale="0" Size="8" SourceColumn="ItemTypeId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="DonationDeliveryTypeId" ColumnName="DonationDeliveryTypeId" DataSourceName="main.Items" DataTypeServer="integer(8)" DbType="Int64" Direction="Input" ParameterName="@DonationDeliveryTypeId" Precision="0" ProviderType="Int64" Scale="0" Size="8" SourceColumn="DonationDeliveryTypeId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="SellValue" ColumnName="SellValue" DataSourceName="main.Items" DataTypeServer="real(8)" DbType="Decimal" Direction="Input" ParameterName="@SellValue" Precision="53" ProviderType="Double" Scale="0" Size="8" SourceColumn="SellValue" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="RetailValue" ColumnName="RetailValue" DataSourceName="main.Items" DataTypeServer="real(8)" DbType="Decimal" Direction="Input" ParameterName="@RetailValue" Precision="53" ProviderType="Double" Scale="0" Size="8" SourceColumn="RetailValue" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="BidIncrementTypeId" ColumnName="BidIncrementTypeId" DataSourceName="main.Items" DataTypeServer="integer(8)" DbType="Int64" Direction="Input" ParameterName="@BidIncrementTypeId" Precision="0" ProviderType="Int64" Scale="0" Size="8" SourceColumn="BidIncrementTypeId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="BidMinValue" ColumnName="BidMinValue" DataSourceName="main.Items" DataTypeServer="real(8)" DbType="Decimal" Direction="Input" ParameterName="@BidMinValue" Precision="53" ProviderType="Double" Scale="0" Size="8" SourceColumn="BidMinValue" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="BidMaxValue" ColumnName="BidMaxValue" DataSourceName="main.Items" DataTypeServer="real(8)" DbType="Decimal" Direction="Input" ParameterName="@BidMaxValue" Precision="53" ProviderType="Double" Scale="0" Size="8" SourceColumn="BidMaxValue" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="BidIncrementValue" ColumnName="BidIncrementValue" DataSourceName="main.Items" DataTypeServer="real(8)" DbType="Decimal" Direction="Input" ParameterName="@BidIncrementValue" Precision="53" ProviderType="Double" Scale="0" Size="8" SourceColumn="BidIncrementValue" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="BidBuyItNowValue" ColumnName="BidBuyItNowValue" DataSourceName="main.Items" DataTypeServer="real(8)" DbType="Decimal" Direction="Input" ParameterName="@BidBuyItNowValue" Precision="53" ProviderType="Double" Scale="0" Size="8" SourceColumn="BidBuyItNowValue" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="BidNumberOfBids" ColumnName="BidNumberOfBids" DataSourceName="main.Items" DataTypeServer="integer(8)" DbType="Int64" Direction="Input" ParameterName="@BidNumberOfBids" Precision="0" ProviderType="Int64" Scale="0" Size="8" SourceColumn="BidNumberOfBids" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Notes" ColumnName="Notes" DataSourceName="main.Items" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@Notes" Precision="0" ProviderType="String" Scale="0" Size="2147483647" SourceColumn="Notes" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Image" ColumnName="Image" DataSourceName="main.Items" DataTypeServer="blob" DbType="Binary" Direction="Input" ParameterName="@Image" Precision="0" ProviderType="Binary" Scale="0" Size="2147483647" SourceColumn="Image" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="CreateDate" ColumnName="CreateDate" DataSourceName="main.Items" DataTypeServer="text" DbType="String" Direction="Input" ParameterName="@CreateDate" Precision="0" ProviderType="String" Scale="0" Size="2147483647" SourceColumn="CreateDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ModifiedDate" ColumnName="ModifiedDate" DataSourceName="main.Items" DataTypeServer="text" DbType="String" Direction="Input" ParameterName="@ModifiedDate" Precision="0" ProviderType="String" Scale="0" Size="2147483647" SourceColumn="ModifiedDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Id" ColumnName="Id" DataSourceName="main.Items" DataTypeServer="integer(8)" DbType="Int64" Direction="Input" ParameterName="@Id" Precision="0" ProviderType="Int64" Scale="0" Size="8" SourceColumn="Id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Id" DataSetColumn="Id" />
+              <Mapping SourceColumn="DonorTypeName" DataSetColumn="DonorTypeName" />
+              <Mapping SourceColumn="DonorId" DataSetColumn="DonorId" />
+              <Mapping SourceColumn="DonorName" DataSetColumn="DonorName" />
+              <Mapping SourceColumn="AuctionId" DataSetColumn="AuctionId" />
+              <Mapping SourceColumn="AuctionName" DataSetColumn="AuctionName" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="Description" DataSetColumn="Description" />
+              <Mapping SourceColumn="Qty" DataSetColumn="Qty" />
+              <Mapping SourceColumn="ItemTypeId" DataSetColumn="ItemTypeId" />
+              <Mapping SourceColumn="ItemTypeName" DataSetColumn="ItemTypeName" />
+              <Mapping SourceColumn="DonationDeliveryTypeId" DataSetColumn="DonationDeliveryTypeId" />
+              <Mapping SourceColumn="SellValue" DataSetColumn="SellValue" />
+              <Mapping SourceColumn="RetailValue" DataSetColumn="RetailValue" />
+              <Mapping SourceColumn="BidIncrementTypeId" DataSetColumn="BidIncrementTypeId" />
+              <Mapping SourceColumn="BidMinValue" DataSetColumn="BidMinValue" />
+              <Mapping SourceColumn="BidMaxValue" DataSetColumn="BidMaxValue" />
+              <Mapping SourceColumn="BidIncrementValue" DataSetColumn="BidIncrementValue" />
+              <Mapping SourceColumn="BidBuyItNowValue" DataSetColumn="BidBuyItNowValue" />
+              <Mapping SourceColumn="BidNumberOfBids" DataSetColumn="BidNumberOfBids" />
+              <Mapping SourceColumn="Notes" DataSetColumn="Notes" />
+              <Mapping SourceColumn="Image" DataSetColumn="Image" />
+              <Mapping SourceColumn="CreateDate" DataSetColumn="CreateDate" />
+              <Mapping SourceColumn="ModifiedDate" DataSetColumn="ModifiedDate" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="SilentAuctionConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillItemsByDonorName" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetItemsDataByDonorName" GeneratorSourceName="FillItemsByDonorName" GetMethodModifier="Public" GetMethodName="GetItemsDataByDonorName" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetItemsDataByDonorName" UserSourceName="FillItemsByDonorName">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        I.Id, DT.Name AS DonorTypeName, I.DonorId, D.Name AS DonorName, I.AuctionId, A.Name AS AuctionName, I.Name, I.Description, I.Qty, I.ItemTypeId, 
+                         IT.Name AS ItemTypeName, I.DonationDeliveryTypeId, I.SellValue, I.RetailValue, I.BidIncrementTypeId, I.BidMinValue, I.BidMaxValue, I.BidIncrementValue, 
+                         I.BidBuyItNowValue, I.BidNumberOfBids, I.Notes, I.Image, I.CreateDate, I.ModifiedDate
+FROM            Items I INNER JOIN
+                         Auctions A ON I.AuctionId = A.Id INNER JOIN
+                         Donors D ON I.DonorId = D.Id INNER JOIN
+                         DonorTypes DT ON D.DonorTypeId = DT.Id INNER JOIN
+                         ItemTypes IT ON I.ItemTypeId = IT.Id INNER JOIN
+                         DonationDeliveryTypes DDT ON I.DonationDeliveryTypeId = DDT.Id INNER JOIN
+                         BidIncrementTypes BIT ON I.BidIncrementTypeId = BIT.Id
+WHERE        (D.Name = @DonorName)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="DonorName" ColumnName="Name" DataSourceName="main.Donors" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@DonorName" Precision="0" ProviderType="String" Scale="0" Size="2147483647" SourceColumn="DonorName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
         </Tables>
         <Sources />
@@ -1142,61 +1052,6 @@ FROM            Documents</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Items" msprop:Generator_TableClassName="ItemsDataTable" msprop:Generator_TableVarName="tableItems" msprop:Generator_RowChangedName="ItemsRowChanged" msprop:Generator_TablePropName="Items" msprop:Generator_RowDeletingName="ItemsRowDeleting" msprop:Generator_RowChangingName="ItemsRowChanging" msprop:Generator_RowEvHandlerName="ItemsRowChangeEventHandler" msprop:Generator_RowDeletedName="ItemsRowDeleted" msprop:Generator_RowClassName="ItemsRow" msprop:Generator_UserTableName="Items" msprop:Generator_RowEvArgName="ItemsRowChangeEvent">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:long" />
-              <xs:element name="DonorId" msprop:Generator_ColumnVarNameInTable="columnDonorId" msprop:Generator_ColumnPropNameInRow="DonorId" msprop:Generator_ColumnPropNameInTable="DonorIdColumn" msprop:Generator_UserColumnName="DonorId" type="xs:long" />
-              <xs:element name="AuctionId" msprop:Generator_ColumnVarNameInTable="columnAuctionId" msprop:Generator_ColumnPropNameInRow="AuctionId" msprop:Generator_ColumnPropNameInTable="AuctionIdColumn" msprop:Generator_UserColumnName="AuctionId" type="xs:long" />
-              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Qty" msprop:Generator_ColumnVarNameInTable="columnQty" msprop:Generator_ColumnPropNameInRow="Qty" msprop:Generator_ColumnPropNameInTable="QtyColumn" msprop:Generator_UserColumnName="Qty" type="xs:long" />
-              <xs:element name="Notes" msprop:Generator_ColumnVarNameInTable="columnNotes" msprop:Generator_ColumnPropNameInRow="Notes" msprop:Generator_ColumnPropNameInTable="NotesColumn" msprop:Generator_UserColumnName="Notes" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="CreateDate" msprop:Generator_ColumnVarNameInTable="columnCreateDate" msprop:Generator_ColumnPropNameInRow="CreateDate" msprop:Generator_ColumnPropNameInTable="CreateDateColumn" msprop:Generator_UserColumnName="CreateDate">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="ModifiedDate" msprop:Generator_ColumnVarNameInTable="columnModifiedDate" msprop:Generator_ColumnPropNameInRow="ModifiedDate" msprop:Generator_ColumnPropNameInTable="ModifiedDateColumn" msprop:Generator_UserColumnName="ModifiedDate">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="RetailValue" msprop:Generator_ColumnVarNameInTable="columnRetailValue" msprop:Generator_ColumnPropNameInRow="RetailValue" msprop:Generator_ColumnPropNameInTable="RetailValueColumn" msprop:Generator_UserColumnName="RetailValue" type="xs:double" minOccurs="0" />
-              <xs:element name="BidIncrementTypeId" msprop:Generator_ColumnVarNameInTable="columnBidIncrementTypeId" msprop:Generator_ColumnPropNameInRow="BidIncrementTypeId" msprop:Generator_ColumnPropNameInTable="BidIncrementTypeIdColumn" msprop:Generator_UserColumnName="BidIncrementTypeId" type="xs:long" />
-              <xs:element name="BidMinValue" msprop:Generator_ColumnVarNameInTable="columnBidMinValue" msprop:Generator_ColumnPropNameInRow="BidMinValue" msprop:Generator_ColumnPropNameInTable="BidMinValueColumn" msprop:Generator_UserColumnName="BidMinValue" type="xs:double" minOccurs="0" />
-              <xs:element name="BidMaxValue" msprop:Generator_ColumnVarNameInTable="columnBidMaxValue" msprop:Generator_ColumnPropNameInRow="BidMaxValue" msprop:Generator_ColumnPropNameInTable="BidMaxValueColumn" msprop:Generator_UserColumnName="BidMaxValue" type="xs:double" minOccurs="0" />
-              <xs:element name="BidIncrementValue" msprop:Generator_ColumnVarNameInTable="columnBidIncrementValue" msprop:Generator_ColumnPropNameInRow="BidIncrementValue" msprop:Generator_ColumnPropNameInTable="BidIncrementValueColumn" msprop:Generator_UserColumnName="BidIncrementValue" type="xs:double" minOccurs="0" />
-              <xs:element name="BidBuyItNowValue" msprop:Generator_ColumnVarNameInTable="columnBidBuyItNowValue" msprop:Generator_ColumnPropNameInRow="BidBuyItNowValue" msprop:Generator_ColumnPropNameInTable="BidBuyItNowValueColumn" msprop:Generator_UserColumnName="BidBuyItNowValue" type="xs:double" minOccurs="0" />
-              <xs:element name="BidNumberOfBids" msprop:Generator_ColumnVarNameInTable="columnBidNumberOfBids" msprop:Generator_ColumnPropNameInRow="BidNumberOfBids" msprop:Generator_ColumnPropNameInTable="BidNumberOfBidsColumn" msprop:Generator_UserColumnName="BidNumberOfBids" type="xs:long" minOccurs="0" />
-              <xs:element name="ItemTypeId" msprop:Generator_ColumnVarNameInTable="columnItemTypeId" msprop:Generator_ColumnPropNameInRow="ItemTypeId" msprop:Generator_ColumnPropNameInTable="ItemTypeIdColumn" msprop:Generator_UserColumnName="ItemTypeId" type="xs:long" minOccurs="0" />
-              <xs:element name="DonationDeliveryTypeId" msprop:Generator_ColumnVarNameInTable="columnDonationDeliveryTypeId" msprop:Generator_ColumnPropNameInRow="DonationDeliveryTypeId" msprop:Generator_ColumnPropNameInTable="DonationDeliveryTypeIdColumn" msprop:Generator_UserColumnName="DonationDeliveryTypeId" type="xs:long" minOccurs="0" />
-              <xs:element name="Image" msprop:Generator_ColumnVarNameInTable="columnImage" msprop:Generator_ColumnPropNameInRow="Image" msprop:Generator_ColumnPropNameInTable="ImageColumn" msprop:Generator_UserColumnName="Image" type="xs:base64Binary" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
         <xs:element name="BidIncrementTypes" msprop:Generator_TableClassName="BidIncrementTypesDataTable" msprop:Generator_TableVarName="tableBidIncrementTypes" msprop:Generator_TablePropName="BidIncrementTypes" msprop:Generator_RowDeletingName="BidIncrementTypesRowDeleting" msprop:Generator_RowChangingName="BidIncrementTypesRowChanging" msprop:Generator_RowEvHandlerName="BidIncrementTypesRowChangeEventHandler" msprop:Generator_RowDeletedName="BidIncrementTypesRowDeleted" msprop:Generator_UserTableName="BidIncrementTypes" msprop:Generator_RowChangedName="BidIncrementTypesRowChanged" msprop:Generator_RowEvArgName="BidIncrementTypesRowChangeEvent" msprop:Generator_RowClassName="BidIncrementTypesRow">
           <xs:complexType>
             <xs:sequence>
@@ -1288,147 +1143,11 @@ FROM            Documents</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DonorsWithNoResponse" msprop:Generator_TableClassName="DonorsWithNoResponseDataTable" msprop:Generator_TableVarName="tableDonorsWithNoResponse" msprop:Generator_TablePropName="DonorsWithNoResponse" msprop:Generator_RowDeletingName="DonorsWithNoResponseRowDeleting" msprop:Generator_RowChangingName="DonorsWithNoResponseRowChanging" msprop:Generator_RowEvHandlerName="DonorsWithNoResponseRowChangeEventHandler" msprop:Generator_RowDeletedName="DonorsWithNoResponseRowDeleted" msprop:Generator_UserTableName="DonorsWithNoResponse" msprop:Generator_RowChangedName="DonorsWithNoResponseRowChanged" msprop:Generator_RowEvArgName="DonorsWithNoResponseRowChangeEvent" msprop:Generator_RowClassName="DonorsWithNoResponseRow">
+        <xs:element name="DonorsWithLetters_OLD" msprop:Generator_TableClassName="DonorsWithLetters_OLDDataTable" msprop:Generator_TableVarName="tableDonorsWithLetters_OLD" msprop:Generator_TablePropName="DonorsWithLetters_OLD" msprop:Generator_RowDeletingName="DonorsWithLetters_OLDRowDeleting" msprop:Generator_RowChangingName="DonorsWithLetters_OLDRowChanging" msprop:Generator_RowEvHandlerName="DonorsWithLetters_OLDRowChangeEventHandler" msprop:Generator_RowDeletedName="DonorsWithLetters_OLDRowDeleted" msprop:Generator_UserTableName="DonorsWithLetters_OLD" msprop:Generator_RowChangedName="DonorsWithLetters_OLDRowChanged" msprop:Generator_RowEvArgName="DonorsWithLetters_OLDRowChangeEvent" msprop:Generator_RowClassName="DonorsWithLetters_OLDRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:long" />
               <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="RequestStatusTypeId" msprop:Generator_ColumnVarNameInTable="columnRequestStatusTypeId" msprop:Generator_ColumnPropNameInRow="RequestStatusTypeId" msprop:Generator_ColumnPropNameInTable="RequestStatusTypeIdColumn" msprop:Generator_UserColumnName="RequestStatusTypeId" type="xs:long" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="DonorsWithEmails" msprop:Generator_TableClassName="DonorsWithEmailsDataTable" msprop:Generator_TableVarName="tableDonorsWithEmails" msprop:Generator_TablePropName="DonorsWithEmails" msprop:Generator_RowDeletingName="DonorsWithEmailsRowDeleting" msprop:Generator_RowChangingName="DonorsWithEmailsRowChanging" msprop:Generator_RowEvHandlerName="DonorsWithEmailsRowChangeEventHandler" msprop:Generator_RowDeletedName="DonorsWithEmailsRowDeleted" msprop:Generator_UserTableName="DonorsWithEmails" msprop:Generator_RowChangedName="DonorsWithEmailsRowChanged" msprop:Generator_RowEvArgName="DonorsWithEmailsRowChangeEvent" msprop:Generator_RowClassName="DonorsWithEmailsRow">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:long" />
-              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Email" msprop:Generator_ColumnVarNameInTable="columnEmail" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_ColumnPropNameInTable="EmailColumn" msprop:Generator_UserColumnName="Email" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="DonorAddresses" msprop:Generator_TableClassName="DonorAddressesDataTable" msprop:Generator_TableVarName="tableDonorAddresses" msprop:Generator_TablePropName="DonorAddresses" msprop:Generator_RowDeletingName="DonorAddressesRowDeleting" msprop:Generator_RowChangingName="DonorAddressesRowChanging" msprop:Generator_RowEvHandlerName="DonorAddressesRowChangeEventHandler" msprop:Generator_RowDeletedName="DonorAddressesRowDeleted" msprop:Generator_UserTableName="DonorAddresses" msprop:Generator_RowChangedName="DonorAddressesRowChanged" msprop:Generator_RowEvArgName="DonorAddressesRowChangeEvent" msprop:Generator_RowClassName="DonorAddressesRow">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:long" />
-              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="ContactName" msprop:Generator_ColumnVarNameInTable="columnContactName" msprop:Generator_ColumnPropNameInRow="ContactName" msprop:Generator_ColumnPropNameInTable="ContactNameColumn" msprop:Generator_UserColumnName="ContactName" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Street1" msprop:Generator_ColumnVarNameInTable="columnStreet1" msprop:Generator_ColumnPropNameInRow="Street1" msprop:Generator_ColumnPropNameInTable="Street1Column" msprop:Generator_UserColumnName="Street1" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Street2" msprop:Generator_ColumnVarNameInTable="columnStreet2" msprop:Generator_ColumnPropNameInRow="Street2" msprop:Generator_ColumnPropNameInTable="Street2Column" msprop:Generator_UserColumnName="Street2" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="City" msprop:Generator_ColumnVarNameInTable="columnCity" msprop:Generator_ColumnPropNameInRow="City" msprop:Generator_ColumnPropNameInTable="CityColumn" msprop:Generator_UserColumnName="City" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="State" msprop:Generator_ColumnVarNameInTable="columnState" msprop:Generator_ColumnPropNameInRow="State" msprop:Generator_ColumnPropNameInTable="StateColumn" msprop:Generator_UserColumnName="State" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="ZipCode" msprop:Generator_ColumnVarNameInTable="columnZipCode" msprop:Generator_ColumnPropNameInRow="ZipCode" msprop:Generator_ColumnPropNameInTable="ZipCodeColumn" msprop:Generator_UserColumnName="ZipCode" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="DonorsWithLetters" msprop:Generator_TableClassName="DonorsWithLettersDataTable" msprop:Generator_TableVarName="tableDonorsWithLetters" msprop:Generator_TablePropName="DonorsWithLetters" msprop:Generator_RowDeletingName="DonorsWithLettersRowDeleting" msprop:Generator_RowChangingName="DonorsWithLettersRowChanging" msprop:Generator_RowEvHandlerName="DonorsWithLettersRowChangeEventHandler" msprop:Generator_RowDeletedName="DonorsWithLettersRowDeleted" msprop:Generator_UserTableName="DonorsWithLetters" msprop:Generator_RowChangedName="DonorsWithLettersRowChanged" msprop:Generator_RowEvArgName="DonorsWithLettersRowChangeEvent" msprop:Generator_RowClassName="DonorsWithLettersRow">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:long" />
-              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="ItemsShortList" msprop:Generator_TableClassName="ItemsShortListDataTable" msprop:Generator_TableVarName="tableItemsShortList" msprop:Generator_TablePropName="ItemsShortList" msprop:Generator_RowDeletingName="ItemsShortListRowDeleting" msprop:Generator_RowChangingName="ItemsShortListRowChanging" msprop:Generator_RowEvHandlerName="ItemsShortListRowChangeEventHandler" msprop:Generator_RowDeletedName="ItemsShortListRowDeleted" msprop:Generator_UserTableName="ItemsShortList" msprop:Generator_RowChangedName="ItemsShortListRowChanged" msprop:Generator_RowEvArgName="ItemsShortListRowChangeEvent" msprop:Generator_RowClassName="ItemsShortListRow">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:long" />
-              <xs:element name="ItemName" msprop:Generator_ColumnVarNameInTable="columnItemName" msprop:Generator_ColumnPropNameInRow="ItemName" msprop:Generator_ColumnPropNameInTable="ItemNameColumn" msprop:Generator_UserColumnName="ItemName">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="DonorName" msprop:Generator_ColumnVarNameInTable="columnDonorName" msprop:Generator_ColumnPropNameInRow="DonorName" msprop:Generator_ColumnPropNameInTable="DonorNameColumn" msprop:Generator_UserColumnName="DonorName">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Qty" msprop:Generator_ColumnVarNameInTable="columnQty" msprop:Generator_ColumnPropNameInRow="Qty" msprop:Generator_ColumnPropNameInTable="QtyColumn" msprop:Generator_UserColumnName="Qty" type="xs:long" />
-              <xs:element name="ItemType" msprop:Generator_ColumnVarNameInTable="columnItemType" msprop:Generator_ColumnPropNameInRow="ItemType" msprop:Generator_ColumnPropNameInTable="ItemTypeColumn" msprop:Generator_UserColumnName="ItemType" type="xs:anyType" minOccurs="0" />
-              <xs:element name="RetailValue" msprop:Generator_ColumnVarNameInTable="columnRetailValue" msprop:Generator_ColumnPropNameInRow="RetailValue" msprop:Generator_ColumnPropNameInTable="RetailValueColumn" msprop:Generator_UserColumnName="RetailValue" type="xs:double" />
-              <xs:element name="BidBuyItNowValue" msprop:Generator_ColumnVarNameInTable="columnBidBuyItNowValue" msprop:Generator_ColumnPropNameInRow="BidBuyItNowValue" msprop:Generator_ColumnPropNameInTable="BidBuyItNowValueColumn" msprop:Generator_UserColumnName="BidBuyItNowValue" type="xs:double" />
-              <xs:element name="BidIncrementTypeId" msprop:Generator_ColumnVarNameInTable="columnBidIncrementTypeId" msprop:Generator_ColumnPropNameInRow="BidIncrementTypeId" msprop:Generator_ColumnPropNameInTable="BidIncrementTypeIdColumn" msprop:Generator_UserColumnName="BidIncrementTypeId" type="xs:long" />
-              <xs:element name="BidMinValue" msprop:Generator_ColumnVarNameInTable="columnBidMinValue" msprop:Generator_ColumnPropNameInRow="BidMinValue" msprop:Generator_ColumnPropNameInTable="BidMinValueColumn" msprop:Generator_UserColumnName="BidMinValue" type="xs:double" />
-              <xs:element name="BidMaxValue" msprop:Generator_ColumnVarNameInTable="columnBidMaxValue" msprop:Generator_ColumnPropNameInRow="BidMaxValue" msprop:Generator_ColumnPropNameInTable="BidMaxValueColumn" msprop:Generator_UserColumnName="BidMaxValue" type="xs:double" />
-              <xs:element name="BidIncrementValue" msprop:Generator_ColumnVarNameInTable="columnBidIncrementValue" msprop:Generator_ColumnPropNameInRow="BidIncrementValue" msprop:Generator_ColumnPropNameInTable="BidIncrementValueColumn" msprop:Generator_UserColumnName="BidIncrementValue" type="xs:double" />
-              <xs:element name="BidNumberOfBids" msprop:Generator_ColumnVarNameInTable="columnBidNumberOfBids" msprop:Generator_ColumnPropNameInRow="BidNumberOfBids" msprop:Generator_ColumnPropNameInTable="BidNumberOfBidsColumn" msprop:Generator_UserColumnName="BidNumberOfBids" type="xs:long" />
-              <xs:element name="AuctionName" msprop:Generator_ColumnVarNameInTable="columnAuctionName" msprop:Generator_ColumnPropNameInRow="AuctionName" msprop:Generator_ColumnPropNameInTable="AuctionNameColumn" msprop:Generator_UserColumnName="AuctionName">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2147483647" />
@@ -1495,6 +1214,103 @@ FROM            Documents</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="DonorsNameOnly" msprop:Generator_TableClassName="DonorsNameOnlyDataTable" msprop:Generator_TableVarName="tableDonorsNameOnly" msprop:Generator_RowChangedName="DonorsNameOnlyRowChanged" msprop:Generator_TablePropName="DonorsNameOnly" msprop:Generator_RowDeletingName="DonorsNameOnlyRowDeleting" msprop:Generator_RowChangingName="DonorsNameOnlyRowChanging" msprop:Generator_RowEvHandlerName="DonorsNameOnlyRowChangeEventHandler" msprop:Generator_RowDeletedName="DonorsNameOnlyRowDeleted" msprop:Generator_RowClassName="DonorsNameOnlyRow" msprop:Generator_UserTableName="DonorsNameOnly" msprop:Generator_RowEvArgName="DonorsNameOnlyRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Items" msprop:Generator_TableClassName="ItemsDataTable" msprop:Generator_TableVarName="tableItems" msprop:Generator_TablePropName="Items" msprop:Generator_RowDeletingName="ItemsRowDeleting" msprop:Generator_RowChangingName="ItemsRowChanging" msprop:Generator_RowEvHandlerName="ItemsRowChangeEventHandler" msprop:Generator_RowDeletedName="ItemsRowDeleted" msprop:Generator_UserTableName="Items" msprop:Generator_RowChangedName="ItemsRowChanged" msprop:Generator_RowEvArgName="ItemsRowChangeEvent" msprop:Generator_RowClassName="ItemsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:long" minOccurs="0" />
+              <xs:element name="DonorTypeName" msprop:Generator_ColumnVarNameInTable="columnDonorTypeName" msprop:Generator_ColumnPropNameInRow="DonorTypeName" msprop:Generator_ColumnPropNameInTable="DonorTypeNameColumn" msprop:Generator_UserColumnName="DonorTypeName" default=" " minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DonorId" msprop:Generator_ColumnVarNameInTable="columnDonorId" msprop:Generator_ColumnPropNameInRow="DonorId" msprop:Generator_ColumnPropNameInTable="DonorIdColumn" msprop:Generator_UserColumnName="DonorId" type="xs:long" minOccurs="0" />
+              <xs:element name="DonorName" msprop:Generator_ColumnVarNameInTable="columnDonorName" msprop:Generator_ColumnPropNameInRow="DonorName" msprop:Generator_ColumnPropNameInTable="DonorNameColumn" msprop:Generator_UserColumnName="DonorName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AuctionId" msprop:Generator_ColumnVarNameInTable="columnAuctionId" msprop:Generator_ColumnPropNameInRow="AuctionId" msprop:Generator_ColumnPropNameInTable="AuctionIdColumn" msprop:Generator_UserColumnName="AuctionId" type="xs:long" minOccurs="0" />
+              <xs:element name="AuctionName" msprop:Generator_ColumnVarNameInTable="columnAuctionName" msprop:Generator_ColumnPropNameInRow="AuctionName" msprop:Generator_ColumnPropNameInTable="AuctionNameColumn" msprop:Generator_UserColumnName="AuctionName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Qty" msprop:Generator_ColumnVarNameInTable="columnQty" msprop:Generator_ColumnPropNameInRow="Qty" msprop:Generator_ColumnPropNameInTable="QtyColumn" msprop:Generator_UserColumnName="Qty" type="xs:long" minOccurs="0" />
+              <xs:element name="ItemTypeId" msprop:Generator_ColumnVarNameInTable="columnItemTypeId" msprop:Generator_ColumnPropNameInRow="ItemTypeId" msprop:Generator_ColumnPropNameInTable="ItemTypeIdColumn" msprop:Generator_UserColumnName="ItemTypeId" type="xs:long" minOccurs="0" />
+              <xs:element name="ItemTypeName" msprop:Generator_ColumnVarNameInTable="columnItemTypeName" msprop:Generator_ColumnPropNameInRow="ItemTypeName" msprop:Generator_ColumnPropNameInTable="ItemTypeNameColumn" msprop:Generator_UserColumnName="ItemTypeName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DonationDeliveryTypeId" msprop:Generator_ColumnVarNameInTable="columnDonationDeliveryTypeId" msprop:Generator_ColumnPropNameInRow="DonationDeliveryTypeId" msprop:Generator_ColumnPropNameInTable="DonationDeliveryTypeIdColumn" msprop:Generator_UserColumnName="DonationDeliveryTypeId" type="xs:long" minOccurs="0" />
+              <xs:element name="SellValue" msprop:Generator_ColumnVarNameInTable="columnSellValue" msprop:Generator_ColumnPropNameInRow="SellValue" msprop:Generator_ColumnPropNameInTable="SellValueColumn" msprop:Generator_UserColumnName="SellValue" type="xs:int" minOccurs="0" />
+              <xs:element name="RetailValue" msprop:Generator_ColumnVarNameInTable="columnRetailValue" msprop:Generator_ColumnPropNameInRow="RetailValue" msprop:Generator_ColumnPropNameInTable="RetailValueColumn" msprop:Generator_UserColumnName="RetailValue" type="xs:double" minOccurs="0" />
+              <xs:element name="BidIncrementTypeId" msprop:Generator_ColumnVarNameInTable="columnBidIncrementTypeId" msprop:Generator_ColumnPropNameInRow="BidIncrementTypeId" msprop:Generator_ColumnPropNameInTable="BidIncrementTypeIdColumn" msprop:Generator_UserColumnName="BidIncrementTypeId" type="xs:long" minOccurs="0" />
+              <xs:element name="BidMinValue" msprop:Generator_ColumnVarNameInTable="columnBidMinValue" msprop:Generator_ColumnPropNameInRow="BidMinValue" msprop:Generator_ColumnPropNameInTable="BidMinValueColumn" msprop:Generator_UserColumnName="BidMinValue" type="xs:double" minOccurs="0" />
+              <xs:element name="BidMaxValue" msprop:Generator_ColumnVarNameInTable="columnBidMaxValue" msprop:Generator_ColumnPropNameInRow="BidMaxValue" msprop:Generator_ColumnPropNameInTable="BidMaxValueColumn" msprop:Generator_UserColumnName="BidMaxValue" type="xs:double" minOccurs="0" />
+              <xs:element name="BidIncrementValue" msprop:Generator_ColumnVarNameInTable="columnBidIncrementValue" msprop:Generator_ColumnPropNameInRow="BidIncrementValue" msprop:Generator_ColumnPropNameInTable="BidIncrementValueColumn" msprop:Generator_UserColumnName="BidIncrementValue" type="xs:double" minOccurs="0" />
+              <xs:element name="BidBuyItNowValue" msprop:Generator_ColumnVarNameInTable="columnBidBuyItNowValue" msprop:Generator_ColumnPropNameInRow="BidBuyItNowValue" msprop:Generator_ColumnPropNameInTable="BidBuyItNowValueColumn" msprop:Generator_UserColumnName="BidBuyItNowValue" type="xs:double" minOccurs="0" />
+              <xs:element name="BidNumberOfBids" msprop:Generator_ColumnVarNameInTable="columnBidNumberOfBids" msprop:Generator_ColumnPropNameInRow="BidNumberOfBids" msprop:Generator_ColumnPropNameInTable="BidNumberOfBidsColumn" msprop:Generator_UserColumnName="BidNumberOfBids" type="xs:long" minOccurs="0" />
+              <xs:element name="Notes" msprop:Generator_ColumnVarNameInTable="columnNotes" msprop:Generator_ColumnPropNameInRow="Notes" msprop:Generator_ColumnPropNameInTable="NotesColumn" msprop:Generator_UserColumnName="Notes" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Image" msprop:Generator_ColumnVarNameInTable="columnImage" msprop:Generator_ColumnPropNameInRow="Image" msprop:Generator_ColumnPropNameInTable="ImageColumn" msprop:Generator_UserColumnName="Image" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="CreateDate" msprop:Generator_ColumnVarNameInTable="columnCreateDate" msprop:Generator_ColumnPropNameInRow="CreateDate" msprop:Generator_ColumnPropNameInTable="CreateDateColumn" msprop:Generator_UserColumnName="CreateDate" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ModifiedDate" msprop:Generator_ColumnVarNameInTable="columnModifiedDate" msprop:Generator_ColumnPropNameInRow="ModifiedDate" msprop:Generator_ColumnPropNameInTable="ModifiedDateColumn" msprop:Generator_UserColumnName="ModifiedDate" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -1507,10 +1323,6 @@ FROM            Documents</CommandText>
     </xs:unique>
     <xs:unique name="DonorTypes_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:DonorTypes" />
-      <xs:field xpath="mstns:Id" />
-    </xs:unique>
-    <xs:unique name="Items_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:Items" />
       <xs:field xpath="mstns:Id" />
     </xs:unique>
     <xs:unique name="BidIncrementTypes_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
@@ -1533,20 +1345,8 @@ FROM            Documents</CommandText>
       <xs:selector xpath=".//mstns:RequestStatusTypes" />
       <xs:field xpath="mstns:Id" />
     </xs:unique>
-    <xs:unique name="DonorsWithNoResponse_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:DonorsWithNoResponse" />
-      <xs:field xpath="mstns:Id" />
-    </xs:unique>
-    <xs:unique name="DonorsWithEmails_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:DonorsWithEmails" />
-      <xs:field xpath="mstns:Id" />
-    </xs:unique>
-    <xs:unique name="Constraint11" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:DonorAddresses" />
-      <xs:field xpath="mstns:Id" />
-    </xs:unique>
-    <xs:unique name="DonorsWithLetters_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:DonorsWithLetters" />
+    <xs:unique name="DonorsWithLetters_OLD_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DonorsWithLetters_OLD" />
       <xs:field xpath="mstns:Id" />
     </xs:unique>
     <xs:unique name="Documents_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
@@ -1561,45 +1361,5 @@ FROM            Documents</CommandText>
       <xs:selector xpath=".//mstns:DocumentNames" />
       <xs:field xpath="mstns:Id" />
     </xs:unique>
-    <xs:keyref name="FK_Auctions_Documents" refer="Constraint1" msprop:rel_Generator_UserChildTable="Documents" msprop:rel_Generator_ChildPropName="GetDocumentsRows" msprop:rel_Generator_UserRelationName="FK_Auctions_Documents" msprop:rel_Generator_ParentPropName="AuctionsRow" msprop:rel_Generator_RelationVarName="relationFK_Auctions_Documents" msprop:rel_Generator_UserParentTable="Auctions">
-      <xs:selector xpath=".//mstns:Documents" />
-      <xs:field xpath="mstns:AuctionId" />
-    </xs:keyref>
-    <xs:keyref name="FK_ItemTypes_Items" refer="ItemTypes_Constraint1" msprop:rel_Generator_UserChildTable="Items" msprop:rel_Generator_ChildPropName="GetItemsRows" msprop:rel_Generator_UserRelationName="FK_ItemTypes_Items" msprop:rel_Generator_RelationVarName="relationFK_ItemTypes_Items" msprop:rel_Generator_UserParentTable="ItemTypes" msprop:rel_Generator_ParentPropName="ItemTypesRow">
-      <xs:selector xpath=".//mstns:Items" />
-      <xs:field xpath="mstns:ItemTypeId" />
-    </xs:keyref>
-    <xs:keyref name="FK_BidIncrementTypes_Items" refer="BidIncrementTypes_Constraint1" msprop:rel_Generator_UserChildTable="Items" msprop:rel_Generator_ChildPropName="GetItemsRows" msprop:rel_Generator_UserRelationName="FK_BidIncrementTypes_Items" msprop:rel_Generator_RelationVarName="relationFK_BidIncrementTypes_Items" msprop:rel_Generator_UserParentTable="BidIncrementTypes" msprop:rel_Generator_ParentPropName="BidIncrementTypesRow">
-      <xs:selector xpath=".//mstns:Items" />
-      <xs:field xpath="mstns:BidIncrementTypeId" />
-    </xs:keyref>
-    <xs:keyref name="FK_Auctions_Items" refer="Constraint1" msprop:rel_Generator_UserChildTable="Items" msprop:rel_Generator_ChildPropName="GetItemsRows" msprop:rel_Generator_UserRelationName="FK_Auctions_Items" msprop:rel_Generator_RelationVarName="relationFK_Auctions_Items" msprop:rel_Generator_UserParentTable="Auctions" msprop:rel_Generator_ParentPropName="AuctionsRow">
-      <xs:selector xpath=".//mstns:Items" />
-      <xs:field xpath="mstns:AuctionId" />
-    </xs:keyref>
-    <xs:keyref name="FK_Donors_Items" refer="Donors_Constraint1" msprop:rel_Generator_UserChildTable="Items" msprop:rel_Generator_ChildPropName="GetItemsRows" msprop:rel_Generator_UserRelationName="FK_Donors_Items" msprop:rel_Generator_RelationVarName="relationFK_Donors_Items" msprop:rel_Generator_UserParentTable="Donors" msprop:rel_Generator_ParentPropName="DonorsRow">
-      <xs:selector xpath=".//mstns:Items" />
-      <xs:field xpath="mstns:DonorId" />
-    </xs:keyref>
-    <xs:keyref name="FK_DonationDeliveryTypes_Items" refer="DonationDeliveryTypes_Constraint1" msprop:rel_Generator_UserChildTable="Items" msprop:rel_Generator_ChildPropName="GetItemsRows" msprop:rel_Generator_UserRelationName="FK_DonationDeliveryTypes_Items" msprop:rel_Generator_ParentPropName="DonationDeliveryTypesRow" msprop:rel_Generator_RelationVarName="relationFK_DonationDeliveryTypes_Items" msprop:rel_Generator_UserParentTable="DonationDeliveryTypes">
-      <xs:selector xpath=".//mstns:Items" />
-      <xs:field xpath="mstns:DonationDeliveryTypeId" />
-    </xs:keyref>
-    <xs:keyref name="FK_Auctions_Donors" refer="Constraint1" msprop:rel_Generator_UserChildTable="Donors" msprop:rel_Generator_ChildPropName="GetDonorsRows" msprop:rel_Generator_UserRelationName="FK_Auctions_Donors" msprop:rel_Generator_ParentPropName="AuctionsRow" msprop:rel_Generator_RelationVarName="relationFK_Auctions_Donors" msprop:rel_Generator_UserParentTable="Auctions">
-      <xs:selector xpath=".//mstns:Donors" />
-      <xs:field xpath="mstns:AuctionId" />
-    </xs:keyref>
-    <xs:keyref name="FK_RequestStatusTypes_Donors" refer="RequestStatusTypes_Constraint1" msprop:rel_Generator_UserChildTable="Donors" msprop:rel_Generator_ChildPropName="GetDonorsRows" msprop:rel_Generator_UserRelationName="FK_RequestStatusTypes_Donors" msprop:rel_Generator_RelationVarName="relationFK_RequestStatusTypes_Donors" msprop:rel_Generator_UserParentTable="RequestStatusTypes" msprop:rel_Generator_ParentPropName="RequestStatusTypesRow">
-      <xs:selector xpath=".//mstns:Donors" />
-      <xs:field xpath="mstns:RequestStatusTypeId" />
-    </xs:keyref>
-    <xs:keyref name="FK_RequestFormatTypes_Donors" refer="RequestFormatTypes_Constraint1" msprop:rel_Generator_UserChildTable="Donors" msprop:rel_Generator_ChildPropName="GetDonorsRows" msprop:rel_Generator_UserRelationName="FK_RequestFormatTypes_Donors" msprop:rel_Generator_RelationVarName="relationFK_RequestFormatTypes_Donors" msprop:rel_Generator_UserParentTable="RequestFormatTypes" msprop:rel_Generator_ParentPropName="RequestFormatTypesRow">
-      <xs:selector xpath=".//mstns:Donors" />
-      <xs:field xpath="mstns:RequestFormatTypeId" />
-    </xs:keyref>
-    <xs:keyref name="FK_DonorTypes_Donors" refer="DonorTypes_Constraint1" msprop:rel_Generator_UserChildTable="Donors" msprop:rel_Generator_ChildPropName="GetDonorsRows" msprop:rel_Generator_UserRelationName="FK_DonorTypes_Donors" msprop:rel_Generator_ParentPropName="DonorTypesRow" msprop:rel_Generator_RelationVarName="relationFK_DonorTypes_Donors" msprop:rel_Generator_UserParentTable="DonorTypes">
-      <xs:selector xpath=".//mstns:Donors" />
-      <xs:field xpath="mstns:DonorTypeId" />
-    </xs:keyref>
   </xs:element>
 </xs:schema>

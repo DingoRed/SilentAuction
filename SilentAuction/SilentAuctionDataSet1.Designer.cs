@@ -30,8 +30,6 @@ namespace SilentAuction {
         
         private DonorTypesDataTable tableDonorTypes;
         
-        private ItemsDataTable tableItems;
-        
         private BidIncrementTypesDataTable tableBidIncrementTypes;
         
         private DonationDeliveryTypesDataTable tableDonationDeliveryTypes;
@@ -42,15 +40,7 @@ namespace SilentAuction {
         
         private RequestStatusTypesDataTable tableRequestStatusTypes;
         
-        private DonorsWithNoResponseDataTable tableDonorsWithNoResponse;
-        
-        private DonorsWithEmailsDataTable tableDonorsWithEmails;
-        
-        private DonorAddressesDataTable tableDonorAddresses;
-        
-        private DonorsWithLettersDataTable tableDonorsWithLetters;
-        
-        private ItemsShortListDataTable tableItemsShortList;
+        private DonorsWithLetters_OLDDataTable tableDonorsWithLetters_OLD;
         
         private DocumentsDataTable tableDocuments;
         
@@ -58,25 +48,9 @@ namespace SilentAuction {
         
         private DocumentNamesDataTable tableDocumentNames;
         
-        private global::System.Data.DataRelation relationFK_Auctions_Donors;
+        private DonorsNameOnlyDataTable tableDonorsNameOnly;
         
-        private global::System.Data.DataRelation relationFK_RequestStatusTypes_Donors;
-        
-        private global::System.Data.DataRelation relationFK_RequestFormatTypes_Donors;
-        
-        private global::System.Data.DataRelation relationFK_DonorTypes_Donors;
-        
-        private global::System.Data.DataRelation relationFK_ItemTypes_Items;
-        
-        private global::System.Data.DataRelation relationFK_BidIncrementTypes_Items;
-        
-        private global::System.Data.DataRelation relationFK_Auctions_Items;
-        
-        private global::System.Data.DataRelation relationFK_Donors_Items;
-        
-        private global::System.Data.DataRelation relationFK_DonationDeliveryTypes_Items;
-        
-        private global::System.Data.DataRelation relationFK_Auctions_Documents;
+        private ItemsDataTable tableItems;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -115,9 +89,6 @@ namespace SilentAuction {
                 if ((ds.Tables["DonorTypes"] != null)) {
                     base.Tables.Add(new DonorTypesDataTable(ds.Tables["DonorTypes"]));
                 }
-                if ((ds.Tables["Items"] != null)) {
-                    base.Tables.Add(new ItemsDataTable(ds.Tables["Items"]));
-                }
                 if ((ds.Tables["BidIncrementTypes"] != null)) {
                     base.Tables.Add(new BidIncrementTypesDataTable(ds.Tables["BidIncrementTypes"]));
                 }
@@ -133,20 +104,8 @@ namespace SilentAuction {
                 if ((ds.Tables["RequestStatusTypes"] != null)) {
                     base.Tables.Add(new RequestStatusTypesDataTable(ds.Tables["RequestStatusTypes"]));
                 }
-                if ((ds.Tables["DonorsWithNoResponse"] != null)) {
-                    base.Tables.Add(new DonorsWithNoResponseDataTable(ds.Tables["DonorsWithNoResponse"]));
-                }
-                if ((ds.Tables["DonorsWithEmails"] != null)) {
-                    base.Tables.Add(new DonorsWithEmailsDataTable(ds.Tables["DonorsWithEmails"]));
-                }
-                if ((ds.Tables["DonorAddresses"] != null)) {
-                    base.Tables.Add(new DonorAddressesDataTable(ds.Tables["DonorAddresses"]));
-                }
-                if ((ds.Tables["DonorsWithLetters"] != null)) {
-                    base.Tables.Add(new DonorsWithLettersDataTable(ds.Tables["DonorsWithLetters"]));
-                }
-                if ((ds.Tables["ItemsShortList"] != null)) {
-                    base.Tables.Add(new ItemsShortListDataTable(ds.Tables["ItemsShortList"]));
+                if ((ds.Tables["DonorsWithLetters_OLD"] != null)) {
+                    base.Tables.Add(new DonorsWithLetters_OLDDataTable(ds.Tables["DonorsWithLetters_OLD"]));
                 }
                 if ((ds.Tables["Documents"] != null)) {
                     base.Tables.Add(new DocumentsDataTable(ds.Tables["Documents"]));
@@ -156,6 +115,12 @@ namespace SilentAuction {
                 }
                 if ((ds.Tables["DocumentNames"] != null)) {
                     base.Tables.Add(new DocumentNamesDataTable(ds.Tables["DocumentNames"]));
+                }
+                if ((ds.Tables["DonorsNameOnly"] != null)) {
+                    base.Tables.Add(new DonorsNameOnlyDataTable(ds.Tables["DonorsNameOnly"]));
+                }
+                if ((ds.Tables["Items"] != null)) {
+                    base.Tables.Add(new ItemsDataTable(ds.Tables["Items"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -202,16 +167,6 @@ namespace SilentAuction {
         public DonorTypesDataTable DonorTypes {
             get {
                 return this.tableDonorTypes;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ItemsDataTable Items {
-            get {
-                return this.tableItems;
             }
         }
         
@@ -269,49 +224,9 @@ namespace SilentAuction {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public DonorsWithNoResponseDataTable DonorsWithNoResponse {
+        public DonorsWithLetters_OLDDataTable DonorsWithLetters_OLD {
             get {
-                return this.tableDonorsWithNoResponse;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public DonorsWithEmailsDataTable DonorsWithEmails {
-            get {
-                return this.tableDonorsWithEmails;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public DonorAddressesDataTable DonorAddresses {
-            get {
-                return this.tableDonorAddresses;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public DonorsWithLettersDataTable DonorsWithLetters {
-            get {
-                return this.tableDonorsWithLetters;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ItemsShortListDataTable ItemsShortList {
-            get {
-                return this.tableItemsShortList;
+                return this.tableDonorsWithLetters_OLD;
             }
         }
         
@@ -342,6 +257,26 @@ namespace SilentAuction {
         public DocumentNamesDataTable DocumentNames {
             get {
                 return this.tableDocumentNames;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public DonorsNameOnlyDataTable DonorsNameOnly {
+            get {
+                return this.tableDonorsNameOnly;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ItemsDataTable Items {
+            get {
+                return this.tableItems;
             }
         }
         
@@ -421,9 +356,6 @@ namespace SilentAuction {
                 if ((ds.Tables["DonorTypes"] != null)) {
                     base.Tables.Add(new DonorTypesDataTable(ds.Tables["DonorTypes"]));
                 }
-                if ((ds.Tables["Items"] != null)) {
-                    base.Tables.Add(new ItemsDataTable(ds.Tables["Items"]));
-                }
                 if ((ds.Tables["BidIncrementTypes"] != null)) {
                     base.Tables.Add(new BidIncrementTypesDataTable(ds.Tables["BidIncrementTypes"]));
                 }
@@ -439,20 +371,8 @@ namespace SilentAuction {
                 if ((ds.Tables["RequestStatusTypes"] != null)) {
                     base.Tables.Add(new RequestStatusTypesDataTable(ds.Tables["RequestStatusTypes"]));
                 }
-                if ((ds.Tables["DonorsWithNoResponse"] != null)) {
-                    base.Tables.Add(new DonorsWithNoResponseDataTable(ds.Tables["DonorsWithNoResponse"]));
-                }
-                if ((ds.Tables["DonorsWithEmails"] != null)) {
-                    base.Tables.Add(new DonorsWithEmailsDataTable(ds.Tables["DonorsWithEmails"]));
-                }
-                if ((ds.Tables["DonorAddresses"] != null)) {
-                    base.Tables.Add(new DonorAddressesDataTable(ds.Tables["DonorAddresses"]));
-                }
-                if ((ds.Tables["DonorsWithLetters"] != null)) {
-                    base.Tables.Add(new DonorsWithLettersDataTable(ds.Tables["DonorsWithLetters"]));
-                }
-                if ((ds.Tables["ItemsShortList"] != null)) {
-                    base.Tables.Add(new ItemsShortListDataTable(ds.Tables["ItemsShortList"]));
+                if ((ds.Tables["DonorsWithLetters_OLD"] != null)) {
+                    base.Tables.Add(new DonorsWithLetters_OLDDataTable(ds.Tables["DonorsWithLetters_OLD"]));
                 }
                 if ((ds.Tables["Documents"] != null)) {
                     base.Tables.Add(new DocumentsDataTable(ds.Tables["Documents"]));
@@ -462,6 +382,12 @@ namespace SilentAuction {
                 }
                 if ((ds.Tables["DocumentNames"] != null)) {
                     base.Tables.Add(new DocumentNamesDataTable(ds.Tables["DocumentNames"]));
+                }
+                if ((ds.Tables["DonorsNameOnly"] != null)) {
+                    base.Tables.Add(new DonorsNameOnlyDataTable(ds.Tables["DonorsNameOnly"]));
+                }
+                if ((ds.Tables["Items"] != null)) {
+                    base.Tables.Add(new ItemsDataTable(ds.Tables["Items"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -514,12 +440,6 @@ namespace SilentAuction {
                     this.tableDonorTypes.InitVars();
                 }
             }
-            this.tableItems = ((ItemsDataTable)(base.Tables["Items"]));
-            if ((initTable == true)) {
-                if ((this.tableItems != null)) {
-                    this.tableItems.InitVars();
-                }
-            }
             this.tableBidIncrementTypes = ((BidIncrementTypesDataTable)(base.Tables["BidIncrementTypes"]));
             if ((initTable == true)) {
                 if ((this.tableBidIncrementTypes != null)) {
@@ -550,34 +470,10 @@ namespace SilentAuction {
                     this.tableRequestStatusTypes.InitVars();
                 }
             }
-            this.tableDonorsWithNoResponse = ((DonorsWithNoResponseDataTable)(base.Tables["DonorsWithNoResponse"]));
+            this.tableDonorsWithLetters_OLD = ((DonorsWithLetters_OLDDataTable)(base.Tables["DonorsWithLetters_OLD"]));
             if ((initTable == true)) {
-                if ((this.tableDonorsWithNoResponse != null)) {
-                    this.tableDonorsWithNoResponse.InitVars();
-                }
-            }
-            this.tableDonorsWithEmails = ((DonorsWithEmailsDataTable)(base.Tables["DonorsWithEmails"]));
-            if ((initTable == true)) {
-                if ((this.tableDonorsWithEmails != null)) {
-                    this.tableDonorsWithEmails.InitVars();
-                }
-            }
-            this.tableDonorAddresses = ((DonorAddressesDataTable)(base.Tables["DonorAddresses"]));
-            if ((initTable == true)) {
-                if ((this.tableDonorAddresses != null)) {
-                    this.tableDonorAddresses.InitVars();
-                }
-            }
-            this.tableDonorsWithLetters = ((DonorsWithLettersDataTable)(base.Tables["DonorsWithLetters"]));
-            if ((initTable == true)) {
-                if ((this.tableDonorsWithLetters != null)) {
-                    this.tableDonorsWithLetters.InitVars();
-                }
-            }
-            this.tableItemsShortList = ((ItemsShortListDataTable)(base.Tables["ItemsShortList"]));
-            if ((initTable == true)) {
-                if ((this.tableItemsShortList != null)) {
-                    this.tableItemsShortList.InitVars();
+                if ((this.tableDonorsWithLetters_OLD != null)) {
+                    this.tableDonorsWithLetters_OLD.InitVars();
                 }
             }
             this.tableDocuments = ((DocumentsDataTable)(base.Tables["Documents"]));
@@ -598,16 +494,18 @@ namespace SilentAuction {
                     this.tableDocumentNames.InitVars();
                 }
             }
-            this.relationFK_Auctions_Donors = this.Relations["FK_Auctions_Donors"];
-            this.relationFK_RequestStatusTypes_Donors = this.Relations["FK_RequestStatusTypes_Donors"];
-            this.relationFK_RequestFormatTypes_Donors = this.Relations["FK_RequestFormatTypes_Donors"];
-            this.relationFK_DonorTypes_Donors = this.Relations["FK_DonorTypes_Donors"];
-            this.relationFK_ItemTypes_Items = this.Relations["FK_ItemTypes_Items"];
-            this.relationFK_BidIncrementTypes_Items = this.Relations["FK_BidIncrementTypes_Items"];
-            this.relationFK_Auctions_Items = this.Relations["FK_Auctions_Items"];
-            this.relationFK_Donors_Items = this.Relations["FK_Donors_Items"];
-            this.relationFK_DonationDeliveryTypes_Items = this.Relations["FK_DonationDeliveryTypes_Items"];
-            this.relationFK_Auctions_Documents = this.Relations["FK_Auctions_Documents"];
+            this.tableDonorsNameOnly = ((DonorsNameOnlyDataTable)(base.Tables["DonorsNameOnly"]));
+            if ((initTable == true)) {
+                if ((this.tableDonorsNameOnly != null)) {
+                    this.tableDonorsNameOnly.InitVars();
+                }
+            }
+            this.tableItems = ((ItemsDataTable)(base.Tables["Items"]));
+            if ((initTable == true)) {
+                if ((this.tableItems != null)) {
+                    this.tableItems.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -624,8 +522,6 @@ namespace SilentAuction {
             base.Tables.Add(this.tableDonors);
             this.tableDonorTypes = new DonorTypesDataTable();
             base.Tables.Add(this.tableDonorTypes);
-            this.tableItems = new ItemsDataTable();
-            base.Tables.Add(this.tableItems);
             this.tableBidIncrementTypes = new BidIncrementTypesDataTable();
             base.Tables.Add(this.tableBidIncrementTypes);
             this.tableDonationDeliveryTypes = new DonationDeliveryTypesDataTable();
@@ -636,133 +532,18 @@ namespace SilentAuction {
             base.Tables.Add(this.tableRequestFormatTypes);
             this.tableRequestStatusTypes = new RequestStatusTypesDataTable();
             base.Tables.Add(this.tableRequestStatusTypes);
-            this.tableDonorsWithNoResponse = new DonorsWithNoResponseDataTable();
-            base.Tables.Add(this.tableDonorsWithNoResponse);
-            this.tableDonorsWithEmails = new DonorsWithEmailsDataTable();
-            base.Tables.Add(this.tableDonorsWithEmails);
-            this.tableDonorAddresses = new DonorAddressesDataTable();
-            base.Tables.Add(this.tableDonorAddresses);
-            this.tableDonorsWithLetters = new DonorsWithLettersDataTable();
-            base.Tables.Add(this.tableDonorsWithLetters);
-            this.tableItemsShortList = new ItemsShortListDataTable();
-            base.Tables.Add(this.tableItemsShortList);
+            this.tableDonorsWithLetters_OLD = new DonorsWithLetters_OLDDataTable();
+            base.Tables.Add(this.tableDonorsWithLetters_OLD);
             this.tableDocuments = new DocumentsDataTable();
             base.Tables.Add(this.tableDocuments);
             this.tableEmailAccounts = new EmailAccountsDataTable();
             base.Tables.Add(this.tableEmailAccounts);
             this.tableDocumentNames = new DocumentNamesDataTable();
             base.Tables.Add(this.tableDocumentNames);
-            global::System.Data.ForeignKeyConstraint fkc;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Auctions_Donors", new global::System.Data.DataColumn[] {
-                        this.tableAuctions.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDonors.AuctionIdColumn});
-            this.tableDonors.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_RequestStatusTypes_Donors", new global::System.Data.DataColumn[] {
-                        this.tableRequestStatusTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDonors.RequestStatusTypeIdColumn});
-            this.tableDonors.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_RequestFormatTypes_Donors", new global::System.Data.DataColumn[] {
-                        this.tableRequestFormatTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDonors.RequestFormatTypeIdColumn});
-            this.tableDonors.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_DonorTypes_Donors", new global::System.Data.DataColumn[] {
-                        this.tableDonorTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDonors.DonorTypeIdColumn});
-            this.tableDonors.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_ItemTypes_Items", new global::System.Data.DataColumn[] {
-                        this.tableItemTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.ItemTypeIdColumn});
-            this.tableItems.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_BidIncrementTypes_Items", new global::System.Data.DataColumn[] {
-                        this.tableBidIncrementTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.BidIncrementTypeIdColumn});
-            this.tableItems.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Auctions_Items", new global::System.Data.DataColumn[] {
-                        this.tableAuctions.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.AuctionIdColumn});
-            this.tableItems.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Donors_Items", new global::System.Data.DataColumn[] {
-                        this.tableDonors.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.DonorIdColumn});
-            this.tableItems.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_DonationDeliveryTypes_Items", new global::System.Data.DataColumn[] {
-                        this.tableDonationDeliveryTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.DonationDeliveryTypeIdColumn});
-            this.tableItems.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Auctions_Documents", new global::System.Data.DataColumn[] {
-                        this.tableAuctions.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDocuments.AuctionIdColumn});
-            this.tableDocuments.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            this.relationFK_Auctions_Donors = new global::System.Data.DataRelation("FK_Auctions_Donors", new global::System.Data.DataColumn[] {
-                        this.tableAuctions.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDonors.AuctionIdColumn}, false);
-            this.Relations.Add(this.relationFK_Auctions_Donors);
-            this.relationFK_RequestStatusTypes_Donors = new global::System.Data.DataRelation("FK_RequestStatusTypes_Donors", new global::System.Data.DataColumn[] {
-                        this.tableRequestStatusTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDonors.RequestStatusTypeIdColumn}, false);
-            this.Relations.Add(this.relationFK_RequestStatusTypes_Donors);
-            this.relationFK_RequestFormatTypes_Donors = new global::System.Data.DataRelation("FK_RequestFormatTypes_Donors", new global::System.Data.DataColumn[] {
-                        this.tableRequestFormatTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDonors.RequestFormatTypeIdColumn}, false);
-            this.Relations.Add(this.relationFK_RequestFormatTypes_Donors);
-            this.relationFK_DonorTypes_Donors = new global::System.Data.DataRelation("FK_DonorTypes_Donors", new global::System.Data.DataColumn[] {
-                        this.tableDonorTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDonors.DonorTypeIdColumn}, false);
-            this.Relations.Add(this.relationFK_DonorTypes_Donors);
-            this.relationFK_ItemTypes_Items = new global::System.Data.DataRelation("FK_ItemTypes_Items", new global::System.Data.DataColumn[] {
-                        this.tableItemTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.ItemTypeIdColumn}, false);
-            this.Relations.Add(this.relationFK_ItemTypes_Items);
-            this.relationFK_BidIncrementTypes_Items = new global::System.Data.DataRelation("FK_BidIncrementTypes_Items", new global::System.Data.DataColumn[] {
-                        this.tableBidIncrementTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.BidIncrementTypeIdColumn}, false);
-            this.Relations.Add(this.relationFK_BidIncrementTypes_Items);
-            this.relationFK_Auctions_Items = new global::System.Data.DataRelation("FK_Auctions_Items", new global::System.Data.DataColumn[] {
-                        this.tableAuctions.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.AuctionIdColumn}, false);
-            this.Relations.Add(this.relationFK_Auctions_Items);
-            this.relationFK_Donors_Items = new global::System.Data.DataRelation("FK_Donors_Items", new global::System.Data.DataColumn[] {
-                        this.tableDonors.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.DonorIdColumn}, false);
-            this.Relations.Add(this.relationFK_Donors_Items);
-            this.relationFK_DonationDeliveryTypes_Items = new global::System.Data.DataRelation("FK_DonationDeliveryTypes_Items", new global::System.Data.DataColumn[] {
-                        this.tableDonationDeliveryTypes.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItems.DonationDeliveryTypeIdColumn}, false);
-            this.Relations.Add(this.relationFK_DonationDeliveryTypes_Items);
-            this.relationFK_Auctions_Documents = new global::System.Data.DataRelation("FK_Auctions_Documents", new global::System.Data.DataColumn[] {
-                        this.tableAuctions.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDocuments.AuctionIdColumn}, false);
-            this.Relations.Add(this.relationFK_Auctions_Documents);
+            this.tableDonorsNameOnly = new DonorsNameOnlyDataTable();
+            base.Tables.Add(this.tableDonorsNameOnly);
+            this.tableItems = new ItemsDataTable();
+            base.Tables.Add(this.tableItems);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -780,12 +561,6 @@ namespace SilentAuction {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeDonorTypes() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeItems() {
             return false;
         }
         
@@ -821,31 +596,7 @@ namespace SilentAuction {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeDonorsWithNoResponse() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeDonorsWithEmails() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeDonorAddresses() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeDonorsWithLetters() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeItemsShortList() {
+        private bool ShouldSerializeDonorsWithLetters_OLD() {
             return false;
         }
         
@@ -864,6 +615,18 @@ namespace SilentAuction {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeDocumentNames() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeDonorsNameOnly() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeItems() {
             return false;
         }
         
@@ -932,9 +695,6 @@ namespace SilentAuction {
         public delegate void DonorTypesRowChangeEventHandler(object sender, DonorTypesRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void ItemsRowChangeEventHandler(object sender, ItemsRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void BidIncrementTypesRowChangeEventHandler(object sender, BidIncrementTypesRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -950,19 +710,7 @@ namespace SilentAuction {
         public delegate void RequestStatusTypesRowChangeEventHandler(object sender, RequestStatusTypesRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void DonorsWithNoResponseRowChangeEventHandler(object sender, DonorsWithNoResponseRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void DonorsWithEmailsRowChangeEventHandler(object sender, DonorsWithEmailsRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void DonorAddressesRowChangeEventHandler(object sender, DonorAddressesRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void DonorsWithLettersRowChangeEventHandler(object sender, DonorsWithLettersRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void ItemsShortListRowChangeEventHandler(object sender, ItemsShortListRowChangeEvent e);
+        public delegate void DonorsWithLetters_OLDRowChangeEventHandler(object sender, DonorsWithLetters_OLDRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void DocumentsRowChangeEventHandler(object sender, DocumentsRowChangeEvent e);
@@ -972,6 +720,12 @@ namespace SilentAuction {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void DocumentNamesRowChangeEventHandler(object sender, DocumentNamesRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void DonorsNameOnlyRowChangeEventHandler(object sender, DonorsNameOnlyRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void ItemsRowChangeEventHandler(object sender, ItemsRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1575,7 +1329,7 @@ namespace SilentAuction {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DonorsRow AddDonorsRow(
-                        DonorTypesRow parentDonorTypesRowByFK_DonorTypes_Donors, 
+                        long DonorTypeId, 
                         string Name, 
                         string ContactName, 
                         string Street1, 
@@ -1590,14 +1344,14 @@ namespace SilentAuction {
                         string Email, 
                         string CreateDate, 
                         string ModifiedDate, 
-                        RequestFormatTypesRow parentRequestFormatTypesRowByFK_RequestFormatTypes_Donors, 
+                        long RequestFormatTypeId, 
                         string Url, 
-                        AuctionsRow parentAuctionsRowByFK_Auctions_Donors, 
-                        RequestStatusTypesRow parentRequestStatusTypesRowByFK_RequestStatusTypes_Donors) {
+                        long AuctionId, 
+                        long RequestStatusTypeId) {
                 DonorsRow rowDonorsRow = ((DonorsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        null,
+                        DonorTypeId,
                         Name,
                         ContactName,
                         Street1,
@@ -1612,22 +1366,10 @@ namespace SilentAuction {
                         Email,
                         CreateDate,
                         ModifiedDate,
-                        null,
+                        RequestFormatTypeId,
                         Url,
-                        null,
-                        null};
-                if ((parentDonorTypesRowByFK_DonorTypes_Donors != null)) {
-                    columnValuesArray[1] = parentDonorTypesRowByFK_DonorTypes_Donors[0];
-                }
-                if ((parentRequestFormatTypesRowByFK_RequestFormatTypes_Donors != null)) {
-                    columnValuesArray[16] = parentRequestFormatTypesRowByFK_RequestFormatTypes_Donors[0];
-                }
-                if ((parentAuctionsRowByFK_Auctions_Donors != null)) {
-                    columnValuesArray[18] = parentAuctionsRowByFK_Auctions_Donors[0];
-                }
-                if ((parentRequestStatusTypesRowByFK_RequestStatusTypes_Donors != null)) {
-                    columnValuesArray[19] = parentRequestStatusTypesRowByFK_RequestStatusTypes_Donors[0];
-                }
+                        AuctionId,
+                        RequestStatusTypeId};
                 rowDonorsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDonorsRow);
                 return rowDonorsRow;
@@ -2112,564 +1854,6 @@ namespace SilentAuction {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "DonorTypesDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ItemsDataTable : global::System.Data.TypedTableBase<ItemsRow> {
-            
-            private global::System.Data.DataColumn columnId;
-            
-            private global::System.Data.DataColumn columnDonorId;
-            
-            private global::System.Data.DataColumn columnAuctionId;
-            
-            private global::System.Data.DataColumn columnName;
-            
-            private global::System.Data.DataColumn columnDescription;
-            
-            private global::System.Data.DataColumn columnQty;
-            
-            private global::System.Data.DataColumn columnNotes;
-            
-            private global::System.Data.DataColumn columnCreateDate;
-            
-            private global::System.Data.DataColumn columnModifiedDate;
-            
-            private global::System.Data.DataColumn columnRetailValue;
-            
-            private global::System.Data.DataColumn columnBidIncrementTypeId;
-            
-            private global::System.Data.DataColumn columnBidMinValue;
-            
-            private global::System.Data.DataColumn columnBidMaxValue;
-            
-            private global::System.Data.DataColumn columnBidIncrementValue;
-            
-            private global::System.Data.DataColumn columnBidBuyItNowValue;
-            
-            private global::System.Data.DataColumn columnBidNumberOfBids;
-            
-            private global::System.Data.DataColumn columnItemTypeId;
-            
-            private global::System.Data.DataColumn columnDonationDeliveryTypeId;
-            
-            private global::System.Data.DataColumn columnImage;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemsDataTable() {
-                this.TableName = "Items";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ItemsDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected ItemsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdColumn {
-                get {
-                    return this.columnId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DonorIdColumn {
-                get {
-                    return this.columnDonorId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn AuctionIdColumn {
-                get {
-                    return this.columnAuctionId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NameColumn {
-                get {
-                    return this.columnName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DescriptionColumn {
-                get {
-                    return this.columnDescription;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn QtyColumn {
-                get {
-                    return this.columnQty;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NotesColumn {
-                get {
-                    return this.columnNotes;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CreateDateColumn {
-                get {
-                    return this.columnCreateDate;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ModifiedDateColumn {
-                get {
-                    return this.columnModifiedDate;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn RetailValueColumn {
-                get {
-                    return this.columnRetailValue;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn BidIncrementTypeIdColumn {
-                get {
-                    return this.columnBidIncrementTypeId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn BidMinValueColumn {
-                get {
-                    return this.columnBidMinValue;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn BidMaxValueColumn {
-                get {
-                    return this.columnBidMaxValue;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn BidIncrementValueColumn {
-                get {
-                    return this.columnBidIncrementValue;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn BidBuyItNowValueColumn {
-                get {
-                    return this.columnBidBuyItNowValue;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn BidNumberOfBidsColumn {
-                get {
-                    return this.columnBidNumberOfBids;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ItemTypeIdColumn {
-                get {
-                    return this.columnItemTypeId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DonationDeliveryTypeIdColumn {
-                get {
-                    return this.columnDonationDeliveryTypeId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ImageColumn {
-                get {
-                    return this.columnImage;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemsRow this[int index] {
-                get {
-                    return ((ItemsRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ItemsRowChangeEventHandler ItemsRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ItemsRowChangeEventHandler ItemsRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ItemsRowChangeEventHandler ItemsRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ItemsRowChangeEventHandler ItemsRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddItemsRow(ItemsRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemsRow AddItemsRow(
-                        DonorsRow parentDonorsRowByFK_Donors_Items, 
-                        AuctionsRow parentAuctionsRowByFK_Auctions_Items, 
-                        string Name, 
-                        string Description, 
-                        long Qty, 
-                        string Notes, 
-                        string CreateDate, 
-                        string ModifiedDate, 
-                        double RetailValue, 
-                        BidIncrementTypesRow parentBidIncrementTypesRowByFK_BidIncrementTypes_Items, 
-                        double BidMinValue, 
-                        double BidMaxValue, 
-                        double BidIncrementValue, 
-                        double BidBuyItNowValue, 
-                        long BidNumberOfBids, 
-                        ItemTypesRow parentItemTypesRowByFK_ItemTypes_Items, 
-                        DonationDeliveryTypesRow parentDonationDeliveryTypesRowByFK_DonationDeliveryTypes_Items, 
-                        byte[] Image) {
-                ItemsRow rowItemsRow = ((ItemsRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        null,
-                        null,
-                        Name,
-                        Description,
-                        Qty,
-                        Notes,
-                        CreateDate,
-                        ModifiedDate,
-                        RetailValue,
-                        null,
-                        BidMinValue,
-                        BidMaxValue,
-                        BidIncrementValue,
-                        BidBuyItNowValue,
-                        BidNumberOfBids,
-                        null,
-                        null,
-                        Image};
-                if ((parentDonorsRowByFK_Donors_Items != null)) {
-                    columnValuesArray[1] = parentDonorsRowByFK_Donors_Items[0];
-                }
-                if ((parentAuctionsRowByFK_Auctions_Items != null)) {
-                    columnValuesArray[2] = parentAuctionsRowByFK_Auctions_Items[0];
-                }
-                if ((parentBidIncrementTypesRowByFK_BidIncrementTypes_Items != null)) {
-                    columnValuesArray[10] = parentBidIncrementTypesRowByFK_BidIncrementTypes_Items[0];
-                }
-                if ((parentItemTypesRowByFK_ItemTypes_Items != null)) {
-                    columnValuesArray[16] = parentItemTypesRowByFK_ItemTypes_Items[0];
-                }
-                if ((parentDonationDeliveryTypesRowByFK_DonationDeliveryTypes_Items != null)) {
-                    columnValuesArray[17] = parentDonationDeliveryTypesRowByFK_DonationDeliveryTypes_Items[0];
-                }
-                rowItemsRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowItemsRow);
-                return rowItemsRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemsRow FindById(long Id) {
-                return ((ItemsRow)(this.Rows.Find(new object[] {
-                            Id})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                ItemsDataTable cln = ((ItemsDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new ItemsDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnId = base.Columns["Id"];
-                this.columnDonorId = base.Columns["DonorId"];
-                this.columnAuctionId = base.Columns["AuctionId"];
-                this.columnName = base.Columns["Name"];
-                this.columnDescription = base.Columns["Description"];
-                this.columnQty = base.Columns["Qty"];
-                this.columnNotes = base.Columns["Notes"];
-                this.columnCreateDate = base.Columns["CreateDate"];
-                this.columnModifiedDate = base.Columns["ModifiedDate"];
-                this.columnRetailValue = base.Columns["RetailValue"];
-                this.columnBidIncrementTypeId = base.Columns["BidIncrementTypeId"];
-                this.columnBidMinValue = base.Columns["BidMinValue"];
-                this.columnBidMaxValue = base.Columns["BidMaxValue"];
-                this.columnBidIncrementValue = base.Columns["BidIncrementValue"];
-                this.columnBidBuyItNowValue = base.Columns["BidBuyItNowValue"];
-                this.columnBidNumberOfBids = base.Columns["BidNumberOfBids"];
-                this.columnItemTypeId = base.Columns["ItemTypeId"];
-                this.columnDonationDeliveryTypeId = base.Columns["DonationDeliveryTypeId"];
-                this.columnImage = base.Columns["Image"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnId = new global::System.Data.DataColumn("Id", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId);
-                this.columnDonorId = new global::System.Data.DataColumn("DonorId", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDonorId);
-                this.columnAuctionId = new global::System.Data.DataColumn("AuctionId", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAuctionId);
-                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnName);
-                this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDescription);
-                this.columnQty = new global::System.Data.DataColumn("Qty", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnQty);
-                this.columnNotes = new global::System.Data.DataColumn("Notes", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNotes);
-                this.columnCreateDate = new global::System.Data.DataColumn("CreateDate", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCreateDate);
-                this.columnModifiedDate = new global::System.Data.DataColumn("ModifiedDate", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnModifiedDate);
-                this.columnRetailValue = new global::System.Data.DataColumn("RetailValue", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRetailValue);
-                this.columnBidIncrementTypeId = new global::System.Data.DataColumn("BidIncrementTypeId", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBidIncrementTypeId);
-                this.columnBidMinValue = new global::System.Data.DataColumn("BidMinValue", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBidMinValue);
-                this.columnBidMaxValue = new global::System.Data.DataColumn("BidMaxValue", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBidMaxValue);
-                this.columnBidIncrementValue = new global::System.Data.DataColumn("BidIncrementValue", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBidIncrementValue);
-                this.columnBidBuyItNowValue = new global::System.Data.DataColumn("BidBuyItNowValue", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBidBuyItNowValue);
-                this.columnBidNumberOfBids = new global::System.Data.DataColumn("BidNumberOfBids", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBidNumberOfBids);
-                this.columnItemTypeId = new global::System.Data.DataColumn("ItemTypeId", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnItemTypeId);
-                this.columnDonationDeliveryTypeId = new global::System.Data.DataColumn("DonationDeliveryTypeId", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDonationDeliveryTypeId);
-                this.columnImage = new global::System.Data.DataColumn("Image", typeof(byte[]), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnImage);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnId}, true));
-                this.columnId.AutoIncrement = true;
-                this.columnId.AutoIncrementSeed = -1;
-                this.columnId.AutoIncrementStep = -1;
-                this.columnId.AllowDBNull = false;
-                this.columnId.Unique = true;
-                this.columnDonorId.AllowDBNull = false;
-                this.columnAuctionId.AllowDBNull = false;
-                this.columnName.AllowDBNull = false;
-                this.columnName.MaxLength = 2147483647;
-                this.columnDescription.MaxLength = 2147483647;
-                this.columnQty.AllowDBNull = false;
-                this.columnNotes.MaxLength = 2147483647;
-                this.columnCreateDate.AllowDBNull = false;
-                this.columnCreateDate.MaxLength = 2147483647;
-                this.columnModifiedDate.AllowDBNull = false;
-                this.columnModifiedDate.MaxLength = 2147483647;
-                this.columnBidIncrementTypeId.AllowDBNull = false;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemsRow NewItemsRow() {
-                return ((ItemsRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new ItemsRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(ItemsRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.ItemsRowChanged != null)) {
-                    this.ItemsRowChanged(this, new ItemsRowChangeEvent(((ItemsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.ItemsRowChanging != null)) {
-                    this.ItemsRowChanging(this, new ItemsRowChangeEvent(((ItemsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.ItemsRowDeleted != null)) {
-                    this.ItemsRowDeleted(this, new ItemsRowChangeEvent(((ItemsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.ItemsRowDeleting != null)) {
-                    this.ItemsRowDeleting(this, new ItemsRowChangeEvent(((ItemsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveItemsRow(ItemsRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                SilentAuctionDataSet ds = new SilentAuctionDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "ItemsDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -4148,18 +3332,16 @@ namespace SilentAuction {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class DonorsWithNoResponseDataTable : global::System.Data.TypedTableBase<DonorsWithNoResponseRow> {
+        public partial class DonorsWithLetters_OLDDataTable : global::System.Data.TypedTableBase<DonorsWithLetters_OLDRow> {
             
             private global::System.Data.DataColumn columnId;
             
             private global::System.Data.DataColumn columnName;
             
-            private global::System.Data.DataColumn columnRequestStatusTypeId;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsWithNoResponseDataTable() {
-                this.TableName = "DonorsWithNoResponse";
+            public DonorsWithLetters_OLDDataTable() {
+                this.TableName = "DonorsWithLetters_OLD";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -4167,7 +3349,7 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal DonorsWithNoResponseDataTable(global::System.Data.DataTable table) {
+            internal DonorsWithLetters_OLDDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -4184,955 +3366,7 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected DonorsWithNoResponseDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdColumn {
-                get {
-                    return this.columnId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NameColumn {
-                get {
-                    return this.columnName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn RequestStatusTypeIdColumn {
-                get {
-                    return this.columnRequestStatusTypeId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsWithNoResponseRow this[int index] {
-                get {
-                    return ((DonorsWithNoResponseRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event DonorsWithNoResponseRowChangeEventHandler DonorsWithNoResponseRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event DonorsWithNoResponseRowChangeEventHandler DonorsWithNoResponseRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event DonorsWithNoResponseRowChangeEventHandler DonorsWithNoResponseRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event DonorsWithNoResponseRowChangeEventHandler DonorsWithNoResponseRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddDonorsWithNoResponseRow(DonorsWithNoResponseRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsWithNoResponseRow AddDonorsWithNoResponseRow(string Name, long RequestStatusTypeId) {
-                DonorsWithNoResponseRow rowDonorsWithNoResponseRow = ((DonorsWithNoResponseRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        Name,
-                        RequestStatusTypeId};
-                rowDonorsWithNoResponseRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowDonorsWithNoResponseRow);
-                return rowDonorsWithNoResponseRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsWithNoResponseRow FindById(long Id) {
-                return ((DonorsWithNoResponseRow)(this.Rows.Find(new object[] {
-                            Id})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                DonorsWithNoResponseDataTable cln = ((DonorsWithNoResponseDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new DonorsWithNoResponseDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnId = base.Columns["Id"];
-                this.columnName = base.Columns["Name"];
-                this.columnRequestStatusTypeId = base.Columns["RequestStatusTypeId"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnId = new global::System.Data.DataColumn("Id", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId);
-                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnName);
-                this.columnRequestStatusTypeId = new global::System.Data.DataColumn("RequestStatusTypeId", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRequestStatusTypeId);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnId}, true));
-                this.columnId.AutoIncrement = true;
-                this.columnId.AutoIncrementSeed = -1;
-                this.columnId.AutoIncrementStep = -1;
-                this.columnId.AllowDBNull = false;
-                this.columnId.Unique = true;
-                this.columnName.AllowDBNull = false;
-                this.columnName.MaxLength = 2147483647;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsWithNoResponseRow NewDonorsWithNoResponseRow() {
-                return ((DonorsWithNoResponseRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new DonorsWithNoResponseRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(DonorsWithNoResponseRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.DonorsWithNoResponseRowChanged != null)) {
-                    this.DonorsWithNoResponseRowChanged(this, new DonorsWithNoResponseRowChangeEvent(((DonorsWithNoResponseRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.DonorsWithNoResponseRowChanging != null)) {
-                    this.DonorsWithNoResponseRowChanging(this, new DonorsWithNoResponseRowChangeEvent(((DonorsWithNoResponseRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.DonorsWithNoResponseRowDeleted != null)) {
-                    this.DonorsWithNoResponseRowDeleted(this, new DonorsWithNoResponseRowChangeEvent(((DonorsWithNoResponseRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.DonorsWithNoResponseRowDeleting != null)) {
-                    this.DonorsWithNoResponseRowDeleting(this, new DonorsWithNoResponseRowChangeEvent(((DonorsWithNoResponseRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveDonorsWithNoResponseRow(DonorsWithNoResponseRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                SilentAuctionDataSet ds = new SilentAuctionDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "DonorsWithNoResponseDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class DonorsWithEmailsDataTable : global::System.Data.TypedTableBase<DonorsWithEmailsRow> {
-            
-            private global::System.Data.DataColumn columnId;
-            
-            private global::System.Data.DataColumn columnName;
-            
-            private global::System.Data.DataColumn columnEmail;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsWithEmailsDataTable() {
-                this.TableName = "DonorsWithEmails";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal DonorsWithEmailsDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected DonorsWithEmailsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdColumn {
-                get {
-                    return this.columnId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NameColumn {
-                get {
-                    return this.columnName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn EmailColumn {
-                get {
-                    return this.columnEmail;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsWithEmailsRow this[int index] {
-                get {
-                    return ((DonorsWithEmailsRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event DonorsWithEmailsRowChangeEventHandler DonorsWithEmailsRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event DonorsWithEmailsRowChangeEventHandler DonorsWithEmailsRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event DonorsWithEmailsRowChangeEventHandler DonorsWithEmailsRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event DonorsWithEmailsRowChangeEventHandler DonorsWithEmailsRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddDonorsWithEmailsRow(DonorsWithEmailsRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsWithEmailsRow AddDonorsWithEmailsRow(string Name, string Email) {
-                DonorsWithEmailsRow rowDonorsWithEmailsRow = ((DonorsWithEmailsRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        Name,
-                        Email};
-                rowDonorsWithEmailsRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowDonorsWithEmailsRow);
-                return rowDonorsWithEmailsRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsWithEmailsRow FindById(long Id) {
-                return ((DonorsWithEmailsRow)(this.Rows.Find(new object[] {
-                            Id})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                DonorsWithEmailsDataTable cln = ((DonorsWithEmailsDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new DonorsWithEmailsDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnId = base.Columns["Id"];
-                this.columnName = base.Columns["Name"];
-                this.columnEmail = base.Columns["Email"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnId = new global::System.Data.DataColumn("Id", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId);
-                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnName);
-                this.columnEmail = new global::System.Data.DataColumn("Email", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEmail);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnId}, true));
-                this.columnId.AutoIncrement = true;
-                this.columnId.AutoIncrementSeed = -1;
-                this.columnId.AutoIncrementStep = -1;
-                this.columnId.AllowDBNull = false;
-                this.columnId.Unique = true;
-                this.columnName.AllowDBNull = false;
-                this.columnName.MaxLength = 2147483647;
-                this.columnEmail.MaxLength = 2147483647;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsWithEmailsRow NewDonorsWithEmailsRow() {
-                return ((DonorsWithEmailsRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new DonorsWithEmailsRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(DonorsWithEmailsRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.DonorsWithEmailsRowChanged != null)) {
-                    this.DonorsWithEmailsRowChanged(this, new DonorsWithEmailsRowChangeEvent(((DonorsWithEmailsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.DonorsWithEmailsRowChanging != null)) {
-                    this.DonorsWithEmailsRowChanging(this, new DonorsWithEmailsRowChangeEvent(((DonorsWithEmailsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.DonorsWithEmailsRowDeleted != null)) {
-                    this.DonorsWithEmailsRowDeleted(this, new DonorsWithEmailsRowChangeEvent(((DonorsWithEmailsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.DonorsWithEmailsRowDeleting != null)) {
-                    this.DonorsWithEmailsRowDeleting(this, new DonorsWithEmailsRowChangeEvent(((DonorsWithEmailsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveDonorsWithEmailsRow(DonorsWithEmailsRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                SilentAuctionDataSet ds = new SilentAuctionDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "DonorsWithEmailsDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class DonorAddressesDataTable : global::System.Data.TypedTableBase<DonorAddressesRow> {
-            
-            private global::System.Data.DataColumn columnId;
-            
-            private global::System.Data.DataColumn columnName;
-            
-            private global::System.Data.DataColumn columnContactName;
-            
-            private global::System.Data.DataColumn columnStreet1;
-            
-            private global::System.Data.DataColumn columnStreet2;
-            
-            private global::System.Data.DataColumn columnCity;
-            
-            private global::System.Data.DataColumn columnState;
-            
-            private global::System.Data.DataColumn columnZipCode;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorAddressesDataTable() {
-                this.TableName = "DonorAddresses";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal DonorAddressesDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected DonorAddressesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdColumn {
-                get {
-                    return this.columnId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NameColumn {
-                get {
-                    return this.columnName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ContactNameColumn {
-                get {
-                    return this.columnContactName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Street1Column {
-                get {
-                    return this.columnStreet1;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Street2Column {
-                get {
-                    return this.columnStreet2;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CityColumn {
-                get {
-                    return this.columnCity;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn StateColumn {
-                get {
-                    return this.columnState;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ZipCodeColumn {
-                get {
-                    return this.columnZipCode;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorAddressesRow this[int index] {
-                get {
-                    return ((DonorAddressesRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event DonorAddressesRowChangeEventHandler DonorAddressesRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event DonorAddressesRowChangeEventHandler DonorAddressesRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event DonorAddressesRowChangeEventHandler DonorAddressesRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event DonorAddressesRowChangeEventHandler DonorAddressesRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddDonorAddressesRow(DonorAddressesRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorAddressesRow AddDonorAddressesRow(string Name, string ContactName, string Street1, string Street2, string City, string State, string ZipCode) {
-                DonorAddressesRow rowDonorAddressesRow = ((DonorAddressesRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        Name,
-                        ContactName,
-                        Street1,
-                        Street2,
-                        City,
-                        State,
-                        ZipCode};
-                rowDonorAddressesRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowDonorAddressesRow);
-                return rowDonorAddressesRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorAddressesRow FindById(long Id) {
-                return ((DonorAddressesRow)(this.Rows.Find(new object[] {
-                            Id})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                DonorAddressesDataTable cln = ((DonorAddressesDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new DonorAddressesDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnId = base.Columns["Id"];
-                this.columnName = base.Columns["Name"];
-                this.columnContactName = base.Columns["ContactName"];
-                this.columnStreet1 = base.Columns["Street1"];
-                this.columnStreet2 = base.Columns["Street2"];
-                this.columnCity = base.Columns["City"];
-                this.columnState = base.Columns["State"];
-                this.columnZipCode = base.Columns["ZipCode"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnId = new global::System.Data.DataColumn("Id", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId);
-                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnName);
-                this.columnContactName = new global::System.Data.DataColumn("ContactName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnContactName);
-                this.columnStreet1 = new global::System.Data.DataColumn("Street1", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnStreet1);
-                this.columnStreet2 = new global::System.Data.DataColumn("Street2", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnStreet2);
-                this.columnCity = new global::System.Data.DataColumn("City", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCity);
-                this.columnState = new global::System.Data.DataColumn("State", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnState);
-                this.columnZipCode = new global::System.Data.DataColumn("ZipCode", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnZipCode);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint11", new global::System.Data.DataColumn[] {
-                                this.columnId}, true));
-                this.columnId.AutoIncrement = true;
-                this.columnId.AutoIncrementSeed = -1;
-                this.columnId.AutoIncrementStep = -1;
-                this.columnId.AllowDBNull = false;
-                this.columnId.Unique = true;
-                this.columnName.AllowDBNull = false;
-                this.columnName.MaxLength = 2147483647;
-                this.columnContactName.MaxLength = 2147483647;
-                this.columnStreet1.MaxLength = 2147483647;
-                this.columnStreet2.MaxLength = 2147483647;
-                this.columnCity.MaxLength = 2147483647;
-                this.columnState.MaxLength = 2147483647;
-                this.columnZipCode.MaxLength = 2147483647;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorAddressesRow NewDonorAddressesRow() {
-                return ((DonorAddressesRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new DonorAddressesRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(DonorAddressesRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.DonorAddressesRowChanged != null)) {
-                    this.DonorAddressesRowChanged(this, new DonorAddressesRowChangeEvent(((DonorAddressesRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.DonorAddressesRowChanging != null)) {
-                    this.DonorAddressesRowChanging(this, new DonorAddressesRowChangeEvent(((DonorAddressesRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.DonorAddressesRowDeleted != null)) {
-                    this.DonorAddressesRowDeleted(this, new DonorAddressesRowChangeEvent(((DonorAddressesRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.DonorAddressesRowDeleting != null)) {
-                    this.DonorAddressesRowDeleting(this, new DonorAddressesRowChangeEvent(((DonorAddressesRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveDonorAddressesRow(DonorAddressesRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                SilentAuctionDataSet ds = new SilentAuctionDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "DonorAddressesDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class DonorsWithLettersDataTable : global::System.Data.TypedTableBase<DonorsWithLettersRow> {
-            
-            private global::System.Data.DataColumn columnId;
-            
-            private global::System.Data.DataColumn columnName;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsWithLettersDataTable() {
-                this.TableName = "DonorsWithLetters";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal DonorsWithLettersDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected DonorsWithLettersDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected DonorsWithLetters_OLDDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -5164,53 +3398,53 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsWithLettersRow this[int index] {
+            public DonorsWithLetters_OLDRow this[int index] {
                 get {
-                    return ((DonorsWithLettersRow)(this.Rows[index]));
+                    return ((DonorsWithLetters_OLDRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event DonorsWithLettersRowChangeEventHandler DonorsWithLettersRowChanging;
+            public event DonorsWithLetters_OLDRowChangeEventHandler DonorsWithLetters_OLDRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event DonorsWithLettersRowChangeEventHandler DonorsWithLettersRowChanged;
+            public event DonorsWithLetters_OLDRowChangeEventHandler DonorsWithLetters_OLDRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event DonorsWithLettersRowChangeEventHandler DonorsWithLettersRowDeleting;
+            public event DonorsWithLetters_OLDRowChangeEventHandler DonorsWithLetters_OLDRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event DonorsWithLettersRowChangeEventHandler DonorsWithLettersRowDeleted;
+            public event DonorsWithLetters_OLDRowChangeEventHandler DonorsWithLetters_OLDRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddDonorsWithLettersRow(DonorsWithLettersRow row) {
+            public void AddDonorsWithLetters_OLDRow(DonorsWithLetters_OLDRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsWithLettersRow AddDonorsWithLettersRow(string Name) {
-                DonorsWithLettersRow rowDonorsWithLettersRow = ((DonorsWithLettersRow)(this.NewRow()));
+            public DonorsWithLetters_OLDRow AddDonorsWithLetters_OLDRow(string Name) {
+                DonorsWithLetters_OLDRow rowDonorsWithLetters_OLDRow = ((DonorsWithLetters_OLDRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Name};
-                rowDonorsWithLettersRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowDonorsWithLettersRow);
-                return rowDonorsWithLettersRow;
+                rowDonorsWithLetters_OLDRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDonorsWithLetters_OLDRow);
+                return rowDonorsWithLetters_OLDRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsWithLettersRow FindById(long Id) {
-                return ((DonorsWithLettersRow)(this.Rows.Find(new object[] {
+            public DonorsWithLetters_OLDRow FindById(long Id) {
+                return ((DonorsWithLetters_OLDRow)(this.Rows.Find(new object[] {
                             Id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                DonorsWithLettersDataTable cln = ((DonorsWithLettersDataTable)(base.Clone()));
+                DonorsWithLetters_OLDDataTable cln = ((DonorsWithLetters_OLDDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -5218,7 +3452,7 @@ namespace SilentAuction {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new DonorsWithLettersDataTable();
+                return new DonorsWithLetters_OLDDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5248,28 +3482,28 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsWithLettersRow NewDonorsWithLettersRow() {
-                return ((DonorsWithLettersRow)(this.NewRow()));
+            public DonorsWithLetters_OLDRow NewDonorsWithLetters_OLDRow() {
+                return ((DonorsWithLetters_OLDRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new DonorsWithLettersRow(builder);
+                return new DonorsWithLetters_OLDRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(DonorsWithLettersRow);
+                return typeof(DonorsWithLetters_OLDRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.DonorsWithLettersRowChanged != null)) {
-                    this.DonorsWithLettersRowChanged(this, new DonorsWithLettersRowChangeEvent(((DonorsWithLettersRow)(e.Row)), e.Action));
+                if ((this.DonorsWithLetters_OLDRowChanged != null)) {
+                    this.DonorsWithLetters_OLDRowChanged(this, new DonorsWithLetters_OLDRowChangeEvent(((DonorsWithLetters_OLDRow)(e.Row)), e.Action));
                 }
             }
             
@@ -5277,8 +3511,8 @@ namespace SilentAuction {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.DonorsWithLettersRowChanging != null)) {
-                    this.DonorsWithLettersRowChanging(this, new DonorsWithLettersRowChangeEvent(((DonorsWithLettersRow)(e.Row)), e.Action));
+                if ((this.DonorsWithLetters_OLDRowChanging != null)) {
+                    this.DonorsWithLetters_OLDRowChanging(this, new DonorsWithLetters_OLDRowChangeEvent(((DonorsWithLetters_OLDRow)(e.Row)), e.Action));
                 }
             }
             
@@ -5286,8 +3520,8 @@ namespace SilentAuction {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.DonorsWithLettersRowDeleted != null)) {
-                    this.DonorsWithLettersRowDeleted(this, new DonorsWithLettersRowChangeEvent(((DonorsWithLettersRow)(e.Row)), e.Action));
+                if ((this.DonorsWithLetters_OLDRowDeleted != null)) {
+                    this.DonorsWithLetters_OLDRowDeleted(this, new DonorsWithLetters_OLDRowChangeEvent(((DonorsWithLetters_OLDRow)(e.Row)), e.Action));
                 }
             }
             
@@ -5295,14 +3529,14 @@ namespace SilentAuction {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.DonorsWithLettersRowDeleting != null)) {
-                    this.DonorsWithLettersRowDeleting(this, new DonorsWithLettersRowChangeEvent(((DonorsWithLettersRow)(e.Row)), e.Action));
+                if ((this.DonorsWithLetters_OLDRowDeleting != null)) {
+                    this.DonorsWithLetters_OLDRowDeleting(this, new DonorsWithLetters_OLDRowChangeEvent(((DonorsWithLetters_OLDRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveDonorsWithLettersRow(DonorsWithLettersRow row) {
+            public void RemoveDonorsWithLetters_OLDRow(DonorsWithLetters_OLDRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -5329,455 +3563,7 @@ namespace SilentAuction {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "DonorsWithLettersDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ItemsShortListDataTable : global::System.Data.TypedTableBase<ItemsShortListRow> {
-            
-            private global::System.Data.DataColumn columnId;
-            
-            private global::System.Data.DataColumn columnItemName;
-            
-            private global::System.Data.DataColumn columnDonorName;
-            
-            private global::System.Data.DataColumn columnDescription;
-            
-            private global::System.Data.DataColumn columnQty;
-            
-            private global::System.Data.DataColumn columnItemType;
-            
-            private global::System.Data.DataColumn columnRetailValue;
-            
-            private global::System.Data.DataColumn columnBidBuyItNowValue;
-            
-            private global::System.Data.DataColumn columnBidIncrementTypeId;
-            
-            private global::System.Data.DataColumn columnBidMinValue;
-            
-            private global::System.Data.DataColumn columnBidMaxValue;
-            
-            private global::System.Data.DataColumn columnBidIncrementValue;
-            
-            private global::System.Data.DataColumn columnBidNumberOfBids;
-            
-            private global::System.Data.DataColumn columnAuctionName;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemsShortListDataTable() {
-                this.TableName = "ItemsShortList";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ItemsShortListDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected ItemsShortListDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdColumn {
-                get {
-                    return this.columnId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ItemNameColumn {
-                get {
-                    return this.columnItemName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DonorNameColumn {
-                get {
-                    return this.columnDonorName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DescriptionColumn {
-                get {
-                    return this.columnDescription;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn QtyColumn {
-                get {
-                    return this.columnQty;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ItemTypeColumn {
-                get {
-                    return this.columnItemType;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn RetailValueColumn {
-                get {
-                    return this.columnRetailValue;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn BidBuyItNowValueColumn {
-                get {
-                    return this.columnBidBuyItNowValue;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn BidIncrementTypeIdColumn {
-                get {
-                    return this.columnBidIncrementTypeId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn BidMinValueColumn {
-                get {
-                    return this.columnBidMinValue;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn BidMaxValueColumn {
-                get {
-                    return this.columnBidMaxValue;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn BidIncrementValueColumn {
-                get {
-                    return this.columnBidIncrementValue;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn BidNumberOfBidsColumn {
-                get {
-                    return this.columnBidNumberOfBids;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn AuctionNameColumn {
-                get {
-                    return this.columnAuctionName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemsShortListRow this[int index] {
-                get {
-                    return ((ItemsShortListRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ItemsShortListRowChangeEventHandler ItemsShortListRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ItemsShortListRowChangeEventHandler ItemsShortListRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ItemsShortListRowChangeEventHandler ItemsShortListRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ItemsShortListRowChangeEventHandler ItemsShortListRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddItemsShortListRow(ItemsShortListRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemsShortListRow AddItemsShortListRow(string ItemName, string DonorName, string Description, long Qty, object ItemType, double RetailValue, double BidBuyItNowValue, long BidIncrementTypeId, double BidMinValue, double BidMaxValue, double BidIncrementValue, long BidNumberOfBids, string AuctionName) {
-                ItemsShortListRow rowItemsShortListRow = ((ItemsShortListRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        ItemName,
-                        DonorName,
-                        Description,
-                        Qty,
-                        ItemType,
-                        RetailValue,
-                        BidBuyItNowValue,
-                        BidIncrementTypeId,
-                        BidMinValue,
-                        BidMaxValue,
-                        BidIncrementValue,
-                        BidNumberOfBids,
-                        AuctionName};
-                rowItemsShortListRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowItemsShortListRow);
-                return rowItemsShortListRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                ItemsShortListDataTable cln = ((ItemsShortListDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new ItemsShortListDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnId = base.Columns["Id"];
-                this.columnItemName = base.Columns["ItemName"];
-                this.columnDonorName = base.Columns["DonorName"];
-                this.columnDescription = base.Columns["Description"];
-                this.columnQty = base.Columns["Qty"];
-                this.columnItemType = base.Columns["ItemType"];
-                this.columnRetailValue = base.Columns["RetailValue"];
-                this.columnBidBuyItNowValue = base.Columns["BidBuyItNowValue"];
-                this.columnBidIncrementTypeId = base.Columns["BidIncrementTypeId"];
-                this.columnBidMinValue = base.Columns["BidMinValue"];
-                this.columnBidMaxValue = base.Columns["BidMaxValue"];
-                this.columnBidIncrementValue = base.Columns["BidIncrementValue"];
-                this.columnBidNumberOfBids = base.Columns["BidNumberOfBids"];
-                this.columnAuctionName = base.Columns["AuctionName"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnId = new global::System.Data.DataColumn("Id", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId);
-                this.columnItemName = new global::System.Data.DataColumn("ItemName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnItemName);
-                this.columnDonorName = new global::System.Data.DataColumn("DonorName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDonorName);
-                this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDescription);
-                this.columnQty = new global::System.Data.DataColumn("Qty", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnQty);
-                this.columnItemType = new global::System.Data.DataColumn("ItemType", typeof(object), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnItemType);
-                this.columnRetailValue = new global::System.Data.DataColumn("RetailValue", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRetailValue);
-                this.columnBidBuyItNowValue = new global::System.Data.DataColumn("BidBuyItNowValue", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBidBuyItNowValue);
-                this.columnBidIncrementTypeId = new global::System.Data.DataColumn("BidIncrementTypeId", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBidIncrementTypeId);
-                this.columnBidMinValue = new global::System.Data.DataColumn("BidMinValue", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBidMinValue);
-                this.columnBidMaxValue = new global::System.Data.DataColumn("BidMaxValue", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBidMaxValue);
-                this.columnBidIncrementValue = new global::System.Data.DataColumn("BidIncrementValue", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBidIncrementValue);
-                this.columnBidNumberOfBids = new global::System.Data.DataColumn("BidNumberOfBids", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBidNumberOfBids);
-                this.columnAuctionName = new global::System.Data.DataColumn("AuctionName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAuctionName);
-                this.columnId.AutoIncrement = true;
-                this.columnId.AutoIncrementSeed = -1;
-                this.columnId.AutoIncrementStep = -1;
-                this.columnId.AllowDBNull = false;
-                this.columnItemName.AllowDBNull = false;
-                this.columnItemName.MaxLength = 2147483647;
-                this.columnDonorName.AllowDBNull = false;
-                this.columnDonorName.MaxLength = 2147483647;
-                this.columnDescription.MaxLength = 2147483647;
-                this.columnQty.AllowDBNull = false;
-                this.columnRetailValue.AllowDBNull = false;
-                this.columnBidBuyItNowValue.AllowDBNull = false;
-                this.columnBidIncrementTypeId.AllowDBNull = false;
-                this.columnBidMinValue.AllowDBNull = false;
-                this.columnBidMaxValue.AllowDBNull = false;
-                this.columnBidIncrementValue.AllowDBNull = false;
-                this.columnBidNumberOfBids.AllowDBNull = false;
-                this.columnAuctionName.AllowDBNull = false;
-                this.columnAuctionName.MaxLength = 2147483647;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemsShortListRow NewItemsShortListRow() {
-                return ((ItemsShortListRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new ItemsShortListRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(ItemsShortListRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.ItemsShortListRowChanged != null)) {
-                    this.ItemsShortListRowChanged(this, new ItemsShortListRowChangeEvent(((ItemsShortListRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.ItemsShortListRowChanging != null)) {
-                    this.ItemsShortListRowChanging(this, new ItemsShortListRowChangeEvent(((ItemsShortListRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.ItemsShortListRowDeleted != null)) {
-                    this.ItemsShortListRowDeleted(this, new ItemsShortListRowChangeEvent(((ItemsShortListRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.ItemsShortListRowDeleting != null)) {
-                    this.ItemsShortListRowDeleting(this, new ItemsShortListRowChangeEvent(((ItemsShortListRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveItemsShortListRow(ItemsShortListRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                SilentAuctionDataSet ds = new SilentAuctionDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "ItemsShortListDataTable";
+                attribute2.FixedValue = "DonorsWithLetters_OLDDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -5935,16 +3721,13 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DocumentsRow AddDocumentsRow(AuctionsRow parentAuctionsRowByFK_Auctions_Documents, string Name, string Document) {
+            public DocumentsRow AddDocumentsRow(long AuctionId, string Name, string Document) {
                 DocumentsRow rowDocumentsRow = ((DocumentsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        null,
+                        AuctionId,
                         Name,
                         Document};
-                if ((parentAuctionsRowByFK_Auctions_Documents != null)) {
-                    columnValuesArray[1] = parentAuctionsRowByFK_Auctions_Documents[0];
-                }
                 rowDocumentsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDocumentsRow);
                 return rowDocumentsRow;
@@ -6700,6 +4483,860 @@ namespace SilentAuction {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class DonorsNameOnlyDataTable : global::System.Data.TypedTableBase<DonorsNameOnlyRow> {
+            
+            private global::System.Data.DataColumn columnName;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DonorsNameOnlyDataTable() {
+                this.TableName = "DonorsNameOnly";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal DonorsNameOnlyDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected DonorsNameOnlyDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NameColumn {
+                get {
+                    return this.columnName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DonorsNameOnlyRow this[int index] {
+                get {
+                    return ((DonorsNameOnlyRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event DonorsNameOnlyRowChangeEventHandler DonorsNameOnlyRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event DonorsNameOnlyRowChangeEventHandler DonorsNameOnlyRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event DonorsNameOnlyRowChangeEventHandler DonorsNameOnlyRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event DonorsNameOnlyRowChangeEventHandler DonorsNameOnlyRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddDonorsNameOnlyRow(DonorsNameOnlyRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DonorsNameOnlyRow AddDonorsNameOnlyRow(string Name) {
+                DonorsNameOnlyRow rowDonorsNameOnlyRow = ((DonorsNameOnlyRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        Name};
+                rowDonorsNameOnlyRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDonorsNameOnlyRow);
+                return rowDonorsNameOnlyRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                DonorsNameOnlyDataTable cln = ((DonorsNameOnlyDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new DonorsNameOnlyDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnName = base.Columns["Name"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnName);
+                this.columnName.AllowDBNull = false;
+                this.columnName.MaxLength = 2147483647;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DonorsNameOnlyRow NewDonorsNameOnlyRow() {
+                return ((DonorsNameOnlyRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new DonorsNameOnlyRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(DonorsNameOnlyRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.DonorsNameOnlyRowChanged != null)) {
+                    this.DonorsNameOnlyRowChanged(this, new DonorsNameOnlyRowChangeEvent(((DonorsNameOnlyRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.DonorsNameOnlyRowChanging != null)) {
+                    this.DonorsNameOnlyRowChanging(this, new DonorsNameOnlyRowChangeEvent(((DonorsNameOnlyRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.DonorsNameOnlyRowDeleted != null)) {
+                    this.DonorsNameOnlyRowDeleted(this, new DonorsNameOnlyRowChangeEvent(((DonorsNameOnlyRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.DonorsNameOnlyRowDeleting != null)) {
+                    this.DonorsNameOnlyRowDeleting(this, new DonorsNameOnlyRowChangeEvent(((DonorsNameOnlyRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveDonorsNameOnlyRow(DonorsNameOnlyRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                SilentAuctionDataSet ds = new SilentAuctionDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "DonorsNameOnlyDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ItemsDataTable : global::System.Data.TypedTableBase<ItemsRow> {
+            
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnDonorTypeName;
+            
+            private global::System.Data.DataColumn columnDonorId;
+            
+            private global::System.Data.DataColumn columnDonorName;
+            
+            private global::System.Data.DataColumn columnAuctionId;
+            
+            private global::System.Data.DataColumn columnAuctionName;
+            
+            private global::System.Data.DataColumn columnName;
+            
+            private global::System.Data.DataColumn columnDescription;
+            
+            private global::System.Data.DataColumn columnQty;
+            
+            private global::System.Data.DataColumn columnItemTypeId;
+            
+            private global::System.Data.DataColumn columnItemTypeName;
+            
+            private global::System.Data.DataColumn columnDonationDeliveryTypeId;
+            
+            private global::System.Data.DataColumn columnSellValue;
+            
+            private global::System.Data.DataColumn columnRetailValue;
+            
+            private global::System.Data.DataColumn columnBidIncrementTypeId;
+            
+            private global::System.Data.DataColumn columnBidMinValue;
+            
+            private global::System.Data.DataColumn columnBidMaxValue;
+            
+            private global::System.Data.DataColumn columnBidIncrementValue;
+            
+            private global::System.Data.DataColumn columnBidBuyItNowValue;
+            
+            private global::System.Data.DataColumn columnBidNumberOfBids;
+            
+            private global::System.Data.DataColumn columnNotes;
+            
+            private global::System.Data.DataColumn columnImage;
+            
+            private global::System.Data.DataColumn columnCreateDate;
+            
+            private global::System.Data.DataColumn columnModifiedDate;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ItemsDataTable() {
+                this.TableName = "Items";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ItemsDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected ItemsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DonorTypeNameColumn {
+                get {
+                    return this.columnDonorTypeName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DonorIdColumn {
+                get {
+                    return this.columnDonorId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DonorNameColumn {
+                get {
+                    return this.columnDonorName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AuctionIdColumn {
+                get {
+                    return this.columnAuctionId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AuctionNameColumn {
+                get {
+                    return this.columnAuctionName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NameColumn {
+                get {
+                    return this.columnName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DescriptionColumn {
+                get {
+                    return this.columnDescription;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn QtyColumn {
+                get {
+                    return this.columnQty;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ItemTypeIdColumn {
+                get {
+                    return this.columnItemTypeId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ItemTypeNameColumn {
+                get {
+                    return this.columnItemTypeName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DonationDeliveryTypeIdColumn {
+                get {
+                    return this.columnDonationDeliveryTypeId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SellValueColumn {
+                get {
+                    return this.columnSellValue;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn RetailValueColumn {
+                get {
+                    return this.columnRetailValue;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn BidIncrementTypeIdColumn {
+                get {
+                    return this.columnBidIncrementTypeId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn BidMinValueColumn {
+                get {
+                    return this.columnBidMinValue;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn BidMaxValueColumn {
+                get {
+                    return this.columnBidMaxValue;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn BidIncrementValueColumn {
+                get {
+                    return this.columnBidIncrementValue;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn BidBuyItNowValueColumn {
+                get {
+                    return this.columnBidBuyItNowValue;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn BidNumberOfBidsColumn {
+                get {
+                    return this.columnBidNumberOfBids;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NotesColumn {
+                get {
+                    return this.columnNotes;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ImageColumn {
+                get {
+                    return this.columnImage;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CreateDateColumn {
+                get {
+                    return this.columnCreateDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ModifiedDateColumn {
+                get {
+                    return this.columnModifiedDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ItemsRow this[int index] {
+                get {
+                    return ((ItemsRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ItemsRowChangeEventHandler ItemsRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ItemsRowChangeEventHandler ItemsRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ItemsRowChangeEventHandler ItemsRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ItemsRowChangeEventHandler ItemsRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddItemsRow(ItemsRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ItemsRow AddItemsRow(
+                        string DonorTypeName, 
+                        long DonorId, 
+                        string DonorName, 
+                        long AuctionId, 
+                        string AuctionName, 
+                        string Name, 
+                        string Description, 
+                        long Qty, 
+                        long ItemTypeId, 
+                        string ItemTypeName, 
+                        long DonationDeliveryTypeId, 
+                        int SellValue, 
+                        double RetailValue, 
+                        long BidIncrementTypeId, 
+                        double BidMinValue, 
+                        double BidMaxValue, 
+                        double BidIncrementValue, 
+                        double BidBuyItNowValue, 
+                        long BidNumberOfBids, 
+                        string Notes, 
+                        byte[] Image, 
+                        string CreateDate, 
+                        string ModifiedDate) {
+                ItemsRow rowItemsRow = ((ItemsRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        DonorTypeName,
+                        DonorId,
+                        DonorName,
+                        AuctionId,
+                        AuctionName,
+                        Name,
+                        Description,
+                        Qty,
+                        ItemTypeId,
+                        ItemTypeName,
+                        DonationDeliveryTypeId,
+                        SellValue,
+                        RetailValue,
+                        BidIncrementTypeId,
+                        BidMinValue,
+                        BidMaxValue,
+                        BidIncrementValue,
+                        BidBuyItNowValue,
+                        BidNumberOfBids,
+                        Notes,
+                        Image,
+                        CreateDate,
+                        ModifiedDate};
+                rowItemsRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowItemsRow);
+                return rowItemsRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ItemsDataTable cln = ((ItemsDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ItemsDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnId = base.Columns["Id"];
+                this.columnDonorTypeName = base.Columns["DonorTypeName"];
+                this.columnDonorId = base.Columns["DonorId"];
+                this.columnDonorName = base.Columns["DonorName"];
+                this.columnAuctionId = base.Columns["AuctionId"];
+                this.columnAuctionName = base.Columns["AuctionName"];
+                this.columnName = base.Columns["Name"];
+                this.columnDescription = base.Columns["Description"];
+                this.columnQty = base.Columns["Qty"];
+                this.columnItemTypeId = base.Columns["ItemTypeId"];
+                this.columnItemTypeName = base.Columns["ItemTypeName"];
+                this.columnDonationDeliveryTypeId = base.Columns["DonationDeliveryTypeId"];
+                this.columnSellValue = base.Columns["SellValue"];
+                this.columnRetailValue = base.Columns["RetailValue"];
+                this.columnBidIncrementTypeId = base.Columns["BidIncrementTypeId"];
+                this.columnBidMinValue = base.Columns["BidMinValue"];
+                this.columnBidMaxValue = base.Columns["BidMaxValue"];
+                this.columnBidIncrementValue = base.Columns["BidIncrementValue"];
+                this.columnBidBuyItNowValue = base.Columns["BidBuyItNowValue"];
+                this.columnBidNumberOfBids = base.Columns["BidNumberOfBids"];
+                this.columnNotes = base.Columns["Notes"];
+                this.columnImage = base.Columns["Image"];
+                this.columnCreateDate = base.Columns["CreateDate"];
+                this.columnModifiedDate = base.Columns["ModifiedDate"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnDonorTypeName = new global::System.Data.DataColumn("DonorTypeName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDonorTypeName);
+                this.columnDonorId = new global::System.Data.DataColumn("DonorId", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDonorId);
+                this.columnDonorName = new global::System.Data.DataColumn("DonorName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDonorName);
+                this.columnAuctionId = new global::System.Data.DataColumn("AuctionId", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAuctionId);
+                this.columnAuctionName = new global::System.Data.DataColumn("AuctionName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAuctionName);
+                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnName);
+                this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDescription);
+                this.columnQty = new global::System.Data.DataColumn("Qty", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQty);
+                this.columnItemTypeId = new global::System.Data.DataColumn("ItemTypeId", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnItemTypeId);
+                this.columnItemTypeName = new global::System.Data.DataColumn("ItemTypeName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnItemTypeName);
+                this.columnDonationDeliveryTypeId = new global::System.Data.DataColumn("DonationDeliveryTypeId", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDonationDeliveryTypeId);
+                this.columnSellValue = new global::System.Data.DataColumn("SellValue", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSellValue);
+                this.columnRetailValue = new global::System.Data.DataColumn("RetailValue", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRetailValue);
+                this.columnBidIncrementTypeId = new global::System.Data.DataColumn("BidIncrementTypeId", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBidIncrementTypeId);
+                this.columnBidMinValue = new global::System.Data.DataColumn("BidMinValue", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBidMinValue);
+                this.columnBidMaxValue = new global::System.Data.DataColumn("BidMaxValue", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBidMaxValue);
+                this.columnBidIncrementValue = new global::System.Data.DataColumn("BidIncrementValue", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBidIncrementValue);
+                this.columnBidBuyItNowValue = new global::System.Data.DataColumn("BidBuyItNowValue", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBidBuyItNowValue);
+                this.columnBidNumberOfBids = new global::System.Data.DataColumn("BidNumberOfBids", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBidNumberOfBids);
+                this.columnNotes = new global::System.Data.DataColumn("Notes", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNotes);
+                this.columnImage = new global::System.Data.DataColumn("Image", typeof(byte[]), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnImage);
+                this.columnCreateDate = new global::System.Data.DataColumn("CreateDate", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCreateDate);
+                this.columnModifiedDate = new global::System.Data.DataColumn("ModifiedDate", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnModifiedDate);
+                this.columnId.AutoIncrement = true;
+                this.columnId.AutoIncrementSeed = -1;
+                this.columnId.AutoIncrementStep = -1;
+                this.columnDonorTypeName.DefaultValue = ((string)(" "));
+                this.columnDonorTypeName.MaxLength = 2147483647;
+                this.columnDonorName.MaxLength = 2147483647;
+                this.columnAuctionName.MaxLength = 2147483647;
+                this.columnName.MaxLength = 2147483647;
+                this.columnDescription.MaxLength = 2147483647;
+                this.columnItemTypeName.MaxLength = 2147483647;
+                this.columnNotes.MaxLength = 2147483647;
+                this.columnCreateDate.MaxLength = 2147483647;
+                this.columnModifiedDate.MaxLength = 2147483647;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ItemsRow NewItemsRow() {
+                return ((ItemsRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ItemsRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ItemsRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ItemsRowChanged != null)) {
+                    this.ItemsRowChanged(this, new ItemsRowChangeEvent(((ItemsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ItemsRowChanging != null)) {
+                    this.ItemsRowChanging(this, new ItemsRowChangeEvent(((ItemsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ItemsRowDeleted != null)) {
+                    this.ItemsRowDeleted(this, new ItemsRowChangeEvent(((ItemsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ItemsRowDeleting != null)) {
+                    this.ItemsRowDeleting(this, new ItemsRowChangeEvent(((ItemsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveItemsRow(ItemsRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                SilentAuctionDataSet ds = new SilentAuctionDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ItemsDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class AuctionsRow : global::System.Data.DataRow {
@@ -6783,39 +5420,6 @@ namespace SilentAuction {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDescriptionNull() {
                 this[this.tableAuctions.DescriptionColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DocumentsRow[] GetDocumentsRows() {
-                if ((this.Table.ChildRelations["FK_Auctions_Documents"] == null)) {
-                    return new DocumentsRow[0];
-                }
-                else {
-                    return ((DocumentsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Auctions_Documents"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemsRow[] GetItemsRows() {
-                if ((this.Table.ChildRelations["FK_Auctions_Items"] == null)) {
-                    return new ItemsRow[0];
-                }
-                else {
-                    return ((ItemsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Auctions_Items"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsRow[] GetDonorsRows() {
-                if ((this.Table.ChildRelations["FK_Auctions_Donors"] == null)) {
-                    return new DonorsRow[0];
-                }
-                else {
-                    return ((DonorsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Auctions_Donors"])));
-                }
             }
         }
         
@@ -7125,50 +5729,6 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public AuctionsRow AuctionsRow {
-                get {
-                    return ((AuctionsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Auctions_Donors"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Auctions_Donors"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RequestStatusTypesRow RequestStatusTypesRow {
-                get {
-                    return ((RequestStatusTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_RequestStatusTypes_Donors"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_RequestStatusTypes_Donors"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RequestFormatTypesRow RequestFormatTypesRow {
-                get {
-                    return ((RequestFormatTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_RequestFormatTypes_Donors"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_RequestFormatTypes_Donors"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorTypesRow DonorTypesRow {
-                get {
-                    return ((DonorTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_DonorTypes_Donors"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_DonorTypes_Donors"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsContactNameNull() {
                 return this.IsNull(this.tableDonors.ContactNameColumn);
             }
@@ -7334,17 +5894,6 @@ namespace SilentAuction {
             public void SetRequestStatusTypeIdNull() {
                 this[this.tableDonors.RequestStatusTypeIdColumn] = global::System.Convert.DBNull;
             }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemsRow[] GetItemsRows() {
-                if ((this.Table.ChildRelations["FK_Donors_Items"] == null)) {
-                    return new ItemsRow[0];
-                }
-                else {
-                    return ((ItemsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Donors_Items"])));
-                }
-            }
         }
         
         /// <summary>
@@ -7382,15 +5931,429 @@ namespace SilentAuction {
                     this[this.tableDonorTypes.NameColumn] = value;
                 }
             }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class BidIncrementTypesRow : global::System.Data.DataRow {
+            
+            private BidIncrementTypesDataTable tableBidIncrementTypes;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsRow[] GetDonorsRows() {
-                if ((this.Table.ChildRelations["FK_DonorTypes_Donors"] == null)) {
-                    return new DonorsRow[0];
+            internal BidIncrementTypesRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableBidIncrementTypes = ((BidIncrementTypesDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public long Id {
+                get {
+                    return ((long)(this[this.tableBidIncrementTypes.IdColumn]));
                 }
-                else {
-                    return ((DonorsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_DonorTypes_Donors"])));
+                set {
+                    this[this.tableBidIncrementTypes.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Name {
+                get {
+                    return ((string)(this[this.tableBidIncrementTypes.NameColumn]));
+                }
+                set {
+                    this[this.tableBidIncrementTypes.NameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Description {
+                get {
+                    return ((string)(this[this.tableBidIncrementTypes.DescriptionColumn]));
+                }
+                set {
+                    this[this.tableBidIncrementTypes.DescriptionColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class DonationDeliveryTypesRow : global::System.Data.DataRow {
+            
+            private DonationDeliveryTypesDataTable tableDonationDeliveryTypes;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal DonationDeliveryTypesRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableDonationDeliveryTypes = ((DonationDeliveryTypesDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public long Id {
+                get {
+                    return ((long)(this[this.tableDonationDeliveryTypes.IdColumn]));
+                }
+                set {
+                    this[this.tableDonationDeliveryTypes.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Name {
+                get {
+                    return ((string)(this[this.tableDonationDeliveryTypes.NameColumn]));
+                }
+                set {
+                    this[this.tableDonationDeliveryTypes.NameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Description {
+                get {
+                    return ((string)(this[this.tableDonationDeliveryTypes.DescriptionColumn]));
+                }
+                set {
+                    this[this.tableDonationDeliveryTypes.DescriptionColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ItemTypesRow : global::System.Data.DataRow {
+            
+            private ItemTypesDataTable tableItemTypes;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ItemTypesRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableItemTypes = ((ItemTypesDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public long Id {
+                get {
+                    return ((long)(this[this.tableItemTypes.IdColumn]));
+                }
+                set {
+                    this[this.tableItemTypes.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Name {
+                get {
+                    return ((string)(this[this.tableItemTypes.NameColumn]));
+                }
+                set {
+                    this[this.tableItemTypes.NameColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class RequestFormatTypesRow : global::System.Data.DataRow {
+            
+            private RequestFormatTypesDataTable tableRequestFormatTypes;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal RequestFormatTypesRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableRequestFormatTypes = ((RequestFormatTypesDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public long Id {
+                get {
+                    return ((long)(this[this.tableRequestFormatTypes.IdColumn]));
+                }
+                set {
+                    this[this.tableRequestFormatTypes.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Name {
+                get {
+                    return ((string)(this[this.tableRequestFormatTypes.NameColumn]));
+                }
+                set {
+                    this[this.tableRequestFormatTypes.NameColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class RequestStatusTypesRow : global::System.Data.DataRow {
+            
+            private RequestStatusTypesDataTable tableRequestStatusTypes;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal RequestStatusTypesRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableRequestStatusTypes = ((RequestStatusTypesDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public long Id {
+                get {
+                    return ((long)(this[this.tableRequestStatusTypes.IdColumn]));
+                }
+                set {
+                    this[this.tableRequestStatusTypes.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Name {
+                get {
+                    return ((string)(this[this.tableRequestStatusTypes.NameColumn]));
+                }
+                set {
+                    this[this.tableRequestStatusTypes.NameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Description {
+                get {
+                    return ((string)(this[this.tableRequestStatusTypes.DescriptionColumn]));
+                }
+                set {
+                    this[this.tableRequestStatusTypes.DescriptionColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class DonorsWithLetters_OLDRow : global::System.Data.DataRow {
+            
+            private DonorsWithLetters_OLDDataTable tableDonorsWithLetters_OLD;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal DonorsWithLetters_OLDRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableDonorsWithLetters_OLD = ((DonorsWithLetters_OLDDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public long Id {
+                get {
+                    return ((long)(this[this.tableDonorsWithLetters_OLD.IdColumn]));
+                }
+                set {
+                    this[this.tableDonorsWithLetters_OLD.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Name {
+                get {
+                    return ((string)(this[this.tableDonorsWithLetters_OLD.NameColumn]));
+                }
+                set {
+                    this[this.tableDonorsWithLetters_OLD.NameColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class DocumentsRow : global::System.Data.DataRow {
+            
+            private DocumentsDataTable tableDocuments;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal DocumentsRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableDocuments = ((DocumentsDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public long Id {
+                get {
+                    return ((long)(this[this.tableDocuments.IdColumn]));
+                }
+                set {
+                    this[this.tableDocuments.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public long AuctionId {
+                get {
+                    return ((long)(this[this.tableDocuments.AuctionIdColumn]));
+                }
+                set {
+                    this[this.tableDocuments.AuctionIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Name {
+                get {
+                    return ((string)(this[this.tableDocuments.NameColumn]));
+                }
+                set {
+                    this[this.tableDocuments.NameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Document {
+                get {
+                    return ((string)(this[this.tableDocuments.DocumentColumn]));
+                }
+                set {
+                    this[this.tableDocuments.DocumentColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class EmailAccountsRow : global::System.Data.DataRow {
+            
+            private EmailAccountsDataTable tableEmailAccounts;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal EmailAccountsRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableEmailAccounts = ((EmailAccountsDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public long Id {
+                get {
+                    return ((long)(this[this.tableEmailAccounts.IdColumn]));
+                }
+                set {
+                    this[this.tableEmailAccounts.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Account {
+                get {
+                    return ((string)(this[this.tableEmailAccounts.AccountColumn]));
+                }
+                set {
+                    this[this.tableEmailAccounts.AccountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Password {
+                get {
+                    return ((string)(this[this.tableEmailAccounts.PasswordColumn]));
+                }
+                set {
+                    this[this.tableEmailAccounts.PasswordColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class DocumentNamesRow : global::System.Data.DataRow {
+            
+            private DocumentNamesDataTable tableDocumentNames;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal DocumentNamesRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableDocumentNames = ((DocumentNamesDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public long Id {
+                get {
+                    return ((long)(this[this.tableDocumentNames.IdColumn]));
+                }
+                set {
+                    this[this.tableDocumentNames.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Name {
+                get {
+                    return ((string)(this[this.tableDocumentNames.NameColumn]));
+                }
+                set {
+                    this[this.tableDocumentNames.NameColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class DonorsNameOnlyRow : global::System.Data.DataRow {
+            
+            private DonorsNameOnlyDataTable tableDonorsNameOnly;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal DonorsNameOnlyRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableDonorsNameOnly = ((DonorsNameOnlyDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Name {
+                get {
+                    return ((string)(this[this.tableDonorsNameOnly.NameColumn]));
+                }
+                set {
+                    this[this.tableDonorsNameOnly.NameColumn] = value;
                 }
             }
         }
@@ -7413,7 +6376,12 @@ namespace SilentAuction {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public long Id {
                 get {
-                    return ((long)(this[this.tableItems.IdColumn]));
+                    try {
+                        return ((long)(this[this.tableItems.IdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Id\' in table \'Items\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableItems.IdColumn] = value;
@@ -7422,9 +6390,30 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string DonorTypeName {
+                get {
+                    try {
+                        return ((string)(this[this.tableItems.DonorTypeNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DonorTypeName\' in table \'Items\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableItems.DonorTypeNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public long DonorId {
                 get {
-                    return ((long)(this[this.tableItems.DonorIdColumn]));
+                    try {
+                        return ((long)(this[this.tableItems.DonorIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DonorId\' in table \'Items\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableItems.DonorIdColumn] = value;
@@ -7433,9 +6422,30 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string DonorName {
+                get {
+                    try {
+                        return ((string)(this[this.tableItems.DonorNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DonorName\' in table \'Items\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableItems.DonorNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public long AuctionId {
                 get {
-                    return ((long)(this[this.tableItems.AuctionIdColumn]));
+                    try {
+                        return ((long)(this[this.tableItems.AuctionIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'AuctionId\' in table \'Items\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableItems.AuctionIdColumn] = value;
@@ -7444,9 +6454,30 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string AuctionName {
+                get {
+                    try {
+                        return ((string)(this[this.tableItems.AuctionNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'AuctionName\' in table \'Items\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableItems.AuctionNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Name {
                 get {
-                    return ((string)(this[this.tableItems.NameColumn]));
+                    try {
+                        return ((string)(this[this.tableItems.NameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Name\' in table \'Items\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableItems.NameColumn] = value;
@@ -7473,7 +6504,12 @@ namespace SilentAuction {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public long Qty {
                 get {
-                    return ((long)(this[this.tableItems.QtyColumn]));
+                    try {
+                        return ((long)(this[this.tableItems.QtyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Qty\' in table \'Items\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableItems.QtyColumn] = value;
@@ -7482,39 +6518,65 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Notes {
+            public long ItemTypeId {
                 get {
                     try {
-                        return ((string)(this[this.tableItems.NotesColumn]));
+                        return ((long)(this[this.tableItems.ItemTypeIdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Notes\' in table \'Items\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ItemTypeId\' in table \'Items\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableItems.NotesColumn] = value;
+                    this[this.tableItems.ItemTypeIdColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string CreateDate {
+            public string ItemTypeName {
                 get {
-                    return ((string)(this[this.tableItems.CreateDateColumn]));
+                    try {
+                        return ((string)(this[this.tableItems.ItemTypeNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ItemTypeName\' in table \'Items\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tableItems.CreateDateColumn] = value;
+                    this[this.tableItems.ItemTypeNameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ModifiedDate {
+            public long DonationDeliveryTypeId {
                 get {
-                    return ((string)(this[this.tableItems.ModifiedDateColumn]));
+                    try {
+                        return ((long)(this[this.tableItems.DonationDeliveryTypeIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DonationDeliveryTypeId\' in table \'Items\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tableItems.ModifiedDateColumn] = value;
+                    this[this.tableItems.DonationDeliveryTypeIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int SellValue {
+                get {
+                    try {
+                        return ((int)(this[this.tableItems.SellValueColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SellValue\' in table \'Items\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableItems.SellValueColumn] = value;
                 }
             }
             
@@ -7538,7 +6600,12 @@ namespace SilentAuction {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public long BidIncrementTypeId {
                 get {
-                    return ((long)(this[this.tableItems.BidIncrementTypeIdColumn]));
+                    try {
+                        return ((long)(this[this.tableItems.BidIncrementTypeIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BidIncrementTypeId\' in table \'Items\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableItems.BidIncrementTypeIdColumn] = value;
@@ -7627,33 +6694,17 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long ItemTypeId {
+            public string Notes {
                 get {
                     try {
-                        return ((long)(this[this.tableItems.ItemTypeIdColumn]));
+                        return ((string)(this[this.tableItems.NotesColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ItemTypeId\' in table \'Items\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Notes\' in table \'Items\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableItems.ItemTypeIdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long DonationDeliveryTypeId {
-                get {
-                    try {
-                        return ((long)(this[this.tableItems.DonationDeliveryTypeIdColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DonationDeliveryTypeId\' in table \'Items\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableItems.DonationDeliveryTypeIdColumn] = value;
+                    this[this.tableItems.NotesColumn] = value;
                 }
             }
             
@@ -7675,57 +6726,118 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemTypesRow ItemTypesRow {
+            public string CreateDate {
                 get {
-                    return ((ItemTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_ItemTypes_Items"])));
+                    try {
+                        return ((string)(this[this.tableItems.CreateDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CreateDate\' in table \'Items\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_ItemTypes_Items"]);
+                    this[this.tableItems.CreateDateColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public BidIncrementTypesRow BidIncrementTypesRow {
+            public string ModifiedDate {
                 get {
-                    return ((BidIncrementTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_BidIncrementTypes_Items"])));
+                    try {
+                        return ((string)(this[this.tableItems.ModifiedDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ModifiedDate\' in table \'Items\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_BidIncrementTypes_Items"]);
+                    this[this.tableItems.ModifiedDateColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public AuctionsRow AuctionsRow {
-                get {
-                    return ((AuctionsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Auctions_Items"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Auctions_Items"]);
-                }
+            public bool IsIdNull() {
+                return this.IsNull(this.tableItems.IdColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsRow DonorsRow {
-                get {
-                    return ((DonorsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Donors_Items"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Donors_Items"]);
-                }
+            public void SetIdNull() {
+                this[this.tableItems.IdColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonationDeliveryTypesRow DonationDeliveryTypesRow {
-                get {
-                    return ((DonationDeliveryTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_DonationDeliveryTypes_Items"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_DonationDeliveryTypes_Items"]);
-                }
+            public bool IsDonorTypeNameNull() {
+                return this.IsNull(this.tableItems.DonorTypeNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDonorTypeNameNull() {
+                this[this.tableItems.DonorTypeNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDonorIdNull() {
+                return this.IsNull(this.tableItems.DonorIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDonorIdNull() {
+                this[this.tableItems.DonorIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDonorNameNull() {
+                return this.IsNull(this.tableItems.DonorNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDonorNameNull() {
+                this[this.tableItems.DonorNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAuctionIdNull() {
+                return this.IsNull(this.tableItems.AuctionIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAuctionIdNull() {
+                this[this.tableItems.AuctionIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAuctionNameNull() {
+                return this.IsNull(this.tableItems.AuctionNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAuctionNameNull() {
+                this[this.tableItems.AuctionNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNameNull() {
+                return this.IsNull(this.tableItems.NameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNameNull() {
+                this[this.tableItems.NameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7742,14 +6854,62 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNotesNull() {
-                return this.IsNull(this.tableItems.NotesColumn);
+            public bool IsQtyNull() {
+                return this.IsNull(this.tableItems.QtyColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNotesNull() {
-                this[this.tableItems.NotesColumn] = global::System.Convert.DBNull;
+            public void SetQtyNull() {
+                this[this.tableItems.QtyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsItemTypeIdNull() {
+                return this.IsNull(this.tableItems.ItemTypeIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetItemTypeIdNull() {
+                this[this.tableItems.ItemTypeIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsItemTypeNameNull() {
+                return this.IsNull(this.tableItems.ItemTypeNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetItemTypeNameNull() {
+                this[this.tableItems.ItemTypeNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDonationDeliveryTypeIdNull() {
+                return this.IsNull(this.tableItems.DonationDeliveryTypeIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDonationDeliveryTypeIdNull() {
+                this[this.tableItems.DonationDeliveryTypeIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSellValueNull() {
+                return this.IsNull(this.tableItems.SellValueColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSellValueNull() {
+                this[this.tableItems.SellValueColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7762,6 +6922,18 @@ namespace SilentAuction {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetRetailValueNull() {
                 this[this.tableItems.RetailValueColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsBidIncrementTypeIdNull() {
+                return this.IsNull(this.tableItems.BidIncrementTypeIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetBidIncrementTypeIdNull() {
+                this[this.tableItems.BidIncrementTypeIdColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7826,26 +6998,14 @@ namespace SilentAuction {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsItemTypeIdNull() {
-                return this.IsNull(this.tableItems.ItemTypeIdColumn);
+            public bool IsNotesNull() {
+                return this.IsNull(this.tableItems.NotesColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetItemTypeIdNull() {
-                this[this.tableItems.ItemTypeIdColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDonationDeliveryTypeIdNull() {
-                return this.IsNull(this.tableItems.DonationDeliveryTypeIdColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDonationDeliveryTypeIdNull() {
-                this[this.tableItems.DonationDeliveryTypeIdColumn] = global::System.Convert.DBNull;
+            public void SetNotesNull() {
+                this[this.tableItems.NotesColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7859,1009 +7019,29 @@ namespace SilentAuction {
             public void SetImageNull() {
                 this[this.tableItems.ImageColumn] = global::System.Convert.DBNull;
             }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class BidIncrementTypesRow : global::System.Data.DataRow {
             
-            private BidIncrementTypesDataTable tableBidIncrementTypes;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal BidIncrementTypesRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableBidIncrementTypes = ((BidIncrementTypesDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long Id {
-                get {
-                    return ((long)(this[this.tableBidIncrementTypes.IdColumn]));
-                }
-                set {
-                    this[this.tableBidIncrementTypes.IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Name {
-                get {
-                    return ((string)(this[this.tableBidIncrementTypes.NameColumn]));
-                }
-                set {
-                    this[this.tableBidIncrementTypes.NameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Description {
-                get {
-                    return ((string)(this[this.tableBidIncrementTypes.DescriptionColumn]));
-                }
-                set {
-                    this[this.tableBidIncrementTypes.DescriptionColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemsRow[] GetItemsRows() {
-                if ((this.Table.ChildRelations["FK_BidIncrementTypes_Items"] == null)) {
-                    return new ItemsRow[0];
-                }
-                else {
-                    return ((ItemsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_BidIncrementTypes_Items"])));
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class DonationDeliveryTypesRow : global::System.Data.DataRow {
-            
-            private DonationDeliveryTypesDataTable tableDonationDeliveryTypes;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal DonationDeliveryTypesRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableDonationDeliveryTypes = ((DonationDeliveryTypesDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long Id {
-                get {
-                    return ((long)(this[this.tableDonationDeliveryTypes.IdColumn]));
-                }
-                set {
-                    this[this.tableDonationDeliveryTypes.IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Name {
-                get {
-                    return ((string)(this[this.tableDonationDeliveryTypes.NameColumn]));
-                }
-                set {
-                    this[this.tableDonationDeliveryTypes.NameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Description {
-                get {
-                    return ((string)(this[this.tableDonationDeliveryTypes.DescriptionColumn]));
-                }
-                set {
-                    this[this.tableDonationDeliveryTypes.DescriptionColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemsRow[] GetItemsRows() {
-                if ((this.Table.ChildRelations["FK_DonationDeliveryTypes_Items"] == null)) {
-                    return new ItemsRow[0];
-                }
-                else {
-                    return ((ItemsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_DonationDeliveryTypes_Items"])));
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class ItemTypesRow : global::System.Data.DataRow {
-            
-            private ItemTypesDataTable tableItemTypes;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ItemTypesRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableItemTypes = ((ItemTypesDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long Id {
-                get {
-                    return ((long)(this[this.tableItemTypes.IdColumn]));
-                }
-                set {
-                    this[this.tableItemTypes.IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Name {
-                get {
-                    return ((string)(this[this.tableItemTypes.NameColumn]));
-                }
-                set {
-                    this[this.tableItemTypes.NameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemsRow[] GetItemsRows() {
-                if ((this.Table.ChildRelations["FK_ItemTypes_Items"] == null)) {
-                    return new ItemsRow[0];
-                }
-                else {
-                    return ((ItemsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ItemTypes_Items"])));
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class RequestFormatTypesRow : global::System.Data.DataRow {
-            
-            private RequestFormatTypesDataTable tableRequestFormatTypes;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal RequestFormatTypesRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableRequestFormatTypes = ((RequestFormatTypesDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long Id {
-                get {
-                    return ((long)(this[this.tableRequestFormatTypes.IdColumn]));
-                }
-                set {
-                    this[this.tableRequestFormatTypes.IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Name {
-                get {
-                    return ((string)(this[this.tableRequestFormatTypes.NameColumn]));
-                }
-                set {
-                    this[this.tableRequestFormatTypes.NameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsRow[] GetDonorsRows() {
-                if ((this.Table.ChildRelations["FK_RequestFormatTypes_Donors"] == null)) {
-                    return new DonorsRow[0];
-                }
-                else {
-                    return ((DonorsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_RequestFormatTypes_Donors"])));
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class RequestStatusTypesRow : global::System.Data.DataRow {
-            
-            private RequestStatusTypesDataTable tableRequestStatusTypes;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal RequestStatusTypesRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableRequestStatusTypes = ((RequestStatusTypesDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long Id {
-                get {
-                    return ((long)(this[this.tableRequestStatusTypes.IdColumn]));
-                }
-                set {
-                    this[this.tableRequestStatusTypes.IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Name {
-                get {
-                    return ((string)(this[this.tableRequestStatusTypes.NameColumn]));
-                }
-                set {
-                    this[this.tableRequestStatusTypes.NameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Description {
-                get {
-                    return ((string)(this[this.tableRequestStatusTypes.DescriptionColumn]));
-                }
-                set {
-                    this[this.tableRequestStatusTypes.DescriptionColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsRow[] GetDonorsRows() {
-                if ((this.Table.ChildRelations["FK_RequestStatusTypes_Donors"] == null)) {
-                    return new DonorsRow[0];
-                }
-                else {
-                    return ((DonorsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_RequestStatusTypes_Donors"])));
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class DonorsWithNoResponseRow : global::System.Data.DataRow {
-            
-            private DonorsWithNoResponseDataTable tableDonorsWithNoResponse;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal DonorsWithNoResponseRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableDonorsWithNoResponse = ((DonorsWithNoResponseDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long Id {
-                get {
-                    return ((long)(this[this.tableDonorsWithNoResponse.IdColumn]));
-                }
-                set {
-                    this[this.tableDonorsWithNoResponse.IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Name {
-                get {
-                    return ((string)(this[this.tableDonorsWithNoResponse.NameColumn]));
-                }
-                set {
-                    this[this.tableDonorsWithNoResponse.NameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long RequestStatusTypeId {
-                get {
-                    try {
-                        return ((long)(this[this.tableDonorsWithNoResponse.RequestStatusTypeIdColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'RequestStatusTypeId\' in table \'DonorsWithNoResponse\' is DBN" +
-                                "ull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDonorsWithNoResponse.RequestStatusTypeIdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsRequestStatusTypeIdNull() {
-                return this.IsNull(this.tableDonorsWithNoResponse.RequestStatusTypeIdColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetRequestStatusTypeIdNull() {
-                this[this.tableDonorsWithNoResponse.RequestStatusTypeIdColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class DonorsWithEmailsRow : global::System.Data.DataRow {
-            
-            private DonorsWithEmailsDataTable tableDonorsWithEmails;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal DonorsWithEmailsRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableDonorsWithEmails = ((DonorsWithEmailsDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long Id {
-                get {
-                    return ((long)(this[this.tableDonorsWithEmails.IdColumn]));
-                }
-                set {
-                    this[this.tableDonorsWithEmails.IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Name {
-                get {
-                    return ((string)(this[this.tableDonorsWithEmails.NameColumn]));
-                }
-                set {
-                    this[this.tableDonorsWithEmails.NameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Email {
-                get {
-                    try {
-                        return ((string)(this[this.tableDonorsWithEmails.EmailColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Email\' in table \'DonorsWithEmails\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDonorsWithEmails.EmailColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsEmailNull() {
-                return this.IsNull(this.tableDonorsWithEmails.EmailColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetEmailNull() {
-                this[this.tableDonorsWithEmails.EmailColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class DonorAddressesRow : global::System.Data.DataRow {
-            
-            private DonorAddressesDataTable tableDonorAddresses;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal DonorAddressesRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableDonorAddresses = ((DonorAddressesDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long Id {
-                get {
-                    return ((long)(this[this.tableDonorAddresses.IdColumn]));
-                }
-                set {
-                    this[this.tableDonorAddresses.IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Name {
-                get {
-                    return ((string)(this[this.tableDonorAddresses.NameColumn]));
-                }
-                set {
-                    this[this.tableDonorAddresses.NameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ContactName {
-                get {
-                    try {
-                        return ((string)(this[this.tableDonorAddresses.ContactNameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ContactName\' in table \'DonorAddresses\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDonorAddresses.ContactNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Street1 {
-                get {
-                    try {
-                        return ((string)(this[this.tableDonorAddresses.Street1Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Street1\' in table \'DonorAddresses\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDonorAddresses.Street1Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Street2 {
-                get {
-                    try {
-                        return ((string)(this[this.tableDonorAddresses.Street2Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Street2\' in table \'DonorAddresses\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDonorAddresses.Street2Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string City {
-                get {
-                    try {
-                        return ((string)(this[this.tableDonorAddresses.CityColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'City\' in table \'DonorAddresses\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDonorAddresses.CityColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string State {
-                get {
-                    try {
-                        return ((string)(this[this.tableDonorAddresses.StateColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'State\' in table \'DonorAddresses\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDonorAddresses.StateColumn] = value;
-                }
-            }
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ZipCode {
-                get {
-                    try {
-                        return ((string)(this[this.tableDonorAddresses.ZipCodeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ZipCode\' in table \'DonorAddresses\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDonorAddresses.ZipCodeColumn] = value;
-                }
+            public bool IsCreateDateNull() {
+                return this.IsNull(this.tableItems.CreateDateColumn);
             }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsContactNameNull() {
-                return this.IsNull(this.tableDonorAddresses.ContactNameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetContactNameNull() {
-                this[this.tableDonorAddresses.ContactNameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsStreet1Null() {
-                return this.IsNull(this.tableDonorAddresses.Street1Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetStreet1Null() {
-                this[this.tableDonorAddresses.Street1Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsStreet2Null() {
-                return this.IsNull(this.tableDonorAddresses.Street2Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetStreet2Null() {
-                this[this.tableDonorAddresses.Street2Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCityNull() {
-                return this.IsNull(this.tableDonorAddresses.CityColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCityNull() {
-                this[this.tableDonorAddresses.CityColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsStateNull() {
-                return this.IsNull(this.tableDonorAddresses.StateColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetStateNull() {
-                this[this.tableDonorAddresses.StateColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsZipCodeNull() {
-                return this.IsNull(this.tableDonorAddresses.ZipCodeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetZipCodeNull() {
-                this[this.tableDonorAddresses.ZipCodeColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class DonorsWithLettersRow : global::System.Data.DataRow {
-            
-            private DonorsWithLettersDataTable tableDonorsWithLetters;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal DonorsWithLettersRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableDonorsWithLetters = ((DonorsWithLettersDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long Id {
-                get {
-                    return ((long)(this[this.tableDonorsWithLetters.IdColumn]));
-                }
-                set {
-                    this[this.tableDonorsWithLetters.IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Name {
-                get {
-                    return ((string)(this[this.tableDonorsWithLetters.NameColumn]));
-                }
-                set {
-                    this[this.tableDonorsWithLetters.NameColumn] = value;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class ItemsShortListRow : global::System.Data.DataRow {
-            
-            private ItemsShortListDataTable tableItemsShortList;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ItemsShortListRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableItemsShortList = ((ItemsShortListDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long Id {
-                get {
-                    return ((long)(this[this.tableItemsShortList.IdColumn]));
-                }
-                set {
-                    this[this.tableItemsShortList.IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ItemName {
-                get {
-                    return ((string)(this[this.tableItemsShortList.ItemNameColumn]));
-                }
-                set {
-                    this[this.tableItemsShortList.ItemNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string DonorName {
-                get {
-                    return ((string)(this[this.tableItemsShortList.DonorNameColumn]));
-                }
-                set {
-                    this[this.tableItemsShortList.DonorNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Description {
-                get {
-                    try {
-                        return ((string)(this[this.tableItemsShortList.DescriptionColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Description\' in table \'ItemsShortList\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableItemsShortList.DescriptionColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long Qty {
-                get {
-                    return ((long)(this[this.tableItemsShortList.QtyColumn]));
-                }
-                set {
-                    this[this.tableItemsShortList.QtyColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public object ItemType {
-                get {
-                    try {
-                        return ((object)(this[this.tableItemsShortList.ItemTypeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ItemType\' in table \'ItemsShortList\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableItemsShortList.ItemTypeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double RetailValue {
-                get {
-                    return ((double)(this[this.tableItemsShortList.RetailValueColumn]));
-                }
-                set {
-                    this[this.tableItemsShortList.RetailValueColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double BidBuyItNowValue {
-                get {
-                    return ((double)(this[this.tableItemsShortList.BidBuyItNowValueColumn]));
-                }
-                set {
-                    this[this.tableItemsShortList.BidBuyItNowValueColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long BidIncrementTypeId {
-                get {
-                    return ((long)(this[this.tableItemsShortList.BidIncrementTypeIdColumn]));
-                }
-                set {
-                    this[this.tableItemsShortList.BidIncrementTypeIdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double BidMinValue {
-                get {
-                    return ((double)(this[this.tableItemsShortList.BidMinValueColumn]));
-                }
-                set {
-                    this[this.tableItemsShortList.BidMinValueColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double BidMaxValue {
-                get {
-                    return ((double)(this[this.tableItemsShortList.BidMaxValueColumn]));
-                }
-                set {
-                    this[this.tableItemsShortList.BidMaxValueColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double BidIncrementValue {
-                get {
-                    return ((double)(this[this.tableItemsShortList.BidIncrementValueColumn]));
-                }
-                set {
-                    this[this.tableItemsShortList.BidIncrementValueColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long BidNumberOfBids {
-                get {
-                    return ((long)(this[this.tableItemsShortList.BidNumberOfBidsColumn]));
-                }
-                set {
-                    this[this.tableItemsShortList.BidNumberOfBidsColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string AuctionName {
-                get {
-                    return ((string)(this[this.tableItemsShortList.AuctionNameColumn]));
-                }
-                set {
-                    this[this.tableItemsShortList.AuctionNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDescriptionNull() {
-                return this.IsNull(this.tableItemsShortList.DescriptionColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDescriptionNull() {
-                this[this.tableItemsShortList.DescriptionColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsItemTypeNull() {
-                return this.IsNull(this.tableItemsShortList.ItemTypeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetItemTypeNull() {
-                this[this.tableItemsShortList.ItemTypeColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class DocumentsRow : global::System.Data.DataRow {
-            
-            private DocumentsDataTable tableDocuments;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal DocumentsRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableDocuments = ((DocumentsDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long Id {
-                get {
-                    return ((long)(this[this.tableDocuments.IdColumn]));
-                }
-                set {
-                    this[this.tableDocuments.IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long AuctionId {
-                get {
-                    return ((long)(this[this.tableDocuments.AuctionIdColumn]));
-                }
-                set {
-                    this[this.tableDocuments.AuctionIdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Name {
-                get {
-                    return ((string)(this[this.tableDocuments.NameColumn]));
-                }
-                set {
-                    this[this.tableDocuments.NameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Document {
-                get {
-                    return ((string)(this[this.tableDocuments.DocumentColumn]));
-                }
-                set {
-                    this[this.tableDocuments.DocumentColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public AuctionsRow AuctionsRow {
-                get {
-                    return ((AuctionsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Auctions_Documents"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Auctions_Documents"]);
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class EmailAccountsRow : global::System.Data.DataRow {
-            
-            private EmailAccountsDataTable tableEmailAccounts;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal EmailAccountsRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableEmailAccounts = ((EmailAccountsDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long Id {
-                get {
-                    return ((long)(this[this.tableEmailAccounts.IdColumn]));
-                }
-                set {
-                    this[this.tableEmailAccounts.IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Account {
-                get {
-                    return ((string)(this[this.tableEmailAccounts.AccountColumn]));
-                }
-                set {
-                    this[this.tableEmailAccounts.AccountColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Password {
-                get {
-                    return ((string)(this[this.tableEmailAccounts.PasswordColumn]));
-                }
-                set {
-                    this[this.tableEmailAccounts.PasswordColumn] = value;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class DocumentNamesRow : global::System.Data.DataRow {
-            
-            private DocumentNamesDataTable tableDocumentNames;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal DocumentNamesRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableDocumentNames = ((DocumentNamesDataTable)(this.Table));
+            public void SetCreateDateNull() {
+                this[this.tableItems.CreateDateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long Id {
-                get {
-                    return ((long)(this[this.tableDocumentNames.IdColumn]));
-                }
-                set {
-                    this[this.tableDocumentNames.IdColumn] = value;
-                }
+            public bool IsModifiedDateNull() {
+                return this.IsNull(this.tableItems.ModifiedDateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Name {
-                get {
-                    return ((string)(this[this.tableDocumentNames.NameColumn]));
-                }
-                set {
-                    this[this.tableDocumentNames.NameColumn] = value;
-                }
+            public void SetModifiedDateNull() {
+                this[this.tableItems.ModifiedDateColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -8953,40 +7133,6 @@ namespace SilentAuction {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DonorTypesRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class ItemsRowChangeEvent : global::System.EventArgs {
-            
-            private ItemsRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemsRowChangeEvent(ItemsRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemsRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -9175,158 +7321,22 @@ namespace SilentAuction {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class DonorsWithNoResponseRowChangeEvent : global::System.EventArgs {
+        public class DonorsWithLetters_OLDRowChangeEvent : global::System.EventArgs {
             
-            private DonorsWithNoResponseRow eventRow;
+            private DonorsWithLetters_OLDRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsWithNoResponseRowChangeEvent(DonorsWithNoResponseRow row, global::System.Data.DataRowAction action) {
+            public DonorsWithLetters_OLDRowChangeEvent(DonorsWithLetters_OLDRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsWithNoResponseRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class DonorsWithEmailsRowChangeEvent : global::System.EventArgs {
-            
-            private DonorsWithEmailsRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsWithEmailsRowChangeEvent(DonorsWithEmailsRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsWithEmailsRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class DonorAddressesRowChangeEvent : global::System.EventArgs {
-            
-            private DonorAddressesRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorAddressesRowChangeEvent(DonorAddressesRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorAddressesRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class DonorsWithLettersRowChangeEvent : global::System.EventArgs {
-            
-            private DonorsWithLettersRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsWithLettersRowChangeEvent(DonorsWithLettersRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DonorsWithLettersRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class ItemsShortListRowChangeEvent : global::System.EventArgs {
-            
-            private ItemsShortListRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemsShortListRowChangeEvent(ItemsShortListRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemsShortListRow Row {
+            public DonorsWithLetters_OLDRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -9429,6 +7439,74 @@ namespace SilentAuction {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DocumentNamesRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class DonorsNameOnlyRowChangeEvent : global::System.EventArgs {
+            
+            private DonorsNameOnlyRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DonorsNameOnlyRowChangeEvent(DonorsNameOnlyRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DonorsNameOnlyRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class ItemsRowChangeEvent : global::System.EventArgs {
+            
+            private ItemsRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ItemsRowChangeEvent(ItemsRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ItemsRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -10827,7 +8905,7 @@ namespace SilentAuction.SilentAuctionDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SQLite.SQLiteCommand[2];
+            this._commandCollection = new global::System.Data.SQLite.SQLiteCommand[4];
             this._commandCollection[0] = new global::System.Data.SQLite.SQLiteCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        Id, AuctionId, DonorTypeId, Name, RequestFormatTypeId, RequestStatusTypeId, ContactName, Email, Url, Street1, Street2, City, State, ZipCode, Phone1, Extension1, 
@@ -10848,15 +8926,52 @@ ORDER BY Name";
             this._commandCollection[1].CommandText = @"SELECT        Id, AuctionId, DonorTypeId, Name, RequestFormatTypeId, RequestStatusTypeId, ContactName, Email, Url, Street1, Street2, City, State, ZipCode, Phone1, Extension1, 
                          Phone2, Extension2, CreateDate, ModifiedDate
 FROM            Donors
+WHERE        (AuctionId = @AuctionId) AND (Email IS NOT NULL) AND (Email <> '')
 ORDER BY Name";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@AuctionId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.Size = 8;
+            param.SourceColumn = "AuctionId";
+            this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[2] = new global::System.Data.SQLite.SQLiteCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = @"SELECT        Id, AuctionId, DonorTypeId, Name, RequestFormatTypeId, RequestStatusTypeId, ContactName, Email, Url, Street1, Street2, City, State, ZipCode, Phone1, Extension1, 
+                         Phone2, Extension2, CreateDate, ModifiedDate
+FROM            Donors
+WHERE        (AuctionId = @AuctionId) AND (RequestStatusTypeId = IFNULL(@RequestStatusTypeId, RequestStatusTypeId))
+ORDER BY Name";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@AuctionId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.Size = 8;
+            param.SourceColumn = "AuctionId";
+            this._commandCollection[2].Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@RequestStatusTypeId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.Size = 8;
+            param.SourceColumn = "RequestStatusTypeId";
+            this._commandCollection[2].Parameters.Add(param);
+            this._commandCollection[3] = new global::System.Data.SQLite.SQLiteCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = @"SELECT        Id, AuctionId, DonorTypeId, Name, RequestFormatTypeId, RequestStatusTypeId, ContactName, Email, Url, Street1, Street2, City, State, ZipCode, Phone1, Extension1, 
+                         Phone2, Extension2, CreateDate, ModifiedDate
+FROM            Donors
+ORDER BY Name";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int FillDonors(SilentAuctionDataSet.DonorsDataTable dataTable, long AuctionId) {
+        public virtual int FillByAuctionId(SilentAuctionDataSet.DonorsDataTable dataTable, long AuctionId) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
             if ((this.ClearBeforeFill == true)) {
@@ -10870,7 +8985,7 @@ ORDER BY Name";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SilentAuctionDataSet.DonorsDataTable GetDonorsData(long AuctionId) {
+        public virtual SilentAuctionDataSet.DonorsDataTable GetDataByAuctionId(long AuctionId) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
             SilentAuctionDataSet.DonorsDataTable dataTable = new SilentAuctionDataSet.DonorsDataTable();
@@ -10882,8 +8997,9 @@ ORDER BY Name";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillAllDonors(SilentAuctionDataSet.DonorsDataTable dataTable) {
+        public virtual int FillByNonEmptyEmail(SilentAuctionDataSet.DonorsDataTable dataTable, long AuctionId) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -10895,8 +9011,71 @@ ORDER BY Name";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual SilentAuctionDataSet.DonorsDataTable GetAllDonorsData() {
+        public virtual SilentAuctionDataSet.DonorsDataTable GetDataByNonEmptyEmail(long AuctionId) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
+            SilentAuctionDataSet.DonorsDataTable dataTable = new SilentAuctionDataSet.DonorsDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByRequestStatusTypeId(SilentAuctionDataSet.DonorsDataTable dataTable, long AuctionId, global::System.Nullable<long> RequestStatusTypeId) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
+            if ((RequestStatusTypeId.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((long)(RequestStatusTypeId.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual SilentAuctionDataSet.DonorsDataTable GetDataByRequestStatusTypeId(long AuctionId, global::System.Nullable<long> RequestStatusTypeId) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
+            if ((RequestStatusTypeId.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((long)(RequestStatusTypeId.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            SilentAuctionDataSet.DonorsDataTable dataTable = new SilentAuctionDataSet.DonorsDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillDonors(SilentAuctionDataSet.DonorsDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual SilentAuctionDataSet.DonorsDataTable GetDonorsData() {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             SilentAuctionDataSet.DonorsDataTable dataTable = new SilentAuctionDataSet.DonorsDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -11865,1504 +10044,6 @@ ORDER BY Name";
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Original_Name));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class ItemsTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SQLite.SQLiteDataAdapter _adapter;
-        
-        private global::System.Data.SQLite.SQLiteConnection _connection;
-        
-        private global::System.Data.SQLite.SQLiteTransaction _transaction;
-        
-        private global::System.Data.SQLite.SQLiteCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public ItemsTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected internal global::System.Data.SQLite.SQLiteDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SQLite.SQLiteConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SQLite.SQLiteCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SQLite.SQLiteTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.SQLite.SQLiteCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SQLite.SQLiteDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Items";
-            tableMapping.ColumnMappings.Add("Id", "Id");
-            tableMapping.ColumnMappings.Add("DonorId", "DonorId");
-            tableMapping.ColumnMappings.Add("AuctionId", "AuctionId");
-            tableMapping.ColumnMappings.Add("Name", "Name");
-            tableMapping.ColumnMappings.Add("Description", "Description");
-            tableMapping.ColumnMappings.Add("Qty", "Qty");
-            tableMapping.ColumnMappings.Add("Notes", "Notes");
-            tableMapping.ColumnMappings.Add("CreateDate", "CreateDate");
-            tableMapping.ColumnMappings.Add("ModifiedDate", "ModifiedDate");
-            tableMapping.ColumnMappings.Add("RetailValue", "RetailValue");
-            tableMapping.ColumnMappings.Add("BidIncrementTypeId", "BidIncrementTypeId");
-            tableMapping.ColumnMappings.Add("BidMinValue", "BidMinValue");
-            tableMapping.ColumnMappings.Add("BidMaxValue", "BidMaxValue");
-            tableMapping.ColumnMappings.Add("BidIncrementValue", "BidIncrementValue");
-            tableMapping.ColumnMappings.Add("BidBuyItNowValue", "BidBuyItNowValue");
-            tableMapping.ColumnMappings.Add("BidNumberOfBids", "BidNumberOfBids");
-            tableMapping.ColumnMappings.Add("ItemTypeId", "ItemTypeId");
-            tableMapping.ColumnMappings.Add("DonationDeliveryTypeId", "DonationDeliveryTypeId");
-            tableMapping.ColumnMappings.Add("Image", "Image");
-            this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SQLite.SQLiteCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [main].[sqlite_default_schema].[Items] WHERE (([Id] = @Original_Id) A" +
-                "ND ([DonorId] = @Original_DonorId) AND ([AuctionId] = @Original_AuctionId) AND (" +
-                "(@IsNull_ItemTypeId = 1 AND [ItemTypeId] IS NULL) OR ([ItemTypeId] = @Original_I" +
-                "temTypeId)) AND ((@IsNull_DonationDeliveryTypeId = 1 AND [DonationDeliveryTypeId" +
-                "] IS NULL) OR ([DonationDeliveryTypeId] = @Original_DonationDeliveryTypeId)) AND" +
-                " ([Name] = @Original_Name) AND ((@IsNull_Description = 1 AND [Description] IS NU" +
-                "LL) OR ([Description] = @Original_Description)) AND ([Qty] = @Original_Qty) AND " +
-                "((@IsNull_RetailValue = 1 AND [RetailValue] IS NULL) OR ([RetailValue] = @Origin" +
-                "al_RetailValue)) AND ([BidIncrementTypeId] = @Original_BidIncrementTypeId) AND (" +
-                "(@IsNull_BidMinValue = 1 AND [BidMinValue] IS NULL) OR ([BidMinValue] = @Origina" +
-                "l_BidMinValue)) AND ((@IsNull_BidMaxValue = 1 AND [BidMaxValue] IS NULL) OR ([Bi" +
-                "dMaxValue] = @Original_BidMaxValue)) AND ((@IsNull_BidIncrementValue = 1 AND [Bi" +
-                "dIncrementValue] IS NULL) OR ([BidIncrementValue] = @Original_BidIncrementValue)" +
-                ") AND ((@IsNull_BidBuyItNowValue = 1 AND [BidBuyItNowValue] IS NULL) OR ([BidBuy" +
-                "ItNowValue] = @Original_BidBuyItNowValue)) AND ((@IsNull_BidNumberOfBids = 1 AND" +
-                " [BidNumberOfBids] IS NULL) OR ([BidNumberOfBids] = @Original_BidNumberOfBids)) " +
-                "AND ((@IsNull_Notes = 1 AND [Notes] IS NULL) OR ([Notes] = @Original_Notes)) AND" +
-                " ((@IsNull_Image = 1 AND [Image] IS NULL) OR ([Image] = @Original_Image)) AND ([" +
-                "CreateDate] = @Original_CreateDate) AND ([ModifiedDate] = @Original_ModifiedDate" +
-                "))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            global::System.Data.SQLite.SQLiteParameter param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_Id";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "Id";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_DonorId";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "DonorId";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_AuctionId";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "AuctionId";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_ItemTypeId";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "ItemTypeId";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_ItemTypeId";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "ItemTypeId";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_DonationDeliveryTypeId";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "DonationDeliveryTypeId";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_DonationDeliveryTypeId";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "DonationDeliveryTypeId";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_Name";
-            param.DbType = global::System.Data.DbType.String;
-            param.SourceColumn = "Name";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_Description";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "Description";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_Description";
-            param.DbType = global::System.Data.DbType.String;
-            param.SourceColumn = "Description";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_Qty";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "Qty";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_RetailValue";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "RetailValue";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_RetailValue";
-            param.DbType = global::System.Data.DbType.Double;
-            param.DbType = global::System.Data.DbType.Double;
-            param.SourceColumn = "RetailValue";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_BidIncrementTypeId";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "BidIncrementTypeId";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_BidMinValue";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "BidMinValue";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_BidMinValue";
-            param.DbType = global::System.Data.DbType.Double;
-            param.DbType = global::System.Data.DbType.Double;
-            param.SourceColumn = "BidMinValue";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_BidMaxValue";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "BidMaxValue";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_BidMaxValue";
-            param.DbType = global::System.Data.DbType.Double;
-            param.DbType = global::System.Data.DbType.Double;
-            param.SourceColumn = "BidMaxValue";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_BidIncrementValue";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "BidIncrementValue";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_BidIncrementValue";
-            param.DbType = global::System.Data.DbType.Double;
-            param.DbType = global::System.Data.DbType.Double;
-            param.SourceColumn = "BidIncrementValue";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_BidBuyItNowValue";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "BidBuyItNowValue";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_BidBuyItNowValue";
-            param.DbType = global::System.Data.DbType.Double;
-            param.DbType = global::System.Data.DbType.Double;
-            param.SourceColumn = "BidBuyItNowValue";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_BidNumberOfBids";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "BidNumberOfBids";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_BidNumberOfBids";
-            param.DbType = global::System.Data.DbType.Double;
-            param.DbType = global::System.Data.DbType.Double;
-            param.SourceColumn = "BidNumberOfBids";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_Notes";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "Notes";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_Notes";
-            param.DbType = global::System.Data.DbType.String;
-            param.SourceColumn = "Notes";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_Image";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "Image";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_Image";
-            param.DbType = global::System.Data.DbType.Binary;
-            param.DbType = global::System.Data.DbType.Binary;
-            param.SourceColumn = "Image";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_CreateDate";
-            param.DbType = global::System.Data.DbType.String;
-            param.SourceColumn = "CreateDate";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_ModifiedDate";
-            param.DbType = global::System.Data.DbType.String;
-            param.SourceColumn = "ModifiedDate";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            this._adapter.InsertCommand = new global::System.Data.SQLite.SQLiteCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [main].[sqlite_default_schema].[Items] ([DonorId], [AuctionId], [ItemTypeId], [DonationDeliveryTypeId], [Name], [Description], [Qty], [RetailValue], [BidIncrementTypeId], [BidMinValue], [BidMaxValue], [BidIncrementValue], [BidBuyItNowValue], [BidNumberOfBids], [Notes], [Image], [CreateDate], [ModifiedDate]) VALUES (@DonorId, @AuctionId, @ItemTypeId, @DonationDeliveryTypeId, @Name, @Description, @Qty, @RetailValue, @BidIncrementTypeId, @BidMinValue, @BidMaxValue, @BidIncrementValue, @BidBuyItNowValue, @BidNumberOfBids, @Notes, @Image, @CreateDate, @ModifiedDate)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@DonorId";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "DonorId";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@AuctionId";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "AuctionId";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@ItemTypeId";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "ItemTypeId";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@DonationDeliveryTypeId";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "DonationDeliveryTypeId";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Name";
-            param.DbType = global::System.Data.DbType.String;
-            param.SourceColumn = "Name";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Description";
-            param.DbType = global::System.Data.DbType.String;
-            param.SourceColumn = "Description";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Qty";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "Qty";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@RetailValue";
-            param.DbType = global::System.Data.DbType.Double;
-            param.DbType = global::System.Data.DbType.Double;
-            param.SourceColumn = "RetailValue";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@BidIncrementTypeId";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "BidIncrementTypeId";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@BidMinValue";
-            param.DbType = global::System.Data.DbType.Double;
-            param.DbType = global::System.Data.DbType.Double;
-            param.SourceColumn = "BidMinValue";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@BidMaxValue";
-            param.DbType = global::System.Data.DbType.Double;
-            param.DbType = global::System.Data.DbType.Double;
-            param.SourceColumn = "BidMaxValue";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@BidIncrementValue";
-            param.DbType = global::System.Data.DbType.Double;
-            param.DbType = global::System.Data.DbType.Double;
-            param.SourceColumn = "BidIncrementValue";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@BidBuyItNowValue";
-            param.DbType = global::System.Data.DbType.Double;
-            param.DbType = global::System.Data.DbType.Double;
-            param.SourceColumn = "BidBuyItNowValue";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@BidNumberOfBids";
-            param.DbType = global::System.Data.DbType.Double;
-            param.DbType = global::System.Data.DbType.Double;
-            param.SourceColumn = "BidNumberOfBids";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Notes";
-            param.DbType = global::System.Data.DbType.String;
-            param.SourceColumn = "Notes";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Image";
-            param.DbType = global::System.Data.DbType.Binary;
-            param.DbType = global::System.Data.DbType.Binary;
-            param.SourceColumn = "Image";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@CreateDate";
-            param.DbType = global::System.Data.DbType.String;
-            param.SourceColumn = "CreateDate";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@ModifiedDate";
-            param.DbType = global::System.Data.DbType.String;
-            param.SourceColumn = "ModifiedDate";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            this._adapter.UpdateCommand = new global::System.Data.SQLite.SQLiteCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [main].[sqlite_default_schema].[Items] SET [DonorId] = @DonorId, [AuctionI" +
-                "d] = @AuctionId, [ItemTypeId] = @ItemTypeId, [DonationDeliveryTypeId] = @Donatio" +
-                "nDeliveryTypeId, [Name] = @Name, [Description] = @Description, [Qty] = @Qty, [Re" +
-                "tailValue] = @RetailValue, [BidIncrementTypeId] = @BidIncrementTypeId, [BidMinVa" +
-                "lue] = @BidMinValue, [BidMaxValue] = @BidMaxValue, [BidIncrementValue] = @BidInc" +
-                "rementValue, [BidBuyItNowValue] = @BidBuyItNowValue, [BidNumberOfBids] = @BidNum" +
-                "berOfBids, [Notes] = @Notes, [Image] = @Image, [CreateDate] = @CreateDate, [Modi" +
-                "fiedDate] = @ModifiedDate WHERE (([Id] = @Original_Id) AND ([DonorId] = @Origina" +
-                "l_DonorId) AND ([AuctionId] = @Original_AuctionId) AND ((@IsNull_ItemTypeId = 1 " +
-                "AND [ItemTypeId] IS NULL) OR ([ItemTypeId] = @Original_ItemTypeId)) AND ((@IsNul" +
-                "l_DonationDeliveryTypeId = 1 AND [DonationDeliveryTypeId] IS NULL) OR ([Donation" +
-                "DeliveryTypeId] = @Original_DonationDeliveryTypeId)) AND ([Name] = @Original_Nam" +
-                "e) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = " +
-                "@Original_Description)) AND ([Qty] = @Original_Qty) AND ((@IsNull_RetailValue = " +
-                "1 AND [RetailValue] IS NULL) OR ([RetailValue] = @Original_RetailValue)) AND ([B" +
-                "idIncrementTypeId] = @Original_BidIncrementTypeId) AND ((@IsNull_BidMinValue = 1" +
-                " AND [BidMinValue] IS NULL) OR ([BidMinValue] = @Original_BidMinValue)) AND ((@I" +
-                "sNull_BidMaxValue = 1 AND [BidMaxValue] IS NULL) OR ([BidMaxValue] = @Original_B" +
-                "idMaxValue)) AND ((@IsNull_BidIncrementValue = 1 AND [BidIncrementValue] IS NULL" +
-                ") OR ([BidIncrementValue] = @Original_BidIncrementValue)) AND ((@IsNull_BidBuyIt" +
-                "NowValue = 1 AND [BidBuyItNowValue] IS NULL) OR ([BidBuyItNowValue] = @Original_" +
-                "BidBuyItNowValue)) AND ((@IsNull_BidNumberOfBids = 1 AND [BidNumberOfBids] IS NU" +
-                "LL) OR ([BidNumberOfBids] = @Original_BidNumberOfBids)) AND ((@IsNull_Notes = 1 " +
-                "AND [Notes] IS NULL) OR ([Notes] = @Original_Notes)) AND ((@IsNull_Image = 1 AND" +
-                " [Image] IS NULL) OR ([Image] = @Original_Image)) AND ([CreateDate] = @Original_" +
-                "CreateDate) AND ([ModifiedDate] = @Original_ModifiedDate))";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@DonorId";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "DonorId";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@AuctionId";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "AuctionId";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@ItemTypeId";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "ItemTypeId";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@DonationDeliveryTypeId";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "DonationDeliveryTypeId";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Name";
-            param.DbType = global::System.Data.DbType.String;
-            param.SourceColumn = "Name";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Description";
-            param.DbType = global::System.Data.DbType.String;
-            param.SourceColumn = "Description";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Qty";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "Qty";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@RetailValue";
-            param.DbType = global::System.Data.DbType.Double;
-            param.DbType = global::System.Data.DbType.Double;
-            param.SourceColumn = "RetailValue";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@BidIncrementTypeId";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "BidIncrementTypeId";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@BidMinValue";
-            param.DbType = global::System.Data.DbType.Double;
-            param.DbType = global::System.Data.DbType.Double;
-            param.SourceColumn = "BidMinValue";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@BidMaxValue";
-            param.DbType = global::System.Data.DbType.Double;
-            param.DbType = global::System.Data.DbType.Double;
-            param.SourceColumn = "BidMaxValue";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@BidIncrementValue";
-            param.DbType = global::System.Data.DbType.Double;
-            param.DbType = global::System.Data.DbType.Double;
-            param.SourceColumn = "BidIncrementValue";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@BidBuyItNowValue";
-            param.DbType = global::System.Data.DbType.Double;
-            param.DbType = global::System.Data.DbType.Double;
-            param.SourceColumn = "BidBuyItNowValue";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@BidNumberOfBids";
-            param.DbType = global::System.Data.DbType.Double;
-            param.DbType = global::System.Data.DbType.Double;
-            param.SourceColumn = "BidNumberOfBids";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Notes";
-            param.DbType = global::System.Data.DbType.String;
-            param.SourceColumn = "Notes";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Image";
-            param.DbType = global::System.Data.DbType.Binary;
-            param.DbType = global::System.Data.DbType.Binary;
-            param.SourceColumn = "Image";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@CreateDate";
-            param.DbType = global::System.Data.DbType.String;
-            param.SourceColumn = "CreateDate";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@ModifiedDate";
-            param.DbType = global::System.Data.DbType.String;
-            param.SourceColumn = "ModifiedDate";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_Id";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "Id";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_DonorId";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "DonorId";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_AuctionId";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "AuctionId";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_ItemTypeId";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "ItemTypeId";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_ItemTypeId";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "ItemTypeId";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_DonationDeliveryTypeId";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "DonationDeliveryTypeId";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_DonationDeliveryTypeId";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "DonationDeliveryTypeId";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_Name";
-            param.DbType = global::System.Data.DbType.String;
-            param.SourceColumn = "Name";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_Description";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "Description";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_Description";
-            param.DbType = global::System.Data.DbType.String;
-            param.SourceColumn = "Description";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_Qty";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "Qty";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_RetailValue";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "RetailValue";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_RetailValue";
-            param.DbType = global::System.Data.DbType.Double;
-            param.DbType = global::System.Data.DbType.Double;
-            param.SourceColumn = "RetailValue";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_BidIncrementTypeId";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.SourceColumn = "BidIncrementTypeId";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_BidMinValue";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "BidMinValue";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_BidMinValue";
-            param.DbType = global::System.Data.DbType.Double;
-            param.DbType = global::System.Data.DbType.Double;
-            param.SourceColumn = "BidMinValue";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_BidMaxValue";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "BidMaxValue";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_BidMaxValue";
-            param.DbType = global::System.Data.DbType.Double;
-            param.DbType = global::System.Data.DbType.Double;
-            param.SourceColumn = "BidMaxValue";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_BidIncrementValue";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "BidIncrementValue";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_BidIncrementValue";
-            param.DbType = global::System.Data.DbType.Double;
-            param.DbType = global::System.Data.DbType.Double;
-            param.SourceColumn = "BidIncrementValue";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_BidBuyItNowValue";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "BidBuyItNowValue";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_BidBuyItNowValue";
-            param.DbType = global::System.Data.DbType.Double;
-            param.DbType = global::System.Data.DbType.Double;
-            param.SourceColumn = "BidBuyItNowValue";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_BidNumberOfBids";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "BidNumberOfBids";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_BidNumberOfBids";
-            param.DbType = global::System.Data.DbType.Double;
-            param.DbType = global::System.Data.DbType.Double;
-            param.SourceColumn = "BidNumberOfBids";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_Notes";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "Notes";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_Notes";
-            param.DbType = global::System.Data.DbType.String;
-            param.SourceColumn = "Notes";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_Image";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "Image";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_Image";
-            param.DbType = global::System.Data.DbType.Binary;
-            param.DbType = global::System.Data.DbType.Binary;
-            param.SourceColumn = "Image";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_CreateDate";
-            param.DbType = global::System.Data.DbType.String;
-            param.SourceColumn = "CreateDate";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_ModifiedDate";
-            param.DbType = global::System.Data.DbType.String;
-            param.SourceColumn = "ModifiedDate";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SQLite.SQLiteConnection();
-            this._connection.ConnectionString = global::SilentAuction.Properties.Settings.Default.SilentAuctionConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SQLite.SQLiteCommand[2];
-            this._commandCollection[0] = new global::System.Data.SQLite.SQLiteCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT Id, DonorId, AuctionId, ItemTypeId, DonationDeliveryTypeId, Name, Description, Qty, RetailValue, BidIncrementTypeId, BidMinValue, BidMaxValue, BidIncrementValue, BidBuyItNowValue, BidNumberOfBids, Notes, Image, CreateDate, ModifiedDate FROM Items WHERE (AuctionId = @AuctionId) ORDER BY DonorId, Name, Id";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            global::System.Data.SQLite.SQLiteParameter param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@AuctionId";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.Size = 8;
-            param.SourceColumn = "AuctionId";
-            this._commandCollection[0].Parameters.Add(param);
-            this._commandCollection[1] = new global::System.Data.SQLite.SQLiteCommand();
-            this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT Items.AuctionId, Items.BidBuyItNowValue, Items.BidIncrementTypeId, Items.BidIncrementValue, Items.BidMaxValue, Items.BidMinValue, Items.BidNumberOfBids, Items.CreateDate, Items.Description, Items.DonationDeliveryTypeId, Items.DonorId, Items.Id, Items.Image, Items.ItemTypeId, Items.ModifiedDate, Items.Name, Items.Notes, Items.Qty, Items.RetailValue FROM Items INNER JOIN Donors ON Items.DonorId = Donors.Id WHERE (Donors.Name LIKE @DonorName) ORDER BY Items.AuctionId, Items.Name, Items.Id";
-            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@DonorName";
-            param.DbType = global::System.Data.DbType.String;
-            param.Size = 2147483647;
-            param.SourceColumn = "Name";
-            this._commandCollection[1].Parameters.Add(param);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int FillItems(SilentAuctionDataSet.ItemsDataTable dataTable, long AuctionId) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SilentAuctionDataSet.ItemsDataTable GetItemsData(long AuctionId) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
-            SilentAuctionDataSet.ItemsDataTable dataTable = new SilentAuctionDataSet.ItemsDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillItemsByDonorName(SilentAuctionDataSet.ItemsDataTable dataTable, string DonorName) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
-            if ((DonorName == null)) {
-                throw new global::System.ArgumentNullException("DonorName");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(DonorName));
-            }
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual SilentAuctionDataSet.ItemsDataTable GetItemsDataByDonorName(string DonorName) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
-            if ((DonorName == null)) {
-                throw new global::System.ArgumentNullException("DonorName");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(DonorName));
-            }
-            SilentAuctionDataSet.ItemsDataTable dataTable = new SilentAuctionDataSet.ItemsDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(SilentAuctionDataSet.ItemsDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(SilentAuctionDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Items");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(
-                    long Original_Id, 
-                    long Original_DonorId, 
-                    long Original_AuctionId, 
-                    global::System.Nullable<long> Original_ItemTypeId, 
-                    global::System.Nullable<long> Original_DonationDeliveryTypeId, 
-                    string Original_Name, 
-                    string Original_Description, 
-                    long Original_Qty, 
-                    global::System.Nullable<double> Original_RetailValue, 
-                    long Original_BidIncrementTypeId, 
-                    global::System.Nullable<double> Original_BidMinValue, 
-                    global::System.Nullable<double> Original_BidMaxValue, 
-                    global::System.Nullable<double> Original_BidIncrementValue, 
-                    global::System.Nullable<double> Original_BidBuyItNowValue, 
-                    global::System.Nullable<double> Original_BidNumberOfBids, 
-                    string Original_Notes, 
-                    byte[] Original_Image, 
-                    string Original_CreateDate, 
-                    string Original_ModifiedDate) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_Id));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((long)(Original_DonorId));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((long)(Original_AuctionId));
-            if ((Original_ItemTypeId.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((long)(Original_ItemTypeId.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            if ((Original_DonationDeliveryTypeId.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((long)(Original_DonationDeliveryTypeId.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            if ((Original_Name == null)) {
-                throw new global::System.ArgumentNullException("Original_Name");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(Original_Name));
-            }
-            if ((Original_Description == null)) {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((string)(Original_Description));
-            }
-            this.Adapter.DeleteCommand.Parameters[10].Value = ((long)(Original_Qty));
-            if ((Original_RetailValue.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((double)(Original_RetailValue.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.DeleteCommand.Parameters[13].Value = ((long)(Original_BidIncrementTypeId));
-            if ((Original_BidMinValue.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[15].Value = ((double)(Original_BidMinValue.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[15].Value = global::System.DBNull.Value;
-            }
-            if ((Original_BidMaxValue.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[17].Value = ((double)(Original_BidMaxValue.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[17].Value = global::System.DBNull.Value;
-            }
-            if ((Original_BidIncrementValue.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[18].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[19].Value = ((double)(Original_BidIncrementValue.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[18].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[19].Value = global::System.DBNull.Value;
-            }
-            if ((Original_BidBuyItNowValue.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[21].Value = ((double)(Original_BidBuyItNowValue.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[21].Value = global::System.DBNull.Value;
-            }
-            if ((Original_BidNumberOfBids.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[23].Value = ((double)(Original_BidNumberOfBids.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[23].Value = global::System.DBNull.Value;
-            }
-            if ((Original_Notes == null)) {
-                this.Adapter.DeleteCommand.Parameters[24].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[25].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[24].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[25].Value = ((string)(Original_Notes));
-            }
-            if ((Original_Image == null)) {
-                this.Adapter.DeleteCommand.Parameters[26].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[27].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[26].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[27].Value = ((byte[])(Original_Image));
-            }
-            if ((Original_CreateDate == null)) {
-                throw new global::System.ArgumentNullException("Original_CreateDate");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[28].Value = ((string)(Original_CreateDate));
-            }
-            if ((Original_ModifiedDate == null)) {
-                throw new global::System.ArgumentNullException("Original_ModifiedDate");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[29].Value = ((string)(Original_ModifiedDate));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(
-                    long DonorId, 
-                    long AuctionId, 
-                    global::System.Nullable<long> ItemTypeId, 
-                    global::System.Nullable<long> DonationDeliveryTypeId, 
-                    string Name, 
-                    string Description, 
-                    long Qty, 
-                    global::System.Nullable<double> RetailValue, 
-                    long BidIncrementTypeId, 
-                    global::System.Nullable<double> BidMinValue, 
-                    global::System.Nullable<double> BidMaxValue, 
-                    global::System.Nullable<double> BidIncrementValue, 
-                    global::System.Nullable<double> BidBuyItNowValue, 
-                    global::System.Nullable<double> BidNumberOfBids, 
-                    string Notes, 
-                    byte[] Image, 
-                    string CreateDate, 
-                    string ModifiedDate) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((long)(DonorId));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((long)(AuctionId));
-            if ((ItemTypeId.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((long)(ItemTypeId.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            if ((DonationDeliveryTypeId.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((long)(DonationDeliveryTypeId.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            if ((Name == null)) {
-                throw new global::System.ArgumentNullException("Name");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Name));
-            }
-            if ((Description == null)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Description));
-            }
-            this.Adapter.InsertCommand.Parameters[6].Value = ((long)(Qty));
-            if ((RetailValue.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((double)(RetailValue.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.InsertCommand.Parameters[8].Value = ((long)(BidIncrementTypeId));
-            if ((BidMinValue.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((double)(BidMinValue.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            if ((BidMaxValue.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((double)(BidMaxValue.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            if ((BidIncrementValue.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((double)(BidIncrementValue.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
-            if ((BidBuyItNowValue.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[12].Value = ((double)(BidBuyItNowValue.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
-            if ((BidNumberOfBids.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[13].Value = ((double)(BidNumberOfBids.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
-            }
-            if ((Notes == null)) {
-                this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[14].Value = ((string)(Notes));
-            }
-            if ((Image == null)) {
-                this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[15].Value = ((byte[])(Image));
-            }
-            if ((CreateDate == null)) {
-                throw new global::System.ArgumentNullException("CreateDate");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[16].Value = ((string)(CreateDate));
-            }
-            if ((ModifiedDate == null)) {
-                throw new global::System.ArgumentNullException("ModifiedDate");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[17].Value = ((string)(ModifiedDate));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    long DonorId, 
-                    long AuctionId, 
-                    global::System.Nullable<long> ItemTypeId, 
-                    global::System.Nullable<long> DonationDeliveryTypeId, 
-                    string Name, 
-                    string Description, 
-                    long Qty, 
-                    global::System.Nullable<double> RetailValue, 
-                    long BidIncrementTypeId, 
-                    global::System.Nullable<double> BidMinValue, 
-                    global::System.Nullable<double> BidMaxValue, 
-                    global::System.Nullable<double> BidIncrementValue, 
-                    global::System.Nullable<double> BidBuyItNowValue, 
-                    global::System.Nullable<double> BidNumberOfBids, 
-                    string Notes, 
-                    byte[] Image, 
-                    string CreateDate, 
-                    string ModifiedDate, 
-                    long Original_Id, 
-                    long Original_DonorId, 
-                    long Original_AuctionId, 
-                    global::System.Nullable<long> Original_ItemTypeId, 
-                    global::System.Nullable<long> Original_DonationDeliveryTypeId, 
-                    string Original_Name, 
-                    string Original_Description, 
-                    long Original_Qty, 
-                    global::System.Nullable<double> Original_RetailValue, 
-                    long Original_BidIncrementTypeId, 
-                    global::System.Nullable<double> Original_BidMinValue, 
-                    global::System.Nullable<double> Original_BidMaxValue, 
-                    global::System.Nullable<double> Original_BidIncrementValue, 
-                    global::System.Nullable<double> Original_BidBuyItNowValue, 
-                    global::System.Nullable<double> Original_BidNumberOfBids, 
-                    string Original_Notes, 
-                    byte[] Original_Image, 
-                    string Original_CreateDate, 
-                    string Original_ModifiedDate) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(DonorId));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((long)(AuctionId));
-            if ((ItemTypeId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((long)(ItemTypeId.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            if ((DonationDeliveryTypeId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((long)(DonationDeliveryTypeId.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            if ((Name == null)) {
-                throw new global::System.ArgumentNullException("Name");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Name));
-            }
-            if ((Description == null)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Description));
-            }
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((long)(Qty));
-            if ((RetailValue.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((double)(RetailValue.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((long)(BidIncrementTypeId));
-            if ((BidMinValue.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((double)(BidMinValue.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            if ((BidMaxValue.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((double)(BidMaxValue.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            if ((BidIncrementValue.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((double)(BidIncrementValue.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
-            if ((BidBuyItNowValue.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((double)(BidBuyItNowValue.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
-            if ((BidNumberOfBids.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((double)(BidNumberOfBids.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
-            }
-            if ((Notes == null)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Notes));
-            }
-            if ((Image == null)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((byte[])(Image));
-            }
-            if ((CreateDate == null)) {
-                throw new global::System.ArgumentNullException("CreateDate");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(CreateDate));
-            }
-            if ((ModifiedDate == null)) {
-                throw new global::System.ArgumentNullException("ModifiedDate");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(ModifiedDate));
-            }
-            this.Adapter.UpdateCommand.Parameters[18].Value = ((long)(Original_Id));
-            this.Adapter.UpdateCommand.Parameters[19].Value = ((long)(Original_DonorId));
-            this.Adapter.UpdateCommand.Parameters[20].Value = ((long)(Original_AuctionId));
-            if ((Original_ItemTypeId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((long)(Original_ItemTypeId.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
-            }
-            if ((Original_DonationDeliveryTypeId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((long)(Original_DonationDeliveryTypeId.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
-            }
-            if ((Original_Name == null)) {
-                throw new global::System.ArgumentNullException("Original_Name");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(Original_Name));
-            }
-            if ((Original_Description == null)) {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(Original_Description));
-            }
-            this.Adapter.UpdateCommand.Parameters[28].Value = ((long)(Original_Qty));
-            if ((Original_RetailValue.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((double)(Original_RetailValue.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[31].Value = ((long)(Original_BidIncrementTypeId));
-            if ((Original_BidMinValue.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((double)(Original_BidMinValue.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
-            }
-            if ((Original_BidMaxValue.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((double)(Original_BidMaxValue.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[35].Value = global::System.DBNull.Value;
-            }
-            if ((Original_BidIncrementValue.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((double)(Original_BidIncrementValue.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[37].Value = global::System.DBNull.Value;
-            }
-            if ((Original_BidBuyItNowValue.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((double)(Original_BidBuyItNowValue.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[39].Value = global::System.DBNull.Value;
-            }
-            if ((Original_BidNumberOfBids.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((double)(Original_BidNumberOfBids.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[41].Value = global::System.DBNull.Value;
-            }
-            if ((Original_Notes == null)) {
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[43].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((string)(Original_Notes));
-            }
-            if ((Original_Image == null)) {
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[45].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((byte[])(Original_Image));
-            }
-            if ((Original_CreateDate == null)) {
-                throw new global::System.ArgumentNullException("Original_CreateDate");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[46].Value = ((string)(Original_CreateDate));
-            }
-            if ((Original_ModifiedDate == null)) {
-                throw new global::System.ArgumentNullException("Original_ModifiedDate");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[47].Value = ((string)(Original_ModifiedDate));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -15223,7 +11904,7 @@ ORDER BY Name";
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class DonorsWithNoResponseTableAdapter : global::System.ComponentModel.Component {
+    public partial class DonorsWithLetters_OLDTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SQLite.SQLiteDataAdapter _adapter;
         
@@ -15237,7 +11918,7 @@ ORDER BY Name";
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public DonorsWithNoResponseTableAdapter() {
+        public DonorsWithLetters_OLDTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -15334,550 +12015,7 @@ ORDER BY Name";
             this._adapter = new global::System.Data.SQLite.SQLiteDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "DonorsWithNoResponse";
-            tableMapping.ColumnMappings.Add("Id", "Id");
-            tableMapping.ColumnMappings.Add("Name", "Name");
-            tableMapping.ColumnMappings.Add("RequestStatusTypeId", "RequestStatusTypeId");
-            this._adapter.TableMappings.Add(tableMapping);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SQLite.SQLiteConnection();
-            this._connection.ConnectionString = global::SilentAuction.Properties.Settings.Default.SilentAuctionConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SQLite.SQLiteCommand[1];
-            this._commandCollection[0] = new global::System.Data.SQLite.SQLiteCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        Id, Name, RequestStatusTypeId\r\nFROM            Donors\r\nWHERE       " +
-                " (AuctionId = @AuctionId) AND (RequestStatusTypeId = 1 OR\r\n                     " +
-                "    RequestStatusTypeId IS NULL)\r\nORDER BY Name";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            global::System.Data.SQLite.SQLiteParameter param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@AuctionId";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.Size = 8;
-            param.SourceColumn = "AuctionId";
-            this._commandCollection[0].Parameters.Add(param);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int FillDonorsWithNoResponse(SilentAuctionDataSet.DonorsWithNoResponseDataTable dataTable, long AuctionId) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SilentAuctionDataSet.DonorsWithNoResponseDataTable GetDonorsWithNoResponseData(long AuctionId) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
-            SilentAuctionDataSet.DonorsWithNoResponseDataTable dataTable = new SilentAuctionDataSet.DonorsWithNoResponseDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class DonorsWithEmailsTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SQLite.SQLiteDataAdapter _adapter;
-        
-        private global::System.Data.SQLite.SQLiteConnection _connection;
-        
-        private global::System.Data.SQLite.SQLiteTransaction _transaction;
-        
-        private global::System.Data.SQLite.SQLiteCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public DonorsWithEmailsTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected internal global::System.Data.SQLite.SQLiteDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SQLite.SQLiteConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SQLite.SQLiteCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SQLite.SQLiteTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.SQLite.SQLiteCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SQLite.SQLiteDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "DonorsWithEmails";
-            tableMapping.ColumnMappings.Add("Id", "Id");
-            tableMapping.ColumnMappings.Add("Name", "Name");
-            tableMapping.ColumnMappings.Add("Email", "Email");
-            this._adapter.TableMappings.Add(tableMapping);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SQLite.SQLiteConnection();
-            this._connection.ConnectionString = global::SilentAuction.Properties.Settings.Default.SilentAuctionConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SQLite.SQLiteCommand[1];
-            this._commandCollection[0] = new global::System.Data.SQLite.SQLiteCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        Id, Name, Email\r\nFROM            Donors\r\nWHERE        (Email IS NOT" +
-                " NULL) AND (AuctionId = @AuctionId) AND (Email <> \'\')\r\nORDER BY Name";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            global::System.Data.SQLite.SQLiteParameter param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@AuctionId";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.Size = 8;
-            param.SourceColumn = "AuctionId";
-            this._commandCollection[0].Parameters.Add(param);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int FillDonorsWithEmails(SilentAuctionDataSet.DonorsWithEmailsDataTable dataTable, long AuctionId) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SilentAuctionDataSet.DonorsWithEmailsDataTable GetDonorsWithEmailsData(long AuctionId) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
-            SilentAuctionDataSet.DonorsWithEmailsDataTable dataTable = new SilentAuctionDataSet.DonorsWithEmailsDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class DonorAddressesTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SQLite.SQLiteDataAdapter _adapter;
-        
-        private global::System.Data.SQLite.SQLiteConnection _connection;
-        
-        private global::System.Data.SQLite.SQLiteTransaction _transaction;
-        
-        private global::System.Data.SQLite.SQLiteCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public DonorAddressesTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected internal global::System.Data.SQLite.SQLiteDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SQLite.SQLiteConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SQLite.SQLiteCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SQLite.SQLiteTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.SQLite.SQLiteCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SQLite.SQLiteDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "DonorAddresses";
-            tableMapping.ColumnMappings.Add("Name", "Name");
-            tableMapping.ColumnMappings.Add("ContactName", "ContactName");
-            tableMapping.ColumnMappings.Add("Street1", "Street1");
-            tableMapping.ColumnMappings.Add("Street2", "Street2");
-            tableMapping.ColumnMappings.Add("City", "City");
-            tableMapping.ColumnMappings.Add("State", "State");
-            tableMapping.ColumnMappings.Add("ZipCode", "ZipCode");
-            tableMapping.ColumnMappings.Add("Id", "Id");
-            this._adapter.TableMappings.Add(tableMapping);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SQLite.SQLiteConnection();
-            this._connection.ConnectionString = global::SilentAuction.Properties.Settings.Default.SilentAuctionConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SQLite.SQLiteCommand[1];
-            this._commandCollection[0] = new global::System.Data.SQLite.SQLiteCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, Name, ContactName, Street1, Street2, City, State, ZipCode FROM Donors " +
-                "WHERE (AuctionId = @AuctionId) ORDER BY Name";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            global::System.Data.SQLite.SQLiteParameter param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@AuctionId";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.Size = 8;
-            param.SourceColumn = "AuctionId";
-            this._commandCollection[0].Parameters.Add(param);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int FillDonorAddresses(SilentAuctionDataSet.DonorAddressesDataTable dataTable, long AuctionId) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SilentAuctionDataSet.DonorAddressesDataTable GetDonorAddressesData(long AuctionId) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
-            SilentAuctionDataSet.DonorAddressesDataTable dataTable = new SilentAuctionDataSet.DonorAddressesDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class DonorsWithLettersTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SQLite.SQLiteDataAdapter _adapter;
-        
-        private global::System.Data.SQLite.SQLiteConnection _connection;
-        
-        private global::System.Data.SQLite.SQLiteTransaction _transaction;
-        
-        private global::System.Data.SQLite.SQLiteCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public DonorsWithLettersTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected internal global::System.Data.SQLite.SQLiteDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SQLite.SQLiteConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SQLite.SQLiteCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SQLite.SQLiteTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.SQLite.SQLiteCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SQLite.SQLiteDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "DonorsWithLetters";
+            tableMapping.DataSetTable = "DonorsWithLetters_OLD";
             tableMapping.ColumnMappings.Add("Id", "Id");
             tableMapping.ColumnMappings.Add("Name", "Name");
             this._adapter.TableMappings.Add(tableMapping);
@@ -15920,7 +12058,7 @@ ORDER BY Name";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int FillDonorsWithLetters(SilentAuctionDataSet.DonorsWithLettersDataTable dataTable, long AuctionId, global::System.Nullable<long> RequestFormatTypeId) {
+        public virtual int FillDonorsWithLetters(SilentAuctionDataSet.DonorsWithLetters_OLDDataTable dataTable, long AuctionId, global::System.Nullable<long> RequestFormatTypeId) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
             if ((RequestFormatTypeId.HasValue == true)) {
@@ -15940,7 +12078,7 @@ ORDER BY Name";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SilentAuctionDataSet.DonorsWithLettersDataTable GetDonorWithLettersData(long AuctionId, global::System.Nullable<long> RequestFormatTypeId) {
+        public virtual SilentAuctionDataSet.DonorsWithLetters_OLDDataTable GetDonorWithLettersData(long AuctionId, global::System.Nullable<long> RequestFormatTypeId) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
             if ((RequestFormatTypeId.HasValue == true)) {
@@ -15949,203 +12087,7 @@ ORDER BY Name";
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            SilentAuctionDataSet.DonorsWithLettersDataTable dataTable = new SilentAuctionDataSet.DonorsWithLettersDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class ItemsShortListTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SQLite.SQLiteDataAdapter _adapter;
-        
-        private global::System.Data.SQLite.SQLiteConnection _connection;
-        
-        private global::System.Data.SQLite.SQLiteTransaction _transaction;
-        
-        private global::System.Data.SQLite.SQLiteCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public ItemsShortListTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected internal global::System.Data.SQLite.SQLiteDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SQLite.SQLiteConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SQLite.SQLiteCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SQLite.SQLiteTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.SQLite.SQLiteCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SQLite.SQLiteDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "ItemsShortList";
-            tableMapping.ColumnMappings.Add("Id", "Id");
-            tableMapping.ColumnMappings.Add("ItemName", "ItemName");
-            tableMapping.ColumnMappings.Add("DonorName", "DonorName");
-            tableMapping.ColumnMappings.Add("Description", "Description");
-            tableMapping.ColumnMappings.Add("Qty", "Qty");
-            tableMapping.ColumnMappings.Add("ItemType", "ItemType");
-            tableMapping.ColumnMappings.Add("RetailValue", "RetailValue");
-            tableMapping.ColumnMappings.Add("BidBuyItNowValue", "BidBuyItNowValue");
-            tableMapping.ColumnMappings.Add("BidIncrementTypeId", "BidIncrementTypeId");
-            tableMapping.ColumnMappings.Add("BidMinValue", "BidMinValue");
-            tableMapping.ColumnMappings.Add("BidMaxValue", "BidMaxValue");
-            tableMapping.ColumnMappings.Add("BidIncrementValue", "BidIncrementValue");
-            tableMapping.ColumnMappings.Add("BidNumberOfBids", "BidNumberOfBids");
-            tableMapping.ColumnMappings.Add("AuctionName", "AuctionName");
-            this._adapter.TableMappings.Add(tableMapping);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SQLite.SQLiteConnection();
-            this._connection.ConnectionString = global::SilentAuction.Properties.Settings.Default.SilentAuctionConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SQLite.SQLiteCommand[1];
-            this._commandCollection[0] = new global::System.Data.SQLite.SQLiteCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        I.Id, A.Name AS AuctionName, I.Name AS ItemName, D.Name AS DonorName, I.Description, I.Qty, IFNULL(IT.Name, 'Empty') AS ItemType, I.RetailValue, I.BidBuyItNowValue, 
-                         I.BidIncrementTypeId, I.BidMinValue, I.BidMaxValue, I.BidIncrementValue, I.BidNumberOfBids
-FROM            Items I INNER JOIN
-                         Donors D ON I.DonorId = D.Id INNER JOIN
-                         Auctions A ON I.AuctionId = A.Id LEFT OUTER JOIN
-                         ItemTypes IT ON I.ItemTypeId = IT.Id
-WHERE        (I.AuctionId = @AuctionId)
-ORDER BY I.Id";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            global::System.Data.SQLite.SQLiteParameter param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@AuctionId";
-            param.DbType = global::System.Data.DbType.Int64;
-            param.DbType = global::System.Data.DbType.Int64;
-            param.Size = 8;
-            param.SourceColumn = "AuctionId";
-            this._commandCollection[0].Parameters.Add(param);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int FillItems(SilentAuctionDataSet.ItemsShortListDataTable dataTable, long AuctionId) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SilentAuctionDataSet.ItemsShortListDataTable GetItemsData(long AuctionId) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
-            SilentAuctionDataSet.ItemsShortListDataTable dataTable = new SilentAuctionDataSet.ItemsShortListDataTable();
+            SilentAuctionDataSet.DonorsWithLetters_OLDDataTable dataTable = new SilentAuctionDataSet.DonorsWithLetters_OLDDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -17159,6 +13101,768 @@ ORDER BY I.Id";
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class DonorsNameOnlyTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SQLite.SQLiteDataAdapter _adapter;
+        
+        private global::System.Data.SQLite.SQLiteConnection _connection;
+        
+        private global::System.Data.SQLite.SQLiteTransaction _transaction;
+        
+        private global::System.Data.SQLite.SQLiteCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public DonorsNameOnlyTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SQLite.SQLiteDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SQLite.SQLiteConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SQLite.SQLiteCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SQLite.SQLiteTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SQLite.SQLiteCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SQLite.SQLiteDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "DonorsNameOnly";
+            tableMapping.ColumnMappings.Add("Name", "Name");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SQLite.SQLiteConnection();
+            this._connection.ConnectionString = global::SilentAuction.Properties.Settings.Default.SilentAuctionConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SQLite.SQLiteCommand[1];
+            this._commandCollection[0] = new global::System.Data.SQLite.SQLiteCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT        Name\r\nFROM            Donors\r\nWHERE        (AuctionId = @AuctionId)" +
+                "\r\nORDER BY Name";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            global::System.Data.SQLite.SQLiteParameter param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@AuctionId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.Size = 8;
+            param.SourceColumn = "AuctionId";
+            this._commandCollection[0].Parameters.Add(param);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(SilentAuctionDataSet.DonorsNameOnlyDataTable dataTable, long AuctionId) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual SilentAuctionDataSet.DonorsNameOnlyDataTable GetData(long AuctionId) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId));
+            SilentAuctionDataSet.DonorsNameOnlyDataTable dataTable = new SilentAuctionDataSet.DonorsNameOnlyDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class ItemsTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SQLite.SQLiteDataAdapter _adapter;
+        
+        private global::System.Data.SQLite.SQLiteConnection _connection;
+        
+        private global::System.Data.SQLite.SQLiteTransaction _transaction;
+        
+        private global::System.Data.SQLite.SQLiteCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public ItemsTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SQLite.SQLiteDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SQLite.SQLiteConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SQLite.SQLiteCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SQLite.SQLiteTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SQLite.SQLiteCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SQLite.SQLiteDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "Items";
+            tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("DonorTypeName", "DonorTypeName");
+            tableMapping.ColumnMappings.Add("DonorId", "DonorId");
+            tableMapping.ColumnMappings.Add("DonorName", "DonorName");
+            tableMapping.ColumnMappings.Add("AuctionId", "AuctionId");
+            tableMapping.ColumnMappings.Add("AuctionName", "AuctionName");
+            tableMapping.ColumnMappings.Add("Name", "Name");
+            tableMapping.ColumnMappings.Add("Description", "Description");
+            tableMapping.ColumnMappings.Add("Qty", "Qty");
+            tableMapping.ColumnMappings.Add("ItemTypeId", "ItemTypeId");
+            tableMapping.ColumnMappings.Add("ItemTypeName", "ItemTypeName");
+            tableMapping.ColumnMappings.Add("DonationDeliveryTypeId", "DonationDeliveryTypeId");
+            tableMapping.ColumnMappings.Add("SellValue", "SellValue");
+            tableMapping.ColumnMappings.Add("RetailValue", "RetailValue");
+            tableMapping.ColumnMappings.Add("BidIncrementTypeId", "BidIncrementTypeId");
+            tableMapping.ColumnMappings.Add("BidMinValue", "BidMinValue");
+            tableMapping.ColumnMappings.Add("BidMaxValue", "BidMaxValue");
+            tableMapping.ColumnMappings.Add("BidIncrementValue", "BidIncrementValue");
+            tableMapping.ColumnMappings.Add("BidBuyItNowValue", "BidBuyItNowValue");
+            tableMapping.ColumnMappings.Add("BidNumberOfBids", "BidNumberOfBids");
+            tableMapping.ColumnMappings.Add("Notes", "Notes");
+            tableMapping.ColumnMappings.Add("Image", "Image");
+            tableMapping.ColumnMappings.Add("CreateDate", "CreateDate");
+            tableMapping.ColumnMappings.Add("ModifiedDate", "ModifiedDate");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.InsertCommand = new global::System.Data.SQLite.SQLiteCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO Items
+                         (AuctionId, Name, DonorId, Description, Qty, ItemTypeId, DonationDeliveryTypeId, SellValue, RetailValue, BidIncrementTypeId, BidMinValue, BidMaxValue, 
+                         BidIncrementValue, BidBuyItNowValue, BidNumberOfBids, Notes, Image, CreateDate, ModifiedDate)
+VALUES        (@AuctionId, @Name, @DonorId, @Description, @Qty, @ItemTypeId, @DonationDeliveryTypeId, @SellValue, @RetailValue, @BidIncrementTypeId, @BidMinValue, 
+                         @BidMaxValue, @BidIncrementValue, @BidBuyItNowValue, @BidNumberOfBids, @Notes, @Image, @CreateDate, @ModifiedDate)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            global::System.Data.SQLite.SQLiteParameter param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@AuctionId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.Size = 8;
+            param.SourceColumn = "AuctionId";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Name";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 2147483647;
+            param.SourceColumn = "Name";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@DonorId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.Size = 8;
+            param.SourceColumn = "DonorId";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Description";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 2147483647;
+            param.SourceColumn = "Description";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Qty";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.Size = 8;
+            param.SourceColumn = "Qty";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@ItemTypeId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.Size = 8;
+            param.SourceColumn = "ItemTypeId";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@DonationDeliveryTypeId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.Size = 8;
+            param.SourceColumn = "DonationDeliveryTypeId";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@SellValue";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.DbType = global::System.Data.DbType.Double;
+            param.Size = 8;
+            param.SourceColumn = "SellValue";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@RetailValue";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.DbType = global::System.Data.DbType.Double;
+            param.Size = 8;
+            param.SourceColumn = "RetailValue";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@BidIncrementTypeId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.Size = 8;
+            param.SourceColumn = "BidIncrementTypeId";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@BidMinValue";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.DbType = global::System.Data.DbType.Double;
+            param.Size = 8;
+            param.SourceColumn = "BidMinValue";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@BidMaxValue";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.DbType = global::System.Data.DbType.Double;
+            param.Size = 8;
+            param.SourceColumn = "BidMaxValue";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@BidIncrementValue";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.DbType = global::System.Data.DbType.Double;
+            param.Size = 8;
+            param.SourceColumn = "BidIncrementValue";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@BidBuyItNowValue";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.DbType = global::System.Data.DbType.Double;
+            param.Size = 8;
+            param.SourceColumn = "BidBuyItNowValue";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@BidNumberOfBids";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.Size = 8;
+            param.SourceColumn = "BidNumberOfBids";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Notes";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 2147483647;
+            param.SourceColumn = "Notes";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Image";
+            param.DbType = global::System.Data.DbType.Binary;
+            param.DbType = global::System.Data.DbType.Binary;
+            param.Size = 2147483647;
+            param.SourceColumn = "Image";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@CreateDate";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 2147483647;
+            param.SourceColumn = "CreateDate";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@ModifiedDate";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 2147483647;
+            param.SourceColumn = "ModifiedDate";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            this._adapter.UpdateCommand = new global::System.Data.SQLite.SQLiteCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE       Items
+SET                DonorId = @DonorId, AuctionId = @AuctionId, Name = @Name, Description = @Description, Qty = @Qty, ItemTypeId = @ItemTypeId, 
+                         DonationDeliveryTypeId = @DonationDeliveryTypeId, SellValue = @SellValue, RetailValue = @RetailValue, BidIncrementTypeId = @BidIncrementTypeId, 
+                         BidMinValue = @BidMinValue, BidMaxValue = @BidMaxValue, BidIncrementValue = @BidIncrementValue, BidBuyItNowValue = @BidBuyItNowValue, 
+                         BidNumberOfBids = @BidNumberOfBids, Notes = @Notes, Image = @Image, CreateDate = @CreateDate, ModifiedDate = @ModifiedDate
+WHERE        (Id = @Id)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@DonorId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.Size = 8;
+            param.SourceColumn = "DonorId";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@AuctionId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.Size = 8;
+            param.SourceColumn = "AuctionId";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Name";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 2147483647;
+            param.SourceColumn = "Name";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Description";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 2147483647;
+            param.SourceColumn = "Description";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Qty";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.Size = 8;
+            param.SourceColumn = "Qty";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@ItemTypeId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.Size = 8;
+            param.SourceColumn = "ItemTypeId";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@DonationDeliveryTypeId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.Size = 8;
+            param.SourceColumn = "DonationDeliveryTypeId";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@SellValue";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.DbType = global::System.Data.DbType.Double;
+            param.Size = 8;
+            param.SourceColumn = "SellValue";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@RetailValue";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.DbType = global::System.Data.DbType.Double;
+            param.Size = 8;
+            param.SourceColumn = "RetailValue";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@BidIncrementTypeId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.Size = 8;
+            param.SourceColumn = "BidIncrementTypeId";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@BidMinValue";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.DbType = global::System.Data.DbType.Double;
+            param.Size = 8;
+            param.SourceColumn = "BidMinValue";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@BidMaxValue";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.DbType = global::System.Data.DbType.Double;
+            param.Size = 8;
+            param.SourceColumn = "BidMaxValue";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@BidIncrementValue";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.DbType = global::System.Data.DbType.Double;
+            param.Size = 8;
+            param.SourceColumn = "BidIncrementValue";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@BidBuyItNowValue";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.DbType = global::System.Data.DbType.Double;
+            param.Size = 8;
+            param.SourceColumn = "BidBuyItNowValue";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@BidNumberOfBids";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.Size = 8;
+            param.SourceColumn = "BidNumberOfBids";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Notes";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 2147483647;
+            param.SourceColumn = "Notes";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Image";
+            param.DbType = global::System.Data.DbType.Binary;
+            param.DbType = global::System.Data.DbType.Binary;
+            param.Size = 2147483647;
+            param.SourceColumn = "Image";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@CreateDate";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 2147483647;
+            param.SourceColumn = "CreateDate";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@ModifiedDate";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 2147483647;
+            param.SourceColumn = "ModifiedDate";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.Size = 8;
+            param.SourceColumn = "Id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SQLite.SQLiteConnection();
+            this._connection.ConnectionString = global::SilentAuction.Properties.Settings.Default.SilentAuctionConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SQLite.SQLiteCommand[2];
+            this._commandCollection[0] = new global::System.Data.SQLite.SQLiteCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"SELECT        I.Id, DT.Name AS DonorTypeName, I.DonorId, D.Name AS DonorName, I.AuctionId, A.Name AS AuctionName, I.Name, I.Description, I.Qty, I.ItemTypeId, 
+                         IT.Name AS ItemTypeName, I.DonationDeliveryTypeId, I.SellValue, I.RetailValue, I.BidIncrementTypeId, I.BidMinValue, I.BidMaxValue, I.BidIncrementValue, 
+                         I.BidBuyItNowValue, I.BidNumberOfBids, I.Notes, I.Image, I.CreateDate, I.ModifiedDate
+FROM            Items I INNER JOIN
+                         Auctions A ON I.AuctionId = A.Id INNER JOIN
+                         Donors D ON I.DonorId = D.Id INNER JOIN
+                         DonorTypes DT ON D.DonorTypeId = DT.Id INNER JOIN
+                         ItemTypes IT ON I.ItemTypeId = IT.Id INNER JOIN
+                         DonationDeliveryTypes DDT ON I.DonationDeliveryTypeId = DDT.Id INNER JOIN
+                         BidIncrementTypes BIT ON I.BidIncrementTypeId = BIT.Id
+WHERE        (I.AuctionId = @AuctionId)";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            global::System.Data.SQLite.SQLiteParameter param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@AuctionId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.DbType = global::System.Data.DbType.Int64;
+            param.Size = 8;
+            param.SourceColumn = "AuctionId";
+            this._commandCollection[0].Parameters.Add(param);
+            this._commandCollection[1] = new global::System.Data.SQLite.SQLiteCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = @"SELECT        I.Id, DT.Name AS DonorTypeName, I.DonorId, D.Name AS DonorName, I.AuctionId, A.Name AS AuctionName, I.Name, I.Description, I.Qty, I.ItemTypeId, 
+                         IT.Name AS ItemTypeName, I.DonationDeliveryTypeId, I.SellValue, I.RetailValue, I.BidIncrementTypeId, I.BidMinValue, I.BidMaxValue, I.BidIncrementValue, 
+                         I.BidBuyItNowValue, I.BidNumberOfBids, I.Notes, I.Image, I.CreateDate, I.ModifiedDate
+FROM            Items I INNER JOIN
+                         Auctions A ON I.AuctionId = A.Id INNER JOIN
+                         Donors D ON I.DonorId = D.Id INNER JOIN
+                         DonorTypes DT ON D.DonorTypeId = DT.Id INNER JOIN
+                         ItemTypes IT ON I.ItemTypeId = IT.Id INNER JOIN
+                         DonationDeliveryTypes DDT ON I.DonationDeliveryTypeId = DDT.Id INNER JOIN
+                         BidIncrementTypes BIT ON I.BidIncrementTypeId = BIT.Id
+WHERE        (D.Name = @DonorName)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@DonorName";
+            param.DbType = global::System.Data.DbType.String;
+            param.Size = 2147483647;
+            param.SourceColumn = "DonorName";
+            this._commandCollection[1].Parameters.Add(param);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(SilentAuctionDataSet.ItemsDataTable dataTable, global::System.Nullable<long> AuctionId) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((AuctionId.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual SilentAuctionDataSet.ItemsDataTable GetData(global::System.Nullable<long> AuctionId) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((AuctionId.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((long)(AuctionId.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            SilentAuctionDataSet.ItemsDataTable dataTable = new SilentAuctionDataSet.ItemsDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillItemsByDonorName(SilentAuctionDataSet.ItemsDataTable dataTable, string DonorName) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((DonorName == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(DonorName));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual SilentAuctionDataSet.ItemsDataTable GetItemsDataByDonorName(string DonorName) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((DonorName == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(DonorName));
+            }
+            SilentAuctionDataSet.ItemsDataTable dataTable = new SilentAuctionDataSet.ItemsDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(SilentAuctionDataSet.ItemsDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(SilentAuctionDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "Items");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -17176,8 +13880,6 @@ ORDER BY I.Id";
         
         private DonorTypesTableAdapter _donorTypesTableAdapter;
         
-        private ItemsTableAdapter _itemsTableAdapter;
-        
         private BidIncrementTypesTableAdapter _bidIncrementTypesTableAdapter;
         
         private DonationDeliveryTypesTableAdapter _donationDeliveryTypesTableAdapter;
@@ -17191,6 +13893,8 @@ ORDER BY I.Id";
         private DocumentsTableAdapter _documentsTableAdapter;
         
         private EmailAccountsTableAdapter _emailAccountsTableAdapter;
+        
+        private ItemsTableAdapter _itemsTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -17246,20 +13950,6 @@ ORDER BY I.Id";
             }
             set {
                 this._donorTypesTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public ItemsTableAdapter ItemsTableAdapter {
-            get {
-                return this._itemsTableAdapter;
-            }
-            set {
-                this._itemsTableAdapter = value;
             }
         }
         
@@ -17363,6 +14053,20 @@ ORDER BY I.Id";
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public ItemsTableAdapter ItemsTableAdapter {
+            get {
+                return this._itemsTableAdapter;
+            }
+            set {
+                this._itemsTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -17392,10 +14096,6 @@ ORDER BY I.Id";
                             && (this._donorTypesTableAdapter.Connection != null))) {
                     return this._donorTypesTableAdapter.Connection;
                 }
-                if (((this._itemsTableAdapter != null) 
-                            && (this._itemsTableAdapter.Connection != null))) {
-                    return this._itemsTableAdapter.Connection;
-                }
                 if (((this._bidIncrementTypesTableAdapter != null) 
                             && (this._bidIncrementTypesTableAdapter.Connection != null))) {
                     return this._bidIncrementTypesTableAdapter.Connection;
@@ -17424,6 +14124,10 @@ ORDER BY I.Id";
                             && (this._emailAccountsTableAdapter.Connection != null))) {
                     return this._emailAccountsTableAdapter.Connection;
                 }
+                if (((this._itemsTableAdapter != null) 
+                            && (this._itemsTableAdapter.Connection != null))) {
+                    return this._itemsTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -17444,9 +14148,6 @@ ORDER BY I.Id";
                     count = (count + 1);
                 }
                 if ((this._donorTypesTableAdapter != null)) {
-                    count = (count + 1);
-                }
-                if ((this._itemsTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._bidIncrementTypesTableAdapter != null)) {
@@ -17470,6 +14171,9 @@ ORDER BY I.Id";
                 if ((this._emailAccountsTableAdapter != null)) {
                     count = (count + 1);
                 }
+                if ((this._itemsTableAdapter != null)) {
+                    count = (count + 1);
+                }
                 return count;
             }
         }
@@ -17490,21 +14194,12 @@ ORDER BY I.Id";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._requestFormatTypesTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.RequestFormatTypes.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._donorsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Donors.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._requestFormatTypesTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._requestStatusTypesTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.RequestStatusTypes.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._requestStatusTypesTableAdapter.Update(updatedRows));
+                    result = (result + this._donorsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -17544,21 +14239,30 @@ ORDER BY I.Id";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._donorsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Donors.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._requestFormatTypesTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.RequestFormatTypes.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._donorsTableAdapter.Update(updatedRows));
+                    result = (result + this._requestFormatTypesTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._itemsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Items.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._requestStatusTypesTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.RequestStatusTypes.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._itemsTableAdapter.Update(updatedRows));
+                    result = (result + this._requestStatusTypesTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._documentsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Documents.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._documentsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -17571,12 +14275,12 @@ ORDER BY I.Id";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._documentsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Documents.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._itemsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Items.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._documentsTableAdapter.Update(updatedRows));
+                    result = (result + this._itemsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -17598,19 +14302,11 @@ ORDER BY I.Id";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._requestFormatTypesTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.RequestFormatTypes.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._donorsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Donors.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._requestFormatTypesTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._requestStatusTypesTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.RequestStatusTypes.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._requestStatusTypesTableAdapter.Update(addedRows));
+                    result = (result + this._donorsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -17646,19 +14342,27 @@ ORDER BY I.Id";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._donorsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Donors.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._requestFormatTypesTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.RequestFormatTypes.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._donorsTableAdapter.Update(addedRows));
+                    result = (result + this._requestFormatTypesTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._itemsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Items.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._requestStatusTypesTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.RequestStatusTypes.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._itemsTableAdapter.Update(addedRows));
+                    result = (result + this._requestStatusTypesTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._documentsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Documents.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._documentsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -17670,11 +14374,11 @@ ORDER BY I.Id";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._documentsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Documents.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._itemsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Items.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._documentsTableAdapter.Update(addedRows));
+                    result = (result + this._itemsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -17688,11 +14392,11 @@ ORDER BY I.Id";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(SilentAuctionDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._documentsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Documents.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._itemsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Items.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._documentsTableAdapter.Update(deletedRows));
+                    result = (result + this._itemsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -17704,19 +14408,27 @@ ORDER BY I.Id";
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._itemsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Items.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._documentsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Documents.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._itemsTableAdapter.Update(deletedRows));
+                    result = (result + this._documentsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._donorsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Donors.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._requestStatusTypesTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.RequestStatusTypes.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._donorsTableAdapter.Update(deletedRows));
+                    result = (result + this._requestStatusTypesTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._requestFormatTypesTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.RequestFormatTypes.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._requestFormatTypesTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -17752,19 +14464,11 @@ ORDER BY I.Id";
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._requestStatusTypesTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.RequestStatusTypes.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._donorsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Donors.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._requestStatusTypesTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._requestFormatTypesTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.RequestFormatTypes.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._requestFormatTypesTableAdapter.Update(deletedRows));
+                    result = (result + this._donorsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -17830,11 +14534,6 @@ ORDER BY I.Id";
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._itemsTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._itemsTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
-                        "tring.");
-            }
             if (((this._bidIncrementTypesTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._bidIncrementTypesTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
@@ -17867,6 +14566,11 @@ ORDER BY I.Id";
             }
             if (((this._emailAccountsTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._emailAccountsTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
+            if (((this._itemsTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._itemsTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -17927,15 +14631,6 @@ ORDER BY I.Id";
                     if (this._donorTypesTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._donorTypesTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._donorTypesTableAdapter.Adapter);
-                    }
-                }
-                if ((this._itemsTableAdapter != null)) {
-                    revertConnections.Add(this._itemsTableAdapter, this._itemsTableAdapter.Connection);
-                    this._itemsTableAdapter.Connection = ((global::System.Data.SQLite.SQLiteConnection)(workConnection));
-                    this._itemsTableAdapter.Transaction = ((global::System.Data.SQLite.SQLiteTransaction)(workTransaction));
-                    if (this._itemsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._itemsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._itemsTableAdapter.Adapter);
                     }
                 }
                 if ((this._bidIncrementTypesTableAdapter != null)) {
@@ -17999,6 +14694,15 @@ ORDER BY I.Id";
                     if (this._emailAccountsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._emailAccountsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._emailAccountsTableAdapter.Adapter);
+                    }
+                }
+                if ((this._itemsTableAdapter != null)) {
+                    revertConnections.Add(this._itemsTableAdapter, this._itemsTableAdapter.Connection);
+                    this._itemsTableAdapter.Connection = ((global::System.Data.SQLite.SQLiteConnection)(workConnection));
+                    this._itemsTableAdapter.Transaction = ((global::System.Data.SQLite.SQLiteTransaction)(workTransaction));
+                    if (this._itemsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._itemsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._itemsTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -18071,10 +14775,6 @@ ORDER BY I.Id";
                     this._donorTypesTableAdapter.Connection = ((global::System.Data.SQLite.SQLiteConnection)(revertConnections[this._donorTypesTableAdapter]));
                     this._donorTypesTableAdapter.Transaction = null;
                 }
-                if ((this._itemsTableAdapter != null)) {
-                    this._itemsTableAdapter.Connection = ((global::System.Data.SQLite.SQLiteConnection)(revertConnections[this._itemsTableAdapter]));
-                    this._itemsTableAdapter.Transaction = null;
-                }
                 if ((this._bidIncrementTypesTableAdapter != null)) {
                     this._bidIncrementTypesTableAdapter.Connection = ((global::System.Data.SQLite.SQLiteConnection)(revertConnections[this._bidIncrementTypesTableAdapter]));
                     this._bidIncrementTypesTableAdapter.Transaction = null;
@@ -18102,6 +14802,10 @@ ORDER BY I.Id";
                 if ((this._emailAccountsTableAdapter != null)) {
                     this._emailAccountsTableAdapter.Connection = ((global::System.Data.SQLite.SQLiteConnection)(revertConnections[this._emailAccountsTableAdapter]));
                     this._emailAccountsTableAdapter.Transaction = null;
+                }
+                if ((this._itemsTableAdapter != null)) {
+                    this._itemsTableAdapter.Connection = ((global::System.Data.SQLite.SQLiteConnection)(revertConnections[this._itemsTableAdapter]));
+                    this._itemsTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

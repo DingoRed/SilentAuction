@@ -2,7 +2,6 @@
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
 using System.Windows.Forms;
 using SilentAuction.Utilities;
 
@@ -39,15 +38,15 @@ namespace SilentAuction.Forms
             donationDeliveryTypesTableAdapter.FillDonationDeliveryTypes(silentAuctionDataSet.DonationDeliveryTypes);
             bidIncrementTypesTableAdapter.FillBidIncremenetTypes(silentAuctionDataSet.BidIncrementTypes);
             itemTypesTableAdapter.FillItemTypes(silentAuctionDataSet.ItemTypes);
-            requestStatusTypesTableAdapter.FillRequestStatusType(silentAuctionDataSet.RequestStatusTypes);
-            requestFormatTypesTableAdapter.FillRequestFormatTypes(silentAuctionDataSet.RequestFormatTypes);
-            donorTypesTableAdapter.FillDonorTypes(silentAuctionDataSet.DonorTypes);
+            //requestStatusTypesTableAdapter.FillRequestStatusType(silentAuctionDataSet.RequestStatusTypes);
+            //requestFormatTypesTableAdapter.FillRequestFormatTypes(silentAuctionDataSet.RequestFormatTypes);
+            //donorTypesTableAdapter.FillDonorTypes(silentAuctionDataSet.DonorTypes);
             auctionsTableAdapter.FillAuctions(silentAuctionDataSet.Auctions);
 
             if (AuctionId > 0)
             {
-                donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionId);
-                itemsTableAdapter.FillItems(silentAuctionDataSet.Items, AuctionId);
+                donorsTableAdapter.FillByAuctionId(silentAuctionDataSet.Donors, AuctionId);
+                itemsTableAdapter.Fill(silentAuctionDataSet.Items, AuctionId);
                 AuctionsComboBox.Enabled = false;
             }
 
@@ -70,7 +69,7 @@ namespace SilentAuction.Forms
                 itemErrorProvider.SetError(AuctionsComboBox, "");
                 itemErrorProvider.SetError(DonorsComboBox, "");
                 AuctionId = MathHelper.ParseIntZeroIfNull(AuctionsComboBox.SelectedValue.ToString());
-                donorsTableAdapter.FillDonors(silentAuctionDataSet.Donors, AuctionId);
+                donorsTableAdapter.FillByAuctionId(silentAuctionDataSet.Donors, AuctionId);
             }
         }
         #endregion
@@ -185,22 +184,10 @@ namespace SilentAuction.Forms
             double buyItNowValue = MathHelper.ParseDoubleZeroIfNull(DigitsOnly(BuyItNowTextBox.Text));
             int numberOfBids = MathHelper.ParseIntZeroIfNull(DigitsOnly(NumberOfBidsTextBox.Text));
             
-
-            SilentAuctionDataSet.AuctionsRow auctionsRow =
-                silentAuctionDataSet.Auctions.FirstOrDefault(a => a.Id == auctionId);
-            SilentAuctionDataSet.DonorsRow donorsRow =
-                silentAuctionDataSet.Donors.FirstOrDefault(d => d.Id == donorId);
-            SilentAuctionDataSet.BidIncrementTypesRow bidIncrementTypesRow =
-                silentAuctionDataSet.BidIncrementTypes.FirstOrDefault(b => b.Id == bidIncrementTypeId);
-            SilentAuctionDataSet.ItemTypesRow itemTypesRow =
-                silentAuctionDataSet.ItemTypes.FirstOrDefault(i => i.Id == itemTypeId);
-            SilentAuctionDataSet.DonationDeliveryTypesRow donationDeliveryTypesRow =
-                silentAuctionDataSet.DonationDeliveryTypes.FirstOrDefault(d => d.Id == donationDeliveryTypeId);
-
-            silentAuctionDataSet.Items.AddItemsRow(donorsRow, auctionsRow, NameTextBox.Text, DescriptionTextBox.Text,
-                qty, NotesTextBox.Text, currentDate.ToString(), currentDate.ToString(), retailValue, bidIncrementTypesRow, 
-                bidMinValue, bidMaxValue, bidIncrementValue, buyItNowValue, numberOfBids, itemTypesRow,
-                donationDeliveryTypesRow, byteArray);
+            silentAuctionDataSet.Items.AddItemsRow("", donorId, "", auctionId, "", NameTextBox.Text, DescriptionTextBox.Text,
+                qty, itemTypeId, "", donationDeliveryTypeId, 0, retailValue, bidIncrementTypeId, bidMinValue, bidMaxValue,
+                bidIncrementValue, buyItNowValue, numberOfBids, NotesTextBox.Text, byteArray, currentDate.ToString(), 
+                currentDate.ToString());
 
             SilentAuctionDataSet.ItemsDataTable newItems
                 = (SilentAuctionDataSet.ItemsDataTable) silentAuctionDataSet.Items.GetChanges(DataRowState.Added);
@@ -211,7 +198,7 @@ namespace SilentAuction.Forms
                 silentAuctionDataSet.AcceptChanges();
                 newItems.Dispose();
                 
-                itemsTableAdapter.FillItems(silentAuctionDataSet.Items, auctionId);
+                itemsTableAdapter.Fill(silentAuctionDataSet.Items, auctionId);
             }
         }
 
