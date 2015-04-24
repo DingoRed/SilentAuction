@@ -94,13 +94,6 @@ namespace SilentAuction.Forms
             FileSave();
         }
 
-        private void PageSetupToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            // TODO: Implement Page Setup?
-            //PageSetup.pageSetup_Click(sender, e, _textControl, _fileHandler);
-            MessageBox.Show("Should this be implemented??");
-        }
-
         private void PrintToolStripMenuItemClick(object sender, EventArgs e)
         {
             FilePrint();
